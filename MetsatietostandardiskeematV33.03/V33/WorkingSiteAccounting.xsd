@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V14.03:
+	-Elementin "ServiceType" dokumentaatio päivitetty
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V33.02:
+	- Lisätty wct-nimiavaruus skeematiedostoviittauksella WoodForceCommonTypes.xsd
+	- Päivitetty määrittelyn "WorkingSiteAccountingType" elementin "WorkingSiteId" tyypiksi ERPIdType
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/WorkingSiteAccounting"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/WorkingSiteAccounting"
+           elementFormDefault="qualified" attributeFormDefault="unqualified" version="V33.02">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+		schemaLocation="WoodForceCommonTypes.xsd"/>
+	
+	<xs:element name="WorkingSiteAccounting" type="WorkingSiteAccountingType">
+		<xs:annotation>
+			<xs:documentation>Lohkon tilitystiedot</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="WorkingSiteAccountingType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContarctorId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakoitsijan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon tunniste, yksilöivä id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ServiceType" type="bdt:ServiceTypeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Palvelukokonaisuus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AccountingDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tilitys pvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FinalAccounting" type="bdt:YesNoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Onko lopputilitys</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Assortments" type="AssortmentsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL tiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkCodes" type="WorkCodesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työlajit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentsType">
+		<xs:sequence>
+			<xs:element name="Assortment" type="AssortmentDataType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkCodesType">
+		<xs:sequence>
+			<xs:element name="WorkCode" type="WorkCodeDataType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">PTL tiedot</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DestinationStorage" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Toimituspiste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Code" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL-koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL-nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlannedVolume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Suunniteltu m3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HarvestedVolume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Moto m3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HarvestedVolumeAccounted" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tilitetty moto m3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ForwardedVolume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mekuilmoitus m3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ForwardedVolumeAccounted" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tilitetty meku m3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ForestHaulageDistance" type="bdt:PositiveInteger4digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mekumatka (m)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ForestHaulageDistanceContinued" type="bdt:PositiveInteger4digitsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Jatkettu mekumatka (m)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkCodeDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työlajin tilitystiedot</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="WorkCode" type="bdt:WorkCodeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työlaji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmountPlanned" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Suunniteltu määrä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmountNotified" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Ilmoitettu määrä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmountAccounted" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tilitetty määrä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Unit" type="bdt:WorkCodeUnitType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yksikkö</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

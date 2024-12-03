@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ***************************************************************
+    Puustoyhteenvedon elementit ja tyypit. 
+    Skeema on JHS-170 -suosituksen mukainen.
+
+    Muutokset skeemapakettiin V10.05:
+    -Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+
+    Muutokset skeemapakettiin V11.08:
+    -Muutettu elementti MeanDiameter pakollisesta vapaaehtoiseksi
+    -Elementti MeanStumpDiameter otettu käyttöön poistamalla se kommenttitageista
+    -Muutettu elementti MeanHeight vapaaehtoisesta pakolliseksi 
+    -Elementti DominantHeight otettu käyttöön poistamalla se kommenttitageista
+
+    Muutokset skeemapakettiin V11.10:
+    -Päivitetty ja täydennetty skeeman elementtien dokumentaatioita
+    ***************************************************************
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://standardit.tapio.fi/schemas/forestData/treeStandSummary"
+    xmlns="http://standardit.tapio.fi/schemas/forestData/treeStandSummary"
+    xmlns:co="http://standardit.tapio.fi/schemas/forestData/common" elementFormDefault="qualified" version="V11.10">
+
+    <!-- Imports / Includes -->
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+
+    <!-- Elementtimääritykset -->
+    <!-- Element definitions -->
+    <xs:element name="TreeStandSummary" type="TreeStandSummaryType"/>
+    <xs:element name="MeanAge" type="MeanAgeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston keski-ikä</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary mean age</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="BasalArea" type="co:BasalAreaType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston pohjapinta-ala</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary basal area</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="StemCount" type="StemCountType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston runkoluku</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary stem count</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="MeanDiameter" type="MeanDiameterType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston keskiläpimitta</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary mean diameter</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="MeanHeight" type="co:MeanHeightType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston keskipituus</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary mean height</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Volume" type="VolumeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston tilavuus</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary volume</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="SawLogVolume" type="SawLogVolumeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston tukkipuun tilavuus</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary saw log volume</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PulpWoodVolume" type="PulpWoodVolumeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston kuitupuun tilavuus</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary pulp wood volume</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="VolumeGrowth" type="VolumeGrowthType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston tilavuuden kasvu</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary volume growth</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="LeafBiomass" type="LeafBiomassType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston lehtibiomassa</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary leaf biomass</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="BranchBiomass" type="BranchBiomassType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston oksabiomassa</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary branch biomass</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="StemBiomass" type="StemBiomassType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston runkojen biomassa</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary stem biomass</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="StumpBiomass" type="StumpBiomassType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston muutosajankohta</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary change time</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Value" type="co:Decimal2FractionDigitsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Pystypuuston arvo hehtaarilla. Käytettävä yksikkö on euro.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en"/>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Currency" type="co:CurrencyType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Pystypuuston arvo -kentässä käytettävä valuuttayksikkö.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en"/>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ValueGrowthPercent" type="co:Decimal2FractionDigitsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Pystypuuston arvon kasvuprosentti. Käytettävä yksikkö on %.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en"/>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DevelopmentClass" type="co:DevelopmentClassType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston kehitysluokka</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary development class</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="MainTreeSpecies" type="co:TreeSpeciesType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston pääpuulaji</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary main tree species</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DominantHeight" type="co:PositiveDecimalMax2IntegralPartMax1FractionalPartType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston valtapituus</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary dominant height</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="MeanStumpDiameter" type="co:DiameterType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston kantojen keskiläpimitta</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Tree summary stump mean diameter</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+
+    <!-- Tyyppimääritykset -->
+    <!-- Type definitions -->
+    <xs:complexType name="TreeStandSummaryType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston tiedot, kuvion laskentapuusto tai puustoennuste</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Summary of tree stratum. One summary per moment.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="co:ChangeState" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Yhteenvetopuuston muutostila</xs:documentation>
+                    <xs:documentation xml:lang="sv"/>
+                    <xs:documentation xml:lang="en">Tree summary change state</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="co:ChangeTime" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Yhteenvetopuuston muutosajankohta</xs:documentation>
+                    <xs:documentation xml:lang="sv"/>
+                    <xs:documentation xml:lang="en">Tree summary change time</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="MeanAge"/>
+            <xs:element ref="BasalArea"/>
+            <xs:element ref="StemCount"/>
+            <xs:element ref="MeanDiameter" minOccurs="0"/>
+            <xs:element ref="MeanStumpDiameter" minOccurs="0"/>
+            <xs:element ref="MeanHeight"/>
+            <xs:element ref="DominantHeight" minOccurs="0"/>
+            <xs:element ref="Volume"/>
+            <xs:element ref="SawLogVolume" minOccurs="0"/>
+            <xs:element ref="PulpWoodVolume" minOccurs="0"/>
+            <xs:element ref="VolumeGrowth"/>
+            <xs:element ref="LeafBiomass" minOccurs="0"/>
+            <xs:element ref="BranchBiomass" minOccurs="0"/>
+            <xs:element ref="StemBiomass" minOccurs="0"/>
+            <xs:element ref="StumpBiomass" minOccurs="0"/>
+            <xs:element ref="Value" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Currency" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ValueGrowthPercent" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DevelopmentClass" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="MainTreeSpecies" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="fi">Yhteenvetopuusto voidaan yksilöidä tiedonsiirrossa tiedonsiirto-osapuolien tarpeiden mukaan id:llä.</xs:documentation>
+                <xs:documentation xml:lang="sv"/>
+                <xs:documentation xml:lang="en">Tree stand summary can be identified using string id.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="TreeStandSummary2Type">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yhteenvetopuuston tiedot, kuvion laskentapuusto tai puustoennuste</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Summary of tree stratum. One summary per moment.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="co:ChangeState" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Yhteenvetopuuston muutostila</xs:documentation>
+                    <xs:documentation xml:lang="sv"/>
+                    <xs:documentation xml:lang="en">Tree summary change state</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="co:ChangeTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Yhteenvetopuuston muutosajankohta</xs:documentation>
+                    <xs:documentation xml:lang="sv"/>
+                    <xs:documentation xml:lang="en">Tree summary change time</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="MeanAge" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="BasalArea" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="StemCount" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="MeanDiameter" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="MeanStumpDiameter" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="MeanHeight" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DominantHeight" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Volume" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="SawLogVolume" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="PulpWoodVolume" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="VolumeGrowth" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="LeafBiomass" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="BranchBiomass" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="StemBiomass" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="StumpBiomass" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Value" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Currency" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ValueGrowthPercent" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DevelopmentClass" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="MainTreeSpecies" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="fi">Yhteenvetopuusto voidaan yksilöidä tiedonsiirrossa tiedonsiirto-osapuolien tarpeiden mukaan id:llä.</xs:documentation>
+                <xs:documentation xml:lang="sv"/>
+                <xs:documentation xml:lang="en">Tree stand summary can be identified using string id.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:simpleType name="MeanAgeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Puuston keski-ikä, v.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Mean age of tree stand, year.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:AgeType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="StemCountType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Runkoluku, kpl/ha.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Stem count, stem/ha.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:StemCountType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="MeanDiameterType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Keskiläpimitta, cm.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Mean diameter, cm.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:DiameterType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="VolumeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Tilavuus, m3/ha.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Volume, m3/ha.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:VolumeType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="SawLogVolumeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Tukkitilavuus, m3/ha.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Volume of saw log, m3/ha.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:SawLogVolumeType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="PulpWoodVolumeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kuitutilavuus, m3/ha.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Volume of pulp wood, m3/ha.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:PulpWoodVolumeType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="VolumeGrowthType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Tilavuuskasvu, m3/ha/v</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Growth of volume, m3/ha/year.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:VolumeGrowthType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LeafBiomassType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Ositteiden lehtien biomassa yhteensä, t/ha.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Leaf biomass of all stratum, ton/ha.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:LeafBiomassType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="BranchBiomassType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Ositteiden oksien biomassa yhteensä, t/ha.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Branch biomass of all stratum, ton/ha.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:BranchBiomassType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="StemBiomassType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Ositteiden runkojen biomassa yhteensä, t/ha</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Stem biomass of all stratum, ton/ha.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:StemBiomassType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="StumpBiomassType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Ositteiden kantojen biomassa yhteensä, t/ha</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Stump biomass of all stratum, ton/ha.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:StumpBiomassType"/>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ***************************************************************
+    Puustotietojen ajankohdan kuolleen puuston elementit ja tyypit. 
+    Skeema on JHS-170 -suosituksen mukainen.
+    
+    Muutokset skeemapakettiin V10.05:
+    -Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+    
+    Muutokset skeemapakettiin V29.01:
+    -Lisätty uusi elementti StemCount (co:StemCountType)
+    -Lisätty tyyppimäärittelyyn DeadTreeStratumType uusi vapaaehtoinen elementti StemCount
+    
+    ***************************************************************
+-->
+
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://standardit.tapio.fi/schemas/forestData/deadTreeStrata" 
+    xmlns="http://standardit.tapio.fi/schemas/forestData/deadTreeStrata" 
+    xmlns:co="http://standardit.tapio.fi/schemas/forestData/common" 
+    elementFormDefault="qualified"
+    version="V29.01">
+
+    <!-- Imports / Includes -->
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+
+    <!-- Elementtimääritykset -->
+   	<!-- Element definitions -->
+    <xs:element name="DeadTreeStrata" type="DeadTreeStrataType"/>
+    <xs:element name="DeadTreeStratum" type="DeadTreeStratumType"/>
+    <xs:element name="DeadTreeType" type="DeadTreeTypeType"/>
+    <xs:element name="TreeSpecies" type="TreeSpeciesType"/>
+    <xs:element name="MeanDiameter" type="MeanDiameterType"/>
+    <xs:element name="Volume" type="VolumeType"/>
+    <xs:element name="StemCount" type="StemCountType"/>
+    
+    <!-- Tyyppimääritykset -->
+    <!-- Type definitions -->
+    <xs:complexType name="DeadTreeStrataType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Ajankohdan kuollut puusto.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Dead tree strata information of certain moment.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="DeadTreeStratum" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="DeadTreeStratumType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kuolleen puusto-ositteen tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Data of dead tree stratum.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="co:ChangeState" minOccurs="0"/>
+            <xs:element ref="co:ChangeTime" minOccurs="0"/>
+            <xs:element ref="DeadTreeType"/>
+            <xs:element ref="TreeSpecies" minOccurs="0"/>
+            <xs:element ref="StemCount" minOccurs="0"/>            
+            <xs:element ref="MeanDiameter" minOccurs="0"/>
+            <xs:element ref="Volume" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="fi">Kuollut puusto-osite voidaan yksilöidä tiedonsiirrossa tiedonsiirto-osapuolien tarpeiden mukaan id:llä.</xs:documentation>
+				<xs:documentation xml:lang="sv"></xs:documentation>
+				<xs:documentation xml:lang="en">Dead tree stratum can be identified using string id.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>	
+    </xs:complexType>
+    
+    <xs:simpleType name="DeadTreeTypeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kuolleen puun laatu.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Type of dead tree stratum.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:DeadTreeTypeType"/>
+    </xs:simpleType>
+    <xs:simpleType name="TreeSpeciesType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kuolleen puun puulaji.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Tree species of dead tree stratum.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:TreeSpeciesType"/>
+    </xs:simpleType>
+    <xs:simpleType name="MeanDiameterType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kuolleen puun keskiläpimitta, cm</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Mean deameter of dead tree stratum, cm</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:DiameterType"/>
+    </xs:simpleType>	
+    <xs:simpleType name="VolumeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Tilavuus, m3/ha</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Volume, m3/ha</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:VolumeType"/>
+    </xs:simpleType>
+    <xs:simpleType name="StemCountType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kuolleen puusto-ositteen runkoluku, kpl/ha</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Number of dead tree stratum stems / ha</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="co:StemCountType"/>
+    </xs:simpleType>
+
+</xs:schema>

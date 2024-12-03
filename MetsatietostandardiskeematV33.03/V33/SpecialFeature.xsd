@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Erityispiirretietojen elementit ja tyypit. 
+	Skeema on JHS-170 -suosituksen mukainen.
+
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.06:
+	-Skeematiedostoon lisätty import määritykset nimiavaruudelle wso: (WorkingSiteOperational.xsd)
+	-Lisätty complexTypeen BasicFeature2Type uusi vapaaehtoinen elementti ObservationDate, tyypiltään co:DateType
+	-Lisätty complexTypeen BasicFeature2Type uusi vapaaehtoinen elementti Storage, tyypiltään wso:StorageType
+	-Lisätty uusi complexType-määrittely UsingRightType, tietosisältönä käyttöoikeuksien tietoja
+	-Lisätty uusi vapaaehtoinen elementti UsingRight, tyypiltään UsingRightType
+	-Elementille UsingRight lisätty lapsielementti UsingRightExists, tyypiltään co:YesNoNotKnownType
+	-Elementille UsingRight lisätty lapsielementti UsingRightExaminedDate, tyypiltään co:DateType
+	-Elementille UsingRight lisätty lapsilementti UsingRightCompensation, tyypiltään co:YesNoNotKnowType
+	-Elementille UsingRight lisätty vapaaehtoinen lapsielementti UsingRightCompensationAmount, tyypiltään co:Decimal7And2PositiveType
+	-Elementille UsingRight lisätty lapsielementti UsingRightCompensationResponsible, tyypiltään co:UsingRightResponsibleType
+	-Elementille UsingRight lisätty lapsielementti UsingRightDescription, tyypiltään co:String1500Type
+	-Tyyppimäärittelyn LocatedSpecialFeature2Type käyttämä data group muutettu gdt:AlternativeGeometriesGroup -> gdt:AlternativeGeometries2Group
+	
+	Muutokset skeemapakettiin V13.01:
+	-Lisätty complextypeen BasicFeature1Type uusi vapaaehtoinen elementti InventoryDate 
+	
+	Muutokset skeemapakettiin V13.03:
+	-Piilotettu elementit ObservationDate, Storage ja UsingRight
+	
+	Muutokset skeemapakettiin V14.03:
+	-Poistettu tyyppimäärittely FeatureCodeType tarpeettomana (siirrytty käyttämään suoraan co:FeatureCodeTypeä)
+	-Elementti FeatureCode muutettu käyttämään suoraan tyyppimäärittelyä co:FeatureCodeType
+	
+	Muutokset skeemapakettiin V14.04:
+	-Elementti MainFeature muutettu käyttämään suoraa tyyppimäärittelyä co:YesNoType, "ketjutetut" tyyppimäärittelyt poistettu tarpeettomina
+	-Elementti FeatureType muutettu käyttämään suoraa tyyppimäärittelyä co:FeatureTypeType, "ketjutetut" tyyppimäärittelyt poistettu tarpeettomina
+	-Elementti FeatureAdditionalCode muutettu käyttämään suoraa tyyppimäärittelyä co:FeatureAdditionalCodeType, "ketjutetut" tyyppimäärittelyt poistettu tarpeettomina
+	-Elementti FeatureInfo muutettu käyttämään suoraa tyyppimäärittelyä sf:FeatureInfoType, "ketjutetut" tyyppimäärittelyt poistettu tarpeettomina
+	-Elementti FeatureAdditionalInfo muutettu käyttämään suoraa tyyppimäärittelyä sf:FeatureAdditionalInfoType, "ketjutetut" tyyppimäärittelyt poistettu tarpeettomina
+	
+	Muutokset skeemapakettiin V16.01:
+	-Lisätty uusi tyyppimäärittely BasicFeature4Type, jonka lähtökohtana toimii BasicFeature1Type. Uuteen tyyppimäärittelyyn lisätty mukaan vapaaehtoinen elementti TreeStandData
+	-Otettu uusi tyyppimäärittely BasicFeature4Type käyttöön tyyppimäärittelyssä LocatedSpecialFeature1Type
+	-Poistettu tyyppimäärittelyt SpecialFeature1Type, SpecialFeature2Type ja ValidityType, käyttökohteet korvattu määrittelyillä BasicFeature1Type, BasicFeature2Type ja sf:ValidityType
+	-Otettu takaisin käyttöön piilotetut elementit ObservationDate ja UsingRight
+	-Lisätty uusi elementtimäärittely UsingRightCompensationDescription ja otettu se käyttöön UsingRightType:ssä
+	-Muutettu UsingRightCompensationAmount:n tyyppimäärittely Decimal7And2PositiveType:stä muotoon Decimal7And2Type
+	
+	Muutokset skeemapakettiin V17.01:	
+	-Lisätty complexTypeen BasicFeature1Type uusi vapaaehtoinen elementti UsingRestrictions, tyypiltään UsingRestrictionsType
+	-Lisätty uusi complexType-määrittely UsingRestrictionType, tietosisältönään erityispiirteen aiheuttamien käytönrajoitusten tarkennus
+	-Lisätty uusi elementti UsingRestriction, tyypiltään UsingRestrictionType
+	
+	Muutokset skeemapakettiin V17.02:
+	-Muutettu tyyppimäärittelyn UsingRestrictionType lapsielementit RestrictionStartDate ja RestrictionEndDate vapaaehtoisiksi
+	-Täydennetty dokumentaatioita
+	
+	Muutokset skeemapakettiin V18.05:
+	-Tyyppimäärittelyyn BasicFeature1Type lisätty uudet vapaaehtoiset attribuutit infoProviderRole ja infoProviderOrganizationName
+	-Lisätty uusi vapaaehtoinen elementti RestrictionDescription, tyyppimäärittelyltään co:String1500Type
+	
+	Muutokset skeemapakettiin V28.01:
+	-Siirretty elementit UsingRestrictions, UsingRestriction ja RestrictionDescription tiedostoon SpecialFeatureBase.xsd 	
+	-Siirretty tyyppimäärittelyt UsingRestrictionsType ja UsingRestrictionType tiedostoon SpecialFeatureBase.xsd 
+	
+    Muutokset skeemapakettiin V29.01:
+    -Lisätty uusi tyyppimäärittely FeatureSpecificAdditionalVariableType, tietosisältönään Erityispiirrekohtaiset lisätunnukset
+    -Lisätty tyyppimäärittelyyn FeatureSpecificAdditionalVariableType uusi vapaaehtoinen elementti ForestDepotAccessibility (co:ForestDepotAccessibilityType)
+    -Lisätty uusi vapaaehtoinen elementti FeatureSpecificAdditionalVariables (FeatureSpecificAdditionalVariableType)
+    -Lisätty tyyppimäärittelyyn BasicFeature2Type uusi vapaaehtoinen elementti FeatureSpecificAdditionalVariables
+    
+    Muutokset skeemapakettiin V31.02:
+    -Skeematiedostosta poistettu import määritys nimiavaruudelle wso: (WorkingSiteOperational.xsd) tarpeettomana
+
+	***************************************************************
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/specialFeature"
+	xmlns="http://standardit.tapio.fi/schemas/forestData/specialFeature"
+	xmlns:sf="http://standardit.tapio.fi/schemas/forestData/specialFeatureBase"
+	xmlns:gdt="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:ci="http://standardit.tapio.fi/schemas/forestData/contactInformation"
+	xmlns:ts="http://standardit.tapio.fi/schemas/forestData/treeStand"
+	elementFormDefault="qualified" version="V31.02">
+
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+		schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/specialFeatureBase"
+		schemaLocation="SpecialFeatureBase.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+		schemaLocation="Common_GeometricDataType.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/treeStand"
+		schemaLocation="TreeStand.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/contactInformation"
+		schemaLocation="ContactInformation.xsd"/>
+
+	<!-- Elementtimääritykset -->
+	<!-- Element definitions -->
+	<xs:element name="Identifiers" type="IdentifiersType"/>
+	<xs:element name="MainFeature" type="co:YesNoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pääasiallisen erityispiirteen osoittava tieto.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Boolean for the main special feature.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FeatureType" type="co:FeatureTypeType"/>
+	<xs:element name="FeatureCode" type="co:FeatureCodeType"/>
+	<xs:element name="FeatureAdditionalCode" type="co:FeatureAdditionalCodeType"/>
+	<xs:element name="Validity" type="sf:ValidityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Erityispiirteen voimassaolo.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FeatureInfo" type="sf:FeatureInfoType"/>
+	<xs:element name="FeatureAdditionalInfo" type="sf:FeatureAdditionalInfoType"/>
+	<xs:element name="ObservationDate" type="co:DateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Havaintopäivämäärä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Observation date</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UsingRight" type="UsingRightType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttöoikeus</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using right</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UsingRightExists" type="co:YesNoNotKnownType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttöoikeuden olemassaolo</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using right existence</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UsingRightExaminedDate" type="co:DateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttöoikeus selvitetty, päivämäärä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using right examination date</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UsingRightCompensation" type="co:YesNoNotKnownType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttöoikeuskorvaus</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using right compensation</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UsingRightCompensationAmount" type="co:Decimal7And2Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttöoikeuskorvauksen määrä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using right compensation amount</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UsingRightCompensationDescription" type="co:String1500Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttöoikeuskorvauksen kuvaus</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using right compensation description</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UsingRightCompensationResponsible" type="co:UsingRightResponsibleType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttöoikeuskorvauksesta vastaava taho</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using right compensation responsibility</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UsingRightDescription" type="co:String1500Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttöoikeuden kuvaus</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using right description</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="InventoryDate" type="co:DateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Inventointipäivämäärä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Inventory date</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TreeStandData" type="ts:TreeStandDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Puustotiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Tree stand data</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FeatureSpecificAdditionalVariables"
+		type="FeatureSpecificAdditionalVariableType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Erityispiirrekohtaiset lisätunnukset</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Feature specific additional variables</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<!-- Tyyppimääritykset -->
+	<!-- Type definitions -->
+	<xs:complexType name="BasicFeature1Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen erityispiirteen tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Single feature data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="co:ChangeState" minOccurs="0"/>
+			<xs:element ref="co:ChangeTime" minOccurs="0"/>
+			<xs:element ref="Identifiers" minOccurs="0"/>
+			<xs:element ref="MainFeature" minOccurs="0"/>
+			<xs:choice>
+				<xs:element ref="FeatureType"/>
+				<xs:group ref="FeatureDataGroup"/>
+			</xs:choice>
+			<xs:element ref="sf:UsingRestrictions" minOccurs="0"/>
+			<xs:element ref="Validity" minOccurs="0"/>
+			<xs:element ref="FeatureInfo" minOccurs="0"/>
+			<xs:element ref="FeatureAdditionalInfo" minOccurs="0"/>
+			<xs:element ref="InventoryDate" minOccurs="0"/>
+			<xs:element ref="co:DataSource" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Erityispiirteen voidaan yksilöidä tiedonsiirrossa tiedonsiirto-osapuolien tarpeiden mukaan id:llä.</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Feature can be identified using string id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="infoProviderRole" type="co:InfoProviderRoleType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Tiedon tuottajan luokittelu</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Info provider role</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="infoProviderOrganizationName" type="ci:OrganizationNameType"
+			use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Tiedon tuottajaorganisaation nimi</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Info provider organization name</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="LocatedSpecialFeature1Type">
+		<xs:complexContent>
+			<xs:extension base="BasicFeature4Type">
+				<xs:group ref="gdt:AlternativeGeometriesGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="BasicFeature2Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen erityispiirteen tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Single feature data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Identifiers" minOccurs="0"/>
+			<xs:element ref="FeatureType"/>
+			<xs:group ref="FeatureDataGroup" minOccurs="0"/>
+			<xs:element ref="Validity" minOccurs="0"/>
+			<xs:element ref="FeatureInfo" minOccurs="0"/>
+			<xs:element ref="FeatureAdditionalInfo" minOccurs="0"/>
+			<xs:element ref="ObservationDate" minOccurs="0"/>
+			<xs:element ref="UsingRight" minOccurs="0"/>
+            <xs:element ref="FeatureSpecificAdditionalVariables" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Erityispiirteen voidaan yksilöidä tiedonsiirrossa tiedonsiirto-osapuolien tarpeiden mukaan id:llä.</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Feature can be identified using string id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="LocatedSpecialFeature2Type">
+		<xs:complexContent>
+			<xs:extension base="BasicFeature2Type">
+				<xs:group ref="gdt:AlternativeGeometries2Group"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="BasicFeature3Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen erityispiirteen tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Single feature data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="FeatureDataGroup"/>
+			<xs:element ref="FeatureInfo" minOccurs="0"/>
+			<xs:element ref="FeatureAdditionalInfo" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Erityispiirteen voidaan yksilöidä tiedonsiirrossa tiedonsiirto-osapuolien tarpeiden mukaan id:llä.</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Feature can be identified using string id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="LocatedSpecialFeature3Type">
+		<xs:complexContent>
+			<xs:extension base="BasicFeature3Type">
+				<xs:group ref="gdt:SimpleAlternativeGeometriesGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="BasicFeature4Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen erityispiirteen tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Single feature data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="co:ChangeState" minOccurs="0"/>
+			<xs:element ref="co:ChangeTime" minOccurs="0"/>
+			<xs:element ref="Identifiers" minOccurs="0"/>
+			<xs:element ref="MainFeature" minOccurs="0"/>
+			<xs:choice>
+				<xs:element ref="FeatureType"/>
+				<xs:group ref="FeatureDataGroup"/>
+			</xs:choice>
+			<xs:element ref="sf:UsingRestrictions" minOccurs="0"/>
+			<xs:element ref="Validity" minOccurs="0"/>
+			<xs:element ref="FeatureInfo" minOccurs="0"/>
+			<xs:element ref="FeatureAdditionalInfo" minOccurs="0"/>
+			<xs:element ref="InventoryDate" minOccurs="0"/>
+			<xs:element ref="TreeStandData" minOccurs="0"/>
+			<xs:element ref="co:DataSource" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Erityispiirteen voidaan yksilöidä tiedonsiirrossa tiedonsiirto-osapuolien tarpeiden mukaan id:llä.</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Feature can be identified using string id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="IdentifiersType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kohteen (pisteen, viivan tai alueen) tunnisteet.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Identifiers of object.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="sf:IdentifiersType"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:group name="FeatureDataGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen erityispiirteen tarkat tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Single feature detailed data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="FeatureCode"/>
+			<xs:element ref="FeatureAdditionalCode" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:complexType name="UsingRightType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttöoikeuksien tiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using rights information</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="UsingRightExists"/>
+			<xs:element ref="UsingRightExaminedDate"/>
+			<xs:element ref="UsingRightCompensation"/>
+			<xs:element ref="UsingRightCompensationAmount" minOccurs="0"/>
+			<xs:element ref="UsingRightCompensationDescription" minOccurs="0"/>
+			<xs:element ref="UsingRightCompensationResponsible"/>
+			<xs:element ref="UsingRightDescription" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="FeatureSpecificAdditionalVariableType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Erityispiirrekohtaiset lisätunnukset, joita käytetään vain määriteltyjen erityispiirteiden lisätietoina</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Feature specific additional variables. Used only as additional information for specified special features</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ForestDepotAccessibility" type="co:ForestDepotAccessibilityType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikan kaukokuljetuskelpoisuus, käytetään vain varastopaikka erityispiirteen kanssa</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en">Forest depot accessibility definition, used only with special feature forest depot </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

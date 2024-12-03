@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V14.01:
+	-'Lisätty uusi vapaaehtoinen elementti InfoText, tyypiltään "bdt:String1000Type"
+	
+	Muutokset skeemapakettiin V14.03:
+	-Lisätty uusi vapaaehtoinen elementti CanCultivateInAutumn, tyypiltään "bdt:YesNoType"
+	
+	Muutokset skeemapakettiin V15.01:
+	-Lisätty vapaaehtoisen elementit LoadNumber ja LoadPaymentReference
+	
+	Muutokset skeemapakettiin V16.02:
+	- StorageId-elementin maksimipituus kasvatettu 50 merkkiin
+
+	Muutokset skeemapakettiin V23.01:
+    -Lisätty vapaaehtoinen elementti DelinationObjectOrderId (bdt:String200Type)
+
+	Muutokset skeemapakettiin V28.01:
+    -Lisätty tyyppimäärittelyyn WorkingSiteOperationalUpdateType uusi vapaaehtoinen elementti StorageProposals (StoragesType)
+    
+    Muutokset skeemapakettiin V30.01:
+    -Vaihdettu elementin WorkingSiteId tyyppimäärittelyksi bdt:String50Type
+    -Lisätty tyyppimäärittelyyn WorkingSiteOperationalUpdateType uudet vapaaehtoiset elementit WorkingSitePlanningStatus (bdt:WorkingSitePlanningStatusType), 
+    WorkingSitePlanningOperation (bdt:WorkingSitePlanningOperationStatusType), WorkingSitePlanningInfo (bdt:String3000Type), Accessibility (bdt: AccessibilityType), 
+    StorageForestHaulageDistances (StorageForestHaulageDistancesType), StorageProposalForestHaulageDistances (StorageForestHaulageDistancesType),
+    WorkingsiteInfo (bdt:String3000Type), PurchaseContractExtraInfo (bdt:String3000Type), EnvironmentalObjectInfo (bdt:String3000Type), 
+	WorkingSafetyInfo (bdt:String3000Type)
+	-Lisätty tyyppimäärittelyyn AssortmentType uudet vapaaehtoiset elementit TreeSpecies (bdt:TreeSpeciesType) ja StemType (bdt:StemTypeType)
+	-Vaihdettu StorageType tyyppimäärittelyn Geometry elementin tyyppimäärittelyä gdt:PointGeometryType -> gdt:AlternativeGeometriesWithAttributesType
+	-Lisätty StorageType tyyppimäärittelyyn uudet vapaaehtoiset elementit StorageLandOwner (bdt:StorageLandOwnerType), StorageLandOwnerInformation (bdt:ExtendedContactInformationType), 
+	StorageAdditionalRemarks (bdt:String3000Type) ja StorageLinkedToWorkingSite (bdt:YesNoType)
+	-Lisätty uusi tyyppimäärittely StoragesForestHaulageDistancesType johon pakollinen elementti StorageForestHaulageDistance (StorageForestHaulageDistanceType)
+	-Lisätty uusi tyyppimäärittely StorageForestHaulageDistanceType johon pakollinen ryhmä StorageForestHaulageDistanceGroup
+	-Lisätty uusi ryhmän määrittely StorageForestHaulageDistanceGroup johon pakolliset elementit StorageId (bdt:String50Type) ja ForestHaulageDistance (bdt:PositiveInteger5digitsType)
+	sekä vapaaehtoinen elementti StandId (bdt:String20Type)	
+
+	Muutokset skeemapakettiin V30.02:
+	-Vaihdettu tyyppimäärittelyn AssortmentType elementin Volume tyyppimäärittelyksi bdt:Decimal3FractionDigitsType	
+	-Poistettu ryhmän määrittelystä StorageForestHaulageDistanceGroup vapaaehtoinen elementti StandId (bdt:String20Type)
+	-Vaihdettu tyyppimäärittely gdt:AlternativeGeometriesWithAttributesType uudelleen nimetyksi gdt:PointAndLineOrPolygonType:ksi
+	
+	Muutokset skeemapakettiin V31.03:
+	-Vaihdettu elementin StorageLandOwnerInformation tyyppimäärittelyä (bdt:ExtendedContactInformationType) -> (bdt:ContactInformationType)
+	
+	Muutokset skeemapakettiin V32.01:
+	- Lisätty tyyppimäärittelyyn AssortmentType uudet vapaaehtoiset elementit AssortmentId (bdt:String50Type), Unit (bdt:WorkCodeUnitType) ja DeliveryUserId (bdt:String50Type),
+	
+	Muutokset skeemapakettiin V33.02:
+	- Päivitetty määrittelyn "WorkingSiteOperationalUpdateType" elementin "WorkingSiteId" tyypiksi ERPIdType
+	- Päivitetty määrittelyn "AssortmentType" elementin "AssortmentID" tyypiksi ERPIdType
+	- Päivitetty määrittelyn "StorageType" elementin "StorageId" tyypiksi ERPIdType
+	- Päivitetty määrittelyn "StorageForestHaulageDistanceGroup" elementin "StorageId" tyypiksi ERPIdType
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://standardit.tapio.fi/schemas/forestData/WorkingSiteOperationalUpdate"
+	xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:gdt="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+	xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"	
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/WorkingSiteOperationalUpdate"
+	elementFormDefault="qualified" attributeFormDefault="unqualified" version="V33.02">
+
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+		schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+		schemaLocation="Common_GeometricDataType.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+		schemaLocation="WoodForceCommonTypes.xsd"/>
+
+	<xs:element name="WorkingSiteOperationalUpdate" type="WorkingSiteOperationalUpdateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Lohkon tiedot, päivitys WF-> MJ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="WorkingSiteOperationalUpdateType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractorId" type="bdt:String20Type">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yrittäjän tunniste (alv-tunnus)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ImageCount" type="bdt:PositiveInteger2digitsType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Valokuvien lukumäärä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LoadNumber" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kuorman tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LoadPaymentReference" type="bdt:String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kuormaan liittyvä viitenumero</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSitePlanningStatus" type="bdt:WorkingSitePlanningStatusType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon suunnittelun tila</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSitePlanningOperation"
+				type="bdt:WorkingSitePlanningOperationStatusType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon suunnittelun toimenpidetarve</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSitePlanningInfo" type="bdt:String3000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon suunnittelun lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Accessibility" type="bdt:AccessibilityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Korjuukelpoisuus (stand. saavutettavuus)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Assortments" type="AssortmentsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Puutavaralajit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Storages" type="StoragesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StoragesForestHaulageDistances"
+				type="StoragesForestHaulageDistancesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikkojen metsäkuljetusmatkat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageProposals" type="StoragesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikkaehdotus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StoragesProposalForestHaulageDistances"
+				type="StoragesForestHaulageDistancesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikkaehdotusten metsäkuljetusmatkat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductUserIds" type="ProductUserIdsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">ProductInstructionin ProductUserId</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CanCultivateInAutumn" type="bdt:YesNoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Syysviljelykelpoinen</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DelinationObjectOrderId" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Metsäkeskuksen kaatorajapintaan lähetetetyn korjuun toteumatiedon siirtotiedoston tunnus. Tällä metsäjärjestelmä voi kysellä 				tietoja Metsäkeskukselta.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InfoText" type="bdt:String1000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingsiteInfo" type="bdt:String3000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PurchaseContractExtraInfo" type="bdt:String3000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Sopimuksen lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EnvironmentalObjectInfo" type="bdt:String3000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Ympäristökohteiden lisätieto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSafetyInfo" type="bdt:String3000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Turvallisuuskohteiden lisätieto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductUserIdsType">
+		<xs:sequence>
+			<xs:element name="ProductUserId" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="bdt:String100Type">
+							<xs:attribute name="Status" type="bdt:AssortmentStatusType"
+								use="optional"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentsType">
+		<xs:sequence>
+			<xs:element name="Assortment" type="AssortmentType" minOccurs="0" maxOccurs="unbounded"
+			/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentType">
+		<xs:sequence>
+			<xs:element name="AssortmentID" type="wct:ERPIdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL:n yksilöivä tunniste (esim. GUID)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Code" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL-koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL-nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CodeGroup" type="bdt:AssortmentGroupType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL-ryhmä (koodi)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TreeSpecies" type="bdt:TreeSpeciesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Puulajikoodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StemType" type="bdt:StemTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Puutavaralajin runkolaji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Quality" type="bdt:String5Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Laatu</xs:documentation>
+				</xs:annotation>
+			</xs:element>			
+			<xs:element name="Volume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Määrä (oletusyksikkönä m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Unit" type="bdt:WorkCodeUnitType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yksikkö</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DestinationStorage" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Toimituspiste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurementMethod" type="bdt:MeasurementMethodType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mittausmenetelmä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurementPlace" type="bdt:MeasurementPlaceType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mittauspaikka</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiameterMin" type="bdt:PositiveIntegerType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Min lpm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiameterMax" type="bdt:PositiveIntegerType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Max lpm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HeightMin" type="bdt:Decimal1FractionDigitType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Min pituus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HeightMax" type="bdt:Decimal1FractionDigitType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Max pituus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CanModify" type="bdt:YesNoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Onko muutettavissa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AssortmentInfo" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lisätieto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeliveryUserId" type="bdt:String50Type" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Toimituspuutavaralajin yksilöivä tunniste. (Mihin toimituspuutavaralajiin PIN:nin mukaisesti hakattavat puut sisältyvät.)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StoragesType">
+		<xs:sequence>
+			<xs:element name="Storage" type="StorageType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StorageType">
+		<xs:sequence>
+			<xs:element name="StorageId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">varastopaikan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geometry" type="gdt:PointAndLineOrPolygonType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">paikkatieto gml</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GeometryModificationAllowed" type="bdt:YesNoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Saako VP:n sijaintia muuttaa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlowingName" type="bdt:String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Aurausyrittäjän nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlowingTelephone" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Aurausyrittäjän puhelin</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlowingEmail" type="bdt:String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Aurausyrittäjän sähköposti</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlowingArranged" type="bdt:YesNoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Auraus järjestetty</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlowingDate" type="bdt:DateType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Aurauspvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Accessibility" type="bdt:TransportAccessibilityType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kuljetuskelpoisuus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TurningPointClass" type="bdt:TurningPointClassType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kääntöpaikkaluokitus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageInfo" type="bdt:String500Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeliveryRestriction" type="bdt:YesNoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kuljetuskielto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageName" type="bdt:String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikan nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageAddress" type="bdt:String500Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikan osoite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageClass" type="bdt:StorageDryingClassType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikkaluokka</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageLandOwner" type="bdt:StorageLandOwnerType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikan maanomistaja</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageLandOwnerInformation" type="bdt:ContactInformationType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikan maanomistajan yhteystiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageAdditionalRemarks" type="bdt:String3000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Muuta huomioitavaa varastopaikalla</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageLinkedToWorkingSite" type="bdt:YesNoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikka kytketty lohkoon K/E</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="StoragesForestHaulageDistancesType">
+		<xs:sequence>
+			<xs:element name="StorageForestHaulageDistance" type="StorageForestHaulageDistanceType"
+				minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yksittäisen varastopaikan metsäkuljetusmatka</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StorageForestHaulageDistanceType">
+		<xs:sequence>
+			<xs:group ref="StorageForestHaulageDistanceGroup" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:group name="StorageForestHaulageDistanceGroup">
+		<xs:sequence>
+			<xs:element name="StorageId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Varastopaikan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ForestHaulageDistance" type="bdt:PositiveInteger5digitsType"
+				minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Metsäkuljetusmatka metreinä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+</xs:schema>

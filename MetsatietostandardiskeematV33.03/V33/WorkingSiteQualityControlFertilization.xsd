@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.03:
+	-Elementti MeanVolume siirretty skeematiedoston sisällä eri paikkaan ja dokumentaatio päivitetty
+	-Lisätty uusi pakollinen elementti SamplePlotSummaries, tyypiltään SamplePlotSummariesType
+	-Lisätty uusi pakollinen elementti Measurable, tyypiltään bdt:YesNoType
+	-Lisätty uusi elementti Volume (käsin syötetty lannoitustulos kg/ha). Luotu uusi choice-rakenne jonka sisään tämä elementti on sijoitettu
+	-Siirretty elementti Hoppers em. choice-rakenteeseen
+	-Uudelleennimetty elementti Id -> HopperNumber
+	-Lisätty uusi pakollinen elementti HopperLocationFromGPS, tyypiltään bdt:YesNoType
+	-Lisätty elementille InfoText minOccurs = 0, lisäksi dokumentaatio päivitetty
+	-Lisätty uusi complexType-määrittely SamplePlotSummariesType
+	
+	Muutokset skeemapakettiin V12.01:
+	-Elementin InfoText minOccurs muutettu 1 -> 0
+	
+	Muutokset skeemapakettiin V13.03:
+	-Lisätty uusi vapaaehtoinen elementti SamplePlotInfoText koealan vapaamuotoisen tekstin syöttämistä varten
+	
+	Muutokset skeemapakettiin V14.03:
+	-Elementin "SamplePlots" dokumentaatio päivitetty
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V14.04:
+	-Tyyppimäärittelyyn SamplePlotType lisätty uusi vapaaehtoinen attribuutti ”id”, tyypiltään IdStringNotEmptyType
+	
+	Muutokset skeematiedostoon V15.01
+	-StandNumber-elementin maksimipituus kasvatettu 20 merkkiin
+
+    Muutokset skeemapakettiin V27.01:
+    -Lisätty uusi vapaaehtoinen elementti TaxNumber, tyyppimäärittelyltään bdt:String20Type
+    
+	Muutokset skeemapakettiin V33.02:
+	- Päivitetty määrittelyn "WorkingSiteQualityControlFertilizationType" elementin "WorkingSiteId" tyypiksi ERPIdType
+	- Päivitetty määrittelyn "SamplePlotType" elementin "TaxNumber" tyypiksi TaxNumberType
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/WorkingSiteQualityControlFertilization"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:gdt="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+           xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/WorkingSiteQualityControlFertilization"
+           elementFormDefault="qualified" 
+           attributeFormDefault="unqualified" 
+           version="V33.02">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+               schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+               schemaLocation="Common_GeometricDataType.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+               schemaLocation="WoodForceCommonTypes.xsd"/>
+	
+    <xs:element name="WorkingSiteQualityControlFertilization" type="WorkingSiteQualityControlFertilizationType"/>
+	
+	<xs:complexType name="WorkingSiteQualityControlFertilizationType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Images" type="bdt:PositiveInteger2digitsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Valokuvien lkm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SamplePlotSummaries" type="SamplePlotSummariesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Koealojen summatiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SamplePlots" type="SamplePlotsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Koealojen tiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SamplePlotsType">
+		<xs:sequence>
+			<xs:element name="SamplePlot" type="SamplePlotType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Koealat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="HoppersType">
+		<xs:sequence>
+			<xs:element name="Hopper" type="HopperType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Suppilot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SamplePlotType">
+		<xs:sequence>
+			<xs:element name="SamplePlotNumber" type="bdt:PositiveInteger3digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Koealan numero</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StandNumber" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kuvion tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="ResourceId" type="bdt:String20Type" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Resurssin tunniste</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MeasureDate" type="bdt:DateType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Aika</xs:documentation>
+				</xs:annotation>
+            </xs:element>
+			<xs:element name="Measurable" type="bdt:YesNoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Onko mitattavissa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mittaajan Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TaxNumber" type="wct:TaxNumberType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Koealan mittaajan veronumero</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurerName" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mittaajan nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurerType" type="bdt:MeasurerTypeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mittaajatyyppi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GeometryReal" type="gdt:PointGeometryType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Koealan sijainti</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isGPSlocation" type="bdt:YesNoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Onko sijainti gps:ltä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PilotName" type="bdt:String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lentäjän nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FertileType" type="bdt:MaterialCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lannoitelaji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeanVolume" type="bdt:Decimal3FractionDigitsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lannoitemäärä kg/ha, suppiloista laskettu koealakohtainen keskiarvo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice minOccurs="1">
+				<xs:element name="Volume" type="bdt:Decimal3FractionDigitsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Lannoitustulos kg/ha, käsin syötetty</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Hoppers" type="HoppersType"/>
+			</xs:choice>
+			<xs:element name="SamplePlotInfoText" type="bdt:String1000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Koealan vapaamuotoista tekstiä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="bdt:IdStringNotEmptyType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Koealan id</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Sample plot id</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="HopperType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Suppilot</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="HopperNumber" type="bdt:String20Type">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mittaussuppilon numero</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HopperType" type="wct:HopperTypeType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Suppilon tyyppi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Volume" type="bdt:Decimal3FractionDigitsType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Määrä suppilossa kg/ha</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geometry" type="gdt:PointGeometryType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mittaussuppilon sijainti</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HopperLocationFromGPS" type="bdt:YesNoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Onko suppilon sijainti gps:ltä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InfoText" type="bdt:String100Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lisätieto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SamplePlotSummariesType">
+		<xs:sequence>
+			<xs:element name="SamplePlotSummary" type="SamplePlotSummaryType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Koealojen kuviokohtaiset summatiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SamplePlotSummaryType">
+		<xs:sequence>
+			<xs:element name="StandNumber" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kuvion tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SamplePlotMeasurementSummary" type="SamplePlotMeasurementSummaryType"
+				minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Koealojen mittaajatyyppikohtaiset summatiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SamplePlotMeasurementSummaryType">
+		<xs:sequence>
+			<xs:element name="MeasurerType" type="bdt:MeasurerTypeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mittaajatyyppi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AverageVolume" type="bdt:Decimal3FractionDigitsType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Keskiarvo mittaajatyypin lannoitustuloksista kuviolla (kg/ha)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

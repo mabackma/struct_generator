@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	******************************************************************
+	Yhteiset tyypit, joita käytetään useissa eri skeemoissa.
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.06:
+	-Lisätty uusi complexType-määrittely CuttingPlannerType (korjuusuunnittelijan tiedot), extensionBase=ci:ContactInformationType
+	
+	Muutokset skeemapakettiin V16.01:
+	-Otettu käyttöön vanha CuttingPlannerType määritelmä ja muokattu muotoon WorkingSitePlannerType
+	-Lisätty uudet tyyppimäärittelyt CuttingPlannerLiabilityType ja WorkingSitePlanDateType
+	-Lisätty uudet elementit WorkingSitePlanner, CuttingPlannerLiability ja WorkingSitePlanDate
+	-Siirretty tyyppimäärittelyt QuantityType, QuantityUnitType, UnitPriceType ja TotalPriceType skeemasta WorkingSiteTrade_Assortment, päivitetyillä dokumentaatioilla.
+	-Lisätty elementtimääritykset WorkingSiteMoneyTransactions, WorkingSiteMoneyTransaction, MoneyTransactionCategory, MoneyTransactionType
+	-Lisätty ryhmä MoneyTransactionAsUnitGroup
+	-Lisätty tyyppimääritykset WorkingSiteMoneyTransactionsType, WorkingSiteMoneyTransactionType ja MoneyTransactionDescriptionType
+	
+	Muutokset skeemapakettiin V17.02:
+	-Uudelleen nimetty WorkingSiteMoneyTransactions elementti WorkingSitePaymentTransactions:ksi ja sen lapsielementit, vaihtamalla Money sana Payment:iksi 
+	-Muutettu PaymentTransactionAsUnitGroup:n lapsielementti UnitValue vapaaehtoiseksi
+	
+	Muutokset skeemapakettiin V18.02:
+	-Lisätty uusi tyyppimäärittely PlannedRecourceType joka sisältää ci:ContactInformationType:n
+	
+	Muutokset skeemapakettiin V18.03:
+	-Uudelleen nimetty PlannedRecourceType muotoon PlannedResourceType
+	
+	Muutokset skeemapakettiin V20.01:
+	-Lisätty tyyppimäärittelyyn SellerType uusi vapaaehtoinen elementti co:BankAccount
+	-Lisätty tyyppimäärittelyyn CallForOfferWorkingSiteWoodTradeInfoType uusi vapaaehtoinen elementti fudr:ForestUseDeclarationReference
+	
+	Muutokset skeemapakettiin V29.01:
+	-Päivitetty dokumentaatioita
+	
+	*******************************************************************
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://standardit.tapio.fi/schemas/workingsitetrade/common"
+	xmlns="http://standardit.tapio.fi/schemas/workingsitetrade/common"
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+	xmlns:ci="http://standardit.tapio.fi/schemas/forestData/contactInformation"
+	xmlns:sf="http://standardit.tapio.fi/schemas/forestData/specialFeature"
+	xmlns:re="http://standardit.tapio.fi/schemas/forestData/realEstate"
+	xmlns:as="http://standardit.tapio.fi/schemas/workingsitetrade/assortment"
+	xmlns:fudr="http://standardit.tapio.fi/schemas/forestData/forestusedeclarationreference"
+	elementFormDefault="qualified" version="V29.01">
+
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://www.w3.org/2005/05/xmlmime"
+		schemaLocation="../w3c/2005/xmlmime.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/contactInformation"
+		schemaLocation="ContactInformation.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+		schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/specialFeature"
+		schemaLocation="SpecialFeature.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/realEstate"
+		schemaLocation="RealEstate.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/assortment"
+		schemaLocation="WorkingSiteTrade_Assortment.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/forestusedeclarationreference" 
+		schemaLocation="ForestUseDeclarationReference.xsd"/>
+
+	<!-- Elementtimääritykset -->
+	<!-- Element definitions -->
+	<xs:element name="PurchaseMode" type="PurchaseModeType"/>
+	<xs:element name="Documents" type="DocumentsType"/>
+	<xs:element name="Document" type="co:DocumentType"/>
+	<xs:element name="DocumentClass" type="DocumentClassType"/>
+	<xs:element name="DocumentDescription" type="DocumentDescriptionType"/>
+	<xs:element name="FileBinary" type="xmime:base64Binary"/>
+	<xs:element name="UsedPricingMethods" type="UsedPricingMethodsType"/>
+	<xs:element name="UsedPricingMethod" type="UsedPricingMethodType"/>
+	<xs:element name="IncludePaymentPlan" type="IncludePaymentPlanType"/>
+	<xs:element name="IncludeForestFundPayment" type="IncludeForestFundPaymentType"/>
+	<xs:element name="WorkingSiteGeometry" type="sf:LocatedSpecialFeature2Type"/>
+	<xs:element name="ForestUseDeclarationResponsible" type="co:ForestUseDeclarationResponsibleType"/>
+	<xs:element name="FellingRightValidityDate" type="FellingRightValidityDateType"/>
+	<xs:element name="SupplyPoint" type="SupplyPointType"/>
+	<xs:element name="Cuttings" type="CuttingsType"/>
+	<xs:element name="Cutting" type="CuttingType"/>
+	<xs:element name="VATStatus" type="VATStatusType"/>
+	<xs:element name="VATRegistrationDate" type="VATRegistrationDateType"/>
+	<xs:element name="CertificationSystems" type="CertificationSystemsType"/>
+	<xs:element name="CertificationSystem" type="CertificationSystemType"/>
+	<xs:element name="Seller" type="SellerType"/>
+	<xs:element name="PlannedResource" type="PlannedResourceType"/>
+	<xs:element name="WorkingSitePlanner" type="WorkingSitePlannerType"/>
+	<xs:element name="CuttingPlannerLiability" type="CuttingPlannerLiabilityType"/>
+	<xs:element name="WorkingSitePlanDate" type="WorkingSitePlanDateType"/>
+	<xs:element name="WorkingSitePaymentTransactions" type="OfferWorkingSitePaymentTransactionsType"/>
+	<xs:element name="PaymentTransactions" type="PaymentTransactionsType"/>
+	<xs:element name="PaymentTransaction" type="PaymentTransactionType"/>
+	<xs:element name="PaymentTransactionType" type="co:MoneyTransactionTypeType"/>
+	<xs:element name="PaymentTransactionCategory" type="co:MoneyTransactionCategoryType"/>
+
+	<!-- Tyyppimääritykset -->
+	<!-- Type definitions -->
+	<xs:simpleType name="PurchaseModeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Puukauppamuodon koodit.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Modes for wood purchase.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:PurchaseModeType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="MessageTypeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Sanoman tyyppi.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Message type. Used at least to identify businessAcceptance message's target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:MessageTypeType"/>
+	</xs:simpleType>
+
+	<xs:complexType name="DocumentsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Dokumentit.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Documents.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Document" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="DocumentClassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Dokumenttiluokka / -tyyppi.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Document class / type.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:DocumentClassType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="DocumentDescriptionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Dokumentin sisällön kuvaus.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Document description.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CallForOfferBusinessSenderRoleType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarjouspyynnön lähettäjän rooli.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Role of business sender of call for offer.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:CallForOfferBusinessSenderRoleType"/>
+	</xs:simpleType>
+
+	<xs:complexType name="CallForOfferBusinessSenderType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarjouspyynnön jättäjän yhteystiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Business person who generated call for offer.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ci:ContactInformationType">
+				<xs:attribute name="role" type="CallForOfferBusinessSenderRoleType" use="required">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Henkilö/organisaation rooli.</xs:documentation>
+						<xs:documentation xml:lang="sv"/>
+						<xs:documentation xml:lang="en">Role of person/organization.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:simpleType name="CallForOfferTextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarjouspyynnön teksti.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1500"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="IncludePaymentPlanType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Toive puukaupan maksusuunnitelman sisällyttämisestä tarjoukseen.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Request to include payment plan of wood trade in offer.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:YesNoType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="IncludeForestFundPaymentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Puukauppaan sisältyy metsäsäätiöavustus.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Wood trade includes forest fund payment.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:YesNoNotKnownType"/>
+	</xs:simpleType>
+
+	<xs:complexType name="UsedPricingMethodsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Toiveet käytettävästä hinnoittelumenetelmästä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Requests for used pricing method.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="UsedPricingMethod" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="UsedPricingMethodType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Toive käytettävästä hinnoittelumenetelmästä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Request for used pricing method.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:UsedPricingMethodType"/>
+	</xs:simpleType>
+
+	<xs:complexType name="CallForOfferWoodTradeInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Puukaupan tarjouspyynnön tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Wood purchase call for offer data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PurchaseMode"/>
+			<xs:element ref="IncludePaymentPlan" minOccurs="0"/>
+			<xs:element ref="IncludeForestFundPayment"/>
+			<xs:element ref="UsedPricingMethods" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="WorkingSiteGeometriesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Leimikon sijantialueen paikkatieto. Hakkuuseen ja lähikuljetukseen vaikuttavat kohteet. Pistemäisiä, viivamaisia ja aluemaisia kohteita.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Points, lines and polygons that have some mening for felling and forwarding. Eg. diversity objects.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="WorkingSiteGeometry" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- <xs:simpleType name="ForestUseDeclarationResponsibleType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Metsänkäyttöilmoituksen tekijä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="co:ForestUseDeclarationResponsibleType"/>
+		</xs:simpleType> -->
+
+	<xs:simpleType name="FellingRightValidityDateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pvm, johon asti hakkuuoikeus voimassa.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="co:DateType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="SupplyPointType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Varastopaikka olemassa / selvitetty</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="co:YesNoNotKnownType"/>
+	</xs:simpleType>
+
+	<xs:complexType name="CuttingType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Leimikon myytäväksi tarjottava hakkuu.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Hakkuun yksilöivä id.</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">id which identified cutting.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="CuttingsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Leimikon myytäväksi tarjottavat hakkuut.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Cutting" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CallForOfferWorkingSiteWoodTradeInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen leimikon tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Single stand data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ForestUseDeclarationResponsible" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="fudr:ForestUseDeclarationReference" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="FellingRightValidityDate" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="SupplyPoint" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="as:AssortmentClasses" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Leimikon puutavaralajiluokittaiset yhteenvetotiedot puutavaralajien määristä.</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en"/>
+				</xs:annotation>
+			</xs:element>
+			<!-- LISTA TARJOLLA OLEVISTA HAKKUISTA (HAKKUUID:T) -->
+			<xs:element ref="Cuttings" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Documents" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="RoadUsingRightType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tieoikeus olemassa / selvitetty</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="co:YesNoNotKnownType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="CertificationSystemType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Sertifiointijärjestelmät.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Certification systems.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:CertificationSystemType"/>
+	</xs:simpleType>
+
+	<xs:complexType name="CertificationSystemsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Voimassa olevat sertifiointijärjestelmät.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Valid certification systems.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CertificationSystem" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RealEstateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työmaan sijaintikiinteistön tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Real property where working site is located.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="re:BaseRealEstateType">
+				<xs:sequence>
+					<xs:element ref="CertificationSystems" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:simpleType name="VATRegistrationDateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Arvonlisäverovelvollisuuden rekisteröimispäivämäärä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="co:DateType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="VATStatusType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Arvonlisäverovelvollisuus.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="co:VATStatusType"/>
+	</xs:simpleType>
+
+	<xs:complexType name="VATInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Arvonlisäverotustiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="VATStatus"/>
+			<xs:element ref="VATRegistrationDate" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="SellerGroupType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Myyjäryhmäkoodi.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="co:SellerGroupType"/>
+	</xs:simpleType>
+
+	<xs:complexType name="SellerType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työmaan myyjän (kiinteistön omistajan/haltijan) tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Person who sell working site (owns or controls real estate).</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ci:ContactInformationType">
+				<xs:sequence>
+					<xs:element ref="co:BankAccount" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="fi">Puun myyjän pankkitilitiedot puunmyyntitulon maksamiseksi. Soveltamisesimerkki: mikäli maksetaan vain yhdelle tilille, on tilinumero ilmaistu vain yhdellä myyjistä..</xs:documentation>
+							<xs:documentation xml:lang="sv"/>
+							<xs:documentation xml:lang="en"/>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="PlannedResourceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Suunnitellun toeuttajan tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Person who has planned to do operation.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ci:ContactInformationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="SellersType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työmaan myyjät (kiinteistön omistajat/haltijat).</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Persons who sell working site (owns or controls real estate).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Seller" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="subsidyPossibility" type="co:YesNoNotKnownType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Myyjän (Kemera-)tukikelpoisuus.</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en"/>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sellerGroup" type="SellerGroupType" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Myyjäryhmä.</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en"/>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="SellerRepresentativePersonType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Myyjän edustaja leimikkoon liittyvissä käytännön kysymyksissä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Person who should be contacted in practical issues/questions.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ci:ContactInformationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="CuttingPlannerLiabilityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Korjuun suunnittelijan vastuu metsälain 7 pykälän mukaan.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Cutting planner liability by notch 7.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="co:YesNoNotKnownType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="WorkingSitePlanDateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työkohteen suunnitelman päiväys </xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Working site plan date</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="co:DateType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="WorkingSitePlanType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työkohteen suunnitelman tiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Working site plan information</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="WorkingSitePlanDate" minOccurs="1"/>
+			<xs:element ref="WorkingSitePlanner" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="WorkingSitePlannerType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työkohteen suunnittelijan tiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Working site planner information</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ci:ContactInformationType">
+				<xs:sequence>
+					<xs:element ref="CuttingPlannerLiability" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:simpleType name="WorkingSiteNameType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työmaan yksilöivä tai tunnistamista helpottava nimi.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Some short and not numeric name for working site.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="QuantityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Määrittely arvioidulle tai todetulle määrälle.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for estimated or measured amount.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:Decimal2FractionDigitsType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="QuantityUnitType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Määrittely määrän yksikölle.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="co:QuantityUnitType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="UnitPriceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Määrittely yksikköhinnalle.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for unit price.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:MoneyType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="TotalPriceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Määrittely kokonaishinnalle.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for total price.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:MoneyType"/>
+	</xs:simpleType>
+
+	<xs:complexType name="OfferWorkingSitePaymentTransactionsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kustannus ja tuloerät.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PaymentTransactions" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PaymentTransactionsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kustannus ja tuloerät.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PaymentTransaction"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PaymentTransactionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kustannus- / tuloerän tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PaymentTransactionCategory" minOccurs="1"/>
+			<xs:element ref="PaymentTransactionType"/>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kustannus ja tuloerä voidaan ilmaista absoluuttisena arvona tai yksikkökohtaisesti eriteltynä.</xs:documentation>
+				</xs:annotation>
+				<xs:element name="Value" type="co:MoneyType">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Kustannus-/tuloerän rahallinen absoluuttinen arvo.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:group ref="PaymentTransactionAsUnitGroup">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Kustannus-/tuloerän yksikkökohtainen erittely</xs:documentation>
+					</xs:annotation>
+				</xs:group>
+			</xs:choice>
+			<xs:element name="Currency" type="co:CurrencyType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Valuutta (arvon valuutta).</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en"/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PaymentTransactionDescription"
+				type="PaymentTransactionDescriptionType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kustannus- / tuloerän kuvaus.</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en"/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:group name="PaymentTransactionAsUnitGroup">
+		<xs:sequence>
+			<xs:element name="Quantity" type="QuantityType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kustannukseen / tuloon vaikuttava määrä (määrä yksikköä)</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en"/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="QuantityUnit" type="co:TransactionQuantityUnitType" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kustannukseen / tuloon vaikuttava määrän yksikkö.</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en"/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UnitValue" type="UnitPriceType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yksikköhinta / -arvo eli hinta / arvo yksikköä kohden.</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en"/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TotalValue" type="TotalPriceType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kokonaiskustannus / -tulo.</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en"/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:simpleType name="PaymentTransactionDescriptionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kustannus-/ tuloerän kuvaus.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="co:String1000Type"/>
+	</xs:simpleType>
+
+</xs:schema>

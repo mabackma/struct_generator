@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Kuvion peruselementit ja -tyypit. 
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V14.03:
+	-Lisätty StandInfo-elementille attribuutit InfoProviderRole ja infoProviderOrganizationName. Samalla vaihdetty StandInfoType simpleType:sta complexType:ksi. 
+	
+	Muutokset skeemapakettiin V15.00:
+	-Poistettu tyyppimäärittelyt: MainGroupType, SubGroupType, FertilityClassType, SoilTypeType, DrainageStateType, DitchingYearType, DevelopmentClassType, StandQualityType, MainTreeSpeciesType, AccessibilityType, CuttingRestrictionType ja SilvicultureRestrictionType
+	***************************************************************
+-->
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/standbase" 
+	xmlns="http://standardit.tapio.fi/schemas/forestData/standbase" 
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:ci="http://standardit.tapio.fi/schemas/forestData/contactInformation"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="V14.03">
+	
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/contactInformation" schemaLocation="ContactInformation.xsd"></xs:import>
+
+	<!-- Elementtimääritykset -->
+   	<!-- Element definitions -->
+	<xs:element name="Identifiers" type="IdentifiersType"/>
+	<xs:element name="Identifier" type="co:IdentifierType"/>
+	<xs:element name="StandNumber" type="StandNumberType"/>
+	<xs:element name="StandNumberExtension" type="StandNumberExtensionType"/>
+	<xs:element name="SilvicultureRestrictionEnds" type="co:DateType"/>	
+	<xs:element name="StandBasicDataDate" type="StandBasicDataDateType"/>
+	<xs:element name="StandInfo" type="StandInfoType"/>
+	<xs:element name="Area" type="AreaType"/>
+	<xs:element name="AreaDecrease" type="AreaDecreaseType"/>
+	
+	<!-- Tyyppimääritykset -->
+	<!-- Type definitions -->
+	<xs:complexType name="IdentifiersType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion tunnisteet.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Identifiers of stand.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Identifier" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="StandNumberType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvionumero.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Stand number.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StandNumberExtensionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion alanumero (lisämerkki).</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Stand number extension (extra character, normally number).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>	
+	<xs:simpleType name="StandBasicDataDateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Perustietojen inventointi- / muutosajankohta.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Date of inventory of stand basic data.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:DateType"/>
+	</xs:simpleType>
+	<xs:complexType name="StandInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion vapaamuotoinen teksti attribuuteilla.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Stand info text with attributes.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="infoProviderRole" type="co:InfoProviderRoleType" use="optional"/>
+				<xs:attribute name="infoProviderOrganizationName" type="ci:OrganizationNameType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="AreaType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion kokonaispinta-ala hehtaareina.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Total area of stand, ha. Normally area of polygon geometry.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:AreaType"/>
+	</xs:simpleType>
+	<xs:simpleType name="AreaDecreaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion vähennysala hehtaareina. Kuvion metsäpinta-alaa vähentävä ala. Sisältää esim. tiet ja linjaviivat.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Area which decrease total area of stand, ha. E.g. power lines, roads... Area - AreaDecrease = effective forest land area for forestry purposes.</xs:documentation>	
+		</xs:annotation>
+		<xs:restriction base="co:AreaType"/>
+	</xs:simpleType>
+</xs:schema>

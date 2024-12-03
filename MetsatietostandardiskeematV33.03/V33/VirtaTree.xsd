@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Viranomaistarkastuksen puutason elementit ja tyypit.
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	VERSIOKOMMENTIT 1.0 >> 1.1
+	15.8.2014 
+	- Skeemat Common.xsd,Common_BasicDataType.xsd,ForestEnumeratives.xsd on 
+	yhdeksi nimiavaruudeksi: xmlns="http://standardit.tapio.fi/schemas/forestData/common"
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	***************************************************************
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://standardit.tapio.fi/schemas/virta/tree" 
+	xmlns="http://standardit.tapio.fi/schemas/virta/tree" 
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common" 
+	elementFormDefault="qualified"
+	attributeFormDefault="qualified"
+	version="V16.01">
+
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+
+	<!-- Element definitions -->
+	<xs:element name="Tree" type="TreeType"/>
+	<xs:element name="Status5" type="co:ChangeStateType"/>
+	<xs:element name="TreeNumber" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Koealan puutiedon numero.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>			
+	</xs:element>
+	<xs:element name="TreeSpecies" type="co:TreeSpeciesType"/>
+	<xs:element name="TreeDiameter" type="co:PositiveDecimalMax2IntegralPartMax1FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">D 1,3 eli rinnankorkeusläpimitta (cm). Reaaliluku, jossa on pilkun jälkeen vasemmalla puolella 1-2 numeroa ja pilkun oikealla puolella 0-1 desimaalia.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Diameter at 1,3 meters from the ground (cm). Real number with 1-2 digits before comma and 0-1 digits after comma.</xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+	<xs:element name="StubDiameter" type="co:PositiveDecimalMax2IntegralPartMax1FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kantoläpimitta (cm). Reaaliluku, jossa on pilkun jälkeen vasemmalla puolella 1-2 numeroa ja pilkun oikealla puolella 0-1 desimaalia.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Stub diameter (cm). Real number with 1-2 digits before comma and 0-1 digits after comma.</xs:documentation>
+		</xs:annotation>			
+	</xs:element>	
+	<xs:element name="TreeHeight" type="co:PositiveDecimalMax2IntegralPartMax1FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Puun pituus syntypistestä eli maanpinnan tasosta latvan huippuun (m). Reaaliluku, jossa on pilkun jälkeen vasemmalla puolella 1-2 numeroa ja pilkun oikealla puolella 0-1 desimaalia.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Height (cm). Real number with 1-2 digits before comma and 0-1 digits after comma.</xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+	<xs:element name="TreeClass" type="co:TreeClassType"/>
+	<xs:element name="TreeCount" type="co:StemCountType"/>
+	<xs:element name="WorkQuality" type="VirtaWorkQualityType"/>
+	<xs:element name="DamageClass" type="VirtaDamageClassType"/>
+	
+	<!-- Type definitions -->
+	<xs:complexType name="TreeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Viranomaistarkastuksen puutason tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status5" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="TreeNumber" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="TreeSpecies" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TreeDiameter" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StubDiameter" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TreeHeight" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TreeClass" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TreeCount" minOccurs="0" maxOccurs="1"/>			
+			<xs:element ref="WorkQuality" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="DamageClass" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="VirtaWorkQualityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työn laatu.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaWorkQualityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="VirtaDamageClassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Riistavaurioluokka. Luokkia 1-4 käytetään taimikoissa ja kuorivaurioita 5-6 varttuneemmissa metsissä. Jos varttuneemmissa metsissä vauriokohdan vaipasta on vahingoittunut alle 50% on kyseessä pieni kuorivaurio.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaDamageClassType"/>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.03:
+	-Elementin LogLength tyyppimäärittely muutettu bdt:PositiveInteger4digitsType -> bdt:PositiveInteger5digitsType
+	-Elementin ControlLogLength tyyppimäärittely muutettu bdt:PositiveInteger4digitsType -> bdt:PositiveInteger5digitsType
+	
+	Muutokset skeemapakettiin V14.03:
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V33.02:
+	- Lisätty wct-nimiavaruus skeematiedostoviittauksella WoodForceCommonTypes.xsd
+	- Päivitetty määrittelyn "WorkingSiteHarvestingQualityControlManualType" elementin "WorkingSiteId" tyypiksi ERPIdType
+	- Päivitetty määrittelyn "MeasurementDataType" elementin "ProductKey" tyypiksi ERPIdType
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/WorkingSiteHarvestingQualityControlManual"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/WorkingSiteHarvestingQualityControlManual"
+           elementFormDefault="qualified" 
+           attributeFormDefault="unqualified" 
+           version="V33.02">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+		schemaLocation="Common_GeometricDataType.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+		schemaLocation="WoodForceCommonTypes.xsd"/>
+	
+	<xs:element name="WorkingSiteHarvestingQualityControlManual" type="WorkingSiteHarvestingQualityControlManualType">
+		<xs:annotation>
+			<xs:documentation>Käsin syötetty motokontrolli</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="WorkingSiteHarvestingQualityControlManualType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Urakanantajan tunnus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lohkon tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractorId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Yritys</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceId" type="bdt:String20Type">
+				<xs:annotation>
+					<xs:documentation>Moton numero</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InfoText" type="bdt:String200Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Measurements" type="MeasurementsType">
+				<xs:annotation>
+					<xs:documentation>Mittaukset</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MeasurementsType">
+		<xs:sequence>
+			<xs:element name="Measurement" type="MeasurementDataType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MeasurementDataType">
+		<xs:sequence>
+			<xs:element name="MeasurementId" type="bdt:PositiveIntegerType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Erä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Measurer" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Mittaajan nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurerType" type="bdt:MeasurerTypeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Mittaajan tyyppi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurementDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Mittaus pvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SelectionType" type="bdt:String10Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Valintatyyppi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Temperature" type="xs:integer" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lämpötila</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductKey" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PTL</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LogVolume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Moton tilavuus (m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ControlLogVolume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kontrolli tilavuus (m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LogLength" type="bdt:PositiveInteger5digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Moton jm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ControlLogLength" type="bdt:PositiveInteger5digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kontrolli jm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LogCount" type="bdt:PositiveInteger2digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Moton kpl</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ControlLogCount" type="bdt:PositiveInteger2digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kontrolli kpl</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

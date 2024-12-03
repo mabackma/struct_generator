@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 sp1 (x64) (http://www.altova.com) by Juha-Antti Sorsa (Metsäteho Oy) -->
+<!-- ******************************************************************************************************************************* -->
+<!-- ***  StanForD2010 Code list Schema file   						   			 														     *** -->
+<!-- ******************************************************************************************************************************* -->
+<!--
+
+   Document Name: 				StanForD2010CodeList_V3p1.xsd
+   Generated On: 				6 February 2015
+   Version number:				3.1 Release
+   Schema agency:				Skogforsk
+   Schema web address:			http://www.skogforsk.se/stanford2010/schema/
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:skogforsk:stanford2010:codelist" xmlns:doc="urn:skogforsk:stanford2010:doc" xmlns:col="urn:skogforsk:stanford2010:codelist" targetNamespace="urn:skogforsk:stanford2010:codelist" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- ===== Type Definitions ===== -->
+	<xsd:simpleType name="CarrierElectricalRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Alternator"/>
+			<xsd:enumeration value="Starter"/>
+			<xsd:enumeration value="Harnesses"/>
+			<xsd:enumeration value="Electrical connection box"/>
+			<xsd:enumeration value="Instruments"/>
+			<xsd:enumeration value="Working lights"/>
+			<xsd:enumeration value="Controls"/>
+			<xsd:enumeration value="Sensor(s)"/>
+			<xsd:enumeration value="Solenoide"/>
+			<xsd:enumeration value="Chair equipment"/>
+			<xsd:enumeration value="Communication equipment"/>
+			<xsd:enumeration value="Fire extinguisher"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CarrierHydraulicsRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Pump"/>
+			<xsd:enumeration value="Hydraulic motor"/>
+			<xsd:enumeration value="Hose (pipe)"/>
+			<xsd:enumeration value="Valves"/>
+			<xsd:enumeration value="Hydraulic cylinders"/>
+			<xsd:enumeration value="Controls"/>
+			<xsd:enumeration value="Filter"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CarrierMechanicalRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Frame"/>
+			<xsd:enumeration value="Hitch, oscillation joint"/>
+			<xsd:enumeration value="Front axle"/>
+			<xsd:enumeration value="Rear axle"/>
+			<xsd:enumeration value="Bogies"/>
+			<xsd:enumeration value="Tracks and chains"/>
+			<xsd:enumeration value="Brake system"/>
+			<xsd:enumeration value="Diesel engine"/>
+			<xsd:enumeration value="Gearbox"/>
+			<xsd:enumeration value="Fuel system"/>
+			<xsd:enumeration value="Cab"/>
+			<xsd:enumeration value="Seat"/>
+			<xsd:enumeration value="Fire extinguisher"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CarrierAirRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Compressor"/>
+			<xsd:enumeration value="Valves"/>
+			<xsd:enumeration value="Pipes"/>
+			<xsd:enumeration value="Anti-freeze (coolant) equipment"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DisturbanceCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Miscellaneous / other"/>
+			<xsd:enumeration value="Planning/follow up"/>
+			<xsd:enumeration value="Machine stuck"/>
+			<xsd:enumeration value="Weather"/>
+			<xsd:enumeration value="Ordered stop"/>
+			<xsd:enumeration value="Administration, telephone"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="HarvestingHeadElectricalRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Harnesses"/>
+			<xsd:enumeration value="Controls"/>
+			<xsd:enumeration value="Bucking computer"/>
+			<xsd:enumeration value="Sensor"/>
+			<xsd:enumeration value="Solenoide"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="HarvestingHeadHydraulicsRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Pipes (hoses)"/>
+			<xsd:enumeration value="Valves"/>
+			<xsd:enumeration value="Hydraulic cylinder"/>
+			<xsd:enumeration value="Saw motor"/>
+			<xsd:enumeration value="Feed roller motor"/>
+			<xsd:enumeration value="Chain tensioner"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="HarvestingHeadMechanicalRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Frame"/>
+			<xsd:enumeration value="Guarding"/>
+			<xsd:enumeration value="Feed roller arms"/>
+			<xsd:enumeration value="Feed roller"/>
+			<xsd:enumeration value="Delimbing knives"/>
+			<xsd:enumeration value="Saw unit"/>
+			<xsd:enumeration value="Chain tensioner"/>
+			<xsd:enumeration value="Chain lubrication"/>
+			<xsd:enumeration value="Measuring devices"/>
+			<xsd:enumeration value="Color marking"/>
+			<xsd:enumeration value="Stump treatment"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LoaderLinkageElectricalRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Harnesses"/>
+			<xsd:enumeration value="Controls"/>
+			<xsd:enumeration value="Working lights"/>
+			<xsd:enumeration value="Sensor(s)"/>
+			<xsd:enumeration value="Solenoide"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LoaderLinkageHydraulicsRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Hose (pipe)"/>
+			<xsd:enumeration value="Valves"/>
+			<xsd:enumeration value="Hydraulic cylinder"/>
+			<xsd:enumeration value="Motor"/>
+			<xsd:enumeration value="Rotator"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LoaderLinkageMechanicalRepairReasonCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not defined"/>
+			<xsd:enumeration value="Pillar base / slewing device"/>
+			<xsd:enumeration value="Post"/>
+			<xsd:enumeration value="Boom"/>
+			<xsd:enumeration value="Stick"/>
+			<xsd:enumeration value="Telescopic extension"/>
+			<xsd:enumeration value="Grapple"/>
+			<xsd:enumeration value="Damping linkage"/>
+			<xsd:enumeration value="Miscellaneous"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MachineRunTimeCategoryListType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Processing"/>
+			<xsd:enumeration value="Terrain travel"/>
+			<xsd:enumeration value="Other work"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MaintenanceCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Other maintenance"/>
+			<xsd:enumeration value="Control and calibration"/>
+			<xsd:enumeration value="Saw maintenance"/>
+			<xsd:enumeration value="Refilling and lubrication"/>
+			<xsd:enumeration value="Preventive maintenance"/>
+			<xsd:enumeration value="Periodic maintenance"/>
+			<xsd:enumeration value="Machine wash"/>
+			<xsd:enumeration value="Out of fuel"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OperatorWorkTimeCategoryType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="MachineWorkTime"/>
+			<xsd:enumeration value="Meal break"/>
+			<xsd:enumeration value="Planning outside machine"/>
+			<xsd:enumeration value="Travelling to work outside machine"/>
+			<xsd:enumeration value="Other work outside machine"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OtherMachineDownTimeCodeCategoryType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Waiting for repair"/>
+			<xsd:enumeration value="Trailer transportation"/>
+			<xsd:enumeration value="Unproductive terrain work"/>
+			<xsd:enumeration value="Other"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OtherRepairReasonType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Other"/>
+			<xsd:enumeration value="Not defined"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OtherWorkCategoryType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Road travel"/>
+			<xsd:enumeration value="Preparing strip roads"/>
+			<xsd:enumeration value="Towing other machine"/>
+			<xsd:enumeration value="Roadside loading of truck"/>
+			<xsd:enumeration value="Unspecified"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UnutilizedTimeCategoryType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Meal break"/>
+			<xsd:enumeration value="Other unutilized time"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

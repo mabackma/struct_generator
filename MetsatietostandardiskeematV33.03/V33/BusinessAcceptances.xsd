@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ***************************************************************
+  Muutokset skeemapakettiin V10.03:
+  -Skeematiedosto lisätty pakettiin
+  
+  Muutokset skeemapakettiin V10.05:
+  -Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+  
+  Muutokset skeemapakettiin V14.01:
+  -Elementille BusinessAcceptances lisätty pakollinen attribuutti "schemaPackageVersion", lisäksi vapaaehtoiset attribuutit "schemaPackageSubversion" ja "schemaPackageVersionDate"
+  ***************************************************************
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://kuutio.fi/schemas/businessAcceptances"
+	xmlns="http://kuutio.fi/schemas/businessAcceptances"
+  xmlns:ba="http://standardit.tapio.fi/schemas/forestData/businessacceptance"
+  xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+  elementFormDefault="qualified"
+  version="V14.01">
+
+  <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/businessacceptance"
+		schemaLocation="businessacceptance.xsd"/>
+  <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+    schemaLocation="Common.xsd"/>
+
+  <xs:element name="BusinessAcceptances" type="BusinessAcceptancesType" />
+
+  <xs:complexType name="BusinessAcceptancesType">
+    <xs:sequence>
+      <xs:element ref="ba:BusinessAcceptance" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="schemaPackageVersion" type="co:ForestDataStandardSchemaPackageVersionType" use="required"/>
+    <xs:attribute name="schemaPackageSubversion" type="co:ForestDataStandardSchemaPackageSubversionType" use="optional"/>
+    <xs:attribute name="schemaPackageVersionDate" type="co:DateType" use="optional"/>
+  </xs:complexType>
+  
+</xs:schema>

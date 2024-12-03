@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V14.03:
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V15.01:
+	- StandId-elementin maksimipituus kasvatettu 20 merkkiin
+	
+	Muutokset skeemapakettiin V16.02:
+	- StorageId-elementin maksimipituus kasvatettu 50 merkkiin
+	
+	Muutokset skeemapakettiin V19.01:
+	- Muutoksia dokumentaatioihin
+
+	Muutokset skeemapakettiin V33.02:
+	- Päivitetty määrittelyn "WorkingSiteHarvestedProductionType" elementtien "WorkingSiteId" ja "StorageId" tyypeiksi ERPIdType
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/WorkingSiteHarvestedProduction"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/WorkingSiteHarvestedProduction"
+           elementFormDefault="qualified" 
+           attributeFormDefault="unqualified" 
+           version="V33.02">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes" schemaLocation="WoodForceCommonTypes.xsd"/>
+
+    <xs:element name="WorkingSiteHarvestedProduction" type="WorkingSiteHarvestedProductionType">
+		<xs:annotation>
+			<xs:documentation>Hakkuukoneen tuotostiedot</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="WorkingSiteHarvestedProductionType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Urakanantajan tunnus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lohkon tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StandId" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Kuvion numero</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageId" type="wct:ERPIdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Varastopaikan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractorId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Yritys</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceId" type="bdt:String20Type">
+				<xs:annotation>
+					<xs:documentation>ResurssiId</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ForestOwner" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Metsänomistajan nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StartDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Aloitusaika</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EndDate" type="bdt:TimeStampType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Lopetusaika</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SendDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lähetysaika</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InfoText" type="bdt:String1000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Huomautus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MachineApplicationVersion" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Metsänomistajan nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FileName" type="bdt:String100Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Tiedoston nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Bytes" type="xs:base64Binary" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Valokuva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StemTypeVolumes" type="StemTypeVolumesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Runkolajikohtaiset määrät</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AssortmentVolumes" type="AssortmentVolumesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PTL kohtaiset määrät</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AssortmentVolumesUnclassified" type="AssortmentVolumesUnclassifiedType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>PTL kohtaiset määrät, luokittelemattomat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AssortmentMatrixVolumes" type="AssortmentMatrixVolumesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PTL kohtaiset pituus/lpm jakaumat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductUserIds" type="ProductUserIdsType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Hakkuussa käytetyt PIN tiedostot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StemTypeVolumesType">
+		<xs:sequence>
+			<xs:element name="StemTypeVolume" type="StemTypeVolumeType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StemTypeVolumeType">
+		<xs:sequence>
+			<xs:element name="TreeSpecies" type="wct:StanfordTreeSpeciesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Stanford-puulajikoodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StemType" type="bdt:HarvestingStemTypeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Runkolaji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DBH" type="bdt:PositiveInteger3digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Rinnankorkeus läpimitta</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Count" type="bdt:PositiveInteger6digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lukumäärä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Volume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tilavuus (m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentVolumesType">
+		<xs:sequence>
+			<xs:element name="AssortmentVolume" type="AssortmentVolumeType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentVolumeType">
+		<xs:sequence>
+			<xs:element name="TreeSpecies" type="wct:StanfordTreeSpeciesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Stanford-puulajikoodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StemType" type="bdt:HarvestingStemTypeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Runkolaji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductUserId" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tuotteen yksilöivä Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DestinationStorage" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Toimituspisteen koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Assortment" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PTL koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Quality" type="bdt:String5Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Laatu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Count" type="bdt:PositiveInteger6digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lukumäärä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Volume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tilavuus (m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RunningMeters" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Juoksumetrit (m)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentVolumesUnclassifiedType">
+		<xs:sequence>
+			<xs:element name="AssortmentVolumeUnclassified" type="AssortmentVolumeUnclassifiedType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentVolumeUnclassifiedType">
+		<xs:sequence>
+			<xs:element name="TreeSpecies" type="wct:StanfordTreeSpeciesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Stanford-puulajikoodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StemType" type="bdt:HarvestingStemTypeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Runkolaji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AssortmentName" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PTL nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Assortment" type="bdt:String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>PTL koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Quality" type="bdt:String5Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Laatu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductGroupName" type="bdt:String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>PTL-ryhmän nimi, vapaa teksti</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Count" type="bdt:PositiveInteger6digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lukumäärä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Volume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tilavuus (m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RunningMeters" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Juoksumetrit (m)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentMatrixVolumesType">
+		<xs:sequence>
+			<xs:element name="AssortmentMatrixVolume" type="AssortmentMatrixVolumeType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentMatrixVolumeType">
+		<xs:sequence>
+			<xs:element name="ProductUserId" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tuotteen yksilöivä Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DestinationStorage" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Toimituspisteen koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Assortment" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PTL koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AssortmentName" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PTL nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Quality" type="bdt:String5Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Laatu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LengthClass" type="bdt:PositiveInteger4digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Pituusluokka</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiameterClass" type="bdt:PositiveInteger4digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Läpimittaluokka</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Count" type="bdt:PositiveInteger6digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lukumäärä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Volume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tilavuus (m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RunningMeters" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Juoksumetrit (m)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductUserIdsType">
+		<xs:annotation>
+			<xs:documentation>Puutavaralajien katkonnan ohjauksen tiedot</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ProductUserId" type="bdt:String100Type" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ModificationDate" type="bdt:TimeStampType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

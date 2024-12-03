@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Viranomaistarkastuksen elementit ja tyypit.
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	VERSIOKOMMENTIT 1.0 >> 1.1
+	15.8.2014 
+	- Skeemat Common.xsd,Common_BasicDataType.xsd,ForestEnumeratives.xsd on 
+	yhdeksi nimiavaruudeksi: xmlns="http://standardit.tapio.fi/schemas/forestData/common"
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	***************************************************************
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://standardit.tapio.fi/schemas/virta/inspectiondata"
+	xmlns="http://standardit.tapio.fi/schemas/virta/inspectiondata" 	
+	xmlns:tgt="http://standardit.tapio.fi/schemas/virta/target" 
+	xmlns:sp="http://standardit.tapio.fi/schemas/virta/sampleplot" 
+	xmlns:hg="http://standardit.tapio.fi/schemas/virta/helpgeometry" 
+	xmlns:jhs="http://skeemat.jhs-suositukset.fi/yhteiset/2009/03/04" 
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+	elementFormDefault="qualified" attributeFormDefault="qualified" version="V16.01">
+	
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/virta/target" schemaLocation="VirtaTarget.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/virta/sampleplot" schemaLocation="VirtaSamplePlot.xsd"/>	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/virta/helpgeometry" schemaLocation="VirtaHelpGeometry.xsd"/>
+	<xs:import namespace="http://skeemat.jhs-suositukset.fi/yhteiset/2009/03/04" schemaLocation="JHS170_20090304.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+
+	<!-- Element definitions -->
+   	<xs:element name="InspectionData" type="InspectionDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarkastus.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+   	<xs:element name="DataInformation" type="DataInformationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Aineiston tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+   	<xs:element name="DataName" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Aineiston nimi.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+	<xs:element name="DataId" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Aineiston tunnus.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+   	<xs:element name="InspectorName" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarkastaja.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+	<xs:element name="Password" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Salasana.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+	<xs:element name="Inspection" type="InspectionType"/>
+	<xs:element name="InternalInspectionId" type="xs:string"/>
+	<xs:element name="VirtaId" type="VirtaIdType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Virtanumero.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+	<xs:element name="InspectionType" type="VirtaInspectionTypeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarkastuslaji.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="SaveIncomplete" type="VirtaSaveIncompleteType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tallennus kesken.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="Status1" type="co:ChangeStateType"/>
+	<xs:element name="LevelCount" type="co:PositiveInteger1digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tasojen lukumäärä. Näyttää monellako tasolla tarkastustietueella on tietoja. Mahdolliset arvot: 1-5.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+    <xs:element name="AnnouncementId" type="AnnouncementIdType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Masto-id.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="KemeraId" type="VirtaIdType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kemera-id.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>		
+    <xs:element name="EstateOwner" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kiinteistön omistaja "yrittäjä" Mastosta (Asteesta). Tämä on pakollinen vain pääjärjestelmästä tuleviilla tiedoilla.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="MunicipalityNumber" type="jhs:KuntaKoodiTyyppi">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kiinteistötunnuksen kunta. Pääjärjestelmästä tullutta tietoa ei voi muuttaa tallentimella.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="AreaNumber" type="xs:string">	
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kiinteistötunnuksen kylä. Pääjärjestelmästä tullutta tietoa ei voi muuttaa tallentimella.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="GroupNumber" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kiinteistötunnuksen talo. Pääjärjestelmästä tullutta tietoa ei voi muuttaa tallentimella.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="UnitNumber" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kiinteistötunnuksen tila. Pääjärjestelmästä tullutta tietoa ei voi muuttaa tallentimella.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="UnseparatedParcelNumber" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kiinteistötunnuksen tila. Pääjärjestelmästä tullutta tietoa ei voi muuttaa tallentimella.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+    <xs:element name="UnseparatedParcel" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kiinteistötunnuksen tila. Pääjärjestelmästä tullutta tietoa ei voi muuttaa tallentimella.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="KemeraMunicipalityId" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kemera-Virta-Kunta. Pääjärjestelmästä tullutta tietoa ei voi muuttaa tallentimella.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="ArrivalDate" type="co:DateMmDdYyyyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Saapumispvm.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="TargetSelection" type="VirtaTargetSelectionType"/>
+    <xs:element name="Population" type="co:PositiveInteger3digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Perusjoukko.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="MastoInspection" type="VirtaMastoInspectionType"/>
+    <xs:element name="WorkType" type="co:PositiveInteger2digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työlaji.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="Phase" type="VirtaPhaseType"/>
+    <xs:element name="ProjectStatus" type="VirtaProjectStatusType"/>
+    <xs:element name="AnnouncedArea" type="co:PositiveDecimalMax4IntegralPartMax2FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ilmoitettu pinta-ala.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="AnnouncedLength" type="co:PositiveDecimalMax4IntegralPartMax2FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ilmoitettu pituus.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="Law" type="VirtaLawType">
+	</xs:element>	
+    <xs:element name="EarliestInspectionDate" type="co:DateMmDdYyyyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kemeravirran tarkastettavissa pvm.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="Advertiser" type="VirtaAdvertiserType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ilmoittaja.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="Operator" type="VirtaAdvertiserType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Uudistuksen toteuttaja tai hakkuuoikeuden haltija.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="AdvertisementDating" type="VirtaAdvertisementDatingType"/>
+    <xs:element name="AreaAndMapEvaluation" type="sp:VirtaEvaluationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pinta-alan ja kartan arvostelu.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="OtherEvaluation" type="sp:VirtaEvaluationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Muiden ilmoituskohtaisten asioiden arvostelu.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="TreeDamageOutsideStand" type="sp:VirtaEvaluationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion ulkopuoliset puustovauriot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="TerrainDamageOutsideStand" type="sp:VirtaEvaluationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion ulkopuoliset maastovauriot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="AnnouncedEnergyWood" type="co:PositiveInteger6digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ilmoitettu luovutetun energiapuun määrä m3.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="DetectedEnergyWood" type="co:PositiveInteger6digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Havaittu korjatun energiapuun määrä m3.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="DetectedGroundWood" type="co:PositiveInteger6digitsType">	
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Havaittu korjatun ainespuun määrä m3.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="SumTableArea" type="VirtaSumTableAreaType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Summa-arvotaulukon alue.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="StubPriceArea" type="VirtaSumTableAreaType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kantohinta-alue.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="UnitCostArea" type="VirtaSumTableAreaType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksikkökustannusten alue.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="EvaluationCost" type="co:PositiveDecimalMax5IntegralPartMax2FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Arviointikustannukset euroa.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="InsuranceOrOtherCompensation" type="co:PositiveDecimalMax5IntegralPartMax2FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Vakuutuksen tai muun lainsäädännön nojalla maksettavat korvaukset euroa.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="TotalCompensation" type="co:PositiveDecimalMax5IntegralPartMax2FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Korvattava yhteensä euroa.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="OwnerInvolvement" type="co:VirtaYesNoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maanomistajan/hakijan mukanaolo.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="AssociationInvolvement" type="co:VirtaYesNoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Rhy:n/toimijan mukanaolo.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="OwnerSampleAreaApproval" type="VirtaApprovalType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Korvauksen hakijan käsitys koeala-arvioinnista.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="OwnerActionApproval" type="VirtaApprovalType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Korvauksen hakijan käsitys toimenpide-ehdotuksesta.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="MoosePercentage" type="co:PercentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Riistanhoitoyhdistyksen edustajan käsitys hirvieläinten osuudesta vahinkoon..</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="AssociationEvaluationApproval" type="VirtaApprovalType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Riistanhoitoyhdistyksen edustajan näkemys arviointituloksesta.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="InspectionDate" type="co:DateMmDdYyyyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarkastuksen pvm. LT: pakollinen tieto.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="ExtraInfo" type="tgt:VirtaExtraInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hanke/ilmoituskohtainen lisätieto.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="HarvestExtraInfo" type="tgt:VirtaExtraInfoType">	
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Korjuujäljen lisätieto.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+    <xs:element name="Targets" type="TargetsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarkastuksen kohteet.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="HelpGeometries" type="HelpGeometriesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kohteen ja osakohteen rajat kartalla.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<!-- Type definitions -->
+	<xs:complexType name="InspectionDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Viranomaistarkastuksen tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="DataInformation" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="Inspection" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DataInformationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Aineistokohtaiset tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="DataName" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="DataId" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="InspectorName" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="Password" minOccurs="1" maxOccurs="1"/>						
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="InspectionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarkastuksen tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="InternalInspectionId" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="VirtaId" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="InspectionType" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="SaveIncomplete" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Status1" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="AnnouncementId" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="KemeraId" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="EstateOwner" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="MunicipalityNumber" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="GroupNumber" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="UnitNumber" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="UnseparatedParcelNumber" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="UnseparatedParcel" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="KemeraMunicipalityId" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="ArrivalDate" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TargetSelection" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Population" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="MastoInspection" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="WorkType" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Phase" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="ProjectStatus" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="AnnouncedArea" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="AnnouncedLength" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Law" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="EarliestInspectionDate" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Advertiser" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Operator" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="AdvertisementDating" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="AreaAndMapEvaluation" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="OtherEvaluation" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TreeDamageOutsideStand" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TerrainDamageOutsideStand" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="InspectionDate" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="ExtraInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="HarvestExtraInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="SumTableArea" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StubPriceArea" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="UnitCostArea" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="EvaluationCost" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="InsuranceOrOtherCompensation" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TotalCompensation" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="OwnerInvolvement" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="AssociationInvolvement" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="OwnerSampleAreaApproval" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="OwnerActionApproval" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="MoosePercentage" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="AssociationEvaluationApproval" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Targets" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="HelpGeometries" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="TargetsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarkastuksen kohteet.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="tgt:Target" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="HelpGeometriesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarkastuksen apugeometriat.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="hg:PolygonGeometry" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="hg:LineGeometry" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="hg:PointGeometry" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="VirtaIdType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Virran muodostama virtanumero tai tallentimella annettu numerosarja. Jos maastotallentimella luodaan uusi tarkastustietue, jota ei ole tuotu pääjärjestelmästä, voi kenttää nsyöttää millaisen numerosarjan tahansa.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{14,14}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AnnouncementIdType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maston ilmoitustunnus.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{13,13}"/>
+		</xs:restriction>
+	</xs:simpleType> 
+	<xs:simpleType name="VirtaInspectionTypeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Koodi, joka kuvaa sitä, millaista tarkastusta ollaan tekemässä.Tarkastuslaji voidaan usein päätellä tar ja tl kentistä.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaInspectionTypeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="VirtaSaveIncompleteType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tallennuksen keskeneräisyys. Oletusarvoksi tulee 1, jonka käyttäjä voi vaihtaa. Käyttäjä voi nyt päivittää kenttää muistiinpanon omaisesti. Kentällä ei ole nykyversiossa vaikutusta tietojen siirtymiseen.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaSaveIncompleteType"/>
+	</xs:simpleType>	
+	<xs:simpleType name="VirtaTargetSelectionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kohdevalinta. Kohdevalinta on pakollinen tieto. Maastotallentimella voi päivittää vain kohdevalinnan 0 kohdevalinnaksi 2, 3 tai 4. Virran antamaa kohdevalintaa 1 ei voi muuttaa tai kopioida toiselle tietueelle maastotallentimella. Virrassa olevaa kohdelvalintaa 1 ei pävivitetä maastotallentimelta tulevalla tiedolla.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaTargetSelectionType"/>
+	</xs:simpleType>
+	<xs:simpleType name="VirtaMastoInspectionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Mastovirran tarkastus. Jos tar kenttä ei ole tyhjä, niin työlajikenttään ei voi syöttää merkkejä. HUOM. Jäkitarkastus tarkoittaa ns. toiskertaista tarkastusta eli on uudelleen tarkastettu toimenpide, joka on jo kertaalleen aiemmin tarkastettu.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaMastoInspectionType"/>
+	</xs:simpleType> 
+	<xs:simpleType name="VirtaPhaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Vaihe. Virrasta tulevaa tietoa ei voi päivittää.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaPhaseType"/>
+	</xs:simpleType>
+	<xs:simpleType name="VirtaProjectStatusType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tilat. Kemeravirrassa tarkastuskohtainen.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaProjectStatusType"/>
+	</xs:simpleType>
+	<xs:simpleType name="VirtaLawType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Peruste.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaLawType"/>
+	</xs:simpleType> 
+	<xs:simpleType name="VirtaAdvertiserType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ilmoittaja. Ohjelma päättelee Maston ilmoittajan omistajaryhmästä, mutta käyttäjä voi päivittää.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaAdvertiserType"/>
+	</xs:simpleType> 
+	<xs:simpleType name="VirtaAdvertisementDatingType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ilmoituksen jätön arvostelu.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaAdvertisementDatingType"/>
+	</xs:simpleType>
+	<xs:simpleType name="VirtaSumTableAreaType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Summa-arvotaulukon alue. Päätellään tallentimella kuntakoodin perusteella XML-tiedostosta, johon kunnat on ryhmitelty alueittain. Käyttäjä voi päivittää pääteltyä arvoa, jolloin laskennat tapahtuvat päivitetyn arvon mukaisesti.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaSumTableAreaType"/>
+	</xs:simpleType>
+	<xs:simpleType name="VirtaApprovalType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Arvioinnin tai ehdotuksen hyväksyntä.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaApprovalType"/>
+	</xs:simpleType>	
+</xs:schema>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Viranomaistarkastuksen osakohteen elementit ja tyypit.
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	VERSIOKOMMENTIT 1.0 >> 1.1
+	15.8.2014 
+	- Skeemat Common.xsd,Common_BasicDataType.xsd,ForestEnumeratives.xsd on 
+	yhdeksi nimiavaruudeksi: xmlns="http://standardit.tapio.fi/schemas/forestData/common"
+	
+	VERSIOKOMMENTIT 1.1 >>> 1.2
+	10.4.2015 Otettu käyttön lokaalit gml skeemat
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	***************************************************************
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://standardit.tapio.fi/schemas/virta/target"
+	xmlns="http://standardit.tapio.fi/schemas/virta/target" 	
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"	
+	xmlns:tp="http://standardit.tapio.fi/schemas/virta/targetpart" 
+	xmlns:gml="http://www.opengis.net/gml" 
+	elementFormDefault="qualified" attributeFormDefault="qualified" version="V16.01">
+	
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/> 
+	<xs:import namespace="http://standardit.tapio.fi/schemas/virta/targetpart" schemaLocation="VirtaTargetPart.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="../gml/3.1.1/base/gml.xsd"/> 
+
+   	<!-- Element definitions -->
+   	<xs:element name="Target" type="TargetType"/>
+	<xs:element name="Status2" type="co:ChangeStateType"/>
+	<xs:element name="TargetId" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion tai kohteen ID.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+	<xs:element name="TargetNumber" type="co:PositiveDecimalMax5IntegralPartMax1FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion tai kohteen numero.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="BasePartNumber" type="VirtaPartNumberType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Perustamisosion numero.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EstablishedPartNumber" type="VirtaPartNumberType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Vakiintumisosion numero.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TargetAnnouncedAmount" type="co:PositiveDecimalMax4IntegralPartMax2FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion tai kohteen ilmoitettu määrä ha/km. Mastovirrassa pohjatietona tai kemeravirrasta syöttö. LT kipala kentän arvon on oltava pienempi tai yhtäsuuri kuin valmiiksi tallennetun kohteen ohpala kenttien arvojen summan (eli kohteen ohpala kenttiin arvoja on syötettävä niin paljon, että niiden summa on vähintään kipala kentän suuruinen).</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="HabitatAdvertisement" type="VirtaHabitatAdvertisementType"/>
+	<xs:element name="TargetExtraInfo" type="VirtaExtraInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuviokohtainen lisätieto.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+    <xs:element name="TargetParts" type="TargetPartsType"/>
+
+	<!-- Type definitions -->
+	<xs:complexType name="TargetType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Viranomaistarkastuksen kohteen tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status2" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="TargetId" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="TargetNumber" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="BasePartNumber" minOccurs="1" maxOccurs="1"/>			
+			<xs:element ref="EstablishedPartNumber" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="TargetAnnouncedAmount" minOccurs="1" maxOccurs="1"/>			
+			<xs:element ref="HabitatAdvertisement" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="TargetExtraInfo" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="gml:Polygon" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TargetParts" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TargetPartsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarkastuksen osakohteet.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="tp:TargetPart" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType> 
+	<xs:simpleType name="VirtaPartNumberType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Perustamisosion jnro mastovirrassa voi saada arvot: tyhjä, 1, 2, 3, ... Ei käytetä kemeravirrassa.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[1-9]{0,1}"/>
+		</xs:restriction>
+	</xs:simpleType> 
+	<xs:simpleType name="VirtaHabitatAdvertisementType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Elinympäristöjen ilmoittaminen.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:VirtaHabitatAdvertisementType"/>
+	</xs:simpleType>	
+    <xs:simpleType name="VirtaExtraInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuviokohtainen lisätieto.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="500"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

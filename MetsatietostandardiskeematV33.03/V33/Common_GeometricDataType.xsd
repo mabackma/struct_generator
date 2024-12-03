@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	******************************************************************
+	Yhteiset tyypit joita käytetään useissa eri skeemoissa.
+	Skeema on JHS-170 -suosituksen mukainen.
+
+	Käytetty koordinaatisto esitettävä gml:n srsName -attribuutissa (esim "EPSG:3067")
+	
+	SUOSITUS:
+	EPSG:3067: ETRS-TM35FIN
+	
+	MUUT:
+	EPSG:3126: ETRS89 / ETRS-GK19FIN
+	EPSG:3127: ETRS89 / ETRS-GK20FIN
+	EPSG:3128: ETRS89 / ETRS-GK21FIN
+	EPSG:3129: ETRS89 / ETRS-GK22FIN
+	EPSG:3130: ETRS89 / ETRS-GK23FIN
+	EPSG:3131: ETRS89 / ETRS-GK24FIN
+	EPSG:3132: ETRS89 / ETRS-GK25FIN
+	EPSG:3133: ETRS89 / ETRS-GK26FIN
+	EPSG:3134: ETRS89 / ETRS-GK27FIN
+	EPSG:3135: ETRS89 / ETRS-GK28FIN
+	EPSG:3136: ETRS89 / ETRS-GK29FIN
+	EPSG:3137: ETRS89 / ETRS-GK30FIN
+	EPSG:3138: ETRS89 / ETRS-GK31FIN
+	
+	EPSG:2391: KKJ / Finland zone 1
+	EPSG:2392: KKJ / Finland zone 2
+	EPSG:2393: KKJ / Finland Uniform Coordinate System
+	EPSG:2394: KKJ / Finland zone 4
+	EPSG:3386: KKJ / Finland zone 0 (ei juurikaan käytetty)
+	EPSG:3387: KKJ / Finland zone 5 (ei juurikaan käytetty)
+	
+	EPSG:3047: ETRS89 / ETRS-TM35	
+
+	VERSIOKOMMENTIT 1.0 >>> 1.1 
+		Ryhmän "PolygonGeometryGroup" elementti "gml:pointProperty" muutettu valinnaiseksi. 
+	VERSIOKOMMENTIT 1.1 >>> 1.2 
+		Lisätty elementti "PointGeometry" ja sille tyyppi "PointGeometryType" sekä attribuutille tyyppi "PointLocationType". 
+	VERSIOKOMMENTIT 1.2 >>> 1.3 
+		Lisätty skeema ForestEnumeratives_20130620.xsd
+	VERSIOKOMMENTIT 1.3 >>> 1.4
+	15.8.2014 Siirretty PointLocationType ForestEnumeratives.xsd skeemasta tähän skeemaan. 
+	Skeemojen Common.xsd,Common_BasicDataType.xsd,ForestEnumeratives.xsd yhdistämien 
+	yhdeksi namespaceksi: xmlns="http://standardit.tapio.fi/schemas/forestData/common" aiheutti muuten konflikteja,
+	kun ForestEnumeratives.xsd skeemaan viitattiin sekä tästä että common namespacesta.
+	
+	VERSIOKOMMENTIT 1.4 >>> 1.5	
+	15.12.2014 Lisätty AlternativeGeometriesType 
+	
+	VERSIOKOMMENTIT 1.5 >>> 1.6
+	10.4.2015 Otettu käyttön lokaalit gml skeemat
+	
+	21.9.2015
+	- Lisätty group-määrittely: PointAndLineGeometriesGroup
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.05:
+	-Tyyppimäärittelystä MultiPolygonGeometryType poistettu elementti MultiSurface, xs:choice-rakenne muutettu sequenceksi
+	-Lisätty uusi tyyppimäärittely ExtendedMultiPolygonGeometryType joka sisältää vanhan MultiPolygonGeometryType-määrittelyn sisällön (MultiPolygon ja MultiSurface). Tämä määrittely sijoitettu kommenttitageihin.
+	
+	Muutokset skeemapakettiin V11.06:
+	-Lisätty uusi data group AlternativeGeometries2Group, sisältö muuten sama AlternativeGeometriesGroup kanssa mutta lisättynä MultiSurface-geometrien määrittelyllä (elementti MultiPolygonGeometry tyyppimäärittely ExtendedMultiPolygonGeometryType)
+	-Tyyppimäärittely ExtendedMultiPolygonGeometryType otettu käyttöön poistamalla se kommenttitageista
+	-Lisätty uusi complexType-määrittely AlternativeGeometries2Type (viittaa ryhmään AlternativeGeometries2Group)
+	-Lisätty uusi tyyppimäärittely PolygonOrMultiPolygon2Type joka on muuten vastaava kuin PolygonOrMultiPolygonType, mutta MultiPolygonGeometry-elementti käyttää tyyppimäärittelyä ExtendedMultiPolygonGeometryType
+	
+	Muutokset skeemapakettiin V11.08:
+	-Lisätty uusi data group PointLineAndPolygonGeometriesGroup
+	
+	Muutokset skeemapakettiin V30.01:
+	-Lisätty uusi tyyppimäärittely AlternativeGeometriesWithAttributesType joka sisältää vaihtoehdot geometrian määrittelyille sekä attribuutit
+	
+	Muutokset skeemapakettiin V30.02:
+	-Poistettu tyyppimäärittelystä AlternativeGeometriesWithAttributesType vaihtoehdoista MultiPolygonType
+	-Vaihdettu tyyppimäärittelyn AlternativeGeometriesWithAttributesType gml:pointProperty ainoaksi pakolliseksi elementiksi ja gml:lineStringProperty sekä gml:polygonProperty toistensa vapaaehtoisiksi optioiksi
+	-Vaihdettu tyyppimäärittelyn AlternativeGeometriesWithAttributesType nimeksi PointAndLineOrPolygonType	
+	
+*******************************************************************
+-->
+
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes" 
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:gml="http://www.opengis.net/gml"
+	elementFormDefault="qualified"
+	version="V30.01">
+
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="../gml/3.1.1/base/gml.xsd"/> 
+
+	<!-- Elementtimääritykset -->
+	<!-- Element definitions -->
+    <xs:element name="PolygonGeometry" type="PolygonGeometryType"/>
+    <xs:element name="MultiPolygonGeometry" type="MultiPolygonGeometryType"/>
+    <xs:element name="PointGeometry" type="PointGeometryType"/>	
+
+	<!-- Tyyppimäärittelyt -->
+	<!-- Type definitions -->
+	<xs:group name="PolygonGeometryGroup">
+		<xs:sequence>
+			<xs:element ref="gml:pointProperty" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tunnistepisteen sijainti (alueen sisäpiste).</xs:documentation>
+					<xs:documentation xml:lang="sv"></xs:documentation>
+					<xs:documentation xml:lang="en">Reference point location (interior point of polygon).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="gml:polygonProperty">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Aluegeometria sisäalueineen.</xs:documentation>
+					<xs:documentation xml:lang="sv"></xs:documentation>
+					<xs:documentation xml:lang="en">Polygon geometry with interior polygons.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="PointAndLineGeometriesGroup">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="gml:pointProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Pisteen sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Point location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="gml:lineStringProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Viivan sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Line location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="PointLineAndPolygonGeometriesGroup">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="gml:pointProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Pisteen sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Point location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="gml:lineStringProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Viivan sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Line location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="gml:polygonProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Aluegeometria sisäalueineen.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Polygon geometry with interior polygons.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="AlternativeGeometriesGroup">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="gml:pointProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Pisteen sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Point location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="gml:lineStringProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Viivan sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Line location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="PolygonGeometry"/>
+				<xs:element ref="MultiPolygonGeometry"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:group name="AlternativeGeometries2Group">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="gml:pointProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Pisteen sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Point location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="gml:lineStringProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Viivan sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Line location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="PolygonGeometry"/>
+				<xs:element name="MultiPolygonGeometry" type="ExtendedMultiPolygonGeometryType"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:group name="SimpleAlternativeGeometriesGroup">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="gml:pointProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Pisteen sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Point location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="gml:lineStringProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Viivan sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Line location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="gml:polygonProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Aluegeometria sisäalueineen.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Polygon geometry with interior polygons.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="MultiPolygonGeometry"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:complexType name="PolygonGeometryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen alueen geometria tunnuspisteineen.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Single polygon geometry with interior point (reference point).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="PolygonGeometryGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="MultiPolygonGeometryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Monialueen geometria.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Multipolygon geometry.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+            <xs:element ref="gml:MultiPolygon"/>
+        </xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ExtendedMultiPolygonGeometryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Monialueen geometria.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Multipolygon geometry.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element ref="gml:MultiPolygon"/>
+			<xs:element ref="gml:MultiSurface"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="PointGeometryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pistemuotoinen geometria.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Point geometry.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="gml:pointProperty"/>
+		</xs:sequence>
+		<xs:attribute name="dimension" type="xs:decimal" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Dimensio.</xs:documentation>
+				<xs:documentation xml:lang="sv"></xs:documentation>
+				<xs:documentation xml:lang="en"></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="location" type="co:PointLocationType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Sijainti.</xs:documentation>
+				<xs:documentation xml:lang="sv"></xs:documentation>
+				<xs:documentation xml:lang="en"></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="AlternativeGeometriesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen geometrian (Point, Line, Polygon referenssipisteineen tai MultiPolygon) määrittely</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="AlternativeGeometriesGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AlternativeGeometries2Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen geometrian (Point, Line, Polygon referenssipisteineen tai MultiPolygon) määrittely</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="AlternativeGeometries2Group"/>
+		</xs:sequence>
+	</xs:complexType>	
+	
+	<xs:complexType name="SimpleAlternativeGeometriesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen geometrian (Point, Line, Polygon tai MultiPolygon) määrittely</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SimpleAlternativeGeometriesGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PolygonOrMultiPolygonType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Polygon tai MultiPolygon</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="gml:pointProperty" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tunnistepisteen sijainti (alueen sisäpiste).</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en">Reference point location (interior point of polygon).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element ref="gml:polygonProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Aluegeometria sisäalueineen.</xs:documentation>
+						<xs:documentation xml:lang="sv"/>
+						<xs:documentation xml:lang="en">Polygon geometry with interior polygons.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="MultiPolygonGeometry"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PolygonOrMultiPolygon2Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Polygon tai MultiPolygon</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="gml:pointProperty" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tunnistepisteen sijainti (alueen sisäpiste).</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en">Reference point location (interior point of polygon).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element ref="gml:polygonProperty">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Aluegeometria sisäalueineen.</xs:documentation>
+						<xs:documentation xml:lang="sv"/>
+						<xs:documentation xml:lang="en">Polygon geometry with interior polygons.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MultiPolygonGeometry" type="ExtendedMultiPolygonGeometryType"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PointAndLineOrPolygonType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen geometrian (Point ja Line tai Polygon) määrittely attibuutteineen</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="gml:pointProperty" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Pisteen sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Point location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			<xs:choice minOccurs="0">
+				<xs:element ref="gml:lineStringProperty" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Viivan sijainti.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Line location.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="gml:polygonProperty" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Aluegeometria sisäalueineen.</xs:documentation>
+						<xs:documentation xml:lang="sv"></xs:documentation>
+						<xs:documentation xml:lang="en">Polygon geometry with interior polygons.</xs:documentation>
+					</xs:annotation>
+				</xs:element>		
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="dimension" type="xs:decimal" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Dimensio.</xs:documentation>
+				<xs:documentation xml:lang="sv"></xs:documentation>
+				<xs:documentation xml:lang="en"></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="location" type="co:PointLocationType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Sijainti.</xs:documentation>
+				<xs:documentation xml:lang="sv"></xs:documentation>
+				<xs:documentation xml:lang="en"></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+
+</xs:schema>

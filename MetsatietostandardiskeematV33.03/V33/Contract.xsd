@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.06:
+	-Elementin Geometry tyyppimäärittely muutettu gdt:PolygonOrMultiPolygonType -> gdt:PolygonOrMultiPolygon2Type
+	
+	Muutokset skeemapakettiin V14.03:
+	-Elementin "SubContractorsAllowed" dokumentaatio päivitetty
+	-Elementin "CompanyMode" dokumentaatio päivitetty
+	
+	Muutokset skeemapakettiin V14.05:
+	-Elementin CompanyMode dokumentaatio päivitetty "Yritysmuoto" -> "Yrittäjämuoto"
+	-Elementin SubContractorsAllowed dokumentaatio päivitetty "Aliurakoitsijan.." -> "Osayrittäjän.."
+	
+	Muutokset skeemapakettiin V15.01:
+	- OperationalRegion -elementin maksimipituus kasvatettu 50 merkkiin
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://standardit.tapio.fi/schemas/forestData/Contract" 
+	xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common" 
+	xmlns:gdt="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes" 
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/Contract" 
+	elementFormDefault="qualified" attributeFormDefault="unqualified" version="V15.01">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes" schemaLocation="Common_GeometricDataType.xsd"/>
+	
+	<xs:element name="Contract" type="ContractType">
+		<xs:annotation>
+			<xs:documentation>Urakointisopimus</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ContractType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantajan tunnus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Sopimuksen id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractorId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yrittäjän Alv-tunnus, ruotsalainen vastaava SE-vat-tunnus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractCode" type="bdt:String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Sopimuksen tunnus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ValidityDateBegin" type="bdt:DateType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Voimassaoloalkuaika</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ValidityDateEnd" type="bdt:DateType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Voimassaololoppuaika</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ServiceTypes" type="ServiceTypesType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Palvelukokonaisuudet</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkCodeGroups" type="WorkCodeGroupsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työlajiryhmät</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkCodes" type="WorkCodesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työlajit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractInfo" type="bdt:String1000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasureDeviceCheckRequired" type="bdt:YesNoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mittalaitteen lisätarkastusvaatimus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CompanyMode" type="bdt:CompanyModeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yrittäjämuoto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SubContractorsAllowed" type="bdt:YesNoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Osayrittäjän käyttö sallittu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingAreas" type="WorkingAreasType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Toiminta-alueet</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkingAreasType">
+		<xs:sequence>
+			<xs:element name="WorkingArea" type="WorkingAreaType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Toiminta-alue</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkingAreaType">
+		<xs:sequence>
+			<xs:element name="OperationalRegion" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geometry" type="gdt:PolygonOrMultiPolygon2Type">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi"> Geometria</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceTypesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Palvelukokonaisuudet</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ServiceType" type="bdt:ServiceTypeType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkCodeGroupsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työlajiryhmä</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="WorkCodeGroup" type="bdt:WorkCodeGroupType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkCodesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työlajit</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="WorkCode" type="bdt:WorkCodeType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

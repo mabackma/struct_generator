@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Erityispiirretietojen peruselementit ja -tyypit. 
+	Skeema on JHS-170 -suosituksen mukainen.
+
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V14.03:
+	-Poistettu tyyppimäärittely FeatureCodeType tarpeettomana (siirrytty käyttämään suoraan co:FeatureCodeTypeä)
+
+	Muutokset skeemapakettiin V14.04:
+	-Elementti MainFeature muutettu käyttämään suoraa tyyppimäärittelyä co:YesNoType, "ketjutetut" tyyppimäärittelyt poistettu tarpeettomina
+	-Elementti FeatureType muutettu käyttämään suoraa tyyppimäärittelyä co:FeatureTypeType, "ketjutetut" tyyppimäärittelyt poistettu tarpeettomina
+	-Elementti FeatureAdditionalCode muutettu käyttämään suoraa tyyppimäärittelyä co:FeatureAdditionalCodeType, "ketjutetut" tyyppimäärittelyt poistettu tarpeettomina
+	
+	Muutokset skeemapakettiin V17.01:
+	-Lisätty uudet elementit RestrictionType, RestrictionCode, RestrictionStartDate, RestrictionEndDate ja BufferDistance
+	-Lisätty uusi tyyppimäärittely BufferDistanceType, tyypiltään co:Decimal4And2Type
+	
+	Muutokset skeemapakettiin V28.01:
+	-Tuotu elementit UsingRestrictions, UsingRestriction ja RestrictionDescription tiedostosta SpecialFeature.xsd
+	-Tuotu tyyppimäärittelyt UsingRestrictionsType ja UsingRestrictionType tiedostosta SpecialFeature.xsd 
+	
+	Muutokset skeemapakettiin V30.01:
+	-Lisätty elementtimääritys RestrictionOutOfObject (co:YesNoType)
+	-Lisätty tyyppimäärittelyyn UsingRestrictionType uusi vapaahetoinen elementti RestrictionOutOfObject (co:YesNoType)
+	
+	***************************************************************
+-->
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://standardit.tapio.fi/schemas/forestData/specialFeatureBase" 
+    xmlns="http://standardit.tapio.fi/schemas/forestData/specialFeatureBase"  
+    xmlns:co="http://standardit.tapio.fi/schemas/forestData/common" 
+    elementFormDefault="qualified"
+    version="V30.01">
+
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+		schemaLocation="Common.xsd"/>
+
+	<!-- Elementtimääritykset -->
+   	<!-- Element definitions -->
+	<xs:element name="Identifiers" type="IdentifiersType"/>
+	<xs:element name="Identifier" type="IdentifierType"/>
+	<xs:element name="IdentifierType" type="IdentifierTypeType"/>
+	<xs:element name="IdentifierValue" type="IdentifierValueType"/>
+    <xs:element name="MainFeature" type="co:YesNoType">
+    	<xs:annotation>
+    		<xs:documentation xml:lang="fi">Pääasiallisen erityispiirteen osoittava tieto.</xs:documentation>
+    		<xs:documentation xml:lang="sv"/>
+    		<xs:documentation xml:lang="en">Boolean for the main special feature.</xs:documentation>
+    	</xs:annotation>
+    </xs:element>
+	<xs:element name="FeatureType" type="co:FeatureTypeType"/>
+	<xs:element name="FeatureCode" type="co:FeatureCodeType"/>
+	<xs:element name="FeatureAdditionalCode" type="co:FeatureAdditionalCodeType"/>
+    <xs:element name="Validity" type="ValidityType"/>
+    <xs:element name="StartDate" type="StartDateType"/>
+    <xs:element name="EndDate" type="EndDateType"/>
+	<xs:element name="Explanation" type="ExplanationType"/>
+    <xs:element name="FeatureInfo" type="FeatureInfoType"/>
+	<xs:element name="FeatureAdditionalInfo" type="FeatureAdditionalInfoType"/> 
+	<xs:element name="RestrictionType" type="co:RestrictionTypeType"/>
+	<xs:element name="RestrictionCode" type="co:RestrictionCodeType"/>
+	<xs:element name="RestrictionStartDate" type="StartDateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Rajoitteen voimassaolo alkaa.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Restriction start date.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="RestrictionEndDate" type="EndDateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Rajoitteen voimassaolo päättyy.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Restriction end date.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+    <xs:element name="BufferDistance" type="BufferDistanceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Rajoitteen bufferin leveys kohteen geometrian ympärillä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Restriction's buffer area around the target geometric</xs:documentation>
+		</xs:annotation>
+    </xs:element>
+	<xs:element name="UsingRestrictions" type="UsingRestrictionsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Erityispiirteestä aiheutuvat käytönrajoitukset</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Using restrictions caused by special feature</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UsingRestriction" type="UsingRestrictionType">
+	<xs:annotation>
+		<xs:documentation xml:lang="fi">Käytönrajoite</xs:documentation>
+		<xs:documentation xml:lang="sv"/>
+		<xs:documentation xml:lang="en">Using restriction</xs:documentation>
+	</xs:annotation>
+	</xs:element>	
+	<xs:element name="RestrictionDescription" type="co:String1500Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttönrajoituksen kuvaus</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Restriction description</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="RestrictionOutOfObject" type="co:YesNoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Käyttönrajoite kohteen ulkopuolla K/E</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Restriction out of object (Y/N)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+		
+    <!-- Tyyppimääritykset -->
+    <!-- Type definitions -->
+	<xs:complexType name="IdentifiersType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kohteen (pisteen, viivan tai alueen) tunnisteet.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Identifiers of object.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Identifier" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentifierType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäisen kohteen (pisteen, viivan tai alueen) tunniste.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Identifiers of single object.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="IdentifierType"/>
+			<xs:element ref="IdentifierValue"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UsingRestrictionsType">
+		<xs:sequence>
+			<xs:element ref="UsingRestriction" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UsingRestrictionType">
+		<xs:sequence>
+			<xs:element ref="co:RestrictionType"/>
+			<xs:element ref="co:RestrictionCode"/>
+			<xs:element ref="RestrictionStartDate" minOccurs="0"/>
+			<xs:element ref="RestrictionEndDate" minOccurs="0"/>
+			<xs:element ref="BufferDistance" minOccurs="0"/>
+			<xs:element ref="RestrictionDescription" minOccurs="0"/>
+			<xs:element ref="RestrictionOutOfObject" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="IdentifierTypeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tunnisteen laji.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Type of identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="co:IdentifierTypeType co:SpecialFeatureIdentifierExtensionType"/>		
+	</xs:simpleType>
+	<xs:simpleType name="IdentifierValueType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tunnisteen arvo.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Value of identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:IdentifierValueType"/>
+	</xs:simpleType>
+     <xs:complexType name="ValidityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Voimassaolo (alkamis- ja/tai loppumisajankohta).</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Validity (starting and/or ending date).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="StartDate"/>
+			<xs:element ref="EndDate"/>
+			<xs:element ref="Explanation"/>
+		</xs:sequence>
+     </xs:complexType>
+	<xs:simpleType name="StartDateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Alkamisajankohta.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Starting date.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:DateYYYY-MMOrYYYY-MM-DDType"/>
+	</xs:simpleType>
+	<xs:simpleType name="EndDateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Loppumisajankohta.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Ending date.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:DateYYYY-MMOrYYYY-MM-DDType"/>
+	</xs:simpleType>
+   	<xs:simpleType name="ExplanationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Voimassaoloa tarkentava teksti, esim. voimassa sulan maan aikana.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Information text for explain validity.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+   	<xs:simpleType name="FeatureInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Erityispiirrettä kuvaava teksti. Sijainnillisten kohteiden osalta tämä voi olla esim. kartalla näkyvä teksti.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Information text for feature. E.g. located object, this can be text on map.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+   	<xs:simpleType name="FeatureAdditionalInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Erityispiirrettä kuvaava lisäteksti. Sijainnillisten kohteiden osalta tämä voi olla esim. erikseen näytettävä teksti (ei kartalla näkyvä teksti).</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Additional information text for feature. E.g. located object, this can be separately shown text on map.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+   	</xs:simpleType>
+	<xs:simpleType name="BufferDistanceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Rajoitteen vaikutusalueen bufferin leveys metreinä.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Restriction's target area buffer width in meters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="co:Decimal4And2Type"/>
+	</xs:simpleType>
+	
+</xs:schema>

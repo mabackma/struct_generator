@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Muutokset skeemapakettiin V10.03:
+  -Skeematiedosto lisätty pakettiin
+  
+  Muutokset skeemapakettiin V10.05:
+  -Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+  
+  Muutokset skeemapakettiin V14.01:
+  -Elementille WorkingSiteTradeEnvelope lisätty pakollinen attribuutti "schemaPackageVersion", lisäksi vapaaehtoiset attribuutit "schemaPackageSubversion" ja "schemaPackageVersionDate"
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://kuutio.fi/schemas/callForOfferWithPublicity"
+	xmlns="http://kuutio.fi/schemas/callForOfferWithPublicity"
+  xmlns:o="http://kuutio.fi/schemas/organizations"
+  xmlns:cfo="http://standardit.tapio.fi/schemas/workingsitetrade/callforoffer"
+  xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+  elementFormDefault="qualified"
+  version="V29.02">
+
+  <xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/callforoffer"
+		schemaLocation="WorkingSiteTrade_CallForOffer.xsd"/>
+  
+  <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+		schemaLocation="common.xsd"/>
+
+  <xs:import namespace="http://kuutio.fi/schemas/organizations"
+		schemaLocation="Organizations.xsd"/>
+
+  <!-- Elementtimääritykset -->
+	<!-- Element definitions -->
+	<xs:element name="CallForOfferWithPublicity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cfo:CallForOffer" minOccurs="1" maxOccurs="unbounded" />
+        <xs:element name="Publicity" type="co:PublicityType" minOccurs="1" maxOccurs="1" />
+        <xs:element name="PublicityOrganizations" type="o:OrganizationsType" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="schemaPackageVersion" type="co:ForestDataStandardSchemaPackageVersionType" use="required"/>
+      <xs:attribute name="schemaPackageSubversion" type="co:ForestDataStandardSchemaPackageSubversionType" use="optional"/>
+      <xs:attribute name="schemaPackageVersionDate" type="co:DateType" use="optional"/>
+    </xs:complexType>    
+  </xs:element>
+</xs:schema>

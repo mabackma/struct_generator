@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V14.03:
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V17.04:
+	-Vaihdettu elementtien LengthCalibrationAdjustment, DiameterCalibrationAdjustment ja DiameterCalibrationAdjustmentButtLog tyyppimäärittelyksi "bdt:Integer3digitsType"
+	
+    Muutokset skeemapakettiin V27.01:
+    -Päivitetty elementin SelectionType dokumentaatiota.
+    -Lisätty uusi vapaaehtoinen elementti RandomControlStemRejectedReason, tyyppimäärittelyltään bdt:String100Type
+    -Vaihdettu elementti Log vapaaehtoiseksi
+    
+	Muutokset skeemapakettiin V33.02:
+	- Päivitetty määrittelyn "WorkingSiteHarvestingQualityControlType" elementin "WorkingSiteId" tyypiksi ERPIdType
+	- Päivitetty määrittelyn "LogDataType" elementin "ProductKey" tyypiksi ERPIdType
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/WorkingSiteHarvestingQualityControl"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:gdt="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+           xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/WorkingSiteHarvestingQualityControl"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="V27.01">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+		schemaLocation="Common_GeometricDataType.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+    	schemaLocation="WoodForceCommonTypes.xsd"/>
+
+    <xs:element name="WorkingSiteHarvestingQualityControl" type="WorkingSiteHarvestingQualityControlType">
+		<xs:annotation>
+			<xs:documentation>Metsätraktorin punnitustarkkuus</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="WorkingSiteHarvestingQualityControlType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Urakanantajan tunnus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lohkon tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractorId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Yritys</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceId" type="bdt:String20Type">
+				<xs:annotation>
+					<xs:documentation>Moton numero</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OperatorId" type="bdt:String20Type">
+				<xs:annotation>
+					<xs:documentation>Kuljettajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ForestOwner" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Metsänomistajan nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurerType" type="bdt:MeasurerTypeType">
+				<xs:annotation>
+					<xs:documentation>Kuljettajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurementDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Aloitusaika</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MachineApplicationVersion" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Vaaan versio tiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FileName" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tiedoston nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Bytes" type="xs:base64Binary" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Alkuperäisen tiedoston sisältö</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Stem" type="StemDataType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Rungot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LengthCalibration" type="LengthCalibrationType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Pituus kalibroinnit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiameterCalibration" type="DiameterCalibrationType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Läpimitta kalibroinnit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Caliper" type="CaliperType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Mittasaksen tiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StemDataType">
+		<xs:sequence>
+			<xs:element name="StemId" type="bdt:PositiveIntegerType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Mitattu paino</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TreeSpecies" type="wct:StanfordTreeSpeciesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Stanford-puulajikoodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StemType" type="bdt:HarvestingStemTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Runkolajin koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SelectionType" type="ControlStemSelectionType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Rungon valintatyyppi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RandomControlStemRejectedReason" type="bdt:String100Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Rungon hylkysyy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StemCoordinates" type="gdt:PointGeometryType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Sijainti</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Log" type="LogDataType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Pölkyt</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LogDataType">
+		<xs:sequence>
+			<xs:element name="LogKey" type="bdt:String10Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Pölkyn avain</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductKey" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PTL:n tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LogVolume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Pölkyn tilavuus (m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ControlLogVolume" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kontrolli pölkyn tilavuus (m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LogLength" type="bdt:PositiveInteger4digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Pölkyn pituus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ControlLogLength" type="bdt:PositiveInteger4digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kontrolli pölkyn pituus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CalibrationUseLog" type="bdt:YesNoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Onko käytetty kalibroinnissa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LogDiameterClass" type="bdt:PositiveInteger3digitsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Pituusluokka</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LogLengthClass" type="bdt:PositiveInteger4digitsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Läpimittaluokka</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LogMeasurements" type="LogMeasurementsType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Pölkyn mittaustiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LogMeasurementsType">
+		<xs:sequence>
+			<xs:element name="LogDiameter" type="bdt:PositiveInteger3digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>läpimitta (mm)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ControlLogDiameter" type="bdt:PositiveInteger3digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>kontrolli läpimitta (mm)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurementDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Mittaus pvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LengthCalibrationType">
+		<xs:sequence>
+			<xs:element name="TreeSpecies" type="wct:StanfordTreeSpeciesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Stanford-puulajikoodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LengthCalibrationDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kalibrointi pvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LengthCalibrationReason" type="bdt:String200Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kalibrointi syy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LengthCalibrationDescription" type="bdt:String200Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kalibroinin kuvaus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LengthCalibrationAdjustment" type="bdt:Integer3digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Korjauksen määrä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DiameterCalibrationType">
+		<xs:sequence>
+			<xs:element name="TreeSpecies" type="wct:StanfordTreeSpeciesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Stanford-puulajikoodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiameterCalibrationDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kalibrointi pvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiameterCalibrationReason" type="bdt:String200Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kalibrointi syy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiameterCalibrationDescription" type="bdt:String200Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kalibroinin kuvaus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiameterCalibrationAdjustment" type="bdt:Integer3digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Korjauksen määrä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiameterCalibrationAdjustmentButtLog" type="bdt:Integer3digitsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Korjauksen määrä tyvi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CaliperType">
+		<xs:sequence>
+			<xs:element name="CaliperId" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Mittasaksen tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CaliperApplication" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Mittasaksen ohjelmistoversio</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ControlStemSelectionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Randomly selected stem"/>
+			<xs:enumeration value="Manually by operator selected stem"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

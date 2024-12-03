@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 sp1 (x64) (http://www.altova.com) by Juha-Antti Sorsa (Metsäteho Oy) -->
+<!-- ******************************************************************************************************************************* -->
+<!-- ***  Object Geographical Instruction XML Schema file   						   			 														     *** -->
+<!-- ******************************************************************************************************************************* -->
+<!--
+
+   Document Name: 				ObjectGeographicalInstruction_V3p1_no_documentation.xsd
+   Generated On: 				6 February 2015
+   Version number:				3.1 Release
+   Schema agency:				Skogforsk
+   Schema web address:			http://www.skogforsk.se/stanford2010/schema/
+
+-->
+<xsd:schema targetNamespace="urn:skogforsk:stanford2010" elementFormDefault="qualified" attributeFormDefault="unqualified" version="release_3.1" sfd:versionDate="2015-02-06" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:skogforsk:stanford2010" xmlns:doc="urn:skogforsk:stanford2010:doc" xmlns:sfd="urn:skogforsk:stanford2010">
+	<!-- ===== Includes ===== -->
+	<xsd:include schemaLocation="StanForD2010CommonDefinitions_V3p1_no_documentation.xsd"></xsd:include>
+	<!-- ===== Root Element ===== -->
+	<xsd:element name="ObjectGeographicalInstruction" type="ObjectGeographicalInstructionType">
+		
+		<xsd:unique name="UniqueObjectUserID">
+			<xsd:selector xpath="sfd:ObjectDefinition"></xsd:selector>
+			<xsd:field xpath="sfd:ObjectUserID"></xsd:field>
+		</xsd:unique>
+	</xsd:element>
+	<!-- ===== Type Definitions ===== -->
+	<xsd:complexType name="GeographicDirectiveObjectGeographicalInstructionType">
+		
+		<xsd:sequence>
+			<xsd:element name="AlarmCoordinates" type="CoordinatesType" minOccurs="0">
+				
+			</xsd:element>
+			<xsd:element name="AlarmCoordinateDescription" type="xsd:string" minOccurs="0">
+				
+			</xsd:element>
+			<xsd:element name="TrackingCategory" type="TrackingCategoryType">
+				
+			</xsd:element>
+			<xsd:element name="GISCoordinateReferenceSystem" type="xsd:string">
+				
+			</xsd:element>
+			<xsd:element name="GISLayer" type="GISLayerObjectGeographicalInstructionType" maxOccurs="unbounded">
+				
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GISLayerObjectGeographicalInstructionType">
+		
+		<xsd:complexContent>
+			<xsd:extension base="GISLayerType">
+				<xsd:sequence>
+					<xsd:element name="TrackingFile" type="xsd:boolean" minOccurs="0">
+						
+					</xsd:element>
+					<xsd:element name="GISFileLayerDescription" type="xsd:string">
+						
+					</xsd:element>
+					<xsd:element name="GISFileMAXScale" type="xsd:nonNegativeInteger">
+						
+					</xsd:element>
+					<xsd:element name="GISFileMINScale" type="xsd:nonNegativeInteger">
+						
+					</xsd:element>
+					<xsd:element name="GISDatabaseFileSpecification" type="GISDatabaseFileSpecificationType" minOccurs="0">
+						
+					</xsd:element>
+					<xsd:choice>
+						<xsd:element name="GISFileFormatPoint" type="GISFileFormatPointType" minOccurs="0" maxOccurs="unbounded">
+							
+						</xsd:element>
+						<xsd:element name="GISFileFormatLine" type="GISFileFormatLineType" minOccurs="0" maxOccurs="unbounded">
+							
+						</xsd:element>
+						<xsd:element name="GISFileFormatPolygon" type="GISFileFormatPolygonType" minOccurs="0" maxOccurs="unbounded">
+							
+						</xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ObjectDefinitionObjectGeographicalInstructionType">
+		
+		<xsd:complexContent>
+			<xsd:extension base="ObjectDefinitionType">
+				<xsd:sequence>
+					<xsd:element name="GeographicDirective" type="GeographicDirectiveObjectGeographicalInstructionType">
+						
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ObjectGeographicalInstructionType">
+		
+		<xsd:sequence>
+			<xsd:element name="ObjectGeographicalInstructionHeader" type="MessageHeaderType">
+				
+			</xsd:element>
+			<xsd:element name="ObjectDefinition" type="ObjectDefinitionObjectGeographicalInstructionType">
+				
+				<xsd:unique name="UniqueSubObectUserID">
+					<xsd:selector xpath="SubObject"></xsd:selector>
+					<xsd:field xpath="SubObjectUserID"></xsd:field>
+				</xsd:unique>
+			</xsd:element>
+			<xsd:element name="Extension" type="ExtensionType" minOccurs="0">
+				
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="messageType" type="MessageCategoryType" use="required" fixed="ogi">
+			
+		</xsd:attribute>
+		<xsd:attributeGroup ref="MessageAttributeGroup"></xsd:attributeGroup>
+	</xsd:complexType>
+</xsd:schema>

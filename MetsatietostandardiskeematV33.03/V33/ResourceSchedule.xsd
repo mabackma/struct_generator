@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V14.03:
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V33.02:
+	- Lisätty wct-nimiavaruus skeematiedostoviittauksella WoodForceCommonTypes.xsd
+	- Päivitetty määrittelyn "WorkingSiteType" elementin "WorkingSiteId" tyypiksi ERPIdType
+	- Lisätty tyyppimäärittelyyn WorkingSitesType uusi vapaaehtoinen elementti WorkingSiteNumber
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/ResourceSchedule"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/ResourceSchedule"
+           elementFormDefault="qualified" attributeFormDefault="unqualified" version="V33.02">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+		schemaLocation="WoodForceCommonTypes.xsd"/>
+	
+	<xs:element name="ResourceSchedule" type="ResourceScheduleType"/>
+	<xs:complexType name="ResourceScheduleType">
+		<xs:sequence>
+			<xs:element name="ContractorId" type="bdt:String20Type" minOccurs="1"/>
+			<xs:element name="Resources" type="ResourcesType" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResourcesType">
+		<xs:sequence>
+			<xs:element name="Resource" type="ResourceDataType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResourceDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Resurssit</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="StanfordResourceId" type="bdt:String100Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Stanford Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceId" type="bdt:String20Type">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yksilöivä id </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ServiceBuyerResourceId" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantajan resurssi Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceType" type="bdt:ResourceTypeType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Resurssin tyyppi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSites" type="WorkingSitesType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Resurssin kalenteritiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkingSitesType">
+		<xs:sequence>
+			<xs:element name="WorkingSite" type="WorkingSiteType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkingSiteType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Resurssin kalenteritiedot</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteNumber" type="wct:WorkingSiteNumberType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkonumero</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TeamName" type="bdt:String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työryhmän nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StartDate" type="bdt:DateType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Aloitus pvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EndDate" type="bdt:DateType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lopetuspvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ForwarderDelay" type="bdt:PositiveInteger2digitsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Mekuviive (pv)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

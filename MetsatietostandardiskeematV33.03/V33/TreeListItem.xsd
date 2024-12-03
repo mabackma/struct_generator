@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Hila- ja mikrokuviomuotoisen metsävara-aineiston elementit ja
+	tyypit.
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	VERSIOKOMMENTIT 1.0 >> 1.1
+	15.8.2014 
+	- Skeemat Common.xsd,Common_BasicDataType.xsd,ForestEnumeratives.xsd on 
+	yhdeksi namespaceksi: xmlns="http://standardit.tapio.fi/schemas/forestData/common" 
+
+   	Tässä skeemassa otettu käyttöön uusi common nimiavaruus 
+   	
+   	Muutokset skeemapakettiin V10.05:
+   	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	***************************************************************
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/treelistitem"
+	xmlns="http://standardit.tapio.fi/schemas/forestData/treelistitem" 
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"	
+	xmlns:cdd="http://standardit.tapio.fi/schemas/forestData/commondistributiondata"	
+	elementFormDefault="qualified"
+	attributeFormDefault="qualified"
+	version="V16.01">
+
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/commondistributiondata" schemaLocation="CommonDistributionData.xsd"/>
+	
+   	<!-- Element definitions -->
+   	<xs:element name="TreeListItem" type="TreeListItemType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi"></xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TreeNumber" type="xs:integer"/>
+	<xs:element name="TreeSpecies" type="co:TreeSpeciesType"/>	
+	<xs:element name="TreeClass" type="co:TreeClassType"/>
+	<xs:element name="Storey" type="co:StoreyType"/>
+	<xs:element name="Age" type="co:AgeType"/>	
+	<xs:element name="StemCount" type="co:StemCountType"/>
+	<xs:element name="Diameter" type="co:DiameterType"/>
+	<xs:element name="Height" type="co:MeanHeightType"/>
+	<xs:element name="Volume" type="co:VolumeType"/>
+	<xs:element name="SawLogPercent" type="co:SawLogPercentType"/>
+	<xs:element name="SawLogVolume" type="co:SawLogVolumeType"/>
+	<xs:element name="PulpWoodVolume" type="co:PulpWoodVolumeType"/>
+	<xs:element name="TreeIdentifiers" type="TreeIdentifiersType"/>	
+	<xs:element name="TreeIdentifier" type="TreeIdentifierType"/>
+	<xs:element name="Type" type="xs:integer">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tunnistettuja tyyppejä: yläläpimitta d6, latvusleveys.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Value" type="xs:string">	
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Arvo tekstinä.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+	
+	<!-- Type definitions -->
+	<xs:complexType name="TreeListItemType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tässä tiedonsiirron osapuolet voivat siirtää valitun kaltaisia tulkintayksikköön liittyviä kohteita / viitetietoja.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="TreeNumber" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TreeSpecies" minOccurs="0" maxOccurs="1"/>	
+			<xs:element ref="TreeClass" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Storey" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Age" minOccurs="0" maxOccurs="1"/>	
+			<xs:element ref="StemCount" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Diameter" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Height" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Volume" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="SawLogPercent" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="SawLogVolume" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="PulpWoodVolume" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="TreeIdentifiers" minOccurs="0" maxOccurs="1"/>	
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi"></xs:documentation>
+				<xs:documentation xml:lang="sv"></xs:documentation>
+				<xs:documentation xml:lang="en"></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="TreeIdentifiersType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Lisätunnukset.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="TreeIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="TreeIdentifierType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Lisätunnus. Vapaa tyypitys. Edellyttää erityisen tarkkaa sopimista tiedonsiirto-osapuolten välillä!</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Type" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="Value" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

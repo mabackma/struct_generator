@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Muutokset skeemapakettiin V11.03:
+    -Tiedosto ExternalFile.xsd sisällytetty skeemapakettiin V11.03
+    
+    Muutokset skeematiedostoon V14.03:
+    -Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+    
+    Muutokset skeematiedostoon V15.01
+    -StandId-elementin maksimipituus kasvatettu 20 merkkiin
+    
+    Muutokset skeemapakettiin V16.02:
+    - StorageId-elementin maksimipituus kasvatettu 50 merkkiin
+    
+    Muutokset skeemapakettiin V30.01:
+    -Lisätty tyyppimäärittelyyn ExternalFileType uusi vapaaehtoinen elementti DocumentClass (bdt:DocumentClassType)
+    
+	Muutokset skeemapakettiin V33.02:
+	- Lisätty wct-nimiavaruus skeematiedostoviittauksella WoodForceCommonTypes.xsd
+	- Päivitetty määrittelyn "ExternalFileType" elementtien "WorkingSiteId" ja StorageId tyypeiksi ERPIdType
+    
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/ExternalFile"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/ExternalFile"
+           elementFormDefault="qualified" attributeFormDefault="unqualified" version="V33.02">
+    
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+        schemaLocation="WoodForceCommonTypes.xsd"/>
+    
+    <xs:element name="ExternalFile" type="ExternalFileType">
+        <xs:annotation>
+            <xs:documentation>Tiedoston lähetys</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="ExternalFileType">
+        <xs:sequence>
+            <xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Urakanantajan tunnus</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ContractorId" type="bdt:String20Type" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Yrityksen ALV-tunnus</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Lohkon tunniste</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StandId" type="bdt:String20Type" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Kuvion tunniste</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StorageId" type="wct:ERPIdType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Varastopaikan tunniste</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProductUserId" type="bdt:String50Type" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>PIN</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ResourceId" type="bdt:String20Type" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>ResurssiId</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileName" type="bdt:String100Type" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Tiedoston nimi</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileFormat" type="bdt:String5Type" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Tiedoston muoto (esim. xml, zip)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Label" type="bdt:String100Type">
+                <xs:annotation>
+                    <xs:documentation>Tunniste, esimerkiksi käyttötarkoitus</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocumentClass" type="bdt:DocumentClassType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Tunniste, esimerkiksi käyttötarkoitus</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Bytes" type="xs:base64Binary" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Liitetiedosto</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

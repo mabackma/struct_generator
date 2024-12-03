@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 sp1 (x64) (http://www.altova.com) by Juha-Antti Sorsa (Metsäteho Oy) -->
+<!-- ******************************************************************************************************************************* -->
+<!-- ***  Object Geographical Report XML Schema file   						   			 														     *** -->
+<!-- ******************************************************************************************************************************* -->
+<!--
+
+   Document Name: 				ObjectGeographicalReport_V3p1.xsd
+   Generated On: 				6 February 2015
+   Version number:				3.1 Release
+   Schema agency:				Skogforsk
+   Schema web address:			http://www.skogforsk.se/stanford2010/schema/
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:skogforsk:stanford2010" xmlns:doc="urn:skogforsk:stanford2010:doc" xmlns:sfd="urn:skogforsk:stanford2010" targetNamespace="urn:skogforsk:stanford2010" elementFormDefault="qualified" attributeFormDefault="unqualified" version="release_3.1" sfd:versionDate="2015-02-06">
+	<!-- ===== Includes ===== -->
+	<xsd:include schemaLocation="StanForD2010CommonDefinitions_V3p1.xsd"/>
+	<!-- ===== Root Element ===== -->
+	<xsd:element name="ObjectGeographicalReport" type="ObjectGeographicalReportType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<doc:VersionCreated>1.0</doc:VersionCreated>
+				<doc:Description>The root element of the Object Geographical Report message</doc:Description>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:unique name="UniqueMachineKey">
+			<xsd:selector xpath="sfd:Machine"/>
+			<xsd:field xpath="sfd:MachineKey"/>
+		</xsd:unique>
+		<xsd:unique name="UniqueMachineUserID">
+			<xsd:selector xpath="sfd:Machine"/>
+			<xsd:field xpath="MachineUserID"/>
+		</xsd:unique>
+	</xsd:element>
+	<!-- ===== Type Definitions ===== -->
+	<xsd:complexType name="GeographicDirectiveObjectGeographicalReportType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<doc:VersionCreated>1.0</doc:VersionCreated>
+				<doc:Graph>GeographicDirectiveObjectGeographicalReportTypeGraph.png</doc:Graph>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="AlarmCoordinates" type="CoordinatesType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<doc:VersionCreated>1.0</doc:VersionCreated>
+						<doc:Description>Alarm coordinates for harvesting object. These
+coordinates may be used in case of an emergency in order
+to quickly give a rescue team the approximate coordinates
+of the machine.Only one set per object is allowed.</doc:Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GISCoordinateReferenceSystem" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						<doc:VersionCreated>1.0</doc:VersionCreated>
+						<doc:VarNumber>v467_t2</doc:VarNumber>
+						<doc:Unit>list</doc:Unit>
+						<doc:Description>Coordinate reference system used for all layers/gis-files, codes according to the EPSG database
+(http://www.epsg.org/), see also appendix. Does not affect
+coordinates registered in StanForD files.</doc:Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GISLayer" type="GISLayerObjectGeographicalReportType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+						<doc:VersionCreated>1.0</doc:VersionCreated>
+						<doc:Description>Structure with data for each gis layer.</doc:Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GISLayerObjectGeographicalReportType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<doc:VersionCreated>1.0</doc:VersionCreated>
+				<doc:Graph>GISLayerObjectGeographicalReportTypeGraph.png</doc:Graph>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="GISLayerType">
+				<xsd:sequence>
+					<xsd:element name="GISFileModificationDate" type="ModificationDateType">
+						<xsd:annotation>
+							<xsd:documentation>
+								<doc:VersionCreated>1.0</doc:VersionCreated>
+								<doc:VarNumber>v460_t6</doc:VarNumber>
+								<doc:Unit>yyyy-mm-ddThh:mm:ss[+|-]hh:mm</doc:Unit>
+								<doc:Description>:Date of last modification or creation in forest machine per layer. Registered in machine. Time stamp must have the following times registered: local time ±offset from UTC.</doc:Description>
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="GISFileModified" type="GISFileModifiedType">
+						<xsd:annotation>
+							<xsd:documentation>
+								<doc:VersionCreated>1.0</doc:VersionCreated>
+								<doc:VarNumber>v460_t5</doc:VarNumber>
+								<doc:Unit>list</doc:Unit>
+								<doc:Description>Layer has been modified in forest machine. The allowed values are: "Not modified","Modified" and "New"
+Code must be "New" if file was created in forest machine,
+irrespectively of later modifications. Registered in
+machine.</doc:Description>
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="TrackingFileCategory" type="TrackingCategoryType">
+						<xsd:annotation>
+							<xsd:documentation>
+								<doc:VersionCreated>1.0</doc:VersionCreated>
+								<doc:VarNumber>v460_t7</doc:VarNumber>
+								<doc:Unit>list</doc:Unit>
+								<doc:Description>Type of tracking file created in forest machine. Allowed values are:
+"Points tracking","Lines tracking","Plygons tracking" and "Tracking not required"
+Observe that this information is only registered in the
+machine. Registered in machine</doc:Description>
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="GISDatabaseFileSpecification" type="GISDatabaseFileSpecificationType">
+						<xsd:annotation>
+							<xsd:documentation>
+								<doc:VersionCreated>1.0</doc:VersionCreated>
+								<doc:Description>Structure for describing db-files</doc:Description>
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:choice>
+						<xsd:element name="GISFileFormatPoint" type="GISFileFormatPointType" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>
+									<doc:VersionCreated>1.0</doc:VersionCreated>
+									<doc:Description>Format classes for points, per layer. </doc:Description>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="GISFileFormatLine" type="GISFileFormatLineType" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>
+									<doc:VersionCreated>1.0</doc:VersionCreated>
+									<doc:Description>Format classes for lines, per layer. </doc:Description>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="GISFileFormatPolygon" type="GISFileFormatPolygonType" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>
+									<doc:VersionCreated>1.0</doc:VersionCreated>
+									<doc:Description>Format classes for polygon, per layer. </doc:Description>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MachineObjectGeographicalReportType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<doc:VersionCreated>1.0</doc:VersionCreated>
+				<doc:Graph>MachineObjectGeographicalReportTypeGraph.png</doc:Graph>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="MachineWithHeadType">
+				<xsd:sequence>
+					<xsd:element name="ObjectDefinition" type="ObjectDefinitionObjectGeographicalReportType" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>
+								<doc:VersionCreated>1.0</doc:VersionCreated>
+								<doc:Description>Structure for object specific data</doc:Description>
+							</xsd:documentation>
+						</xsd:annotation>
+						<xsd:unique name="UniqueObjectKey">
+							<xsd:selector xpath="sfd:ObjectKey"/>
+							<xsd:field xpath="."/>
+						</xsd:unique>
+						<xsd:unique name="UniqueObjectUserID">
+							<xsd:selector xpath="sfd:ObjectUserID"/>
+							<xsd:field xpath="."/>
+						</xsd:unique>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ObjectDefinitionObjectGeographicalReportType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<doc:VersionCreated>1.0</doc:VersionCreated>
+				<doc:Graph>ObjectDefinitionObjectGeographicalReportTypeGraph.png</doc:Graph>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="ObjectDefinitionMachineType">
+				<xsd:sequence>
+					<xsd:element name="TextToMachine" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>
+								<doc:VersionCreated>1.0</doc:VersionCreated>
+								<doc:VarNumber>v200_t2</doc:VarNumber>
+								<doc:Unit>free text</doc:Unit>
+								<doc:Description>Text related to harvesting object sent to machine</doc:Description>
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="GeographicDirective" type="GeographicDirectiveObjectGeographicalReportType">
+						<xsd:annotation>
+							<xsd:documentation>
+								<doc:VersionCreated>1.0</doc:VersionCreated>
+								<doc:Description>Structure for GIS data</doc:Description>
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ObjectGeographicalReportType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<doc:VersionCreated>1.0</doc:VersionCreated>
+				<doc:Graph>ObjectGeographicalReportTypeGraph.png</doc:Graph>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ObjectGeographicalReportHeader" type="MessageHeaderType">
+				<xsd:annotation>
+					<xsd:documentation>
+						<doc:VersionCreated>1.0</doc:VersionCreated>
+						<doc:Description>General Report for message</doc:Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Machine" type="MachineObjectGeographicalReportType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+						<doc:VersionCreated>1.0</doc:VersionCreated>
+						<doc:Description>All the object specific geographical data is included under Machine elements</doc:Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="ExtensionType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<doc:VersionCreated>1.0</doc:VersionCreated>
+						<doc:Description>Extension element can include whatever data the users want. The only requirement is that it is well-formed XML i.e. it is tagged</doc:Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="messageType" type="MessageCategoryType" use="required" fixed="ogr">
+			<xsd:annotation>
+				<xsd:documentation>
+					<doc:VersionCreated>1.0</doc:VersionCreated>
+					<doc:Unit>list</doc:Unit>
+					<doc:Description>Enumeration list of file extensions of StanForD 2010 messages: Allowed value in Object Geographical Report message is: "ogr"</doc:Description>
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attributeGroup ref="MessageAttributeGroup"/>
+	</xsd:complexType>
+	<xsd:simpleType name="GISFileModifiedType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Not modified"/>
+			<xsd:enumeration value="Modified"/>
+			<xsd:enumeration value="New"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

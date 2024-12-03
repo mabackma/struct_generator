@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.03:
+	-Lisätty uusi vapaaehtoinen elementti MapSymbolName (karttamerkin nimi)
+	
+	Muutokset skeemapakettiin V11.06:
+	-Elementin Geometry tyyppimäärittely muutettu gdt:AlternativeGeometriesType -> gdt:AlternativeGeometries2Type
+
+    Muutokset skeemapakettiin V11.07:
+    -Lisätty nimiavaruusmäärittely wct: (WoodForceCommonTypes)
+    -Lisätty uudet vapaaehtoiset elementit DitchType, Length, Depth, Width, Volume, MaterialCode, MaterialInfoText, DitchOrRoadPlanName, AmountOfRottenTreesInSpareGroupOfTrees, AmountOfRottenSnagsInSpareGroupOfTrees ja AmountOfLivingTreesInSpareGroupOfTrees
+    
+    Muutokset skeemapakettiin V14.03:
+    -Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+    
+    Muutokset skeemapakettiin V15.01:
+    - MapSymbolId-elementin maksimipituus kasvatettu 50 merkkiin
+    
+    Muutokset skeemapakettiin V17.03:
+    - Poistettu elementit AmountOfRottenTreesInSpareGroupOfTrees, AmountOfRottenSnagsInSpareGroupOfTrees ja AmountOfLivingTreesInSpareGroupOfTrees
+    - Lisätty vapaaehtoinen elementti SpareGroupOfTrees ja sille tyyppimäärittely wct:SpareTreesByCategoryType 
+    
+    Muutokset skeemapakettiin V28.01:
+    - Lisätty uusi nimiavaruusmäärittely sf: (SpecialFeatureBase)
+    - Lisätty tyyppimäärittelyyn MapSymbolDataType uusi vapaaehtoinen elementti UsingRestrictions (sf:UsingRestrictionsType)
+    
+    Muutokset skeemapakettiin V30.01:
+    -Vaihdettu elementin WorkingSiteId tyyppimäärittelyksi bdt:String50Type
+    -Lisätty MapSymbols tyyppimäärittelyyn uudet vapaaehtoiset elementit FeatureType (bdt:FeatureTypeType), FeatureAdditionalInfo (bdt:String1000Type), BufferDistance (sf:BufferDistanceType)
+ 
+	Muutokset skeemapakettiin V33.02:
+	- Päivitetty määrittelyn "MapSymbolType" elementin "WorkingSiteId" tyypiksi ERPIdType
+	- Päivitetty määrittelyn "MapSymbolDataType" elementin "MapSymbolId" tyypiksi ERPIdType
+ 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://standardit.tapio.fi/schemas/forestData/MapSymbol"
+	xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:gdt="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+	xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+	xmlns:sf="http://standardit.tapio.fi/schemas/forestData/specialFeatureBase"
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/MapSymbol"
+	elementFormDefault="qualified" attributeFormDefault="unqualified" version="V33.02">
+
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+		schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+		schemaLocation="Common_GeometricDataType.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+		schemaLocation="WoodForceCommonTypes.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/specialFeatureBase"
+		schemaLocation="SpecialFeatureBase.xsd"/>
+
+	<xs:element name="MapSymbol" type="MapSymbolType">
+		<xs:annotation>
+			<xs:documentation>Lohkon karttamerkit</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="MapSymbolType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon tunniste, yksilöivä id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MapSymbols" type="MapSymbolsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Karttamerkit (1..n)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MapSymbolsType">
+		<xs:sequence>
+			<xs:element name="Symbol" type="MapSymbolDataType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MapSymbolDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Karttamerkit</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MapSymbolId" type="wct:ERPIdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Karttamerkin ID MJ:ssä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsertedMapSymbolId" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Karttamerkin ID WF:ssä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MapSymbolName" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Karttamerkin nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FeatureType" type="bdt:FeatureTypeType" minOccurs="0"/>
+			<xs:element name="FeatureCode" type="bdt:FeatureCodeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Karttamerkin tyyppi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FeatureAdditionalCode" type="bdt:FeatureAdditionalCodeType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Avainbiotoopin lisämääre</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FeatureInfo" type="bdt:String1000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FeatureAdditionalInfo" type="bdt:String1000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Erityispiirrettä kuvaava lisäteksti. Sijainnillisten kohteiden osalta tämä voi olla esim. erikseen näytettävä teksti (ei kartalla näkyvä teksti).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geometry" type="gdt:AlternativeGeometries2Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Karttamerkin geometria</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BufferDistance" type="sf:BufferDistanceType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Karttamerkin vaikutusvyöhyke</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CanModify" type="bdt:YesNoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Muokkausmahdollisuus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceId" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Resurssin tunniste lisätyille karttamerkeille</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DitchType" type="wct:DitchTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Ojan tyyppi (valtaoja, sarkaoja, laskuoja)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Length" type="bdt:PositiveInteger5digitsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Karttamerkin pituus maastossa, metriä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Depth"
+				type="bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Karttamerkin syvyys maastossa, metriä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Width"
+				type="bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Karttamerkin leveys maastossa, metriä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Volume" type="bdt:PositiveInteger3digitsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Karttamerkin tilavuus maastossa, kuutiometriä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MaterialCode" type="bdt:MaterialCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Materiaalin koodi </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MaterialInfoText" type="bdt:String1000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Materiaalin lisätiedot </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DitchOrRoadPlanName" type="bdt:String100Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Hankkeen nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SpareGroupOfTrees" type="wct:SpareTreesByCategoryType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Säästöpuut (0..n)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="sf:UsingRestrictions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Käytönrajoitteet</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

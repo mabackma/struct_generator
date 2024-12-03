@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	*****************************************************************************
+	Hirvivahinkoilmoituksen elementit ja tyypit. 
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.01:
+	-Lisätty uusi vapaaehtoinen elementti Attorney. Elementti on tyypiltään AttorneyType, käytetään viittauksella (ref) FinancingActCommon.xsd skeematiedostoon. Lisätty myös vaadittava nimiavaruusmäärittely.
+	
+	Muutokset skeemapakettiin V11.02:
+	-Skeematiedostosta poistettu ja korvattu viitteet poistettuun skeematiedostoon FinancingActCommon.xsd, jonka sisältö siirretty skeematiedostoon ForestCentreCommon.xsd.
+	
+	Muutokset skeemapakettiin V11.04:
+	-Lisätty uusi pakollinen elementti Sender
+	-Lisätty uusi vapaaehtoinen elementti Documents
+	-Lisätty uusi pakollinen elementti DeclarationPolygonReference
+	
+	Muutokset skeemapakettiin V11.05:
+	-Elementille DeclarationPolygonReference lisätty tyyppimäärittely co:ReferenceType
+	-Elementin DeclarationPolygonReference (hirvivahinkoalueen viite) dokumentaatio päivitetty
+	****************************************************************************
+-->
+
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/MooseDamageDeclaration"
+	xmlns="http://standardit.tapio.fi/schemas/forestData/MooseDamageDeclaration"
+	xmlns:fud="http://standardit.tapio.fi/schemas/forestData/ForestUseDeclaration"
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:re="http://standardit.tapio.fi/schemas/forestData/realEstate"
+	xmlns:ci="http://standardit.tapio.fi/schemas/forestData/contactInformation"
+	xmlns:gml="http://www.opengis.net/gml"
+	xmlns:fcc="http://standardit.tapio.fi/schemas/forestData/ForestCentreCommon"
+	elementFormDefault="qualified"
+	version="V11.05">
+
+
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/ForestUseDeclaration"
+		schemaLocation="ForestUseDeclaration.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+		schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/realEstate"
+		schemaLocation="RealEstate.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/contactInformation"
+		schemaLocation="ContactInformation.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="../gml/3.1.1/base/gml.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/ForestCentreCommon"
+		schemaLocation="ForestCentreCommon.xsd"/>
+
+
+	<!-- Elementtimääritykset / Element definitions -->
+	<xs:element name="MooseDamageDeclaration" type="MooseDamageDeclarationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hirvivahinkoilmoitus.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Moose damage declaration.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="CompensationApplicant" type="ContactInformationBankAccountType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hirvituhoilmoituksen tekijän yhteys- ja pankkitiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Moose damage compensation applicant's contact and bank information</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="DeclarationPolygons" type="DeclarationPolygonsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hirvivahinkoalueet</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Moose damage areas</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="DeclarationPolygon" type="DeclarationPolygonType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hirvivahinkoalue</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Moose damage area</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="MooseDamageDeclarationReference" type="co:ReferenceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ilmoituksen lähettäjän antama ilmoituskohtainen, valtakunnallisesti yksilöivä viite. Ilmoitusviitteen muodostamissääntö: lähettäjän organisaatiotunnus, vuosi, lähettäjän antama ilmoituksen yksilöivä tunnus.  Lähettävän organisaation tunnukset:  Metsähallitus=M-H, Metsämannut=M-M, Metsänhoitoyhdistys=MHY, Stora Enso=S-E, Tornator=TOR, UPM-Kymmene=UPM, MetsäGroup=M-G, Metsään.fi = MFI,  L&amp;T Biowatti Oy = BWO, Muu organisaatio=MUU. Esim. MHY2015999999999999999999999. Jos siirtotiedostossa käytetään MUU-organisaatiotunnusta, on siitä oltava yhteydessä tiedonsiirtopalvelun ylläpitäjään.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="MooseDamageDate" type="co:DateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hirvivahinkoilmoituksen päivämäärä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Moose damage declaration date</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="AdditionalDetails" type="co:String2000Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Lisätiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Additional information</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="MooseDamageDeclarationRealEstates"
+		type="MooseDamageDeclarationRealEstatesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hirvivahinkoilmoituksen kiinteistöt.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Real estates of moose damage declaration.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="CompensationByInsurance" type="CompensationByInsuranceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Korvaukset vahinkoilmoituksen mukaisesta vahinkotapahtumasta vakuutuksen perusteella.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="ReceivedCompensation" type="co:YesNoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Saatu korvausta: Kyllä / ei</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="InsuranceCompany" type="co:String500Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Vakuutusyhtiön nimi</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Insurance company name</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="InsuranceNumber" type="co:String100Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Vakuutusnumero</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="CompensationAmount" type="co:Decimal7And2PositiveType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Korvauksen määrä, euroa</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="CompensationDescription" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvaus korvauksen perusteista ja korvauksen maksajasta.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Description about the basis of compensation and the payer of the compensation.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="CompensationByLegislation" type="CompensationByLegislationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Korvaukset vahinkoilmoituksen mukaisesta vahinkotapahtumasta lainsäädännön perusteella.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="PreviousMooseDamage" type="PreviousMooseDamageType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Aiempi arviointi / arviointipyyntö ja korvaus hirvivahinkotapahtumassa.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="PreviousMooseDamageEvaluationDate" type="co:DateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pvm, hakijan aiempi saman kalenterivuoden hirvieläinten aiheuttama vahinko, josta on pyydetty arviota.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="PreviousMooseDamageEvaluationMunicipality" type="co:MunicipalityNameType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kunta, hakijan aiempi saman kalenterivuoden hirvieläinten aiheuttama vahinko, josta on pyydetty arviota.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="PreviousSameAreaMooseDamageCompensationYear" type="co:YearType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Vuosi, jolloin riistavahinkolain alaisia hirvieläinvahinkokorvauksia on maksettu samalta alueelta aikaisemmin.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="PreviousMooseDamages" type="PreviousMooseDamagesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Aiemmat arvioinnit / arviointipyynnöt ja korvaukset hirvivahinkotapahtumissa.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="LocationEstates" type="LocationEstatesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Viittaukset sijaintikiinteistöihin.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="LocationEstate" type="fcc:LocationEstateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Id-viittaus RealEstate.id -attribuuttiin.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:element name="Sender" type="ci:ContactInformationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ilmoituksen lähettäjä / laatija.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:element name="DeclarationPolygonReference" type="co:ReferenceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hirvivahinkoalueen viite. Ilmoituksen lähettäjän antama aluekohtainen, valtakunnallisesti yksilöivä viite. Alueviitteen muodostamissääntö: lähettäjän organisaatiotunnus, vuosi, lähettäjän antama kuvion yksilöivä tunnus. Lähettävän organisaation tunnukset: Metsähallitus=M-H, Metsämannut=M-M, Metsänhoitoyhdistys=MHY, Stora Enso=S-E, Tornator=TOR, UPM-Kymmene=UPM, MetsäGroup=M-G, Metsään.fi = MFI, L&amp;T Biowatti Oy = BWO, Muu organisaatio=MUU. Esim. MHY2003999999999999999999999. Jos siirtotiedostossa käytetään MUU-organisaatiotunnusta, on siitä oltava yhteydessä tiedonsiirtopalvelun ylläpitäjään.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Moose damage declaration polygon reference</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+
+	<!-- Tyyppimääritykset / Type definitions -->
+	<xs:complexType name="MooseDamageDeclarationType">
+		<xs:sequence>
+			<xs:element ref="MooseDamageDeclarationReference" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="MooseDamageDate" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="AdditionalDetails" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="CompensationApplicant" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="Sender" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="fcc:Attorney" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="MooseDamageDeclarationRealEstates" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="CompensationByInsurance" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="CompensationByLegislation" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="PreviousMooseDamages" minOccurs="0"/>
+			<xs:element ref="fcc:Documents" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Dokumentit</xs:documentation>
+					<xs:documentation xml:lang="sv"/>
+					<xs:documentation xml:lang="en"/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="co:IdStringType">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Hirvivahinkoilmoituksen id</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Moose damage declaration id</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="CompensationByInsuranceType">
+		<xs:sequence>
+			<xs:element ref="ReceivedCompensation" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="InsuranceCompany" minOccurs="0"/>
+			<xs:element ref="InsuranceNumber" minOccurs="0"/>
+			<xs:element ref="CompensationAmount" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ContactInformationBankAccountType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yhteys- ja pankkitiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Contact and bank account information</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ci:ContactInformationType">
+				<xs:sequence>
+					<xs:element ref="co:BankAccount"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DeclarationPolygonsType">
+		<xs:sequence>
+			<xs:element ref="DeclarationPolygon" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DeclarationPolygonType">
+		<xs:sequence>
+			<xs:element ref="DeclarationPolygonReference" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="gml:polygonProperty"/>
+			<xs:element ref="LocationEstates"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="co:IdStringType"/>
+	</xs:complexType>
+
+	<xs:complexType name="MooseDamageDeclarationRealEstatesType">
+		<xs:complexContent>
+			<xs:extension base="re:RealEstatesWithOwnersInformationType2">
+				<xs:sequence>
+					<xs:element ref="DeclarationPolygons" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="CompensationByLegislationType">
+		<xs:sequence>
+			<xs:element ref="ReceivedCompensation" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="CompensationDescription" minOccurs="0"/>
+			<xs:element ref="CompensationAmount" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PreviousMooseDamagesType">
+		<xs:sequence>
+			<xs:element ref="PreviousMooseDamage" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PreviousMooseDamageType">
+		<xs:sequence>
+			<xs:element ref="PreviousMooseDamageEvaluationDate" minOccurs="0"/>
+			<xs:element ref="PreviousMooseDamageEvaluationMunicipality" minOccurs="0"/>
+			<xs:element ref="PreviousSameAreaMooseDamageCompensationYear" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="LocationEstatesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion sijaintikiinteistöjen id:t</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Real estate ids of stands</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="LocationEstate" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

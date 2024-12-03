@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Muutokset skeemapakettiin V10.05:
+    -Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+    
+    Muutokset skeemapakettiin V11.07:
+    -Skeematiedostoon lisätty uusi koodisto ScaleFactorTreeSpeciesType
+    -Skeematiedostoon lisätty uusi koodisto DitchTypeType
+    
+    Muutokset skeemapakettiin V14.03:
+    -DitchTypeType -koodistoon lisätty uusi arvo 4/Kokoojaoja
+    
+    Muutokset skeemapakettiin V17.03:
+    -Lisätty tyyppimäärittelyt SpareTreesByCategoryType ja SpareTreesType 
+    
+    Muutokset skeemapakettiin V17.04:
+    -Vaihdettu elementin AmountOfSpareTrees tyypiksi "bdt:PositiveInteger4digitsType"
+
+   Muutokset skeemapakettiin V18.03:
+    -Lisätty käännöksiä tyyppimäärittelyille HopperTypeType ja DitchTypeType
+
+    Muutokset skeemapakettiin V23.01:
+    -Lisätty tyyppimäärittelyt ResponsibleOfPreClearingType ja PricingMethodType
+
+    Muutokset skeemapakettiin V28.01:
+    -Lisätty tyyppimäärittely QualityOfTreeSpeciesType
+    
+    Muutokset skeemapakettiin V30.01:
+    -Vaihdettu elementin AmountOfSpareTrees tyypiksi bdt:PositiveInteger4digitsType >> bdt:PositiveInteger5digitsType
+    -Lisätty tyyppimäärittelyyn SpareTreesType uudet vapaaehtoiset elementit TreeSpecies (bdt:TreeSpeciesType), MeanDiameterOfSpareTrees (bdt:DiameterType), 
+    MeanHeightOfSpareTrees (bdt:HeightType), VolumeOfSpareTrees (bdt:VolumeType)
+    
+    Muutokset skeemapakettiin V31.01:
+    -Lisätty tyyppimäärittelyyn SpareTreesType uusi vapaaehtoinen elementti DiameterClassOfSpareTrees (bdt:PositiveInteger4digitsType)
+    
+    Muutokset skeemapakettiin V33.02:
+    - Lisätty tyyppimäärittely ERPIdType (perustuu tyyppimäärittelyyn bdt:String50Type)
+    - Lisätty tyyppimäärittely ShortERPIdType (perustuu tyyppimäärittelyyn bdt:String20Type)
+    - Lisätty tyyppimäärittely TaxNumberType (perustuu tyyppimäärittelyyn bdt:String20Type)
+    - Lisätty tyyppimäärittely WorkingSiteNumberType (perustuu tyyppimäärittelyyn bdt:String10Type)
+    
+    Muutokset skeemapakettiin V33.03:
+    - Lisätty tyyppimäärittely FinalAuditSpareTreesType
+
+    ***************************************************************
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="V33.03">
+    
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+
+    <xs:simpleType name="ERPIdType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">ERP id:n määrittely</xs:documentation>
+            <xs:documentation xml:lang="sv"></xs:documentation>
+            <xs:documentation xml:lang="en">ERP id type definition</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="bdt:String50Type"/>
+    </xs:simpleType>
+    <xs:simpleType name="ShortERPIdType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Lyhyen ERP id:n määrittely</xs:documentation>
+            <xs:documentation xml:lang="sv"></xs:documentation>
+            <xs:documentation xml:lang="en">Short ERP id type definition</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="bdt:String20Type"/>
+    </xs:simpleType>
+    <xs:simpleType name="TaxNumberType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Veronumeron tyyppimäärittely</xs:documentation>
+            <xs:documentation xml:lang="sv"></xs:documentation>
+            <xs:documentation xml:lang="en">Tax number type definition</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="bdt:String20Type"/>
+    </xs:simpleType>
+    <xs:simpleType name="WorkingSiteNumberType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Lohkonumeron tyyppimäärittely</xs:documentation>
+            <xs:documentation xml:lang="sv"></xs:documentation>
+            <xs:documentation xml:lang="en">Working site number type definition</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="bdt:String10Type"/>
+    </xs:simpleType>
+    
+    <xs:complexType name="ContractorsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Yritykset</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ContractorId" type="bdt:String20Type" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Yrityksen alv-tunnus (urakoitsija)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="MonthType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kuukausi</xs:documentation>
+            <xs:documentation xml:lang="sv">Månad</xs:documentation>
+            <xs:documentation xml:lang="en">Month</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="12"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CommonMessageType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Vakioviestit</xs:documentation>
+            <xs:documentation xml:lang="sv">Allmänna meddelanden</xs:documentation>
+            <xs:documentation xml:lang="en">Common messages</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Kääntöpaikka huono</xs:documentation>
+                    <xs:documentation xml:lang="sv">Dålig vändplats</xs:documentation>
+                    <xs:documentation xml:lang="en">Bad turning place</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Varastopaikka vaarallinen</xs:documentation>
+                    <xs:documentation xml:lang="sv">Farlig lagerplats</xs:documentation>
+                    <xs:documentation xml:lang="en">Dangerous storage place</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Peltovarasto</xs:documentation>
+                    <xs:documentation xml:lang="sv">Fältlager</xs:documentation>
+                    <xs:documentation xml:lang="en">Field storage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Kääntöpaikka puutteellinen</xs:documentation>
+                    <xs:documentation xml:lang="sv">Otillräcklig vändplats</xs:documentation>
+                    <xs:documentation xml:lang="en">Insufficient turning place</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Metsuripuut</xs:documentation>
+                    <xs:documentation xml:lang="sv">Skogshuggarvirke</xs:documentation>
+                    <xs:documentation xml:lang="en">Lumberjack wood</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Varastopaikka ahdas</xs:documentation>
+                    <xs:documentation xml:lang="sv">Trång lagerplats</xs:documentation>
+                    <xs:documentation xml:lang="en">Narrow location</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="7">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Kahta eri ptl:ää sama kasa</xs:documentation>
+                    <xs:documentation xml:lang="sv">En skota av två olika trävaror</xs:documentation>
+                    <xs:documentation xml:lang="en">Pile from two different assortments</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="8">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Kahta eri sopimusta samassa pinossa</xs:documentation>
+                    <xs:documentation xml:lang="sv">En skota av två olika avtal</xs:documentation>
+                    <xs:documentation xml:lang="en">Pile from two different contracts</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="9">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Pinot kaukana tiestä</xs:documentation>
+                    <xs:documentation xml:lang="sv">Skotarna långt från vägen</xs:documentation>
+                    <xs:documentation xml:lang="en">Pile too far from the road</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Tienkorjaustarve</xs:documentation>
+                    <xs:documentation xml:lang="sv">Vägreparation behövs</xs:documentation>
+                    <xs:documentation xml:lang="en">Road needs maintenance</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Tie ei ajettavissa</xs:documentation>
+                    <xs:documentation xml:lang="sv">Vägen är inte körbar</xs:documentation>
+                    <xs:documentation xml:lang="en">Road not passable</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Ei terähakkurikelpoinen</xs:documentation>
+                    <xs:documentation xml:lang="sv">assar inte för flishugg</xs:documentation>
+                    <xs:documentation xml:lang="en">Not valid for chopper</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Vapaavalintainen viesti</xs:documentation>
+                    <xs:documentation xml:lang="sv">Valfritt meddelande</xs:documentation>
+                    <xs:documentation xml:lang="en">Free message</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StanfordTreeSpeciesType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Stanford-puulajikoodi</xs:documentation>
+            <xs:documentation xml:lang="sv">Stanford-trädslagskod</xs:documentation>
+            <xs:documentation xml:lang="en">Stanford tree species code</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Mänty</xs:documentation>
+                    <xs:documentation xml:lang="sv">Tall</xs:documentation>
+                    <xs:documentation xml:lang="en">Pine</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Kuusi</xs:documentation>
+                    <xs:documentation xml:lang="sv">Gran</xs:documentation>
+                    <xs:documentation xml:lang="en">Spruce</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Koivu</xs:documentation>
+                    <xs:documentation xml:lang="sv">Björk</xs:documentation>
+                    <xs:documentation xml:lang="en">Birch</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Muu lehtipuu</xs:documentation>
+                    <xs:documentation xml:lang="sv">Annan lövträd</xs:documentation>
+                    <xs:documentation xml:lang="en">Other</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ScaleFactorTreeSpeciesType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kuormainvaaka-puulajikoodi</xs:documentation>
+            <xs:documentation xml:lang="sv">Kranvåg-trädslagskod</xs:documentation>
+            <xs:documentation xml:lang="en">Loader scale tree species code</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Havupuu</xs:documentation>
+                    <xs:documentation xml:lang="sv">Barrträd</xs:documentation>
+                    <xs:documentation xml:lang="en">Conifer</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Koivu</xs:documentation>
+                    <xs:documentation xml:lang="sv">Björk</xs:documentation>
+                    <xs:documentation xml:lang="en">Birch</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Muu lehtipuu</xs:documentation>
+                    <xs:documentation xml:lang="sv">Annat lövträd</xs:documentation>
+                    <xs:documentation xml:lang="en">Other broad-leaved tree</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Sekapuusto</xs:documentation>
+                    <xs:documentation xml:lang="sv">Blandskog</xs:documentation>
+                    <xs:documentation xml:lang="en">Mixed woods</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AreaCodeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Aluekoodi</xs:documentation>
+            <xs:documentation xml:lang="sv">Områdskod</xs:documentation>
+            <xs:documentation xml:lang="en">Area code</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="A">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Etelä-Suomi</xs:documentation>
+                    <xs:documentation xml:lang="sv">Södra Finland</xs:documentation>
+                    <xs:documentation xml:lang="en">South Finland</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Pohjanmaa</xs:documentation>
+                    <xs:documentation xml:lang="sv">Österbotten</xs:documentation>
+                    <xs:documentation xml:lang="en">Ostrobothnia</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="C">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Kainuu</xs:documentation>
+                    <xs:documentation xml:lang="sv">Kajanaland</xs:documentation>
+                    <xs:documentation xml:lang="en">Kainuu</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Lappi</xs:documentation>
+                    <xs:documentation xml:lang="sv">Lappland</xs:documentation>
+                    <xs:documentation xml:lang="en">Lapland</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Ylä-Lappi</xs:documentation>
+                    <xs:documentation xml:lang="sv">Övre Lappland</xs:documentation>
+                    <xs:documentation xml:lang="en">Northern Lapland</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="LoadRatingType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kantavuusluokka</xs:documentation>
+            <xs:documentation xml:lang="sv">Bärighetsklass</xs:documentation>
+            <xs:documentation xml:lang="en">Load bearing class</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Kantava</xs:documentation>
+                    <xs:documentation xml:lang="sv">Bärande</xs:documentation>
+                    <xs:documentation xml:lang="en">Bearing</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Parannettu kantavuus</xs:documentation>
+                    <xs:documentation xml:lang="sv">Förbättrad bärighet</xs:documentation>
+                    <xs:documentation xml:lang="en">Improved bearing</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Superkantava</xs:documentation>
+                    <xs:documentation xml:lang="sv">Superbärande</xs:documentation>
+                    <xs:documentation xml:lang="en">Super bearing</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="HopperTypeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Suppilon tyyppi</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en"/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Normaali suppilo</xs:documentation>
+                    <xs:documentation xml:lang="sv" />
+                    <xs:documentation xml:lang="en">Normal hopper</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Varoalueen suppilo</xs:documentation>
+                    <xs:documentation xml:lang="sv" />
+                    <xs:documentation xml:lang="en">Safety area hopper</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Ojasuppilo</xs:documentation>
+                    <xs:documentation xml:lang="sv" />
+                    <xs:documentation xml:lang="en">Ditch hopper</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DitchTypeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Ojan tyyppi</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en"/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Valtaoja</xs:documentation>
+                    <xs:documentation xml:lang="sv">Huvuddike</xs:documentation>
+                    <xs:documentation xml:lang="en">Main ditch</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Sarkaoja</xs:documentation>
+                    <xs:documentation xml:lang="sv">Tegdike</xs:documentation>
+                    <xs:documentation xml:lang="en">Field ditch</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Laskuoja</xs:documentation>
+                    <xs:documentation xml:lang="sv">Avloppsdike</xs:documentation>
+                    <xs:documentation xml:lang="en">Drain ditch</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Kokoojaoja</xs:documentation>
+                    <xs:documentation xml:lang="sv" />
+                    <xs:documentation xml:lang="en">Collecting ditch</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="SpareTreesByCategoryType">
+        <xs:sequence>
+            <xs:element name="SpareTrees" type="SpareTreesType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>    
+    <xs:complexType name="SpareTreesType">
+        <xs:sequence>
+            <xs:element name="SpareTreeCategory" type="bdt:SpareTreeCategoryType" minOccurs="1"/>
+            <xs:element name="AmountOfSpareTrees" type="bdt:PositiveInteger5digitsType" minOccurs="1"/>
+            <xs:element name="TreeSpecies" type="bdt:TreeSpeciesType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Säästöpuun puulaji</xs:documentation>
+                </xs:annotation>    
+            </xs:element>
+            <xs:element name="MeanDiameterOfSpareTrees" type="bdt:DiameterType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Säästöpuiden keskiläpimitta</xs:documentation>
+                </xs:annotation>    
+            </xs:element>
+            <xs:element name="MeanHeightOfSpareTrees" type="bdt:HeightType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Säästöpuiden keskipituus</xs:documentation>
+                </xs:annotation>    
+            </xs:element>
+            <xs:element name="VolumeOfSpareTrees" type="bdt:VolumeType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Säästöpuiden tilavuus</xs:documentation>
+                </xs:annotation>    
+            </xs:element>
+            <xs:element name="DiameterClassOfSpareTrees" type="bdt:PositiveInteger4digitsType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Säästöpuiden läpimittaluokka. Minimiläpimitta esim. 100, 150, 200 mm</xs:documentation>
+                </xs:annotation>    
+            </xs:element>             
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FinalAuditSpareTreesType">
+        <xs:complexContent>
+            <xs:extension base="SpareTreesType">
+                <xs:sequence>
+                    <xs:element name="RetentionTreeTarget" type="bdt:PositiveInteger5digitsType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="fi">Säästöpuiden tavoitemäärä lohkolla. Tämä elementtiä käytetään WorkingSiteDynamicFinal-audit sanomalla mahdollisen metsäyhtiön tavoitteen välittämisessä metsäjärjestelmään.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:simpleType name="ResponsibleOfPreClearingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Asiakas</xs:documentation>
+					<xs:documentation xml:lang="sv">Kunden</xs:documentation>
+					<xs:documentation xml:lang="en">Customer</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>	
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantaja</xs:documentation>
+					<xs:documentation xml:lang="sv">Service köpäre</xs:documentation>
+					<xs:documentation xml:lang="en">Service buyer</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+    <xs:simpleType name="PricingMethodType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Puutavaralajihinnoittelu</xs:documentation>
+					<xs:documentation xml:lang="sv">Prissättning av virkessortiment</xs:documentation>
+					<xs:documentation xml:lang="en">Pricing according to assorment</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>	
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Runkohinnoittelu</xs:documentation>
+					<xs:documentation xml:lang="sv">Prissättning per stam</xs:documentation>
+					<xs:documentation xml:lang="en">Pricing according to stem</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Rungonosahinnoittelu</xs:documentation>
+					<xs:documentation xml:lang="sv">Prissättning per del av stam</xs:documentation>
+					<xs:documentation xml:lang="en">Pricing according to part of stem</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Runkohinnoittelu mänty</xs:documentation>
+					<xs:documentation xml:lang="sv">Prissättning per tall stam</xs:documentation>
+					<xs:documentation xml:lang="en">Pricing according to pine stem</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Runkohinnoittelu kuusi</xs:documentation>
+					<xs:documentation xml:lang="sv">Prissättning per gran stam</xs:documentation>
+					<xs:documentation xml:lang="en">Pricing according to spruce stem</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="QualityOfTreeSpeciesType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Hyvä</xs:documentation>
+					<xs:documentation xml:lang="sv">Bra</xs:documentation>
+					<xs:documentation xml:lang="en">Good</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Normaali</xs:documentation>
+					<xs:documentation xml:lang="sv">Vanligt</xs:documentation>
+					<xs:documentation xml:lang="en">Normal</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

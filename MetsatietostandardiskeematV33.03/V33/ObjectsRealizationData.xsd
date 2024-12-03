@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Toimenpiteen toteumatiedot.
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	***************************************************************
+-->
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/forestobject" 
+	xmlns="http://standardit.tapio.fi/schemas/forestData/forestobject" 
+	xmlns:ts="http://standardit.tapio.fi/schemas/forestData/treeStand"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="V10.05">
+	
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/treeStand" schemaLocation="TreeStand.xsd"/>
+   	
+	<!-- Element definitions -->
+   	<xs:element name="ObjectsRealizationData" type="ObjectsRealizationDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi"></xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>
+   	<xs:element name="ObjectRealization" type="ObjectRealizationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi"></xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+
+	<!-- Type definitions -->
+	<xs:complexType name="ObjectsRealizationDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Toimenpiteiden toteumatiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ObjectRealization" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ObjectRealizationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Toimenpiteen toteumatiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ts:TreeStandDataDate" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Kohteen tunniste. Esim. toimenpiteen tunniste.</xs:documentation>
+				<xs:documentation xml:lang="sv"></xs:documentation>
+				<xs:documentation xml:lang="en"></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>		
+		<xs:attribute name="parentId" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Toinen esim. metsikkökuvion tunniste.</xs:documentation>
+				<xs:documentation xml:lang="sv"></xs:documentation>
+				<xs:documentation xml:lang="en"></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>			
+	</xs:complexType>
+</xs:schema>

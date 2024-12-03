@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Kemera toteutusilmoitusviesti
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	24.8.2015
+	 - SubstituteMessage, kyllä/ei -tyyppiseksi,
+     - FinancialDecisionDeveliryByElectronicMeans ->ElectronicNotification
+	 
+	14.9.2015
+ 	-SubsittuteMessage ->UpdatePreviousMessage	
+	- ElectronicNotification: kommentti muutetttu
+	- SentDate: kommentti muutettu
+	- FinancingActPersonsGroup: lisätty "asiakasviite" henkilön tietoihin
+	- WorkAndAreaDetailsType: EstimatedStartDate ja EstimatedEndDate -> siirretty hakemuksen päätasolle
+	- WorkAndAreaDetailsType.PlanAndSubsidies.CostTypeAndCompletedWork.CostType -elementti:
+			        poistetettu CostTypeSpecifier -elementti ja CostTypeName -elementti
+	-Kemera-sanomista tiputetty pois ProcessingArea käsite
+	-FinancingActPersonsGroup: elementti SubsidyAppliers jättetty pois.  Tämän alla oli ennen vaihtoehtoisena:
+	 ApplicationSubsidyApplier/CompletionSubsidyApplier, nyt eroteltu niin että
+				* hakemuksessa: ApplicationSubsidyApplier/ * toteutusilmioituksessa:CompletionSubsidyApplier
+
+	18.9.2015
+	- FinancingActCompletionDeclarationType -tyypille lisätty lapsielementti "fac:Documents"
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.02:
+	-Skeematiedostosta poistettu ja korvattu viitteet poistettuun skeematiedostoon FinancingActCommon.xsd, jonka sisältö siirretty skeematiedostoon ForestCentreCommon.xsd.
+	***************************************************************
+-->
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://standardit.tapio.fi/schemas/forestData/FinancingActCompletionDeclaration"
+    xmlns="http://standardit.tapio.fi/schemas/forestData/FinancingActCompletionDeclaration"
+    xmlns:fac="http://standardit.tapio.fi/schemas/forestData/ForestCentreCommon"
+    xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+    elementFormDefault="qualified"
+    version="V11.02">
+
+    <!-- Imports / Includes -->
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/ForestCentreCommon"
+        schemaLocation="ForestCentreCommon.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+        schemaLocation="Common.xsd"/>
+
+    <!-- Elementtimääritykset -->
+    <!-- Element definitions -->
+    <xs:element name="FinancingActCompletionDeclaration" type="FinancingActCompletionDeclarationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Asetuksen mukaan pakollisia tietoja toteutusilmoituksella ovat kaikilla työlajeilla 1) hanketta koskevan rahoituspäätöksen numero, 2) tuensaajan ja asiakirjan laatijan nimi ja yhteystiedot, 3) tuensaajan tilinumero, 4) rahoituspäätöksen mukaiset työmäärät kiinteistöittäin sekä 5) kartta. Lisäksi taimikon varhaishoidolla pakollisia ovat 1) jäävän puuston määrä (runkoluku), 2) keskipituus ja 3) Poistuman suuruusluokka tai poistuman tarkka runkoluku. Lisäksi nuoren metsän hoidolla pakollisia ovat 1) jäävän puuston määrä (runkoluku), 2) keskiläpimitta, 3) jäävän puuston pituusluokka tai keskipituus ja 4) Poistuman suuruusluokka tai poistuman tarkka runkoluku.</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en"/>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="CompletionDataAndSubsidy" type="CompletionDataAndSubsidyType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Toteutus- ja tukitiedot</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Completion and subsidy details</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PartsOfProject" type="PartsOfProjectType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Hankeosat</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Parts of project</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PartOfProject" type="PartOfProjectType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Hankeosan tiedot</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Details of part of project</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="FinancingActProjectCompleted" type="co:YesNoType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Hankkeen päättävä toteutusilmoitus</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en"/>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ExtraFinancingApplication" type="co:YesNoType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Kyseessä on lisärahoitushakemus</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en"/>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="OtherPublicSubstitute" type="co:OtherPublicSubstituteType"/>
+    <xs:element name="BankReferenceNumber" type="co:BankReferenceNumberType"/>
+
+    <!-- Tyyppimääritykset -->
+    <!-- Type definitions -->
+    <xs:complexType name="FinancingActCompletionDeclarationType">
+        <xs:annotation>
+            <xs:documentation>Metsänhoitohankkeen toteutusilmoituksen rakenteen määrittely.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="fac:UpdatePreviousMessage" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:CompletionDeclarationReference" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:FinancingActNumber" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:FinancingActApplicationReference" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Rahoitushakemuksen viite tulee ilmoittaa, jos hakemus on tehty sähköisesti.</xs:documentation>
+                    <xs:documentation xml:lang="sv"/>
+                    <xs:documentation xml:lang="en"/>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="fac:CustomerReference" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="BankReferenceNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="FinancingActProjectCompleted" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="ExtraFinancingApplication" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="OtherPublicSubstitute" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:FinancingActCompletionDeclarationTextInformation" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="fac:Language" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:ElectronicNotification" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:Sender" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:Attorney" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="fac:SentDate" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:StartDate" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:EndDate" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:FinancingActRealEstates" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:CompletionDeclarationActors" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:WorkingRepresentatives" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="PartsOfProject" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Hankeosien tiedot</xs:documentation>
+                    <xs:documentation xml:lang="sv"/>
+                    <xs:documentation xml:lang="en">Data of parts of project</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="fac:Documents" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="fi">Toteutusilmoitus id</xs:documentation>
+                <xs:documentation xml:lang="sv"/>
+                <xs:documentation xml:lang="en"/>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="PartsOfProjectType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Hankeosalistan määrittely</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Definition for list of parts of project</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="PartOfProject" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PartOfProjectType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Hankeosan tietojen määrittely</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Definition for part of project</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="fac:AreaNo" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="fac:FinancingActWorkCode" minOccurs="1" maxOccurs="1"/>
+            <!-- <xs:element ref="fac:SubsidyAmount" minOccurs="1" maxOccurs="1"/> -->
+            <xs:element ref="fac:PayeesAndRealEstates" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="CompletionDataAndSubsidy" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="co:IdStringType">
+            <xs:annotation>
+                <xs:documentation xml:lang="fi">Hankeosan id</xs:documentation>
+                <xs:documentation xml:lang="sv"/>
+                <xs:documentation xml:lang="en">Id of part of project</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="CompletionDataAndSubsidyType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Toteutus- ja tukitietojen määrittely</xs:documentation>
+            <xs:documentation xml:lang="sv"/>
+            <xs:documentation xml:lang="en">Definitions of completion and subsidy details</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="fac:FinancingActCompletionStands" minOccurs="0" maxOccurs="1"/>
+            <!-- <xs:element ref="fac:FinancingActCompletionOtherSubjects" minOccurs="0" maxOccurs="1"/> -->
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

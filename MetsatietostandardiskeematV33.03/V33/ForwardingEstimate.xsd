@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V14.03:
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V16.02:
+	- StorageId-elementin maksimipituus kasvatettu 50 merkkiin
+	
+	Muutokset skeemapakettiin V32.01:
+	- Päivitetty dokumentaatiota
+	- Lisätty tyyppimäärittelyyn AssortmentDataType uusi vapaaehtoinen elementti Unit (bdt:WorkCodeUnitType)
+	
+	Muutokset skeemapakettiin V32.02:
+	- Lisätty tyyppimäärittelyyn AssortmentDataType uusi vapaaehtoinen elementit AssortmentId (bdt:String50Type)
+	
+	Muutokset skeemapakettiin V33.02:
+	- Lisätty wct-nimiavaruus skeematiedostoviittauksella WoodForceCommonTypes.xsd
+	- Päivitetty määrittelyn "ForwardingEstimateType" elementtien "WorkingSiteId" ja "StorageId" tyypeiksi ERPIdType
+	- Päivitetty määrittelyn "AssortmentDataType" elementin "AssortmentId" tyypiksi ERPIdType
+    
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/ForwardingEstimate"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/ForwardingEstimate"
+           elementFormDefault="qualified" attributeFormDefault="unqualified" version="V33.02">
+
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+		schemaLocation="WoodForceCommonTypes.xsd"/>
+
+	<xs:element name="ForwardingEstimate" type="ForwardingEstimateType">
+		<xs:annotation>
+			<xs:documentation>Mekuennuste</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ForwardingEstimateType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Urakanantajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lohkon tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Resurssin tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Varastopaikan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StartTime" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Ennustettu aloitus pvm + aika</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Assortments" type="AssortmentsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Puutavaralajit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentsType">
+		<xs:sequence>
+			<xs:element name="Assortment" type="AssortmentDataType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Puutavaralajit</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AssortmentId" type="wct:ERPIdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL:n yksilöivä tunniste (esim. GUID)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DestinationStorage" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Toimituspiste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Code" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Volume" type="bdt:PositiveInteger4digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Määrä (oletusyksikkönä m3)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Unit" type="bdt:WorkCodeUnitType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yksikkö</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Loads" type="bdt:PositiveInteger3digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kuormia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Day" type="bdt:DateType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">pvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

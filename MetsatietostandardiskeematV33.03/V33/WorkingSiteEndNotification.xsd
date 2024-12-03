@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.06:
+	-Elementin Geometry tyyppimäärittely muutettu gdt:PolygonOrMultiPolygonType -> gdt:PolygonOrMultiPolygon2Type
+	-Elementin UnfulfilledArea tyyppimäärittely muutettu gdt:PolygonOrMultiPolygonType -> gdt:PolygonOrMultiPolygon2Type
+	
+	Muutokset skeemapakettiin V14.03:
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V33.02:
+	- Lisätty wct-nimiavaruus skeematiedostoviittauksella WoodForceCommonTypes.xsd
+	- Päivitetty määrittelyn "WorkingSiteEndNotificationType" elementin "WorkingSiteId" tyypiksi ERPIdType
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://standardit.tapio.fi/schemas/forestData/WorkingSiteEndNotification" 
+	xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common" 
+	xmlns:gdt="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes"
+	xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/WorkingSiteEndNotification" 
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified" 
+	version="V14.03">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common/geometricDataTypes" schemaLocation="Common_GeometricDataType.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+		schemaLocation="WoodForceCommonTypes.xsd"/>
+	
+	<xs:element name="WorkingSiteEndNotification" type="WorkingSiteEndNotificationType">
+		<xs:annotation>
+			<xs:documentation>Lohko päätetty keskeytettynä tai valmiina.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="WorkingSiteEndNotificationType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContactorId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yrityksen tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon tunniste, yksilöivä id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceId" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Resurssin tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ServiceType" type="bdt:ServiceTypeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Palvelukokonaisuus</xs:documentation>
+                </xs:annotation>
+			</xs:element>
+            <xs:element name="Interrupted"  type="bdt:YesNoType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Lohko keskeytetty (K) vai valmis (E).</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+			<xs:element name="FulfilledArea" type="FulfilledAreasType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Toteuma-alueet</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UnfulfilledArea" type="gdt:PolygonOrMultiPolygon2Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Toteuttamattomat alueet. Lähetetään vain, jos lohko on päätetty
+                        keskeytettynä.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Infotext" type="bdt:String1000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Assortments" type="AssortmentsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL tiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkCodes" type="WorkCodesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työlajit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+    <xs:complexType name="FulfilledAreasType">
+        <xs:sequence>
+            <xs:element name="FulfilledArea" type="FulfilledAreaType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FulfilledAreaType">
+        <xs:sequence>
+            <xs:element name="Geometry" type="gdt:PolygonOrMultiPolygon2Type">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Toteuma-alue</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Supported" type="bdt:YesNoType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fi">Tukimuotoja (K/E)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+	<xs:complexType name="AssortmentsType">
+		<xs:sequence>
+			<xs:element name="Assortment" type="AssortmentDataType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkCodesType">
+		<xs:sequence>
+			<xs:element name="WorkCode" type="WorkCodeDataType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssortmentDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">PTL tiedot</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DestinationStorage" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Toimituspiste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Code" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL-koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL-nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CodeGroup" type="bdt:AssortmentGroupType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">PTL-ryhmä (koodi)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Volume" type="bdt:Decimal6TotalDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon m3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VolumeLeft" type="bdt:Decimal6TotalDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Korjaamaton m3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkCodeDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työlajin tilitystiedot</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="WorkCode" type="bdt:WorkCodeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työlaji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmountPlanned" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Suunniteltu määrä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmountLeft" type="bdt:Decimal3FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Jäljelle jäänyt määrä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Unit" type="bdt:WorkCodeUnitType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yksikkö</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

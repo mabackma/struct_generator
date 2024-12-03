@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    ***************************************************************
+    Skeema on JHS-170 -suosituksen mukainen.
+    
+    Muutokset skeemapakettiin V10.05:
+    -Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+    
+    Muutokset skeemapakettiin V14.01:
+    -Elementille WorkingSiteTradeEnvelope lisätty pakollinen attribuutti "schemaPackageVersion", lisäksi vapaaehtoiset attribuutit "schemaPackageSubversion" ja "schemaPackageVersionDate"
+    
+    Muutokset skeemapakettiin V16.02:
+    -Poistettu tyyppimäärittelystä WorkingSiteTradeEnvelopeType attribuutit, jotka löytyvät myös Header elementiltä
+    
+    ***************************************************************
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.standardit.tapio.fi/schemas/forestData/workingSiteTradeEnvelope"
+    targetNamespace="http://www.standardit.tapio.fi/schemas/forestData/workingSiteTradeEnvelope"
+    xmlns:he="http://standardit.tapio.fi/schemas/header"
+    xmlns:cfo="http://standardit.tapio.fi/schemas/workingsitetrade/callforoffer"
+    xmlns:cfows="http://standardit.tapio.fi/schemas/workingsitetrade/callforofferworkingsite"
+    xmlns:eb="http://www.standardit.tapio.fi/schemas/forestData/envelopeBase"
+    xmlns:ba="http://standardit.tapio.fi/schemas/forestData/businessacceptance"
+    xmlns:wpp="http://standardit.tapio.fi/schemas/workingsitetrade/woodpurchasepayment"
+    xmlns:wpmc="http://standardit.tapio.fi/schemas/workingsitetrade/woodpurchasemeasurementcertificate"
+    xmlns:fudr="http://standardit.tapio.fi/schemas/forestData/forestusedeclarationreference"
+    xmlns:wstcr="http://standardit.tapio.fi/schemas/workingsitetrade/contractreference"
+    xmlns:wsto="http://standardit.tapio.fi/schemas/workingsitetrade/offer"
+    xmlns:ows="http://standardit.tapio.fi/schemas/workingsitetrade/offerworkingsite"
+    xmlns:osu="http://standardit.tapio.fi/schemas/forestData/operationStatusUpdate"
+    xmlns:cr="http://standardit.tapio.fi/schemas/contactRequest"
+    xmlns:ms="http://standardit.tapio.fi/schemas/forestData/MapSymbol"
+    xmlns:cod="http://standardit.tapio.fi/schemas/forestData/commonObjectData"
+    xmlns:ack="http://standardit.tapio.fi/schemas/forestData/Acknowledge"
+    xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="V29.03">
+
+    <xs:import namespace="http://standardit.tapio.fi/schemas/header" schemaLocation="header.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/callforoffer" schemaLocation="WorkingSiteTrade_CallForOffer.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/callforofferworkingsite" schemaLocation="WorkingSiteTrade_CallForOfferWorkingSite.xsd"/>
+    <xs:import namespace="http://www.standardit.tapio.fi/schemas/forestData/envelopeBase" schemaLocation="EnvelopeBase.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/businessacceptance" schemaLocation="BusinessAcceptance.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/woodpurchasepayment" schemaLocation="WorkingSiteTrade_WoodPurchasePayment.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/woodpurchasemeasurementcertificate" schemaLocation="WorkingSiteTrade_WoodPurchaseMeasurementCertificate.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/forestusedeclarationreference" schemaLocation="ForestUseDeclarationReference.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/contractreference" schemaLocation="WorkingSiteTrade_ContractReference.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/offer" schemaLocation="WorkingSiteTrade_Offer.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/offerworkingsite" schemaLocation="WorkingSiteTrade_OfferWorkingSite.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/operationStatusUpdate" schemaLocation="OperationStatusUpdate.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/contactRequest" schemaLocation="ContactRequest.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/MapSymbol" schemaLocation="MapSymbol.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/commonObjectData" schemaLocation="CommonObjectData.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/Acknowledge" schemaLocation="Acknowledge.xsd"/>
+    <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+
+    <!-- Elementtimääritykset / Element definitions -->
+    <xs:element name="WorkingSiteTradeEnvelope" type="WorkingSiteTradeEnvelopeType"/>
+    <xs:element name="Message" type="WorkingSiteTradeMessageType"/>
+
+    <!-- Tyyppimääritykset / Type definitions -->
+    <xs:complexType name="WorkingSiteTradeEnvelopeType">
+        <xs:complexContent>
+            <xs:extension base="eb:EnvelopeBaseType"> 
+                <xs:sequence>
+                    <xs:element ref="Message"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="WorkingSiteTradeMessageType">
+        <xs:choice>
+            <xs:element ref="cfo:CallForOffer"/>
+            <xs:element ref="cfows:CFOWorkingSite"/>
+            <xs:element ref="ba:BusinessAcceptance"/>
+            <xs:element ref="wpp:Payment"/>
+            <xs:element ref="wpmc:MeasurementCertificate"/>
+            <xs:element ref="fudr:ForestUseDeclarationReferences"/>
+            <xs:element ref="wstcr:Contract"/>
+            <xs:element ref="wsto:Offer"/>
+            <xs:element ref="ows:OWorkingSite"/>
+            <xs:element ref="osu:Operations"/>
+            <xs:element ref="cr:ContactRequest"/>
+            <xs:element ref="ms:MapSymbol"/>
+            <!-- <xs:element ref="cod:CommonObjectData"/> -->
+            <xs:element ref="ack:Acknowledge"/>
+        </xs:choice>
+    </xs:complexType>
+</xs:schema>

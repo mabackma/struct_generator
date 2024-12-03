@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V14.03:
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V14.05:
+	-Elementin ControlReferenceMass dokumentaatio päivitetty "kuormaluku" -> "Kontrollipunnuksen massa"
+	
+	Muutokset skeemapakettiin V33.02:
+	- Lisätty wct-nimiavaruus skeematiedostoviittauksella WoodForceCommonTypes.xsd
+	- Päivitetty määrittelyn "WorkingSiteForwardingQualityControlType" elementin "WorkingSiteId" tyypiksi ERPIdType
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://standardit.tapio.fi/schemas/forestData/WorkingSiteForwardingQualityControl"
+	xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/WorkingSiteForwardingQualityControl"
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified" 
+	version="V33.02">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+		schemaLocation="WoodForceCommonTypes.xsd"/>
+	
+	<xs:element name="WorkingSiteForwardingQualityControl"
+		type="WorkingSiteForwardingQualityControlType">
+		<xs:annotation>
+			<xs:documentation>Metsätraktorin punnitustarkkuus</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="WorkingSiteForwardingQualityControlType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Urakanantajan tunnus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lohkon tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractorId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Yritys</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceId" type="bdt:String20Type">
+				<xs:annotation>
+					<xs:documentation>ResurssiId</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ForestOwner" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Metsänomistajan nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OperatorId" type="bdt:String20Type">
+				<xs:annotation>
+					<xs:documentation>Kuljettajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeasurementDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Aloitusaika</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MachineApplicationVersion" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Vaa'an versio tiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ControlReferenceMass" type="bdt:Decimal1FractionDigitType"
+				minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kontrollipunnuksen massa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FileName" type="bdt:String100Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tiedoston nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Bytes" type="xs:base64Binary" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Alkuperäisen tiedoston sisältö</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ScaleData" type="ScaleDataType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Nostot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Calibration" type="CalibrationType" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Kalibroinnit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ScaleDataType">
+		<xs:sequence>
+			<xs:element name="ScaledMass" type="bdt:Decimal1FractionDigitType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Mitattu paino</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Orientation" type="OrientationType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Puoli (Vasen/Oikea)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CalibrationType">
+		<xs:sequence>
+			<xs:element name="CalibrationDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kalibrointi pvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CalibrationAdjustment" type="bdt:PositiveInteger3digitsType"
+				minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Korjauksen määrä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="OrientationType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Right side of load space"/>
+			<xs:enumeration value="Left side of load space"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

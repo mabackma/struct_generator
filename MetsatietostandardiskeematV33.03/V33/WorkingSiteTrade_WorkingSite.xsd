@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	***************************************************************
+	Työmaan elementit ja tyypit.
+	Skeema on JHS-170 -suosituksen mukainen.
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	***************************************************************
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://standardit.tapio.fi/schemas/workingsitetrade/workingsite"
+	xmlns="http://standardit.tapio.fi/schemas/workingsitetrade/workingsite"
+	xmlns:cfows="http://standardit.tapio.fi/schemas/workingsitetrade/callforofferworkingsite"
+	xmlns:ows="http://standardit.tapio.fi/schemas/workingsitetrade/offerworkingsite"
+	elementFormDefault="qualified"
+	attributeFormDefault="qualified"
+	version="V10.05">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/callforofferworkingsite"
+				schemaLocation="WorkingSiteTrade_CallForOfferWorkingSite.xsd"/>
+				
+	<xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/offerworkingsite"
+				schemaLocation="WorkingSiteTrade_OfferWorkingSite.xsd"/>
+
+	<!-- Elementtimääritykset -->
+   	<!-- Element definitions -->
+   	<xs:element name="CallForOfferWorkingSites" type="CallForOfferWorkingSitesType"/>
+   	<xs:element name="OfferWorkingSites" type="OfferWorkingSitesType"/>
+	<xs:element name="WorkingSiteKey" type="WorkingSiteKeyType"/>
+   	<xs:element name="CallForOfferWorkingSiteDetails" type="CallForOfferWorkingSiteDetailsType"/>
+   	<xs:element name="OfferWorkingSiteDetails" type="OfferWorkingSiteDetailsType"/>
+	
+	<!-- Tyyppimääritykset -->
+	<!-- Type definitions -->
+	<xs:complexType name="WorkingSiteKeyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työmaan tunniste. Viiteavain tarjouspyynnön tai tarjouksen id:hen. Työmaiden tietosisältö erillisessä rakenteessa.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Identifier of working site. Reference key to id of call for offer or offer. Data of working site is separately in separate structure.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Kohteen / työmaan yksilöivä id.</xs:documentation>
+				<xs:documentation xml:lang="sv"></xs:documentation>
+				<xs:documentation xml:lang="en">id which identified working site.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="CallForOfferWorkingSiteDetailsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarjouspyynnön työmaan tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Data of working site of call for offer.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cfows:WorkingSiteType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="OfferWorkingSiteDetailsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarjouksen työmaan tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Data of working site of offer.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ows:WorkingSiteType"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="CallForOfferWorkingSitesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarjouspyynnön työmaat.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Identifier of working site.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="WorkingSiteKey" minOccurs="1" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Tätä vaihtoehtoa käytetään, kun työmaan / kohteen tiedot välitetään eri sanomassa / tiedostossa. Id viittaa tällöin erillisen sanoman työmaa- / kohde-id:een.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="CallForOfferWorkingSiteDetails" minOccurs="1" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi">Tätä vaihtoehtoa käytetään, kun työmaan / kohteen tiedot sisällytetään tähän sanomaan.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="OfferWorkingSitesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tarjouksen työmaat.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Identifier of working site.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="WorkingSiteKey" minOccurs="1" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="fi"></xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="OfferWorkingSiteDetails" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

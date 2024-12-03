@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.03:
+	-Skeematiedostosta poistettu elementti CuttingThickForest
+	-Skeematiedostosta poistettu elementti CuttingThickForestText
+	
+	Muutokset skeemapakettiin V14.03:
+	-Elementille "Audits" lisätty puuttuva dokumentaatio
+	-Muutettu common-nimiavaruuden skeematiedostoviittaus Common_BasicDataType.xsd -> Common.xsd
+	
+	Muutokset skeemapakettiin V33.02:
+	- Lisätty wct-nimiavaruus skeematiedostoviittauksella WoodForceCommonTypes.xsd
+	- Päivitetty määrittelyn "WorkingSiteFinalAuditRoadMakingType" elementin "WorkingSiteId" tyypiksi ERPIdType
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://standardit.tapio.fi/schemas/forestData/WorkingSiteFinalAuditRoadMaking"
+           xmlns:bdt="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:wct="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+           targetNamespace="http://standardit.tapio.fi/schemas/forestData/WorkingSiteFinalAuditRoadMaking"
+           elementFormDefault="qualified" 
+           attributeFormDefault="unqualified" 
+           version="V33.02">
+	
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/WoodForceCommonTypes"
+		schemaLocation="WoodForceCommonTypes.xsd"/>
+	
+	<xs:element name="WorkingSiteFinalAuditRoadMaking" type="WorkingSiteFinalAuditRoadMakingType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tienrakennuksen loppuarviointi/laadunseuranta</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="WorkingSiteFinalAuditRoadMakingType">
+		<xs:sequence>
+			<xs:element name="ServiceBuyerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Urakanantajan tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResourceId" type="bdt:String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Resurssin tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingSiteId" type="wct:ERPIdType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lohkon tunniste</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractorId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Yrittäjän tunniste (alv-tunnus)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkCodeGroup" type="bdt:WorkCodeGroupType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työlajiryhmän koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkCode" type="bdt:WorkCodeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työlajin koodi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Area" type="bdt:Decimal2FractionDigitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Pinta-ala ha</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkingTime" type="bdt:DateType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Työskentelyn ajankohta (YYYY-MM-DD)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Audit" type="AuditionType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Arvioinnin tiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InfoText" type="bdt:String1000Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Images" type="bdt:PositiveInteger2digitsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Valokuvien lkm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Audits" type="AuditsType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Arvioitavat asiat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="AuditionType">
+		<xs:sequence>
+			<xs:element name="FinalAuditType" type="bdt:FinalAuditTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Arvioinnin tyyppi (laaja/suppea)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FinalAuditerType" type="bdt:FinalAuditerTypeType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Arvioitsijan tyyppi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FinalAuditerId" type="bdt:String20Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Arvioitsijan Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FinalAuditerName" type="bdt:String50Type" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Arvioitsijan nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FinalAuditDate" type="bdt:TimeStampType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">pvm</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FinalAuditRequired" type="bdt:YesNoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Loppuarvioinnin vaadittu MJ:stä</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="AuditsType">
+		<xs:sequence>
+			<xs:element name="RoadStructure" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Rungon rakenne</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RoadStructureText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Rungon rakenne selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RoadStructureShape" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Rungon muoto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RoadStructureShapeText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Rungon muoto selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RoadStructureDrainage" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Rungon kuivatus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RoadStructureDrainageText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Rungon kuivatus selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PassingPlace" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kohtaamispaikkojen koko ja muoto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PassingPlaceText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kohtaamispaikkojen koko ja muoto selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TurningPlace" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kääntöpaikkojen koko ja muoto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TurningPlaceText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Kääntöpaikkojen koko ja muoto selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PipeInstallation" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Rumpujen asennus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PipeInstallationText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Rumpujen asennus selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ErosionBlockingAction" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Eroosien estämistoimet</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ErosionBlockingActionText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Eroosien estämistoimet selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WaterProtectionAction" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Vesiensuojelutoimet</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WaterProtectionActionText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Vesiensuojelutoimet selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LandScaping" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Maisemointi, viimeistely ja yleinen siisteys</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LandScapingText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Maisemointi, viimeistely ja yleinen siisteys selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FeedbackForPlanner" type="bdt:WorkingQualityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Palaute suunnittelijalle</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FeedbackForPlannerText" type="bdt:String200Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Palaute suunnittelijalle selite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

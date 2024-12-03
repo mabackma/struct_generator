@@ -1,0 +1,1560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	******************************************************************
+	* Common_BasicDataType.xsd, V14.02 saakka:
+	
+	Common_Basic_DataType.xsd
+	Yhteiset perustietotyypit (numero, teksti yms.), joita käytetään 
+	useissa	skeemoissa erilaisiin tarpeisiin. 
+	Skeema on JHS-170 -suosituksen mukainen.
+	VERSIOKOMMENTIT 1.0 >>> 1.1 
+	Uusi määrittely "YesNoNotKnownType". 
+	Uusi määrittely "CountryCodeType". 
+	Uusi määrittely "LanguageCode1Type". 
+	Uusi määrittely "LanguageCode2Type". 
+	VERSIOKOMMENTIT 1.1 >>> 1.2 
+	Uusia määrittelyjä numerotietoja varten 
+	Uusi määrittely "PositiveDecimalMax5IntegralPartMax1FractionalPartType" 
+	Uusi määrittely "PositiveInteger1digitsType" 
+	Uusi määrittely "PositiveInteger2digitsType" 	
+	VERSIOKOMMENTIT 1.2 >>> 1.3 	
+	Vuosi tyypin ("YearType") minimivuodeksi muutettu 1900 (aiemmin 1970). 
+	Päivämäärä tyypin ("DateType") minimivuodeksi muutettu 1900 (aiemmin 1970). 
+	VERSIOKOMMENTIT 1.3 >>> 1.4 
+	Tyypin TimeStampType minimivuodeksi 1900 (aiemmin 1970) 
+	Tyypin PositiveInteger1digitsType pohjatyypiksi muutettu xs:integer 
+	Tyypin PercentType pohjatyypiksi muutettu xs:integer 
+	Korjattu tyypin PositiveDecimalMax1IntegralPartMax2FractionalPartType kommentteja vastaamaan tyyppimäärittelyä 
+	Lisätty skeema ForestEnumeratives_20130620.xsd 
+	VERSIOKOMMENTIT 1.4 >>> 1.5
+	15.8.2014:Fifth Element Oy: muutokset Common_Basic_DataType.xsd tiedostoon
+	Yhdistetty Fifth elementin muutokset ja metsävarastandardin V6 paketin tiedostot 
+	Skeemat Common.xsd,Common_BasicDataType.xsd,ForestEnumeratives.xsd on 
+	yhdeksi namespaceksi: xmlns="http://standardit.tapio.fi/schemas/forestData/common" 	
+	ja Common_BasicDataType_20100831.xsd on nimetty Common_BasicDataType.xsd:ksi
+	
+	VERSIOKOMMENTIT 1.5 >>> 1.6
+	15.12.2014 Address, PostalCode, PostOffice, PhoneNumber ja EmailAddress - elementeille lisätty määre minOccurs="0"
+	
+	VERSIOKOMMENTIT 1.6 >>> 1.7	
+	8.4.2015 Dokumentaatio korjattu PositiveInteger-tyypeille
+	
+	VERSIOKOMMENTIT 1.7 >>> 1.8
+	27.4.2015 Lisätty tyypit: 
+	PositiveDecimal_Max8IntegralPart_Max2FractionalPartType,
+	PositiveDecimal_Max7IntegralPart_Max2FractionalPartType,
+	PositiveDecimal_Max5IntegralPart_Max2FractionalPartType
+	
+	21.9.2015
+	New type definitions:
+	- MunicipalityNumberType
+	- MunicipalityNameType
+	- BankAccountType
+	- IBANType
+	- BICType
+	- BankReferenceNumberType
+	
+	27.10.2015 Removed types: CountryCodeType, LanguageCode2Type
+	
+	3.2.2016
+	- New simpletype "IdStringNotEmptyType"
+	
+	16.5.2016
+	- New simpleType "ExtendedQuantityUnitType"
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.10:
+	-Lisätty uusi tyyppimäärittely UseCaseType joka on yhdistelmä koodistoista ControlUseCaseType ja SelfMonitoringUseCaseType
+	
+	
+	*Common_DocumentType.xsd, V14.02 saakka:
+	
+	Muutokset skeemapakettiin V11.05:
+	-Skeemapakettiin on lisätty uusi tiedosto Common_DocumentType.xsd johon on siirretty liitedokumenttien määrittelyt. Lisäksi uutena tähän skeematiedostoon on toteutettu kokorajoitetun binääritiedoston määrittely.
+	
+	
+	*Common.xsd:
+	
+	Yhteiset tyypit joita käytetään useissa eri skeemoissa.
+	Skeema on JHS-170 -suosituksen mukainen.
+	VERSIOKOMMENTIT 1.0 >>> 1.1 
+	Uusi määrittely aikaleimalle "TimeStampType". 
+	Uusi määrittely valuutoille "CurrencyType". 
+	Lisätty puulajeja puukaupan puutavaralajien tiedonsiirtotarpeisiin 
+	Runkolajimäärittelyt siirretty tänne puukaupan puutavaralajien tiedonsiirtotarpeisiin liittyen 
+	Lisätty puutavaran määrän yksikkömäärittelyt puukaupan tiedonsiirtotarpeisiin. 
+	VERSIOKOMMENTIT 1.1 >>> 1.2 
+	Lisätty tyypin "ExtraStemTypeType" määrittelyihin enumeratiivi 105 "Latvusmassa". 
+	Tyypin "StoreyType" koodiston arvon 5 selite vaihdettu ja lisätty arvo 6. 
+	Tyypin "ChangeState" koodistoon lisätty arvo 10. 
+	Lisätty tyyppi "IdentifierTypeType". 	
+	Tyypin "IdentifierTypeType" koodistoa täydennetty arvoilla 101 - 110. 
+	VERSIOKOMMENTIT 1.2 >>> 1.3 
+	Korjattu IdentifierType tyypiksi IdentifierTypeType. 
+	VERSIOKOMMENTIT 1.3 >>> 1.4 
+	Lisätty tyyppi "TreeClassType" 	
+	VERSIOKOMMENTIT 1.4 >>> 1.5 
+	Lisätty skeema ForestEnumeratives_20130620.xsd 
+	Lisätty skeema ForestEnumeratives_20130620.xsd 
+	VERSIOKOMMENTIT 1.5 >>> 1.6
+	Lisätty tyypit: 
+	ReferenceType
+	AdditionalInfo
+	DocumentType
+	DocumentClassType
+	DocumentDescriptionType
+	MessageType
+	15.8.2014  Yhdistetty skeemat Common.xsd,Common_BasicDataType.xsd,ForestEnumeratives.xsd
+	yhdeksi namespaceksi: xmlns="http://standardit.tapio.fi/schemas/forestData/common" 
+	
+	VERSIOKOMMENTIT 1.6 >>> 1.7
+	8.4.2015 
+	-NotDefinedType lisätty
+	-AgeType määritystä muutettu hyväksymään -1 arvoksi, kun ikää ei ole annettu 
+	
+	VERSIOKOMMENTIT 1.7 >>> 1.8
+	10.4.2015 Otettu käyttön lokaali xmlmime skeema
+	
+	VERSIOKOMMENTIT 1.8 >>> 1.9
+	24.4.2015 Vanha AgeType määritys otettu takaisin käyttön. 'Ei määritelty' tieto pakollisessa kentässä olisi loogisesti ristiriitaista,
+	ja päätettiin  (Metsätietojen standardoinnin valmisteluryhmän kokouksessa 13.4.2015 )
+	että tieto on aina pakollinen ja ei mahdollisestat 'Ei määritelty' vaihtoehdon antamista.
+	
+	VERSIOKOMMENTIT 1.9 >>> 2.0
+	MessageType: Päivitetty viestien lyhenteet nykyistä vastaaviksi
+
+	*******************************************************************
+
+	Muutokset skeemapakettiin V10.04:
+	-Lisätty uusi tyyppimäärittely AssortmentNameType, perustyypiltään String200Type. Toimijakohtaisen puutavaralajin nimen määrittely.
+	-Lisätty uusi tyyppimäärittely AssortmentCodeType, perustyypiltään String50Type. Toimijakohtaisen puutavaralajikoodin määrittely.
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V10.06:
+	-Elementti DocumentFileName muutettu vapaaehtoisesta pakolliseksi. Elementin dokumentaatio päivitetty.
+	-Elementti FileType muutettu vapaaehtoisesta pakolliseksi. Elementin dokumentaatio päivitetty.
+	
+	Muutokset skeemapakettiin V11.05:
+	-Skeematiedostosta Common.xsd on siirretty dokumenttimäärittelyt tiedostoon Common_DocumentType.xsd.
+	-Skeematiedostosta on poistettu include-määritys "Common_BasicDataType.xsd".
+	
+	Muutokset skeemapakettiin V14.03:
+	-Skeematiedostot Common_BasicDataType.xsd ja Common_DocumentType.xsd yhdistetty samaan Common.xsd skeemaan
+	
+	Muutokset skeemapakettiin V14.05:
+	-Lisätty uusi tyyppimäärittely String5000Type (merkkijono max 5000 merkkiä)
+	
+	Muutokset skeemapakettiin V15.00:
+	-Lisätty uusi tyyppimäärittely ExtendedHabitatCodeType joka on yhdistelmä koodistoista HabitatCodeType ja VirtaHabitatCodeType (Mukaillen V11.12 tehtyä muutosta)
+	
+	Muutokset skeemapakettiin V16.01:
+	-Lisätty uusi tyyppimäärittely TransactionQuantityUnitType joka käyttää uutta laajennettua määrän yksikön koodistoa ExtendedForestCentreUnitType
+	
+	Muutokset skeemapakettiin V16.02:
+	-Muokattu tyyppimäärittely TransactionQuantityUnitType:n käyttämäksi koodistoksi WideUnitType:ksi uudelleen nimetty ExtendedForestCentreUnitType
+	
+	Muutokset skeemapakettiin V17.01:
+	-Lisättty uusi elementti RestrictionType, ja sille tyyppimäärittelyksi RestrictionTypeType
+	-Lisätty uusi tyyppimäärittely RestrictionCodeType joka koostuu osakoodistoista CuttingRestrictionType, SilvicultureRestrictionType, OtherRestrictionsType
+	
+	Muutokset skeemapakettiin V17.02:
+	-Täydennetty dokumentaatioita  
+	
+	Muutokset skeemapakettiin V17.03:
+	-Lisätty uusi tyyppimäärittely WideCertificationSystemType joka koostuu osakoodistoista CertificationSystemType, PEFCCertificationSystemSubTypeType ja FSCCertificationSystemSubTypeType
+	
+	Muutokset skeemapakettiin V17.04:
+	-Lisätty uusi tyyppimäärittely Integer3digitsType (kolminumeroinen kokonaisluku)
+
+	Muutokset skeemapakettiin V23.01:
+	-Lisätty uusi tyyppimäärittely Integer7digitsType (seitsemännumeroinen kokonaisluku)
+	
+	Muutokset skeemapakettiin V28.01:	
+	-Lisätty tyyppimäärittelyyn DocumentType uusi vapaaehtoinen elementti DocumentDate (DateType)
+	
+	Muutokset skeemapakettiin V30.01:
+    -Lisätty uusi elementtimäärittely ExtendedContactInformation	
+	-Lisätty uusi tyyppimäärittely ExtendedContactInformationType, joka on kuin ContactInformationType täydennettynä Lisätiedot (String100Type) elementillä
+
+    Muutokset skeemapakettiin V31.03:
+    -Lisätty tyyppimäärittelyyn ContactInformationType uusi vapaaehtoinen elementti ExtraInfo (String100Type)
+    -Poistettu tyyppimäärittely ExtendedContactInformationType käyttämättömänä
+
+    Muutokset skeemapakettiin V33.02:
+    - Lisätty tyyppimäärittely EntityTagType (perustuu tyyppimäärittelyyn bdt:String100Type)
+
+-->
+<xs:schema 
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:jhs="http://skeemat.jhs-suositukset.fi/yhteiset/2009/03/04"
+	xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+	elementFormDefault="unqualified"
+	attributeFormDefault="unqualified"
+	version="V33.02">
+
+	<!-- Imports / Includes -->
+	<xs:include schemaLocation="ForestEnumeratives.xsd"/>
+	<xs:import namespace="http://skeemat.jhs-suositukset.fi/yhteiset/2009/03/04" schemaLocation="JHS170_20090304.xsd"/>
+	<xs:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="../w3c/2005/xmlmime.xsd"/>
+
+	<!-- Elementtimääritykset / Element definitions -->
+	<xs:element name="ChangeState" type="ChangeStateType"/>
+	<xs:element name="ChangeTime" type="ChangeTimeType"/>
+	<xs:element name="TimeStamp" type="TimeStampType"/>
+	<xs:element name="DataSource" type="DataSourceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tiedon tuottaja.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="StratumNumber" type="StratumNumberType"/>
+	<xs:element name="StemType" type="StemTypeType"/>
+	<xs:element name="Storey" type="StoreyType"/>
+	<xs:element name="Age" type="AgeType"/>
+	<xs:element name="BasalArea" type="BasalAreaType"/>
+	<xs:element name="StemCount" type="StemCountType"/>
+	<xs:element name="Diameter" type="DiameterType"/>
+	<xs:element name="Height" type="HeightType"/>
+	<xs:element name="Volume" type="VolumeType"/>
+	<xs:element name="SawLogPercent" type="SawLogPercentType"/>
+	<xs:element name="SawLogVolume" type="SawLogVolumeType"/>
+	<xs:element name="PulpWoodVolume" type="PulpWoodVolumeType"/>
+	<xs:element name="VolumeGrowth" type="VolumeGrowthType"/>
+	<xs:element name="LeafBiomass" type="LeafBiomassType"/>
+	<xs:element name="BranchBiomass" type="BranchBiomassType"/>
+	<xs:element name="StemBiomass" type="StemBiomassType"/>
+	<xs:element name="StumpBiomass" type="StumpBiomassType"/>
+	<xs:element name="Biomass" type="BiomassType"/>
+	<xs:element name="Area" type="AreaType"/>
+	<xs:element name="Identifiers" type="IdentifiersType"/>
+	<xs:element name="Identifier" type="IdentifierType"/>
+	<xs:element name="IdentifierType" type="IdentifierTypeType"/>
+	<xs:element name="IdentifierValue" type="IdentifierValueType"/>
+	<xs:element name="Reference" type="ReferenceType"/>
+	<xs:element name="ContactInformation" type="ContactInformationType"/>
+	<xs:element name="BankAccount" type="BankAccountType"/>
+	<xs:element name="BankReferenceNumber" type="BankReferenceNumberType"/>
+	<xs:element name="IBAN" type="IBANType"/>
+	<xs:element name="BIC" type="BICType"/>
+	<xs:element name="Document" type="DocumentType"/>
+	<xs:element name="DocumentClass" type="DocumentClassType"/>
+	<xs:element name="DocumentDescription" type="DocumentDescriptionType"/>
+	<xs:element name="DocumentDate" type="DateType"/>
+	<xs:element name="DocumentFileName" type="DocumentFileNameType"/>
+	<xs:element name="FileType" type="FileTypeType"/>
+	<xs:element name="FileBinary" type="xmime:base64Binary"/>
+	<xs:element name="RestrictionType" type="RestrictionTypeType"/>
+	<xs:element name="RestrictionCode" type="RestrictionCodeType"/>
+	<xs:element name="WideCertificationSystem" type="WideCertificationSystemType"/>
+
+	<!-- Tyyppimäärittelyt / Type definitions -->
+	<xs:simpleType name="ChangeTimeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tiedon muutosaika. Muutosajalla voidaan verrata tiedon muutosta suhteessa alkuperäiseen tietolähteeseen (onko tieto muuttunut alkuperäisessä tietolähteessä).</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Last modified time of data</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="TimeStampType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="CompleteStateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tiedon valmiustilalla esitetään tietojen sisällön valmiusaste, onko tiedot valmiit/keskeneräiset.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Is it data completed collect or some way incomplete.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="YesNoType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DataSourceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksilöi tiedon tuottajan esim. organisaatio. Merkityksen määrittää aina viime kädessä tiedon tuottaja (yhdessä vastaanottajan kanssa). Standardissa ei määritetä yhteisesti sovittuja koodeja, koska tämä koodisto on sisällöltään vakiintumaton ja uusia tarpeita voi ilmetä tulevaisuudessa.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Datasource code. Meaning is defined by the one who produced the information (in cooperation with the one who receives the information). No common codes are defined because this coding is relatively unstable and needs for modification may occur in the future.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{0,4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="StratumNumberType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Puusto-ositteen numero.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Number of tree stratum.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="AgeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ikä, v.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Age, years</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="BasalAreaType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pohjapinta-ala, m2/ha</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Basal area, m2/ha</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal3And2PositiveType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="StemCountType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Runkoluku, kpl/ha</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Number of stems / ha</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{0,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DiameterType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Läpimitta, cm.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Diameter, cm</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal2And2PositiveType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="HeightType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pituus, m</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Height, m</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal2And2PositiveType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="VolumeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tilavuus, m3/ha</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Volume, m3/ha</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal3And2PositiveType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="SawLogPercentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tukkiosuus %.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Percent of saw log, %.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="PercentWithFraction1Type"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="SawLogVolumeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tukkitilavuus, m3/ha.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Volume of saw log, m3/ha.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal3And2PositiveType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="PulpWoodVolumeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuitutilavuus, m3/ha.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Volume of pulp wood, m3/ha.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal3And2PositiveType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="VolumeGrowthType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tilavuuskasvu, m3/ha/v.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Growth of volume, m3/ha/year.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal3And2PositiveType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="LeafBiomassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ositteen lehtien biomassa, t/ha</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Leaf biomass of stratum, ton/ha</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="BiomassType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="BranchBiomassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ositteen oksien biomassa, t/ha</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Branch biomass of stratum, ton/ha</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="BiomassType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="StemBiomassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ositteen runkojen biomassa, t/ha</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Stem biomass of stratum, ton/ha</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="BiomassType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="StumpBiomassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ositteen kantojen biomassa, t/ha</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Stump biomass of stratum, ton/ha</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="BiomassType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="BiomassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Biomassa, t/ha</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Biomass, ton/ha</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal3And2PositiveType"/>
+	</xs:simpleType>
+		
+	<xs:simpleType name="AreaType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pinta-ala hehtaareina.</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Area, ha.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal4FractionDigitsType"/>
+	</xs:simpleType>
+	
+	<xs:complexType name="IdentifiersType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tietueen tunnisteet.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Identifiers of data row</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Identifier" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="IdentifierType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yksittäinen tietueen tunniste.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Single identifier of data row</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="IdentifierType"/>
+			<xs:element ref="IdentifierValue"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="IdentifierBaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tunnisteen laji.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Type of identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="IdentifierValueType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tunnisteen arvo.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Value of identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="MeanHeightType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Keskipituus, m.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Mean height, m.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="HeightType EmptyStringType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="ReferenceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Viite.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Reference.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Reference14Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Viite, 14 merkkiä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Reference, 14 characters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="14"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AssortmentCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Toimijakohtaisen puutavaralajikoodin määrittely</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Actor-specific assortment code definition</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String50Type" />
+	</xs:simpleType>
+	
+	<xs:simpleType name="AssortmentNameType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Toimijakohtaisen puutavaralajin (tuote) nimen määrittely</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Actor-specific assortment (product) name definition</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String200Type" />
+	</xs:simpleType>
+	
+	<xs:simpleType name="IdStringType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono tunnisteen määrittely</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IdStringNotEmptyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono tunnisteen määrittely. Tyhjää tunnistetta ei sallita.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="IdStringType">
+			<xs:minLength value="1"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="YesNoNotKnownType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Määrittely kyllä-, ei- ja ei tietoa- arvoille</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for yes, no and not known value</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="YesNoType NotKnownType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="FeatureCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Alkuperäiset monimuotoisuuskoodit (1-9975) ja myöhemmin lisätyt (10001-20182).</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Original special feature codes (1-9975) and extensions (10001-20182) that were added later.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="OriginalFeatureCodeType FeatureCodeExtensionsType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ResourceTypeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Resurssin tyyppi kone tai henkilö</xs:documentation>
+			<xs:documentation xml:lang="sv">Resurstyp, maskin eller person</xs:documentation>
+			<xs:documentation xml:lang="en">Type of resource.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="PersonResourceType MachineTypeType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="MainWorkCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Lohkon päätyölaji</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">MainWorkCode</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="WorkCodeType WorkCodeGroupType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="OperationTypeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Metsävarasanoman työlajit</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">OperationType</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="SilvicultureTypeType" />
+	</xs:simpleType>
+	
+	<xs:simpleType name="OperationSpecificationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Työlajin tarkenne</xs:documentation> <!--Metsävarasanoman (MV1.5) suppea OperationSpecification-koodisto -->
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="SilvicultureExtraQualifierType CommonOperationExtraQualifierType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ExtendedMainGroupType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Laajennettu pääryhmäkoodisto</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Extended coding for main group type</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="MainGroupType ExtraMainGroupType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ExtendedQuantityUnitType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tilastoitavan määrän yksikkö, laajennettu koodisto</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Quantity units for assortments (cubic meters etc), extended coding</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="QuantityUnitType StatisticsQuantityUnitType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="WideDevelopmentClassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Laaja kehitysluokkakoodisto</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:union memberTypes="DevelopmentClassType DevelopmentClassExtensionsType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ExtendedHabitatCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Laajennettu elinympäristökoodisto</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Extended coding for habitats</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="HabitatCodeType VirtaHabitatCodeType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TimeStampType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Aikaleiman tiedot muodossa VVVV-KK-PPTtt:mm:ss, minimivuosi on 1900.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Time stamp, time format YYYY-MM-DDThh:mm:ss with minimum year 1900.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:dateTime">
+			<xs:minInclusive value="1900-01-01T00:00:00"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Päivämäärä muodossa YYYY-MM-DD, minimivuosi on 1900.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Date, date format YYYY-MM-DD with minimum year 1900.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:date">
+			<xs:minInclusive value="1900-01-01"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DateYYYY-MMOrYYYY-MM-DDType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Päivämäärä muodossa VVVV-KK (1.6, "--06-01" / "--06-01Z" UTC / "--06-01+02:00" UTC+02.00) tai VVVV-KK-PP (1.6.2009, "2009-06-01" / "2009-06-01Z" UTC / "2009-06-01+02.00" UTC+02.00).</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Date, date format YYYY-MM (1.6, "--06-01" / "--06-01Z" UTC / "--06-01+02:00" UTC+02.00) or YYYY-MM-DD (1.6.2009, "2009-06-01" / "2009-06-01Z" UTC / "2009-06-01+02.00" UTC+02.00).</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:gMonthDay DateType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DateMmDdYyyyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Päivämäärä muodossa pp.kk.vvvv. Esimerkiksi 1.6.2009 tai 01.06.2009.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Date in format dd.mm.yyyy. For example 1.6.2009 or 01.06.2009.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="YearType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Vuosi määrittely, minimivuosi 1900.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition of year with minimum year 1900.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:gYear">
+			<xs:minInclusive value="1900"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="MoneyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Rahan määrä desimaalilukuna kahdella desimaalilla.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Money amount (decimal with fraction 2).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal2FractionDigitsType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="LanguageCode1Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kielikoodi (ISO 639-1), esim. fi, sv, en. SUOSITUS: käytä forest enumeratives type:ä ISO639char2LanguageType.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Language code (ISO 639-1), e.g. fi, sv, en. Highly recomended: use forest enumeratives type ISO639char2LanguageType.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="ServiceTypesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Palvelukokonaisuudet</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ServiceType" type="ServiceTypeType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ContactInformationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Yhteystietotyyppi</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="String100Type">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Nimi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Address" type="String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Osoite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PostalCode" type="String10Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Postinumero</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PostOffice" type="String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Postitoimipaikka</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PhoneNumber" type="String20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Puhelin</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EmailAddress" type="String50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Sähköposti</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LanguageCode" type="LanguageCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Sähköpostiosoite</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ExtraInfo" type="String100Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Lisätiedot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+		
+	<xs:simpleType name="MunicipalityNumberType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuntanumero (1-3 numeroa).</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Municipality number (1-3 numbers).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="jhs:KuntaKoodiTyyppi">
+			<xs:pattern value="[0-9]{1,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="MunicipalityNameType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kunnan nimi maksimissaan 30 merkkiä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Name of municipality.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="jhs:NimiTekstiTyyppi">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <xs:complexType name="BankAccountType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Pankkitili. IBAN+BIC. BIC-koodi muutettu pakolliseksi siirtymäajan jälkeen 05/2012.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="IBAN" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="BIC" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="IBANType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Pankkitili. IBAN-muoto. Myös kotimainen pankkitili oli mahdollinen siirtymäajan aikana.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="14"/>
+            <xs:maxLength value="40"/>
+            <xs:pattern value="[A-Z0-9]{2}([A-Z0-9])*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="BICType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">BIC-koodi.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="8"/>
+            <xs:maxLength value="11"/>
+            <xs:pattern value="[A-Z]{6}[A-Z0-9]{2}([A-Z0-9])*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="BankReferenceNumberType">
+        <xs:annotation>
+            <xs:documentation xml:lang="fi">Pankin viitenumero.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="4"/>
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:complexType name="DocumentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Dokumentin tiedot.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Document data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="DocumentClass" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="DocumentDescription" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="DocumentDate" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Tiedoston päivämäärä, esim. sopimuspäivä tai muistion päiväys</xs:documentation>
+					<xs:documentation xml:lang="sv"></xs:documentation>
+					<xs:documentation xml:lang="en"></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="DocumentFileName" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Dokumenttitiedoston nimi ilman tiedostopäätettä, esim. "tiedosto.txt" --> nimi on "tiedosto"</xs:documentation>
+					<xs:documentation xml:lang="sv"></xs:documentation>
+					<xs:documentation xml:lang="en"></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FileType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Dokumenttitiedoston tyyppi = tiedostopääte, esim. "tiedosto.txt" --> tyyppi on "txt"</xs:documentation>
+					<xs:documentation xml:lang="sv"></xs:documentation>
+					<xs:documentation xml:lang="en"></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FileBinary" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Dokumentti yksilöidään tiedonsiirrossa tiedonsiirto-osapuolien tarpeiden mukaan id:llä.</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Document can be identified using string id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="Document4MBType">
+		<xs:sequence>
+			<xs:element ref="DocumentClass" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="DocumentDescription" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="DocumentFileName" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Dokumenttitiedoston nimi ilman tiedostopäätettä, esim. "tiedosto.txt" --> nimi on "tiedosto"</xs:documentation>
+					<xs:documentation xml:lang="sv"></xs:documentation>
+					<xs:documentation xml:lang="en"></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FileType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="fi">Dokumenttitiedoston tyyppi = tiedostopääte, esim. "tiedosto.txt" --> tyyppi on "txt"</xs:documentation>
+					<xs:documentation xml:lang="sv"></xs:documentation>
+					<xs:documentation xml:lang="en"></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FileBinary" type="FileBinaryRestrictedSizeType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Dokumentti yksilöidään tiedonsiirrossa tiedonsiirto-osapuolien tarpeiden mukaan id:llä.</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Document can be identified using string id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:simpleType name="DocumentDescriptionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Dokumentin sisällön kuvaus.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Document description.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DocumentFileNameType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Dokumenttitiedoston nimi.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Document file name.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="FileTypeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Dokumenttitiedoston tyyppi.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Document file type.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="FileBinaryRestrictedSizeType">
+		<xs:simpleContent>
+			<xs:restriction base="xmime:base64Binary">
+				<xs:maxLength value="4194304"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="StatisticsPurchaseModeCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tilastoinnin puukauppamuodon koodit</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">OperationType</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="PurchaseModeType StatisticsPurchaseModeType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="UseCaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Metsäkeskuksen tarkastustieto- ja omavalvontasanomien käyttötapausten yhdistelmäkoodisto</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en"></xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="ControlUseCaseType SelfMonitoringUseCaseType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="Integer3digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kolminumeroisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for integer, 3 digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="-999"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Integer7digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Seitsemännumeroisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv">Definition av ett sjusiffrigt heltal.</xs:documentation>
+			<xs:documentation xml:lang="en">Definition of a seven-digit integer.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+        <xs:minInclusive value="-9999999"/>
+        <xs:maxInclusive value="9999999"/>
+		</xs:restriction>
+	</xs:simpleType>	
+	
+	<xs:simpleType name="PositiveIntegerType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for positive integer.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="NegativeIntegerType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Negatiivisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for negative integer.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:maxExclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveInteger1digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivisen yksinumeroisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for positive integer, 1 digit.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveInteger2digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivisen kaksinumeroisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for positive integer, 2 digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveInteger3digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivisen kolminumeroisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for positive integer, 3 digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveInteger4digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivisen nelinumeroisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for positive integer, 4 digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveInteger5digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivisen viisinumeroisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for positive integer, 5 digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveInteger6digitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivisen kuusinumeroisen kokonaisluvun määrittely.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition for positive integer, 6 digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal2And2Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kahdella desimaalilla arvovälillä -99.99 ja 99.99</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 2 fraction digit. Minimum value -99.99 an maximum value 99.99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:maxExclusive value="100"/>
+			<xs:minExclusive value="-100"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal2And2PositiveType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kahdella desimaalilla arvovälillä 0.00 ja 99.99</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 2 fraction digit. Minimum value 0.00 an maximum value 99.99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:maxExclusive value="100"/>
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal3And2Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kahdella desimaalilla arvovälillä -999.99 ja 999.99</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 2 fraction digit. Minimum value -999.99 an maximum value 999.99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:maxExclusive value="1000"/>
+			<xs:minExclusive value="-1000"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal3And2PositiveType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kahdella desimaalilla arvovälillä 0.00 ja 999.99</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 2 fraction digit. Minimum value 0.00 an maximum value 999.99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:maxExclusive value="1000"/>
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <xs:simpleType name="Decimal3TotalDigitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku maksimissaan 3 numeroa.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 3 total digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+    </xs:simpleType>
+	
+	<xs:simpleType name="Decimal4And2Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kahdella desimaalilla arvovälillä -9999.99 ja 9999.99</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 2 fraction digit. Minimum value -9999.99 an maximum value 9999.99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:maxExclusive value="10000"/>
+			<xs:minExclusive value="-10000"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal4And2PositiveType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kahdella desimaalilla arvovälillä 0.00 ja 9999.99</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 2 fraction digit. Minimum value 0.00 an maximum value 9999.99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:maxExclusive value="10000"/>
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <xs:simpleType name="Decimal4TotalDigitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku maksimissaan 4 numeroa.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 4 total digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="4"/>
+		</xs:restriction>
+    </xs:simpleType>
+	
+    <xs:simpleType name="Decimal5TotalDigitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku maksimissaan 5 numeroa.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 5 total digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="5"/>
+		</xs:restriction>
+    </xs:simpleType>
+	
+	<xs:simpleType name="Decimal7And2Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kahdella desimaalilla arvovälillä -9999999.99 ja 9999999.99</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 2 fraction digit. Minimum value -9999999.99 an maximum value 9999999.99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:maxExclusive value="10000000"/>
+			<xs:minExclusive value="-10000000"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal7And2PositiveType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kahdella desimaalilla arvovälillä -0.00 ja 9999999.99</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 2 fraction digit. Minimum value -0.00 an maximum value 9999999.99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:maxExclusive value="10000000"/>
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal1FractionDigitType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku yhdellä desimaalilla.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 1 fraction digit.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal2FractionDigitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kahdella desimaalilla.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 2 fraction digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal3FractionDigitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku kolmella desimaalilla.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 3 fraction digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal4FractionDigitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku neljällä desimaalilla.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 4 fraction digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Decimal6TotalDigitsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Desimaaliluku maksimissaan 6 numeroa.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Decimal number with 6 total digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveDecimalMax1IntegralPartMax2FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivinen desimaaliluku, jonka kokonaislukuosassa maksimissaan 1 numero ja desimaaliosassa maksimissaan 2 numeroa. Kattaa siis arvot 0 - 9,99.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Positive decimal fraction with maximum 1 digit in its integral part and maximum 2 digits in its fractional part. Thus covers values 0 - 9.99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,1}\.?[0-9]{0,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveDecimalMax2IntegralPartMax1FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivinen desimaaliluku, jonka kokonaislukuosassa maksimissaan 2 numeroa ja desimaaliosassa maksimissaan 1 numero. Kattaa siis arvot 0 - 99,9.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Positive decimal fraction with maximum 2 numbers in its integral part and maximum 1 number in its fractinoal part. Thus covers values 0 - 99,9.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,2}\.?[0-9]{0,1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveDecimalMax4IntegralPartMax2FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivinen desimaaliluku, jonka kokonaislukuosassa maksimissaan 4 numeroa ja desimaaliosassa maksimissaan 2 numeroa. Kattaa siis arvot 0 - 9999,99.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Positive decimal fraction with maximum 4 numbers in its integral part and maximum 2 numbers in its fractinoal part. Thus covers values 0 - 9999,99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,4}\.?[0-9]{0,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveDecimalMax5IntegralPartMax1FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivinen desimaaliluku, jonka kokonaislukuosassa maksimissaan 5 numeroa ja desimaaliosassa maksimissaan 1 numero. Kattaa siis arvot 0 - 99999,9.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Positive decimal fraction with maximum 5 numbers in its integral part and maximum 1 numbers in its fractinoal part. Thus covers values 0 - 9999,99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,5}\.?[0-9]{0,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PositiveDecimalMax5IntegralPartMax2FractionalPartType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Positiivinen desimaaliluku, jonka kokonaislukuosassa maksimissaan 4 numeroa ja desimaaliosassa maksimissaan 2 numeroa. Kattaa siis arvot 0 - 9999,99.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Positive decimal fraction with maximum 4 numbers in its integral part and maximum 2 numbers in its fractinoal part. Thus covers values 0 - 9999,99.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,5}\.?[0-9]{0,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PercentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Prosenttiluvun (desimaaliluku) määrittely (0.0 - 100.0 %).</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition of percent (decimal) (0.0 - 100.0 %).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PercentWithFraction1Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Prosenttiluvun (desimaaliluku yhdellä desimaalilla) määrittely (0.0 - 100.0 %).</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition of percent (decimal with fraction 1) (0.0 - 100.0 %).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+			<xs:fractionDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PercentWithFraction2Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Prosenttiluvun (desimaaliluku kahdella desimaalilla) määrittely (0.00 - 100.00 %).</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Definition of percent (decimal with fraction 2) (0.0 - 100.0 %).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String5Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 5 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String10Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 10 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String20Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 20 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String25Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 25 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String50Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 50 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String100Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 100 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String200Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 200 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String500Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 500 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String1000Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 1000 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String1500Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 1500 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String2000Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 2000 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String3000Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 3000 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="String5000Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Merkkijono max 5000 merkkiä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="5000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransactionQuantityUnitType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Liiketoimen tilastoitavan määrän yksikkö, laajennettu koodisto</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Transaction quantity units for assortments (cubic meters etc), extended coding</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="WideUnitType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RestrictionCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Rajoittekoodi</xs:documentation>
+			<xs:documentation xml:lang="sv"></xs:documentation>
+			<xs:documentation xml:lang="en">Restriction code</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="CuttingRestrictionType SilvicultureRestrictionType OtherRestrictionsType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="WideCertificationSystemType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Laaja sertifikaattikoodisto</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Certification system, wide coding</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="CertificationSystemType PEFCCertificationSystemSubTypeType FSCCertificationSystemSubTypeType"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="EntityTagType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Entiteettitunnisteen (HTPP protokollan mukainen muutoksen tunniste) tyyppimäärittely</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Entity tag (part of HTPP protocol which help differentiating changes) type definition</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String100Type"/>
+	</xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	*****************************************************************************
+	Kemera rahoitushakemuksen maksatusviesti
+	Skeema on JHS-170 -suosituksen mukainen.
+	Ensimmäinen versio 1.0
+	
+	9.2.2015
+
+	18.9.2015
+	- ForestCentrePaymentsType -tyypille lisätty lapsielementti "fcc:Documents"
+	
+	Muutokset skeemapakettiin V10.05:
+	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+	
+	Muutokset skeemapakettiin V11.02:
+	-Muutettu nimiavaruusmäärittely fac: (FinancingActCommon) -> fcc: (ForestCentreCommon)
+	
+	Muutokset skeemapakettiin V11.09:
+	-Sisältö muutettu vastaamaan uusia Metsäkeskuksen maksatussanoman määrittelyjä
+
+    Muutokset skeemapakettiin V11.10:
+    -Skeeman rakennetta muutettu siten, että yleisten osien rakenne siirretty skeematiedostoon ForestCentreCommon.xsd ja tähän skeemaan jätetty maksatussanomalle spesifit osat
+    
+    Muutokset skeemapakettii V11.11:
+    -Elementti PaymentsDate uudelleennimetty muotoon PaymentDate
+    -Elementti PaymentsReference uudelleennimetty muotoon PaymentReference
+    -Lisätty uusi vapaaehtoinen elementti RequestReference tyypiltään ForestCentreMessageReferenceType 9 (kyselyviite)
+
+    Muutokset skeemapakettiin V14.05:
+    -Lisätty uusi tyyppimäärittely SubsidyType
+    -Lisätty uusi tyyppimäärittely SubsidiesType
+    -Lisätty uusi tyyppimäärittely PaymentTextsType
+    -Tyyppimäärittelyn sisältö korvattu Subsidies-listarakenteella
+    -Lisätty uusi elementti OverallTotalSubsidy
+    -Lisätty uusi elementti ContactPerson
+    -Lisätty uusi elementti Attorney
+    -Lisätty uusi elementti BankAccount
+    -Elementti CustomerReference muutettu pakollisesta vapaaehtoiseksi
+    -Elementti ForestCentreMessageReference muutettu pakollisesta vapaaehtoiseksi
+    -Elementti ForestCentreMessageReferenceType muutettu pakollisesta vapaaehtoiseksi
+    -Lisätty uusi elementti DecidedTotalSubsidy
+    -Lisätty uusi elementti DecidedAmountUnit
+    -Lisätty uusi elementti DecidedAmount
+    -Lisätty uusi elementti CostTypeDescription
+    -Lisätty uusi elementti CostType
+    -Lisätty uusi elementti Subsidy
+    -Lisätty uusi elementti Subsidies
+    -Lisätty uusi elementti PaymentText
+    -Lisätty uusi elementti PaymentTexts
+    -Lisätty uusi elementti Attorney
+    -Lisätty uusi elementti CaseNumber
+    -Päivitetty elementin SubsidyAppliers dokumentaatio
+    
+    Muutokset skeemapakettiin V14.07:
+    -Tyyppimäärittelyn PaymentsRealEstateType lapsielementin Subsidies sallittujen esiintymien määrä rajattu yhteen (aiemmin 1..n)
+    -Tyyppimäärittelyn SubsidyType lapsielementin määrittely DecidedAmount muutettu vapaaehtoiseksi tiedoksi
+    -Tyyppimäärittelyn SubsidyType lapsielementin määrittely DecidedAmountUnit muutettu vapaaehtoiseksi tiedoksi
+	
+    Muutokset skeemapakettiin V16.01:
+    -Tyyppimäärittelyn PaymentsRealEstateType lapsielementin Subsidies sallittujen esiintymien määrä rajattu yhteen (aiemmin 1..n)
+    -Tyyppimäärittelyn SubsidyType lapsielementin määrittely DecidedAmount muutettu vapaaehtoiseksi tiedoksi
+    -Tyyppimäärittelyn SubsidyType lapsielementin määrittely DecidedAmountUnit muutettu vapaaehtoiseksi tiedoksi
+	****************************************************************************
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/ForestCentrePayments"
+	xmlns="http://standardit.tapio.fi/schemas/forestData/ForestCentrePayments"
+	xmlns:fcc="http://standardit.tapio.fi/schemas/forestData/ForestCentreCommon"
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+	xmlns:ci="http://standardit.tapio.fi/schemas/forestData/contactInformation"
+	xmlns:re="http://standardit.tapio.fi/schemas/forestData/realEstate"
+	elementFormDefault="qualified" version="V16.01">
+
+	<!-- Imports / Includes -->
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+		schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/ForestCentreCommon"
+		schemaLocation="ForestCentreCommon.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/contactInformation"
+		schemaLocation="ContactInformation.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/realEstate"
+		schemaLocation="RealEstateBase.xsd"/>
+
+	<!-- Elementtimääritykset -->
+	<!-- Element definitions -->
+	<xs:element name="ForestCentreData" type="ForestCentrePaymentsDataType"/>
+	<xs:element name="ForestCentrePayments" type="ForestCentrePaymentsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Metsäkeskuksen maksatussanoma, kun Message = MKM</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Payees" type="PayeesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maksunsaajat</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Payee" type="PayeeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maksunsaaja</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Payments" type="PaymentsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maksuerät</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Payment" type="ForestCentrePaymentDetailsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maksuerä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SubsidyAppliers" type="SubsidyAppliersType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tuenhakijat / -saajat</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SubsidyApplier" type="SubsidyApplierBaseContactAndEstateInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tuenhakija / -saaja</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="RealEstates" type="PaymentsRealEstatesType"/>
+	<xs:element name="RealEstate" type="PaymentsRealEstateType"/>
+	<xs:element name="CaseNumber" type="fcc:FinancingActNumberType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Asianumero. Käytetään myös termiä (hankkeen) Riihi-numero. Tapauskohtaisesti tarkoittaa Riihinumeroa, MKI-nro... Kemera-hakemuksessa vastaava tieto FinancingActNumber.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Attorney" type="ci:ContactInformationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Asiamies</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="PaymentTexts" type="PaymentTextsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maksatukseen liittyvät tekstit ja huomiot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="PaymentText" type="co:String5000Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maksatukseen liittyvä teksti tai huomio</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Subsidies" type="SubsidiesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tuet / korvaukset</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Subsidy" type="SubsidyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tuki / korvaus</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CostType" type="fcc:CostTypeType2">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kustannuslajikoodi</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CostTypeDescription" type="fcc:CostTypeDescriptionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kustannuslajiselite</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DecidedAmount" type="fcc:DecidedAmountType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tuki, päätetty määrä</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DecidedAmountUnit" type="fcc:DecidedAmountUnitType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Tuki, päätetyn määrän yksikkö</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DecidedTotalSubsidy" type="fcc:DecidedTotalSubsidyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Päätetyn tuen kokonaismäärä, euroa</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+
+	<!-- Tyyppimääritykset -->
+	<!-- Type definitions -->
+
+	<xs:complexType name="ForestCentrePaymentsDataType">
+		<xs:complexContent>
+			<xs:extension base="fcc:ForestCentreDataType">
+				<xs:sequence>
+					<xs:element ref="ForestCentrePayments" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="PayeesType">
+		<xs:sequence>
+			<xs:element ref="Payee" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PayeeType">
+		<xs:complexContent>
+			<xs:extension base="ci:ContactInformationType">
+				<xs:sequence>
+					<xs:element ref="Payments" minOccurs="1"/>
+					<xs:element ref="fcc:Documents" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="PaymentsType">
+		<xs:sequence>
+			<xs:element ref="Payment" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ForestCentrePaymentsType">
+		<xs:sequence>
+			<xs:element ref="Payees" minOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="co:IdStringType" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="ForestCentrePaymentDetailsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Metsäkeskuksen maksatussanoma</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Forest Centre payments</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CaseNumber" minOccurs="0"/>
+			<xs:element ref="fcc:ForestCentreMessageReferenceType" minOccurs="0"/>
+			<xs:element ref="fcc:ForestCentreMessageReference" minOccurs="0"/>
+			<xs:element ref="fcc:CompletionDeclarationReference" minOccurs="0"/>
+			<xs:element ref="fcc:CompletionDeclarationNumber" minOccurs="0"/>
+			<xs:element ref="fcc:CustomerReference" minOccurs="0"/>
+			<xs:element ref="fcc:ArrivalDate" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="fcc:PaymentReference" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="fcc:PaymentDate" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="fcc:BankAccount" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="Attorney" minOccurs="0"/>
+			<xs:element ref="fcc:ContactPerson" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="PaymentTexts" minOccurs="0"/>
+			<xs:element ref="fcc:OverallTotalSubsidy" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="SubsidyAppliers" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="fi">Maksatussanoman id</xs:documentation>
+				<xs:documentation xml:lang="sv"/>
+				<xs:documentation xml:lang="en">Payments id</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="SubsidyAppliersType">
+		<xs:sequence>
+			<xs:element ref="SubsidyApplier" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SubsidyApplierBaseContactAndEstateInfoType">
+		<xs:complexContent>
+			<xs:extension base="ci:ContactInformationType">
+				<xs:sequence>
+					<xs:element ref="RealEstates" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="PaymentsRealEstatesType">
+		<xs:sequence>
+			<xs:element ref="RealEstate" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PaymentsRealEstateType">
+		<xs:complexContent>
+			<xs:extension base="re:BaseRealEstateType2">
+				<xs:sequence>
+					<xs:element ref="Subsidies" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="PaymentTextsType">
+		<xs:sequence>
+			<xs:element ref="PaymentText" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SubsidiesType">
+		<xs:sequence>
+			<xs:element ref="Subsidy" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SubsidyType">
+		<xs:sequence>
+			<xs:element ref="CostType" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="CostTypeDescription" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="DecidedAmount" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="DecidedAmountUnit" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="DecidedTotalSubsidy" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
