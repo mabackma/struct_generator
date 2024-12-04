@@ -1,9 +1,21 @@
 use std::fs::File;
 use std::io::{self, Read};
+use std::vec;
 use quick_xml::events::BytesStart;
-use quick_xml::{Reader, events::{Event, BytesText}};
-use quick_xml::events::Event::{Start, End, Empty, Eof, Text, Comment};
+use quick_xml::Reader;
+use quick_xml::events::Event::{Start, End, Empty, Eof};
 use quick_xml::name::QName;
+use once_cell::sync::Lazy;
+
+// Lazily initialize the PARENTS variable
+static PARENTS: Lazy<Vec<QName<'static>>> = Lazy::new(|| {
+    vec![
+        QName(b"xs:complexType"),
+        QName(b"xs:sequence"),
+        QName(b"xs:choice"),
+    ]
+});
+
 
 fn main() {
     let xsd_content = &read_xsd_file("schema.xsd").unwrap();
@@ -16,7 +28,7 @@ fn main() {
                     parse_element(e);
                 } 
 
-                if e.name() == QName(b"xs:complexType") || e.name() == QName(b"xs:sequence") {
+                if PARENTS.contains(&e.name()) {
                     complex_types(&mut reader, e);
                 }
             }
@@ -25,7 +37,7 @@ fn main() {
                     parse_element(e);
                 } 
 
-                if e.name() == QName(b"xs:complexType") || e.name() == QName(b"xs:sequence") {
+                if PARENTS.contains(&e.name()) {
                     complex_types(&mut reader, e);
                 }
             },
@@ -52,7 +64,12 @@ fn read_xsd_file(file_name: &str) -> io::Result<String> {
 fn parse_element(e: &BytesStart<'_>) {
     element_references(e);
     element_names_and_types(e);
-    is_element_optional(e);
+    if is_element_vec(e) {
+        print!(" -> type: Vec<>");
+    };
+    if is_element_optional(e) {
+        print!(" (optional)");
+    };
     println!();
 }
 
@@ -86,6 +103,28 @@ fn element_names_and_types(e: &BytesStart<'_>) {
     } 
 }
 
+// Check if the element is a Vec<>
+fn is_element_vec(e: &BytesStart<'_>) -> bool {
+    let e_max_occurs = e.attributes().filter_map(|a| a.ok())
+        .find(|a| a.key == QName(b"maxOccurs")) 
+        .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the maxOccurs attribute value as a string
+
+    if let Some(max_occurs) = e_max_occurs {
+        if max_occurs == "unbounded"{
+            return true;
+        }
+
+        if let Ok(num) = max_occurs.parse::<u32>() {
+            if num > 1 {
+                return true;
+            }
+        }
+    }
+
+    false
+}
+
+// Check if the element is optional
 fn is_element_optional(e: &BytesStart<'_>) -> bool {
     let e_min_occurs = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"minOccurs")) 
@@ -93,12 +132,10 @@ fn is_element_optional(e: &BytesStart<'_>) -> bool {
 
     if let Some(min_occurs) = e_min_occurs {
         if min_occurs == "0" {
-            println!(" (optional)");
             return true;
         }
     }
 
-    println!(" (required)");
     false
 }
 
@@ -109,7 +146,7 @@ fn complex_types(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
         .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the name attribute value as a string
 
     if let Some(ref name) = e_name {
-        print!("\nComplexType: {} ", name);
+        println!("\nParent: {} ", name);
     }
 
     // Now handle the nested xs:attribute tags inside the complexType
@@ -121,12 +158,21 @@ fn complex_types(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
                     parse_element(child);
                 }
 
-                if child.name() == QName(b"xs:complexType") || child.name() == QName(b"xs:sequence") {
+                if PARENTS.contains(&child.name()) {
+                    complex_types(reader, child);
+                }
+            },
+            Ok(Empty(ref child)) => {
+                if child.name() == QName(b"xs:element") {
+                    parse_element(child);
+                }
+
+                if PARENTS.contains(&child.name()) {
                     complex_types(reader, child);
                 }
             }
             Ok(End(ref child)) => {
-                if child.name() == QName(b"xs:complexType") || child.name() == QName(b"xs:sequence") {
+                if PARENTS.contains(&child.name()) {
                     break; // End of the complexType, stop processing nested elements
                 }
             }
@@ -135,3 +181,4 @@ fn complex_types(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
         }
     }
 }
+    
