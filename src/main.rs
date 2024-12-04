@@ -62,45 +62,61 @@ fn read_xsd_file(file_name: &str) -> io::Result<String> {
 }
 
 fn parse_element(e: &BytesStart<'_>) {
-    element_references(e);
-    element_names_and_types(e);
+    let mut name = element_references(e);
+    let mut e_type = None;
+
+    if name.is_none() {
+        name = element_names(e);
+        e_type = element_types(e);
+    }
+
     if is_element_vec(e) {
-        print!(" -> type: Vec<>");
-    };
-    if is_element_optional(e) {
-        print!(" (optional)");
-    };
+        if is_element_optional(e) {
+            print!("{}: Option<Vec<{}>>,", name.clone().unwrap(), e_type.unwrap_or(name.unwrap()));
+        } else {
+            print!("{}: Vec<{}>,", name.clone().unwrap(), e_type.unwrap_or(name.unwrap()));
+        }
+    } else {
+        if is_element_optional(e) {
+            print!("{}: Option<{}>,", name.clone().unwrap(), e_type.unwrap_or(name.unwrap()));
+        } else {
+            print!("{}: {},", name.clone().unwrap(), e_type.unwrap_or(name.unwrap()));
+        }
+    }
+
     println!();
 }
 
-fn element_references(e: &BytesStart<'_>) {
+fn element_references(e: &BytesStart<'_>) -> Option<String> {
     let e_ref = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"ref")) 
         .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the ref attribute value as a string
-    
-    // If the element has a ref attribute, it cannot have a type attribute
-    if let Some(ref r) = e_ref {
-        print!("ref: {}", r);
-        print!(" -> type: String");
+
+    if let Some(_) = e_ref {
+        print!("ref: ");
     }
+
+    e_ref
 }
 
-fn element_names_and_types(e: &BytesStart<'_>) {
+fn element_names(e: &BytesStart<'_>) -> Option<String> {
     let e_name = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"name")) 
         .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the name attribute value as a string
 
-    let e_type = e.attributes().filter_map(|a| a.ok())
-        .find(|a| a.key == QName(b"type")) 
-        .and_then(|a| String::from_utf8(a.value.to_vec()).ok());
-
-    if let Some(ref name) = e_name {
-        print!("name: {}", name);
+    if let Some(_) = e_name {
+        print!("name: ");
     }
 
-    if let Some(type_name) = e_type {
-        print!(" -> type: {}", type_name);
-    } 
+    e_name
+}
+
+fn element_types(e: &BytesStart<'_>) -> Option<String> {
+    let e_type = e.attributes().filter_map(|a| a.ok())
+        .find(|a| a.key == QName(b"type")) 
+        .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the type attribute value as a string
+
+    e_type
 }
 
 // Check if the element is a Vec<>
@@ -146,7 +162,7 @@ fn complex_types(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
         .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the name attribute value as a string
 
     if let Some(ref name) = e_name {
-        println!("\nParent: {} ", name);
+        println!("\npub struct {} {{", name);
     }
 
     // Now handle the nested xs:attribute tags inside the complexType

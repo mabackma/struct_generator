@@ -1,398 +1,423 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 	***************************************************************
-	Kuvion puustotietojen elementit ja tyypit. 
+	Kuvion perustietojen elementit ja tyypit. 
 	Skeema on JHS-170 -suosituksen mukainen.
-
+	
 	Muutokset skeemapakettiin V10.05:
 	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
 	
-	Muutokset skeemapakettiin V11.06:
-	-Elementille TreeStandDataDate lisätty uusi vapaaehtoinen atribuutti inventoryMethod (inventointimenetelmä)
+	Muutokset skeemapakettiin V11.01:
+	-Lisätty uusi tyyppimäärittely BaseCompactStandBasicDataType joka on sisällöltään CompactStandBasicDataType ilman pakollisuuksia
+	
+	Muutokset skeemapakettiin V11.04:
+	-Tyyppimäärittelyn IdentifiersType sisällä ollut complexType-määrittely on korvattu sequencella, jonka sisältönä on viittaus elementtiin Identifier
 
     Muutokset skeemapakettiin V11.08:
-    -Skeematiedostosta poistettu elementin ControlStandTreeStandSummary määritykset
-    -Lisätty määrittely elementille SpareTreeGroups
-    -Lisätty määrittely elementille SpareTreeGroup
-    -Lisätty määrittely elementille TreeClass
-
-    Muutokset skeemapakettiin V11.10:
-    -Lisätty uusi tyyppimäärittely TreeStandDataDate2Type joka on rinnakkaismäärittely puustoajankohdalle
+    -Lisätty uusi datagroup BaseSoilDataGroup, sisältönä SoilDataGroup mutta ilman pakollisuuksia
+    -Lisätty uusi tyyppimäärittely BaseSoilDataType, joka viittaa BaseSoilDataGroupiin
     
-    Muutokset skeemapakettiin V14.03: 
-    -Vaihdettu elementin SeedlingBeginningCode tyyppimäärittelyksi SeedlingOriginType
+    Muutokset skeemapakettiin V15.00:
+    -Muokattu elementit stb:MainTreeSpeciesType muotoon co:TreeSpeciesType ja stb:DitchingYearType muotoon co:YearType
+    -Vaihdettu elementtien FertillityClassType, SoilTypeType, DrainageStateType, DevelopmentClassType, StandQualityType, AccessibilityType, CuttingRestrictionType ja SilvicultureRestrictionType viittaus skeemaan co, aiemman sb:n tilalle
     
     Muutokset skeemapakettiin V17.02:
-    -Täydennetty dokumentaatioita
-    
-    Muutokset skeemapakettiin V18.05:
-    -Tyyppimäärittelyyn TreeStandDataDateType lisätty uudet vapaaehtoiset attribuutit infoProviderRole ja infoProviderOrganizationName
-    
-    Muutokset skeemapakettiin V20.01:
-    -Lisätty uudet vapaaehtoiset elementit TreeSpeciesSummary tyyppimäärittelyltään TreeSpeciesSummaryType, TreeSpeciesData tyyppimäärittelyltään TreeSpeciesDataType, 
-     AverageStemVolume tyyppimäärittelyltään co:Decimal3FractionDigitsType, SawlogPercent tyyppimäärittelyltään co:SawLogPercentType, TotalSawlogVolume tyyppimäärittelyltään co:SawLogVolumeType,
-     TotalPulpwoodVolume tyyppimäärittelyltään co:PulpWoodVolumeType, TotalVolume tyyppimäärittelyltään co:VolumeType.
-    -Lisätty uusi pakollinen elementti TreeSpeciesData tyyppimäärittelyltään TreeSpeciesDataType, TreeSpeciesSummaryType tyyppimäärittelyyn.
-    -Lisätty tyyppimäärittelyt TreeSpeciesSummaryType Puulajikohtainen yhteenveto ja TreeSpeciesDataType Puulajin tiedot.
-    
-    Muutokset skeemapakettiin V24.03: 
-    -Lisätty uusi tyypimäärittely NotEmptyTreeSpeciesType, puutavaralajin puulaji
-    -Vaihdettu elementin TreeSpecies tyyppimäärittelyksi NoEmptyTreeSpeciesType
-    
+    -Täydennetty dokumentaatioita   
 	***************************************************************
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://standardit.tapio.fi/schemas/forestData/treeStand"
-	xmlns="http://standardit.tapio.fi/schemas/forestData/treeStand"
-	xmlns:tst="http://standardit.tapio.fi/schemas/forestData/treeStratum"
-	xmlns:sd="http://standardit.tapio.fi/schemas/forestData/stemDistribution"
-	xmlns:sds="http://standardit.tapio.fi/schemas/forestData/stemDistributionStratum"
-	xmlns:dts="http://standardit.tapio.fi/schemas/forestData/deadTreeStrata"
-	xmlns:tss="http://standardit.tapio.fi/schemas/forestData/treeStandSummary"
-	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
-	xmlns:ci="http://standardit.tapio.fi/schemas/forestData/contactInformation"
-	xmlns:jhs="http://skeemat.jhs-suositukset.fi/yhteiset/2009/03/04" elementFormDefault="qualified" version="V24.03">
+	targetNamespace="http://standardit.tapio.fi/schemas/forestData/Stand"
+	xmlns="http://standardit.tapio.fi/schemas/forestData/Stand"
+	xmlns:stb="http://standardit.tapio.fi/schemas/forestData/standbase"
+	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" version="V17.02">
 
 	<!-- Imports / Includes -->
-	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/treeStratum" schemaLocation="TreeStratum.xsd"/>
-	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/stemDistribution" schemaLocation="StemDistribution.xsd"/>
-	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/stemDistributionStratum" schemaLocation="StemDistributionStratum.xsd"/>
-	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/deadTreeStrata" schemaLocation="DeadTreeStratum.xsd"/>
-	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/treeStandSummary" schemaLocation="TreeStandSummary.xsd"/>
-	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common" schemaLocation="Common.xsd"/>
-	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/contactInformation" schemaLocation="ContactInformation.xsd"/>
-	<xs:import namespace="http://skeemat.jhs-suositukset.fi/yhteiset/2009/03/04" schemaLocation="JHS170_20090304.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/standbase"
+		schemaLocation="StandBase.xsd"/>
+	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+		schemaLocation="Common.xsd"/>
 
 	<!-- Elementtimääritykset -->
 	<!-- Element definitions -->
-	<xs:element name="TreeStandData" type="TreeStandDataType">
+	<xs:element name="Identifiers" type="IdentifiersType"/>
+	<xs:element name="Identifier" type="co:IdentifierType"/>
+	<xs:element name="StandNumber" type="stb:StandNumberType">
 		<xs:annotation>
-			<xs:documentation xml:lang="fi">Metsikkökuvion puustotiedot</xs:documentation>
+			<xs:documentation xml:lang="fi">Kuvionumero.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Stand number.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="StandNumberExtension" type="stb:StandNumberExtensionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion alanumero (lisämerkki).</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Stand number extension (extra character, normally number).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="MainGroup" type="co:ExtendedMainGroupType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pääryhmä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Main group.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SubGroup" type="co:SubGroupType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Alaryhmä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Sub group.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FertilityClass" type="co:FertilityClassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kasvupaikkaluokka.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Fertility classifier.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SoilType" type="co:SoilTypeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maalaji.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Soil type.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DrainageState" type="co:DrainageStateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuivatustilanne.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Drainage state.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DitchingYear" type="co:YearType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Ojitusvuosi.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Ditching year.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ThinningYear" type="co:YearType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Viimeisimmän harvennuksen ajankohta.</xs:documentation>
 			<xs:documentation xml:lang="sv"/>
 			<xs:documentation xml:lang="en"/>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="TreeStandDataDate" type="TreeStandDataDateType"/>
-	<xs:element name="AlternativeIdentifier" type="AlternativeIdentifierType"/>
-	<xs:element name="OperationTreeReduction" type="OperationTreeReductionType"/>
-	<xs:element name="SeedlingData" type="SeedlingDataType"/>
-	<xs:element name="StumpStemCount" type="co:PositiveInteger6digitsType"/>
-	<xs:element name="StumpMeanDiameter" type="co:PositiveDecimalMax2IntegralPartMax1FractionalPartType"/>
-	<xs:element name="SeedlingStratum" type="SeedlingStratumType"/>
-	<xs:element name="TreeSpecies" type="NotEmptyTreeSpeciesType"/>
-	<xs:element name="SeedlingBeginningCode" type="co:SeedlingOriginType"/>
-	<xs:element name="Amount" type="co:PositiveInteger6digitsType"/>
-	<xs:element name="AmountInSpot" type="co:PositiveInteger6digitsType"/>
-	<xs:element name="AmountOutsideSpot" type="co:PositiveInteger6digitsType"/>
-	<xs:element name="AmountUnit" type="co:AmountUnitType"/>
-	<xs:element name="StemCount" type="co:StemCountType"/>
-	<xs:element name="PineDecimal" type="xs:integer"/>
-	<xs:element name="SpruceDecimal" type="xs:integer"/>
-	<xs:element name="BirchDecimal" type="xs:integer"/>
-	<xs:element name="SeedStemCount" type="co:PositiveInteger6digitsType"/>
-	<xs:element name="BasalArea" type="co:BasalAreaType"/>
-	<xs:element name="MeanDiameter" type="co:PositiveDecimalMax2IntegralPartMax1FractionalPartType"/>
-	<xs:element name="MeanAge" type="co:AgeType"/>
-	<xs:element name="DominantHeight" type="co:PositiveDecimalMax2IntegralPartMax1FractionalPartType"/>
-	<xs:element name="AverageHeight" type="co:PositiveDecimalMax2IntegralPartMax1FractionalPartType"/>
-	<xs:element name="SpareTreeGroups" type="SpareTreeGroupsType"/>
-	<xs:element name="SpareTreeGroup" type="SpareTreeGroupType"/>
-	<xs:element name="TreeClass" type="co:TreeClassType"/>
-	<xs:element name="TreeSpeciesSummary" type="TreeSpeciesSummaryType"/>
-	<xs:element name="TreeSpeciesData" type="TreeSpeciesDataType"/>
-	<xs:element name="AverageStemVolume" type="co:Decimal3FractionDigitsType"/>
-	<xs:element name="SawlogPercent" type="co:SawLogPercentType"/>
-	<xs:element name="TotalSawlogVolume" type="co:SawLogVolumeType"/>
-	<xs:element name="TotalPulpwoodVolume" type="co:PulpWoodVolumeType"/>
-	<xs:element name="TotalVolume" type="co:VolumeType"/>
+	<xs:element name="DevelopmentClass" type="co:DevelopmentClassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kehitysluokka.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Development class.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="StandQuality" type="co:StandQualityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Metsikön laatu.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Stand quality.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="MainTreeSpecies" type="co:TreeSpeciesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Pääpuulaji.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Code of main tree species.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Accessibility" type="co:AccessibilityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Saavutettavuus</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Accessibility classifier.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CuttingRestriction" type="co:CuttingRestrictionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hakkuurajoitus.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Cutting restriction.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CuttingRestrictionEnds" type="co:DateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Hakkuun rajoituksen päättymispäivä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SilvicultureRestrictions" type="SilvicultureRestrictionsType"/>
+	<xs:element name="SilvicultureRestrictionDetails" type="SilvicultureRestrictionDetailsType"/>
+	<xs:element name="SilvicultureRestriction" type="co:SilvicultureRestrictionType"/>
+	<xs:element name="SilvicultureRestrictionEnds" type="co:DateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Metsänhoitotyön rajoituksen päättymispäivä.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="StandBasicDataDate" type="stb:StandBasicDataDateType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Perustietojen inventointi- / muutosajankohta.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Date of inventory of stand basic data.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="StandInfo" type="stb:StandInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion vapaamuotoinen teksti.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Stand info text.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="GrowthPlaceDataSource" type="co:DataSourceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Metsikkökuvion kasvupaikkatietojen tietolähde.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Area" type="stb:AreaType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion kokonaispinta-ala hehtaareina.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Total area of stand, ha. Normally area of polygon geometry.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AreaDecrease" type="stb:AreaDecreaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion vähennysala hehtaareina. Kuvion metsäpinta-alaa vähentävä ala. Sisältää esim. tiet ja linjaviivat.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Area which decrease total area of stand, ha. E.g. power lines, roads... Area - AreaDecrease = effective forest land area for forestry purposes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CompleteState" type="co:CompleteStateType"/>
 
-	
+
 	<!-- Tyyppimääritykset -->
 	<!-- Type definitions -->
-	<xs:simpleType name="AlternativeIdentifierType">
+	<xs:complexType name="StandBasicDataType">
 		<xs:annotation>
-			<xs:documentation xml:lang="fi">Suunnitelmavaihtoehdon tunniste. Erottaa eri suunnitelmavaihtoehtojen TreeStandSummary-elementit.</xs:documentation>
+			<xs:documentation xml:lang="fi">Kuvion perustiedot.</xs:documentation>
 			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en"/>
-		</xs:annotation>
-		<xs:restriction base="xs:string"/>
-	</xs:simpleType>
-	
-	<xs:complexType name="TreeStandDataType">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Kuvion puustotiedot tyypeittäin ja ajankohdittain.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Tree stand data grouped by type and moment.</xs:documentation>
+			<xs:documentation xml:lang="en">Stand basic data.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element ref="TreeStandDataDate" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element ref="co:ChangeState" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="co:ChangeTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CompleteState" type="co:CompleteStateType" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Identifiers" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StandNumber" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="StandNumberExtension" minOccurs="0" maxOccurs="1"/>
+			<xs:group ref="SoilDataGroup" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="DitchingYear" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="ThinningYear" minOccurs="0" maxOccurs="1"/>
+			<xs:group ref="TreeStandBasedDataGroup" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="Accessibility" minOccurs="0" maxOccurs="1"/>
+			<xs:group ref="RestrictionsMainGroup" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="StandBasicDataDate" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="StandInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="co:DataSource" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="GrowthPlaceDataSource" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="TreeStandDataDateType">
+	<xs:complexType name="BaseCompactStandBasicDataType">
 		<xs:annotation>
-			<xs:documentation xml:lang="fi">Kuvion osoitetun tyyppinen (inventointi/laskenta/ennuste) puusto ajankohtana pvm.</xs:documentation>
+			<xs:documentation xml:lang="fi">Kuvion perustiedot (supistettu versio StandBasicDataType:stä, ilman pakollisuuksia).</xs:documentation>
 			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Some moment data of tree stand specified by date and type.</xs:documentation>
+			<xs:documentation xml:lang="en">Stand basic data (compact version of StandBasicDataType).</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element ref="AlternativeIdentifier" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="tst:TreeStrata" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="dts:DeadTreeStrata" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="tss:TreeStandSummary" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="TreeSpeciesSummary" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="sd:StemDistribution" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="sds:StemDistributionStrata" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="co:ChangeState" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="co:ChangeTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="CompleteState" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Identifiers" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StandNumber" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StandNumberExtension" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="DitchingYear" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="ThinningYear" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Accessibility" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StandBasicDataDate" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StandInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="co:DataSource" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="GrowthPlaceDataSource" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="type" type="TreeStandDataMomentType" use="required">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">Ajankohdan tyyppi</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">Type of moment.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="date" type="co:DateType" use="required">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">Ajankohdan pvm. Inventointi-, laskenta- tai ennustepvm.</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">Date of moment.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="inventoryMethod" type="co:InventoryMethodType" use="optional">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">Ajankohdan puuston inventointimenetelmä</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">Moments forest inventory method</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="infoProviderRole" type="co:InfoProviderRoleType" use="optional">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">Tiedon tuottajan luokittelu</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">Info provider role</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="infoProviderOrganizationName" type="ci:OrganizationNameType" use="optional">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">Tiedon tuottajaorganisaation nimi</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">Info provider organization name</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:complexType>
-	<xs:complexType name="TreeStandDataDate2Type">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Kuvion osoitetun tyyppinen (inventointi/laskenta/ennuste) puusto ajankohtana pvm.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Some moment data of tree stand specified by date and type.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element ref="AlternativeIdentifier" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="TreeStrata" type="tst:TreeStrata2Type" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="dts:DeadTreeStrata" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="TreeStandSummary" type="tss:TreeStandSummary2Type" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="sd:Trees" minOccurs="0"/>
-			<xs:element ref="sd:StemDistribution" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="sds:StemDistributionStrata" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="OperationTreeReduction" minOccurs="0"/>
-			<!-- <xs:element ref="SeedlingData" minOccurs="0">
-				<xs:annotation>
-				<xs:documentation xml:lang="fi">Taimitiedot</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-				</xs:element> -->
-			<!-- <xs:element ref="ControlStandTreeStandSummary" minOccurs="0"/> -->
-		</xs:sequence>
-		<xs:attribute name="type" type="TreeStandDataMomentType" use="required">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">Ajankohdan tyyppi</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">Type of moment.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="date" type="co:DateType" use="required">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">Ajankohdan pvm. Inventointi-, laskenta- tai ennustepvm.</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">Date of moment.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="inventoryMethod" type="co:InventoryMethodType" use="optional">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">Ajankohdan puuston inventointimenetelmä</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">Moments forest inventory method</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
 	</xs:complexType>
 
-	<xs:simpleType name="TreeStandDataMomentType">
+	<xs:complexType name="CompactStandBasicDataType">
 		<xs:annotation>
-			<xs:documentation xml:lang="fi">Laskenta- ja ennustetyyppi eri koodeina koska ainakin aiemmin metsäkeskuksissa on käytetty tulevaisuuden puuston esittämisessä molempia. Laskentatyyppisessä tiedot on esitetty puusto-ositetarkkuudella ja ennustetyyppisessä on ollut pelkkä yhteenveto. Näiden kahden tyypin soveltamisesta voivat tiedonsiirtosovellukset päättää keskenään.</xs:documentation>
+			<xs:documentation xml:lang="fi">Kuvion perustiedot (supistettu versio StandBasicDataType:stä).</xs:documentation>
 			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en"/>
+			<xs:documentation xml:lang="en">Stand basic data (compact version of StandBasicDataType).</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="co:TreeStandDataMomentType"/>
-	</xs:simpleType>
-	
-	<xs:complexType name="OperationTreeReductionType">
 		<xs:sequence>
-			<xs:element ref="StumpStemCount" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Hakatun harvennushakkuun kantojan määrä. Kpl/ha Laskentasääntö: 10 000 m2*Puuluokkaan 8 kuuluvien puiden lkm/Koealojen pinta-alojen summa m2 (jos hta on 2 tai 3, niin s/k. kpl/ha kenttään Virtaan siirretään tallentimelta tämän kentän arvo)</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="StumpMeanDiameter" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Kantojen keskiläpimitta cm. Suurin mahdollinen arvo on on 99,9. Laskentasääntö: Koealakohtaisten dk arvojen keskiarvo.</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
+			<xs:element ref="co:ChangeState" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="co:ChangeTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="CompleteState" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Identifiers" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StandNumber" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="StandNumberExtension" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="DitchingYear" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="ThinningYear" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Accessibility" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StandBasicDataDate" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="StandInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="co:DataSource" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="GrowthPlaceDataSource" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	
-	<xs:complexType name="SeedlingDataType">
-		<xs:sequence>
-			<xs:element ref="SeedlingStratum" minOccurs="1" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Taimiosite</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	
-	<xs:complexType name="SeedlingStratumType">
-		<xs:sequence>
-			<xs:element ref="TreeSpecies" minOccurs="0"/>
-			<xs:element ref="SeedlingBeginningCode" minOccurs="0"/>
-			<xs:element ref="Amount" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Taimien lukumäärä,  kpl</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AmountInSpot" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Taimien määrä muokkausjäljessä (kpl)</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AmountOutsideSpot" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Taimien määrä muualla kuin muokkausjäljessä, kpl</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AmountUnit" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	
-	<xs:complexType name="SpareTreeGroupsType">
+
+	<xs:complexType name="IdentifiersType">
 		<xs:annotation>
-			<xs:documentation xml:lang="fi">Säästöpuuryhmät</xs:documentation>
+			<xs:documentation xml:lang="fi">Kuvion tunnisteet.</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Identifiers of stand.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Identifier" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:group name="BaseSoilDataGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi"/>
 			<xs:documentation xml:lang="sv"/>
 			<xs:documentation xml:lang="en"/>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element ref="SpareTreeGroup"/>
+			<xs:element ref="MainGroup" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="SubGroup" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="FertilityClass" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="SoilType" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="DrainageState" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
-	</xs:complexType>
-	
-	<xs:complexType name="SpareTreeGroupType">
+	</xs:group>
+	<xs:group name="SoilDataGroup">
 		<xs:annotation>
-			<xs:documentation xml:lang="fi">Säästöpuuryhmä</xs:documentation>
+			<xs:documentation xml:lang="fi"/>
 			<xs:documentation xml:lang="sv"/>
 			<xs:documentation xml:lang="en"/>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element ref="TreeSpecies" minOccurs="0"/>
-			<xs:element ref="TreeClass" minOccurs="0"/>
-			<xs:element ref="StemCount" minOccurs="0"/>
-			<xs:element ref="MeanDiameter" minOccurs="0"/>
-			<xs:element ref="AverageHeight" minOccurs="0"/>
+			<xs:element ref="MainGroup" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="SubGroup" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="FertilityClass" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="SoilType" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="DrainageState" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
-	</xs:complexType>
-	
-	<xs:complexType name="TreeSpeciesSummaryType">
+	</xs:group>
+	<xs:group name="TreeStandBasedDataGroup">
 		<xs:annotation>
-			<xs:documentation xml:lang="fi">Puulajikohtainen yhteenveto.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Summary for tree species.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element ref="TreeSpeciesData" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	
-	<xs:complexType name="TreeSpeciesDataType">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Puulajin tiedot</xs:documentation>
+			<xs:documentation xml:lang="fi"/>
 			<xs:documentation xml:lang="sv"/>
 			<xs:documentation xml:lang="en"/>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element ref="TreeSpecies" minOccurs="1">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Puulajikoodi</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AverageStemVolume" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Rungon keskitilavuus m3</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
-				<xs:element ref="SawlogPercent" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation xml:lang="fi">Tukki-%</xs:documentation>
-						<xs:documentation xml:lang="sv"/>
-						<xs:documentation xml:lang="en"/>
-					</xs:annotation>
-				</xs:element>
-			<xs:element ref="TotalSawlogVolume" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation xml:lang="fi">Tukin kokonaistilavuus</xs:documentation>
-						<xs:documentation xml:lang="sv"/>
-						<xs:documentation xml:lang="en"/>
-					</xs:annotation>
-				</xs:element>
-			<xs:element ref="TotalPulpwoodVolume" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Kuidun kokonaistilavuus</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="TotalVolume" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi">Puulajin kokonaistilavuus</xs:documentation>
-					<xs:documentation xml:lang="sv"/>
-					<xs:documentation xml:lang="en"/>
-				</xs:annotation>
-			</xs:element>
+			<xs:element ref="DevelopmentClass" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="StandQuality" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="MainTreeSpecies" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="RestrictionsMainGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi"/>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CuttingRestriction" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="CuttingRestrictionEnds" minOccurs="0" maxOccurs="1"/>
+			<xs:group ref="SilvicultureRestrictionMainGroup" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SilvicultureRestrictionMainGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi"/>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:group ref="SilvicultureRestrictionGroup" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="SilvicultureRestrictions" minOccurs="0" maxOccurs="1"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SilvicultureRestrictionGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi"/>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="SilvicultureRestriction" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="SilvicultureRestrictionEnds" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="SilvicultureRestrictionsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi"/>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en"/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="SilvicultureRestrictionDetails" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
-	<xs:simpleType name="NotEmptyTreeSpeciesType">
+	<xs:complexType name="SilvicultureRestrictionDetailsType">
 		<xs:annotation>
-			<xs:documentation xml:lang="fi">Puutavaralajin puulaji.</xs:documentation>
+			<xs:documentation xml:lang="fi">Metsänhoidonrajoitus.</xs:documentation>
 			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Tree species of assortment</xs:documentation>
+			<xs:documentation xml:lang="en">Silviculture restriction.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="co:TreeSpeciesType co:ExtraTreeSpeciesType"/>
-	</xs:simpleType>
-	
-	
+		<xs:sequence>
+			<xs:group ref="SilvicultureRestrictionGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="BaseSoilDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maaperätiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Soil data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="BaseSoilDataGroup" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SoilDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Maaperätiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Soil data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SoilDataGroup" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="TreeStandBasedDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Kuvion puustoon liittyvät perustiedot</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Tree stand based data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="TreeStandBasedDataGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RestrictionDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="fi">Toimenpiteiden rajoitteet</xs:documentation>
+			<xs:documentation xml:lang="sv"/>
+			<xs:documentation xml:lang="en">Operation restrictions</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="RestrictionsMainGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+
 </xs:schema>
