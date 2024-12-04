@@ -1,21 +1,9 @@
 use std::fs::File;
 use std::io::{self, Read};
-use std::vec;
 use quick_xml::events::BytesStart;
 use quick_xml::Reader;
 use quick_xml::events::Event::{Start, End, Empty, Eof};
 use quick_xml::name::QName;
-use once_cell::sync::Lazy;
-
-// Lazily initialize the PARENTS variable
-static PARENTS: Lazy<Vec<QName<'static>>> = Lazy::new(|| {
-    vec![
-        QName(b"xs:complexType"),
-        QName(b"xs:sequence"),
-        QName(b"xs:choice"),
-    ]
-});
-
 
 fn main() {
     let xsd_content = &read_xsd_file("schema.xsd").unwrap();
@@ -28,18 +16,14 @@ fn main() {
                     parse_element(e);
                 } 
 
-                if PARENTS.contains(&e.name()) {
-                    complex_types(&mut reader, e);
-                }
+                parse_nested_elements(&mut reader, e);
             }
             Ok(Empty(ref e)) => {
                 if e.name() == QName(b"xs:element") {
                     parse_element(e);
                 } 
 
-                if PARENTS.contains(&e.name()) {
-                    complex_types(&mut reader, e);
-                }
+                parse_nested_elements(&mut reader, e);
             },
             Ok(Eof) => break,
             _ => {}
@@ -155,8 +139,8 @@ fn is_element_optional(e: &BytesStart<'_>) -> bool {
     false
 }
 
-// Parse xs:complexType elements
-fn complex_types(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
+// Parse nested elements
+fn parse_nested_elements(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
     let e_name = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"name")) 
         .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the name attribute value as a string
@@ -174,23 +158,17 @@ fn complex_types(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
                     parse_element(child);
                 }
 
-                if PARENTS.contains(&child.name()) {
-                    complex_types(reader, child);
-                }
+                parse_nested_elements(reader, child);
             },
             Ok(Empty(ref child)) => {
                 if child.name() == QName(b"xs:element") {
                     parse_element(child);
                 }
 
-                if PARENTS.contains(&child.name()) {
-                    complex_types(reader, child);
-                }
+                parse_nested_elements(reader, child);
             }
-            Ok(End(ref child)) => {
-                if PARENTS.contains(&child.name()) {
-                    break; // End of the complexType, stop processing nested elements
-                }
+            Ok(End(ref _child)) => {
+                break; // End of the complexType, stop processing nested elements
             }
             Ok(Eof) => break,
             _ => {}
