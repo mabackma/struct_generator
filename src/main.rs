@@ -45,6 +45,7 @@ fn read_xsd_file(file_name: &str) -> io::Result<String> {
     Ok(xsd_string)
 }
 
+// Parse the element
 fn parse_element(e: &BytesStart<'_>) {
     let mut name = element_references(e);
     let mut e_type = None;
@@ -71,6 +72,7 @@ fn parse_element(e: &BytesStart<'_>) {
     println!();
 }
 
+// Retrieve the element reference
 fn element_references(e: &BytesStart<'_>) -> Option<String> {
     let e_ref = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"ref")) 
@@ -83,6 +85,7 @@ fn element_references(e: &BytesStart<'_>) -> Option<String> {
     e_ref
 }
 
+// Retrieve the element name
 fn element_names(e: &BytesStart<'_>) -> Option<String> {
     let e_name = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"name")) 
@@ -95,6 +98,7 @@ fn element_names(e: &BytesStart<'_>) -> Option<String> {
     e_name
 }
 
+// Return the type of the element
 fn element_types(e: &BytesStart<'_>) -> Option<String> {
     let e_type = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"type")) 
@@ -149,8 +153,6 @@ fn parse_nested_elements(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
         println!("\npub struct {} {{", name);
     }
 
-    // Now handle the nested xs:attribute tags inside the complexType
-    // Read nested elements inside xs:complexType
     loop {
         match reader.read_event() {
             Ok(Start(ref child)) => {
