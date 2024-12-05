@@ -14,16 +14,14 @@ fn main() {
             Ok(Start(ref e)) => {
                 if e.name() == QName(b"xs:element") {
                     parse_element(e);
-                } 
-
-                parse_nested_elements(&mut reader, e);
+                } else {
+                    parse_nested_elements(&mut reader, e);
+                }
             }
             Ok(Empty(ref e)) => {
                 if e.name() == QName(b"xs:element") {
                     parse_element(e);
-                } 
-
-                parse_nested_elements(&mut reader, e);
+                }
             },
             Ok(Eof) => break,
             _ => {}
@@ -50,9 +48,12 @@ fn parse_element(e: &BytesStart<'_>) {
     let mut name = element_references(e);
     let mut e_type = None;
 
+    // If the element has no reference, get the name and type
     if name.is_none() {
         name = element_names(e);
         e_type = element_types(e);
+    } else {
+        e_type = search_reference_type(name.as_ref().unwrap());
     }
 
     if is_element_vec(e) {
@@ -158,16 +159,14 @@ fn parse_nested_elements(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
             Ok(Start(ref child)) => {
                 if child.name() == QName(b"xs:element") {
                     parse_element(child);
+                } else {
+                    parse_nested_elements(reader, child);
                 }
-
-                parse_nested_elements(reader, child);
             },
             Ok(Empty(ref child)) => {
                 if child.name() == QName(b"xs:element") {
                     parse_element(child);
                 }
-
-                parse_nested_elements(reader, child);
             }
             Ok(End(ref _child)) => {
                 break; // End of the complexType, stop processing nested elements
@@ -177,4 +176,8 @@ fn parse_nested_elements(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>) {
         }
     }
 }
-    
+
+fn search_reference_type(ref_name: &str) -> Option<String> {
+    // Search for the reference type in the schema
+    Some("String".to_string())
+}
