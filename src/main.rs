@@ -39,34 +39,11 @@ impl XMLStruct {
 fn main() {
     let xsd_content = &read_xsd_file("schema.xsd").unwrap();
     let mut reader = Reader::from_str(xsd_content);
-
-    let mut stack: Vec<XMLStruct> = Vec::new(); // Stack of structs being constructed
     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
 
-    let mut xml_struct = XMLStruct::new();
+    parse_nested_elements(&mut reader, &mut structs);
 
-    loop {
-        match reader.read_event() {
-            Ok(Start(ref e)) => {
-                if e.name() == QName(b"xs:element") {
-                    parse_element(e, &mut xml_struct);
-                    stack.push(xml_struct.clone());
-                } else {
-                    parse_nested_elements(&mut reader, e, &mut stack, &mut structs);
-                }
-            }
-            Ok(Empty(ref e)) => {
-                if e.name() == QName(b"xs:element") {
-                    parse_element(e, &mut xml_struct);
-                    stack.push(xml_struct.clone());
-                }
-            },
-            Ok(Eof) => break,
-            _ => {}
-        }
-    }
-
-    for (name, xml_struct) in structs.iter() {
+/*     for (name, xml_struct) in structs.iter() {
         println!("\npub struct {} {{", name);
 
         for field in xml_struct.fields.iter() {
@@ -74,6 +51,12 @@ fn main() {
         }
 
         println!("}}");
+    } */
+
+    for s in structs {
+        //if s.1.name == ""
+        println!("{:?}", s);
+        println!();
     }
 }
 
@@ -213,46 +196,70 @@ fn is_element_optional(e: &BytesStart<'_>) -> bool {
 }
 
 // Parse nested elements
-fn parse_nested_elements(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>, stack: &mut Vec<XMLStruct>, structs: &mut HashMap<String, XMLStruct>) {
-    let mut xml_struct = XMLStruct::new();
-    let mut name = String::new();
-
-    let e_name = e.attributes().filter_map(|a| a.ok())
-        .find(|a| a.key == QName(b"name")) 
-        .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the name attribute value as a string
-        
-    if let Some(ref name_ref) = e_name {        
-        name = name_ref.clone();
-    }
+fn parse_nested_elements(
+    reader: &mut Reader<&[u8]>,
+    structs: &mut HashMap<String, XMLStruct>,
+) {
+    let mut stack: Vec<XMLStruct> = Vec::new(); // Stack to keep track of active structs
+    let mut current_struct = XMLStruct::new(); // Root structure
+    let mut current_name = String::new(); // Name of the current structure
 
     loop {
         match reader.read_event() {
-            Ok(Start(ref child)) => {
-                if child.name() == QName(b"xs:element") {
-                    parse_element(child, &mut xml_struct);
+            Ok(Start(ref e)) => {
+                if e.name() == QName(b"xs:complexType") {
+                    let name = element_names(e);
+                    if let Some(n) = name {
+                        current_struct.name = n.clone();
+                        current_name = n.clone();
+                    }
 
-                    // Add the struct to the stack
-                    stack.push(xml_struct.clone());
-                } else {
-                    parse_nested_elements(reader, child, stack, structs);
-                }
-            },
-            Ok(Empty(ref child)) => {
-                if child.name() == QName(b"xs:element") {
-                    parse_element(child, &mut xml_struct);
-
-                    // Add the struct to the stack
-                    stack.push(xml_struct.clone());
+                    //println!("Current Struct: {:#?}", current_struct);
+                    stack.push(current_struct.clone());
+                    println!("Stack length: {}", stack.len());
                 }
             }
-            Ok(End(ref _child)) => {
-                // End of the element, add the struct
-                if let Some(_) = stack.last() {
-                    let final_struct = stack.pop().unwrap();
-                    structs.insert(name, final_struct.clone());
-                }
+            Ok(Empty(ref e)) => {
+                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") {
+                    let mut field_name = String::new();
+                    let mut field_type = String::new();
 
-                break; // End of the complexType, stop processing nested elements
+                    if let Some(name) = element_names(e) {
+                        //println!("Empty Name: {}", name);
+                        field_name = name;
+                    }
+
+                    if let Some(typ) = element_types(e) {
+                        //println!("Empty Type: {}", typ);
+                        field_type = typ;
+                    }
+
+                    if !field_name.is_empty() && !field_type.is_empty() {
+                        current_struct.fields.push(XMLField {
+                            name: field_name.clone(),
+                            field_type: field_type.clone(),
+                        });
+                    }
+                    
+                    if let Some(ref_name) = element_references(e) {
+                        //println!("Empty Ref Name: {}", ref_name);
+                        current_struct.fields.push(XMLField {
+                            name: ref_name.clone(),
+                            field_type: search_reference_type(&ref_name).unwrap(),
+                        });
+                    } 
+                }
+            }
+            Ok(End(ref e)) => {
+                if e.name() == QName(b"xs:complexType") {
+                    if let Some(mut parent) = stack.pop() {
+                        structs.insert(current_name.clone(), parent);
+                        current_struct.name.clear();
+                        current_struct.fields.clear();
+                    } /* else {
+                        structs.insert(current_name.clone(), current_struct.clone());
+                    } */
+                }
             }
             Ok(Eof) => break,
             _ => {}
@@ -262,5 +269,5 @@ fn parse_nested_elements(reader: &mut Reader<&[u8]>, e: &BytesStart<'_>, stack: 
 
 fn search_reference_type(ref_name: &str) -> Option<String> {
     // Search for the reference type in the schema
-    Some("String".to_string())
+    Some("String from ref".to_string())
 }
