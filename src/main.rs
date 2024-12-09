@@ -55,7 +55,7 @@ fn main() {
 
     for s in structs {
         //if s.1.name == ""
-        println!("{:?}", s);
+        println!("{:#?}", s);
         println!();
     }
 }
@@ -209,56 +209,66 @@ fn parse_nested_elements(
             Ok(Start(ref e)) => {
                 if e.name() == QName(b"xs:complexType") {
                     let name = element_names(e);
-                    if let Some(n) = name {
-                        current_struct.name = n.clone();
-                        current_name = n.clone();
-                    }
 
-                    //println!("Current Struct: {:#?}", current_struct);
-                    stack.push(current_struct.clone());
-                    println!("Stack length: {}", stack.len());
+                    if let Some(n) = name {
+                        current_name = n.clone();
+
+                        // Create a new struct for this element
+                        let mut new_struct = XMLStruct {
+                            name: n.clone(),
+                            fields: Vec::new(),
+                        };
+
+                        println!("Current struct: {}", current_name);
+                        stack.push(new_struct.clone());
+                        println!("Stack length: {}", stack.len());
+                    }
                 }
             }
             Ok(Empty(ref e)) => {
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") {
-                    let mut field_name = String::new();
-                    let mut field_type = String::new();
+                    // If there's a parent struct, add this struct as a field to it
+                    if let Some(parent_struct) = stack.last_mut() {
+                        let mut name = element_names(e);
 
-                    if let Some(name) = element_names(e) {
-                        //println!("Empty Name: {}", name);
-                        field_name = name;
-                    }
+                        if name == None {
+                            name = element_references(e);
+                        }
 
-                    if let Some(typ) = element_types(e) {
-                        //println!("Empty Type: {}", typ);
-                        field_type = typ;
+                        if let Some(n) = name {
+                            // Check if the field already exists
+                            if !parent_struct.fields.iter().any(|field| field.name == n) {
+                                parent_struct.fields.push(XMLField {
+                                    name: n.clone(),
+                                    field_type: n.clone(),
+                                });
+                            }
+                        }
                     }
-
-                    if !field_name.is_empty() && !field_type.is_empty() {
-                        current_struct.fields.push(XMLField {
-                            name: field_name.clone(),
-                            field_type: field_type.clone(),
-                        });
-                    }
-                    
-                    if let Some(ref_name) = element_references(e) {
-                        //println!("Empty Ref Name: {}", ref_name);
-                        current_struct.fields.push(XMLField {
-                            name: ref_name.clone(),
-                            field_type: search_reference_type(&ref_name).unwrap(),
-                        });
-                    } 
                 }
             }
             Ok(End(ref e)) => {
                 if e.name() == QName(b"xs:complexType") {
-                    if let Some(mut parent) = stack.pop() {
-                        structs.insert(current_name.clone(), parent);
-                        current_struct.name.clear();
-                        current_struct.fields.clear();
-                    } /* else {
-                        structs.insert(current_name.clone(), current_struct.clone());
-                    } */
+
+                    // Pop the current struct from the stack
+                    if let Some(completed_struct) = stack.pop() {
+                        if completed_struct.name != current_name {
+                            panic!("XML structure mismatch: expected {}, found {}", completed_struct.name, current_name);
+                        }
+
+                        // Update the final struct with new fields or insert it if it doesn't exist
+                        if let Some(existing_struct) = structs.get_mut(&completed_struct.name.clone()) {
+                            // Merge fields: add only new unique fields
+                            for field in completed_struct.fields {
+                                if !existing_struct.fields.iter().any(|f| f.name == field.name) {
+                                    existing_struct.fields.push(field.clone());
+                                }
+                            }
+                        } else {
+                            // No existing struct, insert the completed struct as it is
+                            structs.insert(completed_struct.name.clone(), completed_struct.clone());
+                        }
+                    }
                 }
             }
             Ok(Eof) => break,
