@@ -236,11 +236,17 @@ fn parse_nested_elements(
                         }
 
                         if let Some(n) = name {
+                            let mut field_type = n.clone();
+
+                            if let Some(typ) = element_types(e) {
+                                field_type = typ;
+                            } 
+
                             // Check if the field already exists
                             if !parent_struct.fields.iter().any(|field| field.name == n) {
                                 parent_struct.fields.push(XMLField {
                                     name: n.clone(),
-                                    field_type: n.clone(),
+                                    field_type,
                                 });
                             }
                         }
