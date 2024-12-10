@@ -10,8 +10,9 @@ fn main() {
     let xsd_content = &read_xsd_file("schema.xsd").unwrap();
     let mut reader = Reader::from_str(xsd_content);
     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
+    let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
-    create_structs(&mut reader, &mut structs);
+    create_structs(&mut reader, &mut structs, &mut element_definitions);
 
     structs_to_file(&structs, "structs.rs").unwrap();
 }

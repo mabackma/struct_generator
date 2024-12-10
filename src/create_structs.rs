@@ -41,10 +41,10 @@ impl XMLStruct {
 pub fn create_structs(
     reader: &mut Reader<&[u8]>,
     structs: &mut HashMap<String, XMLStruct>,
+    element_definitions: &mut HashMap<String, String>,
 ) {
     let mut stack: Vec<XMLStruct> = Vec::new(); // Stack to keep track of active structs
     let mut current_name = String::new(); // Name of the current structure
-    let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
     loop {
         match reader.read_event() {
@@ -68,7 +68,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:element") {
-                    add_definition(e, &mut element_definitions);
+                    add_definition(e, element_definitions);
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
@@ -81,7 +81,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:element") {
-                    add_definition(e, &mut element_definitions);
+                    add_definition(e, element_definitions);
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {

@@ -1,86 +1,8 @@
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActGeometryType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "FeatureCode")]
-    pub feature_code: FeatureCodeType,
-    #[serde(rename = "FeatureInfo")]
-    pub feature_info: String500Type,
-    #[serde(rename = "PointAndLineGeometriesGroup")]
-    pub point_and_line_geometries_group: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidyApplierReferenceListType {
-    #[serde(rename = "SubsidyApplierReference")]
-    pub subsidy_applier_reference: Vec<SubsidyApplierReferenceType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActApplicationStandsType {
-    #[serde(rename = "FinancingActApplicationStand")]
-    pub financing_act_application_stand: Vec<FinancingActApplicationStandType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CostTypeAndCompletedWorkApplicationRealEstateType {
-    #[serde(rename = "RealEstateId")]
-    pub real_estate_id: IdStringNotEmptyType,
-    #[serde(rename = "CostType")]
-    pub cost_type: CostTypeType,
-    #[serde(rename = "PlannedWorkAmount", skip_serializing_if = "Option::is_none")]
-    pub planned_work_amount: Option<AmountType>,
-    #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
-    pub unit_price: Option<UnitPriceType>,
-    #[serde(rename = "SubsidyAmount")]
-    pub subsidy_amount: MoneyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActApplicationOtherSubjectsType {
-    #[serde(rename = "CostTypeAndCompletedWorkApplicationRealEstate")]
-    pub cost_type_and_completed_work_application_real_estate: CostTypeAndCompletedWorkApplicationRealEstateType,
-    #[serde(rename = "FinancingActApplicationGeometries")]
-    pub financing_act_application_geometries: FinancingActApplicationGeometriesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActCompletionGeometriesType {
-    #[serde(rename = "FinancingActCompletionGeometry")]
-    pub financing_act_completion_geometry: Vec<FinancingActGeometryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OwnerShipTypeType {
-    #[serde(rename = "OwnerShipTypeCode")]
-    pub owner_ship_type_code: OwnerShipTypeCodeType,
-    #[serde(rename = "AdditionalInfo", skip_serializing_if = "Option::is_none")]
-    pub additional_info: Option<String500Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActCompletionOtherSubjectsType {
-    #[serde(rename = "CostTypeAndCompletedWorkCompletionRealEstate")]
-    pub cost_type_and_completed_work_completion_real_estate: CostTypeAndCompletedWorkCompletionRealEstateType,
-    #[serde(rename = "FinancingActCompletionGeometries")]
-    pub financing_act_completion_geometries: FinancingActCompletionGeometriesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CostTypeAndCompletedWorkCompletionRealEstateType {
-    #[serde(rename = "RealEstateId")]
-    pub real_estate_id: IdStringNotEmptyType,
-    #[serde(rename = "CostType")]
-    pub cost_type: CostTypeType,
-    #[serde(rename = "CompletedWorkAmount", skip_serializing_if = "Option::is_none")]
-    pub completed_work_amount: Option<AmountType>,
-    #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
-    pub unit_price: Option<UnitPriceType>,
-    #[serde(rename = "PaymentReference", skip_serializing_if = "Option::is_none")]
-    pub payment_reference: Option<PaymentsReferenceType>,
-    #[serde(rename = "SubsidyAmount")]
-    pub subsidy_amount: MoneyType,
+pub struct SubsidyAppliersType {
+    #[serde(rename = "SubsidyApplier")]
+    pub subsidy_applier: Vec<PayeeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -104,41 +26,9 @@ pub struct ForestCentreDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PayeeType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-    #[serde(rename = "BankAccount", skip_serializing_if = "Option::is_none")]
-    pub bank_account: Option<BankAccountType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ApplicationActorType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActCompletionStandsType {
-    #[serde(rename = "FinancingActCompletionStand")]
-    pub financing_act_completion_stand: Vec<FinancingActCompletionStandType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PayeesAndRealEstatesType {
-    #[serde(rename = "PayeeAndRealEstate")]
-    pub payee_and_real_estate: Vec<PayeeAndRealEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentsType {
-    #[serde(rename = "Document")]
-    pub document: Vec<Document4MBType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActApplicationGeometriesType {
-    #[serde(rename = "FinancingActApplicationGeometry")]
-    pub financing_act_application_geometry: Vec<FinancingActGeometryType>,
+pub struct CostTypeType {
+    #[serde(rename = "CostTypeNumber")]
+    pub cost_type_number: CostTypeNumberType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -176,6 +66,30 @@ pub struct FinancingActApplicationStandType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActApplicationGeometriesType {
+    #[serde(rename = "FinancingActApplicationGeometry")]
+    pub financing_act_application_geometry: Vec<FinancingActGeometryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActRealEstatesType {
+    #[serde(rename = "FinancingActRealEstate")]
+    pub financing_act_real_estate: Vec<FinancingActRealEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompletionDeclarationActorsType {
+    #[serde(rename = "CompletionDeclarationActor")]
+    pub completion_declaration_actor: Vec<PayeeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DocumentsType {
+    #[serde(rename = "Document")]
+    pub document: Vec<Document4MBType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AttorneyType {
     #[serde(flatten)]
     pub base: ContactInformationType,
@@ -186,33 +100,49 @@ pub struct AttorneyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActRealEstatesType {
-    #[serde(rename = "FinancingActRealEstate")]
-    pub financing_act_real_estate: Vec<FinancingActRealEstateType>,
+pub struct CostTypeAndCompletedWorkApplicationType {
+    #[serde(rename = "CostType")]
+    pub cost_type: CostTypeType,
+    #[serde(rename = "PlannedWorkAmount")]
+    pub planned_work_amount: AmountType,
+    #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
+    pub unit_price: Option<UnitPriceType>,
+    #[serde(rename = "SubsidyAmount")]
+    pub subsidy_amount: MoneyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ApplicationActorsType {
-    #[serde(rename = "ApplicationActor")]
-    pub application_actor: Vec<ApplicationActorType>,
+pub struct ApplicationActorType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompletionDeclarationActorsType {
-    #[serde(rename = "CompletionDeclarationActor")]
-    pub completion_declaration_actor: Vec<PayeeType>,
+pub struct FinancingActCompletionOtherSubjectsType {
+    #[serde(rename = "CostTypeAndCompletedWorkCompletionRealEstate")]
+    pub cost_type_and_completed_work_completion_real_estate: CostTypeAndCompletedWorkCompletionRealEstateType,
+    #[serde(rename = "FinancingActCompletionGeometries")]
+    pub financing_act_completion_geometries: FinancingActCompletionGeometriesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CostTypeType {
-    #[serde(rename = "CostTypeNumber")]
-    pub cost_type_number: CostTypeNumberType,
+pub struct OwnerShipTypeType {
+    #[serde(rename = "OwnerShipTypeCode")]
+    pub owner_ship_type_code: OwnerShipTypeCodeType,
+    #[serde(rename = "AdditionalInfo", skip_serializing_if = "Option::is_none")]
+    pub additional_info: Option<String500Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingRepresentativesType {
-    #[serde(rename = "WorkingRepresentative")]
-    pub working_representative: Vec<WorkingRepresentativeType>,
+pub struct FinancingActApplicationStandsType {
+    #[serde(rename = "FinancingActApplicationStand")]
+    pub financing_act_application_stand: Vec<FinancingActApplicationStandType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingRepresentativeType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -228,17 +158,43 @@ pub struct SubsidyApplierReferenceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidyAppliersType {
-    #[serde(rename = "SubsidyApplier")]
-    pub subsidy_applier: Vec<PayeeType>,
+pub struct PayeeType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
+    #[serde(rename = "BankAccount", skip_serializing_if = "Option::is_none")]
+    pub bank_account: Option<BankAccountType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CostTypeAndCompletedWorkCompletionType {
+pub struct FinancingActCompletionStandsType {
+    #[serde(rename = "FinancingActCompletionStand")]
+    pub financing_act_completion_stand: Vec<FinancingActCompletionStandType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActRealEstateType {
+    #[serde(flatten)]
+    pub base: BaseRealEstateType2,
+    #[serde(rename = "SubsidyApplierReferenceList")]
+    pub subsidy_applier_reference_list: SubsidyApplierReferenceListType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActApplicationOtherSubjectsType {
+    #[serde(rename = "CostTypeAndCompletedWorkApplicationRealEstate")]
+    pub cost_type_and_completed_work_application_real_estate: CostTypeAndCompletedWorkApplicationRealEstateType,
+    #[serde(rename = "FinancingActApplicationGeometries")]
+    pub financing_act_application_geometries: FinancingActApplicationGeometriesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CostTypeAndCompletedWorkApplicationRealEstateType {
+    #[serde(rename = "RealEstateId")]
+    pub real_estate_id: IdStringNotEmptyType,
     #[serde(rename = "CostType")]
     pub cost_type: CostTypeType,
-    #[serde(rename = "CompletedWorkAmount")]
-    pub completed_work_amount: AmountType,
+    #[serde(rename = "PlannedWorkAmount", skip_serializing_if = "Option::is_none")]
+    pub planned_work_amount: Option<AmountType>,
     #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
     pub unit_price: Option<UnitPriceType>,
     #[serde(rename = "SubsidyAmount")]
@@ -256,11 +212,73 @@ pub struct PayeeAndRealEstateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActRealEstateType {
-    #[serde(flatten)]
-    pub base: BaseRealEstateType2,
-    #[serde(rename = "SubsidyApplierReferenceList")]
-    pub subsidy_applier_reference_list: SubsidyApplierReferenceListType,
+pub struct SubsidyApplierReferenceListType {
+    #[serde(rename = "SubsidyApplierReference")]
+    pub subsidy_applier_reference: Vec<SubsidyApplierReferenceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PayeesAndRealEstatesType {
+    #[serde(rename = "PayeeAndRealEstate")]
+    pub payee_and_real_estate: Vec<PayeeAndRealEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CostTypeAndCompletedWorkCompletionRealEstateType {
+    #[serde(rename = "RealEstateId")]
+    pub real_estate_id: IdStringNotEmptyType,
+    #[serde(rename = "CostType")]
+    pub cost_type: CostTypeType,
+    #[serde(rename = "CompletedWorkAmount", skip_serializing_if = "Option::is_none")]
+    pub completed_work_amount: Option<AmountType>,
+    #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
+    pub unit_price: Option<UnitPriceType>,
+    #[serde(rename = "PaymentReference", skip_serializing_if = "Option::is_none")]
+    pub payment_reference: Option<PaymentsReferenceType>,
+    #[serde(rename = "SubsidyAmount")]
+    pub subsidy_amount: MoneyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActCompletionGeometriesType {
+    #[serde(rename = "FinancingActCompletionGeometry")]
+    pub financing_act_completion_geometry: Vec<FinancingActGeometryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActGeometryType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "FeatureCode")]
+    pub feature_code: FeatureCodeType,
+    #[serde(rename = "FeatureInfo")]
+    pub feature_info: String500Type,
+    #[serde(rename = "PointAndLineGeometriesGroup")]
+    pub point_and_line_geometries_group: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingRepresentativesType {
+    #[serde(rename = "WorkingRepresentative")]
+    pub working_representative: Vec<WorkingRepresentativeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CostTypeAndCompletedWorkCompletionType {
+    #[serde(rename = "CostType")]
+    pub cost_type: CostTypeType,
+    #[serde(rename = "CompletedWorkAmount")]
+    pub completed_work_amount: AmountType,
+    #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
+    pub unit_price: Option<UnitPriceType>,
+    #[serde(rename = "SubsidyAmount")]
+    pub subsidy_amount: MoneyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ApplicationActorsType {
+    #[serde(rename = "ApplicationActor")]
+    pub application_actor: Vec<ApplicationActorType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -275,24 +293,6 @@ pub struct AuthorizationOfAttorneyType {
     pub additional_info: String2000Type,
     #[serde(rename = "PowerOfAttorneyDocument", skip_serializing_if = "Option::is_none")]
     pub power_of_attorney_document: Option<base64Binary>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingRepresentativeType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CostTypeAndCompletedWorkApplicationType {
-    #[serde(rename = "CostType")]
-    pub cost_type: CostTypeType,
-    #[serde(rename = "PlannedWorkAmount")]
-    pub planned_work_amount: AmountType,
-    #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
-    pub unit_price: Option<UnitPriceType>,
-    #[serde(rename = "SubsidyAmount")]
-    pub subsidy_amount: MoneyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
