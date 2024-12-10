@@ -61,12 +61,12 @@ pub fn create_structs(
                     }
                 }
 
-                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") {
+                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
                     elements_and_groups(&mut stack, e);
                 }
             }
             Ok(Empty(ref e)) => {
-                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") {
+                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
                     elements_and_groups(&mut stack, e);
                 }
             }
@@ -98,6 +98,8 @@ pub fn create_structs(
             _ => {}
         }
     }
+
+    attributes_first(structs);
 }
 
 // Retrieve the element reference
@@ -132,6 +134,7 @@ fn reference_type(ref_name: &str) -> Option<String> {
     Some("String from ref".to_string())
 }
 
+// Add elements, groups, and attributes as fields to the struct
 fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
@@ -143,7 +146,7 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
 
         name = Some(remove_prefix(&name.unwrap()));
 
-        if let Some(n) = name {
+        if let Some(mut n) = name {
             let mut field_type = n.clone();
 
             if let Some(typ) = element_type(e) {
@@ -153,6 +156,10 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
             field_type = remove_prefix(&field_type);
 
             parse_type(e, &mut field_type);
+
+            if e.name() == QName(b"xs:attribute") {
+                n = "@".to_string() + &n;
+            }
 
             // Check if the field already exists
             if !parent_struct.fields.iter().any(|field| field.name == n) {
@@ -215,4 +222,36 @@ fn is_element_optional(e: &BytesStart<'_>) -> bool {
     }
 
     false
+}
+
+// Move attributes to the beginning of the struct
+fn attributes_first(structs: &mut HashMap<String, XMLStruct>) {
+    for (_, xml_struct) in structs.iter_mut() {
+        let mut attribute_fields: Vec<XMLField> = Vec::new();
+
+        for field in xml_struct.fields.iter() {
+            if field.name.starts_with('@') {
+                attribute_fields.push(field.clone());
+            }
+        }
+
+        // Add optional text field
+        if xml_struct.fields.len() > 0 {
+            attribute_fields.push(XMLField {
+                name: "$text".to_string(),
+                field_type: "Option<String>".to_string(),
+            });
+        }
+
+        for field in xml_struct.fields.iter() {
+            if !field.name.starts_with('@') {
+                attribute_fields.push(field.clone());
+            }
+        }
+
+        *xml_struct = XMLStruct {
+            name: xml_struct.name.clone(),
+            fields: attribute_fields,
+        };
+    }
 }
