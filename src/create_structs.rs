@@ -62,12 +62,20 @@ pub fn create_structs(
                     }
                 }
 
-                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
+                if e.name() == QName(b"xs:element"){
+                    add_definition(e, &mut element_definitions);
+                    elements_and_groups(&mut stack, e, &mut element_definitions);
+                }
+                if e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
                     elements_and_groups(&mut stack, e, &mut element_definitions);
                 }
             }
             Ok(Empty(ref e)) => {
-                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
+                if e.name() == QName(b"xs:element"){
+                    add_definition(e, &mut element_definitions);
+                    elements_and_groups(&mut stack, e, &mut element_definitions);
+                }
+                if e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
                     elements_and_groups(&mut stack, e, &mut element_definitions);
                 }
             }
@@ -101,10 +109,6 @@ pub fn create_structs(
     }
 
     attributes_first(structs);
-
-    for (name, typ) in element_definitions.iter() {
-        println!("{}: {}", name, typ);
-    }
 }
 
 // Retrieve the element reference
@@ -137,15 +141,27 @@ fn element_type(e: &BytesStart<'_>) -> Option<String> {
 fn reference_type(ref_name: &str, element_definitions: &HashMap<String, String>) -> Option<String> {
     // Search for the reference type in the element definitions
     if let Some(typ) = element_definitions.get(ref_name) {
-        println!("Found reference type: {}", typ);
         return Some(typ.clone());
     }
 
+    println!("Reference type not found: {}", ref_name);
     Some("String".to_string())
 }
 
+// Add element definitions to the hashmap
+fn add_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>) {
+    let name = element_name(e);
+    let typ = element_type(e);
+
+    if let Some(n) = name {
+        if let Some(t) = typ {
+            element_definitions.insert(n, t);
+        }
+    }
+}
+
 // Add elements, groups, and attributes as fields to the struct
-fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>) {
+fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &HashMap<String, String>) {
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
         let mut name = element_name(e);
@@ -159,7 +175,6 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
 
             if let Some(typ) = element_type(e) {
                 field_type = typ;
-                element_definitions.insert(n.clone(), field_type.clone());
             } else if let Some(typ) = reference_type(&n, element_definitions) {
                 field_type = typ;   
             }
