@@ -121,7 +121,7 @@ pub fn create_structs(
 }
 
 // Add element definitions to the hashmap
-fn add_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>) {
+pub fn add_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>) {
     let name = element_name(e);
     let typ = element_type(e);
 

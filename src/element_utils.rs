@@ -41,11 +41,10 @@ pub fn extension_type(e: &BytesStart<'_>) -> Option<String> {
 // Retrieve the type of the reference
 pub fn reference_type(ref_name: &str, element_definitions: &HashMap<String, String>) -> Option<String> {
     // Search for the reference type in the element definitions
-    if let Some(typ) = element_definitions.get(ref_name) {
+    if let Some(typ) = element_definitions.get(ref_name) {        
         return Some(typ.clone());
     }
 
-    println!("Reference type not found: {}", ref_name);
     Some("String".to_string())
 }
 
