@@ -87,7 +87,7 @@ fn element_types(e: &BytesStart<'_>) -> Option<String> {
     e_type
 }
 
-// Check if the element is a Vec<>
+// Check if the type is a Vec<>
 fn is_element_vec(e: &BytesStart<'_>) -> bool {
     let e_max_occurs = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"maxOccurs")) 
@@ -108,7 +108,7 @@ fn is_element_vec(e: &BytesStart<'_>) -> bool {
     false
 }
 
-// Check if the element is optional
+// Check if the type is optional
 fn is_element_optional(e: &BytesStart<'_>) -> bool {
     let e_min_occurs = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"minOccurs")) 
@@ -121,6 +121,21 @@ fn is_element_optional(e: &BytesStart<'_>) -> bool {
     }
 
     false
+}
+
+// Check if the type is a vector or optional
+fn parse_type(e: &BytesStart<'_>, field_type: &mut String) {
+    if is_element_vec(e) {
+        if is_element_optional(e) {
+            *field_type = format!("Option<Vec<{}>>", field_type);
+        } else {
+            *field_type = format!("Vec<{}>", field_type);
+        }
+    } else {
+        if is_element_optional(e) {
+            *field_type = format!("Option<{}>", field_type);
+        }
+    }
 }
 
 // Parse nested elements
@@ -136,18 +151,50 @@ fn create_structs(
         match reader.read_event() {
             Ok(Start(ref e)) => {
                 if e.name() == QName(b"xs:complexType") {
-                    let name = element_names(e);
-
-                    if let Some(n) = name {
-                        current_name = n.clone();
+                    if let Some(name) = element_names(e) {
+                        current_name = name.clone();
 
                         // Create a new struct for this element
                         let mut new_struct = XMLStruct {
-                            name: n.clone(),
+                            name: name.clone(),
                             fields: Vec::new(),
                         };
 
                         stack.push(new_struct.clone());
+                    }
+                }
+
+                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") {
+                    // If there's a parent struct, add this struct as a field to it
+                    if let Some(parent_struct) = stack.last_mut() {
+                        let mut name = element_names(e);
+
+                        if name == None {
+                            name = element_references(e);
+                        }
+
+                        name = Some(remove_prefix(&name.unwrap()));
+
+                        if let Some(n) = name {
+                            let mut field_type = n.clone();
+
+                            if let Some(typ) = element_types(e) {
+                                field_type = typ;
+                            } 
+                            
+                            field_type = remove_prefix(&field_type);
+
+                            parse_type(e, &mut field_type);
+
+                            // Check if the field already exists
+                            if !parent_struct.fields.iter().any(|field| field.name == n) {
+                                // Add the field to the parent struct
+                                parent_struct.fields.push(XMLField {
+                                    name: n.clone(),
+                                    field_type,
+                                });
+                            }
+                        }
                     }
                 }
             }
@@ -172,18 +219,7 @@ fn create_structs(
                             
                             field_type = remove_prefix(&field_type);
 
-                            // Check if the element is a vector or optional
-                            if is_element_vec(e) {
-                                if is_element_optional(e) {
-                                    field_type = format!("Option<Vec<{}>>", field_type);
-                                } else {
-                                    field_type = format!("Vec<{}>", field_type);
-                                }
-                            } else {
-                                if is_element_optional(e) {
-                                    field_type = format!("Option<{}>", field_type);
-                                }
-                            }
+                            parse_type(e, &mut field_type);
 
                             // Check if the field already exists
                             if !parent_struct.fields.iter().any(|field| field.name == n) {
