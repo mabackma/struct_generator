@@ -43,6 +43,7 @@ pub fn create_structs(
 ) {
     let mut stack: Vec<XMLStruct> = Vec::new(); // Stack to keep track of active structs
     let mut current_name = String::new(); // Name of the current structure
+    let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
     loop {
         match reader.read_event() {
@@ -61,13 +62,21 @@ pub fn create_structs(
                     }
                 }
 
-                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") {
-                    elements_and_groups(&mut stack, e);
+                if e.name() == QName(b"xs:element"){
+                    add_definition(e, &mut element_definitions);
+                    elements_and_groups(&mut stack, e, &mut element_definitions);
+                }
+                if e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
+                    elements_and_groups(&mut stack, e, &mut element_definitions);
                 }
             }
             Ok(Empty(ref e)) => {
-                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") {
-                    elements_and_groups(&mut stack, e);
+                if e.name() == QName(b"xs:element"){
+                    add_definition(e, &mut element_definitions);
+                    elements_and_groups(&mut stack, e, &mut element_definitions);
+                }
+                if e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
+                    elements_and_groups(&mut stack, e, &mut element_definitions);
                 }
             }
             Ok(End(ref e)) => {
@@ -98,6 +107,8 @@ pub fn create_structs(
             _ => {}
         }
     }
+
+    attributes_first(structs);
 }
 
 // Retrieve the element reference
@@ -127,12 +138,30 @@ fn element_type(e: &BytesStart<'_>) -> Option<String> {
     e_type
 }
 
-fn reference_type(ref_name: &str) -> Option<String> {
-    // Search for the reference type in the schema
-    Some("String from ref".to_string())
+fn reference_type(ref_name: &str, element_definitions: &HashMap<String, String>) -> Option<String> {
+    // Search for the reference type in the element definitions
+    if let Some(typ) = element_definitions.get(ref_name) {
+        return Some(typ.clone());
+    }
+
+    println!("Reference type not found: {}", ref_name);
+    Some("String".to_string())
 }
 
-fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
+// Add element definitions to the hashmap
+fn add_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>) {
+    let name = element_name(e);
+    let typ = element_type(e);
+
+    if let Some(n) = name {
+        if let Some(t) = typ {
+            element_definitions.insert(n, t);
+        }
+    }
+}
+
+// Add elements, groups, and attributes as fields to the struct
+fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &HashMap<String, String>) {
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
         let mut name = element_name(e);
@@ -141,18 +170,23 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
             name = element_reference(e);
         }
 
-        name = Some(remove_prefix(&name.unwrap()));
-
-        if let Some(n) = name {
+        if let Some(mut n) = name {
             let mut field_type = n.clone();
 
             if let Some(typ) = element_type(e) {
                 field_type = typ;
-            } 
-            
+            } else if let Some(typ) = reference_type(&n, element_definitions) {
+                field_type = typ;   
+            }
+
+            n = remove_prefix(&n);
             field_type = remove_prefix(&field_type);
 
             parse_type(e, &mut field_type);
+
+            if e.name() == QName(b"xs:attribute") {
+                n = "@".to_string() + &n;
+            }
 
             // Check if the field already exists
             if !parent_struct.fields.iter().any(|field| field.name == n) {
@@ -215,4 +249,36 @@ fn is_element_optional(e: &BytesStart<'_>) -> bool {
     }
 
     false
+}
+
+// Move attributes to the beginning of the struct
+fn attributes_first(structs: &mut HashMap<String, XMLStruct>) {
+    for (_, xml_struct) in structs.iter_mut() {
+        let mut attribute_fields: Vec<XMLField> = Vec::new();
+
+        for field in xml_struct.fields.iter() {
+            if field.name.starts_with('@') {
+                attribute_fields.push(field.clone());
+            }
+        }
+
+        // Add optional text field
+        if xml_struct.fields.len() > 0 {
+            attribute_fields.push(XMLField {
+                name: "$text".to_string(),
+                field_type: "Option<String>".to_string(),
+            });
+        }
+
+        for field in xml_struct.fields.iter() {
+            if !field.name.starts_with('@') {
+                attribute_fields.push(field.clone());
+            }
+        }
+
+        *xml_struct = XMLStruct {
+            name: xml_struct.name.clone(),
+            fields: attribute_fields,
+        };
+    }
 }

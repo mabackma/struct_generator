@@ -11,7 +11,13 @@ pub fn remove_prefix(name: &str) -> String {
 
 pub fn to_snake_case(name: &str) -> String {
     let mut snake_case = String::new();
-    let mut chars = name.chars();
+
+    // Use a unified iterator type for `chars`
+    let mut chars: Box<dyn Iterator<Item = char>> = if name.starts_with('@') || name.starts_with('$') {
+        Box::new(name.chars().skip(1))
+    } else {
+        Box::new(name.chars())
+    };
 
     if let Some(first_char) = chars.next() {
         snake_case.push(first_char.to_ascii_lowercase());
