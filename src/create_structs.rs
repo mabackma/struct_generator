@@ -53,10 +53,6 @@ pub fn create_structs(
                     if let Some(name) = element_name(e) {
                         current_name = name.clone();
 
-                        if !current_name.ends_with("Type") {
-                            println!("Processing struct: {}", current_name);
-                        }
-
                         // Create a new struct for this element
                         let new_struct = XMLStruct {
                             name: current_name.clone(),

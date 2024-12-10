@@ -17,11 +17,6 @@ pub fn element_name(e: &BytesStart<'_>) -> Option<String> {
         .find(|a| a.key == QName(b"name")) 
         .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the name attribute value as a string
     
-    if let Some(ref e_name) = e_name {
-        if e_name == "Stand" {
-            println!("{:?}", e_name);
-        }
-    }
     e_name
 }
 
