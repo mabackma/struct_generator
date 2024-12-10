@@ -90,7 +90,9 @@ fn element_definitions_to_file(element_definitions: &HashMap<String, String>, fi
 
     // Build the element definitions as a string
     for (name, typ) in element_definitions.iter() {
+        element_definitions_string.push_str("#[derive(Debug, Serialize, Deserialize)]\n");
         element_definitions_string.push_str(&format!("pub struct {} {{\n", name));
+        element_definitions_string.push_str("    #[serde(flatten)]\n");
         element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), remove_prefix(typ)));
         element_definitions_string.push_str("}\n\n");
     }
