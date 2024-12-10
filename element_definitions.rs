@@ -1,1993 +1,7972 @@
-pub const forwarding_distance: &str = "xs:nonNegativeInteger";
-pub const amount_unit: &str = "co:AmountUnitType";
-pub const value_list_item: &str = "ValueListItemType";
-pub const saving_time: &str = "bdt:TimeStampType";
-pub const month: &str = "wct:MonthType";
-pub const user_roles: &str = "UserRolesType";
-pub const stump_treatment: &str = "bdt:YesNoType";
-pub const root_damages: &str = "bdt:PositiveInteger3digitsType";
-pub const control_basic_data: &str = "ControlBasicDataType";
-pub const calendar_day: &str = "bdt:DateType";
-pub const classification: &str = "co:PositiveIntegerType";
-pub const forest_fund_payment: &str = "ForestFundPaymentType";
-pub const self_monitoring_evaluation: &str = "SelfMonitoringEvaluationType";
-pub const contact_municipality: &str = "co:MunicipalityNumberType";
-pub const use_case: &str = "xs:string";
-pub const class4damage_count: &str = "co:PositiveInteger6digitsType";
-pub const plowing_arranged: &str = "bdt:YesNoType";
-pub const final_auditer_id: &str = "bdt:String20Type";
-pub const soil_conditioning_quality_text: &str = "bdt:String200Type";
-pub const delivery_date: &str = "bdt:DateType";
-pub const extra_person2: &str = "bdt:PositiveInteger4digitsType";
-pub const financing_act_completion_geometries: &str = "FinancingActCompletionGeometriesType";
-pub const planned_operation_chain: &str = "PlannedOperationChainType";
-pub const completion_actor: &str = "CompletionActorType";
-pub const works: &str = "WorksType";
-pub const completion_data_and_subsidy: &str = "CompletionDataAndSubsidyType";
-pub const stand_quality: &str = "StandQualityType";
-pub const forest_energy_suitable_text: &str = "bdt:String200Type";
-pub const date: &str = "co:DateType";
-pub const main_reason: &str = "co:YesNoType";
-pub const identifier: &str = "co:IdentifierType";
-pub const mean_age: &str = "MeanAgeType";
-pub const working_site_quality_control_plant_management: &str = "WorkingSiteQualityControlPlantManagementType";
-pub const planting_work_quality: &str = "xs:integer";
-pub const sms_operator_status: &str = "SmsOperatorStatusType";
-pub const weight_class: &str = "bdt:PositiveInteger1digitsType";
-pub const collective_agreements: &str = "CollectiveAgreementsType";
-pub const final_audit_spare_trees: &str = "FinalAuditSpareTreesByCategoryType";
-pub const minutes: &str = "bdt:PositiveInteger2digitsType";
-pub const measurer_name: &str = "bdt:String50Type";
-pub const sub_contractors: &str = "SubContractorsType";
-pub const question: &str = "AuditQuestionType";
-pub const target_selection: &str = "VirtaTargetSelectionType";
-pub const offer_working_site_wood_trade_info: &str = "OfferWorkingSiteWoodTradeInfoType";
-pub const planned_work_amount: &str = "AmountType";
-pub const work_load_id: &str = "xs:unsignedLong";
-pub const start_load_number: &str = "bdt:PositiveInteger4digitsType";
-pub const unit_value: &str = "UnitPriceType";
-pub const seedling_lot_identifier: &str = "co:String100Type";
-pub const extra_person4: &str = "bdt:PositiveInteger4digitsType";
-pub const length_of_ditch_digged_during_soil_preparation: &str = "co:PositiveInteger6digitsType";
-pub const unsepareted_parcel_type_char: &str = "UnseparetedParcelTypeCharType";
-pub const using_right_compensation_description: &str = "co:String1500Type";
-pub const working_site_final_audit_soil_conditioning: &str = "WorkingSiteFinalAuditSoilConditioningType";
-pub const employee_health_care: &str = "bdt:YesNoType";
-pub const working_code: &str = "bdt:WorkCodeType";
-pub const forest_centre_reply: &str = "ForestCentreReplyType";
-pub const nearest_seedling_distance: &str = "bdt:PositiveInteger3digitsType";
-pub const measurements: &str = "MeasurementsType";
-pub const working_safety_info: &str = "bdt:String3000Type";
-pub const new_code: &str = "bdt:String50Type";
-pub const amount_seedlings_to_plant: &str = "co:PositiveInteger5digitsType";
-pub const send_working_alone_notification: &str = "bdt:YesNoType";
-pub const accessibility_data: &str = "AccessibilityDataType";
-pub const product: &str = "ProductType";
-pub const volume_left: &str = "bdt:Decimal6TotalDigitsType";
-pub const sent_working_site_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const dead_tree_strata: &str = "DeadTreeStrataType";
-pub const forest_centre_message_reference_type: &str = "co:ForestCentreMessageReferenceType";
-pub const diameter_calibration: &str = "DiameterCalibrationType";
-pub const stump_raising: &str = "bdt:YesNoType";
-pub const dead_stem_count: &str = "co:PositiveInteger6digitsType";
-pub const storage_display_id: &str = "bdt:String20Type";
-pub const working_site_harvested_production: &str = "WorkingSiteHarvestedProductionType";
-pub const sawlog_percent: &str = "co:SawLogPercentType";
-pub const attorney_receives_payment: &str = "co:YesNoType";
-pub const root_rot_control_evaluation: &str = "VirtaRootRotControlEvaluationType";
-pub const additional_name: &str = "bdt:String20Type";
-pub const previous_moose_damage_evaluation_municipality: &str = "co:MunicipalityNameType";
-pub const sedimentation_basin_size_shape_and_functionality: &str = "bdt:WorkingQualityType";
-pub const purchaser_representative_person: &str = "PurchaserRepresentativePersonType";
-pub const stem_type_volumes: &str = "StemTypeVolumesType";
-pub const financing_act_project_completed: &str = "co:YesNoType";
-pub const offer_working_sites: &str = "OfferWorkingSitesType";
-pub const save_trees_left: &str = "bdt:YesNoType";
-pub const kemera_id: &str = "VirtaIdType";
-pub const stand: &str = "StandType";
-pub const i_c_e_telephone: &str = "bdt:String20Type";
-pub const call_for_offer_date: &str = "CallForOfferDateType";
-pub const insurance_company: &str = "co:String500Type";
-pub const manipulation_method: &str = "bdt:WorkCodeQualifierType2";
-pub const stand_avg_vehicle_path_distance: &str = "bdt:PositiveDecimalMax4IntegralPartMax2FractionalPartType";
-pub const bank_code: &str = "bdt:String20Type";
-pub const decision_receiver: &str = "ci:ContactInformationType";
-pub const self_monitoring_date: &str = "co:DateType";
-pub const removed: &str = "bdt:YesNoType";
-pub const responsible_of_pre_clearing: &str = "wct:ResponsibleOfPreClearingType";
-pub const log_length: &str = "bdt:PositiveInteger5digitsType";
-pub const contract_beginning_date: &str = "ContractBeginningDateType";
-pub const sub_contractor_written_agreement: &str = "bdt:YesNoType";
-pub const shape_alfa: &str = "cdd:ShapeAlfaType";
-pub const bordering_with_water_area_or_stream: &str = "co:YesNoType";
-pub const operation: &str = "OperationDefType";
-pub const ditch_depth_width_and_drainage_effect: &str = "bdt:WorkingQualityType";
-pub const reduction_count_summary: &str = "bdt:PositiveInteger5digitsType";
-pub const moose_damage_declaration: &str = "MooseDamageDeclarationType";
-pub const water_protection_action_text: &str = "bdt:String200Type";
-pub const payment_transactions: &str = "wtco:PaymentTransactionsType";
-pub const contract_code: &str = "bdt:String50Type";
-pub const retention_tree_target: &str = "wct:SpareTreesByCategoryType";
-pub const remove_date: &str = "bdt:DateType";
-pub const target_parts: &str = "TargetPartsType";
-pub const target_density: &str = "bdt:PositiveInteger5digitsType";
-pub const controlled_operation_type: &str = "co:CostTypeNumberType";
-pub const organization_name: &str = "xs:string";
-pub const stocking_with_seedlings: &str = "co:VirtaYesNoType";
-pub const authorized_to_send: &str = "bdt:YesNoType";
-pub const resource_id_m_j: &str = "bdt:String20Type";
-pub const load_range: &str = "LoadRangeType";
-pub const fertilization_total_audit: &str = "bdt:WorkingQualityType";
-pub const point_geometry: &str = "PointGeometryType";
-pub const land_scaping: &str = "bdt:WorkingQualityType";
-pub const complete_state: &str = "co:CompleteStateType";
-pub const call_for_offer_working_site_details: &str = "CallForOfferWorkingSiteDetailsType";
-pub const silviculture: &str = "SilvicultureType";
-pub const road_damages: &str = "bdt:YesNoType";
-pub const ensimmainen_rivi_teksti: &str = "jhs:EnsimmainenRiviTekstiTyyppi";
-pub const havester_model_year: &str = "bdt:YearType";
-pub const log_key: &str = "bdt:String10Type";
-pub const declaration_real_estates: &str = "DeclarationRealEstatesType";
-pub const density: &str = "bdt:Decimal3FractionDigitsType";
-pub const seed_plant_evaluation: &str = "sp:VirtaEvaluationType";
-pub const notifications_and_improvements_text: &str = "bdt:String200Type";
-pub const code: &str = "xs:string";
-pub const plowing_date: &str = "bdt:DateType";
-pub const user_id: &str = "wct:ShortERPIdType";
-pub const metadata_text: &str = "co:String1000Type";
-pub const work_load2_unit: &str = "bdt:WorkCodeUnitType";
-pub const part_northing_coordinate: &str = "xs:string";
-pub const last_name: &str = "ci:LastNameType";
-pub const error_code: &str = "co:String25Type";
-pub const sample_plot_measurement_summary: &str = "SamplePlotMeasurementSummaryType";
-pub const basal_area: &str = "bdt:Decimal2FractionDigitsType";
-pub const products: &str = "pr:ProductsType";
-pub const damage_class: &str = "VirtaDamageClassType";
-pub const working_site_final_audit_stump_forwarding: &str = "WorkingSiteFinalAuditStumpForwardingType";
-pub const status1: &str = "co:ChangeStateType";
-pub const bio_mass_collection_done_text: &str = "bdt:String200Type";
-pub const storage_drying_class: &str = "bdt:StorageDryingClassType";
-pub const real_amount_of_soil_preparation_spot: &str = "co:PositiveInteger5digitsType";
-pub const operation_type: &str = "OperationTypeType";
-pub const inspection_data: &str = "InspectionDataType";
-pub const parts_detected_area: &str = "co:PositiveDecimalMax4IntegralPartMax2FractionalPartType";
-pub const measure_date: &str = "bdt:DateType";
-pub const code_name: &str = "bdt:String50Type";
-pub const tree_stratum: &str = "TreeStratum2Type";
-pub const measurement_date: &str = "MeasurementDateType";
-pub const stem_type_bulks: &str = "StemTypeBulksType";
-pub const not_damaged_count: &str = "co:PositiveInteger6digitsType";
-pub const inserted_map_symbol_id: &str = "bdt:String20Type";
-pub const bulk: &str = "bdt:PositiveInteger4digitsType";
-pub const work_load1_unit: &str = "bdt:WorkCodeUnitType";
-pub const unsepareted_parcel_number: &str = "UnseparetedParcelNumberType";
-pub const used_pricing_method_type: &str = "UsedPricingMethodTypeType";
-pub const expected_value_coefficient: &str = "co:PositiveDecimalMax1IntegralPartMax2FractionalPartType";
-pub const suggestion: &str = "VirtaSuggestionType";
-pub const contract_valid_date: &str = "bdt:DateType";
-pub const humidity_percentage: &str = "bdt:Decimal1FractionDigitType";
-pub const decision_geometries: &str = "DecisionGeometriesType";
-pub const begin_date: &str = "bdt:DateType";
-pub const phone_number: &str = "bdt:String20Type";
-pub const cutting: &str = "CuttingType";
-pub const non_personification_id: &str = "co:String100Type";
-pub const resource_name: &str = "bdt:String50Type";
-pub const final_audit_name: &str = "bdt:String100Type";
-pub const payment_reference: &str = "PaymentsReferenceType";
-pub const total_sawlog_volume: &str = "co:SawLogVolumeType";
-pub const access_rights_info: &str = "bdt:String3000Type";
-pub const storage_name: &str = "bdt:String50Type";
-pub const working_site_plan: &str = "wtco:WorkingSitePlanType";
-pub const offer_working_site_details: &str = "OfferWorkingSiteDetailsType";
-pub const scenery_work_permission_acceptance: &str = "co:DateType";
-pub const processing_areas: &str = "ProcessingAreasType";
-pub const preinform_date: &str = "co:DateType";
-pub const cumulative_point: &str = "cdd:CumulativePointType";
-pub const working_site_status: &str = "WorkingSiteStatusType";
-pub const payees: &str = "PayeesType";
-pub const subsidy_argument: &str = "SubsidyArgumentType";
-pub const unseparated_parcel_number: &str = "xs:string";
-pub const stump_lifting_suitable_text: &str = "bdt:String200Type";
-pub const old_code: &str = "bdt:String50Type";
-pub const measurable: &str = "bdt:YesNoType";
-pub const dis_qualification_percentage_total: &str = "bdt:Decimal2FractionDigitsType";
-pub const cutting_volume: &str = "CuttingVolumeType";
-pub const assortment_name: &str = "co:AssortmentNameType";
-pub const working_sites: &str = "WorkingSitesType";
-pub const supply_point: &str = "SupplyPointType";
-pub const case_number: &str = "fcc:FinancingActNumberType";
-pub const remaining_biomass: &str = "bdt:YesNoType";
-pub const sample_plot_size: &str = "xs:integer";
-pub const ulkomaa_postitoimipaikka_nimi: &str = "jhs:UlkomaaPostitoimipaikkaNimiTyyppi";
-pub const payment: &str = "PaymentDataType";
-pub const insurance_number: &str = "co:String100Type";
-pub const target_amount: &str = "AmountType";
-pub const pulp_wood_volume: &str = "PulpWoodVolumeType";
-pub const status: &str = "bdt:WorkingSiteStatusType";
-pub const length_calibration_date: &str = "bdt:TimeStampType";
-pub const processing_area: &str = "ProcessingAreaType";
-pub const ditching_breaks: &str = "bdt:YesNoType";
-pub const part_of_project: &str = "PartOfProjectType";
-pub const harvested_trees: &str = "bdt:FinalAuditAnswerType";
-pub const surface_runoff_field_ground_is_unbroken_text: &str = "bdt:String200Type";
-pub const actor: &str = "ActorType";
-pub const nearest_cultivated_spot_height: &str = "bdt:PositiveInteger2digitsType";
-pub const proposal_type: &str = "ProposalTypeType";
-pub const forest_depot_accessibility: &str = "co:ForestDepotAccessibilityType";
-pub const planned_basal_area: &str = "co:BasalAreaType";
-pub const harvesting_accessibility: &str = "co:HarvestingAccessibilityType";
-pub const unit_number: &str = "xs:string";
-pub const self_monitoring_object_data: &str = "SelfMonitoringObjectDataType";
-pub const syntyma_pvm: &str = "jhs:SyntymaPvmTyyppi";
-pub const minimum: &str = "cdd:MinimumType";
-pub const original_xml_file: &str = "xmime:base64Binary";
-pub const offer_working_site_payment_transactions: &str = "wtco:OfferWorkingSitePaymentTransactionsType";
-pub const working_hours_saturday: &str = "bdt:PositiveInteger2digitsType";
-pub const damaged_plants_error_count: &str = "bdt:PositiveIntegerType";
-pub const review: &str = "VirtaReviewType";
-pub const environmental_object_info: &str = "bdt:String3000Type";
-pub const sawinghours: &str = "SawinghoursDataType";
-pub const diameter_calibration_description: &str = "bdt:String200Type";
-pub const status_messages: &str = "StatusMessageLanguageType";
-pub const damages: &str = "bdt:FinalAuditAnswerType";
-pub const road_structure_drainage_text: &str = "bdt:String200Type";
-pub const collective_agreement: &str = "bdt:String100Type";
-pub const huoneistotunniste_kirjain_teksti: &str = "jhs:HuoneistotunnisteKirjainTekstiTyyppi";
-pub const feature_type: &str = "co:FeatureTypeType";
-pub const completion_date: &str = "CompletionDateType";
-pub const operator: &str = "VirtaAdvertiserType";
-pub const assortment_main_group: &str = "co:AssortmentMainGroupType";
-pub const used_pricing_methods: &str = "UsedPricingMethodsType";
-pub const person_id: &str = "bdt:String20Type";
-pub const rocky_soil: &str = "bdt:YesNoType";
-pub const request_code: &str = "RequestCodeType";
-pub const seller_representative_person: &str = "wtco:SellerRepresentativePersonType";
-pub const company_type: &str = "bdt:CompanyTypeType";
-pub const working_safety_noticed_text: &str = "bdt:String200Type";
-pub const reply_code: &str = "co:ReplyCodeType";
-pub const purchase_contract_number: &str = "bdt:String20Type";
-pub const vehicle_path_pressures: &str = "bdt:YesNoType";
-pub const geometry_modification_allowed: &str = "bdt:YesNoType";
-pub const financing_act_data: &str = "FinancingActDataType";
-pub const observation_date: &str = "co:DateType";
-pub const contact_person: &str = "ci:ContactInformationType";
-pub const has_environmental_objects_text: &str = "bdt:String200Type";
-pub const postinumero_koodi: &str = "jhs:PostinumeroKoodiTyyppi";
-pub const user_role: &str = "bdt:UserRoleType";
-pub const soil_data: &str = "st:BaseSoilDataType";
-pub const power_of_attorney: &str = "fcc:PowerOfAttorneyType";
-pub const fertilizer_volume_ordered: &str = "bdt:PositiveIntegerType";
-pub const woodlot: &str = "WoodLotType";
-pub const pre_clearing_text: &str = "bdt:String200Type";
-pub const stocking_w_ith_seedlings: &str = "xs:integer";
-pub const dead_tree_type: &str = "DeadTreeTypeType";
-pub const applied_length: &str = "Decimal6_2Type";
-pub const ikaluokka_teksti: &str = "jhs:IkaluokkaTekstiTyyppi";
-pub const ditch_or_road_plan_id: &str = "bdt:String10Type";
-pub const project_status: &str = "VirtaProjectStatusType";
-pub const has_found_new_environmental_objects: &str = "bdt:YesNoType";
-pub const caliper: &str = "CaliperType";
-pub const preferred_contacting_methods: &str = "PreferredContactingMethodsType";
-pub const resource_location: &str = "ResourceLocationType";
-pub const basal_area_spruce: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const cutting_realization_practice: &str = "co:CuttingRealizationPracticeType";
-pub const owner: &str = "bdt:ContactInformationType";
-pub const age_summary: &str = "bdt:PositiveInteger3digitsType";
-pub const default_value: &str = "bdt:String50Type";
-pub const image_date: &str = "bdt:TimeStampType";
-pub const detected_ground_wood: &str = "co:PositiveInteger6digitsType";
-pub const pre_clearing_information: &str = "PreClearingInformationType";
-pub const clearing_done_text: &str = "bdt:String200Type";
-pub const target_number: &str = "co:PositiveDecimalMax5IntegralPartMax1FractionalPartType";
-pub const request_reference: &str = "co:ReferenceType";
-pub const control_data_moose_damage_data: &str = "MooseDamageDataType";
-pub const forest_use_declaration: &str = "ForestUseDeclarationType";
-pub const map_symbol_name: &str = "bdt:String20Type";
-pub const final_auditer_type: &str = "bdt:FinalAuditerTypeType";
-pub const tree_damages_text: &str = "bdt:String200Type";
-pub const harvesting_classifiation: &str = "VirtaHarvestingClassificationType";
-pub const wood_lot_information_type_description: &str = "co:String500Type";
-pub const turning_point_class: &str = "bdt:TurningPointClassType";
-pub const previous_moose_damage: &str = "PreviousMooseDamageType";
-pub const growing_tree_species: &str = "bdt:TreeSpeciesType";
-pub const stand_id: &str = "bdt:String20Type";
-pub const pre_debt_collection_register: &str = "bdt:YesNoType";
-pub const working_site_work_load: &str = "WorkingSiteWorkLoadType";
-pub const value: &str = "ValueType";
-pub const stem_count_hard_wood: &str = "bdt:PositiveInteger2digitsType";
-pub const pricing_method: &str = "co:UsedPricingMethodType";
-pub const stem_id: &str = "bdt:PositiveIntegerType";
-pub const purchase_mode: &str = "PurchaseModeType";
-pub const work_load2: &str = "bdt:Decimal2FractionDigitsType";
-pub const forest_haulage_distance_continued: &str = "bdt:PositiveInteger4digitsType";
-pub const measurer_type: &str = "bdt:MeasurerTypeType";
-pub const variance: &str = "cdd:VarianceType";
-pub const transmission_time: &str = "xs:dateTime";
-pub const road_structure_shape: &str = "bdt:WorkingQualityType";
-pub const infotext: &str = "bdt:String1000Type";
-pub const specification_code: &str = "SpecificationCodeType";
-pub const attachments: &str = "AttachmentsType";
-pub const assortment: &str = "AssortmentType";
-pub const measurement: &str = "MeasurementDataType";
-pub const airdrome_as_instructed: &str = "bdt:YesNoType";
-pub const cutting_method: &str = "op:CuttingTypeType";
-pub const fee_basis: &str = "FeeBasisType";
-pub const payment_transaction_description: &str = "PaymentTransactionDescriptionType";
-pub const road_structure_shape_text: &str = "bdt:String200Type";
-pub const silviculture_restriction: &str = "co:SilvicultureRestrictionType";
-pub const natural_crop_stem_count: &str = "co:PositiveInteger6digitsType";
-pub const tree_summary: &str = "TreeSummaryType";
-pub const product_user_ids: &str = "ProductUserIdsType";
-pub const working_site_operational: &str = "WorkingSiteOperationalType";
-pub const modification_date: &str = "bdt:TimeStampType";
-pub const surface_draining_areas: &str = "bdt:YesNoType";
-pub const main_work_code: &str = "bdt:MainWorkCodeType";
-pub const mean_diameter_pine: &str = "bdt:PositiveInteger3digitsType";
-pub const working_site_trade_envelope: &str = "WorkingSiteTradeEnvelopeType";
-pub const operation_rows: &str = "OperationRowsType";
-pub const attribute5: &str = "bdt:WorkCodeQualifierType5";
-pub const soil_conditioning_method_correct: &str = "bdt:YesNoType";
-pub const ditch_mean_depth: &str = "xs:string";
-pub const update_previous_message: &str = "co:YesNoType";
-pub const kieli_koodi: &str = "jhs:KieliKoodiTyyppi";
-pub const melting_date: &str = "bdt:DateType";
-pub const spruce_log: &str = "co:PositiveInteger4digitsType";
-pub const decision_type: &str = "co:DecisionTypeType";
-pub const fee_assortment: &str = "bdt:String50Type";
-pub const representative_person: &str = "bdt:ContactInformationType";
-pub const harvesting_season: &str = "VirtaHarvestingSeasonType";
-pub const harvested_volume_accounted: &str = "bdt:Decimal3FractionDigitsType";
-pub const deciduous_tree_target_density_percent: &str = "bdt:PercentType";
-pub const payment_texts: &str = "PaymentTextsType";
-pub const sub_contractor_verified: &str = "bdt:YesNoType";
-pub const detected_energy_wood: &str = "co:PositiveInteger6digitsType";
-pub const total_compensations: &str = "co:Decimal7And2PositiveType";
-pub const huoneistotunniste_jakokirjain_teksti: &str = "jhs:HuoneistotunnisteJakokirjainTekstiTyyppi";
-pub const target_announced_amount: &str = "co:PositiveDecimalMax4IntegralPartMax2FractionalPartType";
-pub const base_real_estates: &str = "BaseRealEstatesType";
-pub const length_calibration_reason: &str = "bdt:String200Type";
-pub const accessibility: &str = "AccessibilityType";
-pub const transport_accessibility: &str = "co:TransportAccessibilityType";
-pub const financing_act_application_other_subjects: &str = "FinancingActApplicationOtherSubjectsType";
-pub const harvester_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const moose_damage_declaration_reference: &str = "co:ReferenceType";
-pub const cost_type: &str = "fcc:CostTypeType2";
-pub const out_of_service_end_date: &str = "bdt:DateType";
-pub const owner_ship_type: &str = "OwnerShipTypeType";
-pub const arrival_date: &str = "co:DateMmDdYyyyType";
-pub const customer_reference: &str = "co:ReferenceType";
-pub const continuous_cover_forestry: &str = "bdt:YesNoType";
-pub const semi_dry: &str = "bdt:YesNoType";
-pub const languages: &str = "LanguagesType";
-pub const data: &str = "xs:hexBinary";
-pub const feedback_for_planner_text: &str = "bdt:String200Type";
-pub const control_stand_area: &str = "co:AreaType";
-pub const list_item: &str = "bdt:String50Type";
-pub const silviculture_method_correct: &str = "bdt:YesNoType";
-pub const target_stem_count: &str = "co:StemCountType";
-pub const other_tree_species: &str = "OtherTreeSpeciesType";
-pub const info_text: &str = "bdt:String200Type";
-pub const decision_handlers: &str = "DecisionHandlersType";
-pub const training_id: &str = "bdt:PositiveInteger4digitsType";
-pub const part_easting_coordinate: &str = "xs:string";
-pub const log_diameter: &str = "bdt:PositiveInteger3digitsType";
-pub const total_estimation: &str = "VirtaTotalEstimationType";
-pub const spruce_decimal: &str = "VirtaTreeDecimalType";
-pub const age: &str = "bdt:PositiveInteger3digitsType";
-pub const certification_systems: &str = "CertificationSystemsType";
-pub const silviculture_contract_number: &str = "bdt:String20Type";
-pub const own_weight: &str = "bdt:PositiveInteger6digitsType";
-pub const length_calibration: &str = "LengthCalibrationType";
-pub const save_trees_left_text: &str = "bdt:String200Type";
-pub const seedling_condition_and_quality_description: &str = "co:String1000Type";
-pub const storage_forest_haulage_distance: &str = "StorageForestHaulageDistanceType";
-pub const child_object_type: &str = "co:ObjectTypeType";
-pub const diameter_min: &str = "DiameterMinType";
-pub const operation_description: &str = "co:String1000Type";
-pub const assortment_code: &str = "co:AssortmentCodeType";
-pub const payees_and_real_estates: &str = "PayeesAndRealEstatesType";
-pub const cutting_accuracy_sign: &str = "bdt:String5Type";
-pub const v_a_t_registration_date: &str = "VATRegistrationDateType";
-pub const operation_urgency: &str = "OperationUrgencyType";
-pub const plant_location_error_count: &str = "bdt:PositiveIntegerType";
-pub const decision_date: &str = "co:DateType";
-pub const child_object_type_specifier: &str = "ObjectTypeSpecifierType";
-pub const melted_water: &str = "bdt:YesNoType";
-pub const measurement_certificate: &str = "MeasurementCertificateType";
-pub const paid_value: &str = "PaidValueType";
-pub const stump_biomass: &str = "StumpBiomassType";
-pub const stand_root_damages_percentage: &str = "bdt:PercentWithFraction1Type";
-pub const working_representatives: &str = "WorkingRepresentativesType";
-pub const development_class: &str = "DevelopmentClassType";
-pub const contact_information: &str = "ci:ContactInformationType";
-pub const virta_id: &str = "VirtaIdType";
-pub const stand_number_extension: &str = "StandNumberExtensionType";
-pub const declaration_regeneration_commitment: &str = "co:RegenerationCommitmentType";
-pub const water_economy_system_noticed_text: &str = "bdt:String200Type";
-pub const forest_use_declaration_responsible: &str = "co:ForestUseDeclarationResponsibleType";
-pub const amount_left: &str = "bdt:Decimal3FractionDigitsType";
-pub const working_site_number: &str = "wct:WorkingSiteNumberType";
-pub const working_site_id: &str = "wct:ERPIdType";
-pub const scale_factors: &str = "ScaleFactorsType";
-pub const dis_qualification_reason: &str = "bdt:String10Type";
-pub const resource: &str = "ResourceDataType";
-pub const scalped_mounds_count: &str = "bdt:PositiveInteger2digitsType";
-pub const working_site_quality_control_cutting: &str = "WorkingSiteQualityControlCuttingType";
-pub const road_using_right: &str = "wtco:RoadUsingRightType";
-pub const postilokerolyhenne_teksti: &str = "jhs:PostilokerolyhenneTekstiTyyppi";
-pub const authorization_to_send_wso_information: &str = "AuthorizationToSendWsoInformation";
-pub const deployment_year: &str = "bdt:YearType";
-pub const forest_type: &str = "bdt:FertilityClassType";
-pub const forest_realization_data: &str = "ForestRealizationDataType";
-pub const control_object_basic_data: &str = "ControlObjectBasicDataType";
-pub const harvesting_sign_control_classifier: &str = "co:EvaluationCodeType";
-pub const restriction_based_on_stoniness: &str = "co:RestrictionBasedOnStoninessType";
-pub const sample_plot_number: &str = "bdt:PositiveInteger3digitsType";
-pub const subsidy: &str = "SubsidyType";
-pub const tree_height: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const pipe_installation_text: &str = "bdt:String200Type";
-pub const sample_plot: &str = "SamplePlotType";
-pub const working_site_finished: &str = "bdt:YesNoType";
-pub const plant_management_quality_text: &str = "bdt:String200Type";
-pub const owner_sample_area_approval: &str = "VirtaApprovalType";
-pub const tree_species_attributes: &str = "TreeSpeciesAttributesType";
-pub const nearest_cultivated_spot_length: &str = "bdt:PositiveInteger3digitsType";
-pub const bank_account: &str = "co:BankAccountType";
-pub const storage_additional_remarks: &str = "bdt:String3000Type";
-pub const sample_plot_summary: &str = "SamplePlotSummaryType";
-pub const currency: &str = "CurrencyType";
-pub const harvester_id: &str = "bdt:String20Type";
-pub const stand_avg_age_summary: &str = "bdt:PositiveInteger3digitsType";
-pub const acknowledge: &str = "acknowledge:AcknowledgeType";
-pub const working_contract: &str = "bdt:YesNoType";
-pub const work_code_qualifier: &str = "bdt:WorkCodeQualifierType1";
-pub const preferred_contacting_method: &str = "co:PreferredContactingMethodType";
-pub const machine_application_version: &str = "bdt:String100Type";
-pub const service_types: &str = "ServiceTypesType";
-pub const action_date: &str = "co:DateType";
-pub const contractors: &str = "wct:ContractorsType";
-pub const resources: &str = "ResourcesType";
-pub const common_message_id: &str = "wct:CommonMessageType";
-pub const technical_contact_person: &str = "TechnicalContactPersonType";
-pub const remaining_trees: &str = "bdt:FinalAuditAnswerType";
-pub const status4: &str = "co:ChangeStateType";
-pub const measuring_device_last_control: &str = "bdt:DateType";
-pub const assortment_volumes_unclassified: &str = "AssortmentVolumesUnclassifiedType";
-pub const machine_accessory_description: &str = "co:String500Type";
-pub const organizations: &str = "OrganizationsType";
-pub const nearest_seedling_planting_depth: &str = "bdt:PositiveInteger2digitsType";
-pub const call_for_offer_silviculture_info: &str = "CallForOfferSilvicultureInfoType";
-pub const absolute_quantity: &str = "AbsoluteQuantityType";
-pub const humidity: &str = "bdt:Decimal1FractionDigitType";
-pub const tree_diameter: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const comments: &str = "co:String1000Type";
-pub const validity_date_begin: &str = "bdt:DateType";
-pub const surface_draining_areas_text: &str = "bdt:String200Type";
-pub const child_object_id: &str = "co:IdStringNotEmptyType";
-pub const publicity_organizations: &str = "o:OrganizationsType";
-pub const storage_finished_date: &str = "bdt:TimeStampType";
-pub const original_proposal_year: &str = "OriginalProposalYearType";
-pub const stump_mean_diameter: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const cost: &str = "CostType";
-pub const prevention_substance_product_name: &str = "co:String200Type";
-pub const advertisement_dating: &str = "VirtaAdvertisementDatingType";
-pub const pre_clearing_execution_time: &str = "FSFValidityType";
-pub const subsidy_applier: &str = "SubsidyApplierBaseContactAndEstateInfoType";
-pub const deliveries: &str = "DeliveriesType";
-pub const description: &str = "co:String1500Type";
-pub const planting_depth_error_count: &str = "bdt:PositiveIntegerType";
-pub const identifier_value: &str = "IdentifierValueType";
-pub const state_text: &str = "co:String200Type";
-pub const declaration_stand_text_information: &str = "co:String2000Type";
-pub const stand_vehicle_path_width: &str = "bdt:PositiveDecimalMax4IntegralPartMax2FractionalPartType";
-pub const cutting_value: &str = "co:PositiveInteger5digitsType";
-pub const limits_to_water_system_text: &str = "bdt:String200Type";
-pub const gamma: &str = "cdd:GammaType";
-pub const additional_text: &str = "AdditionalTextType";
-pub const humidity_measured: &str = "bdt:YesNoType";
-pub const help_geometry_type: &str = "xs:string";
-pub const excavation_soil_location: &str = "bdt:WorkingQualityType";
-pub const rectification_demand: &str = "co:String5000Type";
-pub const using_right: &str = "UsingRightType";
-pub const subsidy_applier_reference_list: &str = "SubsidyApplierReferenceListType";
-pub const habitat_surviving: &str = "VirtaHabitatSurvivingType";
-pub const puhelinnumero_teksti: &str = "jhs:PuhelinnumeroTekstiTyyppi";
-pub const attributes: &str = "AttributesType";
-pub const test_area_required: &str = "bdt:YesNoType";
-pub const soil_conditioning_method: &str = "bdt:WorkCodeType";
-pub const startdate: &str = "bdt:DateType";
-pub const stem_count_other_tree_species: &str = "bdt:PositiveInteger2digitsType";
-pub const sum_table_area: &str = "VirtaSumTableAreaType";
-pub const real_estates: &str = "RealEstatesType";
-pub const company_information: &str = "companyInformation:CompanyInformationType";
-pub const electronic_notification: &str = "co:ElectronicNotificationType";
-pub const email_address: &str = "bdt:String50Type";
-pub const reason2: &str = "VirtaReasonType";
-pub const change_time: &str = "ChangeTimeType";
-pub const quality_system: &str = "bdt:QualitySystemType";
-pub const acting_date: &str = "ActingDateType";
-pub const calibration_date: &str = "bdt:TimeStampType";
-pub const vehicle_path_distance: &str = "bdt:PositiveDecimalMax4IntegralPartMax2FractionalPartType";
-pub const travel_end_time: &str = "bdt:TimeStampType";
-pub const spare_tree_groups: &str = "SpareTreeGroupsType";
-pub const class3_damage_count: &str = "co:StemCountType";
-pub const status_timestamp: &str = "bdt:TimeStampType";
-pub const financing_type: &str = "co:FinancingActFinancingType";
-pub const out_of_service_start_date: &str = "bdt:DateType";
-pub const objects_realization_data: &str = "ObjectsRealizationDataType";
-pub const stem_distribution_strata: &str = "StemDistributionStrataType";
-pub const second_storey_trees: &str = "xs:integer";
-pub const review2: &str = "VirtaReviewType";
-pub const root_damage_count: &str = "co:PositiveInteger3digitsType";
-pub const area_code: &str = "AreaCodeType";
-pub const class4_damage_count: &str = "co:StemCountType";
-pub const external_file: &str = "ExternalFileType";
-pub const stump_cutting_as_instructed: &str = "bdt:YesNoType";
-pub const stand_too_height_stumps_percentage: &str = "bdt:PercentWithFraction1Type";
-pub const length_min: &str = "LengthMinType";
-pub const sample_plot_easting_coordinate: &str = "xs:string";
-pub const snow_or_ice: &str = "bdt:YesNoType";
-pub const basal_area_silver_birch: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const error_message_data: &str = "ErrorMessageDataType";
-pub const stands: &str = "StandsType";
-pub const work_safety_risks: &str = "WorkSafetyRisksType";
-pub const included_in_offer: &str = "IncludedInOfferType";
-pub const ditch_cleaning_break_location: &str = "bdt:WorkingQualityType";
-pub const damage_data: &str = "DamageDataType";
-pub const working_time: &str = "bdt:DateType";
-pub const machine_accessory_code: &str = "co:MachineAccessoryCodeType";
-pub const main_feature: &str = "co:YesNoType";
-pub const financing_sustainable_forestry: &str = "FinancingSustainableForestryType";
-pub const reason: &str = "VirtaReasonType";
-pub const acceptance: &str = "co:AcceptanceType";
-pub const sample_plot_count_required: &str = "bdt:PositiveInteger3digitsType";
-pub const forest_use_declaration_not_needed: &str = "bdt:YesNoType";
-pub const plant_site_count_summary: &str = "bdt:PositiveInteger4digitsType";
-pub const cumulative_mass: &str = "cdd:CumulativeMassType";
-pub const line_geometry: &str = "LineGeometryType";
-pub const pine_log: &str = "co:PositiveInteger4digitsType";
-pub const identifiers: &str = "IdentifiersType";
-pub const f_s_f_information: &str = "FSFInformationType";
-pub const volume_growth: &str = "VolumeGrowthType";
-pub const estate_owner: &str = "xs:string";
-pub const bio_mass_quality_text: &str = "bdt:String200Type";
-pub const nearest_seedling_soil_compressed: &str = "bdt:YesNoType";
-pub const harvester_model: &str = "bdt:String50Type";
-pub const fertile_type: &str = "bdt:MaterialCodeType";
-pub const width: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const declaration_stands: &str = "DeclarationStandsType";
-pub const material: &str = "MaterialType";
-pub const previous_blocks: &str = "PreviousBlockInfoType";
-pub const neljas_rivi_teksti: &str = "jhs:NeljasRiviTekstiTyyppi";
-pub const application_actors: &str = "ApplicationActorsType";
-pub const felling_right_validity_date: &str = "FellingRightValidityDateType";
-pub const case_date: &str = "co:DateType";
-pub const reduction_count: &str = "bdt:PositiveInteger2digitsType";
-pub const birth_date: &str = "bdt:DateType";
-pub const organization: &str = "OrganizationType";
-pub const service_type: &str = "bdt:ServiceTypeType";
-pub const nationality_free_text: &str = "bdt:String50Type";
-pub const sample_plots_summaries: &str = "SamplePlotSummariesType";
-pub const roles: &str = "RolesType";
-pub const forwarder_delay: &str = "bdt:PositiveInteger2digitsType";
-pub const stump_lifting_quality: &str = "bdt:WorkingQualityType";
-pub const volume_summary: &str = "bdt:PositiveInteger3digitsType";
-pub const service: &str = "OrganizationServiceType";
-pub const error_messages: &str = "ErrorMessagesType";
-pub const financing_act_completion_declaration: &str = "facd:FinancingActCompletionDeclarationType";
-pub const photographer: &str = "bdt:String50Type";
-pub const can_cultivate_in_autumn: &str = "bdt:YesNoType";
-pub const law: &str = "VirtaLawType";
-pub const time_interval_for_measuring_sample_plot: &str = "co:PositiveInteger5digitsType";
-pub const other_timber_value: &str = "co:PositiveInteger5digitsType";
-pub const validity: &str = "ValidityType";
-pub const commercial_name: &str = "bdt:String100Type";
-pub const stub_price_area: &str = "VirtaSumTableAreaType";
-pub const running_meters: &str = "bdt:Decimal3FractionDigitsType";
-pub const product_name: &str = "co:String500Type";
-pub const storage_id: &str = "wct:ERPIdType";
-pub const legal_accident_insurance: &str = "bdt:DateType";
-pub const declaration_development_class: &str = "co:DeclarationDevelopmentClassType";
-pub const extra_info: &str = "tgt:VirtaExtraInfoType";
-pub const decided_total_subsidy: &str = "fcc:DecidedTotalSubsidyType";
-pub const amount_planned: &str = "bdt:Decimal3FractionDigitsType";
-pub const total_volume: &str = "co:VolumeType";
-pub const grade_code: &str = "co:GradeCodeType";
-pub const advance_tax: &str = "AdvanceTaxType";
-pub const stumps_lifted_text: &str = "bdt:String200Type";
-pub const work_load_unit_invoiced: &str = "bdt:WorkCodeUnitType";
-pub const control_evaluation: &str = "ControlEvaluationType";
-pub const expected_value_surplus: &str = "co:PositiveDecimalMax5IntegralPartMax2FractionalPartType";
-pub const kuvaus_teksti: &str = "jhs:KuvausTekstiTyyppi";
-pub const clearing_estimation: &str = "sp:VirtaEvaluationType";
-pub const call_for_offer_working_site_wood_trade_info: &str = "wtco:CallForOfferWorkingSiteWoodTradeInfoType";
-pub const etunimet_nimi: &str = "jhs:EtunimetNimiTyyppi";
-pub const water_economy_systems_noticed_text: &str = "bdt:String200Type";
-pub const forest_owner: &str = "bdt:String100Type";
-pub const vehicle_path_subsidence_percentage: &str = "co:PositiveInteger3digitsType";
-pub const evaluation_description: &str = "co:String1000Type";
-pub const environmental_object_noticed_text: &str = "bdt:String200Type";
-pub const turvakielto_kytkin: &str = "jhs:TurvakieltoKytkinTyyppi";
-pub const fee_list_id: &str = "bdt:PositiveIntegerType";
-pub const statistics_operation: &str = "StatisticsOperationType";
-pub const key_element_n_s: &str = "co:String500Type";
-pub const price_item: &str = "PriceItemType";
-pub const kilometers_with_break_house: &str = "bdt:PositiveInteger4digitsType";
-pub const thinning_too_excessive: &str = "bdt:YesNoType";
-pub const owner_involvement: &str = "co:VirtaYesNoType";
-pub const stump_cutting_as_instructed_text: &str = "bdt:String200Type";
-pub const selection_type: &str = "bdt:String10Type";
-pub const contactor_id: &str = "bdt:String20Type";
-pub const small_wood_removal_class: &str = "co:SmallWoodRemovalClassType";
-pub const parcel: &str = "ParcelType";
-pub const stem_type_volume: &str = "StemTypeVolumeType";
-pub const supported: &str = "bdt:YesNoType";
-pub const working_site_plan_date: &str = "WorkingSitePlanDateType";
-pub const unfreezing_date: &str = "bdt:DateType";
-pub const self_monitoring_data: &str = "cod:ForestCentreSelfMonitoringDataType";
-pub const working_site_payment_transactions: &str = "OfferWorkingSitePaymentTransactionsType";
-pub const authorizations_to_send_wso_information: &str = "AuthorizationsToSendWsoInformationType";
-pub const owner_contractor_id: &str = "bdt:String20Type";
-pub const turning_place: &str = "bdt:WorkingQualityType";
-pub const work_load_invoiced: &str = "bdt:Decimal2FractionDigitsType";
-pub const parcel_label: &str = "bdt:String100Type";
-pub const habitat_location: &str = "co:HabitatLocationType";
-pub const stem_count: &str = "bdt:PositiveInteger2digitsType";
-pub const feature_additional_info: &str = "FeatureAdditionalInfoType";
-pub const previous_block: &str = "bdt:String20Type";
-pub const kuudes_rivi_teksti: &str = "jhs:KuudesRiviTekstiTyyppi";
-pub const mobile_phone_number: &str = "MobilePhoneNumberType";
-pub const user_information: &str = "UserInformationType";
-pub const related_call_for_offers: &str = "RelatedCallForOffersType";
-pub const working_instructions_sufficient: &str = "bdt:YesNoType";
-pub const audit: &str = "AuditionType";
-pub const control_stand_basic_data: &str = "ControlStandBasicDataType";
-pub const cultivation_material: &str = "VirtaCultivationMaterialType";
-pub const map_symbol: &str = "MapSymbolType";
-pub const used_pricing_method: &str = "UsedPricingMethodType";
-pub const audition: &str = "AuditionType";
-pub const reason_code: &str = "co:String10Type";
-pub const assortments_change: &str = "AssortmentChangeDataType";
-pub const forwarding_notification: &str = "ForwardingNotificationType";
-pub const working_site_planning_operation: &str = "bdt:WorkingSitePlanningOperationStatusType";
-pub const stand_correct_height_stumps_percentage: &str = "bdt:PercentWithFraction1Type";
-pub const action_description: &str = "co:String1000Type";
-pub const cuttings: &str = "CuttingsType";
-pub const payment_type: &str = "PaymentTypeType";
-pub const location_estates: &str = "LocationEstatesType";
-pub const production_file_send_frequency: &str = "bdt:PositiveIntegerType";
-pub const stand_number: &str = "bdt:String20Type";
-pub const registration_id: &str = "co:ReferenceType";
-pub const declaration_reference: &str = "DeclarationReferenceType";
-pub const min_proposal_year: &str = "MinProposalYearType";
-pub const person_role: &str = "bdt:String50Type";
-pub const financing_act_application_stand: &str = "FinancingActApplicationStandType";
-pub const ditch_type: &str = "wct:DitchTypeType";
-pub const sukupuoli_koodi: &str = "jhs:SukupuoliKoodiTyyppi";
-pub const island_working_site: &str = "bdt:YesNoType";
-pub const contact_request: &str = "ContactRequestType";
-pub const kuolema_pvm: &str = "jhs:KuolemaPvmTyyppi";
-pub const felling_right_duration: &str = "FellingRightDurationType";
-pub const contract_id: &str = "ContractIdType";
-pub const inspection_method: &str = "VirtaInspectionMethodType";
-pub const payments: &str = "PaymentsType";
-pub const decision_handler: &str = "DecisionHandlerType";
-pub const insurance_or_other_compensation: &str = "co:PositiveDecimalMax5IntegralPartMax2FractionalPartType";
-pub const harvesting_order: &str = "HarvestingOrderType";
-pub const sample_plot_size_tree_reduction: &str = "SamplePlotSizeType";
-pub const register_unit_id: &str = "bdt:String20Type";
-pub const surface_runoff_field_ground_is_unbroken: &str = "bdt:YesNoNotKnownType";
-pub const authorization: &str = "co:YesNoType";
-pub const stand_trees_current: &str = "StandTreesType";
-pub const business_acceptance_date: &str = "BusinessAcceptanceDateType";
-pub const alayksikko_nimi: &str = "jhs:AlayksikkoNimiTyyppi";
-pub const subsidy_appliers: &str = "SubsidyAppliersType";
-pub const proposal_data: &str = "ProposalDataType";
-pub const geometry_id: &str = "xs:string";
-pub const sprout_forest_control_evaluation: &str = "sp:VirtaEvaluationType";
-pub const water_economy_systems_noticed: &str = "bdt:YesNoType";
-pub const cost_type_and_completed_work_completion: &str = "CostTypeAndCompletedWorkCompletionType";
-pub const yritys_tunnus: &str = "jhs:YritysTunnusTyyppi";
-pub const shape_beta: &str = "cdd:ShapeBetaType";
-pub const parcel_no: &str = "bdt:PositiveInteger6digitsType";
-pub const quality_control_date: &str = "bdt:DateType";
-pub const first_name: &str = "ci:FirstNameType";
-pub const material_volume: &str = "bdt:Decimal2FractionDigitsType";
-pub const control_log_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const images: &str = "bdt:PositiveInteger2digitsType";
-pub const info_text_mandatory: &str = "bdt:YesNoType";
-pub const length_calibration_adjustment: &str = "bdt:Integer3digitsType";
-pub const sub_group: &str = "co:SubGroupType";
-pub const operation_year: &str = "co:YearType";
-pub const password: &str = "xs:string";
-pub const storage_linked_to_working_site: &str = "bdt:YesNoType";
-pub const completion_declaration_actor: &str = "PayeeType";
-pub const estimated_working_time_consumption: &str = "co:PositiveInteger5digitsType";
-pub const working_instructions_sufficient_text: &str = "bdt:String200Type";
-pub const plowing_email: &str = "bdt:String50Type";
-pub const measure_device_check_required: &str = "bdt:YesNoType";
-pub const target_amount_unit: &str = "ExtendedWideUnitType";
-pub const suspension_hole_density_size_and_location: &str = "bdt:WorkingQualityType";
-pub const seller: &str = "SellerType";
-pub const clearing_done: &str = "bdt:YesNoType";
-pub const decided_amount: &str = "fcc:DecidedAmountType";
-pub const previous_same_area_moose_damage_compensation_year: &str = "co:YearType";
-pub const common_message: &str = "CommonMessageDataType";
-pub const route: &str = "bdt:String200Type";
-pub const buffer_distance: &str = "BufferDistanceType";
-pub const forest_use_declaration_number: &str = "ForestUseDeclarationNumberType";
-pub const postilokero_teksti: &str = "jhs:PostilokeroTekstiTyyppi";
-pub const class2damage_count: &str = "co:PositiveInteger6digitsType";
-pub const assortment_matrix_volume: &str = "AssortmentMatrixVolumeType";
-pub const drying_class: &str = "bdt:DryingClassType";
-pub const work_description: &str = "co:String1000Type";
-pub const forest_haulage_finished_date: &str = "bdt:TimeStampType";
-pub const damage_source_code: &str = "xs:string";
-pub const compensation_by_legislation: &str = "CompensationByLegislationType";
-pub const accepted: &str = "bdt:YesNoType";
-pub const cultivated_dead_stem_count: &str = "co:StemCountType";
-pub const environment_cleanliness_noticed_text: &str = "bdt:String200Type";
-pub const storages_forest_haulage_distances: &str = "StoragesForestHaulageDistancesType";
-pub const forest_plan_stand_id: &str = "bdt:String10Type";
-pub const is_active: &str = "bdt:YesNoType";
-pub const original_message_type: &str = "bdt:String50Type";
-pub const work_codes: &str = "WorkCodesType";
-pub const assortment_compact_class: &str = "AssortmentCompactClassType";
-pub const seedling_beginning_code: &str = "co:SeedlingOriginType";
-pub const mineral_soil_layer: &str = "bdt:FinalAuditAnswerType";
-pub const masto_inspection: &str = "VirtaMastoInspectionType";
-pub const company_mode: &str = "bdt:CompanyModeType";
-pub const etu_nimi: &str = "jhs:EtuNimiTyyppi";
-pub const sample_plot_basic_data: &str = "SamplePlotBasicDataType";
-pub const evaluation_category: &str = "co:EvaluationSubjectType";
-pub const terrain_planning_done: &str = "bdt:YesNoType";
-pub const change_state: &str = "ChangeStateType";
-pub const preclearing_evaluation: &str = "co:PreclearingEvaluationType";
-pub const call_for_offer: &str = "CallForOfferType";
-pub const silvicultural_operation: &str = "SilviculturalOperationType";
-pub const data_source: &str = "DataSourceType";
-pub const assortment_volumes: &str = "AssortmentVolumesType";
-pub const priority: &str = "WorkingSitePriorityType";
-pub const related_call_for_offer_id: &str = "xs:string";
-pub const restriction_type: &str = "co:RestrictionTypeType";
-pub const name: &str = "bdt:String50Type";
-pub const turnover_mounds_count: &str = "bdt:PositiveInteger2digitsType";
-pub const control_log_diameter: &str = "bdt:PositiveInteger3digitsType";
-pub const document_date: &str = "DateType";
-pub const active: &str = "bdt:YesNoType";
-pub const amount: &str = "bdt:Decimal2FractionDigitsType";
-pub const stump_stem_count: &str = "co:PositiveInteger6digitsType";
-pub const state_code: &str = "StateCodeType";
-pub const mean_diameter_other_tree_species: &str = "bdt:PositiveInteger3digitsType";
-pub const file_binary: &str = "xmime:base64Binary";
-pub const environmental_objects_noticed: &str = "bdt:YesNoType";
-pub const faksinumero_teksti: &str = "jhs:FaksinumeroTekstiTyyppi";
-pub const statistics_quantity: &str = "StatisticsQuantityType";
-pub const sample_plot_mean_height: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const destroyed_cutting_value: &str = "co:PositiveInteger5digitsType";
-pub const stem_count_pine: &str = "bdt:PositiveInteger2digitsType";
-pub const mean_diameter_silver_birch: &str = "bdt:PositiveInteger3digitsType";
-pub const class2_damage_count: &str = "co:StemCountType";
-pub const owner_action_approval: &str = "VirtaApprovalType";
-pub const declaration_delivering_evaluation: &str = "co:EvaluationCodeType";
-pub const geometry_required: &str = "gdt:PointGeometryType";
-pub const stub_diameter: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const harvest_extra_info: &str = "tgt:VirtaExtraInfoType";
-pub const unit_price: &str = "co:Decimal2FractionDigitsType";
-pub const final_audit_required: &str = "bdt:YesNoType";
-pub const work_code_qualifier3: &str = "bdt:WorkCodeQualifierType3";
-pub const storey: &str = "bdt:StoreyType";
-pub const prevention_completed: &str = "co:YesNoType";
-pub const stand_info: &str = "StandInfoType";
-pub const plant_count: &str = "bdt:PositiveInteger3digitsType";
-pub const orderer_responsibility_documents_checked: &str = "bdt:YesNoType";
-pub const stem_damage_percentage: &str = "co:PositiveIntegerType";
-pub const client_application_id: &str = "bdt:ClientApplicationIdType";
-pub const cutting_finished_date: &str = "bdt:DateType";
-pub const working_site_operational_update: &str = "WorkingSiteOperationalUpdateType";
-pub const working_site_geometry: &str = "sf:LocatedSpecialFeature2Type";
-pub const planted_seedling_count_in_not_cultivated_spots: &str = "bdt:PositiveInteger3digitsType";
-pub const business_acceptance_id: &str = "BusinessAcceptanceIdType";
-pub const working_site: &str = "WorkingSiteType";
-pub const send_notifications: &str = "bdt:YesNoType";
-pub const covered: &str = "bdt:YesNoType";
-pub const application_total_subsidy: &str = "co:MoneyType";
-pub const targets: &str = "TargetsType";
-pub const completion_declaration_number: &str = "co:String100Type";
-pub const service_name_of_a_p_i: &str = "bdt:ServiceNameofAPIType";
-pub const specification_text: &str = "co:String2000Type";
-pub const feature_code: &str = "co:FeatureCodeType";
-pub const expiration_date: &str = "co:DateType";
-pub const is_forest_haulage_distance_continued: &str = "bdt:YesNoType";
-pub const preinform_details: &str = "co:String1000Type";
-pub const environment_cleanliness_noticed: &str = "bdt:YesNoType";
-pub const resource_schedule: &str = "ResourceScheduleType";
-pub const maximum: &str = "cdd:MaximumType";
-pub const stump_lifting_finished_date: &str = "bdt:DateType";
-pub const hopper_number: &str = "bdt:String20Type";
-pub const sellers_logs: &str = "bdt:String200Type";
-pub const audition_resource: &str = "AuditionResourceType";
-pub const storage_class: &str = "bdt:StorageDryingClassType";
-pub const declaration_soil_preparation_operation: &str = "co:DeclarationSoilPreparationOperationType";
-pub const sedimentation_basin_and_dam_dimensioning_is_followed: &str = "bdt:YesNoNotKnownType";
-pub const proposal_area: &str = "ProposalAreaType";
-pub const stub_stem_count: &str = "co:PositiveInteger6digitsType";
-pub const saw_log_volume: &str = "SawLogVolumeType";
-pub const class1_damage_count: &str = "co:StemCountType";
-pub const established_part_number: &str = "VirtaPartNumberType";
-pub const height_max: &str = "bdt:Decimal1FractionDigitType";
-pub const call_for_offer_text: &str = "wtco:CallForOfferTextType";
-pub const birch_decimal: &str = "VirtaTreeDecimalType";
-pub const offer_date: &str = "OfferDateType";
-pub const vehicle_path_mean_width: &str = "Decimal5_1Type";
-pub const map_symbol_type: &str = "bdt:FeatureCodeType";
-pub const original_message: &str = "bdt:String1000Type";
-pub const extra_person1: &str = "bdt:PositiveInteger4digitsType";
-pub const financing_act_application_stands: &str = "FinancingActApplicationStandsType";
-pub const working_site_planned_for_harvesting_date: &str = "bdt:DateType";
-pub const resource_id: &str = "bdt:String20Type";
-pub const justification: &str = "co:String5000Type";
-pub const assortment_id: &str = "wct:ERPIdType";
-pub const round_wood_sales_row: &str = "RoundWoodSalesRowType";
-pub const data_id: &str = "xs:string";
-pub const sample_plot_track_distance: &str = "xs:integer";
-pub const operation_time_start: &str = "bdt:DateType";
-pub const proposal_date: &str = "ProposalDateType";
-pub const reply_to: &str = "bdt:String50Type";
-pub const help_geometries: &str = "HelpGeometriesType";
-pub const bearing_capacity_class: &str = "BearingCapacityClassType";
-pub const need_for_treatment: &str = "co:VirtaYesNoType";
-pub const objects: &str = "ForestObjectDataObjectsType";
-pub const damage_source: &str = "co:FeatureTypeType";
-pub const min_diameter: &str = "bdt:PositiveIntegerType";
-pub const storage_address: &str = "bdt:String500Type";
-pub const stand_finished: &str = "bdt:YesNoType";
-pub const area_no: &str = "co:PositiveInteger4digitsType";
-pub const basal_area_hard_wood: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const unit: &str = "xs:string";
-pub const purchase_contract_id: &str = "bdt:String20Type";
-pub const person_organization_name: &str = "ci:PersonOrganizationNameType";
-pub const compensation_applicant: &str = "ContactInformationBankAccountType";
-pub const tree_identifiers: &str = "TreeIdentifiersType";
-pub const work_code_qualifier1: &str = "bdt:WorkCodeQualifierType1";
-pub const d_b_h: &str = "bdt:PositiveInteger3digitsType";
-pub const working_site_final_audit_harvesting: &str = "WorkingSiteFinalAuditHarvestingType";
-pub const round_wood_sales_data: &str = "RoundWoodSalesDataType";
-pub const stand_basic_data_date: &str = "StandBasicDataDateType";
-pub const organisation4: &str = "bdt:String20Type";
-pub const restriction_end_date: &str = "EndDateType";
-pub const completion_actors: &str = "CompletionActorsType";
-pub const storage_land_owner: &str = "bdt:StorageLandOwnerType";
-pub const financing_act_application_geometries: &str = "FinancingActApplicationGeometriesType";
-pub const key_element_name: &str = "co:String200Type";
-pub const maatunnus_koodi: &str = "jhs:MaatunnusKoodiTyyppi";
-pub const reasons: &str = "ReasonsType";
-pub const forest_property_data: &str = "ForestPropertyDataType";
-pub const special_features: &str = "SpecialFeaturesType";
-pub const nearest_cultivated_spot_width: &str = "bdt:PositiveInteger3digitsType";
-pub const forest_system_payment_reference: &str = "bdt:String50Type";
-pub const damage_source_description: &str = "co:String100Type";
-pub const cutting_planner_liability: &str = "CuttingPlannerLiabilityType";
-pub const work_quality: &str = "VirtaWorkQualityType";
-pub const kilometers_with_caravan: &str = "bdt:PositiveInteger4digitsType";
-pub const siviilisaaty_teksti: &str = "jhs:SiviilisaatyTekstiTyyppi";
-pub const soil_preparation_spots_are_enough: &str = "co:YesNoType";
-pub const sample_plot_basal_area: &str = "xs:integer";
-pub const high_stumps_text: &str = "bdt:String200Type";
-pub const sellers_logs_info: &str = "bdt:String1000Type";
-pub const stump_treatment_text: &str = "bdt:String200Type";
-pub const working_representative: &str = "WorkingRepresentativeType";
-pub const forest_statistics_data: &str = "ForestStatisticsDataType";
-pub const excavator_moving_and_tree_damages_text: &str = "bdt:String200Type";
-pub const feature_additional_code: &str = "co:FeatureAdditionalCodeType";
-pub const control_reference: &str = "co:ReferenceType";
-pub const object_protection_operations: &str = "ObjectProtectionOperationsType";
-pub const external_system_name: &str = "bdt:String50Type";
-pub const participation_percentage: &str = "co:PercentType";
-pub const plant_count_summary: &str = "bdt:PositiveInteger4digitsType";
-pub const notices: &str = "co:String1000Type";
-pub const working_hours_business_day: &str = "bdt:PositiveInteger2digitsType";
-pub const service_buyer: &str = "ServiceBuyerType";
-pub const responsible_actor: &str = "ResponsibleActorType";
-pub const water_system_protection: &str = "bdt:YesNoType";
-pub const saw_log_percent: &str = "SawLogPercentType";
-pub const working_site_final_audit_draining: &str = "WorkingSiteFinalAuditDrainingType";
-pub const alternative_identifier: &str = "AlternativeIdentifierType";
-pub const operation_tree_species_summary: &str = "OperationTreeSpeciesSummaryType";
-pub const silviculture_restriction_ends: &str = "co:DateType";
-pub const phase2young_crop_count: &str = "co:PositiveInteger5digitsType";
-pub const mixed_forest_regenaration_methods: &str = "bdt:YesNoType";
-pub const ditches_in_addition_to_cultivation: &str = "bdt:PositiveInteger4digitsType";
-pub const work_grou_members: &str = "WorkGrouMembersType";
-pub const value_list: &str = "ValueListType";
-pub const forest_centre_decision: &str = "ForestCentreDecisionType";
-pub const product_user_id: &str = "bdt:String100Type";
-pub const turning_place_text: &str = "bdt:String200Type";
-pub const working_site_accounting: &str = "WorkingSiteAccountingType";
-pub const purchase_mode_code: &str = "wtco:PurchaseModeType";
-pub const cost_type_number: &str = "co:CostTypeNumberType";
-pub const cutting_related: &str = "CuttingRelatedType";
-pub const birch_log: &str = "co:PositiveInteger4digitsType";
-pub const deployment_month: &str = "bdt:String5Type";
-pub const audits: &str = "AuditsType";
-pub const working_site_final_audit_dynamic: &str = "WorkingSiteFinalAuditDynamicType";
-pub const machines: &str = "MachinesType";
-pub const final_auditer_name: &str = "bdt:String50Type";
-pub const toinen_rivi_teksti: &str = "jhs:ToinenRiviTekstiTyyppi";
-pub const transport_distance_unit: &str = "bdt:DistanceUnitType";
-pub const assortment_increment_allowed: &str = "bdt:YesNoType";
-pub const wood_lot_information_value: &str = "WoodLotInformationValueType";
-pub const role: &str = "OrganizationRoleType";
-pub const part_number: &str = "xs:string";
-pub const assortment_info: &str = "AssortmentInfoType";
-pub const application_amount_unit: &str = "co:ForestCentreUnitType";
-pub const value_growth_percent: &str = "co:Decimal2FractionDigitsType";
-pub const sellers: &str = "wtco:SellersType";
-pub const v_a_t: &str = "VATType";
-pub const announcement_id: &str = "AnnouncementIdType";
-pub const whole_name: &str = "WholeNameType";
-pub const application_amount: &str = "co:Decimal7And2Type";
-pub const parent_object_type: &str = "ObjectTypeType";
-pub const address: &str = "bdt:String50Type";
-pub const cultivated_crop_stem_count: &str = "co:PositiveInteger6digitsType";
-pub const financing_act_application_text_information: &str = "co:String2000Type";
-pub const working_site_end_notification: &str = "WorkingSiteEndNotificationType";
-pub const inspection: &str = "InspectionType";
-pub const other_evaluation: &str = "sp:VirtaEvaluationType";
-pub const cutting_restriction: &str = "CuttingRestrictionType";
-pub const scalps_count: &str = "bdt:PositiveInteger2digitsType";
-pub const scale_factor: &str = "ScaleFactorDataType";
-pub const test_area_number: &str = "bdt:PositiveIntegerType";
-pub const pre_notification_allowed: &str = "bdt:YesNoType";
-pub const call_for_offer_working_sites: &str = "CallForOfferWorkingSitesType";
-pub const scale: &str = "cdd:ScaleType";
-pub const operation_info: &str = "OperationInfoType";
-pub const association_involvement: &str = "co:VirtaYesNoType";
-pub const call_for_offer_wood_trade_info: &str = "wtco:CallForOfferWoodTradeInfoType";
-pub const in_terrain: &str = "co:YesNoType";
-pub const sample_plot_mean_diameter: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const symbol: &str = "MapSymbolDataType";
-pub const notification_type: &str = "NotificationTypeType";
-pub const cultivation_scope: &str = "bdt:FinalAuditAnswerType";
-pub const forest_object_data: &str = "ForestObjectDataType";
-pub const forest_data_update: &str = "cod:ForestDataUpdateType";
-pub const harvesting_finished_date: &str = "bdt:TimeStampType";
-pub const completion_data: &str = "ExtendedCompletionDataType";
-pub const productivity: &str = "bdt:PositiveDecimalMax4IntegralPartMax2FractionalPartType";
-pub const cleaning_breaks_done: &str = "bdt:YesNoType";
-pub const feedback_for_planner: &str = "bdt:WorkingQualityType";
-pub const delivery: &str = "DeliveryType";
-pub const message_type: &str = "co:MessageType";
-pub const mean_diameter_spruce: &str = "bdt:PositiveInteger3digitsType";
-pub const stem_count_spruce: &str = "bdt:PositiveInteger2digitsType";
-pub const working_site_quality_control_soil_conditioning: &str = "WorkingSiteQualityControlSoilConditioningType";
-pub const planned_resource: &str = "wtc:PlannedResourceType";
-pub const damage: &str = "DamageType";
-pub const planning_year: &str = "PlanningYearType";
-pub const plant_sealing_error_count: &str = "bdt:PositiveIntegerType";
-pub const distribution: &str = "cdd:DistributionType";
-pub const consumption: &str = "ConsumptionType";
-pub const working_site_name: &str = "wtco:WorkingSiteNameType";
-pub const trainings: &str = "TrainingsType";
-pub const group_number: &str = "xs:string";
-pub const training_free_text: &str = "bdt:String50Type";
-pub const tree_damage_outside_stand: &str = "sp:VirtaEvaluationType";
-pub const service_buyer_id: &str = "bdt:String20Type";
-pub const using_right_exists: &str = "co:YesNoNotKnownType";
-pub const road_structure_drainage: &str = "bdt:WorkingQualityType";
-pub const recommended_density: &str = "co:PositiveInteger5digitsType";
-pub const working_site_fee_basis: &str = "WorkingSiteFeeBasisType";
-pub const enddate: &str = "bdt:DateType";
-pub const assortment_matrix_volumes: &str = "AssortmentMatrixVolumesType";
-pub const stem_count_target: &str = "bdt:PositiveInteger2digitsType";
-pub const partitial_load_id: &str = "xs:nonNegativeInteger";
-pub const planting_site_count: &str = "bdt:PositiveInteger2digitsType";
-pub const birch_pulp: &str = "co:PositiveInteger4digitsType";
-pub const forwarded_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const weibull: &str = "cdd:WeibullType";
-pub const compensation: &str = "co:PositiveDecimalMax5IntegralPartMax2FractionalPartType";
-pub const working_safety_noticed: &str = "bdt:YesNoType";
-pub const radius: &str = "bdt:Decimal2FractionDigitsType";
-pub const fee_type: &str = "bdt:FeeBasisValueType";
-pub const amount_notified: &str = "bdt:Decimal3FractionDigitsType";
-pub const training: &str = "TrainingDataType";
-pub const sample_plot_track_depth: &str = "xs:integer";
-pub const pulp_m3sum: &str = "co:PositiveInteger4digitsType";
-pub const working_site_quality_control_fertilization: &str = "WorkingSiteQualityControlFertilizationType";
-pub const fee_id: &str = "bdt:String10Type";
-pub const audit_question: &str = "AuditQuestionType";
-pub const case_actions: &str = "CaseActionsType";
-pub const control_additional_information: &str = "ControlAdditionalInformationType";
-pub const evaluation_text: &str = "co:String1000Type";
-pub const attribute: &str = "AttributeType";
-pub const notifications_and_improvements: &str = "bdt:YesNoType";
-pub const wide_certification_system: &str = "WideCertificationSystemType";
-pub const status_code: &str = "StatusCodeType";
-pub const diameter_calibration_adjustment: &str = "bdt:Integer3digitsType";
-pub const forest_certification: &str = "bdt:CertificationSystemType";
-pub const right_to_specify_bank_accounts_of_payment_transactions: &str = "co:YesNoType";
-pub const suku_nimi: &str = "jhs:SukuNimiTyyppi";
-pub const employer_register: &str = "EmployerRegisterType";
-pub const completion_declaration_delivery_due_date: &str = "co:DateType";
-pub const block_is_f_s_f_block: &str = "bdt:YesNoType";
-pub const silvicultural_operations: &str = "SilviculturalOperationsType";
-pub const dead_tree_stratum: &str = "DeadTreeStratumType";
-pub const stem_distribution: &str = "StemDistributionType";
-pub const valiaikainen_henkilo_tunnus: &str = "jhs:ValiaikainenHenkiloTunnusTyyppi";
-pub const measurement_place: &str = "bdt:MeasurementPlaceType";
-pub const f_s_f_number: &str = "bdt:String50Type";
-pub const subsidy_argument_text: &str = "co:String5000Type";
-pub const payment_transaction_type: &str = "co:MoneyTransactionTypeType";
-pub const storage_land_owner_information: &str = "bdt:ContactInformationType";
-pub const special_permission: &str = "SpecialPermissionType";
-pub const cutting_stem_count: &str = "CuttingStemCountType";
-pub const version: &str = "bdt:String10Type";
-pub const subsidy_applier_id: &str = "co:IdStringNotEmptyType";
-pub const shape: &str = "cdd:ShapeType";
-pub const storm_working_site: &str = "bdt:YesNoType";
-pub const update_previous_declaration: &str = "co:YesNoType";
-pub const common_message_free_text: &str = "bdt:String200Type";
-pub const area_number: &str = "xs:string";
-pub const announced_energy_wood: &str = "co:PositiveInteger6digitsType";
-pub const spare_trees: &str = "wct:FinalAuditSpareTreesType";
-pub const forest_use_declaration_references: &str = "ForestUseDeclarationsType";
-pub const diameter_calibration_reason: &str = "bdt:String200Type";
-pub const geometry_objects: &str = "GeometryObjectsType";
-pub const moose_percentage: &str = "co:PercentType";
-pub const language_code: &str = "bdt:LanguageCodeType";
-pub const application_unit_price: &str = "co:MoneyType";
-pub const announced_length: &str = "co:PositiveDecimalMax4IntegralPartMax2FractionalPartType";
-pub const header: &str = "HeaderType";
-pub const material_id: &str = "bdt:String20Type";
-pub const phase: &str = "VirtaPhaseType";
-pub const fee_basis_list: &str = "FeeBasisListType";
-pub const storages_proposal_forest_haulage_distances: &str = "StoragesForestHaulageDistancesType";
-pub const product_group_name: &str = "bdt:String50Type";
-pub const new_destination_storage: &str = "bdt:String20Type";
-pub const attachment: &str = "AttachmentDataType";
-pub const cutting_restriction_ends: &str = "co:DateType";
-pub const has_assortment_changes: &str = "bdt:YesNoType";
-pub const working_area: &str = "WorkingAreaType";
-pub const subsidy_zone: &str = "co:ForestActAreaType";
-pub const stumps_lifted: &str = "bdt:YesNoType";
-pub const diameter_sections: &str = "DiameterSectionsType";
-pub const sequence_number: &str = "SequenceNumberType";
-pub const stem_count_silver_birch: &str = "bdt:PositiveInteger2digitsType";
-pub const object_number: &str = "ObjectNumberType";
-pub const team_name: &str = "bdt:String50Type";
-pub const declaration_text_information: &str = "co:String2000Type";
-pub const length_calibration_description: &str = "bdt:String200Type";
-pub const working_site_planning_info: &str = "bdt:String3000Type";
-pub const payment_transaction: &str = "PaymentTransactionType";
-pub const measurement_certificate_type: &str = "MeasurementCertificateTypeType";
-pub const storages: &str = "StoragesType";
-pub const total_compensation: &str = "co:PositiveDecimalMax5IntegralPartMax2FractionalPartType";
-pub const financing_act_real_estate: &str = "FinancingActRealEstateType";
-pub const delivery_number: &str = "bdt:String20Type";
-pub const normal: &str = "cdd:NormalType";
-pub const final_audit_date: &str = "bdt:TimeStampType";
-pub const log_m3sum: &str = "co:PositiveInteger4digitsType";
-pub const bio_mass_quality: &str = "bdt:YesNoType";
-pub const i_b_a_n_tunnus: &str = "jhs:IBANTunnusTyyppi";
-pub const services: &str = "ServicesType";
-pub const amount_in_spot: &str = "co:PositiveInteger6digitsType";
-pub const attribute4: &str = "bdt:WorkCodeQualifierType4";
-pub const document_description: &str = "DocumentDescriptionType";
-pub const create_date: &str = "co:DateType";
-pub const image: &str = "xs:base64Binary";
-pub const assortments_compact: &str = "AssortmentsCompactType";
-pub const pre_clearing: &str = "bdt:YesNoNotNeededType";
-pub const working_site_travel_notification: &str = "WorkingSiteTravelNotificationType";
-pub const silviculture_order: &str = "SilvicultureOrderType";
-pub const declaration_other_operation: &str = "co:DeclarationOtherOperationType";
-pub const dumpling_leveling_error_count: &str = "bdt:PositiveIntegerType";
-pub const sub_contractor_resource: &str = "bdt:YesNoType";
-pub const inspection_type: &str = "VirtaInspectionTypeType";
-pub const financing_act_completion_stands: &str = "FinancingActCompletionStandsType";
-pub const environmental_objects_noticed_text: &str = "bdt:String200Type";
-pub const payee: &str = "PayeeType";
-pub const final_audit_identifier: &str = "bdt:String50Type";
-pub const vehicle_path_width: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const mean_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const work_grou_member: &str = "WorkGrouMemberType";
-pub const envelope: &str = "EnvelopeType";
-pub const moose_damage_date: &str = "co:DateType";
-pub const reduction_avg_diameter_summary: &str = "bdt:Decimal2FractionDigitsType";
-pub const remaining_biomass_text: &str = "bdt:String200Type";
-pub const length: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const sub_contractors_allowed: &str = "bdt:YesNoType";
-pub const environmental_tidiness_noticed: &str = "bdt:YesNoType";
-pub const object_realization: &str = "ObjectRealizationType";
-pub const sahkopostiosoite_teksti: &str = "jhs:SahkopostiosoiteTekstiTyyppi";
-pub const operation_status: &str = "co:OperationStatusType";
-pub const delination_object_order_id: &str = "bdt:String200Type";
-pub const has_environmental_objects: &str = "bdt:YesNoType";
-pub const user_code: &str = "bdt:YesNoType";
-pub const water_economy_system_noticed: &str = "bdt:YesNoType";
-pub const bulge_height: &str = "bdt:FinalAuditAnswerType";
-pub const service_buyer_contact_information: &str = "ServiceBuyerContactInformationType";
-pub const special_features_control: &str = "ControlDataSpecialFeatureType";
-pub const ditching_year: &str = "DitchingYearType";
-pub const map_symbols: &str = "MapSymbolsType";
-pub const other_conservation_methods: &str = "bdt:YesNoType";
-pub const travel_start_time: &str = "bdt:TimeStampType";
-pub const error_message: &str = "co:String1000Type";
-pub const loppu_hetki: &str = "jhs:LoppuHetkiTyyppi";
-pub const average_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const damaged_seedling_count: &str = "co:PositiveInteger6digitsType";
-pub const data_information: &str = "DataInformationType";
-pub const business_message_time_stamp: &str = "BusinessMessageTimeStampType";
-pub const work_code: &str = "bdt:WorkCodeType";
-pub const alku_hetki: &str = "jhs:AlkuHetkiTyyppi";
-pub const forest_owners: &str = "ForestOwnersType";
-pub const storage_finished: &str = "bdt:YesNoType";
-pub const sample_plot_track_width: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const results_of_accessibility_analysis: &str = "ResultsOfAccessibilityAnalysisType";
-pub const material_shipment: &str = "bdt:String20Type";
-pub const tree: &str = "TreeType";
-pub const vehicle: &str = "bdt:VehicleType";
-pub const fertilization_total_audit_text: &str = "bdt:String200Type";
-pub const target_basal_area: &str = "co:BasalAreaType";
-pub const land_scaping_text: &str = "bdt:String200Type";
-pub const proposal_year: &str = "ProposalYearType";
-pub const energy_timber_value: &str = "co:PositiveInteger5digitsType";
-pub const cleaning_breaks_done_text: &str = "bdt:String200Type";
-pub const end_time: &str = "bdt:TimeStampType";
-pub const growth_place_data_source: &str = "co:DataSourceType";
-pub const orientation: &str = "OrientationType";
-pub const small_wood_removal_volume: &str = "co:PositiveInteger4digitsType";
-pub const other_conservation_methods_text: &str = "bdt:String200Type";
-pub const completion_declaration_reference: &str = "co:ReferenceType";
-pub const previous_moose_damages: &str = "PreviousMooseDamagesType";
-pub const measuring_device_version: &str = "bdt:String50Type";
-pub const attribute1: &str = "bdt:WorkCodeQualifierType1";
-pub const stump_lifting_suitable: &str = "bdt:YesNoType";
-pub const cost_type_and_completed_work_application: &str = "CostTypeAndCompletedWorkApplicationType";
-pub const question_as_text: &str = "bdt:String200Type";
-pub const use_cases: &str = "ForestDataUpdateUseCasesType";
-pub const regeneration_type: &str = "VirtaRegenerationType";
-pub const large_summary_report_required: &str = "bdt:YesNoType";
-pub const viides_rivi_teksti: &str = "jhs:ViidesRiviTekstiTyyppi";
-pub const financing_act_number: &str = "FinancingActNumberType";
-pub const stem: &str = "StemDataType";
-pub const material_amount_unit: &str = "co:MaterialUnitType";
-pub const mean_height_of_spare_trees: &str = "bdt:HeightType";
-pub const assortment_classes: &str = "AssortmentClassesType";
-pub const geometry: &str = "gdt:PointGeometryType";
-pub const tree_species_summary: &str = "TreeSpeciesSummaryType";
-pub const reason_description: &str = "co:String1000Type";
-pub const depth: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const product_key: &str = "wct:ERPIdType";
-pub const related_call_for_offer: &str = "RelatedCallForOfferType";
-pub const work_code_qualifier5: &str = "bdt:WorkCodeQualifierType5";
-pub const geometry_real: &str = "gdt:PointGeometryType";
-pub const postal_code: &str = "bdt:String10Type";
-pub const reduction_stump_height: &str = "bdt:FinalAuditAnswerType";
-pub const declaration_stand: &str = "DeclarationStandType";
-pub const diameter_max: &str = "DiameterMaxType";
-pub const assortment_volume_unclassified: &str = "AssortmentVolumeUnclassifiedType";
-pub const cutting_rights_owner: &str = "ci:ContactInformationType";
-pub const kilometers_with_trailer: &str = "bdt:PositiveInteger4digitsType";
-pub const other_public_substitute: &str = "co:OtherPublicSubstituteType";
-pub const loads: &str = "bdt:PositiveInteger3digitsType";
-pub const employee_health_care_info: &str = "bdt:String100Type";
-pub const amount_accounted: &str = "bdt:Decimal3FractionDigitsType";
-pub const target_part_status: &str = "VirtaTargetPartStatusType";
-pub const using_restrictions: &str = "UsingRestrictionsType";
-pub const specifications: &str = "SpecificationsType";
-pub const huoltosuhde_teksti: &str = "jhs:HuoltosuhdeTekstiTyyppi";
-pub const declaration_polygon_reference: &str = "co:ReferenceType";
-pub const sod_working_site: &str = "bdt:YesNoType";
-pub const additional_info: &str = "co:String1000Type";
-pub const reduction_avg_diameter: &str = "bdt:Decimal2FractionDigitsType";
-pub const seedling_condition_and_quality: &str = "SeedlingConditionAndQualityType";
-pub const e101: &str = "bdt:YesNoType";
-pub const amount_of_spare_trees: &str = "bdt:PositiveInteger5digitsType";
-pub const tree_species_attribute: &str = "TreeSpeciesAttributeType";
-pub const plan_and_subsidy: &str = "PlanAndSubsidyType";
-pub const erosion_blocking_action_text: &str = "bdt:String200Type";
-pub const payment_text: &str = "co:String5000Type";
-pub const hoppers: &str = "HoppersType";
-pub const organisation2: &str = "bdt:String20Type";
-pub const data_name: &str = "xs:string";
-pub const diameter_calibration_date: &str = "bdt:TimeStampType";
-pub const forwarder_id: &str = "bdt:String20Type";
-pub const forwarded_volume_accounted: &str = "bdt:Decimal3FractionDigitsType";
-pub const sample_plot_summaries: &str = "SamplePlotSummariesType";
-pub const pine_pulp: &str = "co:PositiveInteger4digitsType";
-pub const v_a_t_status: &str = "VATStatusType";
-pub const plant_storage_management_text: &str = "bdt:String200Type";
-pub const question_answer_text: &str = "bdt:String50Type";
-pub const tree_summaries: &str = "SamplePlotTreesSummaryType";
-pub const pipe_installation: &str = "bdt:WorkingQualityType";
-pub const i_c_e_name: &str = "bdt:String100Type";
-pub const start_time: &str = "bdt:TimeStampType";
-pub const level_count: &str = "co:PositiveInteger1digitsType";
-pub const spare_tree_category: &str = "bdt:SpareTreeCategoryType";
-pub const amount_outside_spot: &str = "co:PositiveInteger6digitsType";
-pub const quality_systems: &str = "QualitySystemsType";
-pub const call_for_offer_working_site_silviculture_info: &str = "CallForOfferWorkingSiteSilvicultureInfoType";
-pub const object_overall_evaluation_data: &str = "ControlOverallEvaluationDataType";
-pub const already_paid_compensation: &str = "co:PositiveDecimalMax5IntegralPartMax2FractionalPartType";
-pub const works_due_date: &str = "co:DateType";
-pub const operations: &str = "OperationsType";
-pub const forest_centre_data: &str = "ForestCentrePaymentsDataType";
-pub const financing_act_completion_declaration_text_information: &str = "co:String2000Type";
-pub const katu_nimi: &str = "jhs:KatuNimiTyyppi";
-pub const terrain_damage_outside_stand: &str = "sp:VirtaEvaluationType";
-pub const wood_lot_information_type: &str = "WoodLotInformationTypeType";
-pub const height_min: &str = "bdt:Decimal1FractionDigitType";
-pub const hours: &str = "bdt:PositiveInteger2digitsType";
-pub const control_data_regeneration: &str = "RegenerationDataType";
-pub const quality_attachments: &str = "bdt:String100Type";
-pub const cutting_area_preclearing_need: &str = "CuttingAreaPreclearingNeedType";
-pub const mean_height_hard_wood: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const working_site_geometries: &str = "wtco:WorkingSiteGeometriesType";
-pub const service_start_date: &str = "bdt:DateType";
-pub const kilometers: &str = "bdt:PositiveInteger4digitsType";
-pub const drain_storage_as_instructed_text: &str = "bdt:String200Type";
-pub const attorney: &str = "ci:ContactInformationType";
-pub const operation_date: &str = "co:DateMmDdYyyyType";
-pub const ground_manipulation_method: &str = "VirtaGroundManipulationMethodType";
-pub const business_id: &str = "xs:string";
-pub const b_i_c_koodi: &str = "jhs:BICKoodiTyyppi";
-pub const municipality_name: &str = "co:MunicipalityNameType";
-pub const contract_ending_date: &str = "ContractEndingDateType";
-pub const tree_number: &str = "xs:string";
-pub const order_status: &str = "bdt:OrderStatusType";
-pub const control_reference_mass: &str = "bdt:Decimal1FractionDigitType";
-pub const exceptional_permit_for_handling: &str = "VirtaExceptionalPermitForHandlingType";
-pub const soil_modification_estimate: &str = "VirtaEvaluationType";
-pub const employee_pension_certificate: &str = "bdt:DateType";
-pub const parts_of_project: &str = "PartsOfProjectType";
-pub const inventory_date: &str = "co:DateType";
-pub const water_system_protection_text: &str = "bdt:String200Type";
-pub const financing_act_completion_geometry: &str = "FinancingActGeometryType";
-pub const payment_date: &str = "PaymentDateType";
-pub const location_municipality_number: &str = "co:MunicipalityNumberType";
-pub const f_s_f_validity: &str = "FSFValidityType";
-pub const working_site_finished_date: &str = "bdt:TimeStampType";
-pub const cleanliness_class: &str = "bdt:CleanlinessClassType";
-pub const ready_to_do: &str = "bdt:YesNoType";
-pub const assortment_compact: &str = "AssortmentCompactType";
-pub const estimated_end_date: &str = "co:DateType";
-pub const trade_registration: &str = "bdt:DateType";
-pub const drain_storage_as_instructed: &str = "bdt:YesNoType";
-pub const materials: &str = "MaterialsType";
-pub const silviculture_restriction_details: &str = "SilvicultureRestrictionDetailsType";
-pub const control_data_forest_road_construction: &str = "ControlDataForestRoadConstructionType";
-pub const tree_stand_data_date: &str = "TreeStandDataDateType";
-pub const forest_haulage_accessibility: &str = "co:HarvestingAccessibilityType";
-pub const tree_stand_data: &str = "TreeStandDataType";
-pub const tree_species: &str = "TreeSpeciesType";
-pub const length_class: &str = "bdt:PositiveInteger4digitsType";
-pub const estimated_start_date: &str = "co:DateType";
-pub const laji_teksti: &str = "jhs:LajiTekstiTyyppi";
-pub const log_count: &str = "bdt:PositiveInteger2digitsType";
-pub const area_decrease: &str = "AreaDecreaseType";
-pub const measurement_id: &str = "bdt:PositiveIntegerType";
-pub const employment: &str = "EmploymentDataType";
-pub const final_accounting: &str = "bdt:YesNoType";
-pub const erosion_blocking_action: &str = "bdt:WorkingQualityType";
-pub const using_right_compensation: &str = "co:YesNoNotKnownType";
-pub const storage_proposals: &str = "StoragesType";
-pub const internal_inspection_id: &str = "xs:string";
-pub const fee_basis_list_item: &str = "FeebasisListItemType";
-pub const control_evaluations: &str = "ControlEvaluationsType";
-pub const stump_tidiness_text: &str = "bdt:String200Type";
-pub const stand_tree: &str = "StandTreeCuttingType";
-pub const status3: &str = "co:ChangeStateType";
-pub const service_buyer_area: &str = "bdt:String20Type";
-pub const statistics_assortment_compact_classes: &str = "AssortmentCompactClassesType";
-pub const language: &str = "bdt:LanguageCode1Type";
-pub const mean_height_silver_birch: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const finished: &str = "bdt:YesNoType";
-pub const height: &str = "co:MeanHeightType";
-pub const peripheral_code: &str = "bdt:PeripheralCodeType";
-pub const work_completion_date: &str = "co:DateType";
-pub const stand_vehicle_path_too_deep_percentage: &str = "bdt:PercentWithFraction1Type";
-pub const stand_basic_data: &str = "StandBasicDataType";
-pub const average_height: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const acceptance_date: &str = "AcceptanceDateType";
-pub const payee_id: &str = "co:IdStringNotEmptyType";
-pub const working_weight: &str = "bdt:WorkingWeightType";
-pub const new_environmental_objects_text: &str = "bdt:String200Type";
-pub const grain_size: &str = "bdt:PositiveInteger3digitsType";
-pub const case_action: &str = "CaseActionType";
-pub const object_reference: &str = "co:ReferenceType";
-pub const planted_seedling_count_in_cultivated_spots: &str = "bdt:PositiveInteger3digitsType";
-pub const training_date: &str = "bdt:DateType";
-pub const loppu_pvm: &str = "jhs:LoppuPvmTyyppi";
-pub const company_i_d: &str = "CompanyIDType";
-pub const statistics_quantities: &str = "StatisticsQuantitiesType";
-pub const decision_number: &str = "co:String100Type";
-pub const fee_text: &str = "bdt:String50Type";
-pub const tree_stand_summary: &str = "TreeStandSummaryType";
-pub const financing_act_real_estates: &str = "FinancingActRealEstatesType";
-pub const drainage_state: &str = "DrainageStateType";
-pub const financing_act_completion_other_subjects: &str = "FinancingActCompletionOtherSubjectsType";
-pub const completion_declaration_actors: &str = "CompletionDeclarationActorsType";
-pub const planned_operation_chains: &str = "PlannedOperationChainsType";
-pub const offer_working_site_silviculture_info: &str = "OfferWorkingSiteSilvicultureInfoType";
-pub const soil_improvement_evaluation: &str = "sp:VirtaEvaluationType";
-pub const parcel_id: &str = "co:IdStringNotEmptyType";
-pub const consumption_unit: &str = "ConsumptionUnitType";
-pub const code_group: &str = "bdt:AssortmentGroupType";
-pub const assortment_volume: &str = "AssortmentVolumeType";
-pub const delivered: &str = "bdt:YesNoType";
-pub const payment_permission_date: &str = "PaymentPermissionDateType";
-pub const resource_locations: &str = "ResourceLocationsType";
-pub const additional_information: &str = "AdditionalInformationType";
-pub const ditch_depth_width_and_drainage_effect_text: &str = "bdt:String200Type";
-pub const compensation_amount: &str = "co:Decimal7And2PositiveType";
-pub const main_group: &str = "co:MainGroupType";
-pub const actors: &str = "ActorsType";
-pub const restriction_data: &str = "st:RestrictionDataType";
-pub const object_protection_operation: &str = "ObjectProtectionOperationType";
-pub const self_monitoring_evaluations: &str = "SelfMonitoringEvaluationsType";
-pub const telefax_number: &str = "TelefaxNumberType";
-pub const target_extra_info: &str = "VirtaExtraInfoType";
-pub const biomass_collection: &str = "bdt:YesNoType";
-pub const restriction_start_date: &str = "StartDateType";
-pub const silviculture_method_correct_text: &str = "bdt:String200Type";
-pub const calibration_adjustment: &str = "bdt:PositiveInteger3digitsType";
-pub const kemera_municipality_id: &str = "xs:string";
-pub const packaging_date: &str = "bdt:DateType";
-pub const change_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const overall_total_subsidy: &str = "co:MoneyType";
-pub const end_date: &str = "EndDateType";
-pub const temperature: &str = "xs:integer";
-pub const settling_basins: &str = "bdt:YesNoType";
-pub const scenery_work_permission_needed: &str = "co:SceneryWorkPermissionNeededType";
-pub const key_element_id: &str = "co:IdStringNotEmptyType";
-pub const stout_timber_classifier: &str = "StoutTimberClassifierType";
-pub const caliper_id: &str = "bdt:String200Type";
-pub const spruce_pulp: &str = "co:PositiveInteger4digitsType";
-pub const load_count: &str = "xs:nonNegativeInteger";
-pub const ammatti_koodi: &str = "jhs:AmmattiKoodiTyyppi";
-pub const advertiser: &str = "VirtaAdvertiserType";
-pub const post_office: &str = "bdt:String50Type";
-pub const peripherals: &str = "PeripheralsType";
-pub const planned_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const received_compensation: &str = "co:YesNoType";
-pub const excavator_moving_and_tree_damages: &str = "bdt:WorkingQualityType";
-pub const stand_stem_damages_percentage: &str = "bdt:PercentWithFraction1Type";
-pub const soil_conditioning_depth: &str = "bdt:FinalAuditAnswerType";
-pub const contract_working_sites: &str = "ContractWorkingSitesType";
-pub const final_audit_identifier_version: &str = "bdt:String10Type";
-pub const self_monitoring_stand_area: &str = "co:AreaType";
-pub const quantity: &str = "co:Decimal2FractionDigitsType";
-pub const nimilaji_koodi: &str = "jhs:NimilajiKoodiTyyppi";
-pub const goal_amount_of_soil_preparation_spot: &str = "co:PositiveInteger5digitsType";
-pub const diameter: &str = "bdt:PositiveInteger4digitsType";
-pub const business_acceptance_status: &str = "co:BusinessAcceptanceStatusType";
-pub const location: &str = "gdt:PointGeometryType";
-pub const control_reference_type: &str = "co:ForestCentreMessageReferenceType";
-pub const sender_email: &str = "ci:EmailAddressType";
-pub const contact_person_in_finland: &str = "bdt:ContactInformationType";
-pub const financing_act_application_reference: &str = "co:ReferenceType";
-pub const harvested_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const extra_person_text: &str = "bdt:String200Type";
-pub const stand_avg_height_summary: &str = "bdt:Decimal1FractionDigitType";
-pub const object_keys: &str = "ObjectKeysType";
-pub const mean_stump_diameter: &str = "co:DiameterType";
-pub const scale_assortment_type: &str = "bdt:ScaleAssortmentType";
-pub const question_id: &str = "bdt:FinalAuditQuestionType";
-pub const care_of_teksti: &str = "jhs:CareOfTekstiTyyppi";
-pub const mean_diameter_hard_wood: &str = "bdt:PositiveInteger3digitsType";
-pub const additional_details: &str = "co:String2000Type";
-pub const earliest_inspection_date: &str = "co:DateMmDdYyyyType";
-pub const time_stamp: &str = "co:TimeStampType";
-pub const evaluation_cost: &str = "co:PositiveDecimalMax5IntegralPartMax2FractionalPartType";
-pub const attribute_name: &str = "bdt:String100Type";
-pub const kunta_numero: &str = "jhs:KuntaNumeroTyyppi";
-pub const original_sender: &str = "ci:ContactInformationType";
-pub const not_damaged_seedling_count: &str = "co:StemCountType";
-pub const project_no: &str = "ProjectNoType";
-pub const road_damages_text: &str = "bdt:String200Type";
-pub const object_geometry: &str = "ObjectGeometryType";
-pub const moose_damage_declaration_real_estates: &str = "MooseDamageDeclarationRealEstatesType";
-pub const work_point_count: &str = "bdt:PositiveInteger5digitsType";
-pub const application_actor: &str = "ApplicationActorType";
-pub const tree_or_ground_damages_text: &str = "bdt:String200Type";
-pub const clear_cutting: &str = "bdt:YesNoType";
-pub const documents: &str = "wtco:DocumentsType";
-pub const environmental_tidiness_noticed_text: &str = "bdt:String200Type";
-pub const hopper_location_from_g_p_s: &str = "bdt:YesNoType";
-pub const a1: &str = "bdt:YesNoType";
-pub const declaration_stand_reference: &str = "co:ReferenceType";
-pub const sample_plot_info_text: &str = "bdt:String1000Type";
-pub const tax_debt: &str = "bdt:DateType";
-pub const measurer_id: &str = "bdt:String20Type";
-pub const object_reference_type: &str = "co:ForestCentreMessageReferenceType";
-pub const load: &str = "LoadType";
-pub const key_info_as_text: &str = "co:String2000Type";
-pub const country_text: &str = "CountryTextType";
-pub const working_site_quality_control_silviculture: &str = "WorkingSiteQualityControlSilvicultureType";
-pub const fertilization_type: &str = "co:String50Type";
-pub const using_restriction: &str = "UsingRestrictionType";
-pub const informed_actor: &str = "ci:ContactInformationType";
-pub const thinning_year: &str = "co:YearType";
-pub const stand_volume_summary: &str = "bdt:PositiveInteger3digitsType";
-pub const declaration_polygons: &str = "DeclarationPolygonsType";
-pub const text: &str = "TextType";
-pub const road_structure_text: &str = "bdt:String200Type";
-pub const remaining_stump_count_text: &str = "bdt:String200Type";
-pub const area_type: &str = "AreaTypeType";
-pub const volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const ditch_mounds_count: &str = "bdt:PositiveInteger2digitsType";
-pub const operation_time_end: &str = "bdt:DateType";
-pub const tree_strata: &str = "TreeStrataType";
-pub const tree_or_ground_damages: &str = "bdt:YesNoType";
-pub const old_destination_storage: &str = "bdt:String20Type";
-pub const attribute2: &str = "bdt:WorkCodeQualifierType2";
-pub const district: &str = "bdt:ThinningDistrictType";
-pub const working_site_harvesting_quality_control_manual: &str = "WorkingSiteHarvestingQualityControlManualType";
-pub const liability_insurance: &str = "bdt:DateType";
-pub const position: &str = "gdt:PointGeometryType";
-pub const target: &str = "bdt:PositiveIntegerType";
-pub const material_area_id: &str = "bdt:String20Type";
-pub const certification_handling_instructions: &str = "bdt:String3000Type";
-pub const large_peel_damage: &str = "co:PositiveInteger6digitsType";
-pub const too_height_stumps: &str = "bdt:PositiveInteger3digitsType";
-pub const working_site_forwarded_production: &str = "WorkingSiteForwardedProductionType";
-pub const vehicle_path_mean_distance: &str = "Decimal5_1Type";
-pub const thinning_too_excessive_count: &str = "bdt:PositiveInteger2digitsType";
-pub const spare_tree_group: &str = "SpareTreeGroupType";
-pub const offer_business_sender: &str = "OfferBusinessSenderType";
-pub const cutting_income: &str = "CuttingIncomeType";
-pub const label_position: &str = "gdt:PointGeometryType";
-pub const tree_list_item: &str = "tli:TreeListItemType";
-pub const machine_description: &str = "co:String500Type";
-pub const stand_trees_stratum_leaving: &str = "StandTreesType";
-pub const leaf_biomass: &str = "LeafBiomassType";
-pub const assortment_percent: &str = "AssortmentPercentType";
-pub const kansalaisuus_koodi: &str = "jhs:KansalaisuusKoodiTyyppi";
-pub const file_format: &str = "bdt:String5Type";
-pub const notification_contact_person: &str = "bdt:YesNoType";
-pub const class3damage_count: &str = "co:PositiveInteger6digitsType";
-pub const unfulfilled_area: &str = "gdt:PolygonOrMultiPolygon2Type";
-pub const working_site_quality_notification: &str = "WorkingSiteQualityNotificationType";
-pub const declaration_main_tree_species: &str = "co:TreeSpeciesConciseType";
-pub const message: &str = "WorkingSiteTradeMessageType";
-pub const huoneistotunniste_numero: &str = "jhs:HuoneistotunnisteNumeroTyyppi";
-pub const has_support: &str = "bdt:YesNoType";
-pub const document_file_name: &str = "DocumentFileNameType";
-pub const publicity: &str = "PublicityType";
-pub const parent_objects: &str = "ParentObjectsType";
-pub const parcels: &str = "ParcelsType";
-pub const stand_located_on_island: &str = "co:YesNoType";
-pub const machine_code: &str = "co:MachineCodeType";
-pub const contract_working_site_details: &str = "ContractWorkingSiteDetailsType";
-pub const inspector_name: &str = "xs:string";
-pub const stand_avg_stem_count_summary: &str = "bdt:PositiveInteger5digitsType";
-pub const working_site_final_audit_fertilization: &str = "WorkingSiteFinalAuditFertilizationType";
-pub const plant_position_error_count: &str = "bdt:PositiveIntegerType";
-pub const working_site_planner: &str = "WorkingSitePlannerType";
-pub const volume_of_spare_trees: &str = "bdt:VolumeType";
-pub const control_log_length: &str = "bdt:PositiveInteger5digitsType";
-pub const postitoimipaikka_nimi: &str = "jhs:PostitoimipaikkaNimiTyyppi";
-pub const tree_identifier: &str = "TreeIdentifierType";
-pub const country_code: &str = "co:ISO3166char2CountryType";
-pub const quality: &str = "bdt:String5Type";
-pub const work: &str = "WorkType";
-pub const stand_avg_dominant_height: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const operative_data: &str = "OperativeDataType";
-pub const real_estate_name: &str = "bdt:String100Type";
-pub const geometry_status: &str = "xs:string";
-pub const pilot_name: &str = "bdt:String50Type";
-pub const real_estate_owner: &str = "ci:ContactInformationType";
-pub const power_of_attorney_date: &str = "fcc:PowerOfAttorneyDateType";
-pub const working_site_forwarding_quality_control: &str = "WorkingSiteForwardingQualityControlType";
-pub const plant_management_quality: &str = "bdt:WorkingQualityType";
-pub const inspection_date: &str = "co:DateMmDdYyyyType";
-pub const financing_act_work_code: &str = "co:FinancingActWorkCodeType";
-pub const using_right_examined_date: &str = "co:DateType";
-pub const forest_damage_qualifier: &str = "co:ForestDamageQualifierType";
-pub const delivery_user_id: &str = "bdt:String50Type";
-pub const child_objects: &str = "ChildObjectsType";
-pub const proposal_area_percent: &str = "ProposalAreaPercentType";
-pub const payee_and_real_estate: &str = "PayeeAndRealEstateType";
-pub const sample_plot_count: &str = "bdt:PositiveIntegerType";
-pub const laji_koodi: &str = "jhs:LajiKoodiTyyppi";
-pub const forest_centre_payments: &str = "ForestCentrePaymentsType";
-pub const quality_attachment: &str = "QualityAttachmentType";
-pub const stem_distribution_stratum: &str = "StemDistributionStratumType";
-pub const base_real_estate: &str = "BaseRealEstateType";
-pub const questions: &str = "AuditsListType";
-pub const dis_qualification_percentage: &str = "bdt:Decimal2FractionDigitsType";
-pub const spare_trees_from_map_symbols: &str = "wct:SpareTreesByCategoryType";
-pub const calibration: &str = "CalibrationType";
-pub const polygon_geometry: &str = "PolygonGeometryType";
-pub const attribute3: &str = "bdt:WorkCodeQualifierType3";
-pub const tax_number: &str = "wct:TaxNumberType";
-pub const clod_moisture_error_count: &str = "bdt:PositiveIntegerType";
-pub const subsidy_percent: &str = "co:PercentType";
-pub const contractor_id: &str = "bdt:String20Type";
-pub const model_year: &str = "bdt:YearType";
-pub const control_no: &str = "co:String100Type";
-pub const passing_place_text: &str = "bdt:String200Type";
-pub const caliper_application: &str = "bdt:String200Type";
-pub const cumulative_point_distribution: &str = "cdd:CumulativePointDistributionType";
-pub const control_object_data: &str = "ControlObjectDataType";
-pub const pankkitili_tunnus: &str = "jhs:PankkitiliTunnusTyyppi";
-pub const nimi_teksti: &str = "jhs:NimiTekstiTyyppi";
-pub const compensation_description: &str = "xs:string";
-pub const power_of_attorney_document: &str = "xmime:base64Binary";
-pub const date_seedlings_to_working_site: &str = "co:DateType";
-pub const forest_energy_suitable: &str = "bdt:YesNoType";
-pub const final_auditer: &str = "bdt:String50Type";
-pub const airdrome_as_instructed_text: &str = "bdt:String200Type";
-pub const location_estate: &str = "fcc:LocationEstateType";
-pub const contact_location_information: &str = "gdt:AlternativeGeometriesType";
-pub const area: &str = "AreaType";
-pub const stanford_file: &str = "StanfordFileType";
-pub const ditch_mean_width: &str = "xs:string";
-pub const real_estate_data: &str = "RealEstateDataType";
-pub const location_municipality_name: &str = "co:MunicipalityNameType";
-pub const external_system_in_use: &str = "bdt:YesNoType";
-pub const actor_id: &str = "co:IdStringType";
-pub const municipality_number: &str = "jhs:KuntaKoodiTyyppi";
-pub const order_id: &str = "wct:ERPIdType";
-pub const sample_plot_stub_diameter: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const elevator_certificate: &str = "bdt:YesNoType";
-pub const removal_class: &str = "co:RemovalClassType";
-pub const silviculture_restrictions: &str = "SilvicultureRestrictionsType";
-pub const explanation: &str = "ExplanationType";
-pub const forest_haulage_distance: &str = "ForestHaulageDistanceType";
-pub const percentage: &str = "bdt:Decimal1FractionDigitType";
-pub const mean: &str = "cdd:MeanType";
-pub const total_value: &str = "TotalValueType";
-pub const productivity_unit: &str = "bdt:WorkCodeUnitType";
-pub const include_payment_plan: &str = "IncludePaymentPlanType";
-pub const id: &str = "bdt:PositiveIntegerType";
-pub const parent_object: &str = "ParentObjectType";
-pub const fee_yes_no: &str = "bdt:YesNoType";
-pub const separate_spare_trees: &str = "wct:SpareTreesByCategoryType";
-pub const tree_class: &str = "co:TreeClassType";
-pub const common_messages: &str = "CommonMessagesType";
-pub const justifications: &str = "JustificationsType";
-pub const question_answer_as_text: &str = "bdt:String50Type";
-pub const operation_row: &str = "OperationRowType";
-pub const loggings_row: &str = "LoggingsRowType";
-pub const measurement_method: &str = "co:MeasurementMethodType";
-pub const offer_text: &str = "OfferTextType";
-pub const work_code_qualifier4: &str = "bdt:WorkCodeQualifierType4";
-pub const special_feature_data: &str = "SpecialFeatureDataType";
-pub const remaining_stump_count: &str = "bdt:YesNoType";
-pub const customer_type: &str = "bdt:String50Type";
-pub const operation_restriction: &str = "OperationRestrictionType";
-pub const diameter_class_of_spare_trees: &str = "bdt:PositiveInteger4digitsType";
-pub const plant_storage_management: &str = "bdt:YesNoType";
-pub const child_object: &str = "ChildObjectType";
-pub const storage_info: &str = "bdt:String500Type";
-pub const working_site_harvesting_quality_control: &str = "WorkingSiteHarvestingQualityControlType";
-pub const decided_unit_price: &str = "fcc:DecidedUnitPriceType";
-pub const transport_area: &str = "bdt:String10Type";
-pub const dis_qualification_reasons: &str = "DisQualificationReasonsType";
-pub const pine_decimal: &str = "VirtaTreeDecimalType";
-pub const fee_unit: &str = "bdt:String10Type";
-pub const cutting_accuracy: &str = "bdt:Decimal2FractionDigitsType";
-pub const mean_height_other_tree_species: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const operation_tree_reduction: &str = "OperationTreeReductionType";
-pub const hopper: &str = "HopperType";
-pub const reference_type: &str = "co:ForestCentreMessageReferenceType";
-pub const control_data_special_features: &str = "ControlDataSpecialFeaturesType";
-pub const self_monitoring_basic_data: &str = "SelfMonitoringBasicDataType";
-pub const stem_damages: &str = "bdt:PositiveInteger3digitsType";
-pub const other_remarks: &str = "bdt:String3000Type";
-pub const dis_qualification_reason_text: &str = "bdt:String200Type";
-pub const financing_act_application: &str = "faa:FinancingActApplicationType";
-pub const stanford_resource_id: &str = "bdt:String100Type";
-pub const stand_trees_cutting: &str = "StandTreesCuttingType";
-pub const tree_species_data: &str = "TreeSpeciesDataType";
-pub const fee_base_list: &str = "FeeBaseListType";
-pub const list_id: &str = "bdt:PositiveIntegerType";
-pub const declaration_other_operations: &str = "DeclarationOtherOperationsType";
-pub const habitat_operation: &str = "co:HabitatOperationsType";
-pub const grass_control_evaluation: &str = "sp:VirtaEvaluationType";
-pub const owner_ship_type_code: &str = "co:OwnerShipTypeCodeType";
-pub const silviculture_validity: &str = "SilvicultureValidityType";
-pub const resource_type: &str = "bdt:ResourceTypeType";
-pub const soil_conditioning_quality: &str = "bdt:WorkingQualityType";
-pub const entity_tag: &str = "co:EntityTagType";
-pub const organisation_id: &str = "bdt:String20Type";
-pub const common_object_data_reference: &str = "co:ReferenceType";
-pub const fertilizer_volume_measured_text: &str = "bdt:String200Type";
-pub const water_protection_action: &str = "bdt:WorkingQualityType";
-pub const biomass_finished_date: &str = "bdt:DateType";
-pub const max_proposal_year: &str = "MaxProposalYearType";
-pub const assortments_changes: &str = "AssortmentsChangesType";
-pub const need_to_check: &str = "bdt:YesNoType";
-pub const accounting_date: &str = "bdt:TimeStampType";
-pub const status_message: &str = "bdt:String100Type";
-pub const scaled_mass: &str = "bdt:Decimal1FractionDigitType";
-pub const object_type: &str = "co:DecisionGeometryObjectType";
-pub const save_incomplete: &str = "VirtaSaveIncompleteType";
-pub const load_rating: &str = "wct:LoadRatingType";
-pub const new_environmental_objects: &str = "bdt:YesNoType";
-pub const cutting_by: &str = "co:VirtaCuttingByMachineType";
-pub const stand_reference: &str = "co:ReferenceType";
-pub const destination_storage: &str = "bdt:String20Type";
-pub const forest_centre_message: &str = "ForestCentreMessageType";
-pub const ditch_cleaning_break_location_text: &str = "bdt:String200Type";
-pub const plowing_name: &str = "bdt:String50Type";
-pub const hopper_type: &str = "wct:HopperTypeType";
-pub const offer: &str = "OfferType";
-pub const o_working_site: &str = "WorkingSiteType";
-pub const customer_representative_person: &str = "bdt:ContactInformationType";
-pub const working_site_final_audit_road_making: &str = "WorkingSiteFinalAuditRoadMakingType";
-pub const financing_act_application_geometry: &str = "FinancingActGeometryType";
-pub const organisation1: &str = "bdt:String20Type";
-pub const sample_plot_dominant_height: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const small_peel_damage: &str = "co:PositiveInteger6digitsType";
-pub const working_site_final_audit_silviculture: &str = "WorkingSiteFinalAuditSilvicultureType";
-pub const control_date: &str = "co:DateType";
-pub const count: &str = "bdt:PositiveInteger6digitsType";
-pub const alku_pvm: &str = "jhs:AlkuPvmTyyppi";
-pub const scale_data: &str = "ScaleDataType";
-pub const send_notifications_always: &str = "bdt:YesNoType";
-pub const goal_stem_count: &str = "co:StemCountType";
-pub const johnson_s_b: &str = "cdd:JohnsonSBType";
-pub const using_right_description: &str = "co:String1500Type";
-pub const stub_mean_diameter: &str = "co:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const load_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const test_area_method: &str = "bdt:SamplePlotType";
-pub const percent: &str = "PercentType";
-pub const include_forest_fund_payment: &str = "IncludeForestFundPaymentType";
-pub const association_evaluation_approval: &str = "VirtaApprovalType";
-pub const operation_mode: &str = "OperationModeType";
-pub const round_wood_sales_rows: &str = "RoundWoodSalesRowsType";
-pub const load_green_mass: &str = "bdt:Decimal3FractionDigitsType";
-pub const terrain_damage_outside_stand_evaluation: &str = "co:EvaluationCodeType";
-pub const repair_planting_costs: &str = "co:PositiveDecimalMax5IntegralPartMax2FractionalPartType";
-pub const stand_basal_area_summary: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const material_unit: &str = "bdt:MaterialUnitType";
-pub const extra_financing_application: &str = "co:YesNoType";
-pub const log: &str = "LogDataType";
-pub const stand_avg_diameter_summary: &str = "bdt:PositiveInteger3digitsType";
-pub const restriction_out_of_object: &str = "co:YesNoType";
-pub const cutting_purpose: &str = "co:CuttingPurposeType";
-pub const operational_region: &str = "bdt:String50Type";
-pub const supplier: &str = "bdt:String50Type";
-pub const settling_pits_text: &str = "bdt:String200Type";
-pub const basal_area_pine: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const settling_basins_text: &str = "bdt:String200Type";
-pub const map_symbol_id: &str = "wct:ERPIdType";
-pub const kunta_koodi: &str = "jhs:KuntaKoodiTyyppi";
-pub const category: &str = "bdt:ImageCategoryType";
-pub const stump_tidiness: &str = "bdt:YesNoType";
-pub const henkilo_tunnus: &str = "jhs:HenkiloTunnusTyyppi";
-pub const measurer: &str = "bdt:String50Type";
-pub const seedling_data: &str = "SeedlingDataType";
-pub const height_class: &str = "co:HeightClassType";
-pub const work_code_qualifier2: &str = "bdt:WorkCodeQualifierType2";
-pub const freezing_date: &str = "bdt:DateType";
-pub const goal_tree_species: &str = "co:TreeSpeciesType";
-pub const suspension_hole_density_size_and_location_text: &str = "bdt:String200Type";
-pub const real_estate_owners: &str = "RealEstateOwnersType";
-pub const business_acceptance: &str = "BusinessAcceptanceType";
-pub const operator_id: &str = "bdt:String20Type";
-pub const machine: &str = "bdt:MachineTypeType";
-pub const mean_height_summary: &str = "bdt:Decimal1FractionDigitType";
-pub const shape_gamma: &str = "cdd:ShapeGammaType";
-pub const reported_statistics_operation_type: &str = "co:ReportedStatisticsOperationTypeType";
-pub const seedling_stratum: &str = "SeedlingStratumType";
-pub const target_part: &str = "TargetPartType";
-pub const decided_amount_unit: &str = "fcc:DecidedAmountUnitType";
-pub const question_answer_additional_text: &str = "bdt:String200Type";
-pub const multi_polygon_geometry: &str = "ExtendedMultiPolygonGeometryType";
-pub const feature_specific_additional_variables: &str = "FeatureSpecificAdditionalVariableType";
-pub const class1damage_count: &str = "co:PositiveInteger6digitsType";
-pub const trees: &str = "TreeType";
-pub const tree_damages: &str = "bdt:YesNoType";
-pub const envelopes: &str = "EnvelopesType";
-pub const include_in_offer: &str = "IncludeInOfferType";
-pub const material_delivery_type: &str = "MaterialDeliveryTypeType";
-pub const log_diameter_class: &str = "bdt:PositiveInteger3digitsType";
-pub const vehicle_path_pressures_text: &str = "bdt:String200Type";
-pub const settling_pits: &str = "bdt:YesNoType";
-pub const working_site_planning_status: &str = "bdt:WorkingSitePlanningStatusType";
-pub const sahkoinen_asiointi_tunnus: &str = "jhs:SahkoinenAsiointiTunnusTyyppi";
-pub const tree_damage_outside_stand_evaluation: &str = "co:EvaluationCodeType";
-pub const completion_year: &str = "co:YearType";
-pub const call_for_offer_business_sender: &str = "wtco:CallForOfferBusinessSenderType";
-pub const sub_contractor: &str = "bdt:String20Type";
-pub const ditching_breaks_text: &str = "bdt:String200Type";
-pub const working_site_text: &str = "WorkingSiteTextType";
-pub const action: &str = "co:ActionType";
-pub const stem_damage_count: &str = "co:PositiveInteger3digitsType";
-pub const forest_property_data_set: &str = "ForestPropertyDataSetType";
-pub const special_feature: &str = "sf:BasicFeature2Type";
-pub const manufacturer: &str = "bdt:MachineManufacturerType";
-pub const final_audit_type: &str = "bdt:FinalAuditTypeType";
-pub const load_payment_reference: &str = "bdt:String50Type";
-pub const work_code_group: &str = "bdt:WorkCodeGroupType";
-pub const stem_count_summary: &str = "bdt:PositiveInteger5digitsType";
-pub const file_name: &str = "bdt:String100Type";
-pub const attribute_value: &str = "bdt:String100Type";
-pub const model: &str = "bdt:String50Type";
-pub const controlled_operation_description: &str = "co:String100Type";
-pub const calibration_use_log: &str = "bdt:YesNoType";
-pub const diameter_calibration_adjustment_butt_log: &str = "bdt:Integer3digitsType";
-pub const other_habitat_code: &str = "co:OtherHabitatCodeType";
-pub const statusryhma_teksti: &str = "jhs:StatusryhmaTekstiTyyppi";
-pub const working_site_final_audit_plant_management: &str = "WorkingSiteFinalAuditPlantManagementType";
-pub const nationality_code: &str = "bdt:String5Type";
-pub const basal_area_summary: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const average_stem_volume: &str = "co:Decimal3FractionDigitsType";
-pub const image_count: &str = "bdt:PositiveInteger2digitsType";
-pub const sender_user_id: &str = "bdt:String20Type";
-pub const object_basic_data: &str = "ObjectBasicDataType";
-pub const restriction_code: &str = "co:RestrictionCodeType";
-pub const question_answer: &str = "bdt:FinalAuditAnswerType";
-pub const sitting_money_kilometers: &str = "bdt:PositiveInteger4digitsType";
-pub const v_a_t_info: &str = "wtco:VATInfoType";
-pub const kutsuma_nimi: &str = "jhs:KutsumaNimiTyyppi";
-pub const evaluation_code: &str = "co:EvaluationCodeType";
-pub const material_producer: &str = "bdt:String50Type";
-pub const loader_scale_model_year: &str = "bdt:YearType";
-pub const vehicle_path_subsidence_length: &str = "Decimal3_1Type";
-pub const cuttings_rights_owner_representative: &str = "ci:ContactInformationType";
-pub const workingsite_info: &str = "bdt:String3000Type";
-pub const logging_accessibility: &str = "co:HarvestingAccessibilityType";
-pub const degree_days: &str = "bdt:PositiveInteger4digitsType";
-pub const stratum_origin: &str = "co:SeedlingOriginType";
-pub const parent_object_id: &str = "co:IdStringNotEmptyType";
-pub const operation_code: &str = "co:ObjectProtectionOperationCodeType";
-pub const business_acceptance_actor: &str = "BusinessAcceptanceActorType";
-pub const working_site_work_time: &str = "WorkingSiteWorkTimeType";
-pub const material_info_text: &str = "bdt:String1000Type";
-pub const root_damage_percentage: &str = "co:PositiveIntegerType";
-pub const registered: &str = "bdt:YesNoType";
-pub const working_areas: &str = "WorkingAreasType";
-pub const vakinainen_kytkin: &str = "jhs:VakinainenKytkinTyyppi";
-pub const spare_group_of_trees: &str = "wct:SpareTreesByCategoryType";
-pub const work_type: &str = "co:PositiveInteger2digitsType";
-pub const work_safety_risk_description: &str = "co:String1000Type";
-pub const working_site_final_audit_stump_lifting: &str = "WorkingSiteFinalAuditStumpLiftingType";
-pub const stand_trees_cutting_volume: &str = "bdt:PositiveInteger4digitsType";
-pub const delivery_info: &str = "bdt:String50Type";
-pub const beta: &str = "cdd:BetaType";
-pub const region_of_origin: &str = "bdt:String10Type";
-pub const real_estate_id: &str = "co:IdStringType";
-pub const decision_receivers: &str = "DecisionReceiversType";
-pub const geometry_object: &str = "GeometryObjectType";
-pub const extra_person3: &str = "bdt:PositiveInteger4digitsType";
-pub const load_number: &str = "bdt:String20Type";
-pub const prevention_substance: &str = "co:PreventionSubstanceType";
-pub const unit_cost_area: &str = "VirtaSumTableAreaType";
-pub const operative_tree_species_data: &str = "ts:TreeSpeciesDataType";
-pub const purchase_contract_extra_info: &str = "bdt:String3000Type";
-pub const target_id: &str = "xs:string";
-pub const quantity_unit: &str = "co:WideUnitType";
-pub const previous_moose_damage_evaluation_date: &str = "co:DateType";
-pub const share_of_owner_ship: &str = "co:PercentType";
-pub const habitat_operations: &str = "HabitatOperationsType";
-pub const bytes: &str = "xs:base64Binary";
-pub const specification: &str = "SpecificationType";
-pub const min_length: &str = "bdt:PositiveIntegerType";
-pub const altitude: &str = "bdt:PositiveInteger4digitsType";
-pub const cost_type_description: &str = "fcc:CostTypeDescriptionType";
-pub const biomass: &str = "BiomassType";
-pub const self_monitoring_object_protection_operations_data: &str = "SelfMonitoringObjectProtectionOperationsDataType";
-pub const mean_diameter_summary: &str = "bdt:PositiveInteger3digitsType";
-pub const is_g_p_slocation: &str = "bdt:YesNoType";
-pub const fee_base_list_item: &str = "FeebaseListItemType";
-pub const mean_height_pine: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const sent_date: &str = "co:DateType";
-pub const related_call_for_offer_description: &str = "co:String1500Type";
-pub const is_value_force_working_site: &str = "bdt:YesNoType";
-pub const diameter_section: &str = "SectionType";
-pub const seed_stem_count: &str = "co:PositiveInteger6digitsType";
-pub const ditch_or_road_plan_name: &str = "bdt:String100Type";
-pub const fee_value: &str = "bdt:String10Type";
-pub const previous_block_state: &str = "bdt:PreviousBlockStatusType";
-pub const regeneration_data: &str = "RegenerationDataType";
-pub const assortment_compact_classes: &str = "as:AssortmentCompactClassesType";
-pub const b_i_c: &str = "BICType";
-pub const common_object_data: &str = "CommonObjectDataType";
-pub const alternative_name: &str = "AlternativeNameType";
-pub const subsidy_amount: &str = "co:MoneyType";
-pub const completed_work_amount: &str = "AmountType";
-pub const difficulty_class: &str = "bdt:DifficultyClassType";
-pub const telephone: &str = "bdt:String20Type";
-pub const contarctor_id: &str = "bdt:String20Type";
-pub const result_of_accessibility_analysis: &str = "ResultOfAccessibilityAnalysisType";
-pub const weight: &str = "bdt:Integer7digitsType";
-pub const c_f_o_working_site: &str = "WorkingSiteType";
-pub const unseparated_parcel: &str = "xs:string";
-pub const interrupted: &str = "bdt:YesNoType";
-pub const fertilizer_volume_measured: &str = "bdt:PositiveIntegerType";
-pub const compartment_id: &str = "co:IdStringNotEmptyType";
-pub const date_seedlings_planted: &str = "co:DateType";
-pub const send_timestamp: &str = "bdt:TimeStampType";
-pub const sedimentation_basin_and_dam_dimensioning_is_followed_text: &str = "bdt:String200Type";
-pub const main_applier: &str = "co:YesNoType";
-pub const prevention_fungus_of_the_genus_data: &str = "PreventionFungusOfTheGenusDataType";
-pub const week_calendar: &str = "WeekCalendarType";
-pub const mean_diameter: &str = "bdt:PositiveInteger3digitsType";
-pub const fulfilled_area: &str = "FulfilledAreaType";
-pub const fee_base: &str = "FeeBasisDataType";
-pub const day: &str = "DayType";
-pub const action_type: &str = "xs:string";
-pub const planned_stem_count: &str = "co:StemCountType";
-pub const insert_date: &str = "InsertDateType";
-pub const main_damage: &str = "co:YesNoType";
-pub const scale_transformation: &str = "bdt:YesNoType";
-pub const control_overall_evaluation_data: &str = "ControlOverallEvaluationDataType";
-pub const compensation_by_insurance: &str = "CompensationByInsuranceType";
-pub const assortment_class_code: &str = "AssortmentClassCodeType";
-pub const completing_natural_crop_stem_count: &str = "co:PositiveInteger6digitsType";
-pub const material_amount: &str = "co:Decimal2FractionDigitsType";
-pub const contract_info: &str = "bdt:String1000Type";
-pub const transport_distance: &str = "bdt:PositiveDecimalMax4IntegralPartMax2FractionalPartType";
-pub const delivery_name: &str = "bdt:String50Type";
-pub const soil_conditioning_method_correct_text: &str = "bdt:String200Type";
-pub const working_site_key: &str = "WorkingSiteKeyType";
-pub const log_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const order_confirmation: &str = "OrderConfirmationType";
-pub const recipient_type: &str = "RecipientTypeType";
-pub const using_right_compensation_responsible: &str = "co:UsingRightResponsibleType";
-pub const owner_representative_person: &str = "bdt:ContactInformationType";
-pub const additional_code: &str = "AdditionalCodeType";
-pub const road_structure: &str = "bdt:WorkingQualityType";
-pub const document: &str = "xmime:base64Binary";
-pub const loader_scale_model: &str = "bdt:String50Type";
-pub const end_load_number: &str = "bdt:PositiveInteger4digitsType";
-pub const project_is_authorized_for_estate: &str = "co:YesNoType";
-pub const base_part_number: &str = "VirtaPartNumberType";
-pub const branch_biomass: &str = "BranchBiomassType";
-pub const stand_extra_info: &str = "co:String2000Type";
-pub const processing_area_reference: &str = "co:ReferenceType";
-pub const employee_written_agreement: &str = "bdt:YesNoType";
-pub const forest_centre_message_reference: &str = "co:ReferenceType";
-pub const declaration_regeneration_operation: &str = "co:DeclarationRegenerationOperationType";
-pub const offer_expiration_date: &str = "OfferExpirationDateType";
-pub const correct_height_stumps: &str = "bdt:PositiveInteger3digitsType";
-pub const object: &str = "cod:ForestObjectDataObjectType";
-pub const restriction_description: &str = "co:String1500Type";
-pub const osoite_numero: &str = "jhs:OsoiteNumeroTyyppi";
-pub const declaration_polygon: &str = "DeclarationPolygonType";
-pub const soil_type: &str = "SoilTypeType";
-pub const cop_operation_project: &str = "co:YesNoType";
-pub const harvesting_sign_data: &str = "HarvestingSignDataType";
-pub const subsidy_applier_reference: &str = "SubsidyApplierReferenceType";
-pub const kolmas_rivi_teksti: &str = "jhs:KolmasRiviTekstiTyyppi";
-pub const status2: &str = "co:ChangeStateType";
-pub const log_measurements: &str = "LogMeasurementsType";
-pub const mean_height: &str = "bdt:Decimal1FractionDigitType";
-pub const vehicle_path_too_deep: &str = "bdt:PositiveInteger2digitsType";
-pub const control_data_special_feature: &str = "ControlDataSpecialFeatureType";
-pub const self_monitoring_type: &str = "co:SelfMonitoringTypeType";
-pub const habitat_advertisement: &str = "VirtaHabitatAdvertisementType";
-pub const loggings_rows: &str = "LoggingsRowsType";
-pub const i_b_a_n: &str = "IBANType";
-pub const terrain_class: &str = "bdt:TerrainClassType";
-pub const begin_notification_allowed: &str = "bdt:YesNoType";
-pub const stand_wood_trade_info: &str = "StandWoodTradeInfoType";
-pub const status5: &str = "co:ChangeStateType";
-pub const storage_text: &str = "bdt:String200Type";
-pub const partitial_load: &str = "PartitialLoadType";
-pub const voimassaolo_kytkin: &str = "jhs:VoimassaoloKytkinTyyppi";
-pub const request_info: &str = "co:String2000Type";
-pub const dis_qualification_sign: &str = "bdt:String5Type";
-pub const bank_reference_number: &str = "co:BankReferenceNumberType";
-pub const passing_place: &str = "bdt:WorkingQualityType";
-pub const date_seedlings_exit_from_tree_nursery: &str = "co:DateType";
-pub const days: &str = "DaysType";
-pub const document_class: &str = "DocumentClassType";
-pub const cost_type_and_completed_work_completion_real_estate: &str = "CostTypeAndCompletedWorkCompletionRealEstateType";
-pub const bio_mass_collection_done: &str = "bdt:YesNoType";
-pub const service_buyer_resource_locations: &str = "ServiceBuyerResourceLocationsType";
-pub const fertility_class: &str = "FertilityClassType";
-pub const assortments: &str = "AssortmentsType";
-pub const working_hours_sunday: &str = "bdt:PositiveInteger2digitsType";
-pub const parcel_number: &str = "ParcelNumberType";
-pub const sample_plot_northing_coordinate: &str = "xs:string";
-pub const financing_act_completion_stand: &str = "FinancingActCompletionStandType";
-pub const feature_info: &str = "FeatureInfoType";
-pub const notification_date: &str = "bdt:TimeStampType";
-pub const tree_count: &str = "co:StemCountType";
-pub const some_ditches_not_digged_as_mentioned_in_order: &str = "bdt:YesNoType";
-pub const used_machine: &str = "UsedMachineType";
-pub const excavation_soil_location_text: &str = "bdt:String200Type";
-pub const transport_company: &str = "bdt:ContactInformationType";
-pub const stem_type_bulk: &str = "StemTypeBulkType";
-pub const total_price: &str = "wtc:TotalPriceType";
-pub const working_site_final_audit_bio_mass_forwarding: &str = "WorkingSiteFinalAuditBioMassForwardingType";
-pub const regeneration_ensuring: &str = "op:SilvicultureTypeType";
-pub const valtiotunnus_koodi: &str = "jhs:ValtiotunnusKoodiTyyppi";
-pub const forest_use_declaration_stand_felling_purpose: &str = "bdt:CuttingPurposeType";
-pub const wood_lots: &str = "WoodLotsType";
-pub const announced_area: &str = "co:PositiveDecimalMax4IntegralPartMax2FractionalPartType";
-pub const high_stumps: &str = "bdt:YesNoType";
-pub const using_right_compensation_amount: &str = "co:Decimal7And2Type";
-pub const habitat_type: &str = "VirtaHabitatTypeType";
-pub const area_and_map_evaluation: &str = "sp:VirtaEvaluationType";
-pub const subsidies: &str = "SubsidiesType";
-pub const price_matrix: &str = "PriceMatrixType";
-pub const cost_type_and_completed_work_application_real_estate: &str = "CostTypeAndCompletedWorkApplicationRealEstateType";
-pub const plant_evaluation: &str = "VirtaPlantEvaluationType";
-pub const basal_area_other_tree_species: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const reference: &str = "co:ReferenceType";
-pub const tree_stand_based_data: &str = "st:TreeStandBasedDataType";
-pub const diameter_class: &str = "bdt:PositiveInteger4digitsType";
-pub const control_data_swamp_forest_management: &str = "ControlDataSwampForestManagementType";
-pub const contract: &str = "ContractType";
-pub const filename: &str = "bdt:String100Type";
-pub const ulkomaa_henkilo_tunnus: &str = "jhs:UlkomaaHenkiloTunnusTyyppi";
-pub const location_timestamp: &str = "bdt:TimeStampType";
-pub const mean_diameter_of_spare_trees: &str = "bdt:DiameterType";
-pub const material_code: &str = "bdt:MaterialCodeType";
-pub const storage: &str = "StorageType";
-pub const audition_resources: &str = "AuditionResourcesType";
-pub const stem_biomass: &str = "StemBiomassType";
-pub const work_code_groups: &str = "WorkCodeGroupsType";
-pub const sedimentation_basin_size_shape_and_functionality_text: &str = "bdt:String200Type";
-pub const type: &str = "xs:integer";
-pub const mean_height_spruce: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const radius_reduction: &str = "bdt:Decimal2FractionDigitsType";
-pub const forest_owner_group: &str = "ForestOwnerGroupType";
-pub const cutting_control_required: &str = "bdt:YesNoType";
-pub const control_log_count: &str = "bdt:PositiveInteger2digitsType";
-pub const paayksikko_nimi: &str = "jhs:PaayksikkoNimiTyyppi";
-pub const sender: &str = "ci:ContactInformationType";
-pub const plowing_telephone: &str = "bdt:String20Type";
-pub const email: &str = "bdt:String100Type";
-pub const sub_category: &str = "bdt:ImageSubCategoryType";
-pub const work_load1: &str = "bdt:Decimal2FractionDigitsType";
-pub const validity_date_end: &str = "bdt:DateType";
-pub const business_acceptances: &str = "BusinessAcceptancesType";
-pub const audits_list: &str = "AuditsListType";
-pub const forest_use_declaration_stand_extra_info: &str = "bdt:String2000Type";
-pub const label: &str = "bdt:String100Type";
-pub const extinguisher_verification_date: &str = "bdt:DateType";
-pub const start_date: &str = "StartDateType";
-pub const forwarding_estimate: &str = "ForwardingEstimateType";
-pub const stem_type: &str = "StemTypeType";
-pub const environmental_object_noticed: &str = "bdt:YesNoType";
-pub const silviculture_quality: &str = "bdt:WorkingQualityType";
-pub const delivery_restriction: &str = "bdt:YesNoType";
-pub const edellinen_suku_nimi: &str = "jhs:EdellinenSukuNimiTyyppi";
-pub const habitat_code: &str = "VirtaHabitatCodeType";
-pub const random_control_stem_rejected_reason: &str = "bdt:String100Type";
-pub const service_buyer_resource_id: &str = "bdt:String20Type";
-pub const total_pulpwood_volume: &str = "co:PulpWoodVolumeType";
-pub const assortment_i_d: &str = "wct:ERPIdType";
-pub const can_modify: &str = "bdt:YesNoType";
-pub const dominant_height: &str = "bdt:PositiveDecimalMax2IntegralPartMax1FractionalPartType";
-pub const decision_geometry: &str = "DecisionGeometryType";
-pub const financing_act_work_group: &str = "co:FinancingActWorkGroupType";
-pub const length_max: &str = "LengthMaxType";
-pub const offer_working_site_silviculture_text: &str = "xs:string";
-pub const cutting_by_machine: &str = "VirtaCuttingByMachineType";
-pub const population: &str = "co:PositiveInteger3digitsType";
-pub const control_forest_use_declaration: &str = "ControlForestUseDeclarationType";
-pub const processing_area_number: &str = "ProcessingAreaNumberType";
-pub const main_tree_species: &str = "MainTreeSpeciesType";
-pub const sent_storage_volume: &str = "bdt:Decimal3FractionDigitsType";
-pub const communication_type: &str = "bdt:String100Type";
-pub const stratum_number: &str = "co:StratumNumberType";
-pub const limits_to_water_system: &str = "bdt:YesNoType";
-pub const material_supplier: &str = "bdt:String50Type";
-pub const send_date: &str = "bdt:TimeStampType";
-pub const due_date: &str = "DueDateType";
-pub const payment_transaction_category: &str = "co:MoneyTransactionCategoryType";
-pub const user_name: &str = "bdt:String100Type";
-pub const stem_coordinates: &str = "gdt:PointGeometryType";
-pub const some_ditches_not_digged_as_mentioned_in_order_text: &str = "bdt:String200Type";
-pub const stump_lifting_quality_text: &str = "bdt:String200Type";
-pub const log_length_class: &str = "bdt:PositiveInteger4digitsType";
-pub const silviculture_quality_text: &str = "bdt:String200Type";
-pub const real_estate: &str = "wtco:RealEstateType";
-pub const shape_delta: &str = "cdd:ShapeDeltaType";
-pub const identifier_type: &str = "IdentifierTypeType";
-pub const file_type: &str = "FileTypeType";
-pub const organisation3: &str = "bdt:String20Type";
-pub const contract_text: &str = "co:String1500Type";
-pub const stand_silviculture_info: &str = "StandSilvicultureInfoType";
-pub const forest_use_declaration_reference: &str = "ForestUseDeclarationType";
-pub const sample_plots: &str = "SamplePlotsType";
-pub const certification_system: &str = "CertificationSystemType";
-pub const assortment_class: &str = "AssortmentClassType";
+pub struct PlantSealingErrorCount {
+    pub plant_sealing_error_count: PositiveIntegerType,
+}
+
+pub struct PeripheralCode {
+    pub peripheral_code: PeripheralCodeType,
+}
+
+pub struct ExcavationSoilLocation {
+    pub excavation_soil_location: WorkingQualityType,
+}
+
+pub struct EstimatedEndDate {
+    pub estimated_end_date: DateType,
+}
+
+pub struct EmployeeHealthCareInfo {
+    pub employee_health_care_info: String100Type,
+}
+
+pub struct WorkingSiteFinalAuditBioMassForwarding {
+    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
+}
+
+pub struct Data {
+    pub data: hexBinary,
+}
+
+pub struct StandTreesCurrent {
+    pub stand_trees_current: StandTreesType,
+}
+
+pub struct ControlledOperationType {
+    pub controlled_operation_type: CostTypeNumberType,
+}
+
+pub struct Phase2youngCropCount {
+    pub phase2young_crop_count: PositiveInteger5digitsType,
+}
+
+pub struct VAT {
+    pub vat: VATType,
+}
+
+pub struct NewEnvironmentalObjects {
+    pub new_environmental_objects: YesNoType,
+}
+
+pub struct CompensationByInsurance {
+    pub compensation_by_insurance: CompensationByInsuranceType,
+}
+
+pub struct CultivatedDeadStemCount {
+    pub cultivated_dead_stem_count: StemCountType,
+}
+
+pub struct Status4 {
+    pub status4: ChangeStateType,
+}
+
+pub struct UsedMachine {
+    pub used_machine: UsedMachineType,
+}
+
+pub struct SedimentationBasinAndDamDimensioningIsFollowed {
+    pub sedimentation_basin_and_dam_dimensioning_is_followed: YesNoNotKnownType,
+}
+
+pub struct ControlDataSpecialFeatures {
+    pub control_data_special_features: ControlDataSpecialFeaturesType,
+}
+
+pub struct AssortmentIncrementAllowed {
+    pub assortment_increment_allowed: YesNoType,
+}
+
+pub struct TreeStandSummary {
+    pub tree_stand_summary: TreeStandSummaryType,
+}
+
+pub struct ContactPersonInFinland {
+    pub contact_person_in_finland: ContactInformationType,
+}
+
+pub struct FeeListId {
+    pub fee_list_id: PositiveIntegerType,
+}
+
+pub struct StorageFinished {
+    pub storage_finished: YesNoType,
+}
+
+pub struct UnseparatedParcelNumber {
+    pub unseparated_parcel_number: string,
+}
+
+pub struct Products {
+    pub products: ProductsType,
+}
+
+pub struct AirdromeAsInstructedText {
+    pub airdrome_as_instructed_text: String200Type,
+}
+
+pub struct SamplePlotSummary {
+    pub sample_plot_summary: SamplePlotSummaryType,
+}
+
+pub struct LoadNumber {
+    pub load_number: String20Type,
+}
+
+pub struct RetentionTreeTarget {
+    pub retention_tree_target: SpareTreesByCategoryType,
+}
+
+pub struct YritysTunnus {
+    pub yritys_tunnus: YritysTunnusTyyppi,
+}
+
+pub struct ForestEnergySuitableText {
+    pub forest_energy_suitable_text: String200Type,
+}
+
+pub struct DecisionGeometry {
+    pub decision_geometry: DecisionGeometryType,
+}
+
+pub struct Attribute {
+    pub attribute: AttributeType,
+}
+
+pub struct Question {
+    pub question: AuditQuestionType,
+}
+
+pub struct WorkingSiteFinishedDate {
+    pub working_site_finished_date: TimeStampType,
+}
+
+pub struct VolumeSummary {
+    pub volume_summary: PositiveInteger3digitsType,
+}
+
+pub struct Reference {
+    pub reference: ReferenceType,
+}
+
+pub struct LocationEstate {
+    pub location_estate: LocationEstateType,
+}
+
+pub struct ControlDataMooseDamageData {
+    pub control_data_moose_damage_data: MooseDamageDataType,
+}
+
+pub struct LineGeometry {
+    pub line_geometry: LineGeometryType,
+}
+
+pub struct Unit {
+    pub unit: string,
+}
+
+pub struct TransportCompany {
+    pub transport_company: ContactInformationType,
+}
+
+pub struct ServiceBuyerId {
+    pub service_buyer_id: String20Type,
+}
+
+pub struct PlannedStemCount {
+    pub planned_stem_count: StemCountType,
+}
+
+pub struct ResourceLocation {
+    pub resource_location: ResourceLocationType,
+}
+
+pub struct ReplyCode {
+    pub reply_code: ReplyCodeType,
+}
+
+pub struct HabitatCode {
+    pub habitat_code: VirtaHabitatCodeType,
+}
+
+pub struct AccountingDate {
+    pub accounting_date: TimeStampType,
+}
+
+pub struct RepresentativePerson {
+    pub representative_person: ContactInformationType,
+}
+
+pub struct CleanlinessClass {
+    pub cleanliness_class: CleanlinessClassType,
+}
+
+pub struct MachineApplicationVersion {
+    pub machine_application_version: String100Type,
+}
+
+pub struct MinProposalYear {
+    pub min_proposal_year: MinProposalYearType,
+}
+
+pub struct Age {
+    pub age: PositiveInteger3digitsType,
+}
+
+pub struct ForwarderDelay {
+    pub forwarder_delay: PositiveInteger2digitsType,
+}
+
+pub struct SoilConditioningQualityText {
+    pub soil_conditioning_quality_text: String200Type,
+}
+
+pub struct SequenceNumber {
+    pub sequence_number: SequenceNumberType,
+}
+
+pub struct OriginalMessageType {
+    pub original_message_type: String50Type,
+}
+
+pub struct Organisation2 {
+    pub organisation2: String20Type,
+}
+
+pub struct AnnouncementId {
+    pub announcement_id: AnnouncementIdType,
+}
+
+pub struct OtherConservationMethodsText {
+    pub other_conservation_methods_text: String200Type,
+}
+
+pub struct DeclarationRegenerationOperation {
+    pub declaration_regeneration_operation: DeclarationRegenerationOperationType,
+}
+
+pub struct CuttingRelated {
+    pub cutting_related: CuttingRelatedType,
+}
+
+pub struct DeliveryRestriction {
+    pub delivery_restriction: YesNoType,
+}
+
+pub struct CompletionDataAndSubsidy {
+    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+}
+
+pub struct CanCultivateInAutumn {
+    pub can_cultivate_in_autumn: YesNoType,
+}
+
+pub struct MainReason {
+    pub main_reason: YesNoType,
+}
+
+pub struct AttorneyReceivesPayment {
+    pub attorney_receives_payment: YesNoType,
+}
+
+pub struct DeclarationStands {
+    pub declaration_stands: DeclarationStandsType,
+}
+
+pub struct SubsidyPercent {
+    pub subsidy_percent: PercentType,
+}
+
+pub struct PartEastingCoordinate {
+    pub part_easting_coordinate: string,
+}
+
+pub struct UpdatePreviousMessage {
+    pub update_previous_message: YesNoType,
+}
+
+pub struct Model {
+    pub model: String50Type,
+}
+
+pub struct WorkLoadInvoiced {
+    pub work_load_invoiced: Decimal2FractionDigitsType,
+}
+
+pub struct ForestDataUpdate {
+    pub forest_data_update: ForestDataUpdateType,
+}
+
+pub struct KuntaKoodi {
+    pub kunta_koodi: KuntaKoodiTyyppi,
+}
+
+pub struct DisQualificationReasons {
+    pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+pub struct SoilPreparationSpotsAreEnough {
+    pub soil_preparation_spots_are_enough: YesNoType,
+}
+
+pub struct TreeSpeciesSummary {
+    pub tree_species_summary: TreeSpeciesSummaryType,
+}
+
+pub struct AssortmentVolumeUnclassified {
+    pub assortment_volume_unclassified: AssortmentVolumeUnclassifiedType,
+}
+
+pub struct SamplePlotMeanHeight {
+    pub sample_plot_mean_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct OwnerContractorId {
+    pub owner_contractor_id: String20Type,
+}
+
+pub struct PreviousSameAreaMooseDamageCompensationYear {
+    pub previous_same_area_moose_damage_compensation_year: YearType,
+}
+
+pub struct PaymentReference {
+    pub payment_reference: PaymentsReferenceType,
+}
+
+pub struct CallForOfferText {
+    pub call_for_offer_text: CallForOfferTextType,
+}
+
+pub struct SupplyPoint {
+    pub supply_point: SupplyPointType,
+}
+
+pub struct FertilizerVolumeOrdered {
+    pub fertilizer_volume_ordered: PositiveIntegerType,
+}
+
+pub struct MeanHeightPine {
+    pub mean_height_pine: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct BusinessAcceptanceId {
+    pub business_acceptance_id: BusinessAcceptanceIdType,
+}
+
+pub struct ControlNo {
+    pub control_no: String100Type,
+}
+
+pub struct FinancingActCompletionStands {
+    pub financing_act_completion_stands: FinancingActCompletionStandsType,
+}
+
+pub struct ForestCentrePayments {
+    pub forest_centre_payments: ForestCentrePaymentsType,
+}
+
+pub struct Measurable {
+    pub measurable: YesNoType,
+}
+
+pub struct RightToSpecifyBankAccountsOfPaymentTransactions {
+    pub right_to_specify_bank_accounts_of_payment_transactions: YesNoType,
+}
+
+pub struct EnergyTimberValue {
+    pub energy_timber_value: PositiveInteger5digitsType,
+}
+
+pub struct OsoiteNumero {
+    pub osoite_numero: OsoiteNumeroTyyppi,
+}
+
+pub struct MeanAge {
+    pub mean_age: MeanAgeType,
+}
+
+pub struct SiviilisaatyTeksti {
+    pub siviilisaaty_teksti: SiviilisaatyTekstiTyyppi,
+}
+
+pub struct CaliperApplication {
+    pub caliper_application: String200Type,
+}
+
+pub struct MaterialAreaId {
+    pub material_area_id: String20Type,
+}
+
+pub struct SettlingPitsText {
+    pub settling_pits_text: String200Type,
+}
+
+pub struct Type {
+    pub r#type: integer,
+}
+
+pub struct ControlLogVolume {
+    pub control_log_volume: Decimal3FractionDigitsType,
+}
+
+pub struct Image {
+    pub image: base64Binary,
+}
+
+pub struct CaseDate {
+    pub case_date: DateType,
+}
+
+pub struct StandAvgDominantHeight {
+    pub stand_avg_dominant_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct EnvironmentalObjectInfo {
+    pub environmental_object_info: String3000Type,
+}
+
+pub struct SelfMonitoringObjectData {
+    pub self_monitoring_object_data: SelfMonitoringObjectDataType,
+}
+
+pub struct ObservationDate {
+    pub observation_date: DateType,
+}
+
+pub struct DueDate {
+    pub due_date: DueDateType,
+}
+
+pub struct StemDamages {
+    pub stem_damages: PositiveInteger3digitsType,
+}
+
+pub struct DiameterCalibrationReason {
+    pub diameter_calibration_reason: String200Type,
+}
+
+pub struct Subsidies {
+    pub subsidies: SubsidiesType,
+}
+
+pub struct ForestCentreDecision {
+    pub forest_centre_decision: ForestCentreDecisionType,
+}
+
+pub struct SoilModificationEstimate {
+    pub soil_modification_estimate: VirtaEvaluationType,
+}
+
+pub struct OperationRow {
+    pub operation_row: OperationRowType,
+}
+
+pub struct StubPriceArea {
+    pub stub_price_area: VirtaSumTableAreaType,
+}
+
+pub struct CompletionYear {
+    pub completion_year: YearType,
+}
+
+pub struct AreaNumber {
+    pub area_number: string,
+}
+
+pub struct ApplicationActors {
+    pub application_actors: ApplicationActorsType,
+}
+
+pub struct Documents {
+    pub documents: DocumentsType,
+}
+
+pub struct RequestReference {
+    pub request_reference: ReferenceType,
+}
+
+pub struct GeometryStatus {
+    pub geometry_status: string,
+}
+
+pub struct SukuNimi {
+    pub suku_nimi: SukuNimiTyyppi,
+}
+
+pub struct BiomassFinishedDate {
+    pub biomass_finished_date: DateType,
+}
+
+pub struct ContractBeginningDate {
+    pub contract_beginning_date: ContractBeginningDateType,
+}
+
+pub struct OtherPublicSubstitute {
+    pub other_public_substitute: OtherPublicSubstituteType,
+}
+
+pub struct TreeNumber {
+    pub tree_number: string,
+}
+
+pub struct Position {
+    pub position: PointGeometryType,
+}
+
+pub struct ProductKey {
+    pub product_key: ERPIdType,
+}
+
+pub struct AuditionResources {
+    pub audition_resources: AuditionResourcesType,
+}
+
+pub struct ExternalFile {
+    pub external_file: ExternalFileType,
+}
+
+pub struct HeightMax {
+    pub height_max: Decimal1FractionDigitType,
+}
+
+pub struct VolumeGrowth {
+    pub volume_growth: VolumeGrowthType,
+}
+
+pub struct ChangeState {
+    pub change_state: ChangeStateType,
+}
+
+pub struct SubsidyAppliers {
+    pub subsidy_appliers: SubsidyAppliersType,
+}
+
+pub struct RandomControlStemRejectedReason {
+    pub random_control_stem_rejected_reason: String100Type,
+}
+
+pub struct CollectiveAgreements {
+    pub collective_agreements: CollectiveAgreementsType,
+}
+
+pub struct UsedPricingMethods {
+    pub used_pricing_methods: UsedPricingMethodsType,
+}
+
+pub struct StumpsLifted {
+    pub stumps_lifted: YesNoType,
+}
+
+pub struct CallForOfferWorkingSiteSilvicultureInfo {
+    pub call_for_offer_working_site_silviculture_info: CallForOfferWorkingSiteSilvicultureInfoType,
+}
+
+pub struct PipeInstallationText {
+    pub pipe_installation_text: String200Type,
+}
+
+pub struct TargetPart {
+    pub target_part: TargetPartType,
+}
+
+pub struct RelatedCallForOffers {
+    pub related_call_for_offers: RelatedCallForOffersType,
+}
+
+pub struct CFOWorkingSite {
+    pub c_f_o_working_site: WorkingSiteType,
+}
+
+pub struct ProductName {
+    pub product_name: String500Type,
+}
+
+pub struct DecisionDate {
+    pub decision_date: DateType,
+}
+
+pub struct Width {
+    pub width: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct BasePartNumber {
+    pub base_part_number: VirtaPartNumberType,
+}
+
+pub struct Photographer {
+    pub photographer: String50Type,
+}
+
+pub struct WorkingInstructionsSufficient {
+    pub working_instructions_sufficient: YesNoType,
+}
+
+pub struct Actor {
+    pub actor: ActorType,
+}
+
+pub struct Specifications {
+    pub specifications: SpecificationsType,
+}
+
+pub struct QuestionAnswerAdditionalText {
+    pub question_answer_additional_text: String200Type,
+}
+
+pub struct MeanVolume {
+    pub mean_volume: Decimal3FractionDigitsType,
+}
+
+pub struct MeasuringDeviceLastControl {
+    pub measuring_device_last_control: DateType,
+}
+
+pub struct OperationRestriction {
+    pub operation_restriction: OperationRestrictionType,
+}
+
+pub struct HabitatOperation {
+    pub habitat_operation: HabitatOperationsType,
+}
+
+pub struct TreeClass {
+    pub tree_class: TreeClassType,
+}
+
+pub struct Sender {
+    pub sender: ContactInformationType,
+}
+
+pub struct HighStumps {
+    pub high_stumps: YesNoType,
+}
+
+pub struct WorkGrouMember {
+    pub work_grou_member: WorkGrouMemberType,
+}
+
+pub struct ObjectRealization {
+    pub object_realization: ObjectRealizationType,
+}
+
+pub struct CustomerRepresentativePerson {
+    pub customer_representative_person: ContactInformationType,
+}
+
+pub struct StemCount {
+    pub stem_count: PositiveInteger2digitsType,
+}
+
+pub struct RequestInfo {
+    pub request_info: String2000Type,
+}
+
+pub struct TaxDebt {
+    pub tax_debt: DateType,
+}
+
+pub struct SubsidyApplierId {
+    pub subsidy_applier_id: IdStringNotEmptyType,
+}
+
+pub struct DiameterMax {
+    pub diameter_max: DiameterMaxType,
+}
+
+pub struct EnvironmentalObjectsNoticed {
+    pub environmental_objects_noticed: YesNoType,
+}
+
+pub struct TreeStandDataDate {
+    pub tree_stand_data_date: TreeStandDataDateType,
+}
+
+pub struct HenkiloTunnus {
+    pub henkilo_tunnus: HenkiloTunnusTyyppi,
+}
+
+pub struct CompensationDescription {
+    pub compensation_description: string,
+}
+
+pub struct DiameterSections {
+    pub diameter_sections: DiameterSectionsType,
+}
+
+pub struct PriceItem {
+    pub price_item: PriceItemType,
+}
+
+pub struct PreinformDate {
+    pub preinform_date: DateType,
+}
+
+pub struct OperationDescription {
+    pub operation_description: String1000Type,
+}
+
+pub struct WorkingSitePlanningInfo {
+    pub working_site_planning_info: String3000Type,
+}
+
+pub struct AssociationInvolvement {
+    pub association_involvement: VirtaYesNoType,
+}
+
+pub struct WeightClass {
+    pub weight_class: PositiveInteger1digitsType,
+}
+
+pub struct ServiceBuyerResourceLocations {
+    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
+}
+
+pub struct KuvausTeksti {
+    pub kuvaus_teksti: KuvausTekstiTyyppi,
+}
+
+pub struct ControlDate {
+    pub control_date: DateType,
+}
+
+pub struct StorageLandOwner {
+    pub storage_land_owner: StorageLandOwnerType,
+}
+
+pub struct StorageAdditionalRemarks {
+    pub storage_additional_remarks: String3000Type,
+}
+
+pub struct StanfordResourceId {
+    pub stanford_resource_id: String100Type,
+}
+
+pub struct PankkitiliTunnus {
+    pub pankkitili_tunnus: PankkitiliTunnusTyyppi,
+}
+
+pub struct PulpWoodVolume {
+    pub pulp_wood_volume: PulpWoodVolumeType,
+}
+
+pub struct Storage {
+    pub storage: StorageType,
+}
+
+pub struct StemDistributionStrata {
+    pub stem_distribution_strata: StemDistributionStrataType,
+}
+
+pub struct DamageSourceCode {
+    pub damage_source_code: string,
+}
+
+pub struct CompletionData {
+    pub completion_data: ExtendedCompletionDataType,
+}
+
+pub struct HopperNumber {
+    pub hopper_number: String20Type,
+}
+
+pub struct RealEstate {
+    pub real_estate: RealEstateType,
+}
+
+pub struct BusinessId {
+    pub business_id: string,
+}
+
+pub struct CuttingControlRequired {
+    pub cutting_control_required: YesNoType,
+}
+
+pub struct Target {
+    pub target: PositiveIntegerType,
+}
+
+pub struct EstablishedPartNumber {
+    pub established_part_number: VirtaPartNumberType,
+}
+
+pub struct StorageFinishedDate {
+    pub storage_finished_date: TimeStampType,
+}
+
+pub struct CallForOfferSilvicultureInfo {
+    pub call_for_offer_silviculture_info: CallForOfferSilvicultureInfoType,
+}
+
+pub struct ServiceType {
+    pub service_type: ServiceTypeType,
+}
+
+pub struct Filename {
+    pub filename: String100Type,
+}
+
+pub struct EnvironmentalObjectNoticed {
+    pub environmental_object_noticed: YesNoType,
+}
+
+pub struct Caliper {
+    pub caliper: CaliperType,
+}
+
+pub struct ValidityDateEnd {
+    pub validity_date_end: DateType,
+}
+
+pub struct ResourceType {
+    pub resource_type: ResourceTypeType,
+}
+
+pub struct DecisionGeometries {
+    pub decision_geometries: DecisionGeometriesType,
+}
+
+pub struct CuttingVolume {
+    pub cutting_volume: CuttingVolumeType,
+}
+
+pub struct AssortmentPercent {
+    pub assortment_percent: AssortmentPercentType,
+}
+
+pub struct ScalpedMoundsCount {
+    pub scalped_mounds_count: PositiveInteger2digitsType,
+}
+
+pub struct Acceptance {
+    pub acceptance: AcceptanceType,
+}
+
+pub struct PaymentTransactions {
+    pub payment_transactions: PaymentTransactionsType,
+}
+
+pub struct Services {
+    pub services: ServicesType,
+}
+
+pub struct ViidesRiviTeksti {
+    pub viides_rivi_teksti: ViidesRiviTekstiTyyppi,
+}
+
+pub struct SamplePlotBasicData {
+    pub sample_plot_basic_data: SamplePlotBasicDataType,
+}
+
+pub struct ContactorId {
+    pub contactor_id: String20Type,
+}
+
+pub struct TreeIdentifiers {
+    pub tree_identifiers: TreeIdentifiersType,
+}
+
+pub struct MeanHeightOtherTreeSpecies {
+    pub mean_height_other_tree_species: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct PlantedSeedlingCountInNotCultivatedSpots {
+    pub planted_seedling_count_in_not_cultivated_spots: PositiveInteger3digitsType,
+}
+
+pub struct StandAvgStemCountSummary {
+    pub stand_avg_stem_count_summary: PositiveInteger5digitsType,
+}
+
+pub struct InfoText {
+    pub info_text: String200Type,
+}
+
+pub struct SoilConditioningMethodCorrectText {
+    pub soil_conditioning_method_correct_text: String200Type,
+}
+
+pub struct ObjectType {
+    pub object_type: DecisionGeometryObjectType,
+}
+
+pub struct WaterEconomySystemsNoticed {
+    pub water_economy_systems_noticed: YesNoType,
+}
+
+pub struct Removed {
+    pub removed: YesNoType,
+}
+
+pub struct MeasurementId {
+    pub measurement_id: PositiveIntegerType,
+}
+
+pub struct QualitySystem {
+    pub quality_system: QualitySystemType,
+}
+
+pub struct CultivationMaterial {
+    pub cultivation_material: VirtaCultivationMaterialType,
+}
+
+pub struct PurchaseModeCode {
+    pub purchase_mode_code: PurchaseModeType,
+}
+
+pub struct StandCorrectHeightStumpsPercentage {
+    pub stand_correct_height_stumps_percentage: PercentWithFraction1Type,
+}
+
+pub struct NearestCultivatedSpotWidth {
+    pub nearest_cultivated_spot_width: PositiveInteger3digitsType,
+}
+
+pub struct WorkingSiteFinalAuditHarvesting {
+    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
+}
+
+pub struct Validity {
+    pub validity: ValidityType,
+}
+
+pub struct KutsumaNimi {
+    pub kutsuma_nimi: KutsumaNimiTyyppi,
+}
+
+pub struct LocationMunicipalityName {
+    pub location_municipality_name: MunicipalityNameType,
+}
+
+pub struct SeedlingConditionAndQualityDescription {
+    pub seedling_condition_and_quality_description: String1000Type,
+}
+
+pub struct FertilizerVolumeMeasured {
+    pub fertilizer_volume_measured: PositiveIntegerType,
+}
+
+pub struct Role {
+    pub role: OrganizationRoleType,
+}
+
+pub struct FeatureType {
+    pub feature_type: FeatureTypeType,
+}
+
+pub struct VehiclePathPressures {
+    pub vehicle_path_pressures: YesNoType,
+}
+
+pub struct Identifiers {
+    pub identifiers: IdentifiersType,
+}
+
+pub struct StatisticsQuantities {
+    pub statistics_quantities: StatisticsQuantitiesType,
+}
+
+pub struct PayeeAndRealEstate {
+    pub payee_and_real_estate: PayeeAndRealEstateType,
+}
+
+pub struct PlantManagementQuality {
+    pub plant_management_quality: WorkingQualityType,
+}
+
+pub struct MainFeature {
+    pub main_feature: YesNoType,
+}
+
+pub struct TreeSummaries {
+    pub tree_summaries: SamplePlotTreesSummaryType,
+}
+
+pub struct ChildObjectType {
+    pub child_object_type: ObjectTypeType,
+}
+
+pub struct MeasurementPlace {
+    pub measurement_place: MeasurementPlaceType,
+}
+
+pub struct MeasurementDate {
+    pub measurement_date: MeasurementDateType,
+}
+
+pub struct VATInfo {
+    pub v_a_t_info: VATInfoType,
+}
+
+pub struct OfferWorkingSiteSilvicultureText {
+    pub offer_working_site_silviculture_text: string,
+}
+
+pub struct Day {
+    pub day: DayType,
+}
+
+pub struct SubsidyZone {
+    pub subsidy_zone: ForestActAreaType,
+}
+
+pub struct FreezingDate {
+    pub freezing_date: DateType,
+}
+
+pub struct KeyElementNS {
+    pub key_element_n_s: String500Type,
+}
+
+pub struct SpareTreesFromMapSymbols {
+    pub spare_trees_from_map_symbols: SpareTreesByCategoryType,
+}
+
+pub struct WorkLoad2Unit {
+    pub work_load2_unit: WorkCodeUnitType,
+}
+
+pub struct KilometersWithTrailer {
+    pub kilometers_with_trailer: PositiveInteger4digitsType,
+}
+
+pub struct ICETelephone {
+    pub i_c_e_telephone: String20Type,
+}
+
+pub struct CompletionDeclarationReference {
+    pub completion_declaration_reference: ReferenceType,
+}
+
+pub struct Machines {
+    pub machines: MachinesType,
+}
+
+pub struct StartDate {
+    pub start_date: StartDateType,
+}
+
+pub struct DiameterCalibrationDate {
+    pub diameter_calibration_date: TimeStampType,
+}
+
+pub struct BasalAreaSilverBirch {
+    pub basal_area_silver_birch: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct PlannedBasalArea {
+    pub planned_basal_area: BasalAreaType,
+}
+
+pub struct SamplePlotStubDiameter {
+    pub sample_plot_stub_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct Route {
+    pub route: String200Type,
+}
+
+pub struct WorkingSiteWorkTime {
+    pub working_site_work_time: WorkingSiteWorkTimeType,
+}
+
+pub struct ParentObject {
+    pub parent_object: ParentObjectType,
+}
+
+pub struct ScaleTransformation {
+    pub scale_transformation: YesNoType,
+}
+
+pub struct RealEstateName {
+    pub real_estate_name: String100Type,
+}
+
+pub struct AdvertisementDating {
+    pub advertisement_dating: VirtaAdvertisementDatingType,
+}
+
+pub struct Object {
+    pub object: ForestObjectDataObjectType,
+}
+
+pub struct StatisticsOperation {
+    pub statistics_operation: StatisticsOperationType,
+}
+
+pub struct LabelPosition {
+    pub label_position: PointGeometryType,
+}
+
+pub struct OfferWorkingSiteWoodTradeInfo {
+    pub offer_working_site_wood_trade_info: OfferWorkingSiteWoodTradeInfoType,
+}
+
+pub struct ForestFundPayment {
+    pub forest_fund_payment: ForestFundPaymentType,
+}
+
+pub struct RestrictionType {
+    pub restriction_type: RestrictionTypeType,
+}
+
+pub struct LocationTimestamp {
+    pub location_timestamp: TimeStampType,
+}
+
+pub struct AssortmentVolumesUnclassified {
+    pub assortment_volumes_unclassified: AssortmentVolumesUnclassifiedType,
+}
+
+pub struct DeliveryName {
+    pub delivery_name: String50Type,
+}
+
+pub struct InformedActor {
+    pub informed_actor: ContactInformationType,
+}
+
+pub struct FeeValue {
+    pub fee_value: String10Type,
+}
+
+pub struct ExceptionalPermitForHandling {
+    pub exceptional_permit_for_handling: VirtaExceptionalPermitForHandlingType,
+}
+
+pub struct ObjectsRealizationData {
+    pub objects_realization_data: ObjectsRealizationDataType,
+}
+
+pub struct NotificationsAndImprovements {
+    pub notifications_and_improvements: YesNoType,
+}
+
+pub struct Suggestion {
+    pub suggestion: VirtaSuggestionType,
+}
+
+pub struct StumpStemCount {
+    pub stump_stem_count: PositiveInteger6digitsType,
+}
+
+pub struct MaterialId {
+    pub material_id: String20Type,
+}
+
+pub struct WorkingSafetyInfo {
+    pub working_safety_info: String3000Type,
+}
+
+pub struct SodWorkingSite {
+    pub sod_working_site: YesNoType,
+}
+
+pub struct CumulativePoint {
+    pub cumulative_point: CumulativePointType,
+}
+
+pub struct ForwardingNotification {
+    pub forwarding_notification: ForwardingNotificationType,
+}
+
+pub struct FinalAuditRequired {
+    pub final_audit_required: YesNoType,
+}
+
+pub struct NearestCultivatedSpotLength {
+    pub nearest_cultivated_spot_length: PositiveInteger3digitsType,
+}
+
+pub struct CertificationSystem {
+    pub certification_system: CertificationSystemType,
+}
+
+pub struct ControlDataSpecialFeature {
+    pub control_data_special_feature: ControlDataSpecialFeatureType,
+}
+
+pub struct WorkingsiteInfo {
+    pub workingsite_info: String3000Type,
+}
+
+pub struct OwnerRepresentativePerson {
+    pub owner_representative_person: ContactInformationType,
+}
+
+pub struct Owner {
+    pub owner: ContactInformationType,
+}
+
+pub struct PersonId {
+    pub person_id: String20Type,
+}
+
+pub struct ProductUserId {
+    pub product_user_id: String100Type,
+}
+
+pub struct PlantStorageManagementText {
+    pub plant_storage_management_text: String200Type,
+}
+
+pub struct BasalAreaPine {
+    pub basal_area_pine: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct TransportDistanceUnit {
+    pub transport_distance_unit: DistanceUnitType,
+}
+
+pub struct GeometryObject {
+    pub geometry_object: GeometryObjectType,
+}
+
+pub struct StorageDryingClass {
+    pub storage_drying_class: StorageDryingClassType,
+}
+
+pub struct District {
+    pub district: ThinningDistrictType,
+}
+
+pub struct HasSupport {
+    pub has_support: YesNoType,
+}
+
+pub struct VolumeOfSpareTrees {
+    pub volume_of_spare_trees: VolumeType,
+}
+
+pub struct SpareTreeCategory {
+    pub spare_tree_category: SpareTreeCategoryType,
+}
+
+pub struct HuoltosuhdeTeksti {
+    pub huoltosuhde_teksti: HuoltosuhdeTekstiTyyppi,
+}
+
+pub struct EndDate {
+    pub end_date: EndDateType,
+}
+
+pub struct SendDate {
+    pub send_date: TimeStampType,
+}
+
+pub struct BirchLog {
+    pub birch_log: PositiveInteger4digitsType,
+}
+
+pub struct ContactRequest {
+    pub contact_request: ContactRequestType,
+}
+
+pub struct MeasurementMethod {
+    pub measurement_method: MeasurementMethodType,
+}
+
+pub struct ElectronicNotification {
+    pub electronic_notification: ElectronicNotificationType,
+}
+
+pub struct EdellinenSukuNimi {
+    pub edellinen_suku_nimi: EdellinenSukuNimiTyyppi,
+}
+
+pub struct ExpectedValueCoefficient {
+    pub expected_value_coefficient: PositiveDecimalMax1IntegralPartMax2FractionalPartType,
+}
+
+pub struct Class3damageCount {
+    pub class3damage_count: PositiveInteger6digitsType,
+}
+
+pub struct WorkingRepresentatives {
+    pub working_representatives: WorkingRepresentativesType,
+}
+
+pub struct MultiPolygonGeometry {
+    pub multi_polygon_geometry: ExtendedMultiPolygonGeometryType,
+}
+
+pub struct FeeType {
+    pub fee_type: FeeBasisValueType,
+}
+
+pub struct DeclarationMainTreeSpecies {
+    pub declaration_main_tree_species: TreeSpeciesConciseType,
+}
+
+pub struct ReferenceType {
+    pub reference_type: ForestCentreMessageReferenceType,
+}
+
+pub struct RelatedCallForOfferDescription {
+    pub related_call_for_offer_description: String1500Type,
+}
+
+pub struct CostTypeAndCompletedWorkApplicationRealEstate {
+    pub cost_type_and_completed_work_application_real_estate: CostTypeAndCompletedWorkApplicationRealEstateType,
+}
+
+pub struct UnseparatedParcel {
+    pub unseparated_parcel: string,
+}
+
+pub struct RoadStructureDrainageText {
+    pub road_structure_drainage_text: String200Type,
+}
+
+pub struct EnvironmentalTidinessNoticed {
+    pub environmental_tidiness_noticed: YesNoType,
+}
+
+pub struct ThinningTooExcessive {
+    pub thinning_too_excessive: YesNoType,
+}
+
+pub struct DecidedUnitPrice {
+    pub decided_unit_price: DecidedUnitPriceType,
+}
+
+pub struct MachineCode {
+    pub machine_code: MachineCodeType,
+}
+
+pub struct RoadUsingRight {
+    pub road_using_right: RoadUsingRightType,
+}
+
+pub struct AnnouncedEnergyWood {
+    pub announced_energy_wood: PositiveInteger6digitsType,
+}
+
+pub struct PartitialLoadId {
+    pub partitial_load_id: nonNegativeInteger,
+}
+
+pub struct Attribute4 {
+    pub attribute4: WorkCodeQualifierType4,
+}
+
+pub struct DeclarationDeliveringEvaluation {
+    pub declaration_delivering_evaluation: EvaluationCodeType,
+}
+
+pub struct OwnerShipTypeCode {
+    pub owner_ship_type_code: OwnerShipTypeCodeType,
+}
+
+pub struct BusinessAcceptanceDate {
+    pub business_acceptance_date: BusinessAcceptanceDateType,
+}
+
+pub struct WorkingSiteQualityControlSoilConditioning {
+    pub working_site_quality_control_soil_conditioning: WorkingSiteQualityControlSoilConditioningType,
+}
+
+pub struct NeedToCheck {
+    pub need_to_check: YesNoType,
+}
+
+pub struct UsingRightCompensationDescription {
+    pub using_right_compensation_description: String1500Type,
+}
+
+pub struct StumpsLiftedText {
+    pub stumps_lifted_text: String200Type,
+}
+
+pub struct Measurements {
+    pub measurements: MeasurementsType,
+}
+
+pub struct AuthorizedToSend {
+    pub authorized_to_send: YesNoType,
+}
+
+pub struct HumidityMeasured {
+    pub humidity_measured: YesNoType,
+}
+
+pub struct PreventionSubstance {
+    pub prevention_substance: PreventionSubstanceType,
+}
+
+pub struct IncludeInOffer {
+    pub include_in_offer: IncludeInOfferType,
+}
+
+pub struct SamplePlotTrackWidth {
+    pub sample_plot_track_width: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct Justification {
+    pub justification: String5000Type,
+}
+
+pub struct StumpLiftingSuitableText {
+    pub stump_lifting_suitable_text: String200Type,
+}
+
+pub struct AgeSummary {
+    pub age_summary: PositiveInteger3digitsType,
+}
+
+pub struct ForestUseDeclarationStandFellingPurpose {
+    pub forest_use_declaration_stand_felling_purpose: CuttingPurposeType,
+}
+
+pub struct ForwardingEstimate {
+    pub forwarding_estimate: ForwardingEstimateType,
+}
+
+pub struct SurfaceRunoffFieldGroundIsUnbrokenText {
+    pub surface_runoff_field_ground_is_unbroken_text: String200Type,
+}
+
+pub struct FeeBase {
+    pub fee_base: FeeBasisDataType,
+}
+
+pub struct UnfreezingDate {
+    pub unfreezing_date: DateType,
+}
+
+pub struct MeanDiameterSummary {
+    pub mean_diameter_summary: PositiveInteger3digitsType,
+}
+
+pub struct StemCoordinates {
+    pub stem_coordinates: PointGeometryType,
+}
+
+pub struct SurfaceDrainingAreasText {
+    pub surface_draining_areas_text: String200Type,
+}
+
+pub struct WorkingSitePlanningOperation {
+    pub working_site_planning_operation: WorkingSitePlanningOperationStatusType,
+}
+
+pub struct ForestEnergySuitable {
+    pub forest_energy_suitable: YesNoType,
+}
+
+pub struct WorkingSiteForwardedProduction {
+    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
+}
+
+pub struct ExpectedValueSurplus {
+    pub expected_value_surplus: PositiveDecimalMax5IntegralPartMax2FractionalPartType,
+}
+
+pub struct Bytes {
+    pub bytes: base64Binary,
+}
+
+pub struct ExtinguisherVerificationDate {
+    pub extinguisher_verification_date: DateType,
+}
+
+pub struct AssortmentClass {
+    pub assortment_class: AssortmentClassType,
+}
+
+pub struct EmployeeHealthCare {
+    pub employee_health_care: YesNoType,
+}
+
+pub struct OfferWorkingSiteSilvicultureInfo {
+    pub offer_working_site_silviculture_info: OfferWorkingSiteSilvicultureInfoType,
+}
+
+pub struct CuttingRestrictionEnds {
+    pub cutting_restriction_ends: DateType,
+}
+
+pub struct WaterSystemProtectionText {
+    pub water_system_protection_text: String200Type,
+}
+
+pub struct WorkingSitePlanningStatus {
+    pub working_site_planning_status: WorkingSitePlanningStatusType,
+}
+
+pub struct StandTreesCuttingVolume {
+    pub stand_trees_cutting_volume: PositiveInteger4digitsType,
+}
+
+pub struct StubStemCount {
+    pub stub_stem_count: PositiveInteger6digitsType,
+}
+
+pub struct ModificationDate {
+    pub modification_date: TimeStampType,
+}
+
+pub struct DeadTreeStratum {
+    pub dead_tree_stratum: DeadTreeStratumType,
+}
+
+pub struct ContarctorId {
+    pub contarctor_id: String20Type,
+}
+
+pub struct OfferWorkingSites {
+    pub offer_working_sites: OfferWorkingSitesType,
+}
+
+pub struct ForestPropertyDataSet {
+    pub forest_property_data_set: ForestPropertyDataSetType,
+}
+
+pub struct SemiDry {
+    pub semi_dry: YesNoType,
+}
+
+pub struct FinalAuditSpareTrees {
+    pub final_audit_spare_trees: FinalAuditSpareTreesByCategoryType,
+}
+
+pub struct HabitatLocation {
+    pub habitat_location: HabitatLocationType,
+}
+
+pub struct PartOfProject {
+    pub part_of_project: PartOfProjectType,
+}
+
+pub struct PolygonGeometry {
+    pub polygon_geometry: PolygonGeometryType,
+}
+
+pub struct SyntymaPvm {
+    pub syntyma_pvm: SyntymaPvmTyyppi,
+}
+
+pub struct NonPersonificationId {
+    pub non_personification_id: String100Type,
+}
+
+pub struct AreaCode {
+    pub area_code: AreaCodeType,
+}
+
+pub struct ProposalArea {
+    pub proposal_area: ProposalAreaType,
+}
+
+pub struct AttributeName {
+    pub attribute_name: String100Type,
+}
+
+pub struct StorageDisplayId {
+    pub storage_display_id: String20Type,
+}
+
+pub struct RoadStructureShapeText {
+    pub road_structure_shape_text: String200Type,
+}
+
+pub struct SamplePlotCount {
+    pub sample_plot_count: PositiveIntegerType,
+}
+
+pub struct PlowingDate {
+    pub plowing_date: DateType,
+}
+
+pub struct LoadCount {
+    pub load_count: nonNegativeInteger,
+}
+
+pub struct ApplicationUnitPrice {
+    pub application_unit_price: MoneyType,
+}
+
+pub struct FeeBasis {
+    pub fee_basis: FeeBasisType,
+}
+
+pub struct VATRegistrationDate {
+    pub v_a_t_registration_date: VATRegistrationDateType,
+}
+
+pub struct FeatureAdditionalInfo {
+    pub feature_additional_info: FeatureAdditionalInfoType,
+}
+
+pub struct VehiclePathPressuresText {
+    pub vehicle_path_pressures_text: String200Type,
+}
+
+pub struct OperationTimeEnd {
+    pub operation_time_end: DateType,
+}
+
+pub struct SilvicultureRestrictionEnds {
+    pub silviculture_restriction_ends: DateType,
+}
+
+pub struct FeeUnit {
+    pub fee_unit: String10Type,
+}
+
+pub struct LoaderScaleModelYear {
+    pub loader_scale_model_year: YearType,
+}
+
+pub struct StumpCuttingAsInstructed {
+    pub stump_cutting_as_instructed: YesNoType,
+}
+
+pub struct HabitatSurviving {
+    pub habitat_surviving: VirtaHabitatSurvivingType,
+}
+
+pub struct DumplingLevelingErrorCount {
+    pub dumpling_leveling_error_count: PositiveIntegerType,
+}
+
+pub struct StandSilvicultureInfo {
+    pub stand_silviculture_info: StandSilvicultureInfoType,
+}
+
+pub struct TotalCompensations {
+    pub total_compensations: Decimal7And2PositiveType,
+}
+
+pub struct OldCode {
+    pub old_code: String50Type,
+}
+
+pub struct DeliveryNumber {
+    pub delivery_number: String20Type,
+}
+
+pub struct AdditionalName {
+    pub additional_name: String20Type,
+}
+
+pub struct LoadGreenMass {
+    pub load_green_mass: Decimal3FractionDigitsType,
+}
+
+pub struct LoggingsRows {
+    pub loggings_rows: LoggingsRowsType,
+}
+
+pub struct DamageSource {
+    pub damage_source: FeatureTypeType,
+}
+
+pub struct RoadDamages {
+    pub road_damages: YesNoType,
+}
+
+pub struct MeanHeightHardWood {
+    pub mean_height_hard_wood: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct MeasurementCertificateType {
+    pub measurement_certificate_type: MeasurementCertificateTypeType,
+}
+
+pub struct WorkCodeGroups {
+    pub work_code_groups: WorkCodeGroupsType,
+}
+
+pub struct PipeInstallation {
+    pub pipe_installation: WorkingQualityType,
+}
+
+pub struct CompletionDeclarationDeliveryDueDate {
+    pub completion_declaration_delivery_due_date: DateType,
+}
+
+pub struct Materials {
+    pub materials: MaterialsType,
+}
+
+pub struct Product {
+    pub product: ProductType,
+}
+
+pub struct StateCode {
+    pub state_code: StateCodeType,
+}
+
+pub struct FeeBaseListItem {
+    pub fee_base_list_item: FeebaseListItemType,
+}
+
+pub struct DeadTreeType {
+    pub dead_tree_type: DeadTreeTypeType,
+}
+
+pub struct ContractText {
+    pub contract_text: String1500Type,
+}
+
+pub struct LoggingAccessibility {
+    pub logging_accessibility: HarvestingAccessibilityType,
+}
+
+pub struct ContactPerson {
+    pub contact_person: ContactInformationType,
+}
+
+pub struct WorkingSite {
+    pub working_site: WorkingSiteType,
+}
+
+pub struct AmountOutsideSpot {
+    pub amount_outside_spot: PositiveInteger6digitsType,
+}
+
+pub struct DiameterClassOfSpareTrees {
+    pub diameter_class_of_spare_trees: PositiveInteger4digitsType,
+}
+
+pub struct FinancingActProjectCompleted {
+    pub financing_act_project_completed: YesNoType,
+}
+
+pub struct IdentifierValue {
+    pub identifier_value: IdentifierValueType,
+}
+
+pub struct FinancingActApplicationReference {
+    pub financing_act_application_reference: ReferenceType,
+}
+
+pub struct WorkingSiteFinalAuditStumpForwarding {
+    pub working_site_final_audit_stump_forwarding: WorkingSiteFinalAuditStumpForwardingType,
+}
+
+pub struct InspectionType {
+    pub inspection_type: VirtaInspectionTypeType,
+}
+
+pub struct CompensationApplicant {
+    pub compensation_applicant: ContactInformationBankAccountType,
+}
+
+pub struct CaliperId {
+    pub caliper_id: String200Type,
+}
+
+pub struct Beta {
+    pub beta: BetaType,
+}
+
+pub struct HarvesterId {
+    pub harvester_id: String20Type,
+}
+
+pub struct Temperature {
+    pub temperature: integer,
+}
+
+pub struct TotalSawlogVolume {
+    pub total_sawlog_volume: SawLogVolumeType,
+}
+
+pub struct ScaledMass {
+    pub scaled_mass: Decimal1FractionDigitType,
+}
+
+pub struct PilotName {
+    pub pilot_name: String50Type,
+}
+
+pub struct SilvicultureOrder {
+    pub silviculture_order: SilvicultureOrderType,
+}
+
+pub struct FeatureCode {
+    pub feature_code: FeatureCodeType,
+}
+
+pub struct TargetSelection {
+    pub target_selection: VirtaTargetSelectionType,
+}
+
+pub struct MoosePercentage {
+    pub moose_percentage: PercentType,
+}
+
+pub struct DeclarationStandReference {
+    pub declaration_stand_reference: ReferenceType,
+}
+
+pub struct ForestHaulageDistance {
+    pub forest_haulage_distance: ForestHaulageDistanceType,
+}
+
+pub struct ScaleFactor {
+    pub scale_factor: ScaleFactorDataType,
+}
+
+pub struct SamplePlotDominantHeight {
+    pub sample_plot_dominant_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct Status2 {
+    pub status2: ChangeStateType,
+}
+
+pub struct IsActive {
+    pub is_active: YesNoType,
+}
+
+pub struct BioMassCollectionDoneText {
+    pub bio_mass_collection_done_text: String200Type,
+}
+
+pub struct DisQualificationPercentage {
+    pub dis_qualification_percentage: Decimal2FractionDigitsType,
+}
+
+pub struct StatusryhmaTeksti {
+    pub statusryhma_teksti: StatusryhmaTekstiTyyppi,
+}
+
+pub struct RemainingTrees {
+    pub remaining_trees: FinalAuditAnswerType,
+}
+
+pub struct AssortmentsCompact {
+    pub assortments_compact: AssortmentsCompactType,
+}
+
+pub struct RemainingBiomassText {
+    pub remaining_biomass_text: String200Type,
+}
+
+pub struct PlantStorageManagement {
+    pub plant_storage_management: YesNoType,
+}
+
+pub struct WorkingSiteAccounting {
+    pub working_site_accounting: WorkingSiteAccountingType,
+}
+
+pub struct SentStorageVolume {
+    pub sent_storage_volume: Decimal3FractionDigitsType,
+}
+
+pub struct StandLocatedOnIsland {
+    pub stand_located_on_island: YesNoType,
+}
+
+pub struct StatusTimestamp {
+    pub status_timestamp: TimeStampType,
+}
+
+pub struct DitchDepthWidthAndDrainageEffect {
+    pub ditch_depth_width_and_drainage_effect: WorkingQualityType,
+}
+
+pub struct Measurer {
+    pub measurer: String50Type,
+}
+
+pub struct Attorney {
+    pub attorney: ContactInformationType,
+}
+
+pub struct WorkingAreas {
+    pub working_areas: WorkingAreasType,
+}
+
+pub struct DetectedGroundWood {
+    pub detected_ground_wood: PositiveInteger6digitsType,
+}
+
+pub struct Attribute2 {
+    pub attribute2: WorkCodeQualifierType2,
+}
+
+pub struct FellingRightValidityDate {
+    pub felling_right_validity_date: FellingRightValidityDateType,
+}
+
+pub struct StemType {
+    pub stem_type: StemTypeType,
+}
+
+pub struct MeltedWater {
+    pub melted_water: YesNoType,
+}
+
+pub struct ParticipationPercentage {
+    pub participation_percentage: PercentType,
+}
+
+pub struct DamagedPlantsErrorCount {
+    pub damaged_plants_error_count: PositiveIntegerType,
+}
+
+pub struct HelpGeometries {
+    pub help_geometries: HelpGeometriesType,
+}
+
+pub struct Works {
+    pub works: WorksType,
+}
+
+pub struct SubsidyApplier {
+    pub subsidy_applier: SubsidyApplierBaseContactAndEstateInfoType,
+}
+
+pub struct ParcelLabel {
+    pub parcel_label: String100Type,
+}
+
+pub struct CustomerReference {
+    pub customer_reference: ReferenceType,
+}
+
+pub struct Value {
+    pub value: ValueType,
+}
+
+pub struct Consumption {
+    pub consumption: ConsumptionType,
+}
+
+pub struct RealEstateId {
+    pub real_estate_id: IdStringType,
+}
+
+pub struct AlkuPvm {
+    pub alku_pvm: AlkuPvmTyyppi,
+}
+
+pub struct OwnWeight {
+    pub own_weight: PositiveInteger6digitsType,
+}
+
+pub struct DestinationStorage {
+    pub destination_storage: String20Type,
+}
+
+pub struct WorkingSafetyNoticedText {
+    pub working_safety_noticed_text: String200Type,
+}
+
+pub struct KieliKoodi {
+    pub kieli_koodi: KieliKoodiTyyppi,
+}
+
+pub struct Altitude {
+    pub altitude: PositiveInteger4digitsType,
+}
+
+pub struct FinancingActCompletionDeclarationTextInformation {
+    pub financing_act_completion_declaration_text_information: String2000Type,
+}
+
+pub struct CallForOfferBusinessSender {
+    pub call_for_offer_business_sender: CallForOfferBusinessSenderType,
+}
+
+pub struct ForestOwner {
+    pub forest_owner: String100Type,
+}
+
+pub struct WorkingSiteId {
+    pub working_site_id: ERPIdType,
+}
+
+pub struct OtherHabitatCode {
+    pub other_habitat_code: OtherHabitatCodeType,
+}
+
+pub struct CollectiveAgreement {
+    pub collective_agreement: String100Type,
+}
+
+pub struct Cost {
+    pub cost: CostType,
+}
+
+pub struct LengthMax {
+    pub length_max: LengthMaxType,
+}
+
+pub struct AssociationEvaluationApproval {
+    pub association_evaluation_approval: VirtaApprovalType,
+}
+
+pub struct StandExtraInfo {
+    pub stand_extra_info: String2000Type,
+}
+
+pub struct TaxNumber {
+    pub tax_number: TaxNumberType,
+}
+
+pub struct WorkingCode {
+    pub working_code: WorkCodeType,
+}
+
+pub struct CaseNumber {
+    pub case_number: FinancingActNumberType,
+}
+
+pub struct PlannedResource {
+    pub planned_resource: PlannedResourceType,
+}
+
+pub struct StemCountTarget {
+    pub stem_count_target: PositiveInteger2digitsType,
+}
+
+pub struct SmallWoodRemovalClass {
+    pub small_wood_removal_class: SmallWoodRemovalClassType,
+}
+
+pub struct OtherTreeSpecies {
+    pub other_tree_species: OtherTreeSpeciesType,
+}
+
+pub struct ReplyTo {
+    pub reply_to: String50Type,
+}
+
+pub struct DefaultValue {
+    pub default_value: String50Type,
+}
+
+pub struct SoilConditioningMethodCorrect {
+    pub soil_conditioning_method_correct: YesNoType,
+}
+
+pub struct PreviousMooseDamage {
+    pub previous_moose_damage: PreviousMooseDamageType,
+}
+
+pub struct StorageInfo {
+    pub storage_info: String500Type,
+}
+
+pub struct TrainingId {
+    pub training_id: PositiveInteger4digitsType,
+}
+
+pub struct InsertDate {
+    pub insert_date: InsertDateType,
+}
+
+pub struct CostTypeAndCompletedWorkCompletionRealEstate {
+    pub cost_type_and_completed_work_completion_real_estate: CostTypeAndCompletedWorkCompletionRealEstateType,
+}
+
+pub struct BaseRealEstate {
+    pub base_real_estate: BaseRealEstateType,
+}
+
+pub struct AirdromeAsInstructed {
+    pub airdrome_as_instructed: YesNoType,
+}
+
+pub struct TreeSpeciesAttributes {
+    pub tree_species_attributes: TreeSpeciesAttributesType,
+}
+
+pub struct StandVolumeSummary {
+    pub stand_volume_summary: PositiveInteger3digitsType,
+}
+
+pub struct Percentage {
+    pub percentage: Decimal1FractionDigitType,
+}
+
+pub struct OfferExpirationDate {
+    pub offer_expiration_date: OfferExpirationDateType,
+}
+
+pub struct NearestSeedlingSoilCompressed {
+    pub nearest_seedling_soil_compressed: YesNoType,
+}
+
+pub struct AppliedLength {
+    pub applied_length: Decimal6_2Type,
+}
+
+pub struct MastoInspection {
+    pub masto_inspection: VirtaMastoInspectionType,
+}
+
+pub struct ObjectProtectionOperations {
+    pub object_protection_operations: ObjectProtectionOperationsType,
+}
+
+pub struct HarvestedVolume {
+    pub harvested_volume: Decimal3FractionDigitsType,
+}
+
+pub struct Compensation {
+    pub compensation: PositiveDecimalMax5IntegralPartMax2FractionalPartType,
+}
+
+pub struct FertileType {
+    pub fertile_type: MaterialCodeType,
+}
+
+pub struct GroundManipulationMethod {
+    pub ground_manipulation_method: VirtaGroundManipulationMethodType,
+}
+
+pub struct SceneryWorkPermissionNeeded {
+    pub scenery_work_permission_needed: SceneryWorkPermissionNeededType,
+}
+
+pub struct ProposalYear {
+    pub proposal_year: ProposalYearType,
+}
+
+pub struct CompanyMode {
+    pub company_mode: CompanyModeType,
+}
+
+pub struct PurchaserRepresentativePerson {
+    pub purchaser_representative_person: PurchaserRepresentativePersonType,
+}
+
+pub struct ParentObjects {
+    pub parent_objects: ParentObjectsType,
+}
+
+pub struct WorkCompletionDate {
+    pub work_completion_date: DateType,
+}
+
+pub struct StandId {
+    pub stand_id: String20Type,
+}
+
+pub struct SedimentationBasinAndDamDimensioningIsFollowedText {
+    pub sedimentation_basin_and_dam_dimensioning_is_followed_text: String200Type,
+}
+
+pub struct StumpRaising {
+    pub stump_raising: YesNoType,
+}
+
+pub struct WorksDueDate {
+    pub works_due_date: DateType,
+}
+
+pub struct TreeOrGroundDamagesText {
+    pub tree_or_ground_damages_text: String200Type,
+}
+
+pub struct OperationMode {
+    pub operation_mode: OperationModeType,
+}
+
+pub struct MaterialUnit {
+    pub material_unit: MaterialUnitType,
+}
+
+pub struct CostTypeDescription {
+    pub cost_type_description: CostTypeDescriptionType,
+}
+
+pub struct CommonObjectData {
+    pub common_object_data: CommonObjectDataType,
+}
+
+pub struct Description {
+    pub description: String1500Type,
+}
+
+pub struct Class2damageCount {
+    pub class2damage_count: PositiveInteger6digitsType,
+}
+
+pub struct TreeStrata {
+    pub tree_strata: TreeStrataType,
+}
+
+pub struct KeyInfoAsText {
+    pub key_info_as_text: String2000Type,
+}
+
+pub struct AuditQuestion {
+    pub audit_question: AuditQuestionType,
+}
+
+pub struct TimeIntervalForMeasuringSamplePlot {
+    pub time_interval_for_measuring_sample_plot: PositiveInteger5digitsType,
+}
+
+pub struct ReasonCode {
+    pub reason_code: String10Type,
+}
+
+pub struct TargetNumber {
+    pub target_number: PositiveDecimalMax5IntegralPartMax1FractionalPartType,
+}
+
+pub struct TreeCount {
+    pub tree_count: StemCountType,
+}
+
+pub struct WorkingSiteGeometry {
+    pub working_site_geometry: LocatedSpecialFeature2Type,
+}
+
+pub struct Registered {
+    pub registered: YesNoType,
+}
+
+pub struct CertificationHandlingInstructions {
+    pub certification_handling_instructions: String3000Type,
+}
+
+pub struct OriginalProposalYear {
+    pub original_proposal_year: OriginalProposalYearType,
+}
+
+pub struct ReductionAvgDiameterSummary {
+    pub reduction_avg_diameter_summary: Decimal2FractionDigitsType,
+}
+
+pub struct DitchType {
+    pub ditch_type: DitchTypeType,
+}
+
+pub struct WorkingSiteFinalAuditPlantManagement {
+    pub working_site_final_audit_plant_management: WorkingSiteFinalAuditPlantManagementType,
+}
+
+pub struct MapSymbol {
+    pub map_symbol: MapSymbolType,
+}
+
+pub struct SpareTrees {
+    pub spare_trees: FinalAuditSpareTreesType,
+}
+
+pub struct SawlogPercent {
+    pub sawlog_percent: SawLogPercentType,
+}
+
+pub struct DeliveryInfo {
+    pub delivery_info: String50Type,
+}
+
+pub struct DamageData {
+    pub damage_data: DamageDataType,
+}
+
+pub struct NewDestinationStorage {
+    pub new_destination_storage: String20Type,
+}
+
+pub struct HumidityPercentage {
+    pub humidity_percentage: Decimal1FractionDigitType,
+}
+
+pub struct BankAccount {
+    pub bank_account: BankAccountType,
+}
+
+pub struct ValtiotunnusKoodi {
+    pub valtiotunnus_koodi: ValtiotunnusKoodiTyyppi,
+}
+
+pub struct DecisionReceiver {
+    pub decision_receiver: ContactInformationType,
+}
+
+pub struct ResourceName {
+    pub resource_name: String50Type,
+}
+
+pub struct AssortmentVolumes {
+    pub assortment_volumes: AssortmentVolumesType,
+}
+
+pub struct RegenerationEnsuring {
+    pub regeneration_ensuring: SilvicultureTypeType,
+}
+
+pub struct WorkingSiteGeometries {
+    pub working_site_geometries: WorkingSiteGeometriesType,
+}
+
+pub struct Payment {
+    pub payment: PaymentDataType,
+}
+
+pub struct FSFNumber {
+    pub f_s_f_number: String50Type,
+}
+
+pub struct WorkLoad1Unit {
+    pub work_load1_unit: WorkCodeUnitType,
+}
+
+pub struct InsuranceCompany {
+    pub insurance_company: String500Type,
+}
+
+pub struct CostTypeAndCompletedWorkApplication {
+    pub cost_type_and_completed_work_application: CostTypeAndCompletedWorkApplicationType,
+}
+
+pub struct Training {
+    pub training: TrainingDataType,
+}
+
+pub struct FSFValidity {
+    pub f_s_f_validity: FSFValidityType,
+}
+
+pub struct SelfMonitoringEvaluations {
+    pub self_monitoring_evaluations: SelfMonitoringEvaluationsType,
+}
+
+pub struct MaterialAmount {
+    pub material_amount: Decimal2FractionDigitsType,
+}
+
+pub struct StandAvgVehiclePathDistance {
+    pub stand_avg_vehicle_path_distance: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+pub struct TestAreaNumber {
+    pub test_area_number: PositiveIntegerType,
+}
+
+pub struct ForestHaulageAccessibility {
+    pub forest_haulage_accessibility: HarvestingAccessibilityType,
+}
+
+pub struct Area {
+    pub area: AreaType,
+}
+
+pub struct Damage {
+    pub damage: DamageType,
+}
+
+pub struct StoragesForestHaulageDistances {
+    pub storages_forest_haulage_distances: StoragesForestHaulageDistancesType,
+}
+
+pub struct DataId {
+    pub data_id: string,
+}
+
+pub struct SubsidyArgument {
+    pub subsidy_argument: SubsidyArgumentType,
+}
+
+pub struct FulfilledArea {
+    pub fulfilled_area: FulfilledAreaType,
+}
+
+pub struct Covered {
+    pub covered: YesNoType,
+}
+
+pub struct StorageName {
+    pub storage_name: String50Type,
+}
+
+pub struct NearestCultivatedSpotHeight {
+    pub nearest_cultivated_spot_height: PositiveInteger2digitsType,
+}
+
+pub struct Class2DamageCount {
+    pub class2_damage_count: StemCountType,
+}
+
+pub struct WaterSystemProtection {
+    pub water_system_protection: YesNoType,
+}
+
+pub struct StandReference {
+    pub stand_reference: ReferenceType,
+}
+
+pub struct StorageId {
+    pub storage_id: ERPIdType,
+}
+
+pub struct CareOfTeksti {
+    pub care_of_teksti: CareOfTekstiTyyppi,
+}
+
+pub struct UsedPricingMethod {
+    pub used_pricing_method: UsedPricingMethodType,
+}
+
+pub struct RunningMeters {
+    pub running_meters: Decimal3FractionDigitsType,
+}
+
+pub struct LevelCount {
+    pub level_count: PositiveInteger1digitsType,
+}
+
+pub struct FertilizerVolumeMeasuredText {
+    pub fertilizer_volume_measured_text: String200Type,
+}
+
+pub struct HuoneistotunnisteKirjainTeksti {
+    pub huoneistotunniste_kirjain_teksti: HuoneistotunnisteKirjainTekstiTyyppi,
+}
+
+pub struct CuttingValue {
+    pub cutting_value: PositiveInteger5digitsType,
+}
+
+pub struct SpecialFeature {
+    pub special_feature: BasicFeature2Type,
+}
+
+pub struct Parcel {
+    pub parcel: ParcelType,
+}
+
+pub struct HabitatOperations {
+    pub habitat_operations: HabitatOperationsType,
+}
+
+pub struct Audits {
+    pub audits: AuditsType,
+}
+
+pub struct ForwardedVolumeAccounted {
+    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
+}
+
+pub struct DiameterSection {
+    pub diameter_section: SectionType,
+}
+
+pub struct PlowingArranged {
+    pub plowing_arranged: YesNoType,
+}
+
+pub struct Height {
+    pub height: MeanHeightType,
+}
+
+pub struct Count {
+    pub count: PositiveInteger6digitsType,
+}
+
+pub struct Targets {
+    pub targets: TargetsType,
+}
+
+pub struct PricingMethod {
+    pub pricing_method: UsedPricingMethodType,
+}
+
+pub struct SahkoinenAsiointiTunnus {
+    pub sahkoinen_asiointi_tunnus: SahkoinenAsiointiTunnusTyyppi,
+}
+
+pub struct RelatedCallForOffer {
+    pub related_call_for_offer: RelatedCallForOfferType,
+}
+
+pub struct FertilizationTotalAuditText {
+    pub fertilization_total_audit_text: String200Type,
+}
+
+pub struct StandBasicData {
+    pub stand_basic_data: StandBasicDataType,
+}
+
+pub struct PreventionCompleted {
+    pub prevention_completed: YesNoType,
+}
+
+pub struct WorkLoad2 {
+    pub work_load2: Decimal2FractionDigitsType,
+}
+
+pub struct MaterialInfoText {
+    pub material_info_text: String1000Type,
+}
+
+pub struct SelfMonitoringObjectProtectionOperationsData {
+    pub self_monitoring_object_protection_operations_data: SelfMonitoringObjectProtectionOperationsDataType,
+}
+
+pub struct SubContractor {
+    pub sub_contractor: String20Type,
+}
+
+pub struct DecisionType {
+    pub decision_type: DecisionTypeType,
+}
+
+pub struct Storey {
+    pub storey: StoreyType,
+}
+
+pub struct MeasurerName {
+    pub measurer_name: String50Type,
+}
+
+pub struct StandAvgHeightSummary {
+    pub stand_avg_height_summary: Decimal1FractionDigitType,
+}
+
+pub struct SpecialPermission {
+    pub special_permission: SpecialPermissionType,
+}
+
+pub struct SubGroup {
+    pub sub_group: SubGroupType,
+}
+
+pub struct DeclarationPolygon {
+    pub declaration_polygon: DeclarationPolygonType,
+}
+
+pub struct SuspensionHoleDensitySizeAndLocationText {
+    pub suspension_hole_density_size_and_location_text: String200Type,
+}
+
+pub struct BusinessAcceptanceStatus {
+    pub business_acceptance_status: BusinessAcceptanceStatusType,
+}
+
+pub struct ObjectNumber {
+    pub object_number: ObjectNumberType,
+}
+
+pub struct SamplePlotNorthingCoordinate {
+    pub sample_plot_northing_coordinate: string,
+}
+
+pub struct ControlAdditionalInformation {
+    pub control_additional_information: ControlAdditionalInformationType,
+}
+
+pub struct DocumentFileName {
+    pub document_file_name: DocumentFileNameType,
+}
+
+pub struct UserId {
+    pub user_id: ShortERPIdType,
+}
+
+pub struct LengthCalibration {
+    pub length_calibration: LengthCalibrationType,
+}
+
+pub struct PreviousBlock {
+    pub previous_block: String20Type,
+}
+
+pub struct Organisation1 {
+    pub organisation1: String20Type,
+}
+
+pub struct RegisterUnitId {
+    pub register_unit_id: String20Type,
+}
+
+pub struct WorkCode {
+    pub work_code: WorkCodeType,
+}
+
+pub struct FeatureInfo {
+    pub feature_info: FeatureInfoType,
+}
+
+pub struct Notices {
+    pub notices: String1000Type,
+}
+
+pub struct DrainageState {
+    pub drainage_state: DrainageStateType,
+}
+
+pub struct FinancingSustainableForestry {
+    pub financing_sustainable_forestry: FinancingSustainableForestryType,
+}
+
+pub struct SamplePlotEastingCoordinate {
+    pub sample_plot_easting_coordinate: string,
+}
+
+pub struct TooHeightStumps {
+    pub too_height_stumps: PositiveInteger3digitsType,
+}
+
+pub struct ReductionCountSummary {
+    pub reduction_count_summary: PositiveInteger5digitsType,
+}
+
+pub struct WorkCodeGroup {
+    pub work_code_group: WorkCodeGroupType,
+}
+
+pub struct OutOfServiceEndDate {
+    pub out_of_service_end_date: DateType,
+}
+
+pub struct AuditionResource {
+    pub audition_resource: AuditionResourceType,
+}
+
+pub struct BeginNotificationAllowed {
+    pub begin_notification_allowed: YesNoType,
+}
+
+pub struct CompletionDate {
+    pub completion_date: CompletionDateType,
+}
+
+pub struct ForestSystemPaymentReference {
+    pub forest_system_payment_reference: String50Type,
+}
+
+pub struct WoodLots {
+    pub wood_lots: WoodLotsType,
+}
+
+pub struct StubMeanDiameter {
+    pub stub_mean_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct FileName {
+    pub file_name: String100Type,
+}
+
+pub struct Resources {
+    pub resources: ResourcesType,
+}
+
+pub struct FeedbackForPlanner {
+    pub feedback_for_planner: WorkingQualityType,
+}
+
+pub struct InfoTextMandatory {
+    pub info_text_mandatory: YesNoType,
+}
+
+pub struct GrowingTreeSpecies {
+    pub growing_tree_species: TreeSpeciesType,
+}
+
+pub struct FinalAuditerId {
+    pub final_auditer_id: String20Type,
+}
+
+pub struct SelfMonitoringStandArea {
+    pub self_monitoring_stand_area: AreaType,
+}
+
+pub struct WaterEconomySystemNoticedText {
+    pub water_economy_system_noticed_text: String200Type,
+}
+
+pub struct ControlOverallEvaluationData {
+    pub control_overall_evaluation_data: ControlOverallEvaluationDataType,
+}
+
+pub struct TreeDamageOutsideStandEvaluation {
+    pub tree_damage_outside_stand_evaluation: EvaluationCodeType,
+}
+
+pub struct RegionOfOrigin {
+    pub region_of_origin: String10Type,
+}
+
+pub struct WorkingInstructionsSufficientText {
+    pub working_instructions_sufficient_text: String200Type,
+}
+
+pub struct SamplePlotBasalArea {
+    pub sample_plot_basal_area: integer,
+}
+
+pub struct Attribute5 {
+    pub attribute5: WorkCodeQualifierType5,
+}
+
+pub struct CorrectHeightStumps {
+    pub correct_height_stumps: PositiveInteger3digitsType,
+}
+
+pub struct ContractWorkingSiteDetails {
+    pub contract_working_site_details: ContractWorkingSiteDetailsType,
+}
+
+pub struct LeafBiomass {
+    pub leaf_biomass: LeafBiomassType,
+}
+
+pub struct BearingCapacityClass {
+    pub bearing_capacity_class: BearingCapacityClassType,
+}
+
+pub struct StandTreesStratumLeaving {
+    pub stand_trees_stratum_leaving: StandTreesType,
+}
+
+pub struct SmsOperatorStatus {
+    pub sms_operator_status: SmsOperatorStatusType,
+}
+
+pub struct WorkingSiteFinalAuditDraining {
+    pub working_site_final_audit_draining: WorkingSiteFinalAuditDrainingType,
+}
+
+pub struct RootDamageCount {
+    pub root_damage_count: PositiveInteger3digitsType,
+}
+
+pub struct QualityControlDate {
+    pub quality_control_date: DateType,
+}
+
+pub struct TreeOrGroundDamages {
+    pub tree_or_ground_damages: YesNoType,
+}
+
+pub struct ControlStandBasicData {
+    pub control_stand_basic_data: ControlStandBasicDataType,
+}
+
+pub struct WorkingSiteFinalAuditDynamic {
+    pub working_site_final_audit_dynamic: WorkingSiteFinalAuditDynamicType,
+}
+
+pub struct ControlledOperationDescription {
+    pub controlled_operation_description: String100Type,
+}
+
+pub struct WorkingSiteStatus {
+    pub working_site_status: WorkingSiteStatusType,
+}
+
+pub struct SoilImprovementEvaluation {
+    pub soil_improvement_evaluation: VirtaEvaluationType,
+}
+
+pub struct ReasonDescription {
+    pub reason_description: String1000Type,
+}
+
+pub struct NewCode {
+    pub new_code: String50Type,
+}
+
+pub struct StumpCuttingAsInstructedText {
+    pub stump_cutting_as_instructed_text: String200Type,
+}
+
+pub struct StandInfo {
+    pub stand_info: StandInfoType,
+}
+
+pub struct VolumeLeft {
+    pub volume_left: Decimal6TotalDigitsType,
+}
+
+pub struct DiameterMin {
+    pub diameter_min: DiameterMinType,
+}
+
+pub struct CuttingRestriction {
+    pub cutting_restriction: CuttingRestrictionType,
+}
+
+pub struct NotificationDate {
+    pub notification_date: TimeStampType,
+}
+
+pub struct DifficultyClass {
+    pub difficulty_class: DifficultyClassType,
+}
+
+pub struct DitchCleaningBreakLocation {
+    pub ditch_cleaning_break_location: WorkingQualityType,
+}
+
+pub struct OperationYear {
+    pub operation_year: YearType,
+}
+
+pub struct LoaderScaleModel {
+    pub loader_scale_model: String50Type,
+}
+
+pub struct ForestDamageQualifier {
+    pub forest_damage_qualifier: ForestDamageQualifierType,
+}
+
+pub struct HuoneistotunnisteNumero {
+    pub huoneistotunniste_numero: HuoneistotunnisteNumeroTyyppi,
+}
+
+pub struct SilvicultureMethodCorrect {
+    pub silviculture_method_correct: YesNoType,
+}
+
+pub struct Bulk {
+    pub bulk: PositiveInteger4digitsType,
+}
+
+pub struct StemCountSpruce {
+    pub stem_count_spruce: PositiveInteger2digitsType,
+}
+
+pub struct Location {
+    pub location: PointGeometryType,
+}
+
+pub struct TurningPlaceText {
+    pub turning_place_text: String200Type,
+}
+
+pub struct ParentObjectType {
+    pub parent_object_type: ObjectTypeType,
+}
+
+pub struct ReductionStumpHeight {
+    pub reduction_stump_height: FinalAuditAnswerType,
+}
+
+pub struct KatuNimi {
+    pub katu_nimi: KatuNimiTyyppi,
+}
+
+pub struct CustomerType {
+    pub customer_type: String50Type,
+}
+
+pub struct CuttingBy {
+    pub cutting_by: VirtaCuttingByMachineType,
+}
+
+pub struct TotalValue {
+    pub total_value: TotalValueType,
+}
+
+pub struct Review {
+    pub review: VirtaReviewType,
+}
+
+pub struct TerrainDamageOutsideStandEvaluation {
+    pub terrain_damage_outside_stand_evaluation: EvaluationCodeType,
+}
+
+pub struct SubsidyAmount {
+    pub subsidy_amount: MoneyType,
+}
+
+pub struct AcceptanceDate {
+    pub acceptance_date: AcceptanceDateType,
+}
+
+pub struct WorkingArea {
+    pub working_area: WorkingAreaType,
+}
+
+pub struct RadiusReduction {
+    pub radius_reduction: Decimal2FractionDigitsType,
+}
+
+pub struct ContractorId {
+    pub contractor_id: String20Type,
+}
+
+pub struct SoilConditioningMethod {
+    pub soil_conditioning_method: WorkCodeType,
+}
+
+pub struct DisQualificationReason {
+    pub dis_qualification_reason: String10Type,
+}
+
+pub struct Biomass {
+    pub biomass: BiomassType,
+}
+
+pub struct AlkuHetki {
+    pub alku_hetki: AlkuHetkiTyyppi,
+}
+
+pub struct StumpLiftingQuality {
+    pub stump_lifting_quality: WorkingQualityType,
+}
+
+pub struct PostilokeroTeksti {
+    pub postilokero_teksti: PostilokeroTekstiTyyppi,
+}
+
+pub struct CumulativeMass {
+    pub cumulative_mass: CumulativeMassType,
+}
+
+pub struct Currency {
+    pub currency: CurrencyType,
+}
+
+pub struct AccessRightsInfo {
+    pub access_rights_info: String3000Type,
+}
+
+pub struct MeasureDate {
+    pub measure_date: DateType,
+}
+
+pub struct CompensationByLegislation {
+    pub compensation_by_legislation: CompensationByLegislationType,
+}
+
+pub struct Month {
+    pub month: MonthType,
+}
+
+pub struct ContactInformation {
+    pub contact_information: ContactInformationType,
+}
+
+pub struct AssortmentMatrixVolumes {
+    pub assortment_matrix_volumes: AssortmentMatrixVolumesType,
+}
+
+pub struct RestrictionDescription {
+    pub restriction_description: String1500Type,
+}
+
+pub struct HeightMin {
+    pub height_min: Decimal1FractionDigitType,
+}
+
+pub struct EndTime {
+    pub end_time: TimeStampType,
+}
+
+pub struct PassingPlace {
+    pub passing_place: WorkingQualityType,
+}
+
+pub struct TreeSpecies {
+    pub tree_species: TreeSpeciesType,
+}
+
+pub struct WorkingSiteName {
+    pub working_site_name: WorkingSiteNameType,
+}
+
+pub struct ElevatorCertificate {
+    pub elevator_certificate: YesNoType,
+}
+
+pub struct PlannedVolume {
+    pub planned_volume: Decimal3FractionDigitsType,
+}
+
+pub struct LimitsToWaterSystem {
+    pub limits_to_water_system: YesNoType,
+}
+
+pub struct CompletionActors {
+    pub completion_actors: CompletionActorsType,
+}
+
+pub struct FinancingType {
+    pub financing_type: FinancingActFinancingType,
+}
+
+pub struct DateSeedlingsToWorkingSite {
+    pub date_seedlings_to_working_site: DateType,
+}
+
+pub struct WorkingHoursSaturday {
+    pub working_hours_saturday: PositiveInteger2digitsType,
+}
+
+pub struct Date {
+    pub date: DateType,
+}
+
+pub struct MixedForestRegenarationMethods {
+    pub mixed_forest_regenaration_methods: YesNoType,
+}
+
+pub struct UsingRightCompensationAmount {
+    pub using_right_compensation_amount: Decimal7And2Type,
+}
+
+pub struct EnvironmentalObjectNoticedText {
+    pub environmental_object_noticed_text: String200Type,
+}
+
+pub struct FinancingActCompletionDeclaration {
+    pub financing_act_completion_declaration: FinancingActCompletionDeclarationType,
+}
+
+pub struct ErrorMessageData {
+    pub error_message_data: ErrorMessageDataType,
+}
+
+pub struct EnvironmentalObjectsNoticedText {
+    pub environmental_objects_noticed_text: String200Type,
+}
+
+pub struct TimeStamp {
+    pub time_stamp: TimeStampType,
+}
+
+pub struct StanfordFile {
+    pub stanford_file: StanfordFileType,
+}
+
+pub struct RemovalClass {
+    pub removal_class: RemovalClassType,
+}
+
+pub struct Gamma {
+    pub gamma: GammaType,
+}
+
+pub struct SpruceLog {
+    pub spruce_log: PositiveInteger4digitsType,
+}
+
+pub struct WorkLoadId {
+    pub work_load_id: unsignedLong,
+}
+
+pub struct OriginalXmlFile {
+    pub original_xml_file: base64Binary,
+}
+
+pub struct TreeIdentifier {
+    pub tree_identifier: TreeIdentifierType,
+}
+
+pub struct WorkSafetyRiskDescription {
+    pub work_safety_risk_description: String1000Type,
+}
+
+pub struct RestrictionBasedOnStoniness {
+    pub restriction_based_on_stoniness: RestrictionBasedOnStoninessType,
+}
+
+pub struct SaveTreesLeftText {
+    pub save_trees_left_text: String200Type,
+}
+
+pub struct PreferredContactingMethod {
+    pub preferred_contacting_method: PreferredContactingMethodType,
+}
+
+pub struct StandBasalAreaSummary {
+    pub stand_basal_area_summary: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct OperativeTreeSpeciesData {
+    pub operative_tree_species_data: TreeSpeciesDataType,
+}
+
+pub struct DecidedAmount {
+    pub decided_amount: DecidedAmountType,
+}
+
+pub struct LogCount {
+    pub log_count: PositiveInteger2digitsType,
+}
+
+pub struct ContractCode {
+    pub contract_code: String50Type,
+}
+
+pub struct ApplicationAmountUnit {
+    pub application_amount_unit: ForestCentreUnitType,
+}
+
+pub struct ListId {
+    pub list_id: PositiveIntegerType,
+}
+
+pub struct Operations {
+    pub operations: OperationsType,
+}
+
+pub struct Manufacturer {
+    pub manufacturer: MachineManufacturerType,
+}
+
+pub struct FinancingActApplicationGeometry {
+    pub financing_act_application_geometry: FinancingActGeometryType,
+}
+
+pub struct ForestObjectData {
+    pub forest_object_data: ForestObjectDataType,
+}
+
+pub struct SellersLogs {
+    pub sellers_logs: String200Type,
+}
+
+pub struct StumpTidinessText {
+    pub stump_tidiness_text: String200Type,
+}
+
+pub struct Payee {
+    pub payee: PayeeType,
+}
+
+pub struct UsingRightExists {
+    pub using_right_exists: YesNoNotKnownType,
+}
+
+pub struct isGPSlocation {
+    pub is_g_p_slocation: YesNoType,
+}
+
+pub struct SamplePlotSize {
+    pub sample_plot_size: integer,
+}
+
+pub struct PlantSiteCountSummary {
+    pub plant_site_count_summary: PositiveInteger4digitsType,
+}
+
+pub struct FeatureAdditionalCode {
+    pub feature_additional_code: FeatureAdditionalCodeType,
+}
+
+pub struct ObjectBasicData {
+    pub object_basic_data: ObjectBasicDataType,
+}
+
+pub struct Attachments {
+    pub attachments: AttachmentsType,
+}
+
+pub struct GrassControlEvaluation {
+    pub grass_control_evaluation: VirtaEvaluationType,
+}
+
+pub struct BufferDistance {
+    pub buffer_distance: BufferDistanceType,
+}
+
+pub struct ContractId {
+    pub contract_id: ContractIdType,
+}
+
+pub struct TerrainPlanningDone {
+    pub terrain_planning_done: YesNoType,
+}
+
+pub struct Class3DamageCount {
+    pub class3_damage_count: StemCountType,
+}
+
+pub struct PlanAndSubsidy {
+    pub plan_and_subsidy: PlanAndSubsidyType,
+}
+
+pub struct SoilType {
+    pub soil_type: SoilTypeType,
+}
+
+pub struct BICKoodi {
+    pub b_i_c_koodi: BICKoodiTyyppi,
+}
+
+pub struct CommunicationType {
+    pub communication_type: String100Type,
+}
+
+pub struct RealAmountOfSoilPreparationSpot {
+    pub real_amount_of_soil_preparation_spot: PositiveInteger5digitsType,
+}
+
+pub struct DamageSourceDescription {
+    pub damage_source_description: String100Type,
+}
+
+pub struct FinancingActRealEstates {
+    pub financing_act_real_estates: FinancingActRealEstatesType,
+}
+
+pub struct MachineAccessoryCode {
+    pub machine_accessory_code: MachineAccessoryCodeType,
+}
+
+pub struct Classification {
+    pub classification: PositiveIntegerType,
+}
+
+pub struct SamplePlotsSummaries {
+    pub sample_plots_summaries: SamplePlotSummariesType,
+}
+
+pub struct Payments {
+    pub payments: PaymentsType,
+}
+
+pub struct ExtraInfo {
+    pub extra_info: VirtaExtraInfoType,
+}
+
+pub struct Status {
+    pub status: WorkingSiteStatusType,
+}
+
+pub struct Damages {
+    pub damages: FinalAuditAnswerType,
+}
+
+pub struct MainTreeSpecies {
+    pub main_tree_species: MainTreeSpeciesType,
+}
+
+pub struct SeedlingLotIdentifier {
+    pub seedling_lot_identifier: String100Type,
+}
+
+pub struct Amount {
+    pub amount: Decimal2FractionDigitsType,
+}
+
+pub struct MessageType {
+    pub message_type: MessageType,
+}
+
+pub struct ReductionCount {
+    pub reduction_count: PositiveInteger2digitsType,
+}
+
+pub struct ShapeBeta {
+    pub shape_beta: ShapeBetaType,
+}
+
+pub struct ModelYear {
+    pub model_year: YearType,
+}
+
+pub struct AssortmentsChanges {
+    pub assortments_changes: AssortmentsChangesType,
+}
+
+pub struct Machine {
+    pub machine: MachineTypeType,
+}
+
+pub struct ForwardingDistance {
+    pub forwarding_distance: nonNegativeInteger,
+}
+
+pub struct PayeesAndRealEstates {
+    pub payees_and_real_estates: PayeesAndRealEstatesType,
+}
+
+pub struct SamplePlotNumber {
+    pub sample_plot_number: PositiveInteger3digitsType,
+}
+
+pub struct RealEstateOwner {
+    pub real_estate_owner: ContactInformationType,
+}
+
+pub struct Envelopes {
+    pub envelopes: EnvelopesType,
+}
+
+pub struct LogLength {
+    pub log_length: PositiveInteger5digitsType,
+}
+
+pub struct ShapeGamma {
+    pub shape_gamma: ShapeGammaType,
+}
+
+pub struct OperationStatus {
+    pub operation_status: OperationStatusType,
+}
+
+pub struct DevelopmentClass {
+    pub development_class: DevelopmentClassType,
+}
+
+pub struct SeedPlantEvaluation {
+    pub seed_plant_evaluation: VirtaEvaluationType,
+}
+
+pub struct PreDebtCollectionRegister {
+    pub pre_debt_collection_register: YesNoType,
+}
+
+pub struct ScaleData {
+    pub scale_data: ScaleDataType,
+}
+
+pub struct ClientApplicationId {
+    pub client_application_id: ClientApplicationIdType,
+}
+
+pub struct LogVolume {
+    pub log_volume: Decimal3FractionDigitsType,
+}
+
+pub struct Minimum {
+    pub minimum: MinimumType,
+}
+
+pub struct SubsidyArgumentText {
+    pub subsidy_argument_text: String5000Type,
+}
+
+pub struct DitchOrRoadPlanName {
+    pub ditch_or_road_plan_name: String100Type,
+}
+
+pub struct SendTimestamp {
+    pub send_timestamp: TimeStampType,
+}
+
+pub struct StormWorkingSite {
+    pub storm_working_site: YesNoType,
+}
+
+pub struct MeanHeightSilverBirch {
+    pub mean_height_silver_birch: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct StandStemDamagesPercentage {
+    pub stand_stem_damages_percentage: PercentWithFraction1Type,
+}
+
+pub struct CuttingPlannerLiability {
+    pub cutting_planner_liability: CuttingPlannerLiabilityType,
+}
+
+pub struct FinancingActCompletionGeometries {
+    pub financing_act_completion_geometries: FinancingActCompletionGeometriesType,
+}
+
+pub struct Envelope {
+    pub envelope: EnvelopeType,
+}
+
+pub struct NotificationType {
+    pub notification_type: NotificationTypeType,
+}
+
+pub struct RemainingStumpCountText {
+    pub remaining_stump_count_text: String200Type,
+}
+
+pub struct Sellers {
+    pub sellers: SellersType,
+}
+
+pub struct IncludePaymentPlan {
+    pub include_payment_plan: IncludePaymentPlanType,
+}
+
+pub struct SilvicultureContractNumber {
+    pub silviculture_contract_number: String20Type,
+}
+
+pub struct CuttingByMachine {
+    pub cutting_by_machine: VirtaCuttingByMachineType,
+}
+
+pub struct FeeText {
+    pub fee_text: String50Type,
+}
+
+pub struct MaatunnusKoodi {
+    pub maatunnus_koodi: MaatunnusKoodiTyyppi,
+}
+
+pub struct AssortmentClassCode {
+    pub assortment_class_code: AssortmentClassCodeType,
+}
+
+pub struct PlantEvaluation {
+    pub plant_evaluation: VirtaPlantEvaluationType,
+}
+
+pub struct OtherConservationMethods {
+    pub other_conservation_methods: YesNoType,
+}
+
+pub struct GoalAmountOfSoilPreparationSpot {
+    pub goal_amount_of_soil_preparation_spot: PositiveInteger5digitsType,
+}
+
+pub struct KeyElementName {
+    pub key_element_name: String200Type,
+}
+
+pub struct ValueListItem {
+    pub value_list_item: ValueListItemType,
+}
+
+pub struct OperationCode {
+    pub operation_code: ObjectProtectionOperationCodeType,
+}
+
+pub struct UsingRightDescription {
+    pub using_right_description: String1500Type,
+}
+
+pub struct WorkCodes {
+    pub work_codes: WorkCodesType,
+}
+
+pub struct Message {
+    pub message: WorkingSiteTradeMessageType,
+}
+
+pub struct TreeHeight {
+    pub tree_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct BasalAreaOtherTreeSpecies {
+    pub basal_area_other_tree_species: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct PaymentTransactionDescription {
+    pub payment_transaction_description: PaymentTransactionDescriptionType,
+}
+
+pub struct DominantHeight {
+    pub dominant_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct ChildObjectTypeSpecifier {
+    pub child_object_type_specifier: ObjectTypeSpecifierType,
+}
+
+pub struct DeclarationStand {
+    pub declaration_stand: DeclarationStandType,
+}
+
+pub struct HarvestingAccessibility {
+    pub harvesting_accessibility: HarvestingAccessibilityType,
+}
+
+pub struct StemCountSilverBirch {
+    pub stem_count_silver_birch: PositiveInteger2digitsType,
+}
+
+pub struct KemeraMunicipalityId {
+    pub kemera_municipality_id: string,
+}
+
+pub struct HarvestingSignControlClassifier {
+    pub harvesting_sign_control_classifier: EvaluationCodeType,
+}
+
+pub struct ProposalAreaPercent {
+    pub proposal_area_percent: ProposalAreaPercentType,
+}
+
+pub struct BeginDate {
+    pub begin_date: DateType,
+}
+
+pub struct ReductionAvgDiameter {
+    pub reduction_avg_diameter: Decimal2FractionDigitsType,
+}
+
+pub struct WorkingSiteQualityNotification {
+    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
+}
+
+pub struct BankCode {
+    pub bank_code: String20Type,
+}
+
+pub struct PlantingWorkQuality {
+    pub planting_work_quality: integer,
+}
+
+pub struct PreClearingInformation {
+    pub pre_clearing_information: PreClearingInformationType,
+}
+
+pub struct CommonMessages {
+    pub common_messages: CommonMessagesType,
+}
+
+pub struct RoadStructureText {
+    pub road_structure_text: String200Type,
+}
+
+pub struct FertilizationType {
+    pub fertilization_type: String50Type,
+}
+
+pub struct ChildObjectId {
+    pub child_object_id: IdStringNotEmptyType,
+}
+
+pub struct ControlObjectBasicData {
+    pub control_object_basic_data: ControlObjectBasicDataType,
+}
+
+pub struct ReceivedCompensation {
+    pub received_compensation: YesNoType,
+}
+
+pub struct ForestCentreReply {
+    pub forest_centre_reply: ForestCentreReplyType,
+}
+
+pub struct PineDecimal {
+    pub pine_decimal: VirtaTreeDecimalType,
+}
+
+pub struct Organisation4 {
+    pub organisation4: String20Type,
+}
+
+pub struct RoundWoodSalesData {
+    pub round_wood_sales_data: RoundWoodSalesDataType,
+}
+
+pub struct FileBinary {
+    pub file_binary: base64Binary,
+}
+
+pub struct UsingRestriction {
+    pub using_restriction: UsingRestrictionType,
+}
+
+pub struct SentDate {
+    pub sent_date: DateType,
+}
+
+pub struct SuspensionHoleDensitySizeAndLocation {
+    pub suspension_hole_density_size_and_location: WorkingQualityType,
+}
+
+pub struct PlannedOperationChains {
+    pub planned_operation_chains: PlannedOperationChainsType,
+}
+
+pub struct Assortment {
+    pub assortment: AssortmentType,
+}
+
+pub struct Explanation {
+    pub explanation: ExplanationType,
+}
+
+pub struct Version {
+    pub version: String10Type,
+}
+
+pub struct MainDamage {
+    pub main_damage: YesNoType,
+}
+
+pub struct SubsidyApplierReferenceList {
+    pub subsidy_applier_reference_list: SubsidyApplierReferenceListType,
+}
+
+pub struct DeciduousTreeTargetDensityPercent {
+    pub deciduous_tree_target_density_percent: PercentType,
+}
+
+pub struct StockingWithSeedlings {
+    pub stocking_with_seedlings: VirtaYesNoType,
+}
+
+pub struct WorkCodeQualifier4 {
+    pub work_code_qualifier4: WorkCodeQualifierType4,
+}
+
+pub struct SubContractorVerified {
+    pub sub_contractor_verified: YesNoType,
+}
+
+pub struct VehiclePathMeanWidth {
+    pub vehicle_path_mean_width: Decimal5_1Type,
+}
+
+pub struct PhoneNumber {
+    pub phone_number: String20Type,
+}
+
+pub struct WorkingSiteFinalAuditStumpLifting {
+    pub working_site_final_audit_stump_lifting: WorkingSiteFinalAuditStumpLiftingType,
+}
+
+pub struct ClodMoistureErrorCount {
+    pub clod_moisture_error_count: PositiveIntegerType,
+}
+
+pub struct DeclarationPolygons {
+    pub declaration_polygons: DeclarationPolygonsType,
+}
+
+pub struct TargetPartStatus {
+    pub target_part_status: VirtaTargetPartStatusType,
+}
+
+pub struct LogLengthClass {
+    pub log_length_class: PositiveInteger4digitsType,
+}
+
+pub struct ControlEvaluations {
+    pub control_evaluations: ControlEvaluationsType,
+}
+
+pub struct CostTypeNumber {
+    pub cost_type_number: CostTypeNumberType,
+}
+
+pub struct FinancingActCompletionOtherSubjects {
+    pub financing_act_completion_other_subjects: FinancingActCompletionOtherSubjectsType,
+}
+
+pub struct MooseDamageDeclarationReference {
+    pub moose_damage_declaration_reference: ReferenceType,
+}
+
+pub struct MinDiameter {
+    pub min_diameter: PositiveIntegerType,
+}
+
+pub struct OfferDate {
+    pub offer_date: OfferDateType,
+}
+
+pub struct StumpLiftingSuitable {
+    pub stump_lifting_suitable: YesNoType,
+}
+
+pub struct CommonObjectDataReference {
+    pub common_object_data_reference: ReferenceType,
+}
+
+pub struct TransportDistance {
+    pub transport_distance: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+pub struct CostType {
+    pub cost_type: CostTypeType2,
+}
+
+pub struct MeanDiameterHardWood {
+    pub mean_diameter_hard_wood: PositiveInteger3digitsType,
+}
+
+pub struct OperationInfo {
+    pub operation_info: OperationInfoType,
+}
+
+pub struct NaturalCropStemCount {
+    pub natural_crop_stem_count: PositiveInteger6digitsType,
+}
+
+pub struct AdditionalText {
+    pub additional_text: AdditionalTextType,
+}
+
+pub struct DataName {
+    pub data_name: string,
+}
+
+pub struct OperationUrgency {
+    pub operation_urgency: OperationUrgencyType,
+}
+
+pub struct TrainingFreeText {
+    pub training_free_text: String50Type,
+}
+
+pub struct WorkingRepresentative {
+    pub working_representative: WorkingRepresentativeType,
+}
+
+pub struct UlkomaaHenkiloTunnus {
+    pub ulkomaa_henkilo_tunnus: UlkomaaHenkiloTunnusTyyppi,
+}
+
+pub struct DeclarationSoilPreparationOperation {
+    pub declaration_soil_preparation_operation: DeclarationSoilPreparationOperationType,
+}
+
+pub struct PineLog {
+    pub pine_log: PositiveInteger4digitsType,
+}
+
+pub struct SelfMonitoringBasicData {
+    pub self_monitoring_basic_data: SelfMonitoringBasicDataType,
+}
+
+pub struct OrganizationName {
+    pub organization_name: string,
+}
+
+pub struct Normal {
+    pub normal: NormalType,
+}
+
+pub struct WorkSafetyRisks {
+    pub work_safety_risks: WorkSafetyRisksType,
+}
+
+pub struct GoalTreeSpecies {
+    pub goal_tree_species: TreeSpeciesType,
+}
+
+pub struct RemoveDate {
+    pub remove_date: DateType,
+}
+
+pub struct StartLoadNumber {
+    pub start_load_number: PositiveInteger4digitsType,
+}
+
+pub struct PaidValue {
+    pub paid_value: PaidValueType,
+}
+
+pub struct MeanDiameterOfSpareTrees {
+    pub mean_diameter_of_spare_trees: DiameterType,
+}
+
+pub struct SellerRepresentativePerson {
+    pub seller_representative_person: SellerRepresentativePersonType,
+}
+
+pub struct WorkingSitePaymentTransactions {
+    pub working_site_payment_transactions: OfferWorkingSitePaymentTransactionsType,
+}
+
+pub struct CleaningBreaksDoneText {
+    pub cleaning_breaks_done_text: String200Type,
+}
+
+pub struct RecipientType {
+    pub recipient_type: RecipientTypeType,
+}
+
+pub struct KilometersWithCaravan {
+    pub kilometers_with_caravan: PositiveInteger4digitsType,
+}
+
+pub struct WholeName {
+    pub whole_name: WholeNameType,
+}
+
+pub struct Productivity {
+    pub productivity: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+pub struct ResourceIdMJ {
+    pub resource_id_m_j: String20Type,
+}
+
+pub struct ContactLocationInformation {
+    pub contact_location_information: AlternativeGeometriesType,
+}
+
+pub struct BioMassQualityText {
+    pub bio_mass_quality_text: String200Type,
+}
+
+pub struct WorkingSiteEndNotification {
+    pub working_site_end_notification: WorkingSiteEndNotificationType,
+}
+
+pub struct PreClearingExecutionTime {
+    pub pre_clearing_execution_time: FSFValidityType,
+}
+
+pub struct FinancingActCompletionStand {
+    pub financing_act_completion_stand: FinancingActCompletionStandType,
+}
+
+pub struct InspectionMethod {
+    pub inspection_method: VirtaInspectionMethodType,
+}
+
+pub struct SamplePlotMeasurementSummary {
+    pub sample_plot_measurement_summary: SamplePlotMeasurementSummaryType,
+}
+
+pub struct TravelEndTime {
+    pub travel_end_time: TimeStampType,
+}
+
+pub struct MeasurementCertificate {
+    pub measurement_certificate: MeasurementCertificateType,
+}
+
+pub struct DisQualificationSign {
+    pub dis_qualification_sign: String5Type,
+}
+
+pub struct RoadStructureShape {
+    pub road_structure_shape: WorkingQualityType,
+}
+
+pub struct InventoryDate {
+    pub inventory_date: DateType,
+}
+
+pub struct Justifications {
+    pub justifications: JustificationsType,
+}
+
+pub struct EnvironmentCleanlinessNoticedText {
+    pub environment_cleanliness_noticed_text: String200Type,
+}
+
+pub struct PowerOfAttorneyDocument {
+    pub power_of_attorney_document: base64Binary,
+}
+
+pub struct CopOperationProject {
+    pub cop_operation_project: YesNoType,
+}
+
+pub struct Header {
+    pub header: HeaderType,
+}
+
+pub struct ProposalData {
+    pub proposal_data: ProposalDataType,
+}
+
+pub struct Organisation3 {
+    pub organisation3: String20Type,
+}
+
+pub struct E101 {
+    pub e101: YesNoType,
+}
+
+pub struct SedimentationBasinSizeShapeAndFunctionality {
+    pub sedimentation_basin_size_shape_and_functionality: WorkingQualityType,
+}
+
+pub struct DeploymentYear {
+    pub deployment_year: YearType,
+}
+
+pub struct DecisionNumber {
+    pub decision_number: String100Type,
+}
+
+pub struct CompletingNaturalCropStemCount {
+    pub completing_natural_crop_stem_count: PositiveInteger6digitsType,
+}
+
+pub struct AdditionalCode {
+    pub additional_code: AdditionalCodeType,
+}
+
+pub struct StockingWIthSeedlings {
+    pub stocking_w_ith_seedlings: integer,
+}
+
+pub struct FinancingActCompletionGeometry {
+    pub financing_act_completion_geometry: FinancingActGeometryType,
+}
+
+pub struct Storages {
+    pub storages: StoragesType,
+}
+
+pub struct DitchMeanWidth {
+    pub ditch_mean_width: string,
+}
+
+pub struct OperationTreeSpeciesSummary {
+    pub operation_tree_species_summary: OperationTreeSpeciesSummaryType,
+}
+
+pub struct ControlDataForestRoadConstruction {
+    pub control_data_forest_road_construction: ControlDataForestRoadConstructionType,
+}
+
+pub struct WorkQuality {
+    pub work_quality: VirtaWorkQualityType,
+}
+
+pub struct LandScapingText {
+    pub land_scaping_text: String200Type,
+}
+
+pub struct HarvestingSeason {
+    pub harvesting_season: VirtaHarvestingSeasonType,
+}
+
+pub struct DitchOrRoadPlanId {
+    pub ditch_or_road_plan_id: String10Type,
+}
+
+pub struct Payees {
+    pub payees: PayeesType,
+}
+
+pub struct AdditionalInfo {
+    pub additional_info: String1000Type,
+}
+
+pub struct PreClearing {
+    pub pre_clearing: YesNoNotNeededType,
+}
+
+pub struct SoilConditioningDepth {
+    pub soil_conditioning_depth: FinalAuditAnswerType,
+}
+
+pub struct StatisticsQuantity {
+    pub statistics_quantity: StatisticsQuantityType,
+}
+
+pub struct SoilData {
+    pub soil_data: BaseSoilDataType,
+}
+
+pub struct DeadTreeStrata {
+    pub dead_tree_strata: DeadTreeStrataType,
+}
+
+pub struct CuttingIncome {
+    pub cutting_income: CuttingIncomeType,
+}
+
+pub struct NewEnvironmentalObjectsText {
+    pub new_environmental_objects_text: String200Type,
+}
+
+pub struct FinalAuditerName {
+    pub final_auditer_name: String50Type,
+}
+
+pub struct Infotext {
+    pub infotext: String1000Type,
+}
+
+pub struct PreviousBlocks {
+    pub previous_blocks: PreviousBlockInfoType,
+}
+
+pub struct WorkingSiteFinished {
+    pub working_site_finished: YesNoType,
+}
+
+pub struct WorkingSiteQualityControlPlantManagement {
+    pub working_site_quality_control_plant_management: WorkingSiteQualityControlPlantManagementType,
+}
+
+pub struct WorkingWeight {
+    pub working_weight: WorkingWeightType,
+}
+
+pub struct DeclarationPolygonReference {
+    pub declaration_polygon_reference: ReferenceType,
+}
+
+pub struct VATStatus {
+    pub v_a_t_status: VATStatusType,
+}
+
+pub struct ExcavatorMovingAndTreeDamagesText {
+    pub excavator_moving_and_tree_damages_text: String200Type,
+}
+
+pub struct NotificationsAndImprovementsText {
+    pub notifications_and_improvements_text: String200Type,
+}
+
+pub struct OperationTreeReduction {
+    pub operation_tree_reduction: OperationTreeReductionType,
+}
+
+pub struct TravelStartTime {
+    pub travel_start_time: TimeStampType,
+}
+
+pub struct VehiclePathSubsidencePercentage {
+    pub vehicle_path_subsidence_percentage: PositiveInteger3digitsType,
+}
+
+pub struct HabitatType {
+    pub habitat_type: VirtaHabitatTypeType,
+}
+
+pub struct MineralSoilLayer {
+    pub mineral_soil_layer: FinalAuditAnswerType,
+}
+
+pub struct CuttingMethod {
+    pub cutting_method: CuttingTypeType,
+}
+
+pub struct SamplePlotTrackDistance {
+    pub sample_plot_track_distance: integer,
+}
+
+pub struct ContractInfo {
+    pub contract_info: String1000Type,
+}
+
+pub struct ResourceId {
+    pub resource_id: String20Type,
+}
+
+pub struct BirchDecimal {
+    pub birch_decimal: VirtaTreeDecimalType,
+}
+
+pub struct UserName {
+    pub user_name: String100Type,
+}
+
+pub struct UnseparetedParcelTypeChar {
+    pub unsepareted_parcel_type_char: UnseparetedParcelTypeCharType,
+}
+
+pub struct AmountAccounted {
+    pub amount_accounted: Decimal3FractionDigitsType,
+}
+
+pub struct ControlDataRegeneration {
+    pub control_data_regeneration: RegenerationDataType,
+}
+
+pub struct DelinationObjectOrderId {
+    pub delination_object_order_id: String200Type,
+}
+
+pub struct DecisionHandlers {
+    pub decision_handlers: DecisionHandlersType,
+}
+
+pub struct PointGeometry {
+    pub point_geometry: PointGeometryType,
+}
+
+pub struct UnitNumber {
+    pub unit_number: string,
+}
+
+pub struct Specification {
+    pub specification: SpecificationType,
+}
+
+pub struct TurvakieltoKytkin {
+    pub turvakielto_kytkin: TurvakieltoKytkinTyyppi,
+}
+
+pub struct DitchesInAdditionToCultivation {
+    pub ditches_in_addition_to_cultivation: PositiveInteger4digitsType,
+}
+
+pub struct KeyElementId {
+    pub key_element_id: IdStringNotEmptyType,
+}
+
+pub struct ProjectStatus {
+    pub project_status: VirtaProjectStatusType,
+}
+
+pub struct StemTypeVolumes {
+    pub stem_type_volumes: StemTypeVolumesType,
+}
+
+pub struct ControlObjectData {
+    pub control_object_data: ControlObjectDataType,
+}
+
+pub struct CompletionDeclarationActors {
+    pub completion_declaration_actors: CompletionDeclarationActorsType,
+}
+
+pub struct TrainingDate {
+    pub training_date: DateType,
+}
+
+pub struct OtherTimberValue {
+    pub other_timber_value: PositiveInteger5digitsType,
+}
+
+pub struct PackagingDate {
+    pub packaging_date: DateType,
+}
+
+pub struct OWorkingSite {
+    pub o_working_site: WorkingSiteType,
+}
+
+pub struct OldDestinationStorage {
+    pub old_destination_storage: String20Type,
+}
+
+pub struct Images {
+    pub images: PositiveInteger2digitsType,
+}
+
+pub struct FinancingActApplicationTextInformation {
+    pub financing_act_application_text_information: String2000Type,
+}
+
+pub struct TestAreaRequired {
+    pub test_area_required: YesNoType,
+}
+
+pub struct Weight {
+    pub weight: Integer7digitsType,
+}
+
+pub struct DegreeDays {
+    pub degree_days: PositiveInteger4digitsType,
+}
+
+pub struct EtuNimi {
+    pub etu_nimi: EtuNimiTyyppi,
+}
+
+pub struct LoadRating {
+    pub load_rating: LoadRatingType,
+}
+
+pub struct SettlingBasins {
+    pub settling_basins: YesNoType,
+}
+
+pub struct DamagedSeedlingCount {
+    pub damaged_seedling_count: PositiveInteger6digitsType,
+}
+
+pub struct KuolemaPvm {
+    pub kuolema_pvm: KuolemaPvmTyyppi,
+}
+
+pub struct Contractors {
+    pub contractors: ContractorsType,
+}
+
+pub struct TreeSpeciesAttribute {
+    pub tree_species_attribute: TreeSpeciesAttributeType,
+}
+
+pub struct AlreadyPaidCompensation {
+    pub already_paid_compensation: PositiveDecimalMax5IntegralPartMax2FractionalPartType,
+}
+
+pub struct AbsoluteQuantity {
+    pub absolute_quantity: AbsoluteQuantityType,
+}
+
+pub struct SamplePlotSizeTreeReduction {
+    pub sample_plot_size_tree_reduction: SamplePlotSizeType,
+}
+
+pub struct DetectedEnergyWood {
+    pub detected_energy_wood: PositiveInteger6digitsType,
+}
+
+pub struct TargetAmount {
+    pub target_amount: AmountType,
+}
+
+pub struct Measurement {
+    pub measurement: MeasurementDataType,
+}
+
+pub struct SubContractorResource {
+    pub sub_contractor_resource: YesNoType,
+}
+
+pub struct RegenerationData {
+    pub regeneration_data: RegenerationDataType,
+}
+
+pub struct DateSeedlingsExitFromTreeNursery {
+    pub date_seedlings_exit_from_tree_nursery: DateType,
+}
+
+pub struct Class1damageCount {
+    pub class1damage_count: PositiveInteger6digitsType,
+}
+
+pub struct AdvanceTax {
+    pub advance_tax: AdvanceTaxType,
+}
+
+pub struct Reason2 {
+    pub reason2: VirtaReasonType,
+}
+
+pub struct UsingRight {
+    pub using_right: UsingRightType,
+}
+
+pub struct SeedlingData {
+    pub seedling_data: SeedlingDataType,
+}
+
+pub struct BusinessAcceptance {
+    pub business_acceptance: BusinessAcceptanceType,
+}
+
+pub struct WorkCodeQualifier2 {
+    pub work_code_qualifier2: WorkCodeQualifierType2,
+}
+
+pub struct HopperLocationFromGPS {
+    pub hopper_location_from_g_p_s: YesNoType,
+}
+
+pub struct Priority {
+    pub priority: WorkingSitePriorityType,
+}
+
+pub struct Supplier {
+    pub supplier: String50Type,
+}
+
+pub struct EntityTag {
+    pub entity_tag: EntityTagType,
+}
+
+pub struct FeedbackForPlannerText {
+    pub feedback_for_planner_text: String200Type,
+}
+
+pub struct Contract {
+    pub contract: ContractType,
+}
+
+pub struct ForestCentreMessage {
+    pub forest_centre_message: ForestCentreMessageType,
+}
+
+pub struct MeasurerType {
+    pub measurer_type: MeasurerTypeType,
+}
+
+pub struct ExtraPerson2 {
+    pub extra_person2: PositiveInteger4digitsType,
+}
+
+pub struct WorkingSiteHarvestingQualityControlManual {
+    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
+}
+
+pub struct UnfulfilledArea {
+    pub unfulfilled_area: PolygonOrMultiPolygon2Type,
+}
+
+pub struct LogDiameterClass {
+    pub log_diameter_class: PositiveInteger3digitsType,
+}
+
+pub struct MeanStumpDiameter {
+    pub mean_stump_diameter: DiameterType,
+}
+
+pub struct ForestPropertyData {
+    pub forest_property_data: ForestPropertyDataType,
+}
+
+pub struct SubCategory {
+    pub sub_category: ImageSubCategoryType,
+}
+
+pub struct RestrictionData {
+    pub restriction_data: RestrictionDataType,
+}
+
+pub struct OwnerActionApproval {
+    pub owner_action_approval: VirtaApprovalType,
+}
+
+pub struct SamplePlotTrackDepth {
+    pub sample_plot_track_depth: integer,
+}
+
+pub struct MachineAccessoryDescription {
+    pub machine_accessory_description: String500Type,
+}
+
+pub struct StratumOrigin {
+    pub stratum_origin: SeedlingOriginType,
+}
+
+pub struct SilvicultureMethodCorrectText {
+    pub silviculture_method_correct_text: String200Type,
+}
+
+pub struct ForestDepotAccessibility {
+    pub forest_depot_accessibility: ForestDepotAccessibilityType,
+}
+
+pub struct OperationalRegion {
+    pub operational_region: String50Type,
+}
+
+pub struct ControlDataSwampForestManagement {
+    pub control_data_swamp_forest_management: ControlDataSwampForestManagementType,
+}
+
+pub struct VoimassaoloKytkin {
+    pub voimassaolo_kytkin: VoimassaoloKytkinTyyppi,
+}
+
+pub struct AssortmentVolume {
+    pub assortment_volume: AssortmentVolumeType,
+}
+
+pub struct RootDamages {
+    pub root_damages: PositiveInteger3digitsType,
+}
+
+pub struct EnsimmainenRiviTeksti {
+    pub ensimmainen_rivi_teksti: EnsimmainenRiviTekstiTyyppi,
+}
+
+pub struct ScalpsCount {
+    pub scalps_count: PositiveInteger2digitsType,
+}
+
+pub struct MaterialSupplier {
+    pub material_supplier: String50Type,
+}
+
+pub struct LocationMunicipalityNumber {
+    pub location_municipality_number: MunicipalityNumberType,
+}
+
+pub struct NimilajiKoodi {
+    pub nimilaji_koodi: NimilajiKoodiTyyppi,
+}
+
+pub struct ExcavationSoilLocationText {
+    pub excavation_soil_location_text: String200Type,
+}
+
+pub struct AverageStemVolume {
+    pub average_stem_volume: Decimal3FractionDigitsType,
+}
+
+pub struct A1 {
+    pub a1: YesNoType,
+}
+
+pub struct Population {
+    pub population: PositiveInteger3digitsType,
+}
+
+pub struct CommercialName {
+    pub commercial_name: String100Type,
+}
+
+pub struct ArrivalDate {
+    pub arrival_date: DateMmDdYyyyType,
+}
+
+pub struct RestrictionStartDate {
+    pub restriction_start_date: StartDateType,
+}
+
+pub struct LoadPaymentReference {
+    pub load_payment_reference: String50Type,
+}
+
+pub struct TreeDamageOutsideStand {
+    pub tree_damage_outside_stand: VirtaEvaluationType,
+}
+
+pub struct DrainStorageAsInstructedText {
+    pub drain_storage_as_instructed_text: String200Type,
+}
+
+pub struct FinancingActApplication {
+    pub financing_act_application: FinancingActApplicationType,
+}
+
+pub struct MunicipalityNumber {
+    pub municipality_number: KuntaKoodiTyyppi,
+}
+
+pub struct Variance {
+    pub variance: VarianceType,
+}
+
+pub struct CalibrationUseLog {
+    pub calibration_use_log: YesNoType,
+}
+
+pub struct FirstName {
+    pub first_name: FirstNameType,
+}
+
+pub struct MobilePhoneNumber {
+    pub mobile_phone_number: MobilePhoneNumberType,
+}
+
+pub struct HarvestingOrder {
+    pub harvesting_order: HarvestingOrderType,
+}
+
+pub struct MaterialProducer {
+    pub material_producer: String50Type,
+}
+
+pub struct PlantingDepthErrorCount {
+    pub planting_depth_error_count: PositiveIntegerType,
+}
+
+pub struct WorkingHoursSunday {
+    pub working_hours_sunday: PositiveInteger2digitsType,
+}
+
+pub struct SilvicultureRestrictionDetails {
+    pub silviculture_restriction_details: SilvicultureRestrictionDetailsType,
+}
+
+pub struct LargeSummaryReportRequired {
+    pub large_summary_report_required: YesNoType,
+}
+
+pub struct LoadRange {
+    pub load_range: LoadRangeType,
+}
+
+pub struct SenderUserId {
+    pub sender_user_id: String20Type,
+}
+
+pub struct Operator {
+    pub operator: VirtaAdvertiserType,
+}
+
+pub struct OutOfServiceStartDate {
+    pub out_of_service_start_date: DateType,
+}
+
+pub struct MaterialCode {
+    pub material_code: MaterialCodeType,
+}
+
+pub struct StartTime {
+    pub start_time: TimeStampType,
+}
+
+pub struct Operation {
+    pub operation: OperationDefType,
+}
+
+pub struct SpecificationCode {
+    pub specification_code: SpecificationCodeType,
+}
+
+pub struct ProjectIsAuthorizedForEstate {
+    pub project_is_authorized_for_estate: YesNoType,
+}
+
+pub struct TreeDamagesText {
+    pub tree_damages_text: String200Type,
+}
+
+pub struct Quality {
+    pub quality: String5Type,
+}
+
+pub struct WoodLotInformationType {
+    pub wood_lot_information_type: WoodLotInformationTypeType,
+}
+
+pub struct RequestCode {
+    pub request_code: RequestCodeType,
+}
+
+pub struct ShapeAlfa {
+    pub shape_alfa: ShapeAlfaType,
+}
+
+pub struct WorkingHoursBusinessDay {
+    pub working_hours_business_day: PositiveInteger2digitsType,
+}
+
+pub struct CuttingPurpose {
+    pub cutting_purpose: CuttingPurposeType,
+}
+
+pub struct DeclarationRegenerationCommitment {
+    pub declaration_regeneration_commitment: RegenerationCommitmentType,
+}
+
+pub struct TurnoverMoundsCount {
+    pub turnover_mounds_count: PositiveInteger2digitsType,
+}
+
+pub struct PreviousBlockState {
+    pub previous_block_state: PreviousBlockStatusType,
+}
+
+pub struct EndLoadNumber {
+    pub end_load_number: PositiveInteger4digitsType,
+}
+
+pub struct Material {
+    pub material: MaterialType,
+}
+
+pub struct ControlEvaluation {
+    pub control_evaluation: ControlEvaluationType,
+}
+
+pub struct ForestUseDeclarationReference {
+    pub forest_use_declaration_reference: ForestUseDeclarationType,
+}
+
+pub struct PlannedOperationChain {
+    pub planned_operation_chain: PlannedOperationChainType,
+}
+
+pub struct StemTypeBulks {
+    pub stem_type_bulks: StemTypeBulksType,
+}
+
+pub struct GrowthPlaceDataSource {
+    pub growth_place_data_source: DataSourceType,
+}
+
+pub struct AnnouncedLength {
+    pub announced_length: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+pub struct OperatorId {
+    pub operator_id: String20Type,
+}
+
+pub struct Load {
+    pub load: LoadType,
+}
+
+pub struct FertilityClass {
+    pub fertility_class: FertilityClassType,
+}
+
+pub struct WorkingSiteFinalAuditFertilization {
+    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
+}
+
+pub struct SproutForestControlEvaluation {
+    pub sprout_forest_control_evaluation: VirtaEvaluationType,
+}
+
+pub struct MeltingDate {
+    pub melting_date: DateType,
+}
+
+pub struct Authorization {
+    pub authorization: YesNoType,
+}
+
+pub struct Status3 {
+    pub status3: ChangeStateType,
+}
+
+pub struct ExternalSystemInUse {
+    pub external_system_in_use: YesNoType,
+}
+
+pub struct DiameterClass {
+    pub diameter_class: PositiveInteger4digitsType,
+}
+
+pub struct VehiclePathWidth {
+    pub vehicle_path_width: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct QuestionId {
+    pub question_id: FinalAuditQuestionType,
+}
+
+pub struct StumpTidiness {
+    pub stump_tidiness: YesNoType,
+}
+
+pub struct StandNumberExtension {
+    pub stand_number_extension: StandNumberExtensionType,
+}
+
+pub struct DisQualificationPercentageTotal {
+    pub dis_qualification_percentage_total: Decimal2FractionDigitsType,
+}
+
+pub struct DisQualificationReasonText {
+    pub dis_qualification_reason_text: String200Type,
+}
+
+pub struct HarvestingClassifiation {
+    pub harvesting_classifiation: VirtaHarvestingClassificationType,
+}
+
+pub struct SaveTreesLeft {
+    pub save_trees_left: YesNoType,
+}
+
+pub struct WaterEconomySystemNoticed {
+    pub water_economy_system_noticed: YesNoType,
+}
+
+pub struct WorkingSiteTradeEnvelope {
+    pub working_site_trade_envelope: WorkingSiteTradeEnvelopeType,
+}
+
+pub struct DamageClass {
+    pub damage_class: VirtaDamageClassType,
+}
+
+pub struct RegenerationType {
+    pub regeneration_type: VirtaRegenerationType,
+}
+
+pub struct TreeSummary {
+    pub tree_summary: TreeSummaryType,
+}
+
+pub struct CalibrationAdjustment {
+    pub calibration_adjustment: PositiveInteger3digitsType,
+}
+
+pub struct VehiclePathSubsidenceLength {
+    pub vehicle_path_subsidence_length: Decimal3_1Type,
+}
+
+pub struct LiabilityInsurance {
+    pub liability_insurance: DateType,
+}
+
+pub struct ParcelNo {
+    pub parcel_no: PositiveInteger6digitsType,
+}
+
+pub struct BlockIsFSFBlock {
+    pub block_is_f_s_f_block: YesNoType,
+}
+
+pub struct PlowingName {
+    pub plowing_name: String50Type,
+}
+
+pub struct NationalityFreeText {
+    pub nationality_free_text: String50Type,
+}
+
+pub struct Parcels {
+    pub parcels: ParcelsType,
+}
+
+pub struct AreaNo {
+    pub area_no: PositiveInteger4digitsType,
+}
+
+pub struct MaterialDeliveryType {
+    pub material_delivery_type: MaterialDeliveryTypeType,
+}
+
+pub struct PaymentPermissionDate {
+    pub payment_permission_date: PaymentPermissionDateType,
+}
+
+pub struct UnitValue {
+    pub unit_value: UnitPriceType,
+}
+
+pub struct Hours {
+    pub hours: PositiveInteger2digitsType,
+}
+
+pub struct ControlLogDiameter {
+    pub control_log_diameter: PositiveInteger3digitsType,
+}
+
+pub struct InspectorName {
+    pub inspector_name: string,
+}
+
+pub struct ForestCertification {
+    pub forest_certification: CertificationSystemType,
+}
+
+pub struct Symbol {
+    pub symbol: MapSymbolDataType,
+}
+
+pub struct PaayksikkoNimi {
+    pub paayksikko_nimi: PaayksikkoNimiTyyppi,
+}
+
+pub struct WorkingSiteFinalAuditRoadMaking {
+    pub working_site_final_audit_road_making: WorkingSiteFinalAuditRoadMakingType,
+}
+
+pub struct CommonMessageId {
+    pub common_message_id: CommonMessageType,
+}
+
+pub struct StandTree {
+    pub stand_tree: StandTreeCuttingType,
+}
+
+pub struct PartitialLoad {
+    pub partitial_load: PartitialLoadType,
+}
+
+pub struct CommonMessageFreeText {
+    pub common_message_free_text: String200Type,
+}
+
+pub struct SendNotifications {
+    pub send_notifications: YesNoType,
+}
+
+pub struct Resource {
+    pub resource: ResourceDataType,
+}
+
+pub struct StandAvgDiameterSummary {
+    pub stand_avg_diameter_summary: PositiveInteger3digitsType,
+}
+
+pub struct PlantingSiteCount {
+    pub planting_site_count: PositiveInteger2digitsType,
+}
+
+pub struct RootDamagePercentage {
+    pub root_damage_percentage: PositiveIntegerType,
+}
+
+pub struct CallForOfferWoodTradeInfo {
+    pub call_for_offer_wood_trade_info: CallForOfferWoodTradeInfoType,
+}
+
+pub struct Kilometers {
+    pub kilometers: PositiveInteger4digitsType,
+}
+
+pub struct Acknowledge {
+    pub acknowledge: AcknowledgeType,
+}
+
+pub struct DeclarationOtherOperations {
+    pub declaration_other_operations: DeclarationOtherOperationsType,
+}
+
+pub struct NationalityCode {
+    pub nationality_code: String5Type,
+}
+
+pub struct NimiTeksti {
+    pub nimi_teksti: NimiTekstiTyyppi,
+}
+
+pub struct StandVehiclePathWidth {
+    pub stand_vehicle_path_width: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+pub struct ErrorCode {
+    pub error_code: String25Type,
+}
+
+pub struct ConsumptionUnit {
+    pub consumption_unit: ConsumptionUnitType,
+}
+
+pub struct LoppuPvm {
+    pub loppu_pvm: LoppuPvmTyyppi,
+}
+
+pub struct ValueList {
+    pub value_list: ValueListType,
+}
+
+pub struct PartNorthingCoordinate {
+    pub part_northing_coordinate: string,
+}
+
+pub struct SumTableArea {
+    pub sum_table_area: VirtaSumTableAreaType,
+}
+
+pub struct Roles {
+    pub roles: RolesType,
+}
+
+pub struct StandFinished {
+    pub stand_finished: YesNoType,
+}
+
+pub struct VehiclePathDistance {
+    pub vehicle_path_distance: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+pub struct GeometryObjects {
+    pub geometry_objects: GeometryObjectsType,
+}
+
+pub struct FinancingActNumber {
+    pub financing_act_number: FinancingActNumberType,
+}
+
+pub struct EstimatedWorkingTimeConsumption {
+    pub estimated_working_time_consumption: PositiveInteger5digitsType,
+}
+
+pub struct TransmissionTime {
+    pub transmission_time: dateTime,
+}
+
+pub struct OrdererResponsibilityDocumentsChecked {
+    pub orderer_responsibility_documents_checked: YesNoType,
+}
+
+pub struct PurchaseMode {
+    pub purchase_mode: PurchaseModeType,
+}
+
+pub struct EvaluationText {
+    pub evaluation_text: String1000Type,
+}
+
+pub struct ForestOwnerGroup {
+    pub forest_owner_group: ForestOwnerGroupType,
+}
+
+pub struct PartsDetectedArea {
+    pub parts_detected_area: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+pub struct Class4damageCount {
+    pub class4damage_count: PositiveInteger6digitsType,
+}
+
+pub struct IsForestHaulageDistanceContinued {
+    pub is_forest_haulage_distance_continued: YesNoType,
+}
+
+pub struct LogMeasurements {
+    pub log_measurements: LogMeasurementsType,
+}
+
+pub struct OriginalMessage {
+    pub original_message: String1000Type,
+}
+
+pub struct HarvestedVolumeAccounted {
+    pub harvested_volume_accounted: Decimal3FractionDigitsType,
+}
+
+pub struct InsuranceOrOtherCompensation {
+    pub insurance_or_other_compensation: PositiveDecimalMax5IntegralPartMax2FractionalPartType,
+}
+
+pub struct UsingRightCompensation {
+    pub using_right_compensation: YesNoNotKnownType,
+}
+
+pub struct WaterProtectionAction {
+    pub water_protection_action: WorkingQualityType,
+}
+
+pub struct InsuranceNumber {
+    pub insurance_number: String100Type,
+}
+
+pub struct PuhelinnumeroTeksti {
+    pub puhelinnumero_teksti: PuhelinnumeroTekstiTyyppi,
+}
+
+pub struct RoadStructure {
+    pub road_structure: WorkingQualityType,
+}
+
+pub struct ForestUseDeclarationResponsible {
+    pub forest_use_declaration_responsible: ForestUseDeclarationResponsibleType,
+}
+
+pub struct AssortmentCode {
+    pub assortment_code: AssortmentCodeType,
+}
+
+pub struct CaseAction {
+    pub case_action: CaseActionType,
+}
+
+pub struct ActionType {
+    pub action_type: string,
+}
+
+pub struct TreeDiameter {
+    pub tree_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct StandWoodTradeInfo {
+    pub stand_wood_trade_info: StandWoodTradeInfoType,
+}
+
+pub struct ExcavatorMovingAndTreeDamages {
+    pub excavator_moving_and_tree_damages: WorkingQualityType,
+}
+
+pub struct DeclarationDevelopmentClass {
+    pub declaration_development_class: DeclarationDevelopmentClassType,
+}
+
+pub struct PaymentTransaction {
+    pub payment_transaction: PaymentTransactionType,
+}
+
+pub struct DecisionReceivers {
+    pub decision_receivers: DecisionReceiversType,
+}
+
+pub struct InsertedMapSymbolId {
+    pub inserted_map_symbol_id: String20Type,
+}
+
+pub struct CompartmentId {
+    pub compartment_id: IdStringNotEmptyType,
+}
+
+pub struct Password {
+    pub password: string,
+}
+
+pub struct CallForOfferWorkingSiteWoodTradeInfo {
+    pub call_for_offer_working_site_wood_trade_info: CallForOfferWorkingSiteWoodTradeInfoType,
+}
+
+pub struct GroupNumber {
+    pub group_number: string,
+}
+
+pub struct TreeListItem {
+    pub tree_list_item: TreeListItemType,
+}
+
+pub struct IBAN {
+    pub iban: IBANType,
+}
+
+pub struct AssortmentMainGroup {
+    pub assortment_main_group: AssortmentMainGroupType,
+}
+
+pub struct Objects {
+    pub objects: ForestObjectDataObjectsType,
+}
+
+pub struct WoodLotInformationTypeDescription {
+    pub wood_lot_information_type_description: String500Type,
+}
+
+pub struct AlternativeName {
+    pub alternative_name: AlternativeNameType,
+}
+
+pub struct AreaDecrease {
+    pub area_decrease: AreaDecreaseType,
+}
+
+pub struct Code {
+    pub code: string,
+}
+
+pub struct DiameterCalibrationAdjustmentButtLog {
+    pub diameter_calibration_adjustment_butt_log: Integer3digitsType,
+}
+
+pub struct EnvironmentCleanlinessNoticed {
+    pub environment_cleanliness_noticed: YesNoType,
+}
+
+pub struct TotalVolume {
+    pub total_volume: VolumeType,
+}
+
+pub struct ClearCutting {
+    pub clear_cutting: YesNoType,
+}
+
+pub struct StemDamageCount {
+    pub stem_damage_count: PositiveInteger3digitsType,
+}
+
+pub struct FeeId {
+    pub fee_id: String10Type,
+}
+
+pub struct WorkCodeQualifier1 {
+    pub work_code_qualifier1: WorkCodeQualifierType1,
+}
+
+pub struct EmployerRegister {
+    pub employer_register: EmployerRegisterType,
+}
+
+pub struct JohnsonSB {
+    pub johnson_s_b: JohnsonSBType,
+}
+
+pub struct LandScaping {
+    pub land_scaping: WorkingQualityType,
+}
+
+pub struct AmountUnit {
+    pub amount_unit: AmountUnitType,
+}
+
+pub struct PaymentDate {
+    pub payment_date: PaymentDateType,
+}
+
+pub struct TargetParts {
+    pub target_parts: TargetPartsType,
+}
+
+pub struct EnvironmentalTidinessNoticedText {
+    pub environmental_tidiness_noticed_text: String200Type,
+}
+
+pub struct FeeBasisList {
+    pub fee_basis_list: FeeBasisListType,
+}
+
+pub struct TotalCompensation {
+    pub total_compensation: PositiveDecimalMax5IntegralPartMax2FractionalPartType,
+}
+
+pub struct PreventionFungusOfTheGenusData {
+    pub prevention_fungus_of_the_genus_data: PreventionFungusOfTheGenusDataType,
+}
+
+pub struct StandTreesCutting {
+    pub stand_trees_cutting: StandTreesCuttingType,
+}
+
+pub struct RelatedCallForOfferId {
+    pub related_call_for_offer_id: string,
+}
+
+pub struct FileFormat {
+    pub file_format: String5Type,
+}
+
+pub struct CleaningBreaksDone {
+    pub cleaning_breaks_done: YesNoType,
+}
+
+pub struct MaterialAmountUnit {
+    pub material_amount_unit: MaterialUnitType,
+}
+
+pub struct Reason {
+    pub reason: VirtaReasonType,
+}
+
+pub struct Service {
+    pub service: OrganizationServiceType,
+}
+
+pub struct Accessibility {
+    pub accessibility: AccessibilityType,
+}
+
+pub struct BioMassQuality {
+    pub bio_mass_quality: YesNoType,
+}
+
+pub struct TestAreaMethod {
+    pub test_area_method: SamplePlotType,
+}
+
+pub struct StemCountSummary {
+    pub stem_count_summary: PositiveInteger5digitsType,
+}
+
+pub struct WorkingSiteKey {
+    pub working_site_key: WorkingSiteKeyType,
+}
+
+pub struct ProductGroupName {
+    pub product_group_name: String50Type,
+}
+
+pub struct RecommendedDensity {
+    pub recommended_density: PositiveInteger5digitsType,
+}
+
+pub struct WorkingSitePlan {
+    pub working_site_plan: WorkingSitePlanType,
+}
+
+pub struct StorageClass {
+    pub storage_class: StorageDryingClassType,
+}
+
+pub struct QuestionAsText {
+    pub question_as_text: String200Type,
+}
+
+pub struct NotificationContactPerson {
+    pub notification_contact_person: YesNoType,
+}
+
+pub struct AdditionalDetails {
+    pub additional_details: String2000Type,
+}
+
+pub struct FinancingActWorkGroup {
+    pub financing_act_work_group: FinancingActWorkGroupType,
+}
+
+pub struct SpareGroupOfTrees {
+    pub spare_group_of_trees: SpareTreesByCategoryType,
+}
+
+pub struct MooseDamageDeclarationRealEstates {
+    pub moose_damage_declaration_real_estates: MooseDamageDeclarationRealEstatesType,
+}
+
+pub struct AlayksikkoNimi {
+    pub alayksikko_nimi: AlayksikkoNimiTyyppi,
+}
+
+pub struct StemTypeBulk {
+    pub stem_type_bulk: StemTypeBulkType,
+}
+
+pub struct ContractEndingDate {
+    pub contract_ending_date: ContractEndingDateType,
+}
+
+pub struct Peripherals {
+    pub peripherals: PeripheralsType,
+}
+
+pub struct EstateOwner {
+    pub estate_owner: string,
+}
+
+pub struct AmountPlanned {
+    pub amount_planned: Decimal3FractionDigitsType,
+}
+
+pub struct RepairPlantingCosts {
+    pub repair_planting_costs: PositiveDecimalMax5IntegralPartMax2FractionalPartType,
+}
+
+pub struct RectificationDemand {
+    pub rectification_demand: String5000Type,
+}
+
+pub struct AssortmentCompactClasses {
+    pub assortment_compact_classes: AssortmentCompactClassesType,
+}
+
+pub struct StandQuality {
+    pub stand_quality: StandQualityType,
+}
+
+pub struct SilvicultureQuality {
+    pub silviculture_quality: WorkingQualityType,
+}
+
+pub struct BasalAreaHardWood {
+    pub basal_area_hard_wood: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct WorkingSiteForwardingQualityControl {
+    pub working_site_forwarding_quality_control: WorkingSiteForwardingQualityControlType,
+}
+
+pub struct StorageProposals {
+    pub storage_proposals: StoragesType,
+}
+
+pub struct QuestionAnswerAsText {
+    pub question_answer_as_text: String50Type,
+}
+
+pub struct DateSeedlingsPlanted {
+    pub date_seedlings_planted: DateType,
+}
+
+pub struct Stand {
+    pub stand: StandType,
+}
+
+pub struct DeadStemCount {
+    pub dead_stem_count: PositiveInteger6digitsType,
+}
+
+pub struct NeedForTreatment {
+    pub need_for_treatment: VirtaYesNoType,
+}
+
+pub struct Publicity {
+    pub publicity: PublicityType,
+}
+
+pub struct Stands {
+    pub stands: StandsType,
+}
+
+pub struct AssortmentsChange {
+    pub assortments_change: AssortmentChangeDataType,
+}
+
+pub struct ScaleAssortmentType {
+    pub scale_assortment_type: ScaleAssortmentType,
+}
+
+pub struct Geometry {
+    pub geometry: PointGeometryType,
+}
+
+pub struct VirtaId {
+    pub virta_id: VirtaIdType,
+}
+
+pub struct SprucePulp {
+    pub spruce_pulp: PositiveInteger4digitsType,
+}
+
+pub struct ScaleFactors {
+    pub scale_factors: ScaleFactorsType,
+}
+
+pub struct OfferWorkingSitePaymentTransactions {
+    pub offer_working_site_payment_transactions: OfferWorkingSitePaymentTransactionsType,
+}
+
+pub struct CallForOfferWorkingSites {
+    pub call_for_offer_working_sites: CallForOfferWorkingSitesType,
+}
+
+pub struct ManipulationMethod {
+    pub manipulation_method: WorkCodeQualifierType2,
+}
+
+pub struct FinalAuditerType {
+    pub final_auditer_type: FinalAuditerTypeType,
+}
+
+pub struct ResponsibleOfPreClearing {
+    pub responsible_of_pre_clearing: ResponsibleOfPreClearingType,
+}
+
+pub struct Percent {
+    pub percent: PercentType,
+}
+
+pub struct PreventionSubstanceProductName {
+    pub prevention_substance_product_name: String200Type,
+}
+
+pub struct StumpLiftingFinishedDate {
+    pub stump_lifting_finished_date: DateType,
+}
+
+pub struct SurfaceDrainingAreas {
+    pub surface_draining_areas: YesNoType,
+}
+
+pub struct PartNumber {
+    pub part_number: string,
+}
+
+pub struct Weibull {
+    pub weibull: WeibullType,
+}
+
+pub struct Deliveries {
+    pub deliveries: DeliveriesType,
+}
+
+pub struct RealEstates {
+    pub real_estates: RealEstatesType,
+}
+
+pub struct Class4DamageCount {
+    pub class4_damage_count: StemCountType,
+}
+
+pub struct SpecificationText {
+    pub specification_text: String2000Type,
+}
+
+pub struct ResultOfAccessibilityAnalysis {
+    pub result_of_accessibility_analysis: ResultOfAccessibilityAnalysisType,
+}
+
+pub struct ReportedStatisticsOperationType {
+    pub reported_statistics_operation_type: ReportedStatisticsOperationTypeType,
+}
+
+pub struct CertificationSystems {
+    pub certification_systems: CertificationSystemsType,
+}
+
+pub struct ControlForestUseDeclaration {
+    pub control_forest_use_declaration: ControlForestUseDeclarationType,
+}
+
+pub struct AlternativeIdentifier {
+    pub alternative_identifier: AlternativeIdentifierType,
+}
+
+pub struct Inspection {
+    pub inspection: InspectionType,
+}
+
+pub struct TreeStratum {
+    pub tree_stratum: TreeStratum2Type,
+}
+
+pub struct LengthCalibrationAdjustment {
+    pub length_calibration_adjustment: Integer3digitsType,
+}
+
+pub struct FinalAccounting {
+    pub final_accounting: YesNoType,
+}
+
+pub struct CommonMessage {
+    pub common_message: CommonMessageDataType,
+}
+
+pub struct FaksinumeroTeksti {
+    pub faksinumero_teksti: FaksinumeroTekstiTyyppi,
+}
+
+pub struct ICEName {
+    pub i_c_e_name: String100Type,
+}
+
+pub struct WorkingSitePlannedForHarvestingDate {
+    pub working_site_planned_for_harvesting_date: DateType,
+}
+
+pub struct RestrictionCode {
+    pub restriction_code: RestrictionCodeType,
+}
+
+pub struct OriginalSender {
+    pub original_sender: ContactInformationType,
+}
+
+pub struct StandTooHeightStumpsPercentage {
+    pub stand_too_height_stumps_percentage: PercentWithFraction1Type,
+}
+
+pub struct Hopper {
+    pub hopper: HopperType,
+}
+
+pub struct ServiceBuyerArea {
+    pub service_buyer_area: String20Type,
+}
+
+pub struct TargetDensity {
+    pub target_density: PositiveInteger5digitsType,
+}
+
+pub struct FertilizationTotalAudit {
+    pub fertilization_total_audit: WorkingQualityType,
+}
+
+pub struct ExternalSystemName {
+    pub external_system_name: String50Type,
+}
+
+pub struct ResultsOfAccessibilityAnalysis {
+    pub results_of_accessibility_analysis: ResultsOfAccessibilityAnalysisType,
+}
+
+pub struct FinancingActData {
+    pub financing_act_data: FinancingActDataType,
+}
+
+pub struct TreeDamages {
+    pub tree_damages: YesNoType,
+}
+
+pub struct SpecialFeatures {
+    pub special_features: SpecialFeaturesType,
+}
+
+pub struct ClearingDone {
+    pub clearing_done: YesNoType,
+}
+
+pub struct FinalAuditIdentifier {
+    pub final_audit_identifier: String50Type,
+}
+
+pub struct Comments {
+    pub comments: String1000Type,
+}
+
+pub struct StatusMessage {
+    pub status_message: String100Type,
+}
+
+pub struct SnowOrIce {
+    pub snow_or_ice: YesNoType,
+}
+
+pub struct ForestCentreData {
+    pub forest_centre_data: ForestCentrePaymentsDataType,
+}
+
+pub struct ForestUseDeclaration {
+    pub forest_use_declaration: ForestUseDeclarationType,
+}
+
+pub struct SamplePlotMeanDiameter {
+    pub sample_plot_mean_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct Organizations {
+    pub organizations: OrganizationsType,
+}
+
+pub struct ProcessingAreaReference {
+    pub processing_area_reference: ReferenceType,
+}
+
+pub struct DitchCleaningBreakLocationText {
+    pub ditch_cleaning_break_location_text: String200Type,
+}
+
+pub struct MainGroup {
+    pub main_group: MainGroupType,
+}
+
+pub struct IkaluokkaTeksti {
+    pub ikaluokka_teksti: IkaluokkaTekstiTyyppi,
+}
+
+pub struct Days {
+    pub days: DaysType,
+}
+
+pub struct CompletionDeclarationActor {
+    pub completion_declaration_actor: PayeeType,
+}
+
+pub struct GeometryRequired {
+    pub geometry_required: PointGeometryType,
+}
+
+pub struct UseCases {
+    pub use_cases: ForestDataUpdateUseCasesType,
+}
+
+pub struct BusinessAcceptances {
+    pub business_acceptances: BusinessAcceptancesType,
+}
+
+pub struct DocumentDate {
+    pub document_date: DateType,
+}
+
+pub struct EstimatedStartDate {
+    pub estimated_start_date: DateType,
+}
+
+pub struct NotDamagedCount {
+    pub not_damaged_count: PositiveInteger6digitsType,
+}
+
+pub struct WaterEconomySystemsNoticedText {
+    pub water_economy_systems_noticed_text: String200Type,
+}
+
+pub struct DBH {
+    pub dbh: PositiveInteger3digitsType,
+}
+
+pub struct SittingMoneyKilometers {
+    pub sitting_money_kilometers: PositiveInteger4digitsType,
+}
+
+pub struct WorkCodeQualifier5 {
+    pub work_code_qualifier5: WorkCodeQualifierType5,
+}
+
+pub struct PaymentTransactionCategory {
+    pub payment_transaction_category: MoneyTransactionCategoryType,
+}
+
+pub struct EmailAddress {
+    pub email_address: String50Type,
+}
+
+pub struct Trees {
+    pub trees: TreeType,
+}
+
+pub struct Delivered {
+    pub delivered: YesNoType,
+}
+
+pub struct LajiTeksti {
+    pub laji_teksti: LajiTekstiTyyppi,
+}
+
+pub struct BasalAreaSummary {
+    pub basal_area_summary: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct StandRootDamagesPercentage {
+    pub stand_root_damages_percentage: PercentWithFraction1Type,
+}
+
+pub struct GeometryId {
+    pub geometry_id: string,
+}
+
+pub struct Shape {
+    pub shape: ShapeType,
+}
+
+pub struct QualityAttachments {
+    pub quality_attachments: String100Type,
+}
+
+pub struct WorkLoad1 {
+    pub work_load1: Decimal2FractionDigitsType,
+}
+
+pub struct Scale {
+    pub scale: ScaleType,
+}
+
+pub struct TargetStemCount {
+    pub target_stem_count: StemCountType,
+}
+
+pub struct SeedlingBeginningCode {
+    pub seedling_beginning_code: SeedlingOriginType,
+}
+
+pub struct WorkGrouMembers {
+    pub work_grou_members: WorkGrouMembersType,
+}
+
+pub struct PurchaseContractExtraInfo {
+    pub purchase_contract_extra_info: String3000Type,
+}
+
+pub struct Mean {
+    pub mean: MeanType,
+}
+
+pub struct AssortmentCompact {
+    pub assortment_compact: AssortmentCompactType,
+}
+
+pub struct LogDiameter {
+    pub log_diameter: PositiveInteger3digitsType,
+}
+
+pub struct BiomassCollection {
+    pub biomass_collection: YesNoType,
+}
+
+pub struct SceneryWorkPermissionAcceptance {
+    pub scenery_work_permission_acceptance: DateType,
+}
+
+pub struct WorkingSiteQualityControlFertilization {
+    pub working_site_quality_control_fertilization: WorkingSiteQualityControlFertilizationType,
+}
+
+pub struct AssortmentCompactClass {
+    pub assortment_compact_class: AssortmentCompactClassType,
+}
+
+pub struct MaxProposalYear {
+    pub max_proposal_year: MaxProposalYearType,
+}
+
+pub struct FeeAssortment {
+    pub fee_assortment: String50Type,
+}
+
+pub struct SavingTime {
+    pub saving_time: TimeStampType,
+}
+
+pub struct KemeraId {
+    pub kemera_id: VirtaIdType,
+}
+
+pub struct SaveIncomplete {
+    pub save_incomplete: VirtaSaveIncompleteType,
+}
+
+pub struct SamplePlots {
+    pub sample_plots: SamplePlotsType,
+}
+
+pub struct DrainStorageAsInstructed {
+    pub drain_storage_as_instructed: YesNoType,
+}
+
+pub struct ForwardedVolume {
+    pub forwarded_volume: Decimal3FractionDigitsType,
+}
+
+pub struct Attribute3 {
+    pub attribute3: WorkCodeQualifierType3,
+}
+
+pub struct QuestionAnswer {
+    pub question_answer: FinalAuditAnswerType,
+}
+
+pub struct PlowingEmail {
+    pub plowing_email: String50Type,
+}
+
+pub struct NotDamagedSeedlingCount {
+    pub not_damaged_seedling_count: StemCountType,
+}
+
+pub struct EvaluationDescription {
+    pub evaluation_description: String1000Type,
+}
+
+pub struct LengthOfDitchDiggedDuringSoilPreparation {
+    pub length_of_ditch_digged_during_soil_preparation: PositiveInteger6digitsType,
+}
+
+pub struct TechnicalContactPerson {
+    pub technical_contact_person: TechnicalContactPersonType,
+}
+
+pub struct OwnerShipType {
+    pub owner_ship_type: OwnerShipTypeType,
+}
+
+pub struct ErosionBlockingActionText {
+    pub erosion_blocking_action_text: String200Type,
+}
+
+pub struct StumpMeanDiameter {
+    pub stump_mean_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct SilvicultureValidity {
+    pub silviculture_validity: SilvicultureValidityType,
+}
+
+pub struct ApplicationActor {
+    pub application_actor: ApplicationActorType,
+}
+
+pub struct UserRoles {
+    pub user_roles: UserRolesType,
+}
+
+pub struct CompanyID {
+    pub company_i_d: CompanyIDType,
+}
+
+pub struct BirchPulp {
+    pub birch_pulp: PositiveInteger4digitsType,
+}
+
+pub struct SoilConditioningQuality {
+    pub soil_conditioning_quality: WorkingQualityType,
+}
+
+pub struct IdentifierType {
+    pub identifier_type: IdentifierTypeType,
+}
+
+pub struct StumpBiomass {
+    pub stump_biomass: StumpBiomassType,
+}
+
+pub struct ContractValidDate {
+    pub contract_valid_date: DateType,
+}
+
+pub struct ForestUseDeclarationStandExtraInfo {
+    pub forest_use_declaration_stand_extra_info: String2000Type,
+}
+
+pub struct WaterProtectionActionText {
+    pub water_protection_action_text: String200Type,
+}
+
+pub struct EvaluationCategory {
+    pub evaluation_category: EvaluationSubjectType,
+}
+
+pub struct FinalAuditType {
+    pub final_audit_type: FinalAuditTypeType,
+}
+
+pub struct PreviousMooseDamageEvaluationDate {
+    pub previous_moose_damage_evaluation_date: DateType,
+}
+
+pub struct PostOffice {
+    pub post_office: String50Type,
+}
+
+pub struct Trainings {
+    pub trainings: TrainingsType,
+}
+
+pub struct StemTypeVolume {
+    pub stem_type_volume: StemTypeVolumeType,
+}
+
+pub struct LengthClass {
+    pub length_class: PositiveInteger4digitsType,
+}
+
+pub struct CuttingsRightsOwnerRepresentative {
+    pub cuttings_rights_owner_representative: ContactInformationType,
+}
+
+pub struct TotalPulpwoodVolume {
+    pub total_pulpwood_volume: PulpWoodVolumeType,
+}
+
+pub struct SilvicultureQualityText {
+    pub silviculture_quality_text: String200Type,
+}
+
+pub struct HuoneistotunnisteJakokirjainTeksti {
+    pub huoneistotunniste_jakokirjain_teksti: HuoneistotunnisteJakokirjainTekstiTyyppi,
+}
+
+pub struct StumpTreatmentText {
+    pub stump_treatment_text: String200Type,
+}
+
+pub struct DocumentDescription {
+    pub document_description: DocumentDescriptionType,
+}
+
+pub struct MaterialShipment {
+    pub material_shipment: String20Type,
+}
+
+pub struct WorkingSiteOperationalUpdate {
+    pub working_site_operational_update: WorkingSiteOperationalUpdateType,
+}
+
+pub struct PriceMatrix {
+    pub price_matrix: PriceMatrixType,
+}
+
+pub struct StatusMessages {
+    pub status_messages: StatusMessageLanguageType,
+}
+
+pub struct BirthDate {
+    pub birth_date: DateType,
+}
+
+pub struct BusinessMessageTimeStamp {
+    pub business_message_time_stamp: BusinessMessageTimeStampType,
+}
+
+pub struct Radius {
+    pub radius: Decimal2FractionDigitsType,
+}
+
+pub struct ReadyToDo {
+    pub ready_to_do: YesNoType,
+}
+
+pub struct AverageVolume {
+    pub average_volume: Decimal3FractionDigitsType,
+}
+
+pub struct CompensationAmount {
+    pub compensation_amount: Decimal7And2PositiveType,
+}
+
+pub struct OwnerInvolvement {
+    pub owner_involvement: VirtaYesNoType,
+}
+
+pub struct Actors {
+    pub actors: ActorsType,
+}
+
+pub struct SamplePlotInfoText {
+    pub sample_plot_info_text: String1000Type,
+}
+
+pub struct InTerrain {
+    pub in_terrain: YesNoType,
+}
+
+pub struct MooseDamageDate {
+    pub moose_damage_date: DateType,
+}
+
+pub struct Questions {
+    pub questions: AuditsListType,
+}
+
+pub struct LanguageCode {
+    pub language_code: LanguageCodeType,
+}
+
+pub struct VehiclePathTooDeep {
+    pub vehicle_path_too_deep: PositiveInteger2digitsType,
+}
+
+pub struct WorkingSafetyNoticed {
+    pub working_safety_noticed: YesNoType,
+}
+
+pub struct StumpLiftingQualityText {
+    pub stump_lifting_quality_text: String200Type,
+}
+
+pub struct Stem {
+    pub stem: StemDataType,
+}
+
+pub struct KuntaNumero {
+    pub kunta_numero: KuntaNumeroTyyppi,
+}
+
+pub struct TargetId {
+    pub target_id: string,
+}
+
+pub struct TargetBasalArea {
+    pub target_basal_area: BasalAreaType,
+}
+
+pub struct LargePeelDamage {
+    pub large_peel_damage: PositiveInteger6digitsType,
+}
+
+pub struct PinePulp {
+    pub pine_pulp: PositiveInteger4digitsType,
+}
+
+pub struct DecisionHandler {
+    pub decision_handler: DecisionHandlerType,
+}
+
+pub struct ControlReference {
+    pub control_reference: ReferenceType,
+}
+
+pub struct ForwarderId {
+    pub forwarder_id: String20Type,
+}
+
+pub struct ProductUserIds {
+    pub product_user_ids: ProductUserIdsType,
+}
+
+pub struct ActionDescription {
+    pub action_description: String1000Type,
+}
+
+pub struct ValiaikainenHenkiloTunnus {
+    pub valiaikainen_henkilo_tunnus: ValiaikainenHenkiloTunnusTyyppi,
+}
+
+pub struct ProductivityUnit {
+    pub productivity_unit: WorkCodeUnitType,
+}
+
+pub struct Calibration {
+    pub calibration: CalibrationType,
+}
+
+pub struct UserInformation {
+    pub user_information: UserInformationType,
+}
+
+pub struct ShareOfOwnerShip {
+    pub share_of_owner_ship: PercentType,
+}
+
+pub struct InspectionData {
+    pub inspection_data: InspectionDataType,
+}
+
+pub struct Telephone {
+    pub telephone: String20Type,
+}
+
+pub struct KansalaisuusKoodi {
+    pub kansalaisuus_koodi: KansalaisuusKoodiTyyppi,
+}
+
+pub struct CuttingRealizationPractice {
+    pub cutting_realization_practice: CuttingRealizationPracticeType,
+}
+
+pub struct UnitCostArea {
+    pub unit_cost_area: VirtaSumTableAreaType,
+}
+
+pub struct ToinenRiviTeksti {
+    pub toinen_rivi_teksti: ToinenRiviTekstiTyyppi,
+}
+
+pub struct CallForOfferDate {
+    pub call_for_offer_date: CallForOfferDateType,
+}
+
+pub struct TransportAccessibility {
+    pub transport_accessibility: TransportAccessibilityType,
+}
+
+pub struct ProposalType {
+    pub proposal_type: ProposalTypeType,
+}
+
+pub struct HarvesterModel {
+    pub harvester_model: String50Type,
+}
+
+pub struct MeanHeight {
+    pub mean_height: Decimal1FractionDigitType,
+}
+
+pub struct ExtraPersonText {
+    pub extra_person_text: String200Type,
+}
+
+pub struct SomeDitchesNotDiggedAsMentionedInOrder {
+    pub some_ditches_not_digged_as_mentioned_in_order: YesNoType,
+}
+
+pub struct UlkomaaPostitoimipaikkaNimi {
+    pub ulkomaa_postitoimipaikka_nimi: UlkomaaPostitoimipaikkaNimiTyyppi,
+}
+
+pub struct FileType {
+    pub file_type: FileTypeType,
+}
+
+pub struct Interrupted {
+    pub interrupted: YesNoType,
+}
+
+pub struct WorkingSiteFinalAuditSoilConditioning {
+    pub working_site_final_audit_soil_conditioning: WorkingSiteFinalAuditSoilConditioningType,
+}
+
+pub struct Silviculture {
+    pub silviculture: SilvicultureType,
+}
+
+pub struct SpareTreeGroups {
+    pub spare_tree_groups: SpareTreeGroupsType,
+}
+
+pub struct SilviculturalOperation {
+    pub silvicultural_operation: SilviculturalOperationType,
+}
+
+pub struct IBANTunnus {
+    pub i_b_a_n_tunnus: IBANTunnusTyyppi,
+}
+
+pub struct MeanDiameterOtherTreeSpecies {
+    pub mean_diameter_other_tree_species: PositiveInteger3digitsType,
+}
+
+pub struct CuttingAccuracy {
+    pub cutting_accuracy: Decimal2FractionDigitsType,
+}
+
+pub struct FSFInformation {
+    pub f_s_f_information: FSFInformationType,
+}
+
+pub struct PaymentTransactionType {
+    pub payment_transaction_type: MoneyTransactionTypeType,
+}
+
+pub struct ObjectReferenceType {
+    pub object_reference_type: ForestCentreMessageReferenceType,
+}
+
+pub struct QualityAttachment {
+    pub quality_attachment: QualityAttachmentType,
+}
+
+pub struct WorkLoadUnitInvoiced {
+    pub work_load_unit_invoiced: WorkCodeUnitType,
+}
+
+pub struct Organization {
+    pub organization: OrganizationType,
+}
+
+pub struct ForestOwners {
+    pub forest_owners: ForestOwnersType,
+}
+
+pub struct ActionDate {
+    pub action_date: DateType,
+}
+
+pub struct ApplicationTotalSubsidy {
+    pub application_total_subsidy: MoneyType,
+}
+
+pub struct TurningPointClass {
+    pub turning_point_class: TurningPointClassType,
+}
+
+pub struct SubsidyApplierReference {
+    pub subsidy_applier_reference: SubsidyApplierReferenceType,
+}
+
+pub struct ResourceSchedule {
+    pub resource_schedule: ResourceScheduleType,
+}
+
+pub struct CompletionActor {
+    pub completion_actor: CompletionActorType,
+}
+
+pub struct DataSource {
+    pub data_source: DataSourceType,
+}
+
+pub struct TotalEstimation {
+    pub total_estimation: VirtaTotalEstimationType,
+}
+
+pub struct CumulativePointDistribution {
+    pub cumulative_point_distribution: CumulativePointDistributionType,
+}
+
+pub struct Email {
+    pub email: String100Type,
+}
+
+pub struct FinancingActRealEstate {
+    pub financing_act_real_estate: FinancingActRealEstateType,
+}
+
+pub struct SenderEmail {
+    pub sender_email: EmailAddressType,
+}
+
+pub struct MapSymbols {
+    pub map_symbols: MapSymbolsType,
+}
+
+pub struct ValidityDateBegin {
+    pub validity_date_begin: DateType,
+}
+
+pub struct SellersLogsInfo {
+    pub sellers_logs_info: String1000Type,
+}
+
+pub struct BulgeHeight {
+    pub bulge_height: FinalAuditAnswerType,
+}
+
+pub struct PlantManagementQualityText {
+    pub plant_management_quality_text: String200Type,
+}
+
+pub struct RoadStructureDrainage {
+    pub road_structure_drainage: WorkingQualityType,
+}
+
+pub struct ResponsibleActor {
+    pub responsible_actor: ResponsibleActorType,
+}
+
+pub struct MaterialVolume {
+    pub material_volume: Decimal2FractionDigitsType,
+}
+
+pub struct RockySoil {
+    pub rocky_soil: YesNoType,
+}
+
+pub struct ListItem {
+    pub list_item: String50Type,
+}
+
+pub struct FinancingActWorkCode {
+    pub financing_act_work_code: FinancingActWorkCodeType,
+}
+
+pub struct Diameter {
+    pub diameter: PositiveInteger4digitsType,
+}
+
+pub struct Status5 {
+    pub status5: ChangeStateType,
+}
+
+pub struct Law {
+    pub law: VirtaLawType,
+}
+
+pub struct hasEnvironmentalObjects {
+    pub has_environmental_objects: YesNoType,
+}
+
+pub struct TargetAnnouncedAmount {
+    pub target_announced_amount: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+pub struct TradeRegistration {
+    pub trade_registration: DateType,
+}
+
+pub struct PulpM3sum {
+    pub pulp_m3sum: PositiveInteger4digitsType,
+}
+
+pub struct FeatureSpecificAdditionalVariables {
+    pub feature_specific_additional_variables: FeatureSpecificAdditionalVariableType,
+}
+
+pub struct RoundWoodSalesRows {
+    pub round_wood_sales_rows: RoundWoodSalesRowsType,
+}
+
+pub struct AttributeValue {
+    pub attribute_value: String100Type,
+}
+
+pub struct Label {
+    pub label: String100Type,
+}
+
+pub struct SilviculturalOperations {
+    pub silvicultural_operations: SilviculturalOperationsType,
+}
+
+pub struct OtherEvaluation {
+    pub other_evaluation: VirtaEvaluationType,
+}
+
+pub struct Cuttings {
+    pub cuttings: CuttingsType,
+}
+
+pub struct LegalAccidentInsurance {
+    pub legal_accident_insurance: DateType,
+}
+
+pub struct PlanningYear {
+    pub planning_year: PlanningYearType,
+}
+
+pub struct TreeStandBasedData {
+    pub tree_stand_based_data: TreeStandBasedDataType,
+}
+
+pub struct LengthCalibrationDescription {
+    pub length_calibration_description: String200Type,
+}
+
+pub struct ImageDate {
+    pub image_date: TimeStampType,
+}
+
+pub struct Enddate {
+    pub enddate: DateType,
+}
+
+pub struct ControlLogCount {
+    pub control_log_count: PositiveInteger2digitsType,
+}
+
+pub struct Review2 {
+    pub review2: VirtaReviewType,
+}
+
+pub struct Orientation {
+    pub orientation: OrientationType,
+}
+
+pub struct Hoppers {
+    pub hoppers: HoppersType,
+}
+
+pub struct NearestSeedlingDistance {
+    pub nearest_seedling_distance: PositiveInteger3digitsType,
+}
+
+pub struct KilometersWithBreakHouse {
+    pub kilometers_with_break_house: PositiveInteger4digitsType,
+}
+
+pub struct StorageLinkedToWorkingSite {
+    pub storage_linked_to_working_site: YesNoType,
+}
+
+pub struct DryingClass {
+    pub drying_class: DryingClassType,
+}
+
+pub struct OrganisationId {
+    pub organisation_id: String20Type,
+}
+
+pub struct OperativeData {
+    pub operative_data: OperativeDataType,
+}
+
+pub struct PaymentType {
+    pub payment_type: PaymentTypeType,
+}
+
+pub struct PostitoimipaikkaNimi {
+    pub postitoimipaikka_nimi: PostitoimipaikkaNimiTyyppi,
+}
+
+pub struct Id {
+    pub id: PositiveIntegerType,
+}
+
+pub struct SedimentationBasinSizeShapeAndFunctionalityText {
+    pub sedimentation_basin_size_shape_and_functionality_text: String200Type,
+}
+
+pub struct WorkingSiteHarvestingQualityControl {
+    pub working_site_harvesting_quality_control: WorkingSiteHarvestingQualityControlType,
+}
+
+pub struct TerrainDamageOutsideStand {
+    pub terrain_damage_outside_stand: VirtaEvaluationType,
+}
+
+pub struct SelectionType {
+    pub selection_type: String10Type,
+}
+
+pub struct StorageLandOwnerInformation {
+    pub storage_land_owner_information: ContactInformationType,
+}
+
+pub struct CallForOffer {
+    pub call_for_offer: CallForOfferType,
+}
+
+pub struct SettlingBasinsText {
+    pub settling_basins_text: String200Type,
+}
+
+pub struct BankReferenceNumber {
+    pub bank_reference_number: BankReferenceNumberType,
+}
+
+pub struct MeasuringDeviceVersion {
+    pub measuring_device_version: String50Type,
+}
+
+pub struct CuttingFinishedDate {
+    pub cutting_finished_date: DateType,
+}
+
+pub struct WorkingSiteFinalAuditSilviculture {
+    pub working_site_final_audit_silviculture: WorkingSiteFinalAuditSilvicultureType,
+}
+
+pub struct Phase {
+    pub phase: VirtaPhaseType,
+}
+
+pub struct ProjectNo {
+    pub project_no: ProjectNoType,
+}
+
+pub struct AdditionalInformation {
+    pub additional_information: AdditionalInformationType,
+}
+
+pub struct BIC {
+    pub bic: BICType,
+}
+
+pub struct FinancingActApplicationStands {
+    pub financing_act_application_stands: FinancingActApplicationStandsType,
+}
+
+pub struct MooseDamageDeclaration {
+    pub moose_damage_declaration: MooseDamageDeclarationType,
+}
+
+pub struct OperationRows {
+    pub operation_rows: OperationRowsType,
+}
+
+pub struct StandVehiclePathTooDeepPercentage {
+    pub stand_vehicle_path_too_deep_percentage: PercentWithFraction1Type,
+}
+
+pub struct MeanDiameterSilverBirch {
+    pub mean_diameter_silver_birch: PositiveInteger3digitsType,
+}
+
+pub struct ServiceBuyer {
+    pub service_buyer: ServiceBuyerType,
+}
+
+pub struct ObjectReference {
+    pub object_reference: ReferenceType,
+}
+
+pub struct HeightClass {
+    pub height_class: HeightClassType,
+}
+
+pub struct WeekCalendar {
+    pub week_calendar: WeekCalendarType,
+}
+
+pub struct Audit {
+    pub audit: AuditionType,
+}
+
+pub struct LimitsToWaterSystemText {
+    pub limits_to_water_system_text: String200Type,
+}
+
+pub struct StatisticsAssortmentCompactClasses {
+    pub statistics_assortment_compact_classes: AssortmentCompactClassesType,
+}
+
+pub struct WorkingSitePlanner {
+    pub working_site_planner: WorkingSitePlannerType,
+}
+
+pub struct AmountLeft {
+    pub amount_left: Decimal3FractionDigitsType,
+}
+
+pub struct ProposalDate {
+    pub proposal_date: ProposalDateType,
+}
+
+pub struct StoragesProposalForestHaulageDistances {
+    pub storages_proposal_forest_haulage_distances: StoragesForestHaulageDistancesType,
+}
+
+pub struct PostilokerolyhenneTeksti {
+    pub postilokerolyhenne_teksti: PostilokerolyhenneTekstiTyyppi,
+}
+
+pub struct FellingRightDuration {
+    pub felling_right_duration: FellingRightDurationType,
+}
+
+pub struct FinancingActApplicationOtherSubjects {
+    pub financing_act_application_other_subjects: FinancingActApplicationOtherSubjectsType,
+}
+
+pub struct PlantCountSummary {
+    pub plant_count_summary: PositiveInteger4digitsType,
+}
+
+pub struct EtunimetNimi {
+    pub etunimet_nimi: EtunimetNimiTyyppi,
+}
+
+pub struct SeedStemCount {
+    pub seed_stem_count: PositiveInteger6digitsType,
+}
+
+pub struct Minutes {
+    pub minutes: PositiveInteger2digitsType,
+}
+
+pub struct SubContractorWrittenAgreement {
+    pub sub_contractor_written_agreement: YesNoType,
+}
+
+pub struct PlowingTelephone {
+    pub plowing_telephone: String20Type,
+}
+
+pub struct Active {
+    pub active: YesNoType,
+}
+
+pub struct LengthCalibrationReason {
+    pub length_calibration_reason: String200Type,
+}
+
+pub struct GoalStemCount {
+    pub goal_stem_count: StemCountType,
+}
+
+pub struct ControlStandArea {
+    pub control_stand_area: AreaType,
+}
+
+pub struct WorkType {
+    pub work_type: PositiveInteger2digitsType,
+}
+
+pub struct Volume {
+    pub volume: Decimal3FractionDigitsType,
+}
+
+pub struct hasEnvironmentalObjectsText {
+    pub has_environmental_objects_text: String200Type,
+}
+
+pub struct MeanDiameterSpruce {
+    pub mean_diameter_spruce: PositiveInteger3digitsType,
+}
+
+pub struct Length {
+    pub length: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct DeclarationRealEstates {
+    pub declaration_real_estates: DeclarationRealEstatesType,
+}
+
+pub struct ExtraPerson4 {
+    pub extra_person4: PositiveInteger4digitsType,
+}
+
+pub struct CultivationScope {
+    pub cultivation_scope: FinalAuditAnswerType,
+}
+
+pub struct Action {
+    pub action: ActionType,
+}
+
+pub struct MapSymbolId {
+    pub map_symbol_id: ERPIdType,
+}
+
+pub struct AmountOfSpareTrees {
+    pub amount_of_spare_trees: PositiveInteger5digitsType,
+}
+
+pub struct AssortmentName {
+    pub assortment_name: AssortmentNameType,
+}
+
+pub struct ForestUseDeclarationNotNeeded {
+    pub forest_use_declaration_not_needed: YesNoType,
+}
+
+pub struct WorkingSites {
+    pub working_sites: WorkingSitesType,
+}
+
+pub struct UnitPrice {
+    pub unit_price: Decimal2FractionDigitsType,
+}
+
+pub struct QuantityUnit {
+    pub quantity_unit: WideUnitType,
+}
+
+pub struct Attributes {
+    pub attributes: AttributesType,
+}
+
+pub struct SomeDitchesNotDiggedAsMentionedInOrderText {
+    pub some_ditches_not_digged_as_mentioned_in_order_text: String200Type,
+}
+
+pub struct hasFoundNewEnvironmentalObjects {
+    pub has_found_new_environmental_objects: YesNoType,
+}
+
+pub struct Seller {
+    pub seller: SellerType,
+}
+
+pub struct VakinainenKytkin {
+    pub vakinainen_kytkin: VakinainenKytkinTyyppi,
+}
+
+pub struct RemainingStumpCount {
+    pub remaining_stump_count: YesNoType,
+}
+
+pub struct ServiceNameOfAPI {
+    pub service_name_of_a_p_i: ServiceNameofAPIType,
+}
+
+pub struct PreviousMooseDamages {
+    pub previous_moose_damages: PreviousMooseDamagesType,
+}
+
+pub struct AuditsList {
+    pub audits_list: AuditsListType,
+}
+
+pub struct MinLength {
+    pub min_length: PositiveIntegerType,
+}
+
+pub struct MeanDiameter {
+    pub mean_diameter: PositiveInteger3digitsType,
+}
+
+pub struct ValueGrowthPercent {
+    pub value_growth_percent: Decimal2FractionDigitsType,
+}
+
+pub struct PayeeId {
+    pub payee_id: IdStringNotEmptyType,
+}
+
+pub struct AreaType {
+    pub area_type: AreaTypeType,
+}
+
+pub struct ProcessingArea {
+    pub processing_area: ProcessingAreaType,
+}
+
+pub struct Depth {
+    pub depth: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct PowerOfAttorneyDate {
+    pub power_of_attorney_date: PowerOfAttorneyDateType,
+}
+
+pub struct BasalAreaSpruce {
+    pub basal_area_spruce: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct WorkingSiteTravelNotification {
+    pub working_site_travel_notification: WorkingSiteTravelNotificationType,
+}
+
+pub struct LoppuHetki {
+    pub loppu_hetki: LoppuHetkiTyyppi,
+}
+
+pub struct TargetAmountUnit {
+    pub target_amount_unit: ExtendedWideUnitType,
+}
+
+pub struct Address {
+    pub address: String50Type,
+}
+
+pub struct PlantedSeedlingCountInCultivatedSpots {
+    pub planted_seedling_count_in_cultivated_spots: PositiveInteger3digitsType,
+}
+
+pub struct LogM3sum {
+    pub log_m3sum: PositiveInteger4digitsType,
+}
+
+pub struct TreeStandData {
+    pub tree_stand_data: TreeStandDataType,
+}
+
+pub struct ClearingEstimation {
+    pub clearing_estimation: VirtaEvaluationType,
+}
+
+pub struct UserCode {
+    pub user_code: YesNoType,
+}
+
+pub struct EmployeePensionCertificate {
+    pub employee_pension_certificate: DateType,
+}
+
+pub struct TeamName {
+    pub team_name: String50Type,
+}
+
+pub struct DiameterCalibrationDescription {
+    pub diameter_calibration_description: String200Type,
+}
+
+pub struct LocationEstates {
+    pub location_estates: LocationEstatesType,
+}
+
+pub struct SelfMonitoringType {
+    pub self_monitoring_type: SelfMonitoringTypeType,
+}
+
+pub struct OrderId {
+    pub order_id: ERPIdType,
+}
+
+pub struct Subsidy {
+    pub subsidy: SubsidyType,
+}
+
+pub struct RoundWoodSalesRow {
+    pub round_wood_sales_row: RoundWoodSalesRowType,
+}
+
+pub struct ChildObject {
+    pub child_object: ChildObjectType,
+}
+
+pub struct CanModify {
+    pub can_modify: YesNoType,
+}
+
+pub struct HabitatAdvertisement {
+    pub habitat_advertisement: VirtaHabitatAdvertisementType,
+}
+
+pub struct PurchaseContractNumber {
+    pub purchase_contract_number: String20Type,
+}
+
+pub struct HarvestingFinishedDate {
+    pub harvesting_finished_date: TimeStampType,
+}
+
+pub struct KolmasRiviTeksti {
+    pub kolmas_rivi_teksti: KolmasRiviTekstiTyyppi,
+}
+
+pub struct ChangeTime {
+    pub change_time: ChangeTimeType,
+}
+
+pub struct CompanyType {
+    pub company_type: CompanyTypeType,
+}
+
+pub struct IncludedInOffer {
+    pub included_in_offer: IncludedInOfferType,
+}
+
+pub struct SmallPeelDamage {
+    pub small_peel_damage: PositiveInteger6digitsType,
+}
+
+pub struct TurningPlace {
+    pub turning_place: WorkingQualityType,
+}
+
+pub struct DitchDepthWidthAndDrainageEffectText {
+    pub ditch_depth_width_and_drainage_effect_text: String200Type,
+}
+
+pub struct LoadVolume {
+    pub load_volume: Decimal3FractionDigitsType,
+}
+
+pub struct UsingRestrictions {
+    pub using_restrictions: UsingRestrictionsType,
+}
+
+pub struct StorageText {
+    pub storage_text: String200Type,
+}
+
+pub struct StemBiomass {
+    pub stem_biomass: StemBiomassType,
+}
+
+pub struct ForestCentreMessageReference {
+    pub forest_centre_message_reference: ReferenceType,
+}
+
+pub struct FinalAuditIdentifierVersion {
+    pub final_audit_identifier_version: String10Type,
+}
+
+pub struct ResourceLocations {
+    pub resource_locations: ResourceLocationsType,
+}
+
+pub struct Accepted {
+    pub accepted: YesNoType,
+}
+
+pub struct Attachment {
+    pub attachment: AttachmentDataType,
+}
+
+pub struct ParcelNumber {
+    pub parcel_number: ParcelNumberType,
+}
+
+pub struct HarvestingSignData {
+    pub harvesting_sign_data: HarvestingSignDataType,
+}
+
+pub struct CuttingRightsOwner {
+    pub cutting_rights_owner: ContactInformationType,
+}
+
+pub struct ParcelId {
+    pub parcel_id: IdStringNotEmptyType,
+}
+
+pub struct CreateDate {
+    pub create_date: DateType,
+}
+
+pub struct StumpTreatment {
+    pub stump_treatment: YesNoType,
+}
+
+pub struct PurchaseContractId {
+    pub purchase_contract_id: String20Type,
+}
+
+pub struct Humidity {
+    pub humidity: Decimal1FractionDigitType,
+}
+
+pub struct AuthorizationsToSendWsoInformation {
+    pub authorizations_to_send_wso_information: AuthorizationsToSendWsoInformationType,
+}
+
+pub struct PowerOfAttorney {
+    pub power_of_attorney: PowerOfAttorneyType,
+}
+
+pub struct MapSymbolType {
+    pub map_symbol_type: FeatureCodeType,
+}
+
+pub struct GrainSize {
+    pub grain_size: PositiveInteger3digitsType,
+}
+
+pub struct AmountSeedlingsToPlant {
+    pub amount_seedlings_to_plant: PositiveInteger5digitsType,
+}
+
+pub struct CountryCode {
+    pub country_code: ISO3166char2CountryType,
+}
+
+pub struct SubContractors {
+    pub sub_contractors: SubContractorsType,
+}
+
+pub struct CostTypeAndCompletedWorkCompletion {
+    pub cost_type_and_completed_work_completion: CostTypeAndCompletedWorkCompletionType,
+}
+
+pub struct PassingPlaceText {
+    pub passing_place_text: String200Type,
+}
+
+pub struct OwnerSampleAreaApproval {
+    pub owner_sample_area_approval: VirtaApprovalType,
+}
+
+pub struct Maximum {
+    pub maximum: MaximumType,
+}
+
+pub struct ParentObjectId {
+    pub parent_object_id: IdStringNotEmptyType,
+}
+
+pub struct Distribution {
+    pub distribution: DistributionType,
+}
+
+pub struct ProcessingAreaNumber {
+    pub processing_area_number: ProcessingAreaNumberType,
+}
+
+pub struct Tree {
+    pub tree: TreeType,
+}
+
+pub struct Audition {
+    pub audition: AuditionType,
+}
+
+pub struct ErosionBlockingAction {
+    pub erosion_blocking_action: WorkingQualityType,
+}
+
+pub struct FeeBasisListItem {
+    pub fee_basis_list_item: FeebasisListItemType,
+}
+
+pub struct ThinningTooExcessiveCount {
+    pub thinning_too_excessive_count: PositiveInteger2digitsType,
+}
+
+pub struct CaseActions {
+    pub case_actions: CaseActionsType,
+}
+
+pub struct WorkingSiteHarvestedProduction {
+    pub working_site_harvested_production: WorkingSiteHarvestedProductionType,
+}
+
+pub struct StemDistribution {
+    pub stem_distribution: StemDistributionType,
+}
+
+pub struct DiameterCalibration {
+    pub diameter_calibration: DiameterCalibrationType,
+}
+
+pub struct VehiclePathMeanDistance {
+    pub vehicle_path_mean_distance: Decimal5_1Type,
+}
+
+pub struct MunicipalityName {
+    pub municipality_name: MunicipalityNameType,
+}
+
+pub struct MeanHeightSpruce {
+    pub mean_height_spruce: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct HarvestedTrees {
+    pub harvested_trees: FinalAuditAnswerType,
+}
+
+pub struct CompleteState {
+    pub complete_state: CompleteStateType,
+}
+
+pub struct UsedPricingMethodType {
+    pub used_pricing_method_type: UsedPricingMethodTypeType,
+}
+
+pub struct Vehicle {
+    pub vehicle: VehicleType,
+}
+
+pub struct PreclearingEvaluation {
+    pub preclearing_evaluation: PreclearingEvaluationType,
+}
+
+pub struct DitchingBreaksText {
+    pub ditching_breaks_text: String200Type,
+}
+
+pub struct MainApplier {
+    pub main_applier: YesNoType,
+}
+
+pub struct EarliestInspectionDate {
+    pub earliest_inspection_date: DateMmDdYyyyType,
+}
+
+pub struct Advertiser {
+    pub advertiser: VirtaAdvertiserType,
+}
+
+pub struct ObjectGeometry {
+    pub object_geometry: ObjectGeometryType,
+}
+
+pub struct Text {
+    pub text: TextType,
+}
+
+pub struct DiameterCalibrationAdjustment {
+    pub diameter_calibration_adjustment: Integer3digitsType,
+}
+
+pub struct WorkCodeQualifier3 {
+    pub work_code_qualifier3: WorkCodeQualifierType3,
+}
+
+pub struct OperationTimeStart {
+    pub operation_time_start: DateType,
+}
+
+pub struct Assortments {
+    pub assortments: AssortmentsType,
+}
+
+pub struct AuthorizationToSendWsoInformation {
+    pub authorization_to_send_wso_information: AuthorizationToSendWsoInformation,
+}
+
+pub struct WorkingTime {
+    pub working_time: DateType,
+}
+
+pub struct Employment {
+    pub employment: EmploymentDataType,
+}
+
+pub struct LoggingsRow {
+    pub loggings_row: LoggingsRowType,
+}
+
+pub struct ControlBasicData {
+    pub control_basic_data: ControlBasicDataType,
+}
+
+pub struct ActorId {
+    pub actor_id: IdStringType,
+}
+
+pub struct ProcessingAreas {
+    pub processing_areas: ProcessingAreasType,
+}
+
+pub struct ProductionFileSendFrequency {
+    pub production_file_send_frequency: PositiveIntegerType,
+}
+
+pub struct KuudesRiviTeksti {
+    pub kuudes_rivi_teksti: KuudesRiviTekstiTyyppi,
+}
+
+pub struct WorkDescription {
+    pub work_description: String1000Type,
+}
+
+pub struct ObjectKeys {
+    pub object_keys: ObjectKeysType,
+}
+
+pub struct SeedlingConditionAndQuality {
+    pub seedling_condition_and_quality: SeedlingConditionAndQualityType,
+}
+
+pub struct ForestHaulageFinishedDate {
+    pub forest_haulage_finished_date: TimeStampType,
+}
+
+pub struct SpecialFeatureData {
+    pub special_feature_data: SpecialFeatureDataType,
+}
+
+pub struct ActingDate {
+    pub acting_date: ActingDateType,
+}
+
+pub struct TransportArea {
+    pub transport_area: String10Type,
+}
+
+pub struct MeanHeightSummary {
+    pub mean_height_summary: Decimal1FractionDigitType,
+}
+
+pub struct SelfMonitoringEvaluation {
+    pub self_monitoring_evaluation: SelfMonitoringEvaluationType,
+}
+
+pub struct AnnouncedArea {
+    pub announced_area: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+pub struct DitchMeanDepth {
+    pub ditch_mean_depth: string,
+}
+
+pub struct HighStumpsText {
+    pub high_stumps_text: String200Type,
+}
+
+pub struct MeanHeightOfSpareTrees {
+    pub mean_height_of_spare_trees: HeightType,
+}
+
+pub struct Languages {
+    pub languages: LanguagesType,
+}
+
+pub struct OfferWorkingSiteDetails {
+    pub offer_working_site_details: OfferWorkingSiteDetailsType,
+}
+
+pub struct GeometryModificationAllowed {
+    pub geometry_modification_allowed: YesNoType,
+}
+
+pub struct DeliveryUserId {
+    pub delivery_user_id: String50Type,
+}
+
+pub struct DitchingBreaks {
+    pub ditching_breaks: YesNoType,
+}
+
+pub struct OtherRemarks {
+    pub other_remarks: String3000Type,
+}
+
+pub struct WorkingSiteNumber {
+    pub working_site_number: WorkingSiteNumberType,
+}
+
+pub struct PublicityOrganizations {
+    pub publicity_organizations: OrganizationsType,
+}
+
+pub struct PaymentTexts {
+    pub payment_texts: PaymentTextsType,
+}
+
+pub struct SubContractorsAllowed {
+    pub sub_contractors_allowed: YesNoType,
+}
+
+pub struct Cutting {
+    pub cutting: CuttingType,
+}
+
+pub struct RestrictionEndDate {
+    pub restriction_end_date: EndDateType,
+}
+
+pub struct PersonRole {
+    pub person_role: String50Type,
+}
+
+pub struct AverageHeight {
+    pub average_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct OperationType {
+    pub operation_type: OperationTypeType,
+}
+
+pub struct WorkingSitePlanDate {
+    pub working_site_plan_date: WorkingSitePlanDateType,
+}
+
+pub struct DeploymentMonth {
+    pub deployment_month: String5Type,
+}
+
+pub struct SecondStoreyTrees {
+    pub second_storey_trees: integer,
+}
+
+pub struct WorkPointCount {
+    pub work_point_count: PositiveInteger5digitsType,
+}
+
+pub struct RestrictionOutOfObject {
+    pub restriction_out_of_object: YesNoType,
+}
+
+pub struct StandNumber {
+    pub stand_number: String20Type,
+}
+
+pub struct TelefaxNumber {
+    pub telefax_number: TelefaxNumberType,
+}
+
+pub struct SamplePlotSummaries {
+    pub sample_plot_summaries: SamplePlotSummariesType,
+}
+
+pub struct DeclarationTextInformation {
+    pub declaration_text_information: String2000Type,
+}
+
+pub struct Startdate {
+    pub startdate: DateType,
+}
+
+pub struct StubDiameter {
+    pub stub_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+pub struct WorkingContract {
+    pub working_contract: YesNoType,
+}
+
+pub struct ForestHaulageDistanceContinued {
+    pub forest_haulage_distance_continued: PositiveInteger4digitsType,
+}
+
+pub struct ServiceTypes {
+    pub service_types: ServiceTypesType,
+}
+
+pub struct MeasureDeviceCheckRequired {
+    pub measure_device_check_required: YesNoType,
+}
+
+pub struct SelfMonitoringDate {
+    pub self_monitoring_date: DateType,
+}
+
+pub struct AmmattiKoodi {
+    pub ammatti_koodi: AmmattiKoodiTyyppi,
+}
+
+pub struct Language {
+    pub language: LanguageCode1Type,
+}
+
+pub struct SettlingPits {
+    pub settling_pits: YesNoType,
+}
+
+pub struct StemId {
+    pub stem_id: PositiveIntegerType,
+}
+
+pub struct SilvicultureRestriction {
+    pub silviculture_restriction: SilvicultureRestrictionType,
+}
+
+pub struct PaymentText {
+    pub payment_text: String5000Type,
+}
+
+pub struct PersonOrganizationName {
+    pub person_organization_name: PersonOrganizationNameType,
+}
+
+pub struct CodeGroup {
+    pub code_group: AssortmentGroupType,
+}
+
+pub struct AssortmentMatrixVolume {
+    pub assortment_matrix_volume: AssortmentMatrixVolumeType,
+}
+
+pub struct StemCountHardWood {
+    pub stem_count_hard_wood: PositiveInteger2digitsType,
+}
+
+pub struct CalendarDay {
+    pub calendar_day: DateType,
+}
+
+pub struct ServiceBuyerResourceId {
+    pub service_buyer_resource_id: String20Type,
+}
+
+pub struct RootRotControlEvaluation {
+    pub root_rot_control_evaluation: VirtaRootRotControlEvaluationType,
+}
+
+pub struct FeeBaseList {
+    pub fee_base_list: FeeBaseListType,
+}
+
+pub struct GradeCode {
+    pub grade_code: GradeCodeType,
+}
+
+pub struct SmallWoodRemovalVolume {
+    pub small_wood_removal_volume: PositiveInteger4digitsType,
+}
+
+pub struct IslandWorkingSite {
+    pub island_working_site: YesNoType,
+}
+
+pub struct MeasurerId {
+    pub measurer_id: String20Type,
+}
+
+pub struct CompletedWorkAmount {
+    pub completed_work_amount: AmountType,
+}
+
+pub struct Class1DamageCount {
+    pub class1_damage_count: StemCountType,
+}
+
+pub struct StateText {
+    pub state_text: String200Type,
+}
+
+pub struct Document {
+    pub document: base64Binary,
+}
+
+pub struct AssortmentClasses {
+    pub assortment_classes: AssortmentClassesType,
+}
+
+pub struct DecidedAmountUnit {
+    pub decided_amount_unit: DecidedAmountUnitType,
+}
+
+pub struct WorkCodeQualifier {
+    pub work_code_qualifier: WorkCodeQualifierType1,
+}
+
+pub struct MachineDescription {
+    pub machine_description: String500Type,
+}
+
+pub struct PreClearingText {
+    pub pre_clearing_text: String200Type,
+}
+
+pub struct SamplePlotCountRequired {
+    pub sample_plot_count_required: PositiveInteger3digitsType,
+}
+
+pub struct DeclarationReference {
+    pub declaration_reference: DeclarationReferenceType,
+}
+
+pub struct FinancingActApplicationGeometries {
+    pub financing_act_application_geometries: FinancingActApplicationGeometriesType,
+}
+
+pub struct EmployeeWrittenAgreement {
+    pub employee_written_agreement: YesNoType,
+}
+
+pub struct StatusCode {
+    pub status_code: StatusCodeType,
+}
+
+pub struct SukupuoliKoodi {
+    pub sukupuoli_koodi: SukupuoliKoodiTyyppi,
+}
+
+pub struct DecidedTotalSubsidy {
+    pub decided_total_subsidy: DecidedTotalSubsidyType,
+}
+
+pub struct WideCertificationSystem {
+    pub wide_certification_system: WideCertificationSystemType,
+}
+
+pub struct CultivatedCropStemCount {
+    pub cultivated_crop_stem_count: PositiveInteger6digitsType,
+}
+
+pub struct AreaAndMapEvaluation {
+    pub area_and_map_evaluation: VirtaEvaluationType,
+}
+
+pub struct WorkingSiteWorkLoad {
+    pub working_site_work_load: WorkingSiteWorkLoadType,
+}
+
+pub struct HasAssortmentChanges {
+    pub has_assortment_changes: YesNoType,
+}
+
+pub struct OrderStatus {
+    pub order_status: OrderStatusType,
+}
+
+pub struct RoadDamagesText {
+    pub road_damages_text: String200Type,
+}
+
+pub struct StandAvgAgeSummary {
+    pub stand_avg_age_summary: PositiveInteger3digitsType,
+}
+
+pub struct ForestStatisticsData {
+    pub forest_statistics_data: ForestStatisticsDataType,
+}
+
+pub struct Finished {
+    pub finished: YesNoType,
+}
+
+pub struct SpecialFeaturesControl {
+    pub special_features_control: ControlDataSpecialFeatureType,
+}
+
+pub struct ForestType {
+    pub forest_type: FertilityClassType,
+}
+
+pub struct HopperType {
+    pub hopper_type: HopperTypeType,
+}
+
+pub struct DocumentClass {
+    pub document_class: DocumentClassType,
+}
+
+pub struct OverallTotalSubsidy {
+    pub overall_total_subsidy: MoneyType,
+}
+
+pub struct SeparateSpareTrees {
+    pub separate_spare_trees: SpareTreesByCategoryType,
+}
+
+pub struct SelfMonitoringData {
+    pub self_monitoring_data: ForestCentreSelfMonitoringDataType,
+}
+
+pub struct MetadataText {
+    pub metadata_text: String1000Type,
+}
+
+pub struct CodeName {
+    pub code_name: String50Type,
+}
+
+pub struct Category {
+    pub category: ImageCategoryType,
+}
+
+pub struct RemainingBiomass {
+    pub remaining_biomass: YesNoType,
+}
+
+pub struct UpdatePreviousDeclaration {
+    pub update_previous_declaration: YesNoType,
+}
+
+pub struct ImageCount {
+    pub image_count: PositiveInteger2digitsType,
+}
+
+pub struct TargetExtraInfo {
+    pub target_extra_info: VirtaExtraInfoType,
+}
+
+pub struct AmountNotified {
+    pub amount_notified: Decimal3FractionDigitsType,
+}
+
+pub struct ExtraPerson1 {
+    pub extra_person1: PositiveInteger4digitsType,
+}
+
+pub struct StratumNumber {
+    pub stratum_number: StratumNumberType,
+}
+
+pub struct ContactMunicipality {
+    pub contact_municipality: MunicipalityNumberType,
+}
+
+pub struct InspectionDate {
+    pub inspection_date: DateMmDdYyyyType,
+}
+
+pub struct BranchBiomass {
+    pub branch_biomass: BranchBiomassType,
+}
+
+pub struct Reasons {
+    pub reasons: ReasonsType,
+}
+
+pub struct AccessibilityData {
+    pub accessibility_data: AccessibilityDataType,
+}
+
+pub struct DitchingYear {
+    pub ditching_year: DitchingYearType,
+}
+
+pub struct StemCountPine {
+    pub stem_count_pine: PositiveInteger2digitsType,
+}
+
+pub struct EvaluationCost {
+    pub evaluation_cost: PositiveDecimalMax5IntegralPartMax2FractionalPartType,
+}
+
+pub struct SilvicultureRestrictions {
+    pub silviculture_restrictions: SilvicultureRestrictionsType,
+}
+
+pub struct ForestCentreMessageReferenceType {
+    pub forest_centre_message_reference_type: ForestCentreMessageReferenceType,
+}
+
+pub struct CallForOfferWorkingSiteDetails {
+    pub call_for_offer_working_site_details: CallForOfferWorkingSiteDetailsType,
+}
+
+pub struct UseCase {
+    pub use_case: string,
+}
+
+pub struct Name {
+    pub name: String50Type,
+}
+
+pub struct ContinuousCoverForestry {
+    pub continuous_cover_forestry: YesNoType,
+}
+
+pub struct Offer {
+    pub offer: OfferType,
+}
+
+pub struct PlantPositionErrorCount {
+    pub plant_position_error_count: PositiveIntegerType,
+}
+
+pub struct DitchMoundsCount {
+    pub ditch_mounds_count: PositiveInteger2digitsType,
+}
+
+pub struct StemDistributionStratum {
+    pub stem_distribution_stratum: StemDistributionStratumType,
+}
+
+pub struct ShapeDelta {
+    pub shape_delta: ShapeDeltaType,
+}
+
+pub struct WorkingSiteQualityControlCutting {
+    pub working_site_quality_control_cutting: WorkingSiteQualityControlCuttingType,
+}
+
+pub struct Work {
+    pub work: WorkType,
+}
+
+pub struct ServiceStartDate {
+    pub service_start_date: DateType,
+}
+
+pub struct TreeSpeciesData {
+    pub tree_species_data: TreeSpeciesDataType,
+}
+
+pub struct Status1 {
+    pub status1: ChangeStateType,
+}
+
+pub struct PreNotificationAllowed {
+    pub pre_notification_allowed: YesNoType,
+}
+
+pub struct StoutTimberClassifier {
+    pub stout_timber_classifier: StoutTimberClassifierType,
+}
+
+pub struct DestroyedCuttingValue {
+    pub destroyed_cutting_value: PositiveInteger5digitsType,
+}
+
+pub struct FinancingActApplicationStand {
+    pub financing_act_application_stand: FinancingActApplicationStandType,
+}
+
+pub struct ChildObjects {
+    pub child_objects: ChildObjectsType,
+}
+
+pub struct CountryText {
+    pub country_text: CountryTextType,
+}
+
+pub struct SpareTreeGroup {
+    pub spare_tree_group: SpareTreeGroupType,
+}
+
+pub struct Loads {
+    pub loads: PositiveInteger3digitsType,
+}
+
+pub struct UserRole {
+    pub user_role: UserRoleType,
+}
+
+pub struct LogKey {
+    pub log_key: String10Type,
+}
+
+pub struct Attribute1 {
+    pub attribute1: WorkCodeQualifierType1,
+}
+
+pub struct MainWorkCode {
+    pub main_work_code: MainWorkCodeType,
+}
+
+pub struct Woodlot {
+    pub woodlot: WoodLotType,
+}
+
+pub struct PreviousMooseDamageEvaluationMunicipality {
+    pub previous_moose_damage_evaluation_municipality: MunicipalityNameType,
+}
+
+pub struct QualitySystems {
+    pub quality_systems: QualitySystemsType,
+}
+
+pub struct StorageAddress {
+    pub storage_address: String500Type,
+}
+
+pub struct Density {
+    pub density: Decimal3FractionDigitsType,
+}
+
+pub struct StemCountOtherTreeSpecies {
+    pub stem_count_other_tree_species: PositiveInteger2digitsType,
+}
+
+pub struct InternalInspectionId {
+    pub internal_inspection_id: string,
+}
+
+pub struct ContractWorkingSites {
+    pub contract_working_sites: ContractWorkingSitesType,
+}
+
+pub struct Identifier {
+    pub identifier: IdentifierType,
+}
+
+pub struct DeliveryDate {
+    pub delivery_date: DateType,
+}
+
+pub struct ControlReferenceType {
+    pub control_reference_type: ForestCentreMessageReferenceType,
+}
+
+pub struct Quantity {
+    pub quantity: Decimal2FractionDigitsType,
+}
+
+pub struct FinalAuditName {
+    pub final_audit_name: String100Type,
+}
+
+pub struct PostalCode {
+    pub postal_code: String10Type,
+}
+
+pub struct ForestRealizationData {
+    pub forest_realization_data: ForestRealizationDataType,
+}
+
+pub struct HavesterModelYear {
+    pub havester_model_year: YearType,
+}
+
+pub struct PartsOfProject {
+    pub parts_of_project: PartsOfProjectType,
+}
+
+pub struct HarvesterVolume {
+    pub harvester_volume: Decimal3FractionDigitsType,
+}
+
+pub struct SurfaceRunoffFieldGroundIsUnbroken {
+    pub surface_runoff_field_ground_is_unbroken: YesNoNotKnownType,
+}
+
+pub struct ExtraPerson3 {
+    pub extra_person3: PositiveInteger4digitsType,
+}
+
+pub struct NeljasRiviTeksti {
+    pub neljas_rivi_teksti: NeljasRiviTekstiTyyppi,
+}
+
+pub struct AssortmentId {
+    pub assortment_id: ERPIdType,
+}
+
+pub struct ServiceBuyerContactInformation {
+    pub service_buyer_contact_information: ServiceBuyerContactInformationType,
+}
+
+pub struct WorkingSiteQualityControlSilviculture {
+    pub working_site_quality_control_silviculture: WorkingSiteQualityControlSilvicultureType,
+}
+
+pub struct ControlReferenceMass {
+    pub control_reference_mass: Decimal1FractionDigitType,
+}
+
+pub struct SawLogVolume {
+    pub saw_log_volume: SawLogVolumeType,
+}
+
+pub struct ClearingDoneText {
+    pub clearing_done_text: String200Type,
+}
+
+pub struct SendNotificationsAlways {
+    pub send_notifications_always: YesNoType,
+}
+
+pub struct DeclarationOtherOperation {
+    pub declaration_other_operation: DeclarationOtherOperationType,
+}
+
+pub struct SentWorkingSiteVolume {
+    pub sent_working_site_volume: Decimal3FractionDigitsType,
+}
+
+pub struct PreferredContactingMethods {
+    pub preferred_contacting_methods: PreferredContactingMethodsType,
+}
+
+pub struct WorkingSiteOperational {
+    pub working_site_operational: WorkingSiteOperationalType,
+}
+
+pub struct LengthCalibrationDate {
+    pub length_calibration_date: TimeStampType,
+}
+
+pub struct AssortmentID {
+    pub assortment_i_d: ERPIdType,
+}
+
+pub struct GeometryReal {
+    pub geometry_real: PointGeometryType,
+}
+
+pub struct DataInformation {
+    pub data_information: DataInformationType,
+}
+
+pub struct LastName {
+    pub last_name: LastNameType,
+}
+
+pub struct ObjectOverallEvaluationData {
+    pub object_overall_evaluation_data: ControlOverallEvaluationDataType,
+}
+
+pub struct SawLogPercent {
+    pub saw_log_percent: SawLogPercentType,
+}
+
+pub struct ForestUseDeclarationReferences {
+    pub forest_use_declaration_references: ForestUseDeclarationsType,
+}
+
+pub struct StemDamagePercentage {
+    pub stem_damage_percentage: PositiveIntegerType,
+}
+
+pub struct StandBasicDataDate {
+    pub stand_basic_data_date: StandBasicDataDateType,
+}
+
+pub struct HelpGeometryType {
+    pub help_geometry_type: string,
+}
+
+pub struct SpruceDecimal {
+    pub spruce_decimal: VirtaTreeDecimalType,
+}
+
+pub struct FinalAuditDate {
+    pub final_audit_date: TimeStampType,
+}
+
+pub struct UnseparetedParcelNumber {
+    pub unsepareted_parcel_number: UnseparetedParcelNumberType,
+}
+
+pub struct HarvestExtraInfo {
+    pub harvest_extra_info: VirtaExtraInfoType,
+}
+
+pub struct SamplePlot {
+    pub sample_plot: SamplePlotType,
+}
+
+pub struct MeanDiameterPine {
+    pub mean_diameter_pine: PositiveInteger3digitsType,
+}
+
+pub struct SahkopostiosoiteTeksti {
+    pub sahkopostiosoite_teksti: SahkopostiosoiteTekstiTyyppi,
+}
+
+pub struct PlantCount {
+    pub plant_count: PositiveInteger3digitsType,
+}
+
+pub struct CuttingAccuracySign {
+    pub cutting_accuracy_sign: String5Type,
+}
+
+pub struct ExpirationDate {
+    pub expiration_date: DateType,
+}
+
+pub struct SendWorkingAloneNotification {
+    pub send_working_alone_notification: YesNoType,
+}
+
+pub struct WoodLotInformationValue {
+    pub wood_lot_information_value: WoodLotInformationValueType,
+}
+
+pub struct WorkingSiteFeeBasis {
+    pub working_site_fee_basis: WorkingSiteFeeBasisType,
+}
+
+pub struct WorkingSiteText {
+    pub working_site_text: WorkingSiteTextType,
+}
+
+pub struct Log {
+    pub log: LogDataType,
+}
+
+pub struct ThinningYear {
+    pub thinning_year: YearType,
+}
+
+pub struct QuestionAnswerText {
+    pub question_answer_text: String50Type,
+}
+
+pub struct ForestUseDeclarationNumber {
+    pub forest_use_declaration_number: ForestUseDeclarationNumberType,
+}
+
+pub struct SeedlingStratum {
+    pub seedling_stratum: SeedlingStratumType,
+}
+
+pub struct BorderingWithWaterAreaOrStream {
+    pub bordering_with_water_area_or_stream: YesNoType,
+}
+
+pub struct BusinessAcceptanceActor {
+    pub business_acceptance_actor: BusinessAcceptanceActorType,
+}
+
+pub struct ErrorMessages {
+    pub error_messages: ErrorMessagesType,
+}
+
+pub struct AssortmentInfo {
+    pub assortment_info: AssortmentInfoType,
+}
+
+pub struct FinalAuditer {
+    pub final_auditer: String50Type,
+}
+
+pub struct CuttingStemCount {
+    pub cutting_stem_count: CuttingStemCountType,
+}
+
+pub struct StorageForestHaulageDistance {
+    pub storage_forest_haulage_distance: StorageForestHaulageDistanceType,
+}
+
+pub struct ObjectProtectionOperation {
+    pub object_protection_operation: ObjectProtectionOperationType,
+}
+
+pub struct ChangeVolume {
+    pub change_volume: Decimal3FractionDigitsType,
+}
+
+pub struct PostinumeroKoodi {
+    pub postinumero_koodi: PostinumeroKoodiTyyppi,
+}
+
+pub struct AmountInSpot {
+    pub amount_in_spot: PositiveInteger6digitsType,
+}
+
+pub struct PlantLocationErrorCount {
+    pub plant_location_error_count: PositiveIntegerType,
+}
+
+pub struct Supported {
+    pub supported: YesNoType,
+}
+
+pub struct FeeYesNo {
+    pub fee_yes_no: YesNoType,
+}
+
+pub struct ExtraFinancingApplication {
+    pub extra_financing_application: YesNoType,
+}
+
+pub struct ForestPlanStandId {
+    pub forest_plan_stand_id: String10Type,
+}
+
+pub struct RegistrationId {
+    pub registration_id: ReferenceType,
+}
+
+pub struct BaseRealEstates {
+    pub base_real_estates: BaseRealEstatesType,
+}
+
+pub struct ErrorMessage {
+    pub error_message: String1000Type,
+}
+
+pub struct CalibrationDate {
+    pub calibration_date: TimeStampType,
+}
+
+pub struct IsValueForceWorkingSite {
+    pub is_value_force_working_site: YesNoType,
+}
+
+pub struct OrderConfirmation {
+    pub order_confirmation: OrderConfirmationType,
+}
+
+pub struct BasalArea {
+    pub basal_area: Decimal2FractionDigitsType,
+}
+
+pub struct ControlLogLength {
+    pub control_log_length: PositiveInteger5digitsType,
+}
+
+pub struct NearestSeedlingPlantingDepth {
+    pub nearest_seedling_planting_depth: PositiveInteger2digitsType,
+}
+
+pub struct PreinformDetails {
+    pub preinform_details: String1000Type,
+}
+
+pub struct CompletionDeclarationNumber {
+    pub completion_declaration_number: String100Type,
+}
+
+pub struct EvaluationCode {
+    pub evaluation_code: EvaluationCodeType,
+}
+
+pub struct RealEstateOwners {
+    pub real_estate_owners: RealEstateOwnersType,
+}
+
+pub struct UsingRightCompensationResponsible {
+    pub using_right_compensation_responsible: UsingRightResponsibleType,
+}
+
+pub struct Delivery {
+    pub delivery: DeliveryType,
+}
+
+pub struct RealEstateData {
+    pub real_estate_data: RealEstateDataType,
+}
+
+pub struct BioMassCollectionDone {
+    pub bio_mass_collection_done: YesNoType,
+}
+
+pub struct OfferBusinessSender {
+    pub offer_business_sender: OfferBusinessSenderType,
+}
+
+pub struct OperationDate {
+    pub operation_date: DateMmDdYyyyType,
+}
+
+pub struct LengthMin {
+    pub length_min: LengthMinType,
+}
+
+pub struct ApplicationAmount {
+    pub application_amount: Decimal7And2Type,
+}
+
+pub struct CuttingAreaPreclearingNeed {
+    pub cutting_area_preclearing_need: CuttingAreaPreclearingNeedType,
+}
+
+pub struct PlannedWorkAmount {
+    pub planned_work_amount: AmountType,
+}
+
+pub struct TotalPrice {
+    pub total_price: TotalPriceType,
+}
+
+pub struct CompanyInformation {
+    pub company_information: CompanyInformationType,
+}
+
+pub struct UsingRightExaminedDate {
+    pub using_right_examined_date: DateType,
+}
+
+pub struct IncludeForestFundPayment {
+    pub include_forest_fund_payment: IncludeForestFundPaymentType,
+}
+
+pub struct TerrainClass {
+    pub terrain_class: TerrainClassType,
+}
+
+pub struct LajiKoodi {
+    pub laji_koodi: LajiKoodiTyyppi,
+}
+
+pub struct DeclarationStandTextInformation {
+    pub declaration_stand_text_information: String2000Type,
+}
+
+pub struct MapSymbolName {
+    pub map_symbol_name: String20Type,
+}
+
+pub struct OfferText {
+    pub offer_text: OfferTextType,
+}
+
+pub struct Sawinghours {
+    pub sawinghours: SawinghoursDataType,
+}
+

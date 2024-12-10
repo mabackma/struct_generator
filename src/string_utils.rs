@@ -10,6 +10,16 @@ pub fn remove_prefix(name: &str) -> String {
 }
 
 pub fn to_snake_case(name: &str) -> String {
+    // Handle the case where the name is "type"
+    if name == "Type" || name == "@type" {
+        return "r#type".to_string();
+    }
+
+    // Handle the case where the name is all uppercase
+    if name.chars().all(char::is_uppercase) {
+        return name.to_ascii_lowercase();
+    }
+    
     let mut snake_case = String::new();
 
     // Use a unified iterator type for `chars`

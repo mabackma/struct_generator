@@ -1,5 +1,5 @@
 use struct_generator::create_structs::{create_structs, XMLStruct};
-use struct_generator::string_utils::to_snake_case;
+use struct_generator::string_utils::{remove_prefix, to_snake_case};
 
 use std::collections::HashMap;
 use std::fs;
@@ -90,7 +90,9 @@ fn element_definitions_to_file(element_definitions: &HashMap<String, String>, fi
 
     // Build the element definitions as a string
     for (name, typ) in element_definitions.iter() {
-        element_definitions_string.push_str(&format!("pub const {}: &str = \"{}\";\n", to_snake_case(name), typ));
+        element_definitions_string.push_str(&format!("pub struct {} {{\n", name));
+        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), remove_prefix(typ)));
+        element_definitions_string.push_str("}\n\n");
     }
 
     // Write the string to the file
