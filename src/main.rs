@@ -38,7 +38,12 @@ fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) -> io:
         structs_string.push_str(&format!("\npub struct {} {{\n", name));
 
         for field in xml_struct.fields.iter() {
-            structs_string.push_str(&format!("    #[serde(rename = \"{}\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
+            if field.field_type.starts_with("Option<") {
+                structs_string.push_str(&format!("    #[serde(rename = \"{}\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
+            } else {
+                structs_string.push_str(&format!("    #[serde(rename = \"{}\")]\n", field.name));
+            }
+            
             structs_string.push_str(&format!("    pub {}: {},\n", to_snake_case(&field.name), field.field_type));
         }
 
