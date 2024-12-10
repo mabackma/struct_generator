@@ -1,3 +1,4 @@
+use crate::element_utils::{element_name, element_reference, element_type, extension_type, parse_type, reference_type};
 use crate::string_utils::remove_prefix;
 
 use std::collections::HashMap;
@@ -62,21 +63,29 @@ pub fn create_structs(
                     }
                 }
 
-                if e.name() == QName(b"xs:element"){
-                    add_definition(e, &mut element_definitions);
-                    elements_and_groups(&mut stack, e, &mut element_definitions);
+                if e.name() == QName(b"xs:extension") {
+                    add_extension_fields(&mut stack, e);
                 }
-                if e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
-                    elements_and_groups(&mut stack, e, &mut element_definitions);
+
+                if e.name() == QName(b"xs:element") {
+                    add_definition(e, &mut element_definitions);
+                }
+
+                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
+                    elements_and_groups(&mut stack, e, &element_definitions);
                 }
             }
             Ok(Empty(ref e)) => {
-                if e.name() == QName(b"xs:element"){
-                    add_definition(e, &mut element_definitions);
-                    elements_and_groups(&mut stack, e, &mut element_definitions);
+                if e.name() == QName(b"xs:extension") {
+                    add_extension_fields(&mut stack, e);
                 }
-                if e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
-                    elements_and_groups(&mut stack, e, &mut element_definitions);
+
+                if e.name() == QName(b"xs:element") {
+                    add_definition(e, &mut element_definitions);
+                }
+
+                if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
+                    elements_and_groups(&mut stack, e, &element_definitions);
                 }
             }
             Ok(End(ref e)) => {
@@ -109,43 +118,6 @@ pub fn create_structs(
     }
 
     attributes_first(structs);
-}
-
-// Retrieve the element reference
-fn element_reference(e: &BytesStart<'_>) -> Option<String> {
-    let e_ref = e.attributes().filter_map(|a| a.ok())
-        .find(|a| a.key == QName(b"ref")) 
-        .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the ref attribute value as a string
-
-    e_ref
-}
-
-// Retrieve the element name
-fn element_name(e: &BytesStart<'_>) -> Option<String> {
-    let e_name = e.attributes().filter_map(|a| a.ok())
-        .find(|a| a.key == QName(b"name")) 
-        .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the name attribute value as a string
-
-    e_name
-}
-
-// Return the type of the element
-fn element_type(e: &BytesStart<'_>) -> Option<String> {
-    let e_type = e.attributes().filter_map(|a| a.ok())
-        .find(|a| a.key == QName(b"type")) 
-        .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the type attribute value as a string
-
-    e_type
-}
-
-fn reference_type(ref_name: &str, element_definitions: &HashMap<String, String>) -> Option<String> {
-    // Search for the reference type in the element definitions
-    if let Some(typ) = element_definitions.get(ref_name) {
-        return Some(typ.clone());
-    }
-
-    println!("Reference type not found: {}", ref_name);
-    Some("String".to_string())
 }
 
 // Add element definitions to the hashmap
@@ -200,55 +172,22 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
     }
 }
 
-// Check if the type is a vector or optional
-fn parse_type(e: &BytesStart<'_>, field_type: &mut String) {
-    if is_element_vec(e) {
-        if is_element_optional(e) {
-            *field_type = format!("Option<Vec<{}>>", field_type);
-        } else {
-            *field_type = format!("Vec<{}>", field_type);
+// Add extension fields to the struct
+fn add_extension_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
+    // If there's a parent struct, add this struct as a field to it
+    if let Some(parent_struct) = stack.last_mut() {
+        let mut field_type = "".to_string();
+
+        if let Some(typ) = extension_type(e) {
+            field_type = remove_prefix(&typ);
         }
-    } else {
-        if is_element_optional(e) {
-            *field_type = format!("Option<{}>", field_type);
-        }
+
+        // Add the field to the parent struct
+        parent_struct.fields.push(XMLField {
+            name: "base".to_string(),
+            field_type,
+        });
     }
-}
-
-// Check if the type is a Vec<>
-fn is_element_vec(e: &BytesStart<'_>) -> bool {
-    let e_max_occurs = e.attributes().filter_map(|a| a.ok())
-        .find(|a| a.key == QName(b"maxOccurs")) 
-        .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the maxOccurs attribute value as a string
-
-    if let Some(max_occurs) = e_max_occurs {
-        if max_occurs == "unbounded"{
-            return true;
-        }
-
-        if let Ok(num) = max_occurs.parse::<u32>() {
-            if num > 1 {
-                return true;
-            }
-        }
-    }
-
-    false
-}
-
-// Check if the type is optional
-fn is_element_optional(e: &BytesStart<'_>) -> bool {
-    let e_min_occurs = e.attributes().filter_map(|a| a.ok())
-        .find(|a| a.key == QName(b"minOccurs")) 
-        .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the minOccurs attribute value as a string
-
-    if let Some(min_occurs) = e_min_occurs {
-        if min_occurs == "0" {
-            return true;
-        }
-    }
-
-    false
 }
 
 // Move attributes to the beginning of the struct
@@ -260,14 +199,6 @@ fn attributes_first(structs: &mut HashMap<String, XMLStruct>) {
             if field.name.starts_with('@') {
                 attribute_fields.push(field.clone());
             }
-        }
-
-        // Add optional text field
-        if xml_struct.fields.len() > 0 {
-            attribute_fields.push(XMLField {
-                name: "$text".to_string(),
-                field_type: "Option<String>".to_string(),
-            });
         }
 
         for field in xml_struct.fields.iter() {

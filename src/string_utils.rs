@@ -13,7 +13,7 @@ pub fn to_snake_case(name: &str) -> String {
     let mut snake_case = String::new();
 
     // Use a unified iterator type for `chars`
-    let mut chars: Box<dyn Iterator<Item = char>> = if name.starts_with('@') || name.starts_with('$') {
+    let mut chars: Box<dyn Iterator<Item = char>> = if name.starts_with('@') {
         Box::new(name.chars().skip(1))
     } else {
         Box::new(name.chars())

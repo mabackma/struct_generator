@@ -35,10 +35,13 @@ fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) -> io:
 
     // Build the structs as a string
     for (name, xml_struct) in structs.iter() {
+        structs_string.push_str(&format!("\n#[derive(Debug, Serialize, Deserialize)]"));
         structs_string.push_str(&format!("\npub struct {} {{\n", name));
 
         for field in xml_struct.fields.iter() {
-            if field.field_type.starts_with("Option<") {
+            if field.name == "base" {
+                structs_string.push_str(&format!("    #[serde(flatten)]\n"));
+            } else if field.field_type.starts_with("Option<") {
                 structs_string.push_str(&format!("    #[serde(rename = \"{}\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
             } else {
                 structs_string.push_str(&format!("    #[serde(rename = \"{}\")]\n", field.name));
