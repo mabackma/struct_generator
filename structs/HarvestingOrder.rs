@@ -23,11 +23,9 @@ pub struct AttachmentsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "Data")]
-    pub data: Vec<u8>,
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -55,8 +53,10 @@ pub struct AssortmentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "Data")]
+    pub data: Vec<u8>,
 }
 

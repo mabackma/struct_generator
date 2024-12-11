@@ -1,4 +1,22 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialPermissionType {
+    #[serde(flatten)]
+    pub base: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalTextType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AcceptanceDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestUseDeclarationType {
     #[serde(rename = "@parentId")]
     pub parent_id: String,
@@ -28,23 +46,5 @@ pub struct ForestUseDeclarationsType {
 pub struct DeclarationReferenceType {
     #[serde(flatten)]
     pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AcceptanceDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalTextType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialPermissionType {
-    #[serde(flatten)]
-    pub base: YesNoType,
 }
 

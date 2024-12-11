@@ -61,14 +61,14 @@ pub struct FinancingActApplicationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PlanAndSubsidyType {
     #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
     pub financing_act_application_stands: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
 }
 

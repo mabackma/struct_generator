@@ -1,4 +1,52 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationOtherOperationsType {
+    #[serde(rename = "DeclarationOtherOperation")]
+    pub declaration_other_operation: Vec<DeclarationOtherOperationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatOperationsType {
+    #[serde(rename = "HabitatOperation")]
+    pub habitat_operation: Vec<HabitatOperationsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<LocatedSpecialFeature3Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreasType {
+    #[serde(rename = "ProcessingArea")]
+    pub processing_area: Vec<ProcessingAreaType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreaType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "ProcessingAreaNumber")]
+    pub processing_area_number: ProcessingAreaNumberType,
+    #[serde(rename = "ProcessingAreaReference")]
+    pub processing_area_reference: ReferenceType,
+    #[serde(rename = "DeclarationStands")]
+    pub declaration_stands: DeclarationStandsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreaNumberType {
+    #[serde(flatten)]
+    pub base: i32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanDiameterType {
+    #[serde(flatten)]
+    pub base: DiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestUseDeclarationType {
     #[serde(rename = "@id")]
     pub id: IdStringType,
@@ -33,24 +81,6 @@ pub struct SenderType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatOperationsType {
-    #[serde(rename = "HabitatOperation")]
-    pub habitat_operation: Vec<HabitatOperationsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationStandsType {
-    #[serde(rename = "DeclarationStand")]
-    pub declaration_stand: Vec<DeclarationStandType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
-    #[serde(flatten)]
-    pub base: DiameterType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct DeclarationRealEstatesType {
     #[serde(flatten)]
     pub base: RealEstatesWithOwnersInformationType2,
@@ -59,21 +89,9 @@ pub struct DeclarationRealEstatesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationOtherOperationsType {
-    #[serde(rename = "DeclarationOtherOperation")]
-    pub declaration_other_operation: Vec<DeclarationOtherOperationType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreasType {
-    #[serde(rename = "ProcessingArea")]
-    pub processing_area: Vec<ProcessingAreaType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreaNumberType {
-    #[serde(flatten)]
-    pub base: i32,
+pub struct DeclarationStandsType {
+    #[serde(rename = "DeclarationStand")]
+    pub declaration_stand: Vec<DeclarationStandType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -133,26 +151,8 @@ pub struct DeclarationStandType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<LocatedSpecialFeature3Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct LocationEstatesType {
     #[serde(rename = "LocationEstate")]
     pub location_estate: Vec<LocationEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreaType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "ProcessingAreaNumber")]
-    pub processing_area_number: ProcessingAreaNumberType,
-    #[serde(rename = "ProcessingAreaReference")]
-    pub processing_area_reference: ReferenceType,
-    #[serde(rename = "DeclarationStands")]
-    pub declaration_stands: DeclarationStandsType,
 }
 

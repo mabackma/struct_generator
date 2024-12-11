@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Acknowledge {
+pub struct OriginalMessageType {
     #[serde(flatten)]
-    pub acknowledge: AcknowledgeType,
+    pub original_message_type: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatusMessages {
+    #[serde(flatten)]
+    pub status_messages: StatusMessageLanguageType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,14 +29,8 @@ pub struct StatusMessage {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OriginalMessageType {
+pub struct Acknowledge {
     #[serde(flatten)]
-    pub original_message_type: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatusMessages {
-    #[serde(flatten)]
-    pub status_messages: StatusMessageLanguageType,
+    pub acknowledge: AcknowledgeType,
 }
 

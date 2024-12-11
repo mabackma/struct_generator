@@ -5,9 +5,9 @@ pub struct RealEstateOwners {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstate {
+pub struct RealEstateOwner {
     #[serde(flatten)]
-    pub real_estate: RealEstateType,
+    pub real_estate_owner: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +17,9 @@ pub struct BaseRealEstates {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateOwner {
+pub struct RealEstate {
     #[serde(flatten)]
-    pub real_estate_owner: ContactInformationType,
+    pub real_estate: RealEstateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

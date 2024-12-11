@@ -1,7 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingsRow {
+pub struct ForestStatisticsData {
     #[serde(flatten)]
-    pub loggings_row: LoggingsRowType,
+    pub forest_statistics_data: ForestStatisticsDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatisticsAssortmentCompactClasses {
+    #[serde(flatten)]
+    pub statistics_assortment_compact_classes: AssortmentCompactClassesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Quantity {
+    #[serde(flatten)]
+    pub quantity: QuantityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentInfo {
+    #[serde(flatten)]
+    pub assortment_info: AssortmentInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,33 +29,57 @@ pub struct CompanyID {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentClassCode {
+    #[serde(flatten)]
+    pub assortment_class_code: AssortmentClassCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct LoggingsRows {
     #[serde(flatten)]
     pub loggings_rows: LoggingsRowsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EndDate {
+pub struct StatisticsQuantities {
     #[serde(flatten)]
-    pub end_date: EndDateType,
+    pub statistics_quantities: StatisticsQuantitiesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaCode {
+pub struct AssortmentsCompact {
     #[serde(flatten)]
-    pub area_code: AreaCodeType,
+    pub assortments_compact: AssortmentsCompactType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestStatisticsData {
+pub struct TreeSpecies {
     #[serde(flatten)]
-    pub forest_statistics_data: ForestStatisticsDataType,
+    pub tree_species: TreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatisticsOperation {
+    #[serde(flatten)]
+    pub statistics_operation: StatisticsOperationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentCompactClasses {
     #[serde(flatten)]
     pub assortment_compact_classes: AssortmentCompactClassesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationRow {
+    #[serde(flatten)]
+    pub operation_row: OperationRowType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationRows {
+    #[serde(flatten)]
+    pub operation_rows: OperationRowsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,39 +95,9 @@ pub struct StatisticsQuantity {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpecies {
+pub struct ReportedStatisticsOperationType {
     #[serde(flatten)]
-    pub tree_species: TreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsQuantities {
-    #[serde(flatten)]
-    pub statistics_quantities: StatisticsQuantitiesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Quantity {
-    #[serde(flatten)]
-    pub quantity: QuantityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRow {
-    #[serde(flatten)]
-    pub operation_row: OperationRowType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsOperation {
-    #[serde(flatten)]
-    pub statistics_operation: StatisticsOperationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseModeCode {
-    #[serde(flatten)]
-    pub purchase_mode_code: StatisticsPurchaseModeCodeType,
+    pub reported_statistics_operation_type: ReportedStatisticsOperationTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,9 +107,15 @@ pub struct StemType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClassCode {
+pub struct PurchaseModeCode {
     #[serde(flatten)]
-    pub assortment_class_code: AssortmentClassCodeType,
+    pub purchase_mode_code: StatisticsPurchaseModeCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaCode {
+    #[serde(flatten)]
+    pub area_code: AreaCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -107,9 +125,15 @@ pub struct AssortmentCompact {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentInfo {
+pub struct AreaType {
     #[serde(flatten)]
-    pub assortment_info: AssortmentInfoType,
+    pub area_type: AreaTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EndDate {
+    #[serde(flatten)]
+    pub end_date: EndDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,21 +143,9 @@ pub struct AssortmentCompactClass {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StartDate {
+pub struct LoggingsRow {
     #[serde(flatten)]
-    pub start_date: StartDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsAssortmentCompactClasses {
-    #[serde(flatten)]
-    pub statistics_assortment_compact_classes: AssortmentCompactClassesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsCompact {
-    #[serde(flatten)]
-    pub assortments_compact: AssortmentsCompactType,
+    pub loggings_row: LoggingsRowType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -143,20 +155,8 @@ pub struct QuantityUnit {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReportedStatisticsOperationType {
+pub struct StartDate {
     #[serde(flatten)]
-    pub reported_statistics_operation_type: ReportedStatisticsOperationTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRows {
-    #[serde(flatten)]
-    pub operation_rows: OperationRowsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaType {
-    #[serde(flatten)]
-    pub area_type: AreaTypeType,
+    pub start_date: StartDateType,
 }
 

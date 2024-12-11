@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandBasicData {
+pub struct SpecialFeatures {
     #[serde(flatten)]
-    pub stand_basic_data: StandBasicDataWithGeometryType,
+    pub special_features: SpecialFeaturesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,14 +17,14 @@ pub struct Stand {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeatures {
-    #[serde(flatten)]
-    pub special_features: SpecialFeaturesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SpecialFeature {
     #[serde(flatten)]
     pub special_feature: BasicFeature1Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandBasicData {
+    #[serde(flatten)]
+    pub stand_basic_data: StandBasicDataWithGeometryType,
 }
 

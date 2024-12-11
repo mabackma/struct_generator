@@ -5,27 +5,9 @@ pub struct Product {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductName {
+pub struct Quantity {
     #[serde(flatten)]
-    pub product_name: String500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Unit {
-    #[serde(flatten)]
-    pub unit: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Currency {
-    #[serde(flatten)]
-    pub currency: CurrencyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationType {
-    #[serde(flatten)]
-    pub operation_type: OperationTypeType,
+    pub quantity: Decimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,27 +17,9 @@ pub struct Description {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnit {
+pub struct OperationType {
     #[serde(flatten)]
-    pub consumption_unit: ConsumptionUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationMode {
-    #[serde(flatten)]
-    pub operation_mode: OperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Quantity {
-    #[serde(flatten)]
-    pub quantity: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuantityUnit {
-    #[serde(flatten)]
-    pub quantity_unit: WideUnitType,
+    pub operation_type: OperationTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,9 +29,27 @@ pub struct UnitPrice {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TotalPrice {
+pub struct PlannedResource {
     #[serde(flatten)]
-    pub total_price: TotalPriceType,
+    pub planned_resource: PlannedResourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductName {
+    #[serde(flatten)]
+    pub product_name: String500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuantityUnit {
+    #[serde(flatten)]
+    pub quantity_unit: WideUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Currency {
+    #[serde(flatten)]
+    pub currency: CurrencyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,9 +59,27 @@ pub struct Consumption {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResource {
+pub struct Unit {
     #[serde(flatten)]
-    pub planned_resource: PlannedResourceType,
+    pub unit: string,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationMode {
+    #[serde(flatten)]
+    pub operation_mode: OperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionUnit {
+    #[serde(flatten)]
+    pub consumption_unit: ConsumptionUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TotalPrice {
+    #[serde(flatten)]
+    pub total_price: TotalPriceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

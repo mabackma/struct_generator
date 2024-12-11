@@ -1,42 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditFertilizationType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ContractorId", skip_serializing_if = "Option::is_none")]
-    pub contractor_id: Option<String20Type>,
-    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<String20Type>,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: WorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "Area")]
-    pub area: Decimal2FractionDigitsType,
-    #[serde(rename = "WorkingTime")]
-    pub working_time: DateType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
-    #[serde(rename = "SamplePlotCount")]
-    pub sample_plot_count: PositiveInteger3digitsType,
-    #[serde(rename = "SamplePlotCountRequired")]
-    pub sample_plot_count_required: PositiveInteger3digitsType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<String1000Type>,
-    #[serde(rename = "FertilizerVolumeOrdered")]
-    pub fertilizer_volume_ordered: PositiveIntegerType,
-    #[serde(rename = "FertilizerVolumeMeasured")]
-    pub fertilizer_volume_measured: PositiveIntegerType,
-    #[serde(rename = "FertilizerVolumeMeasuredText", skip_serializing_if = "Option::is_none")]
-    pub fertilizer_volume_measured_text: Option<String200Type>,
-    #[serde(rename = "Images")]
-    pub images: PositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AuditsType {
     #[serde(rename = "FertilizationTotalAudit")]
     pub fertilization_total_audit: WorkingQualityType,
@@ -102,5 +64,43 @@ pub struct AuditionType {
     pub final_audit_date: TimeStampType,
     #[serde(rename = "FinalAuditRequired")]
     pub final_audit_required: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditFertilizationType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ContractorId", skip_serializing_if = "Option::is_none")]
+    pub contractor_id: Option<String20Type>,
+    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
+    pub resource_id: Option<String20Type>,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: WorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "Area")]
+    pub area: Decimal2FractionDigitsType,
+    #[serde(rename = "WorkingTime")]
+    pub working_time: DateType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "SamplePlotCount")]
+    pub sample_plot_count: PositiveInteger3digitsType,
+    #[serde(rename = "SamplePlotCountRequired")]
+    pub sample_plot_count_required: PositiveInteger3digitsType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<String1000Type>,
+    #[serde(rename = "FertilizerVolumeOrdered")]
+    pub fertilizer_volume_ordered: PositiveIntegerType,
+    #[serde(rename = "FertilizerVolumeMeasured")]
+    pub fertilizer_volume_measured: PositiveIntegerType,
+    #[serde(rename = "FertilizerVolumeMeasuredText", skip_serializing_if = "Option::is_none")]
+    pub fertilizer_volume_measured_text: Option<String200Type>,
+    #[serde(rename = "Images")]
+    pub images: PositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
 }
 

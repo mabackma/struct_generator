@@ -1,13 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
+pub struct OfferBusinessSenderType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferDateType {
     #[serde(flatten)]
     pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
+pub struct OfferTextType {
     #[serde(flatten)]
-    pub base: ContactInformationType,
+    pub base: String1500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -43,20 +55,8 @@ pub struct OfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferBusinessSenderType {
+pub struct TechnicalContactPersonType {
     #[serde(flatten)]
     pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferTextType {
-    #[serde(flatten)]
-    pub base: String1500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDateType {
-    #[serde(flatten)]
-    pub base: DateType,
 }
 

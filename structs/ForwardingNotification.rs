@@ -1,4 +1,18 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct LoadRangeType {
+    #[serde(rename = "StartLoadNumber")]
+    pub start_load_number: PositiveInteger4digitsType,
+    #[serde(rename = "EndLoadNumber")]
+    pub end_load_number: PositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsChangesType {
+    #[serde(rename = "AssortmentsChange", skip_serializing_if = "Option::is_none")]
+    pub assortments_change: Option<Vec<AssortmentChangeDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ForwardingNotificationType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -36,32 +50,6 @@ pub struct ForwardingNotificationType {
     pub client_application_id: Option<ClientApplicationIdType>,
     #[serde(rename = "LoadRange", skip_serializing_if = "Option::is_none")]
     pub load_range: Option<LoadRangeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessageDataType {
-    #[serde(rename = "CommonMessageId", skip_serializing_if = "Option::is_none")]
-    pub common_message_id: Option<CommonMessageType>,
-    #[serde(rename = "CommonMessageFreeText", skip_serializing_if = "Option::is_none")]
-    pub common_message_free_text: Option<String200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsChangesType {
-    #[serde(rename = "AssortmentsChange", skip_serializing_if = "Option::is_none")]
-    pub assortments_change: Option<Vec<AssortmentChangeDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessagesType {
-    #[serde(rename = "CommonMessage", skip_serializing_if = "Option::is_none")]
-    pub common_message: Option<Vec<CommonMessageDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -111,14 +99,6 @@ pub struct AssortmentChangeDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoadRangeType {
-    #[serde(rename = "StartLoadNumber")]
-    pub start_load_number: PositiveInteger4digitsType,
-    #[serde(rename = "EndLoadNumber")]
-    pub end_load_number: PositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ScaleFactorDataType {
     #[serde(rename = "ScaleAssortmentType")]
     pub scale_assortment_type: ScaleAssortmentType,
@@ -163,8 +143,28 @@ pub struct ScaleFactorDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommonMessagesType {
+    #[serde(rename = "CommonMessage", skip_serializing_if = "Option::is_none")]
+    pub common_message: Option<Vec<CommonMessageDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ScaleFactorsType {
     #[serde(rename = "ScaleFactor", skip_serializing_if = "Option::is_none")]
     pub scale_factor: Option<Vec<ScaleFactorDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommonMessageDataType {
+    #[serde(rename = "CommonMessageId", skip_serializing_if = "Option::is_none")]
+    pub common_message_id: Option<CommonMessageType>,
+    #[serde(rename = "CommonMessageFreeText", skip_serializing_if = "Option::is_none")]
+    pub common_message_free_text: Option<String200Type>,
 }
 

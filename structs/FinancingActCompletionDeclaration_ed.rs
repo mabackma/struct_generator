@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BankReferenceNumber {
+pub struct CompletionDataAndSubsidy {
     #[serde(flatten)]
-    pub bank_reference_number: BankReferenceNumberType,
+    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,15 +17,15 @@ pub struct PartOfProject {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompletionDataAndSubsidy {
+pub struct FinancingActProjectCompleted {
     #[serde(flatten)]
-    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+    pub financing_act_project_completed: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OtherPublicSubstitute {
+pub struct BankReferenceNumber {
     #[serde(flatten)]
-    pub other_public_substitute: OtherPublicSubstituteType,
+    pub bank_reference_number: BankReferenceNumberType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,9 +35,9 @@ pub struct PartsOfProject {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActProjectCompleted {
+pub struct OtherPublicSubstitute {
     #[serde(flatten)]
-    pub financing_act_project_completed: YesNoType,
+    pub other_public_substitute: OtherPublicSubstituteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

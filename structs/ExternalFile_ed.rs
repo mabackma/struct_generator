@@ -1,13 +1,37 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
+pub struct StorageId {
     #[serde(flatten)]
-    pub resource_id: String20Type,
+    pub storage_id: ERPIdType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DocumentClass {
+    #[serde(flatten)]
+    pub document_class: DocumentClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Bytes {
+    #[serde(flatten)]
+    pub bytes: base64Binary,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Label {
     #[serde(flatten)]
     pub label: String100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FileName {
+    #[serde(flatten)]
+    pub file_name: String100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,9 +53,9 @@ pub struct ExternalFile {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Bytes {
+pub struct ServiceBuyerId {
     #[serde(flatten)]
-    pub bytes: base64Binary,
+    pub service_buyer_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,32 +71,8 @@ pub struct StandId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentClass {
-    #[serde(flatten)]
-    pub document_class: DocumentClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ProductUserId {
     #[serde(flatten)]
     pub product_user_id: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageId {
-    #[serde(flatten)]
-    pub storage_id: ERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FileName {
-    #[serde(flatten)]
-    pub file_name: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
-    #[serde(flatten)]
-    pub service_buyer_id: String20Type,
 }
 

@@ -5,15 +5,15 @@ pub struct Sender {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Objects {
-    #[serde(flatten)]
-    pub objects: ForestObjectDataObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestObjectData {
     #[serde(flatten)]
     pub forest_object_data: ForestObjectDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Object {
+    #[serde(flatten)]
+    pub object: ForestObjectDataObjectType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,8 +23,8 @@ pub struct Description {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Object {
+pub struct Objects {
     #[serde(flatten)]
-    pub object: ForestObjectDataObjectType,
+    pub objects: ForestObjectDataObjectsType,
 }
 

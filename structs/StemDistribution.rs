@@ -1,7 +1,17 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemDistributionType {
-    #[serde(rename = "Tree")]
-    pub tree: Vec<TreeType>,
+pub struct HeightType {
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogPercentType {
+    #[serde(flatten)]
+    pub base: SawLogPercentType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeNumberType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,19 +21,21 @@ pub struct PulpWoodVolumeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: StoreyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HeightType {
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AgeType {
     #[serde(flatten)]
     pub base: AgeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CountType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeClassType {
+    #[serde(flatten)]
+    pub base: TreeClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -63,27 +75,9 @@ pub struct TreeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CountType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeNumberType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct DiameterType {
     #[serde(flatten)]
     pub base: DiameterType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClassType {
-    #[serde(flatten)]
-    pub base: TreeClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -99,8 +93,14 @@ pub struct SawLogVolumeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogPercentType {
+pub struct StemDistributionType {
+    #[serde(rename = "Tree")]
+    pub tree: Vec<TreeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoreyType {
     #[serde(flatten)]
-    pub base: SawLogPercentType,
+    pub base: StoreyType,
 }
 

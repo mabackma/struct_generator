@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectId {
+pub struct ParentObjectType {
     #[serde(flatten)]
-    pub parent_object_id: IdStringNotEmptyType,
+    pub parent_object_type: ObjectTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,15 +11,15 @@ pub struct ParentObjects {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectGeometry {
+pub struct ParentObjectId {
     #[serde(flatten)]
-    pub object_geometry: ObjectGeometryType,
+    pub parent_object_id: IdStringNotEmptyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryObjects {
+pub struct Area {
     #[serde(flatten)]
-    pub geometry_objects: GeometryObjectsType,
+    pub area: AreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,21 +35,21 @@ pub struct ForestRealizationData {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Sender {
+pub struct StandBasicData {
     #[serde(flatten)]
-    pub sender: ContactInformationType,
+    pub stand_basic_data: StandBasicDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObject {
+pub struct GeometryObjects {
     #[serde(flatten)]
-    pub parent_object: ParentObjectType,
+    pub geometry_objects: GeometryObjectsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectType {
+pub struct ObjectGeometry {
     #[serde(flatten)]
-    pub parent_object_type: ObjectTypeType,
+    pub object_geometry: ObjectGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,15 +59,15 @@ pub struct UseCase {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Area {
+pub struct Sender {
     #[serde(flatten)]
-    pub area: AreaType,
+    pub sender: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandBasicData {
+pub struct GeometryObject {
     #[serde(flatten)]
-    pub stand_basic_data: StandBasicDataType,
+    pub geometry_object: GeometryObjectType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,8 +77,8 @@ pub struct AreaDecrease {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryObject {
+pub struct ParentObject {
     #[serde(flatten)]
-    pub geometry_object: GeometryObjectType,
+    pub parent_object: ParentObjectType,
 }
 

@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ActingDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationDefType {
     #[serde(rename = "@parentId")]
     pub parent_id: String,
@@ -25,12 +19,6 @@ pub struct OperationDefType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MainTypeType {
-    #[serde(flatten)]
-    pub base: MainTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationsType {
     #[serde(rename = "Operation")]
     pub operation: Vec<OperationDefType>,
@@ -38,6 +26,18 @@ pub struct OperationsType {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OperationTypeType {
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ActingDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainTypeType {
+    #[serde(flatten)]
+    pub base: MainTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

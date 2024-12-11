@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentDataType {
     #[serde(rename = "DestinationStorage")]
     pub destination_storage: String20Type,
@@ -20,12 +26,6 @@ pub struct AssortmentDataType {
     pub forest_haulage_distance: PositiveInteger4digitsType,
     #[serde(rename = "ForestHaulageDistanceContinued", skip_serializing_if = "Option::is_none")]
     pub forest_haulage_distance_continued: Option<PositiveInteger4digitsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

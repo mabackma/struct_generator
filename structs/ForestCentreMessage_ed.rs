@@ -1,7 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MooseDamageDeclaration {
+    #[serde(flatten)]
+    pub moose_damage_declaration: MooseDamageDeclarationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestUseDeclaration {
     #[serde(flatten)]
     pub forest_use_declaration: ForestUseDeclarationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringData {
+    #[serde(flatten)]
+    pub self_monitoring_data: ForestCentreSelfMonitoringDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActCompletionDeclaration {
+    #[serde(flatten)]
+    pub financing_act_completion_declaration: FinancingActCompletionDeclarationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +35,9 @@ pub struct ForestCentreMessage {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringData {
+pub struct ForestDataUpdate {
     #[serde(flatten)]
-    pub self_monitoring_data: ForestCentreSelfMonitoringDataType,
+    pub forest_data_update: ForestDataUpdateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,32 +47,14 @@ pub struct Message {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActCompletionDeclaration {
+pub struct SenderEmail {
     #[serde(flatten)]
-    pub financing_act_completion_declaration: FinancingActCompletionDeclarationType,
+    pub sender_email: EmailAddressType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TimeStamp {
     #[serde(flatten)]
     pub time_stamp: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MooseDamageDeclaration {
-    #[serde(flatten)]
-    pub moose_damage_declaration: MooseDamageDeclarationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDataUpdate {
-    #[serde(flatten)]
-    pub forest_data_update: ForestDataUpdateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SenderEmail {
-    #[serde(flatten)]
-    pub sender_email: EmailAddressType,
 }
 

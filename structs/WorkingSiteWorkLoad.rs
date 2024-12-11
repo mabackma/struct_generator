@@ -29,6 +29,52 @@ pub struct MaterialType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkGrouMemberType {
+    #[serde(rename = "ResourceId")]
+    pub resource_id: ShortERPIdType,
+    #[serde(rename = "UserId")]
+    pub user_id: ShortERPIdType,
+    #[serde(rename = "TaxNumber", skip_serializing_if = "Option::is_none")]
+    pub tax_number: Option<TaxNumberType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisDataType {
+    #[serde(rename = "FeeId")]
+    pub fee_id: String10Type,
+    #[serde(rename = "FeeListId", skip_serializing_if = "Option::is_none")]
+    pub fee_list_id: Option<PositiveIntegerType>,
+    #[serde(rename = "FeeYesNo", skip_serializing_if = "Option::is_none")]
+    pub fee_yes_no: Option<YesNoType>,
+    #[serde(rename = "FeeValue", skip_serializing_if = "Option::is_none")]
+    pub fee_value: Option<String10Type>,
+    #[serde(rename = "FeeAssortment", skip_serializing_if = "Option::is_none")]
+    pub fee_assortment: Option<String50Type>,
+    #[serde(rename = "Infotext", skip_serializing_if = "Option::is_none")]
+    pub infotext: Option<String1000Type>,
+    #[serde(rename = "NeedToCheck", skip_serializing_if = "Option::is_none")]
+    pub need_to_check: Option<YesNoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisType {
+    #[serde(rename = "FeeBase")]
+    pub fee_base: Vec<FeeBasisDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkGrouMembersType {
+    #[serde(rename = "WorkGrouMember")]
+    pub work_grou_member: Vec<WorkGrouMemberType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialsType {
+    #[serde(rename = "Material")]
+    pub material: Vec<MaterialType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteWorkLoadType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -96,51 +142,5 @@ pub struct WorkingSiteWorkLoadType {
     pub work_point_count: Option<PositiveInteger5digitsType>,
     #[serde(rename = "WorkGrouMembers", skip_serializing_if = "Option::is_none")]
     pub work_grou_members: Option<WorkGrouMembersType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisDataType {
-    #[serde(rename = "FeeId")]
-    pub fee_id: String10Type,
-    #[serde(rename = "FeeListId", skip_serializing_if = "Option::is_none")]
-    pub fee_list_id: Option<PositiveIntegerType>,
-    #[serde(rename = "FeeYesNo", skip_serializing_if = "Option::is_none")]
-    pub fee_yes_no: Option<YesNoType>,
-    #[serde(rename = "FeeValue", skip_serializing_if = "Option::is_none")]
-    pub fee_value: Option<String10Type>,
-    #[serde(rename = "FeeAssortment", skip_serializing_if = "Option::is_none")]
-    pub fee_assortment: Option<String50Type>,
-    #[serde(rename = "Infotext", skip_serializing_if = "Option::is_none")]
-    pub infotext: Option<String1000Type>,
-    #[serde(rename = "NeedToCheck", skip_serializing_if = "Option::is_none")]
-    pub need_to_check: Option<YesNoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkGrouMembersType {
-    #[serde(rename = "WorkGrouMember")]
-    pub work_grou_member: Vec<WorkGrouMemberType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkGrouMemberType {
-    #[serde(rename = "ResourceId")]
-    pub resource_id: ShortERPIdType,
-    #[serde(rename = "UserId")]
-    pub user_id: ShortERPIdType,
-    #[serde(rename = "TaxNumber", skip_serializing_if = "Option::is_none")]
-    pub tax_number: Option<TaxNumberType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialsType {
-    #[serde(rename = "Material")]
-    pub material: Vec<MaterialType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisType {
-    #[serde(rename = "FeeBase")]
-    pub fee_base: Vec<FeeBasisDataType>,
 }
 

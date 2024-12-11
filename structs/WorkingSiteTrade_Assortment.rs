@@ -1,29 +1,33 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentType {
+pub struct DiameterMaxType {
     #[serde(flatten)]
-    pub base: AssortmentAllElementsType,
+    pub base: Decimal1FractionDigitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementMethodType {
+pub struct AssortmentInfoType {
     #[serde(flatten)]
-    pub base: MeasurementMethodType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
+pub struct WoodLotInformationTypeType {
+    #[serde(flatten)]
+    pub base: WoodLotInformationTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LengthMinType {
+pub struct LengthMaxType {
     #[serde(flatten)]
     pub base: PositiveDecimalMax5IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotType {
-    #[serde(rename = "WoodLotInformationGroup")]
-    pub wood_lot_information_group: String,
+pub struct AssortmentClassType {
+    #[serde(rename = "AssortmentClassCode")]
+    pub assortment_class_code: AssortmentClassCodeType,
+    #[serde(rename = "Assortments")]
+    pub assortments: AssortmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,6 +57,64 @@ pub struct AssortmentAllElementsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsCompactType {
+    #[serde(rename = "AssortmentCompact")]
+    pub assortment_compact: Vec<AssortmentCompactType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemTypeType {
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentCompactType {
+    #[serde(flatten)]
+    pub base: AssortmentCompactElementsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WoodLotType {
+    #[serde(rename = "WoodLotInformationGroup")]
+    pub wood_lot_information_group: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LengthMinType {
+    #[serde(flatten)]
+    pub base: PositiveDecimalMax5IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentCompactClassType {
+    #[serde(rename = "AssortmentClassCode")]
+    pub assortment_class_code: AssortmentClassCodeType,
+    #[serde(rename = "AssortmentsCompact")]
+    pub assortments_compact: AssortmentsCompactType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WoodLotInformationValueType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentClassCodeType {
+    #[serde(flatten)]
+    pub base: AssortmentClassCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentCompactClassesType {
     #[serde(rename = "AssortmentCompactClass")]
     pub assortment_compact_class: Vec<AssortmentCompactClassType>,
@@ -65,39 +127,15 @@ pub struct DiameterMinType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotInformationValueType {
+pub struct AssortmentType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: AssortmentAllElementsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeType {
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClassCodeType {
-    #[serde(flatten)]
-    pub base: AssortmentClassCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterMaxType {
-    #[serde(flatten)]
-    pub base: Decimal1FractionDigitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentCompactClassType {
-    #[serde(rename = "AssortmentClassCode")]
-    pub assortment_class_code: AssortmentClassCodeType,
-    #[serde(rename = "AssortmentsCompact")]
-    pub assortments_compact: AssortmentsCompactType,
+pub struct AssortmentClassesType {
+    #[serde(rename = "AssortmentClass")]
+    pub assortment_class: Vec<AssortmentClassType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,15 +151,9 @@ pub struct AssortmentCompactElementsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotInformationTypeType {
-    #[serde(flatten)]
-    pub base: WoodLotInformationTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClassesType {
-    #[serde(rename = "AssortmentClass")]
-    pub assortment_class: Vec<AssortmentClassType>,
+pub struct PriceMatrixType {
+    #[serde(rename = "PriceItem")]
+    pub price_item: Vec<PriceItemType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -133,46 +165,14 @@ pub struct PriceItemType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentInfoType {
+pub struct MeasurementMethodType {
     #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClassType {
-    #[serde(rename = "AssortmentClassCode")]
-    pub assortment_class_code: AssortmentClassCodeType,
-    #[serde(rename = "Assortments")]
-    pub assortments: AssortmentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentCompactType {
-    #[serde(flatten)]
-    pub base: AssortmentCompactElementsType,
+    pub base: MeasurementMethodType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WoodLotsType {
     #[serde(rename = "Woodlot")]
     pub woodlot: Vec<WoodLotType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LengthMaxType {
-    #[serde(flatten)]
-    pub base: PositiveDecimalMax5IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsCompactType {
-    #[serde(rename = "AssortmentCompact")]
-    pub assortment_compact: Vec<AssortmentCompactType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PriceMatrixType {
-    #[serde(rename = "PriceItem")]
-    pub price_item: Vec<PriceItemType>,
 }
 

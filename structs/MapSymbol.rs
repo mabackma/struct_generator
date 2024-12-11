@@ -9,12 +9,6 @@ pub struct MapSymbolType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolsType {
-    #[serde(rename = "Symbol")]
-    pub symbol: Vec<MapSymbolDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct MapSymbolDataType {
     #[serde(rename = "MapSymbolId", skip_serializing_if = "Option::is_none")]
     pub map_symbol_id: Option<ERPIdType>,
@@ -60,5 +54,11 @@ pub struct MapSymbolDataType {
     pub spare_group_of_trees: Option<SpareTreesByCategoryType>,
     #[serde(rename = "UsingRestrictions", skip_serializing_if = "Option::is_none")]
     pub using_restrictions: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbolsType {
+    #[serde(rename = "Symbol")]
+    pub symbol: Vec<MapSymbolDataType>,
 }
 

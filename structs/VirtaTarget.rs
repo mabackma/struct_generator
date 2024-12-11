@@ -1,16 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaExtraInfoType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPartNumberType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TargetType {
     #[serde(rename = "Status2")]
     pub status2: ChangeStateType,
@@ -32,6 +20,18 @@ pub struct TargetType {
     pub polygon: Option<String>,
     #[serde(rename = "TargetParts", skip_serializing_if = "Option::is_none")]
     pub target_parts: Option<TargetPartsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPartNumberType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaExtraInfoType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

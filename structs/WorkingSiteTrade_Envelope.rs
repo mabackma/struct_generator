@@ -1,4 +1,12 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteTradeEnvelopeType {
+    #[serde(flatten)]
+    pub base: EnvelopeBaseType,
+    #[serde(rename = "Message")]
+    pub message: WorkingSiteTradeMessageType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteTradeMessageType {
     #[serde(rename = "CallForOffer")]
     pub call_for_offer: String,
@@ -26,13 +34,5 @@ pub struct WorkingSiteTradeMessageType {
     pub map_symbol: String,
     #[serde(rename = "Acknowledge")]
     pub acknowledge: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteTradeEnvelopeType {
-    #[serde(flatten)]
-    pub base: EnvelopeBaseType,
-    #[serde(rename = "Message")]
-    pub message: WorkingSiteTradeMessageType,
 }
 

@@ -1,4 +1,28 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentPermissionDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DueDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdvanceTaxType {
+    #[serde(flatten)]
+    pub base: MoneyAndPercentType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PercentType {
+    #[serde(flatten)]
+    pub base: PercentWithFraction2Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PaymentDataType {
     #[serde(rename = "@parentId")]
     pub parent_id: String,
@@ -33,9 +57,9 @@ pub struct PaymentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentPermissionDateType {
+pub struct SequenceNumberType {
     #[serde(flatten)]
-    pub base: DateType,
+    pub base: PositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -45,7 +69,7 @@ pub struct CurrencyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TotalValueType {
+pub struct ValueType {
     #[serde(flatten)]
     pub base: Decimal2FractionDigitsType,
 }
@@ -57,9 +81,9 @@ pub struct ForestFundPaymentType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AbsoluteQuantityType {
+pub struct PayeeType {
     #[serde(flatten)]
-    pub base: Decimal2FractionDigitsType,
+    pub base: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -75,9 +99,9 @@ pub struct VATType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValueType {
+pub struct PaymentTypeType {
     #[serde(flatten)]
-    pub base: Decimal2FractionDigitsType,
+    pub base: PaymentTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,38 +113,14 @@ pub struct MoneyAndPercentType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AdvanceTaxType {
+pub struct TotalValueType {
     #[serde(flatten)]
-    pub base: MoneyAndPercentType,
+    pub base: Decimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTypeType {
+pub struct AbsoluteQuantityType {
     #[serde(flatten)]
-    pub base: PaymentTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DueDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PercentType {
-    #[serde(flatten)]
-    pub base: PercentWithFraction2Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PayeeType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SequenceNumberType {
-    #[serde(flatten)]
-    pub base: PositiveIntegerType,
+    pub base: Decimal2FractionDigitsType,
 }
 

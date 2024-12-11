@@ -7,24 +7,6 @@ pub struct ResourceScheduleType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteType {
-    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
-    pub service_buyer_id: Option<String20Type>,
-    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
-    pub working_site_id: Option<ERPIdType>,
-    #[serde(rename = "WorkingSiteNumber", skip_serializing_if = "Option::is_none")]
-    pub working_site_number: Option<WorkingSiteNumberType>,
-    #[serde(rename = "TeamName", skip_serializing_if = "Option::is_none")]
-    pub team_name: Option<String50Type>,
-    #[serde(rename = "StartDate")]
-    pub start_date: DateType,
-    #[serde(rename = "EndDate")]
-    pub end_date: DateType,
-    #[serde(rename = "ForwarderDelay", skip_serializing_if = "Option::is_none")]
-    pub forwarder_delay: Option<PositiveInteger2digitsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ResourcesType {
     #[serde(rename = "Resource")]
     pub resource: Vec<ResourceDataType>,
@@ -48,5 +30,23 @@ pub struct ResourceDataType {
     pub resource_type: ResourceTypeType,
     #[serde(rename = "WorkingSites")]
     pub working_sites: WorkingSitesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteType {
+    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
+    pub service_buyer_id: Option<String20Type>,
+    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
+    pub working_site_id: Option<ERPIdType>,
+    #[serde(rename = "WorkingSiteNumber", skip_serializing_if = "Option::is_none")]
+    pub working_site_number: Option<WorkingSiteNumberType>,
+    #[serde(rename = "TeamName", skip_serializing_if = "Option::is_none")]
+    pub team_name: Option<String50Type>,
+    #[serde(rename = "StartDate")]
+    pub start_date: DateType,
+    #[serde(rename = "EndDate")]
+    pub end_date: DateType,
+    #[serde(rename = "ForwarderDelay", skip_serializing_if = "Option::is_none")]
+    pub forwarder_delay: Option<PositiveInteger2digitsType>,
 }
 
