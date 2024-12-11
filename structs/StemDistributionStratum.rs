@@ -1,13 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+    #[serde(flatten)]
+    pub base: TreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoreyType {
+    #[serde(flatten)]
+    pub base: StoreyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AgeType {
     #[serde(flatten)]
     pub base: AgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemDistributionStrataType {
-    #[serde(rename = "StemDistributionStratum")]
-    pub stem_distribution_stratum: Vec<StemDistributionStratumType>,
+pub struct BasalAreaType {
+    #[serde(flatten)]
+    pub base: BasalAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -33,20 +45,8 @@ pub struct StemDistributionStratumType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: StoreyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BasalAreaType {
-    #[serde(flatten)]
-    pub base: BasalAreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
-    #[serde(flatten)]
-    pub base: TreeSpeciesType,
+pub struct StemDistributionStrataType {
+    #[serde(rename = "StemDistributionStratum")]
+    pub stem_distribution_stratum: Vec<StemDistributionStratumType>,
 }
 

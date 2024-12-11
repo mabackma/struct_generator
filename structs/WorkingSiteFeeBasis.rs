@@ -11,9 +11,11 @@ pub struct WorkingSiteFeeBasisType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisType {
-    #[serde(rename = "FeeBase")]
-    pub fee_base: Vec<FeeBasisDataType>,
+pub struct FeebaseListItemType {
+    #[serde(rename = "Id")]
+    pub id: PositiveIntegerType,
+    #[serde(rename = "FeeValue")]
+    pub fee_value: String10Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,14 +43,6 @@ pub struct FeeBasisDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeebaseListItemType {
-    #[serde(rename = "Id")]
-    pub id: PositiveIntegerType,
-    #[serde(rename = "FeeValue")]
-    pub fee_value: String10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StandsType {
     #[serde(rename = "StandNumber")]
     pub stand_number: Vec<String20Type>,
@@ -64,5 +58,11 @@ pub struct WorkCodesType {
 pub struct FeeBaseListType {
     #[serde(rename = "FeeBaseListItem")]
     pub fee_base_list_item: Vec<FeebaseListItemType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisType {
+    #[serde(rename = "FeeBase")]
+    pub fee_base: Vec<FeeBasisDataType>,
 }
 

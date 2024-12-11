@@ -7,6 +7,12 @@ pub struct ForestCentreControlDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ControlObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<ForestCentreControlObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ControlObjectDataType {
     #[serde(rename = "@id")]
     pub id: IdStringType,
@@ -14,11 +20,5 @@ pub struct ControlObjectDataType {
     pub additional_details: Option<String>,
     #[serde(rename = "Objects")]
     pub objects: ControlObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<ForestCentreControlObjectType>,
 }
 

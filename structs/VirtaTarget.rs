@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatAdvertisementType {
+pub struct VirtaExtraInfoType {
     #[serde(flatten)]
-    pub base: VirtaHabitatAdvertisementType,
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPartNumberType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,20 +35,14 @@ pub struct TargetType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPartNumberType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaExtraInfoType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TargetPartsType {
     #[serde(rename = "TargetPart")]
     pub target_part: Vec<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatAdvertisementType {
+    #[serde(flatten)]
+    pub base: VirtaHabitatAdvertisementType,
 }
 

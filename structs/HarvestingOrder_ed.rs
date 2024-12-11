@@ -1,19 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
-    #[serde(flatten)]
-    pub contractor_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EndDate {
-    #[serde(flatten)]
-    pub end_date: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ServiceBuyerId {
     #[serde(flatten)]
     pub service_buyer_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BeginDate {
+    #[serde(flatten)]
+    pub begin_date: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationalRegion {
+    #[serde(flatten)]
+    pub operational_region: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Data {
+    #[serde(flatten)]
+    pub data: hexBinary,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,15 +29,21 @@ pub struct AssortmentId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Code {
+pub struct EndDate {
     #[serde(flatten)]
-    pub code: String50Type,
+    pub end_date: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BeginDate {
+pub struct HarvestingOrder {
     #[serde(flatten)]
-    pub begin_date: DateType,
+    pub harvesting_order: HarvestingOrderType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attachment {
+    #[serde(flatten)]
+    pub attachment: AttachmentDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,33 +59,15 @@ pub struct InfoText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ContractorId {
+    #[serde(flatten)]
+    pub contractor_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Name {
     #[serde(flatten)]
     pub name: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HarvestingOrder {
-    #[serde(flatten)]
-    pub harvesting_order: HarvestingOrderType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Assortment {
-    #[serde(flatten)]
-    pub assortment: AssortmentDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrderId {
-    #[serde(flatten)]
-    pub order_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attachments {
-    #[serde(flatten)]
-    pub attachments: AttachmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,9 +77,15 @@ pub struct Assortments {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DestinationStorage {
+pub struct ServiceBuyerArea {
     #[serde(flatten)]
-    pub destination_storage: String20Type,
+    pub service_buyer_area: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrderId {
+    #[serde(flatten)]
+    pub order_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,15 +95,15 @@ pub struct Volume {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Data {
+pub struct Code {
     #[serde(flatten)]
-    pub data: hexBinary,
+    pub code: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerArea {
+pub struct DestinationStorage {
     #[serde(flatten)]
-    pub service_buyer_area: String20Type,
+    pub destination_storage: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,14 +113,14 @@ pub struct Unit {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Attachment {
+pub struct Attachments {
     #[serde(flatten)]
-    pub attachment: AttachmentDataType,
+    pub attachments: AttachmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationalRegion {
+pub struct Assortment {
     #[serde(flatten)]
-    pub operational_region: String50Type,
+    pub assortment: AssortmentDataType,
 }
 

@@ -27,15 +27,15 @@ pub struct ContactRequestType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RequestCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestPropertyDataSetType {
     #[serde(rename = "ForestPropertyData")]
     pub forest_property_data: Vec<ForestPropertyDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RequestCodeType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

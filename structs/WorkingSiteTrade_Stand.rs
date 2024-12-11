@@ -1,19 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberType {
+pub struct AccessibilityType {
     #[serde(flatten)]
-    pub base: StandNumberType,
+    pub base: AccessibilityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DrainageStateType {
+pub struct CuttingRestrictionType {
     #[serde(flatten)]
-    pub base: DrainageStateType,
+    pub base: CuttingRestrictionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandInfoType {
+pub struct DevelopmentClassType {
     #[serde(flatten)]
-    pub base: StandInfoType,
+    pub base: DevelopmentClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestHaulageAccessibilityType {
+    #[serde(flatten)]
+    pub base: AccessibilityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -37,33 +43,33 @@ pub struct StandWoodTradeInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingAccessibilityType {
+pub struct StandQualityType {
     #[serde(flatten)]
-    pub base: AccessibilityType,
+    pub base: StandQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageAccessibilityType {
+pub struct StandInfoType {
     #[serde(flatten)]
-    pub base: AccessibilityType,
+    pub base: StandInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DevelopmentClassType {
+pub struct StandNumberType {
     #[serde(flatten)]
-    pub base: DevelopmentClassType,
+    pub base: StandNumberType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType {
-    #[serde(rename = "Stand")]
-    pub stand: Vec<StandType>,
+pub struct StandBasicDataDateType {
+    #[serde(flatten)]
+    pub base: StandBasicDataDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AccessibilityType {
+pub struct BearingCapacityClassType {
     #[serde(flatten)]
-    pub base: AccessibilityType,
+    pub base: BearingCapacityClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -81,15 +87,67 @@ pub struct StandSilvicultureInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StoutTimberClassifierType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<BasicFeature2Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandsType {
+    #[serde(rename = "Stand")]
+    pub stand: Vec<StandType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainTreeSpeciesType {
+    #[serde(flatten)]
+    pub base: TreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SoilTypeType {
+    #[serde(flatten)]
+    pub base: SoilTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandType {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "@realEstateid")]
+    pub real_estateid: String,
+    #[serde(rename = "StandBasicData")]
+    pub stand_basic_data: StandBasicDataType,
+    #[serde(rename = "TreeStandData", skip_serializing_if = "Option::is_none")]
+    pub tree_stand_data: Option<String>,
+    #[serde(rename = "Operations", skip_serializing_if = "Option::is_none")]
+    pub operations: Option<String>,
+    #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
+    pub special_features: Option<SpecialFeaturesType>,
+    #[serde(rename = "StandWoodTradeInfo", skip_serializing_if = "Option::is_none")]
+    pub stand_wood_trade_info: Option<StandWoodTradeInfoType>,
+    #[serde(rename = "StandSilvicultureInfo", skip_serializing_if = "Option::is_none")]
+    pub stand_silviculture_info: Option<StandSilvicultureInfoType>,
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
+    pub documents: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestHaulageDistanceType {
     #[serde(flatten)]
     pub base: PositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingAreaPreclearingNeedType {
+pub struct DrainageStateType {
     #[serde(flatten)]
-    pub base: YesNoSellerResponsibleType,
+    pub base: DrainageStateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -99,9 +157,55 @@ pub struct SellerResponsible {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingRestrictionType {
+pub struct LoggingAccessibilityType {
     #[serde(flatten)]
-    pub base: CuttingRestrictionType,
+    pub base: AccessibilityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaType {
+    #[serde(flatten)]
+    pub base: AreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaDecreaseType {
+    #[serde(flatten)]
+    pub base: AreaDecreaseType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DitchingYearType {
+    #[serde(flatten)]
+    pub base: YearType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubGroupType {
+    #[serde(flatten)]
+    pub base: SubGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct YesNoSellerResponsibleType {
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IdentifiersType {
+    #[serde(flatten)]
+    pub base: IdentifiersType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainGroupType {
+    #[serde(flatten)]
+    pub base: MainGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandNumberExtensionType {
+    #[serde(flatten)]
+    pub base: StandNumberExtensionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -159,118 +263,14 @@ pub struct StandBasicDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaDecreaseType {
+pub struct CuttingAreaPreclearingNeedType {
     #[serde(flatten)]
-    pub base: AreaDecreaseType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaType {
-    #[serde(flatten)]
-    pub base: AreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainGroupType {
-    #[serde(flatten)]
-    pub base: MainGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilTypeType {
-    #[serde(flatten)]
-    pub base: SoilTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DitchingYearType {
-    #[serde(flatten)]
-    pub base: YearType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandBasicDataDateType {
-    #[serde(flatten)]
-    pub base: StandBasicDataDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoutTimberClassifierType {
-    #[serde(flatten)]
-    pub base: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberExtensionType {
-    #[serde(flatten)]
-    pub base: StandNumberExtensionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct YesNoSellerResponsibleType {
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandQualityType {
-    #[serde(flatten)]
-    pub base: StandQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifiersType {
-    #[serde(flatten)]
-    pub base: IdentifiersType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandType {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "@realEstateid")]
-    pub real_estateid: String,
-    #[serde(rename = "StandBasicData")]
-    pub stand_basic_data: StandBasicDataType,
-    #[serde(rename = "TreeStandData", skip_serializing_if = "Option::is_none")]
-    pub tree_stand_data: Option<String>,
-    #[serde(rename = "Operations", skip_serializing_if = "Option::is_none")]
-    pub operations: Option<String>,
-    #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
-    pub special_features: Option<SpecialFeaturesType>,
-    #[serde(rename = "StandWoodTradeInfo", skip_serializing_if = "Option::is_none")]
-    pub stand_wood_trade_info: Option<StandWoodTradeInfoType>,
-    #[serde(rename = "StandSilvicultureInfo", skip_serializing_if = "Option::is_none")]
-    pub stand_silviculture_info: Option<StandSilvicultureInfoType>,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub documents: Option<String>,
+    pub base: YesNoSellerResponsibleType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FertilityClassType {
     #[serde(flatten)]
     pub base: FertilityClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainTreeSpeciesType {
-    #[serde(flatten)]
-    pub base: TreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<BasicFeature2Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BearingCapacityClassType {
-    #[serde(flatten)]
-    pub base: BearingCapacityClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubGroupType {
-    #[serde(flatten)]
-    pub base: SubGroupType,
 }
 

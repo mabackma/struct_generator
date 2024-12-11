@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteTextType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SceneryWorkPermissionType {
     #[serde(rename = "SceneryWorkPermissionNeeded")]
     pub scenery_work_permission_needed: SceneryWorkPermissionNeededType,
@@ -13,9 +19,15 @@ pub struct RealEstatesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteTextType {
-    #[serde(flatten)]
-    pub base: String,
+pub struct SilviculturalOperationType {
+    #[serde(rename = "@id")]
+    pub id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InformedActorsType {
+    #[serde(rename = "InformedActor")]
+    pub informed_actor: Vec<ContactInformationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,15 +71,9 @@ pub struct WorkingSiteType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilviculturalOperationsType {
-    #[serde(rename = "SilviculturalOperation")]
-    pub silvicultural_operation: Vec<SilviculturalOperationType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilviculturalOperationType {
-    #[serde(rename = "@id")]
-    pub id: String,
+pub struct IncludeInOfferType {
+    #[serde(flatten)]
+    pub base: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,14 +85,8 @@ pub struct CallForOfferWorkingSiteSilvicultureInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct IncludeInOfferType {
-    #[serde(flatten)]
-    pub base: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InformedActorsType {
-    #[serde(rename = "InformedActor")]
-    pub informed_actor: Vec<ContactInformationType>,
+pub struct SilviculturalOperationsType {
+    #[serde(rename = "SilviculturalOperation")]
+    pub silvicultural_operation: Vec<SilviculturalOperationType>,
 }
 

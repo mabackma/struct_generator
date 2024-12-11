@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaDamageClassType {
+    #[serde(flatten)]
+    pub base: VirtaDamageClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeType {
     #[serde(rename = "Status5")]
     pub status5: ChangeStateType,
@@ -20,12 +26,6 @@ pub struct TreeType {
     pub work_quality: Option<VirtaWorkQualityType>,
     #[serde(rename = "DamageClass", skip_serializing_if = "Option::is_none")]
     pub damage_class: Option<VirtaDamageClassType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaDamageClassType {
-    #[serde(flatten)]
-    pub base: VirtaDamageClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

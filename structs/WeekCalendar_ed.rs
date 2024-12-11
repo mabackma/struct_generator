@@ -1,43 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
-    #[serde(flatten)]
-    pub resource_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceName {
-    #[serde(flatten)]
-    pub resource_name: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Day {
     #[serde(flatten)]
     pub day: DayType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Hours {
-    #[serde(flatten)]
-    pub hours: PositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Resources {
-    #[serde(flatten)]
-    pub resources: ResourcesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Resource {
-    #[serde(flatten)]
-    pub resource: ResourceDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingHoursSunday {
-    #[serde(flatten)]
-    pub working_hours_sunday: PositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,21 +11,27 @@ pub struct StanfordResourceId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Days {
+pub struct Resource {
     #[serde(flatten)]
-    pub days: DaysType,
+    pub resource: ResourceDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WeekCalendar {
+pub struct ServiceBuyerResourceId {
     #[serde(flatten)]
-    pub week_calendar: WeekCalendarType,
+    pub service_buyer_resource_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingHoursBusinessDay {
+pub struct WorkingHoursSunday {
     #[serde(flatten)]
-    pub working_hours_business_day: PositiveInteger2digitsType,
+    pub working_hours_sunday: PositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,15 +41,9 @@ pub struct CalendarDay {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceType {
+pub struct Days {
     #[serde(flatten)]
-    pub resource_type: ResourceTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
-    #[serde(flatten)]
-    pub contractor_id: String20Type,
+    pub days: DaysType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,8 +53,44 @@ pub struct WorkingHoursSaturday {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerResourceId {
+pub struct ResourceName {
     #[serde(flatten)]
-    pub service_buyer_resource_id: String20Type,
+    pub resource_name: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WeekCalendar {
+    #[serde(flatten)]
+    pub week_calendar: WeekCalendarType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractorId {
+    #[serde(flatten)]
+    pub contractor_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceType {
+    #[serde(flatten)]
+    pub resource_type: ResourceTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Resources {
+    #[serde(flatten)]
+    pub resources: ResourcesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingHoursBusinessDay {
+    #[serde(flatten)]
+    pub working_hours_business_day: PositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Hours {
+    #[serde(flatten)]
+    pub hours: PositiveInteger2digitsType,
 }
 

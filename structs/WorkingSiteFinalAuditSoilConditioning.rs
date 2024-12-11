@@ -1,4 +1,26 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<FinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: FinalAuditerTypeType,
+    #[serde(rename = "FinalAuditer")]
+    pub final_auditer: String50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: TimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditQuestionType {
+    #[serde(rename = "QuestionId")]
+    pub question_id: FinalAuditQuestionType,
+    #[serde(rename = "QuestionAnswer")]
+    pub question_answer: FinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteFinalAuditSoilConditioningBaseType {
     #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
     pub service_buyer_id: Option<String20Type>,
@@ -109,17 +131,9 @@ pub struct WorkingSiteFinalAuditSoilConditioningType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<FinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: FinalAuditerTypeType,
-    #[serde(rename = "FinalAuditer")]
-    pub final_auditer: String50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: TimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: YesNoType,
+pub struct AuditsListType {
+    #[serde(rename = "AuditQuestion")]
+    pub audit_question: AuditQuestionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -200,19 +214,5 @@ pub struct AuditsType {
     pub notifications_and_improvements: Option<YesNoType>,
     #[serde(rename = "NotificationsAndImprovementsText", skip_serializing_if = "Option::is_none")]
     pub notifications_and_improvements_text: Option<String200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditQuestionType {
-    #[serde(rename = "QuestionId")]
-    pub question_id: FinalAuditQuestionType,
-    #[serde(rename = "QuestionAnswer")]
-    pub question_answer: FinalAuditAnswerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditsListType {
-    #[serde(rename = "AuditQuestion")]
-    pub audit_question: AuditQuestionType,
 }
 

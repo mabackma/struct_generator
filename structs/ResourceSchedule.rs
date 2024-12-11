@@ -7,18 +7,6 @@ pub struct ResourceScheduleType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourcesType {
-    #[serde(rename = "Resource")]
-    pub resource: Vec<ResourceDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitesType {
-    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
-    pub working_site: Option<Vec<WorkingSiteType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteType {
     #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
     pub service_buyer_id: Option<String20Type>,
@@ -34,6 +22,18 @@ pub struct WorkingSiteType {
     pub end_date: DateType,
     #[serde(rename = "ForwarderDelay", skip_serializing_if = "Option::is_none")]
     pub forwarder_delay: Option<PositiveInteger2digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourcesType {
+    #[serde(rename = "Resource")]
+    pub resource: Vec<ResourceDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitesType {
+    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
+    pub working_site: Option<Vec<WorkingSiteType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

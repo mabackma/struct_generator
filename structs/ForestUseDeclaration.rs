@@ -1,4 +1,82 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "UpdatePreviousDeclaration")]
+    pub update_previous_declaration: YesNoType,
+    #[serde(rename = "DeclarationReference")]
+    pub declaration_reference: ReferenceType,
+    #[serde(rename = "DeclarationTextInformation", skip_serializing_if = "Option::is_none")]
+    pub declaration_text_information: Option<String2000Type>,
+    #[serde(rename = "SpecialPermission")]
+    pub special_permission: YesNoType,
+    #[serde(rename = "CuttingRightsOwner", skip_serializing_if = "Option::is_none")]
+    pub cutting_rights_owner: Option<ContactInformationType>,
+    #[serde(rename = "CuttingsRightsOwnerRepresentative", skip_serializing_if = "Option::is_none")]
+    pub cuttings_rights_owner_representative: Option<ContactInformationType>,
+    #[serde(rename = "Sender")]
+    pub sender: SenderType,
+    #[serde(rename = "DeclarationRealEstates")]
+    pub declaration_real_estates: DeclarationRealEstatesType,
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
+    pub documents: Option<String>,
+    #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
+    pub special_features: Option<SpecialFeaturesType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SenderType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
+    #[serde(rename = "PowerOfAttorney")]
+    pub power_of_attorney: PowerOfAttorneyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatOperationsType {
+    #[serde(rename = "HabitatOperation")]
+    pub habitat_operation: Vec<HabitatOperationsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationStandsType {
+    #[serde(rename = "DeclarationStand")]
+    pub declaration_stand: Vec<DeclarationStandType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanDiameterType {
+    #[serde(flatten)]
+    pub base: DiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationRealEstatesType {
+    #[serde(flatten)]
+    pub base: RealEstatesWithOwnersInformationType2,
+    #[serde(rename = "ProcessingAreas")]
+    pub processing_areas: ProcessingAreasType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationOtherOperationsType {
+    #[serde(rename = "DeclarationOtherOperation")]
+    pub declaration_other_operation: Vec<DeclarationOtherOperationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreasType {
+    #[serde(rename = "ProcessingArea")]
+    pub processing_area: Vec<ProcessingAreaType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreaNumberType {
+    #[serde(flatten)]
+    pub base: i32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct DeclarationStandType {
     #[serde(rename = "@id")]
     pub id: IdStringType,
@@ -55,35 +133,15 @@ pub struct DeclarationStandType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "UpdatePreviousDeclaration")]
-    pub update_previous_declaration: YesNoType,
-    #[serde(rename = "DeclarationReference")]
-    pub declaration_reference: ReferenceType,
-    #[serde(rename = "DeclarationTextInformation", skip_serializing_if = "Option::is_none")]
-    pub declaration_text_information: Option<String2000Type>,
-    #[serde(rename = "SpecialPermission")]
-    pub special_permission: YesNoType,
-    #[serde(rename = "CuttingRightsOwner", skip_serializing_if = "Option::is_none")]
-    pub cutting_rights_owner: Option<ContactInformationType>,
-    #[serde(rename = "CuttingsRightsOwnerRepresentative", skip_serializing_if = "Option::is_none")]
-    pub cuttings_rights_owner_representative: Option<ContactInformationType>,
-    #[serde(rename = "Sender")]
-    pub sender: SenderType,
-    #[serde(rename = "DeclarationRealEstates")]
-    pub declaration_real_estates: DeclarationRealEstatesType,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub documents: Option<String>,
-    #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
-    pub special_features: Option<SpecialFeaturesType>,
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<LocatedSpecialFeature3Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationOtherOperationsType {
-    #[serde(rename = "DeclarationOtherOperation")]
-    pub declaration_other_operation: Vec<DeclarationOtherOperationType>,
+pub struct LocationEstatesType {
+    #[serde(rename = "LocationEstate")]
+    pub location_estate: Vec<LocationEstateType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -96,63 +154,5 @@ pub struct ProcessingAreaType {
     pub processing_area_reference: ReferenceType,
     #[serde(rename = "DeclarationStands")]
     pub declaration_stands: DeclarationStandsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreaNumberType {
-    #[serde(flatten)]
-    pub base: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatOperationsType {
-    #[serde(rename = "HabitatOperation")]
-    pub habitat_operation: Vec<HabitatOperationsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SenderType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-    #[serde(rename = "PowerOfAttorney")]
-    pub power_of_attorney: PowerOfAttorneyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationRealEstatesType {
-    #[serde(flatten)]
-    pub base: RealEstatesWithOwnersInformationType2,
-    #[serde(rename = "ProcessingAreas")]
-    pub processing_areas: ProcessingAreasType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreasType {
-    #[serde(rename = "ProcessingArea")]
-    pub processing_area: Vec<ProcessingAreaType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LocationEstatesType {
-    #[serde(rename = "LocationEstate")]
-    pub location_estate: Vec<LocationEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationStandsType {
-    #[serde(rename = "DeclarationStand")]
-    pub declaration_stand: Vec<DeclarationStandType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
-    #[serde(flatten)]
-    pub base: DiameterType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<LocatedSpecialFeature3Type>,
 }
 

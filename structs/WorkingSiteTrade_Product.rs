@@ -1,11 +1,11 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationTypeType {
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
-    #[serde(flatten)]
-    pub base: UnitPerHectareType,
+pub struct OperationTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -14,6 +14,18 @@ pub struct PlannedResourceType {
     pub id: String,
     #[serde(rename = "PlannedResource")]
     pub planned_resource: PlannedResourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionUnitType {
+    #[serde(flatten)]
+    pub base: UnitPerHectareType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -54,17 +66,5 @@ pub struct ProductType {
     pub planned_resource: Option<PlannedResourceType>,
     #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String1500Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: Decimal2FractionDigitsType,
 }
 

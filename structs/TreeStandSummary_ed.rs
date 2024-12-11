@@ -5,21 +5,15 @@ pub struct StemCount {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Volume {
+pub struct StemBiomass {
     #[serde(flatten)]
-    pub volume: VolumeType,
+    pub stem_biomass: StemBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Value {
+pub struct MeanDiameter {
     #[serde(flatten)]
-    pub value: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanStumpDiameter {
-    #[serde(flatten)]
-    pub mean_stump_diameter: DiameterType,
+    pub mean_diameter: MeanDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,51 +23,9 @@ pub struct ValueGrowthPercent {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandSummary {
-    #[serde(flatten)]
-    pub tree_stand_summary: TreeStandSummaryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemBiomass {
-    #[serde(flatten)]
-    pub stem_biomass: StemBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct MainTreeSpecies {
     #[serde(flatten)]
     pub main_tree_species: TreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StumpBiomass {
-    #[serde(flatten)]
-    pub stump_biomass: StumpBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeGrowth {
-    #[serde(flatten)]
-    pub volume_growth: VolumeGrowthType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BranchBiomass {
-    #[serde(flatten)]
-    pub branch_biomass: BranchBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanHeight {
-    #[serde(flatten)]
-    pub mean_height: MeanHeightType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DevelopmentClass {
-    #[serde(flatten)]
-    pub development_class: DevelopmentClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,21 +35,21 @@ pub struct DominantHeight {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolume {
+pub struct StumpBiomass {
     #[serde(flatten)]
-    pub pulp_wood_volume: PulpWoodVolumeType,
+    pub stump_biomass: StumpBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Currency {
+pub struct Value {
     #[serde(flatten)]
-    pub currency: CurrencyType,
+    pub value: Decimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanAge {
+pub struct BranchBiomass {
     #[serde(flatten)]
-    pub mean_age: MeanAgeType,
+    pub branch_biomass: BranchBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -107,9 +59,27 @@ pub struct BasalArea {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogVolume {
+pub struct MeanHeight {
     #[serde(flatten)]
-    pub saw_log_volume: SawLogVolumeType,
+    pub mean_height: MeanHeightType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PulpWoodVolume {
+    #[serde(flatten)]
+    pub pulp_wood_volume: PulpWoodVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeStandSummary {
+    #[serde(flatten)]
+    pub tree_stand_summary: TreeStandSummaryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanAge {
+    #[serde(flatten)]
+    pub mean_age: MeanAgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,8 +89,38 @@ pub struct LeafBiomass {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameter {
+pub struct Currency {
     #[serde(flatten)]
-    pub mean_diameter: MeanDiameterType,
+    pub currency: CurrencyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogVolume {
+    #[serde(flatten)]
+    pub saw_log_volume: SawLogVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Volume {
+    #[serde(flatten)]
+    pub volume: VolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeGrowth {
+    #[serde(flatten)]
+    pub volume_growth: VolumeGrowthType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanStumpDiameter {
+    #[serde(flatten)]
+    pub mean_stump_diameter: DiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DevelopmentClass {
+    #[serde(flatten)]
+    pub development_class: DevelopmentClassType,
 }
 

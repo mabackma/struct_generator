@@ -11,6 +11,18 @@ pub struct VolumeOfSpareTrees {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AmountOfSpareTrees {
+    #[serde(flatten)]
+    pub amount_of_spare_trees: PositiveInteger5digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpecies {
+    #[serde(flatten)]
+    pub tree_species: TreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MeanDiameterOfSpareTrees {
     #[serde(flatten)]
     pub mean_diameter_of_spare_trees: DiameterType,
@@ -23,21 +35,9 @@ pub struct SpareTreeCategory {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpecies {
-    #[serde(flatten)]
-    pub tree_species: TreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct RetentionTreeTarget {
     #[serde(flatten)]
     pub retention_tree_target: PositiveInteger5digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanHeightOfSpareTrees {
-    #[serde(flatten)]
-    pub mean_height_of_spare_trees: HeightType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,14 +47,14 @@ pub struct SpareTrees {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterClassOfSpareTrees {
+pub struct MeanHeightOfSpareTrees {
     #[serde(flatten)]
-    pub diameter_class_of_spare_trees: PositiveInteger4digitsType,
+    pub mean_height_of_spare_trees: HeightType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AmountOfSpareTrees {
+pub struct DiameterClassOfSpareTrees {
     #[serde(flatten)]
-    pub amount_of_spare_trees: PositiveInteger5digitsType,
+    pub diameter_class_of_spare_trees: PositiveInteger4digitsType,
 }
 

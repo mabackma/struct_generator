@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Assortments {
+pub struct ResourceId {
     #[serde(flatten)]
-    pub assortments: AssortmentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: ERPIdType,
+    pub resource_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,15 +11,9 @@ pub struct Assortment {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DestinationStorage {
+pub struct ContactorId {
     #[serde(flatten)]
-    pub destination_storage: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Code {
-    #[serde(flatten)]
-    pub code: String50Type,
+    pub contactor_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,33 +23,9 @@ pub struct Name {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceType {
+pub struct Code {
     #[serde(flatten)]
-    pub service_type: ServiceTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteEndNotification {
-    #[serde(flatten)]
-    pub working_site_end_notification: WorkingSiteEndNotificationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
-    #[serde(flatten)]
-    pub resource_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CodeGroup {
-    #[serde(flatten)]
-    pub code_group: AssortmentGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Unit {
-    #[serde(flatten)]
-    pub unit: WorkCodeUnitType,
+    pub code: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,33 +41,15 @@ pub struct UnfulfilledArea {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FulfilledArea {
+pub struct Assortments {
     #[serde(flatten)]
-    pub fulfilled_area: FulfilledAreaType,
+    pub assortments: AssortmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Infotext {
+pub struct Unit {
     #[serde(flatten)]
-    pub infotext: String1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Geometry {
-    #[serde(flatten)]
-    pub geometry: PolygonOrMultiPolygon2Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContactorId {
-    #[serde(flatten)]
-    pub contactor_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AmountLeft {
-    #[serde(flatten)]
-    pub amount_left: Decimal3FractionDigitsType,
+    pub unit: WorkCodeUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,21 +59,27 @@ pub struct VolumeLeft {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AmountPlanned {
+pub struct FulfilledArea {
     #[serde(flatten)]
-    pub amount_planned: Decimal3FractionDigitsType,
+    pub fulfilled_area: FulfilledAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Supported {
+pub struct DestinationStorage {
     #[serde(flatten)]
-    pub supported: YesNoType,
+    pub destination_storage: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Volume {
+pub struct CodeGroup {
     #[serde(flatten)]
-    pub volume: Decimal6TotalDigitsType,
+    pub code_group: AssortmentGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Infotext {
+    #[serde(flatten)]
+    pub infotext: String1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -137,14 +89,62 @@ pub struct WorkCode {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodes {
+pub struct Volume {
     #[serde(flatten)]
-    pub work_codes: WorkCodesType,
+    pub volume: Decimal6TotalDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Geometry {
+    #[serde(flatten)]
+    pub geometry: PolygonOrMultiPolygon2Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Interrupted {
     #[serde(flatten)]
     pub interrupted: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteEndNotification {
+    #[serde(flatten)]
+    pub working_site_end_notification: WorkingSiteEndNotificationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: ERPIdType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceType {
+    #[serde(flatten)]
+    pub service_type: ServiceTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountPlanned {
+    #[serde(flatten)]
+    pub amount_planned: Decimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountLeft {
+    #[serde(flatten)]
+    pub amount_left: Decimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Supported {
+    #[serde(flatten)]
+    pub supported: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodes {
+    #[serde(flatten)]
+    pub work_codes: WorkCodesType,
 }
 

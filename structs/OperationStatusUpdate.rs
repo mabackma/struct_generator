@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ActingDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationDefType {
     #[serde(rename = "@parentId")]
     pub parent_id: String,
@@ -31,18 +37,12 @@ pub struct OperationsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OperationTypeType {
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ResponsibleActorType {
     #[serde(flatten)]
     pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ActingDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationTypeType {
 }
 

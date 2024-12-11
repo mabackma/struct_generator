@@ -1,31 +1,35 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaProjectStatusType {
+    #[serde(flatten)]
+    pub base: VirtaProjectStatusType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetsType {
+    #[serde(rename = "Target")]
+    pub target: Vec<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaSumTableAreaType {
     #[serde(flatten)]
     pub base: VirtaSumTableAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaLawType {
+pub struct VirtaApprovalType {
     #[serde(flatten)]
-    pub base: VirtaLawType,
+    pub base: VirtaApprovalType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaIdType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AnnouncementIdType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTargetSelectionType {
-    #[serde(flatten)]
-    pub base: VirtaTargetSelectionType,
+pub struct HelpGeometriesType {
+    #[serde(rename = "PolygonGeometry", skip_serializing_if = "Option::is_none")]
+    pub polygon_geometry: Option<Vec<String>>,
+    #[serde(rename = "LineGeometry", skip_serializing_if = "Option::is_none")]
+    pub line_geometry: Option<Vec<String>>,
+    #[serde(rename = "PointGeometry", skip_serializing_if = "Option::is_none")]
+    pub point_geometry: Option<Vec<String>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -145,36 +149,6 @@ pub struct InspectionDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaProjectStatusType {
-    #[serde(flatten)]
-    pub base: VirtaProjectStatusType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaInspectionTypeType {
-    #[serde(flatten)]
-    pub base: VirtaInspectionTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSaveIncompleteType {
-    #[serde(flatten)]
-    pub base: VirtaSaveIncompleteType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPhaseType {
-    #[serde(flatten)]
-    pub base: VirtaPhaseType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetsType {
-    #[serde(rename = "Target")]
-    pub target: Vec<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct DataInformationType {
     #[serde(rename = "DataName")]
     pub data_name: String,
@@ -187,13 +161,21 @@ pub struct DataInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HelpGeometriesType {
-    #[serde(rename = "PolygonGeometry", skip_serializing_if = "Option::is_none")]
-    pub polygon_geometry: Option<Vec<String>>,
-    #[serde(rename = "LineGeometry", skip_serializing_if = "Option::is_none")]
-    pub line_geometry: Option<Vec<String>>,
-    #[serde(rename = "PointGeometry", skip_serializing_if = "Option::is_none")]
-    pub point_geometry: Option<Vec<String>>,
+pub struct VirtaLawType {
+    #[serde(flatten)]
+    pub base: VirtaLawType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaIdType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaInspectionTypeType {
+    #[serde(flatten)]
+    pub base: VirtaInspectionTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -203,14 +185,32 @@ pub struct VirtaAdvertiserType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaApprovalType {
+pub struct VirtaTargetSelectionType {
     #[serde(flatten)]
-    pub base: VirtaApprovalType,
+    pub base: VirtaTargetSelectionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AnnouncementIdType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaSaveIncompleteType {
+    #[serde(flatten)]
+    pub base: VirtaSaveIncompleteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaAdvertisementDatingType {
     #[serde(flatten)]
     pub base: VirtaAdvertisementDatingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPhaseType {
+    #[serde(flatten)]
+    pub base: VirtaPhaseType,
 }
 

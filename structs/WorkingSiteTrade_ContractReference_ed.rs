@@ -1,19 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractBeginningDate {
+pub struct ContractWorkingSiteDetails {
     #[serde(flatten)]
-    pub contract_beginning_date: ContractBeginningDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractText {
-    #[serde(flatten)]
-    pub contract_text: String1500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractId {
-    #[serde(flatten)]
-    pub contract_id: ContractIdType,
+    pub contract_working_site_details: ContractWorkingSiteDetailsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,26 +11,38 @@ pub struct ContractEndingDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ContractBeginningDate {
+    #[serde(flatten)]
+    pub contract_beginning_date: ContractBeginningDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractId {
+    #[serde(flatten)]
+    pub contract_id: ContractIdType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractWorkingSites {
     #[serde(flatten)]
     pub contract_working_sites: ContractWorkingSitesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Contract {
-    #[serde(flatten)]
-    pub contract: ContractType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSiteDetails {
-    #[serde(flatten)]
-    pub contract_working_site_details: ContractWorkingSiteDetailsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteText {
     #[serde(flatten)]
     pub working_site_text: String1500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractText {
+    #[serde(flatten)]
+    pub contract_text: String1500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Contract {
+    #[serde(flatten)]
+    pub contract: ContractType,
 }
 

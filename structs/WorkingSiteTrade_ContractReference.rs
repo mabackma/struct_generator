@@ -1,4 +1,36 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ContractIdType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractEndingDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractWorkingSitesType {
+    #[serde(rename = "ContractWorkingSiteDetails")]
+    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractWorkingSiteDetailsType {
+    #[serde(rename = "@parentId")]
+    pub parent_id: String,
+    #[serde(rename = "@parentVersionNo")]
+    pub parent_version_no: i32,
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "WorkingSiteText", skip_serializing_if = "Option::is_none")]
+    pub working_site_text: Option<String1500Type>,
+    #[serde(rename = "AssortmentClasses")]
+    pub assortment_classes: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractType {
     #[serde(rename = "@parentId")]
     pub parent_id: String,
@@ -23,40 +55,8 @@ pub struct ContractType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractEndingDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSiteDetailsType {
-    #[serde(rename = "@parentId")]
-    pub parent_id: String,
-    #[serde(rename = "@parentVersionNo")]
-    pub parent_version_no: i32,
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "WorkingSiteText", skip_serializing_if = "Option::is_none")]
-    pub working_site_text: Option<String1500Type>,
-    #[serde(rename = "AssortmentClasses")]
-    pub assortment_classes: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractBeginningDateType {
     #[serde(flatten)]
     pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSitesType {
-    #[serde(rename = "ContractWorkingSiteDetails")]
-    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractIdType {
-    #[serde(flatten)]
-    pub base: String,
 }
 

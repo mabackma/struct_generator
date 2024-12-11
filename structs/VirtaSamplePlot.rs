@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreesType {
-    #[serde(rename = "Tree")]
-    pub tree: Vec<String>,
+pub struct VirtaEvaluationType {
+    #[serde(flatten)]
+    pub base: VirtaEvaluationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,8 +41,8 @@ pub struct SamplePlotType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaEvaluationType {
-    #[serde(flatten)]
-    pub base: VirtaEvaluationType,
+pub struct TreesType {
+    #[serde(rename = "Tree")]
+    pub tree: Vec<String>,
 }
 

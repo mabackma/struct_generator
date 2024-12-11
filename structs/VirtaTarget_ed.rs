@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Status2 {
-    #[serde(flatten)]
-    pub status2: ChangeStateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TargetNumber {
     #[serde(flatten)]
     pub target_number: PositiveDecimalMax5IntegralPartMax1FractionalPartType,
@@ -23,21 +17,21 @@ pub struct TargetExtraInfo {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Status2 {
+    #[serde(flatten)]
+    pub status2: ChangeStateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetParts {
+    #[serde(flatten)]
+    pub target_parts: TargetPartsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct EstablishedPartNumber {
     #[serde(flatten)]
     pub established_part_number: VirtaPartNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetId {
-    #[serde(flatten)]
-    pub target_id: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Target {
-    #[serde(flatten)]
-    pub target: TargetType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,9 +41,15 @@ pub struct BasePartNumber {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TargetParts {
+pub struct Target {
     #[serde(flatten)]
-    pub target_parts: TargetPartsType,
+    pub target: TargetType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetId {
+    #[serde(flatten)]
+    pub target_id: string,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

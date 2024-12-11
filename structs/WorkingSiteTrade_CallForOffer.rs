@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TechnicalContactPersonType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct RelatedCallForOffersType {
     #[serde(rename = "RelatedCallForOffer")]
     pub related_call_for_offer: Vec<RelatedCallForOfferType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseModeType {
+pub struct AdditionalCodeType {
     #[serde(flatten)]
-    pub base: PurchaseModeType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -43,18 +49,6 @@ pub struct CallForOfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: OperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct RelatedCallForOfferType {
     #[serde(rename = "RelatedCallForOfferId")]
     pub related_call_for_offer_id: String,
@@ -63,19 +57,25 @@ pub struct RelatedCallForOfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PublicityType {
+pub struct OperationModeType {
     #[serde(flatten)]
-    pub base: PublicityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
+    pub base: OperationModeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CallForOfferDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PurchaseModeType {
+    #[serde(flatten)]
+    pub base: PurchaseModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
     #[serde(flatten)]
     pub base: DateType,
 }
@@ -87,14 +87,14 @@ pub struct UsedPricingMethodTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CallForOfferSilvicultureInfoType {
     #[serde(rename = "IncludePaymentPlan", skip_serializing_if = "Option::is_none")]
     pub include_payment_plan: Option<IncludePaymentPlanType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PublicityType {
+    #[serde(flatten)]
+    pub base: PublicityType,
 }
 

@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Operation {
+pub struct Operations {
     #[serde(flatten)]
-    pub operation: OperationDefType,
+    pub operations: OperationsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,20 +17,20 @@ pub struct ResponsibleActor {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Operations {
+pub struct Operation {
     #[serde(flatten)]
-    pub operations: OperationsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationType {
-    #[serde(flatten)]
-    pub operation_type: OperationTypeType,
+    pub operation: OperationDefType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OperationStatus {
     #[serde(flatten)]
     pub operation_status: OperationStatusType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationType {
+    #[serde(flatten)]
+    pub operation_type: OperationTypeType,
 }
 

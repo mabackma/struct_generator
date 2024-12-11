@@ -45,6 +45,10 @@ pub fn reference_type(ref_name: &str, element_definitions: &HashMap<String, Stri
         return Some(typ.clone());
     }
 
+    // TODO: Implement a way to get the reference type from the XSD file 
+    // refferred to in the beginning of the file with the `xs:import` tag
+
+    //Some(ref_name.to_string())
     Some("String".to_string())
 }
 
