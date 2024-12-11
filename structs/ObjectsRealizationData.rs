@@ -7,9 +7,9 @@ pub struct ObjectsRealizationDataType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ObjectRealizationType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "@parentId")]
-    pub parent_id: string,
+    pub parent_id: String,
     #[serde(rename = "TreeStandDataDate")]
     pub tree_stand_data_date: Vec<String>,
 }

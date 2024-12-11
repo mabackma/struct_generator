@@ -21,7 +21,7 @@ pub struct WorkingSiteForwardingQualityControlType {
     #[serde(rename = "FileName")]
     pub file_name: String100Type,
     #[serde(rename = "Bytes")]
-    pub bytes: base64Binary,
+    pub bytes: Vec<u8>,
     #[serde(rename = "ScaleData")]
     pub scale_data: Vec<ScaleDataType>,
     #[serde(rename = "Calibration", skip_serializing_if = "Option::is_none")]
@@ -31,15 +31,7 @@ pub struct WorkingSiteForwardingQualityControlType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OrientationType {
     #[serde(flatten)]
-    pub base: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CalibrationType {
-    #[serde(rename = "CalibrationDate")]
-    pub calibration_date: TimeStampType,
-    #[serde(rename = "CalibrationAdjustment")]
-    pub calibration_adjustment: PositiveInteger3digitsType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -48,5 +40,13 @@ pub struct ScaleDataType {
     pub scaled_mass: Decimal1FractionDigitType,
     #[serde(rename = "Orientation")]
     pub orientation: OrientationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CalibrationType {
+    #[serde(rename = "CalibrationDate")]
+    pub calibration_date: TimeStampType,
+    #[serde(rename = "CalibrationAdjustment")]
+    pub calibration_adjustment: PositiveInteger3digitsType,
 }
 

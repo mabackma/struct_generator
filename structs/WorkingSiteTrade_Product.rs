@@ -1,30 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: string,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: PlannedResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: OperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationTypeType {
 }
 
@@ -35,15 +9,29 @@ pub struct ConsumptionUnitType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: PlannedResourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: OperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ProductType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "@operationId")]
-    pub operation_id: string,
+    pub operation_id: String,
     #[serde(rename = "@standId")]
-    pub stand_id: string,
+    pub stand_id: String,
     #[serde(rename = "@productId")]
-    pub product_id: string,
+    pub product_id: String,
     #[serde(rename = "ProductKeyGroup")]
     pub product_key_group: String,
     #[serde(rename = "ProductName")]
@@ -66,5 +54,17 @@ pub struct ProductType {
     pub planned_resource: Option<PlannedResourceType>,
     #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String1500Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
 }
 

@@ -1,5 +1,23 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PersonOrganizationNameType {
+pub struct WholeNameType {
+    #[serde(flatten)]
+    pub base: NimiTekstiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PhoneNumberType {
+    #[serde(flatten)]
+    pub base: PuhelinnumeroTekstiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MobilePhoneNumberType {
+    #[serde(flatten)]
+    pub base: PhoneNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationNameType {
     #[serde(flatten)]
     pub base: OrganizationNameBaseType,
 }
@@ -11,19 +29,37 @@ pub struct OrganizationNameBaseType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PostalCodeType {
+pub struct FirstNameType {
     #[serde(flatten)]
-    pub base: PostinumeroKoodiTyyppi,
+    pub base: EtunimetNimiTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WholeNameType {
+pub struct EmailAddressType {
     #[serde(flatten)]
-    pub base: NimiTekstiTyyppi,
+    pub base: SahkopostiosoiteTekstiTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MobilePhoneNumberType {
+pub struct LastNameType {
+    #[serde(flatten)]
+    pub base: SukuNimiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PostOfficeType {
+    #[serde(flatten)]
+    pub base: PostitoimipaikkaNimiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CountryTextType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TelefaxNumberType {
     #[serde(flatten)]
     pub base: PhoneNumberType,
 }
@@ -31,7 +67,7 @@ pub struct MobilePhoneNumberType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ContactInformationType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "@language")]
     pub language: ISO639char2LanguageType,
     #[serde(rename = "IdentifierGroup", skip_serializing_if = "Option::is_none")]
@@ -47,62 +83,26 @@ pub struct ContactInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FirstNameType {
-    #[serde(flatten)]
-    pub base: EtunimetNimiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PhoneNumberType {
-    #[serde(flatten)]
-    pub base: PuhelinnumeroTekstiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostOfficeType {
-    #[serde(flatten)]
-    pub base: PostitoimipaikkaNimiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TelefaxNumberType {
-    #[serde(flatten)]
-    pub base: PhoneNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationNameType {
+pub struct PersonOrganizationNameType {
     #[serde(flatten)]
     pub base: OrganizationNameBaseType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PostalCodeType {
+    #[serde(flatten)]
+    pub base: PostinumeroKoodiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StateCodeType {
     #[serde(flatten)]
-    pub base: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CountryTextType {
-    #[serde(flatten)]
-    pub base: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LastNameType {
-    #[serde(flatten)]
-    pub base: SukuNimiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EmailAddressType {
-    #[serde(flatten)]
-    pub base: SahkopostiosoiteTekstiTyyppi,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AddressType {
     #[serde(flatten)]
-    pub base: string,
+    pub base: String,
 }
 

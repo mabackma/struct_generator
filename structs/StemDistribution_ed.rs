@@ -1,13 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Age {
+pub struct Diameter {
     #[serde(flatten)]
-    pub age: AgeType,
+    pub diameter: DiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StratumNumber {
+pub struct Trees {
     #[serde(flatten)]
-    pub stratum_number: StratumNumberType,
+    pub trees: StemDistributionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeNumber {
+    #[serde(flatten)]
+    pub tree_number: TreeNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeClass {
+    #[serde(flatten)]
+    pub tree_class: TreeClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,15 +35,9 @@ pub struct Storey {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeNumber {
+pub struct Tree {
     #[serde(flatten)]
-    pub tree_number: TreeNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Diameter {
-    #[serde(flatten)]
-    pub diameter: DiameterType,
+    pub tree: TreeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,33 +47,9 @@ pub struct Height {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Tree {
+pub struct StratumNumber {
     #[serde(flatten)]
-    pub tree: TreeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Count {
-    #[serde(flatten)]
-    pub count: CountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Trees {
-    #[serde(flatten)]
-    pub trees: StemDistributionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogVolume {
-    #[serde(flatten)]
-    pub saw_log_volume: SawLogVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClass {
-    #[serde(flatten)]
-    pub tree_class: TreeClassType,
+    pub stratum_number: StratumNumberType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,9 +59,27 @@ pub struct TreeSpecies {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Age {
+    #[serde(flatten)]
+    pub age: AgeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Count {
+    #[serde(flatten)]
+    pub count: CountType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SawLogPercent {
     #[serde(flatten)]
     pub saw_log_percent: SawLogPercentType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogVolume {
+    #[serde(flatten)]
+    pub saw_log_volume: SawLogVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BasalAreaType {
+pub struct AgeType {
     #[serde(flatten)]
-    pub base: BasalAreaType,
+    pub base: AgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -13,7 +13,7 @@ pub struct StemDistributionStrataType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StemDistributionStratumType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "ChangeState", skip_serializing_if = "Option::is_none")]
     pub change_state: Option<String>,
     #[serde(rename = "ChangeTime", skip_serializing_if = "Option::is_none")]
@@ -39,14 +39,14 @@ pub struct StoreyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
+pub struct BasalAreaType {
     #[serde(flatten)]
-    pub base: TreeSpeciesType,
+    pub base: BasalAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AgeType {
+pub struct TreeSpeciesType {
     #[serde(flatten)]
-    pub base: AgeType,
+    pub base: TreeSpeciesType,
 }
 

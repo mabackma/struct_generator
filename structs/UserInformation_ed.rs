@@ -1,43 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Startdate {
+pub struct Location {
     #[serde(flatten)]
-    pub startdate: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UserId {
-    #[serde(flatten)]
-    pub user_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BirthDate {
-    #[serde(flatten)]
-    pub birth_date: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ICEName {
-    #[serde(flatten)]
-    pub i_c_e_name: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalName {
-    #[serde(flatten)]
-    pub additional_name: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceType {
-    #[serde(flatten)]
-    pub service_type: ServiceTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Active {
-    #[serde(flatten)]
-    pub active: YesNoType,
+    pub location: PointGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,87 +11,21 @@ pub struct ICETelephone {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Email {
+pub struct Trainings {
     #[serde(flatten)]
-    pub email: String100Type,
+    pub trainings: TrainingsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Languages {
+pub struct Machine {
     #[serde(flatten)]
-    pub languages: LanguagesType,
+    pub machine: MachineTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NationalityFreeText {
+pub struct ICEName {
     #[serde(flatten)]
-    pub nationality_free_text: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Name {
-    #[serde(flatten)]
-    pub name: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostOffice {
-    #[serde(flatten)]
-    pub post_office: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Location {
-    #[serde(flatten)]
-    pub location: PointGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingContract {
-    #[serde(flatten)]
-    pub working_contract: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroups {
-    #[serde(flatten)]
-    pub work_code_groups: WorkCodeGroupsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UserName {
-    #[serde(flatten)]
-    pub user_name: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCode {
-    #[serde(flatten)]
-    pub work_code: WorkCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Telephone {
-    #[serde(flatten)]
-    pub telephone: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
-    #[serde(flatten)]
-    pub service_buyer_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NationalityCode {
-    #[serde(flatten)]
-    pub nationality_code: String5Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct E101 {
-    #[serde(flatten)]
-    pub e101: YesNoType,
+    pub i_c_e_name: String100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -137,9 +35,21 @@ pub struct Employment {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Training {
+pub struct UserRole {
     #[serde(flatten)]
-    pub training: TrainingDataType,
+    pub user_role: UserRoleType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OwnerContractorId {
+    #[serde(flatten)]
+    pub owner_contractor_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Contractors {
+    #[serde(flatten)]
+    pub contractors: ContractorsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -155,9 +65,9 @@ pub struct Enddate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TrainingDate {
+pub struct PostOffice {
     #[serde(flatten)]
-    pub training_date: DateType,
+    pub post_office: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -167,27 +77,9 @@ pub struct TaxNumber {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Contractors {
+pub struct E101 {
     #[serde(flatten)]
-    pub contractors: ContractorsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UserRoles {
-    #[serde(flatten)]
-    pub user_roles: UserRolesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Trainings {
-    #[serde(flatten)]
-    pub trainings: TrainingsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct A1 {
-    #[serde(flatten)]
-    pub a1: YesNoType,
+    pub e101: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -197,9 +89,27 @@ pub struct TrainingId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UserRole {
+pub struct Active {
     #[serde(flatten)]
-    pub user_role: UserRoleType,
+    pub active: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Telephone {
+    #[serde(flatten)]
+    pub telephone: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCode {
+    #[serde(flatten)]
+    pub work_code: WorkCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BirthDate {
+    #[serde(flatten)]
+    pub birth_date: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -209,9 +119,15 @@ pub struct UserInformation {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Machine {
+pub struct AdditionalName {
     #[serde(flatten)]
-    pub machine: MachineTypeType,
+    pub additional_name: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingContract {
+    #[serde(flatten)]
+    pub working_contract: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -221,21 +137,21 @@ pub struct WorkCodeGroup {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OwnerContractorId {
+pub struct TrainingDate {
     #[serde(flatten)]
-    pub owner_contractor_id: String20Type,
+    pub training_date: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Language {
+pub struct NationalityFreeText {
     #[serde(flatten)]
-    pub language: LanguageCode1Type,
+    pub nationality_free_text: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PostalCode {
+pub struct ServiceType {
     #[serde(flatten)]
-    pub postal_code: String10Type,
+    pub service_type: ServiceTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -248,5 +164,89 @@ pub struct Machines {
 pub struct TrainingFreeText {
     #[serde(flatten)]
     pub training_free_text: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeGroups {
+    #[serde(flatten)]
+    pub work_code_groups: WorkCodeGroupsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Email {
+    #[serde(flatten)]
+    pub email: String100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Startdate {
+    #[serde(flatten)]
+    pub startdate: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UserName {
+    #[serde(flatten)]
+    pub user_name: String100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerId {
+    #[serde(flatten)]
+    pub service_buyer_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Name {
+    #[serde(flatten)]
+    pub name: String100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UserId {
+    #[serde(flatten)]
+    pub user_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NationalityCode {
+    #[serde(flatten)]
+    pub nationality_code: String5Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Languages {
+    #[serde(flatten)]
+    pub languages: LanguagesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PostalCode {
+    #[serde(flatten)]
+    pub postal_code: String10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UserRoles {
+    #[serde(flatten)]
+    pub user_roles: UserRolesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct A1 {
+    #[serde(flatten)]
+    pub a1: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Training {
+    #[serde(flatten)]
+    pub training: TrainingDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Language {
+    #[serde(flatten)]
+    pub language: LanguageCode1Type,
 }
 

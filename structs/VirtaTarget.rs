@@ -5,17 +5,11 @@ pub struct VirtaHabitatAdvertisementType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaExtraInfoType {
-    #[serde(flatten)]
-    pub base: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TargetType {
     #[serde(rename = "Status2")]
     pub status2: ChangeStateType,
     #[serde(rename = "TargetId")]
-    pub target_id: string,
+    pub target_id: String,
     #[serde(rename = "TargetNumber")]
     pub target_number: PositiveDecimalMax5IntegralPartMax1FractionalPartType,
     #[serde(rename = "BasePartNumber")]
@@ -37,7 +31,13 @@ pub struct TargetType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaPartNumberType {
     #[serde(flatten)]
-    pub base: string,
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaExtraInfoType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

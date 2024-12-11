@@ -1,31 +1,11 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
-    #[serde(flatten)]
-    pub base: VolumeType,
+pub struct HeightType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemDistributionType {
-    #[serde(rename = "Tree")]
-    pub tree: Vec<TreeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeNumberType {
+pub struct StoreyType {
     #[serde(flatten)]
-    pub base: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CountType {
-    #[serde(flatten)]
-    pub base: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogPercentType {
-    #[serde(flatten)]
-    pub base: SawLogPercentType,
+    pub base: StoreyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,19 +15,33 @@ pub struct AgeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HeightType {
+pub struct DiameterType {
+    #[serde(flatten)]
+    pub base: DiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClassType {
+pub struct CountType {
     #[serde(flatten)]
-    pub base: TreeClassType,
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PulpWoodVolumeType {
+    #[serde(flatten)]
+    pub base: PulpWoodVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogPercentType {
+    #[serde(flatten)]
+    pub base: SawLogPercentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TreeType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "ChangeState", skip_serializing_if = "Option::is_none")]
     pub change_state: Option<String>,
     #[serde(rename = "ChangeTime", skip_serializing_if = "Option::is_none")]
@@ -81,26 +75,32 @@ pub struct TreeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StemDistributionType {
+    #[serde(rename = "Tree")]
+    pub tree: Vec<TreeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeType {
+    #[serde(flatten)]
+    pub base: VolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SawLogVolumeType {
     #[serde(flatten)]
     pub base: SawLogVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolumeType {
+pub struct TreeNumberType {
     #[serde(flatten)]
-    pub base: PulpWoodVolumeType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterType {
+pub struct TreeClassType {
     #[serde(flatten)]
-    pub base: DiameterType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: StoreyType,
+    pub base: TreeClassType,
 }
 

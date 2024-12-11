@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteForwardingQualityControl {
-    #[serde(flatten)]
-    pub working_site_forwarding_quality_control: WorkingSiteForwardingQualityControlType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ControlReferenceMass {
     #[serde(flatten)]
     pub control_reference_mass: Decimal1FractionDigitType,
@@ -17,45 +11,9 @@ pub struct Orientation {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: ERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Bytes {
-    #[serde(flatten)]
-    pub bytes: base64Binary,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
-    #[serde(flatten)]
-    pub contractor_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CalibrationDate {
     #[serde(flatten)]
     pub calibration_date: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
-    #[serde(flatten)]
-    pub service_buyer_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperatorId {
-    #[serde(flatten)]
-    pub operator_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleData {
-    #[serde(flatten)]
-    pub scale_data: ScaleDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,15 +23,45 @@ pub struct ForestOwner {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteForwardingQualityControl {
+    #[serde(flatten)]
+    pub working_site_forwarding_quality_control: WorkingSiteForwardingQualityControlType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerId {
+    #[serde(flatten)]
+    pub service_buyer_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Bytes {
+    #[serde(flatten)]
+    pub bytes: base64Binary,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FileName {
+    #[serde(flatten)]
+    pub file_name: String100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleData {
+    #[serde(flatten)]
+    pub scale_data: ScaleDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CalibrationAdjustment {
     #[serde(flatten)]
     pub calibration_adjustment: PositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Calibration {
+pub struct WorkingSiteId {
     #[serde(flatten)]
-    pub calibration: CalibrationType,
+    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,15 +71,21 @@ pub struct MeasurementDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ScaledMass {
     #[serde(flatten)]
     pub scaled_mass: Decimal1FractionDigitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
+pub struct ContractorId {
     #[serde(flatten)]
-    pub resource_id: String20Type,
+    pub contractor_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -101,8 +95,14 @@ pub struct MachineApplicationVersion {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FileName {
+pub struct Calibration {
     #[serde(flatten)]
-    pub file_name: String100Type,
+    pub calibration: CalibrationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperatorId {
+    #[serde(flatten)]
+    pub operator_id: String20Type,
 }
 

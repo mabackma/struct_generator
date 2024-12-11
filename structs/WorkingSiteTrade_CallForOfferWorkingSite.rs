@@ -1,33 +1,9 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilviculturalOperationType {
-    #[serde(rename = "@id")]
-    pub id: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteTextType {
-    #[serde(flatten)]
-    pub base: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IncludeInOfferType {
-    #[serde(flatten)]
-    pub base: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SceneryWorkPermissionType {
     #[serde(rename = "SceneryWorkPermissionNeeded")]
     pub scenery_work_permission_needed: SceneryWorkPermissionNeededType,
     #[serde(rename = "SceneryWorkPermissionAcceptance", skip_serializing_if = "Option::is_none")]
     pub scenery_work_permission_acceptance: Option<DateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InformedActorsType {
-    #[serde(rename = "InformedActor")]
-    pub informed_actor: Vec<ContactInformationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -37,19 +13,17 @@ pub struct RealEstatesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSiteSilvicultureInfoType {
-    #[serde(rename = "SilviculturalOperations", skip_serializing_if = "Option::is_none")]
-    pub silvicultural_operations: Option<SilviculturalOperationsType>,
-    #[serde(rename = "Products", skip_serializing_if = "Option::is_none")]
-    pub products: Option<ProductsType>,
+pub struct WorkingSiteTextType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteType {
     #[serde(rename = "@parentId")]
-    pub parent_id: string,
+    pub parent_id: String,
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "TimeStamp")]
     pub time_stamp: String,
     #[serde(rename = "WorkingSiteName")]
@@ -88,5 +62,31 @@ pub struct WorkingSiteType {
 pub struct SilviculturalOperationsType {
     #[serde(rename = "SilviculturalOperation")]
     pub silvicultural_operation: Vec<SilviculturalOperationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilviculturalOperationType {
+    #[serde(rename = "@id")]
+    pub id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferWorkingSiteSilvicultureInfoType {
+    #[serde(rename = "SilviculturalOperations", skip_serializing_if = "Option::is_none")]
+    pub silvicultural_operations: Option<SilviculturalOperationsType>,
+    #[serde(rename = "Products", skip_serializing_if = "Option::is_none")]
+    pub products: Option<ProductsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IncludeInOfferType {
+    #[serde(flatten)]
+    pub base: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InformedActorsType {
+    #[serde(rename = "InformedActor")]
+    pub informed_actor: Vec<ContactInformationType>,
 }
 

@@ -1,9 +1,9 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TreeIdentifierType {
     #[serde(rename = "Type")]
-    pub r#type: integer,
+    pub r#type: i32,
     #[serde(rename = "Value")]
-    pub value: string,
+    pub value: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -15,7 +15,7 @@ pub struct TreeIdentifiersType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TreeListItemType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "TreeNumber", skip_serializing_if = "Option::is_none")]
     pub tree_number: Option<integer>,
     #[serde(rename = "TreeSpecies", skip_serializing_if = "Option::is_none")]

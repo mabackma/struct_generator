@@ -1,47 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidyAppliersType {
-    #[serde(rename = "SubsidyApplier")]
-    pub subsidy_applier: Vec<SubsidyApplierBaseContactAndEstateInfoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentrePaymentsDataType {
-    #[serde(flatten)]
-    pub base: ForestCentreDataType,
-    #[serde(rename = "ForestCentrePayments")]
-    pub forest_centre_payments: ForestCentrePaymentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SubsidiesType {
     #[serde(rename = "Subsidy")]
     pub subsidy: Vec<SubsidyType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PayeeType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-    #[serde(rename = "Payments")]
-    pub payments: PaymentsType,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub documents: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidyApplierBaseContactAndEstateInfoType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-    #[serde(rename = "RealEstates", skip_serializing_if = "Option::is_none")]
-    pub real_estates: Option<PaymentsRealEstatesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentsRealEstateType {
-    #[serde(flatten)]
-    pub base: BaseRealEstateType2,
-    #[serde(rename = "Subsidies")]
-    pub subsidies: SubsidiesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,17 +25,11 @@ pub struct SubsidyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PayeesType {
-    #[serde(rename = "Payee")]
-    pub payee: Vec<PayeeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentrePaymentsType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "Payees")]
-    pub payees: PayeesType,
+pub struct SubsidyApplierBaseContactAndEstateInfoType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
+    #[serde(rename = "RealEstates", skip_serializing_if = "Option::is_none")]
+    pub real_estates: Option<PaymentsRealEstatesType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -87,7 +41,7 @@ pub struct PaymentTextsType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestCentrePaymentDetailsType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "CaseNumber", skip_serializing_if = "Option::is_none")]
     pub case_number: Option<FinancingActNumberType>,
     #[serde(rename = "ForestCentreMessageReferenceType", skip_serializing_if = "Option::is_none")]
@@ -121,8 +75,54 @@ pub struct ForestCentrePaymentDetailsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SubsidyAppliersType {
+    #[serde(rename = "SubsidyApplier")]
+    pub subsidy_applier: Vec<SubsidyApplierBaseContactAndEstateInfoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentrePaymentsDataType {
+    #[serde(flatten)]
+    pub base: ForestCentreDataType,
+    #[serde(rename = "ForestCentrePayments")]
+    pub forest_centre_payments: ForestCentrePaymentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PayeesType {
+    #[serde(rename = "Payee")]
+    pub payee: Vec<PayeeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PayeeType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
+    #[serde(rename = "Payments")]
+    pub payments: PaymentsType,
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
+    pub documents: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PaymentsType {
     #[serde(rename = "Payment")]
     pub payment: Vec<ForestCentrePaymentDetailsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentsRealEstateType {
+    #[serde(flatten)]
+    pub base: BaseRealEstateType2,
+    #[serde(rename = "Subsidies")]
+    pub subsidies: SubsidiesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentrePaymentsType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "Payees")]
+    pub payees: PayeesType,
 }
 

@@ -1,9 +1,15 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TextType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MeasurementCertificateType {
     #[serde(rename = "@parentId")]
-    pub parent_id: string,
+    pub parent_id: String,
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "@versionNo")]
     pub version_no: VersionNoType,
     #[serde(rename = "TimeStamp")]
@@ -37,19 +43,7 @@ pub struct MeasurementCertificateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SequenceNumberType {
-    #[serde(flatten)]
-    pub base: PositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TextType {
-    #[serde(flatten)]
-    pub base: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ValueType {
+pub struct PaidValueType {
     #[serde(flatten)]
     pub base: Decimal2FractionDigitsType,
 }
@@ -73,13 +67,7 @@ pub struct VATType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementCertificateTypeType {
-    #[serde(flatten)]
-    pub base: MeasurementCertificateTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaidValueType {
+pub struct ValueType {
     #[serde(flatten)]
     pub base: Decimal2FractionDigitsType,
 }
@@ -91,14 +79,26 @@ pub struct CurrencyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementDateType {
+pub struct MeasurementCertificateTypeType {
     #[serde(flatten)]
-    pub base: DateType,
+    pub base: MeasurementCertificateTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SequenceNumberType {
+    #[serde(flatten)]
+    pub base: PositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VersionNoType {
     #[serde(flatten)]
     pub base: PositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementDateType {
+    #[serde(flatten)]
+    pub base: DateType,
 }
 

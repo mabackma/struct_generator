@@ -15,6 +15,6 @@ pub struct QualityAttachmentType {
     #[serde(rename = "Filename")]
     pub filename: String100Type,
     #[serde(rename = "Bytes")]
-    pub bytes: base64Binary,
+    pub bytes: Vec<u8>,
 }
 

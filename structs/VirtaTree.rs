@@ -3,7 +3,7 @@ pub struct TreeType {
     #[serde(rename = "Status5")]
     pub status5: ChangeStateType,
     #[serde(rename = "TreeNumber")]
-    pub tree_number: string,
+    pub tree_number: String,
     #[serde(rename = "TreeSpecies", skip_serializing_if = "Option::is_none")]
     pub tree_species: Option<TreeSpeciesType>,
     #[serde(rename = "TreeDiameter", skip_serializing_if = "Option::is_none")]

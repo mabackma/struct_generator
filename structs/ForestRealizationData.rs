@@ -1,15 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct GeometryObjectsType {
+    #[serde(rename = "GeometryObject")]
+    pub geometry_object: Vec<GeometryObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ParentObjectsType {
     #[serde(rename = "ParentObject")]
     pub parent_object: Vec<ParentObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectType {
-    #[serde(rename = "ParentObjectType")]
-    pub parent_object_type: ObjectTypeType,
-    #[serde(rename = "ParentObjectId")]
-    pub parent_object_id: IdStringNotEmptyType,
+pub struct ObjectTypeType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -33,29 +37,25 @@ pub struct GeometryObjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryObjectsType {
-    #[serde(rename = "GeometryObject")]
-    pub geometry_object: Vec<GeometryObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectTypeType {
-    #[serde(flatten)]
-    pub base: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestRealizationDataType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "AdditionalDetails")]
     pub additional_details: String2000Type,
     #[serde(rename = "Sender")]
     pub sender: ContactInformationType,
     #[serde(rename = "UseCase")]
-    pub use_case: string,
+    pub use_case: String,
     #[serde(rename = "GeometryObjects")]
     pub geometry_objects: GeometryObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParentObjectType {
+    #[serde(rename = "ParentObjectType")]
+    pub parent_object_type: ObjectTypeType,
+    #[serde(rename = "ParentObjectId")]
+    pub parent_object_id: IdStringNotEmptyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

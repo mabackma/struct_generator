@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct FinancingActCompletionDeclarationType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "UpdatePreviousMessage")]
     pub update_previous_message: String,
     #[serde(rename = "CompletionDeclarationReference")]
@@ -58,6 +52,12 @@ pub struct FinancingActCompletionDeclarationType {
 pub struct CompletionDataAndSubsidyType {
     #[serde(rename = "FinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
     pub financing_act_completion_stands: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

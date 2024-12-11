@@ -1,12 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SawinghoursDataType {
-    #[serde(rename = "Hours")]
-    pub hours: PositiveInteger2digitsType,
-    #[serde(rename = "Minutes")]
-    pub minutes: PositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteWorkTimeType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -24,5 +16,13 @@ pub struct WorkingSiteWorkTimeType {
     pub sawinghours: Option<SawinghoursDataType>,
     #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
     pub info_text: Option<String200Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawinghoursDataType {
+    #[serde(rename = "Hours")]
+    pub hours: PositiveInteger2digitsType,
+    #[serde(rename = "Minutes")]
+    pub minutes: PositiveInteger2digitsType,
 }
 

@@ -5,39 +5,21 @@ pub struct VirtaRegenerationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotsType {
-    #[serde(rename = "SamplePlot")]
-    pub sample_plot: Vec<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaStandQualityType {
+pub struct VirtaTargetPartStatusType {
     #[serde(flatten)]
-    pub base: VirtaStandQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatSurvivingType {
-    #[serde(flatten)]
-    pub base: VirtaHabitatSurvivingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaExceptionalPermitForHandlingType {
-    #[serde(flatten)]
-    pub base: VirtaExceptionalPermitForHandlingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaInspectionMethodType {
-    #[serde(flatten)]
-    pub base: VirtaInspectionMethodType,
+    pub base: VirtaTargetPartStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaCultivationMaterialType {
     #[serde(flatten)]
     pub base: VirtaCultivationMaterialType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatCodeType {
+    #[serde(flatten)]
+    pub base: VirtaHabitatCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,15 +35,39 @@ pub struct VirtaReasonType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaReviewType {
+pub struct VirtaSuggestionType {
     #[serde(flatten)]
-    pub base: VirtaReviewType,
+    pub base: VirtaSuggestionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaCuttingByMachineType {
+pub struct VirtaExceptionalPermitForHandlingType {
     #[serde(flatten)]
-    pub base: VirtaCuttingByMachineType,
+    pub base: VirtaExceptionalPermitForHandlingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaGroundManipulationMethodType {
+    #[serde(flatten)]
+    pub base: VirtaGroundManipulationMethodType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPlantEvaluationType {
+    #[serde(flatten)]
+    pub base: VirtaPlantEvaluationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaInspectionMethodType {
+    #[serde(flatten)]
+    pub base: VirtaInspectionMethodType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTreeDecimalType {
+    #[serde(flatten)]
+    pub base: f64,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,9 +77,21 @@ pub struct VirtaHarvestingClassificationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTreeDecimalType {
+pub struct SamplePlotsType {
+    #[serde(rename = "SamplePlot")]
+    pub sample_plot: Vec<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatSurvivingType {
     #[serde(flatten)]
-    pub base: decimal,
+    pub base: VirtaHabitatSurvivingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaRootRotControlEvaluationType {
+    #[serde(flatten)]
+    pub base: VirtaRootRotControlEvaluationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -81,7 +99,7 @@ pub struct TargetPartType {
     #[serde(rename = "Status3", skip_serializing_if = "Option::is_none")]
     pub status3: Option<ChangeStateType>,
     #[serde(rename = "PartNumber")]
-    pub part_number: string,
+    pub part_number: String,
     #[serde(rename = "PartsDetectedArea", skip_serializing_if = "Option::is_none")]
     pub parts_detected_area: Option<PositiveDecimalMax4IntegralPartMax2FractionalPartType>,
     #[serde(rename = "CuttingMethod", skip_serializing_if = "Option::is_none")]
@@ -279,15 +297,21 @@ pub struct TargetPartType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaRootRotControlEvaluationType {
+pub struct VirtaStandQualityType {
     #[serde(flatten)]
-    pub base: VirtaRootRotControlEvaluationType,
+    pub base: VirtaStandQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTargetPartStatusType {
+pub struct VirtaCuttingByMachineType {
     #[serde(flatten)]
-    pub base: VirtaTargetPartStatusType,
+    pub base: VirtaCuttingByMachineType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaReviewType {
+    #[serde(flatten)]
+    pub base: VirtaReviewType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -300,29 +324,5 @@ pub struct VirtaHarvestingSeasonType {
 pub struct VirtaHabitatTypeType {
     #[serde(flatten)]
     pub base: VirtaHabitatTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSuggestionType {
-    #[serde(flatten)]
-    pub base: VirtaSuggestionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatCodeType {
-    #[serde(flatten)]
-    pub base: VirtaHabitatCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaGroundManipulationMethodType {
-    #[serde(flatten)]
-    pub base: VirtaGroundManipulationMethodType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPlantEvaluationType {
-    #[serde(flatten)]
-    pub base: VirtaPlantEvaluationType,
 }
 

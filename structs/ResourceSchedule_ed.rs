@@ -5,15 +5,9 @@ pub struct StanfordResourceId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TeamName {
+pub struct ContractorId {
     #[serde(flatten)]
-    pub team_name: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EndDate {
-    #[serde(flatten)]
-    pub end_date: DateType,
+    pub contractor_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,15 +17,9 @@ pub struct WorkingSites {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForwarderDelay {
+pub struct StartDate {
     #[serde(flatten)]
-    pub forwarder_delay: PositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Resources {
-    #[serde(flatten)]
-    pub resources: ResourcesType,
+    pub start_date: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,27 +29,21 @@ pub struct ResourceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
+pub struct ForwarderDelay {
     #[serde(flatten)]
-    pub service_buyer_id: String20Type,
+    pub forwarder_delay: PositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
+pub struct EndDate {
     #[serde(flatten)]
-    pub contractor_id: String20Type,
+    pub end_date: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Resource {
+pub struct Resources {
     #[serde(flatten)]
-    pub resource: ResourceDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: ERPIdType,
+    pub resources: ResourcesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,21 +53,27 @@ pub struct WorkingSiteNumber {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
-    #[serde(flatten)]
-    pub resource_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StartDate {
-    #[serde(flatten)]
-    pub start_date: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ResourceSchedule {
     #[serde(flatten)]
     pub resource_schedule: ResourceScheduleType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Resource {
+    #[serde(flatten)]
+    pub resource: ResourceDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerResourceId {
+    #[serde(flatten)]
+    pub service_buyer_resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,8 +83,20 @@ pub struct WorkingSite {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerResourceId {
+pub struct ResourceId {
     #[serde(flatten)]
-    pub service_buyer_resource_id: String20Type,
+    pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TeamName {
+    #[serde(flatten)]
+    pub team_name: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerId {
+    #[serde(flatten)]
+    pub service_buyer_id: String20Type,
 }
 

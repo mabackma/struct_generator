@@ -1,49 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StoragesType {
-    #[serde(rename = "Storage", skip_serializing_if = "Option::is_none")]
-    pub storage: Option<Vec<StorageType>>,
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
+    pub assortment: Option<Vec<AssortmentType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StorageType {
-    #[serde(rename = "StorageId")]
-    pub storage_id: ERPIdType,
-    #[serde(rename = "Geometry")]
-    pub geometry: PointAndLineOrPolygonType,
-    #[serde(rename = "GeometryModificationAllowed")]
-    pub geometry_modification_allowed: YesNoType,
-    #[serde(rename = "PlowingName", skip_serializing_if = "Option::is_none")]
-    pub plowing_name: Option<String50Type>,
-    #[serde(rename = "PlowingTelephone", skip_serializing_if = "Option::is_none")]
-    pub plowing_telephone: Option<String20Type>,
-    #[serde(rename = "PlowingEmail", skip_serializing_if = "Option::is_none")]
-    pub plowing_email: Option<String50Type>,
-    #[serde(rename = "PlowingArranged", skip_serializing_if = "Option::is_none")]
-    pub plowing_arranged: Option<YesNoType>,
-    #[serde(rename = "PlowingDate", skip_serializing_if = "Option::is_none")]
-    pub plowing_date: Option<DateType>,
-    #[serde(rename = "Accessibility")]
-    pub accessibility: TransportAccessibilityType,
-    #[serde(rename = "TurningPointClass", skip_serializing_if = "Option::is_none")]
-    pub turning_point_class: Option<TurningPointClassType>,
-    #[serde(rename = "StorageInfo", skip_serializing_if = "Option::is_none")]
-    pub storage_info: Option<String500Type>,
-    #[serde(rename = "DeliveryRestriction", skip_serializing_if = "Option::is_none")]
-    pub delivery_restriction: Option<YesNoType>,
-    #[serde(rename = "StorageName", skip_serializing_if = "Option::is_none")]
-    pub storage_name: Option<String50Type>,
-    #[serde(rename = "StorageAddress", skip_serializing_if = "Option::is_none")]
-    pub storage_address: Option<String500Type>,
-    #[serde(rename = "StorageClass", skip_serializing_if = "Option::is_none")]
-    pub storage_class: Option<StorageDryingClassType>,
-    #[serde(rename = "StorageLandOwner", skip_serializing_if = "Option::is_none")]
-    pub storage_land_owner: Option<StorageLandOwnerType>,
-    #[serde(rename = "StorageLandOwnerInformation", skip_serializing_if = "Option::is_none")]
-    pub storage_land_owner_information: Option<ContactInformationType>,
-    #[serde(rename = "StorageAdditionalRemarks", skip_serializing_if = "Option::is_none")]
-    pub storage_additional_remarks: Option<String3000Type>,
-    #[serde(rename = "StorageLinkedToWorkingSite", skip_serializing_if = "Option::is_none")]
-    pub storage_linked_to_working_site: Option<YesNoType>,
+pub struct StorageForestHaulageDistanceType {
+    #[serde(rename = "StorageForestHaulageDistanceGroup")]
+    pub storage_forest_haulage_distance_group: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,21 +53,13 @@ pub struct AssortmentType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StorageForestHaulageDistanceType {
-    #[serde(rename = "StorageForestHaulageDistanceGroup")]
-    pub storage_forest_haulage_distance_group: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
-    pub assortment: Option<Vec<AssortmentType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoragesForestHaulageDistancesType {
-    #[serde(rename = "StorageForestHaulageDistance")]
-    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
+pub struct ProductUserIdsType {
+    #[serde(rename = "@Status")]
+    pub status: AssortmentStatusType,
+    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
+    pub product_user_id: Option<Vec<String>>,
+    #[serde(flatten)]
+    pub base: String100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -157,12 +113,56 @@ pub struct WorkingSiteOperationalUpdateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIdsType {
-    #[serde(rename = "@Status")]
-    pub status: AssortmentStatusType,
-    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
-    pub product_user_id: Option<Vec<String>>,
-    #[serde(flatten)]
-    pub base: String100Type,
+pub struct StoragesForestHaulageDistancesType {
+    #[serde(rename = "StorageForestHaulageDistance")]
+    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageType {
+    #[serde(rename = "StorageId")]
+    pub storage_id: ERPIdType,
+    #[serde(rename = "Geometry")]
+    pub geometry: PointAndLineOrPolygonType,
+    #[serde(rename = "GeometryModificationAllowed")]
+    pub geometry_modification_allowed: YesNoType,
+    #[serde(rename = "PlowingName", skip_serializing_if = "Option::is_none")]
+    pub plowing_name: Option<String50Type>,
+    #[serde(rename = "PlowingTelephone", skip_serializing_if = "Option::is_none")]
+    pub plowing_telephone: Option<String20Type>,
+    #[serde(rename = "PlowingEmail", skip_serializing_if = "Option::is_none")]
+    pub plowing_email: Option<String50Type>,
+    #[serde(rename = "PlowingArranged", skip_serializing_if = "Option::is_none")]
+    pub plowing_arranged: Option<YesNoType>,
+    #[serde(rename = "PlowingDate", skip_serializing_if = "Option::is_none")]
+    pub plowing_date: Option<DateType>,
+    #[serde(rename = "Accessibility")]
+    pub accessibility: TransportAccessibilityType,
+    #[serde(rename = "TurningPointClass", skip_serializing_if = "Option::is_none")]
+    pub turning_point_class: Option<TurningPointClassType>,
+    #[serde(rename = "StorageInfo", skip_serializing_if = "Option::is_none")]
+    pub storage_info: Option<String500Type>,
+    #[serde(rename = "DeliveryRestriction", skip_serializing_if = "Option::is_none")]
+    pub delivery_restriction: Option<YesNoType>,
+    #[serde(rename = "StorageName", skip_serializing_if = "Option::is_none")]
+    pub storage_name: Option<String50Type>,
+    #[serde(rename = "StorageAddress", skip_serializing_if = "Option::is_none")]
+    pub storage_address: Option<String500Type>,
+    #[serde(rename = "StorageClass", skip_serializing_if = "Option::is_none")]
+    pub storage_class: Option<StorageDryingClassType>,
+    #[serde(rename = "StorageLandOwner", skip_serializing_if = "Option::is_none")]
+    pub storage_land_owner: Option<StorageLandOwnerType>,
+    #[serde(rename = "StorageLandOwnerInformation", skip_serializing_if = "Option::is_none")]
+    pub storage_land_owner_information: Option<ContactInformationType>,
+    #[serde(rename = "StorageAdditionalRemarks", skip_serializing_if = "Option::is_none")]
+    pub storage_additional_remarks: Option<String3000Type>,
+    #[serde(rename = "StorageLinkedToWorkingSite", skip_serializing_if = "Option::is_none")]
+    pub storage_linked_to_working_site: Option<YesNoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoragesType {
+    #[serde(rename = "Storage", skip_serializing_if = "Option::is_none")]
+    pub storage: Option<Vec<StorageType>>,
 }
 

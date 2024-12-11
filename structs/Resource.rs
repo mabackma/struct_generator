@@ -1,4 +1,16 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PeripheralsType {
+    #[serde(rename = "PeripheralCode", skip_serializing_if = "Option::is_none")]
+    pub peripheral_code: Option<Vec<PeripheralCodeType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeInfoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodeInfoType {
     #[serde(rename = "WorkCode")]
     pub work_code: WorkCodeType,
@@ -9,9 +21,15 @@ pub struct WorkCodeInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PeripheralsType {
-    #[serde(rename = "PeripheralCode", skip_serializing_if = "Option::is_none")]
-    pub peripheral_code: Option<Vec<PeripheralCodeType>>,
+pub struct WorkCodeGroupsType {
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: Vec<WorkCodeGroupType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypesType {
+    #[serde(rename = "ServiceType")]
+    pub service_type: Vec<ServiceTypeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -100,23 +118,5 @@ pub struct ResourceType {
     pub external_system_in_use: Option<YesNoType>,
     #[serde(rename = "ExternalSystemName", skip_serializing_if = "Option::is_none")]
     pub external_system_name: Option<String50Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroupsType {
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: Vec<WorkCodeGroupType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeInfoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypesType {
-    #[serde(rename = "ServiceType")]
-    pub service_type: Vec<ServiceTypeType>,
 }
 

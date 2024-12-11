@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpecies {
+    #[serde(flatten)]
+    pub tree_species: TreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MeanDiameter {
     #[serde(flatten)]
     pub mean_diameter: MeanDiameterType,
@@ -8,18 +14,6 @@ pub struct MeanDiameter {
 pub struct Volume {
     #[serde(flatten)]
     pub volume: VolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemCount {
-    #[serde(flatten)]
-    pub stem_count: StemCountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpecies {
-    #[serde(flatten)]
-    pub tree_species: TreeSpeciesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -38,5 +32,11 @@ pub struct DeadTreeType {
 pub struct DeadTreeStratum {
     #[serde(flatten)]
     pub dead_tree_stratum: DeadTreeStratumType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemCount {
+    #[serde(flatten)]
+    pub stem_count: StemCountType,
 }
 

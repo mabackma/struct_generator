@@ -1,43 +1,9 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PointAndLineOrPolygonType {
-    #[serde(rename = "@dimension")]
-    pub dimension: decimal,
-    #[serde(rename = "@location")]
-    pub location: PointLocationType,
-    #[serde(rename = "pointProperty")]
-    pub point_property: String,
-    #[serde(rename = "lineStringProperty")]
-    pub line_string_property: String,
-    #[serde(rename = "polygonProperty")]
-    pub polygon_property: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AlternativeGeometries2Type {
-    #[serde(rename = "AlternativeGeometries2Group")]
-    pub alternative_geometries2_group: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PointGeometryType {
-    #[serde(rename = "@dimension")]
-    pub dimension: decimal,
-    #[serde(rename = "@location")]
-    pub location: PointLocationType,
-    #[serde(rename = "pointProperty")]
-    pub point_property: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PolygonGeometryType {
-    #[serde(rename = "PolygonGeometryGroup")]
-    pub polygon_geometry_group: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MultiPolygonGeometryType {
+pub struct ExtendedMultiPolygonGeometryType {
     #[serde(rename = "MultiPolygon")]
     pub multi_polygon: String,
+    #[serde(rename = "MultiSurface")]
+    pub multi_surface: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -51,17 +17,37 @@ pub struct PolygonOrMultiPolygonType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ExtendedMultiPolygonGeometryType {
-    #[serde(rename = "MultiPolygon")]
-    pub multi_polygon: String,
-    #[serde(rename = "MultiSurface")]
-    pub multi_surface: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SimpleAlternativeGeometriesType {
     #[serde(rename = "SimpleAlternativeGeometriesGroup")]
     pub simple_alternative_geometries_group: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PolygonGeometryType {
+    #[serde(rename = "PolygonGeometryGroup")]
+    pub polygon_geometry_group: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlternativeGeometries2Type {
+    #[serde(rename = "AlternativeGeometries2Group")]
+    pub alternative_geometries2_group: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PointGeometryType {
+    #[serde(rename = "@dimension")]
+    pub dimension: f64,
+    #[serde(rename = "@location")]
+    pub location: PointLocationType,
+    #[serde(rename = "pointProperty")]
+    pub point_property: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlternativeGeometriesType {
+    #[serde(rename = "AlternativeGeometriesGroup")]
+    pub alternative_geometries_group: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -75,8 +61,22 @@ pub struct PolygonOrMultiPolygon2Type {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AlternativeGeometriesType {
-    #[serde(rename = "AlternativeGeometriesGroup")]
-    pub alternative_geometries_group: String,
+pub struct MultiPolygonGeometryType {
+    #[serde(rename = "MultiPolygon")]
+    pub multi_polygon: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PointAndLineOrPolygonType {
+    #[serde(rename = "@dimension")]
+    pub dimension: f64,
+    #[serde(rename = "@location")]
+    pub location: PointLocationType,
+    #[serde(rename = "pointProperty")]
+    pub point_property: String,
+    #[serde(rename = "lineStringProperty")]
+    pub line_string_property: String,
+    #[serde(rename = "polygonProperty")]
+    pub polygon_property: String,
 }
 

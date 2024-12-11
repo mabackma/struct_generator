@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestObjectDataType {
     #[serde(rename = "@id")]
-    pub id: string,
+    pub id: String,
     #[serde(rename = "Description")]
     pub description: String2000Type,
     #[serde(rename = "Sender")]

@@ -1,4 +1,22 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StemDistributionStrata {
+    #[serde(flatten)]
+    pub stem_distribution_strata: StemDistributionStrataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StratumNumber {
+    #[serde(flatten)]
+    pub stratum_number: StratumNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpecies {
+    #[serde(flatten)]
+    pub tree_species: TreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StemDistributionStratum {
     #[serde(flatten)]
     pub stem_distribution_stratum: StemDistributionStratumType,
@@ -14,24 +32,6 @@ pub struct Storey {
 pub struct Age {
     #[serde(flatten)]
     pub age: AgeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpecies {
-    #[serde(flatten)]
-    pub tree_species: TreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StratumNumber {
-    #[serde(flatten)]
-    pub stratum_number: StratumNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemDistributionStrata {
-    #[serde(flatten)]
-    pub stem_distribution_strata: StemDistributionStrataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

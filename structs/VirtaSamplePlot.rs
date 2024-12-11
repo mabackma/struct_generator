@@ -1,9 +1,15 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreesType {
+    #[serde(rename = "Tree")]
+    pub tree: Vec<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SamplePlotType {
     #[serde(rename = "Status4", skip_serializing_if = "Option::is_none")]
     pub status4: Option<ChangeStateType>,
     #[serde(rename = "SamplePlotNumber")]
-    pub sample_plot_number: string,
+    pub sample_plot_number: String,
     #[serde(rename = "SamplePlotEastingCoordinate", skip_serializing_if = "Option::is_none")]
     pub sample_plot_easting_coordinate: Option<string>,
     #[serde(rename = "SamplePlotNorthingCoordinate", skip_serializing_if = "Option::is_none")]
@@ -38,11 +44,5 @@ pub struct SamplePlotType {
 pub struct VirtaEvaluationType {
     #[serde(flatten)]
     pub base: VirtaEvaluationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreesType {
-    #[serde(rename = "Tree")]
-    pub tree: Vec<String>,
 }
 
