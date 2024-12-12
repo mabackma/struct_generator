@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Infotext {
+pub struct ServiceType {
     #[serde(flatten)]
-    pub infotext: String1000Type,
+    pub service_type: ServiceTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerId {
+    #[serde(flatten)]
+    pub service_buyer_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,21 +17,9 @@ pub struct ServiceBuyerArea {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrderId {
+pub struct ContractorId {
     #[serde(flatten)]
-    pub order_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceType {
-    #[serde(flatten)]
-    pub service_type: ServiceTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrderConfirmation {
-    #[serde(flatten)]
-    pub order_confirmation: OrderConfirmationType,
+    pub contractor_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,9 +29,9 @@ pub struct OperationalRegion {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
+pub struct OrderConfirmation {
     #[serde(flatten)]
-    pub contractor_id: String20Type,
+    pub order_confirmation: OrderConfirmationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,8 +41,14 @@ pub struct OrderStatus {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
+pub struct OrderId {
     #[serde(flatten)]
-    pub service_buyer_id: String20Type,
+    pub order_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Infotext {
+    #[serde(flatten)]
+    pub infotext: String1000Type,
 }
 

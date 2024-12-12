@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreesType {
+    #[serde(rename = "Tree")]
+    pub tree: Vec<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SamplePlotType {
     #[serde(rename = "Status4", skip_serializing_if = "Option::is_none")]
     pub status4: Option<ChangeStateType>,
@@ -32,12 +38,6 @@ pub struct SamplePlotType {
     pub second_storey_trees: Option<integer>,
     #[serde(rename = "Trees", skip_serializing_if = "Option::is_none")]
     pub trees: Option<TreesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreesType {
-    #[serde(rename = "Tree")]
-    pub tree: Vec<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

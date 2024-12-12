@@ -7,6 +7,12 @@ pub struct CalibrationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OrientationType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteForwardingQualityControlType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -34,12 +40,6 @@ pub struct WorkingSiteForwardingQualityControlType {
     pub scale_data: Vec<ScaleDataType>,
     #[serde(rename = "Calibration", skip_serializing_if = "Option::is_none")]
     pub calibration: Option<Vec<CalibrationType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrientationType {
-    #[serde(flatten)]
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

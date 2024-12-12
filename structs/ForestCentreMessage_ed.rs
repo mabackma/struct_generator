@@ -1,19 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclaration {
+pub struct Message {
     #[serde(flatten)]
-    pub forest_use_declaration: ForestUseDeclarationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDataUpdate {
-    #[serde(flatten)]
-    pub forest_data_update: ForestDataUpdateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringData {
-    #[serde(flatten)]
-    pub self_monitoring_data: ForestCentreSelfMonitoringDataType,
+    pub message: MessageType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,15 +11,15 @@ pub struct ForestCentreMessage {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TimeStamp {
-    #[serde(flatten)]
-    pub time_stamp: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct FinancingActCompletionDeclaration {
     #[serde(flatten)]
     pub financing_act_completion_declaration: FinancingActCompletionDeclarationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclaration {
+    #[serde(flatten)]
+    pub forest_use_declaration: ForestUseDeclarationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,9 +29,15 @@ pub struct SenderEmail {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Message {
+pub struct SelfMonitoringData {
     #[serde(flatten)]
-    pub message: MessageType,
+    pub self_monitoring_data: ForestCentreSelfMonitoringDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActApplication {
+    #[serde(flatten)]
+    pub financing_act_application: FinancingActApplicationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,8 +47,14 @@ pub struct MooseDamageDeclaration {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActApplication {
+pub struct TimeStamp {
     #[serde(flatten)]
-    pub financing_act_application: FinancingActApplicationType,
+    pub time_stamp: TimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDataUpdate {
+    #[serde(flatten)]
+    pub forest_data_update: ForestDataUpdateType,
 }
 

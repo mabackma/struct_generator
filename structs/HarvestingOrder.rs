@@ -1,12 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "Data")]
-    pub data: Vec<u8>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct HarvestingOrderType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -22,12 +14,6 @@ pub struct HarvestingOrderType {
     pub assortments: AssortmentsType,
     #[serde(rename = "Attachments", skip_serializing_if = "Option::is_none")]
     pub attachments: Option<AttachmentsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -58,5 +44,19 @@ pub struct AssortmentDataType {
 pub struct AttachmentsType {
     #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
     pub attachment: Option<Vec<AttachmentDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "Data")]
+    pub data: Vec<u8>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 

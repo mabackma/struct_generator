@@ -1,13 +1,37 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestriction {
+pub struct DitchingYear {
     #[serde(flatten)]
-    pub silviculture_restriction: SilvicultureRestrictionType,
+    pub ditching_year: YearType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Accessibility {
+pub struct CuttingRestrictionEnds {
     #[serde(flatten)]
-    pub accessibility: AccessibilityType,
+    pub cutting_restriction_ends: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GrowthPlaceDataSource {
+    #[serde(flatten)]
+    pub growth_place_data_source: DataSourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Area {
+    #[serde(flatten)]
+    pub area: AreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DrainageState {
+    #[serde(flatten)]
+    pub drainage_state: DrainageStateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainTreeSpecies {
+    #[serde(flatten)]
+    pub main_tree_species: TreeSpeciesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +41,9 @@ pub struct StandNumberExtension {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingRestriction {
+pub struct ThinningYear {
     #[serde(flatten)]
-    pub cutting_restriction: CuttingRestrictionType,
+    pub thinning_year: YearType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,51 +59,15 @@ pub struct DevelopmentClass {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestrictionEnds {
+pub struct SilvicultureRestriction {
     #[serde(flatten)]
-    pub silviculture_restriction_ends: DateType,
+    pub silviculture_restriction: SilvicultureRestrictionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandBasicDataDate {
+pub struct Accessibility {
     #[serde(flatten)]
-    pub stand_basic_data_date: StandBasicDataDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GrowthPlaceDataSource {
-    #[serde(flatten)]
-    pub growth_place_data_source: DataSourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ThinningYear {
-    #[serde(flatten)]
-    pub thinning_year: YearType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Identifiers {
-    #[serde(flatten)]
-    pub identifiers: IdentifiersType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Identifier {
-    #[serde(flatten)]
-    pub identifier: IdentifierType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandQuality {
-    #[serde(flatten)]
-    pub stand_quality: StandQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainTreeSpecies {
-    #[serde(flatten)]
-    pub main_tree_species: TreeSpeciesType,
+    pub accessibility: AccessibilityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,33 +77,9 @@ pub struct SoilType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Area {
+pub struct StandInfo {
     #[serde(flatten)]
-    pub area: AreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaDecrease {
-    #[serde(flatten)]
-    pub area_decrease: AreaDecreaseType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumber {
-    #[serde(flatten)]
-    pub stand_number: StandNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompleteState {
-    #[serde(flatten)]
-    pub complete_state: CompleteStateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DrainageState {
-    #[serde(flatten)]
-    pub drainage_state: DrainageStateType,
+    pub stand_info: StandInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -131,9 +95,15 @@ pub struct SilvicultureRestrictionDetails {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SubGroup {
+pub struct Identifier {
     #[serde(flatten)]
-    pub sub_group: SubGroupType,
+    pub identifier: IdentifierType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Identifiers {
+    #[serde(flatten)]
+    pub identifiers: IdentifiersType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -143,20 +113,50 @@ pub struct MainGroup {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DitchingYear {
+pub struct StandBasicDataDate {
     #[serde(flatten)]
-    pub ditching_year: YearType,
+    pub stand_basic_data_date: StandBasicDataDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandInfo {
+pub struct StandQuality {
     #[serde(flatten)]
-    pub stand_info: StandInfoType,
+    pub stand_quality: StandQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingRestrictionEnds {
+pub struct AreaDecrease {
     #[serde(flatten)]
-    pub cutting_restriction_ends: DateType,
+    pub area_decrease: AreaDecreaseType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompleteState {
+    #[serde(flatten)]
+    pub complete_state: CompleteStateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubGroup {
+    #[serde(flatten)]
+    pub sub_group: SubGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureRestrictionEnds {
+    #[serde(flatten)]
+    pub silviculture_restriction_ends: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandNumber {
+    #[serde(flatten)]
+    pub stand_number: StandNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingRestriction {
+    #[serde(flatten)]
+    pub cutting_restriction: CuttingRestrictionType,
 }
 

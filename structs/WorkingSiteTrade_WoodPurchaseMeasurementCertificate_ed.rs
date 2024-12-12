@@ -5,27 +5,21 @@ pub struct MeasurementCertificate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Value {
+pub struct MeasurementCertificateType {
     #[serde(flatten)]
-    pub value: ValueType,
+    pub measurement_certificate_type: MeasurementCertificateTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactions {
+pub struct Text {
     #[serde(flatten)]
-    pub payment_transactions: PaymentTransactionsType,
+    pub text: TextType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SequenceNumber {
+pub struct TotalValue {
     #[serde(flatten)]
-    pub sequence_number: SequenceNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Currency {
-    #[serde(flatten)]
-    pub currency: CurrencyType,
+    pub total_value: TotalValueType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,27 +35,33 @@ pub struct InsertDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Value {
+    #[serde(flatten)]
+    pub value: ValueType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Currency {
+    #[serde(flatten)]
+    pub currency: CurrencyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SequenceNumber {
+    #[serde(flatten)]
+    pub sequence_number: SequenceNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentTransactions {
+    #[serde(flatten)]
+    pub payment_transactions: PaymentTransactionsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Document {
     #[serde(flatten)]
     pub document: base64Binary,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementCertificateType {
-    #[serde(flatten)]
-    pub measurement_certificate_type: MeasurementCertificateTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VAT {
-    #[serde(flatten)]
-    pub vat: VATType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TotalValue {
-    #[serde(flatten)]
-    pub total_value: TotalValueType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,8 +71,8 @@ pub struct PaidValue {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Text {
+pub struct VAT {
     #[serde(flatten)]
-    pub text: TextType,
+    pub vat: VATType,
 }
 

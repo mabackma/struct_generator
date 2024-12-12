@@ -13,6 +13,30 @@ pub struct AuditionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditStumpLiftingType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
+    pub resource_id: Option<String20Type>,
+    #[serde(rename = "PurchaseContractId")]
+    pub purchase_contract_id: String20Type,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: WorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<String1000Type>,
+    #[serde(rename = "Images")]
+    pub images: PositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AuditsType {
     #[serde(rename = "hasEnvironmentalObjects")]
     pub has_environmental_objects: YesNoType,
@@ -62,29 +86,5 @@ pub struct AuditsType {
     pub stump_lifting_quality: Option<WorkingQualityType>,
     #[serde(rename = "StumpLiftingQualityText", skip_serializing_if = "Option::is_none")]
     pub stump_lifting_quality_text: Option<String200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditStumpLiftingType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<String20Type>,
-    #[serde(rename = "PurchaseContractId")]
-    pub purchase_contract_id: String20Type,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: WorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<String1000Type>,
-    #[serde(rename = "Images")]
-    pub images: PositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
 }
 

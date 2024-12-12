@@ -1,31 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Audits {
+pub struct EnvironmentCleanlinessNoticedText {
     #[serde(flatten)]
-    pub audits: AuditsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeOrGroundDamagesText {
-    #[serde(flatten)]
-    pub tree_or_ground_damages_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterEconomySystemNoticed {
-    #[serde(flatten)]
-    pub water_economy_system_noticed: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: ERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterEconomySystemNoticedText {
-    #[serde(flatten)]
-    pub water_economy_system_noticed_text: String200Type,
+    pub environment_cleanliness_noticed_text: String200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,27 +11,9 @@ pub struct WaterSystemProtection {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentCleanlinessNoticed {
+pub struct WaterSystemProtectionText {
     #[serde(flatten)]
-    pub environment_cleanliness_noticed: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroup {
-    #[serde(flatten)]
-    pub work_code_group: WorkCodeGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AirdromeAsInstructedText {
-    #[serde(flatten)]
-    pub airdrome_as_instructed_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NewEnvironmentalObjectsText {
-    #[serde(flatten)]
-    pub new_environmental_objects_text: String200Type,
+    pub water_system_protection_text: String200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,33 +23,21 @@ pub struct WorkingSafetyNoticedText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCode {
+    #[serde(flatten)]
+    pub work_code: WorkCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingInstructionsSufficientText {
     #[serde(flatten)]
     pub working_instructions_sufficient_text: String200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditFertilization {
+pub struct WorkingSiteId {
     #[serde(flatten)]
-    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FertilizerVolumeOrdered {
-    #[serde(flatten)]
-    pub fertilizer_volume_ordered: PositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditerType {
-    #[serde(flatten)]
-    pub final_auditer_type: FinalAuditerTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditType {
-    #[serde(flatten)]
-    pub final_audit_type: FinalAuditTypeType,
+    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -101,69 +47,27 @@ pub struct Audit {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditRequired {
-    #[serde(flatten)]
-    pub final_audit_required: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSafetyNoticed {
-    #[serde(flatten)]
-    pub working_safety_noticed: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
-    #[serde(flatten)]
-    pub contractor_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCode {
-    #[serde(flatten)]
-    pub work_code: WorkCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotCount {
-    #[serde(flatten)]
-    pub sample_plot_count: PositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Images {
     #[serde(flatten)]
     pub images: PositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
+pub struct WorkingInstructionsSufficient {
     #[serde(flatten)]
-    pub resource_id: String20Type,
+    pub working_instructions_sufficient: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InfoText {
+pub struct TreeOrGroundDamages {
     #[serde(flatten)]
-    pub info_text: String1000Type,
+    pub tree_or_ground_damages: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
+pub struct ContractorId {
     #[serde(flatten)]
-    pub service_buyer_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalObjectNoticedText {
-    #[serde(flatten)]
-    pub environmental_object_noticed_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterSystemProtectionText {
-    #[serde(flatten)]
-    pub water_system_protection_text: String200Type,
+    pub contractor_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -179,27 +83,15 @@ pub struct hasEnvironmentalObjects {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct hasEnvironmentalObjectsText {
+pub struct Audits {
     #[serde(flatten)]
-    pub has_environmental_objects_text: String200Type,
+    pub audits: AuditsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FertilizationTotalAuditText {
+pub struct FinalAuditType {
     #[serde(flatten)]
-    pub fertilization_total_audit_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Area {
-    #[serde(flatten)]
-    pub area: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentCleanlinessNoticedText {
-    #[serde(flatten)]
-    pub environment_cleanliness_noticed_text: String200Type,
+    pub final_audit_type: FinalAuditTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -209,15 +101,57 @@ pub struct DrainStorageAsInstructedText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingInstructionsSufficient {
+pub struct WorkingTime {
     #[serde(flatten)]
-    pub working_instructions_sufficient: YesNoType,
+    pub working_time: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FertilizerVolumeMeasured {
+pub struct WorkCodeGroup {
     #[serde(flatten)]
-    pub fertilizer_volume_measured: PositiveIntegerType,
+    pub work_code_group: WorkCodeGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FertilizationTotalAuditText {
+    #[serde(flatten)]
+    pub fertilization_total_audit_text: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FertilizerVolumeOrdered {
+    #[serde(flatten)]
+    pub fertilizer_volume_ordered: PositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditerType {
+    #[serde(flatten)]
+    pub final_auditer_type: FinalAuditerTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditerName {
+    #[serde(flatten)]
+    pub final_auditer_name: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AirdromeAsInstructedText {
+    #[serde(flatten)]
+    pub airdrome_as_instructed_text: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct hasEnvironmentalObjectsText {
+    #[serde(flatten)]
+    pub has_environmental_objects_text: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditRequired {
+    #[serde(flatten)]
+    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -227,9 +161,45 @@ pub struct FinalAuditerId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSafetyNoticed {
+    #[serde(flatten)]
+    pub working_safety_noticed: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NewEnvironmentalObjects {
+    #[serde(flatten)]
+    pub new_environmental_objects: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WaterEconomySystemNoticed {
+    #[serde(flatten)]
+    pub water_economy_system_noticed: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SamplePlotCountRequired {
     #[serde(flatten)]
     pub sample_plot_count_required: PositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerId {
+    #[serde(flatten)]
+    pub service_buyer_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FertilizerVolumeMeasured {
+    #[serde(flatten)]
+    pub fertilizer_volume_measured: PositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -239,21 +209,9 @@ pub struct FertilizationTotalAudit {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeOrGroundDamages {
+pub struct Area {
     #[serde(flatten)]
-    pub tree_or_ground_damages: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingTime {
-    #[serde(flatten)]
-    pub working_time: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditDate {
-    #[serde(flatten)]
-    pub final_audit_date: TimeStampType,
+    pub area: Decimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -269,9 +227,21 @@ pub struct AirdromeAsInstructed {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NewEnvironmentalObjects {
+pub struct EnvironmentCleanlinessNoticed {
     #[serde(flatten)]
-    pub new_environmental_objects: YesNoType,
+    pub environment_cleanliness_noticed: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotCount {
+    #[serde(flatten)]
+    pub sample_plot_count: PositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditFertilization {
+    #[serde(flatten)]
+    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -281,8 +251,38 @@ pub struct EnvironmentalObjectNoticed {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditerName {
+pub struct NewEnvironmentalObjectsText {
     #[serde(flatten)]
-    pub final_auditer_name: String50Type,
+    pub new_environmental_objects_text: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeOrGroundDamagesText {
+    #[serde(flatten)]
+    pub tree_or_ground_damages_text: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EnvironmentalObjectNoticedText {
+    #[serde(flatten)]
+    pub environmental_object_noticed_text: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InfoText {
+    #[serde(flatten)]
+    pub info_text: String1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WaterEconomySystemNoticedText {
+    #[serde(flatten)]
+    pub water_economy_system_noticed_text: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditDate {
+    #[serde(flatten)]
+    pub final_audit_date: TimeStampType,
 }
 

@@ -1,7 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectGeometry {
+pub struct StandBasicData {
     #[serde(flatten)]
-    pub object_geometry: ObjectGeometryType,
+    pub stand_basic_data: StandBasicDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GeometryObjects {
+    #[serde(flatten)]
+    pub geometry_objects: GeometryObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestRealizationData {
+    #[serde(flatten)]
+    pub forest_realization_data: ForestRealizationDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,15 +29,27 @@ pub struct ParentObjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandBasicData {
+pub struct ParentObjectId {
     #[serde(flatten)]
-    pub stand_basic_data: StandBasicDataType,
+    pub parent_object_id: IdStringNotEmptyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestRealizationData {
+pub struct UseCase {
     #[serde(flatten)]
-    pub forest_realization_data: ForestRealizationDataType,
+    pub use_case: string,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalDetails {
+    #[serde(flatten)]
+    pub additional_details: String2000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectGeometry {
+    #[serde(flatten)]
+    pub object_geometry: ObjectGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,9 +59,15 @@ pub struct Area {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectId {
+pub struct ParentObject {
     #[serde(flatten)]
-    pub parent_object_id: IdStringNotEmptyType,
+    pub parent_object: ParentObjectType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Sender {
+    #[serde(flatten)]
+    pub sender: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -50,35 +80,5 @@ pub struct GeometryObject {
 pub struct ParentObjects {
     #[serde(flatten)]
     pub parent_objects: ParentObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryObjects {
-    #[serde(flatten)]
-    pub geometry_objects: GeometryObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObject {
-    #[serde(flatten)]
-    pub parent_object: ParentObjectType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalDetails {
-    #[serde(flatten)]
-    pub additional_details: String2000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Sender {
-    #[serde(flatten)]
-    pub sender: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UseCase {
-    #[serde(flatten)]
-    pub use_case: string,
 }
 

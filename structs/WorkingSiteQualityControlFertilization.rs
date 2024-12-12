@@ -1,18 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HoppersType {
-    #[serde(rename = "Hopper", skip_serializing_if = "Option::is_none")]
-    pub hopper: Option<Vec<HopperType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummaryType {
-    #[serde(rename = "StandNumber")]
-    pub stand_number: String20Type,
-    #[serde(rename = "SamplePlotMeasurementSummary")]
-    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteQualityControlFertilizationType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -24,6 +10,14 @@ pub struct WorkingSiteQualityControlFertilizationType {
     pub sample_plot_summaries: SamplePlotSummariesType,
     #[serde(rename = "SamplePlots")]
     pub sample_plots: SamplePlotsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotMeasurementSummaryType {
+    #[serde(rename = "MeasurerType")]
+    pub measurer_type: MeasurerTypeType,
+    #[serde(rename = "AverageVolume")]
+    pub average_volume: Decimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -40,6 +34,12 @@ pub struct HopperType {
     pub hopper_location_from_g_p_s: YesNoType,
     #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
     pub info_text: Option<String100Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HoppersType {
+    #[serde(rename = "Hopper", skip_serializing_if = "Option::is_none")]
+    pub hopper: Option<Vec<HopperType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,10 +95,10 @@ pub struct SamplePlotsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotMeasurementSummaryType {
-    #[serde(rename = "MeasurerType")]
-    pub measurer_type: MeasurerTypeType,
-    #[serde(rename = "AverageVolume")]
-    pub average_volume: Decimal3FractionDigitsType,
+pub struct SamplePlotSummaryType {
+    #[serde(rename = "StandNumber")]
+    pub stand_number: String20Type,
+    #[serde(rename = "SamplePlotMeasurementSummary")]
+    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
 }
 

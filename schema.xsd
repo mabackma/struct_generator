@@ -1,141 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-	***************************************************************
-	Tapahtuman hyväksyntään liittyvät elementit ja tyypit.
-	Skeema on JHS-170 -suosituksen mukainen.
-	
-	Muutokset skeemapakettiin V10.05:
-	-Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
-	***************************************************************
+<!--  
+  Muutokset skeemapakettiin V10.03:
+  -Skeematiedosto lisätty pakettiin
+  
+  Muutokset skeemapakettiin V10.05:
+  -Skeematiedoston xs:schema elementtiin muutettu versionumeroksi "V10.05". Jatkossa tämä versionumero tulee päivittymään tarpeen mukaan silloin kun tiedostoon tehdään muutoksia.
+  
+  Muutokset skeemapakettiin V14.01:
+  -Elementille CallForOffers lisätty pakollinen attribuutti "schemaPackageVersion", lisäksi vapaaehtoiset attribuutit "schemaPackageSubversion" ja "schemaPackageVersionDate"
 -->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://standardit.tapio.fi/schemas/forestData/businessacceptance"
-	xmlns="http://standardit.tapio.fi/schemas/forestData/businessacceptance"
-	xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
-	xmlns:wtco="http://standardit.tapio.fi/schemas/workingsitetrade/common"
-	xmlns:ci="http://standardit.tapio.fi/schemas/forestData/contactInformation"
-	elementFormDefault="qualified" version="V20.01">
+           targetNamespace="http://kuutio.fi/schemas/callForOffers"
+           xmlns="http://kuutio.fi/schemas/callForOffers"
+           xmlns:co="http://standardit.tapio.fi/schemas/forestData/common"
+           xmlns:cfo="http://standardit.tapio.fi/schemas/workingsitetrade/callforoffer"
+           elementFormDefault="qualified"
+           version="V14.01">
 
-	<!-- Imports / Includes -->
-	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/contactInformation"
-		schemaLocation="ContactInformation.xsd"/>
-	<xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/common"
-		schemaLocation="WorkingSiteTrade_Common.xsd"/>
-	<xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
-		schemaLocation="Common.xsd"/>
+  <xs:import namespace="http://standardit.tapio.fi/schemas/forestData/common"
+    schemaLocation="common.xsd"/>
+  <xs:import namespace="http://standardit.tapio.fi/schemas/workingsitetrade/callforoffer"
+		schemaLocation="WorkingSiteTrade_CallForOffer.xsd"/>
 
-	<!-- Elementtimääritykset -->
+  <!-- Elementtimääritykset -->
 	<!-- Element definitions -->
-	<xs:element name="BusinessAcceptance" type="BusinessAcceptanceType"/>
-	<xs:element name="BusinessMessageTimeStamp" type="BusinessMessageTimeStampType"/>
-	<xs:element name="BusinessAcceptanceActor" type="BusinessAcceptanceActorType"/>
-	<xs:element name="BusinessAcceptanceStatus" type="co:BusinessAcceptanceStatusType"/>
-	<xs:element name="BusinessAcceptanceId" type="BusinessAcceptanceIdType"/>
-	<xs:element name="AdditionalInformation" type="AdditionalInformationType"/>
-	<xs:element name="BusinessAcceptanceDate" type="BusinessAcceptanceDateType"/>
-
-	<!-- Tyyppimääritykset -->
-	<!-- Type definitions -->
-	<xs:complexType name="BusinessAcceptanceType">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Tapahtuman (sanoman) kuittauksen rakenteen määrittely.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Structure for receipt message that can be used to teel that some official document is accepted/rejected. Eg. measurements/offers.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element ref="co:TimeStamp"/>
-			<xs:element ref="BusinessMessageTimeStamp">
-				<xs:annotation>
-					<xs:documentation xml:lang="fi"></xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="BusinessAcceptanceActor"/>
-			<xs:element ref="BusinessAcceptanceStatus"/>
-			<xs:element ref="BusinessAcceptanceId" minOccurs="0"/>
-			<xs:element ref="AdditionalInformation"/>
-			<xs:element ref="BusinessAcceptanceDate"/>
-		</xs:sequence>
-		<xs:attribute name="message" type="MessageTypeType" use="required">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">Kuitattava sanoma.</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">Identifies the type of the business message to be accepted/rejected.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="parentId" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">parentId on kuitattavan sanoman (esim. tarjouksen tai mittaustodistuksen) id.</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">parentId is id of business message (e.g. offer or measurement certificate, message type defines this).</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="parentVersionNo" type="xs:string">
-			<xs:annotation>
-				<xs:documentation xml:lang="fi">parentVersionNo on kuitattavan sanoman (esim. tarjouksen) versionro (versionNo).</xs:documentation>
-				<xs:documentation xml:lang="sv"/>
-				<xs:documentation xml:lang="en">parentVersionNo is versionNo of business message (e.g. offer, message type defines this).</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:complexType>
-
-	<xs:simpleType name="BusinessMessageTimeStampType">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Kuitattavan sanoman aikaleima. Tämän perusteella vastaanottava järjestelmä voi verrata kuitataanko tällä hetkellä vastaanottavassa järjestelmässä voimassa olevaa tietoa.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Timestamp of business message (eg. some document: measurement certificate/offer etc.) that is accepted/rejected with this message. Receiving system can use this timestamp to check that accepeted/rejected message is latest version of document accepted.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="co:TimeStampType"/>
-	</xs:simpleType>
-
-	<xs:complexType name="BusinessAcceptanceActorType">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Kuittauksen tekijän tiedot.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Business person who has accepted/rejected business message.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="ci:ContactInformationType"/>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:simpleType name="BusinessAcceptanceIdType">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Tunnistetieto allekirjoitustilanteesta, esim. sähköisen tunnistautumisen sessio-id tms.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Identification string/number of acceptance session. Always generated by system.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:maxLength value="100"/>
-		</xs:restriction>
-	</xs:simpleType>
-
-	<xs:simpleType name="AdditionalInformationType">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Hylkäyksen perustelu. Tarvittaessa hyväksyntäänkin voidaan antaa lisätietoa.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">For example why business document was rejected.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:maxLength value="2000"/>
-		</xs:restriction>
-	</xs:simpleType>
-
-	<xs:simpleType name="BusinessAcceptanceDateType">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Hyväksynnän / hylkäyksen pvm.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Date when businessacceptance/rejection was done.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="co:DateType"/>
-	</xs:simpleType>
-
-	<xs:simpleType name="MessageTypeType">
-		<xs:annotation>
-			<xs:documentation xml:lang="fi">Sanoman tyyppi.</xs:documentation>
-			<xs:documentation xml:lang="sv"/>
-			<xs:documentation xml:lang="en">Message type. Used to identify businessAcceptance message's target.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="wtco:MessageTypeType"/>
-	</xs:simpleType>
-
+	<xs:element name="CallForOffers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cfo:CallForOffer" minOccurs="1" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="schemaPackageVersion" type="co:ForestDataStandardSchemaPackageVersionType" use="required"/>
+      <xs:attribute name="schemaPackageSubversion" type="co:ForestDataStandardSchemaPackageSubversionType" use="optional"/>
+      <xs:attribute name="schemaPackageVersionDate" type="co:DateType" use="optional"/>
+    </xs:complexType>    
+  </xs:element>
 </xs:schema>

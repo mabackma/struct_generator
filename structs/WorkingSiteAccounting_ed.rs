@@ -1,16 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: ERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContarctorId {
-    #[serde(flatten)]
-    pub contarctor_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ServiceType {
     #[serde(flatten)]
     pub service_type: ServiceTypeType,
@@ -23,9 +11,21 @@ pub struct Assortments {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AccountingDate {
+pub struct ForestHaulageDistance {
     #[serde(flatten)]
-    pub accounting_date: TimeStampType,
+    pub forest_haulage_distance: PositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountPlanned {
+    #[serde(flatten)]
+    pub amount_planned: Decimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountNotified {
+    #[serde(flatten)]
+    pub amount_notified: Decimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,51 +41,15 @@ pub struct WorkCodes {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardedVolume {
+pub struct ForestHaulageDistanceContinued {
     #[serde(flatten)]
-    pub forwarded_volume: Decimal3FractionDigitsType,
+    pub forest_haulage_distance_continued: PositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardedVolumeAccounted {
+pub struct AccountingDate {
     #[serde(flatten)]
-    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AmountNotified {
-    #[serde(flatten)]
-    pub amount_notified: Decimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAccounting {
-    #[serde(flatten)]
-    pub final_accounting: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteAccounting {
-    #[serde(flatten)]
-    pub working_site_accounting: WorkingSiteAccountingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCode {
-    #[serde(flatten)]
-    pub work_code: WorkCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DestinationStorage {
-    #[serde(flatten)]
-    pub destination_storage: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AmountPlanned {
-    #[serde(flatten)]
-    pub amount_planned: Decimal3FractionDigitsType,
+    pub accounting_date: TimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,21 +59,9 @@ pub struct AmountAccounted {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Code {
+pub struct WorkingSiteAccounting {
     #[serde(flatten)]
-    pub code: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageDistanceContinued {
-    #[serde(flatten)]
-    pub forest_haulage_distance_continued: PositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedVolume {
-    #[serde(flatten)]
-    pub planned_volume: Decimal3FractionDigitsType,
+    pub working_site_accounting: WorkingSiteAccountingType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,21 +71,39 @@ pub struct Name {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Unit {
-    #[serde(flatten)]
-    pub unit: WorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct HarvestedVolumeAccounted {
     #[serde(flatten)]
     pub harvested_volume_accounted: Decimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
+pub struct Unit {
     #[serde(flatten)]
-    pub service_buyer_id: String20Type,
+    pub unit: WorkCodeUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContarctorId {
+    #[serde(flatten)]
+    pub contarctor_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Code {
+    #[serde(flatten)]
+    pub code: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedVolume {
+    #[serde(flatten)]
+    pub planned_volume: Decimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAccounting {
+    #[serde(flatten)]
+    pub final_accounting: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -143,8 +113,38 @@ pub struct HarvestedVolume {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageDistance {
+pub struct ServiceBuyerId {
     #[serde(flatten)]
-    pub forest_haulage_distance: PositiveInteger4digitsType,
+    pub service_buyer_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCode {
+    #[serde(flatten)]
+    pub work_code: WorkCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: ERPIdType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DestinationStorage {
+    #[serde(flatten)]
+    pub destination_storage: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardedVolume {
+    #[serde(flatten)]
+    pub forwarded_volume: Decimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardedVolumeAccounted {
+    #[serde(flatten)]
+    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
 }
 

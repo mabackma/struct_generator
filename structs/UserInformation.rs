@@ -1,25 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TrainingsType {
-    #[serde(rename = "Training", skip_serializing_if = "Option::is_none")]
-    pub training: Option<Vec<TrainingDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypesType {
-    #[serde(rename = "ServiceType")]
-    pub service_type: Vec<ServiceTypeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct MachinesType {
     #[serde(rename = "Machine", skip_serializing_if = "Option::is_none")]
     pub machine: Option<Vec<MachineTypeType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LanguagesType {
-    #[serde(rename = "Language")]
-    pub language: Vec<LanguageCode1Type>,
+pub struct WorkCodeGroupsType {
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: Vec<WorkCodeGroupType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TrainingsType {
+    #[serde(rename = "Training", skip_serializing_if = "Option::is_none")]
+    pub training: Option<Vec<TrainingDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -42,6 +36,12 @@ pub struct TrainingDataType {
 pub struct UserRolesType {
     #[serde(rename = "UserRole")]
     pub user_role: Vec<UserRoleType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LanguagesType {
+    #[serde(rename = "Language")]
+    pub language: Vec<LanguageCode1Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -103,6 +103,12 @@ pub struct UserInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypesType {
+    #[serde(rename = "ServiceType")]
+    pub service_type: Vec<ServiceTypeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct EmploymentDataType {
     #[serde(rename = "Startdate")]
     pub startdate: DateType,
@@ -112,11 +118,5 @@ pub struct EmploymentDataType {
     pub working_contract: YesNoType,
     #[serde(rename = "Active")]
     pub active: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroupsType {
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: Vec<WorkCodeGroupType>,
 }
 

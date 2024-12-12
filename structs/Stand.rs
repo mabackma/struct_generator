@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StandsType1 {
+    #[serde(rename = "Stand")]
+    pub stand: Vec<StandType1>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StandBasicDataWithGeometryType {
     #[serde(flatten)]
     pub base: StandBasicDataType,
@@ -10,12 +16,6 @@ pub struct StandBasicDataWithGeometryType {
     pub polygon_geometry: String,
     #[serde(rename = "MultiPolygonGeometry")]
     pub multi_polygon_geometry: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType1 {
-    #[serde(rename = "Stand")]
-    pub stand: Vec<StandType1>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

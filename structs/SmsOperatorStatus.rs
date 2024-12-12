@@ -11,12 +11,6 @@ pub struct NotificationTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatusCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SmsOperatorStatusType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -42,5 +36,11 @@ pub struct SmsOperatorStatusType {
     pub original_message: String1000Type,
     #[serde(rename = "StatusMessage", skip_serializing_if = "Option::is_none")]
     pub status_message: Option<String100Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatusCodeType {
+    #[serde(flatten)]
+    pub base: String,
 }
 

@@ -1,43 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Age {
+pub struct Storey {
     #[serde(flatten)]
-    pub age: AgeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Height {
-    #[serde(flatten)]
-    pub height: HeightType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpecies {
-    #[serde(flatten)]
-    pub tree_species: TreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Volume {
-    #[serde(flatten)]
-    pub volume: VolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Trees {
-    #[serde(flatten)]
-    pub trees: StemDistributionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Count {
-    #[serde(flatten)]
-    pub count: CountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Tree {
-    #[serde(flatten)]
-    pub tree: TreeType,
+    pub storey: StoreyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,9 +11,9 @@ pub struct StratumNumber {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClass {
+pub struct TreeSpecies {
     #[serde(flatten)]
-    pub tree_class: TreeClassType,
+    pub tree_species: TreeSpeciesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,9 +23,21 @@ pub struct Diameter {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolume {
+pub struct StemDistribution {
     #[serde(flatten)]
-    pub pulp_wood_volume: PulpWoodVolumeType,
+    pub stem_distribution: StemDistributionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Height {
+    #[serde(flatten)]
+    pub height: HeightType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Volume {
+    #[serde(flatten)]
+    pub volume: VolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,9 +47,15 @@ pub struct SawLogPercent {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemDistribution {
+pub struct Count {
     #[serde(flatten)]
-    pub stem_distribution: StemDistributionType,
+    pub count: CountType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogVolume {
+    #[serde(flatten)]
+    pub saw_log_volume: SawLogVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,14 +65,32 @@ pub struct TreeNumber {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Storey {
+pub struct Age {
     #[serde(flatten)]
-    pub storey: StoreyType,
+    pub age: AgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogVolume {
+pub struct Tree {
     #[serde(flatten)]
-    pub saw_log_volume: SawLogVolumeType,
+    pub tree: TreeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PulpWoodVolume {
+    #[serde(flatten)]
+    pub pulp_wood_volume: PulpWoodVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Trees {
+    #[serde(flatten)]
+    pub trees: StemDistributionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeClass {
+    #[serde(flatten)]
+    pub tree_class: TreeClassType,
 }
 

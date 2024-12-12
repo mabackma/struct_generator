@@ -5,9 +5,9 @@ pub struct CallForOfferWoodTradeInfo {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferBusinessSender {
+pub struct CallForOfferText {
     #[serde(flatten)]
-    pub call_for_offer_business_sender: CallForOfferBusinessSenderType,
+    pub call_for_offer_text: CallForOfferTextType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,27 +17,27 @@ pub struct TechnicalContactPerson {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDate {
-    #[serde(flatten)]
-    pub offer_date: OfferDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OfferBusinessSender {
     #[serde(flatten)]
     pub offer_business_sender: OfferBusinessSenderType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferText {
+pub struct Offer {
     #[serde(flatten)]
-    pub offer_text: OfferTextType,
+    pub offer: OfferType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferText {
+pub struct OfferDate {
     #[serde(flatten)]
-    pub call_for_offer_text: CallForOfferTextType,
+    pub offer_date: OfferDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferBusinessSender {
+    #[serde(flatten)]
+    pub call_for_offer_business_sender: CallForOfferBusinessSenderType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,8 +47,8 @@ pub struct OfferExpirationDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Offer {
+pub struct OfferText {
     #[serde(flatten)]
-    pub offer: OfferType,
+    pub offer_text: OfferTextType,
 }
 

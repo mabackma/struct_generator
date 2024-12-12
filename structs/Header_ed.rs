@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Priority {
+pub struct Action {
     #[serde(flatten)]
-    pub priority: PriorityType,
+    pub action: ActionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,15 +11,15 @@ pub struct TaxNumber {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Action {
-    #[serde(flatten)]
-    pub action: ActionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Header {
     #[serde(flatten)]
     pub header: HeaderType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EntityTag {
+    #[serde(flatten)]
+    pub entity_tag: EntityTagType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,8 +29,8 @@ pub struct TransmissionTime {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EntityTag {
+pub struct Priority {
     #[serde(flatten)]
-    pub entity_tag: EntityTagType,
+    pub priority: PriorityType,
 }
 

@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct KeyElementName {
+pub struct ForestCentreReply {
     #[serde(flatten)]
-    pub key_element_name: String200Type,
+    pub forest_centre_reply: ForestCentreReplyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KeyElementId {
+    #[serde(flatten)]
+    pub key_element_id: IdStringNotEmptyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,15 +17,39 @@ pub struct ErrorMessage {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalInfo {
+    #[serde(flatten)]
+    pub additional_info: String1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ErrorMessageData {
     #[serde(flatten)]
     pub error_message_data: ErrorMessageDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReferenceType {
+pub struct MessageType {
     #[serde(flatten)]
-    pub reference_type: ForestCentreMessageReferenceType,
+    pub message_type: MessageType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorMessages {
+    #[serde(flatten)]
+    pub error_messages: ErrorMessagesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReplyCode {
+    #[serde(flatten)]
+    pub reply_code: ReplyCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorCode {
+    #[serde(flatten)]
+    pub error_code: String25Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,57 +65,21 @@ pub struct KeyElementNS {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RegistrationId {
-    #[serde(flatten)]
-    pub registration_id: ReferenceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreMessageReference {
-    #[serde(flatten)]
-    pub forest_centre_message_reference: ReferenceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ReplyCode {
-    #[serde(flatten)]
-    pub reply_code: ReplyCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KeyElementId {
-    #[serde(flatten)]
-    pub key_element_id: IdStringNotEmptyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessages {
-    #[serde(flatten)]
-    pub error_messages: ErrorMessagesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorCode {
-    #[serde(flatten)]
-    pub error_code: String25Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreReply {
-    #[serde(flatten)]
-    pub forest_centre_reply: ForestCentreReplyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct KeyInfoAsText {
     #[serde(flatten)]
     pub key_info_as_text: String2000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ArrivalDate {
+pub struct Reference {
     #[serde(flatten)]
-    pub arrival_date: DateType,
+    pub reference: ReferenceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReferenceType {
+    #[serde(flatten)]
+    pub reference_type: ForestCentreMessageReferenceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,20 +89,26 @@ pub struct TimeStamp {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MessageType {
+pub struct ForestCentreMessageReference {
     #[serde(flatten)]
-    pub message_type: MessageType,
+    pub forest_centre_message_reference: ReferenceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalInfo {
+pub struct RegistrationId {
     #[serde(flatten)]
-    pub additional_info: String1000Type,
+    pub registration_id: ReferenceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Reference {
+pub struct KeyElementName {
     #[serde(flatten)]
-    pub reference: ReferenceType,
+    pub key_element_name: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ArrivalDate {
+    #[serde(flatten)]
+    pub arrival_date: DateType,
 }
 

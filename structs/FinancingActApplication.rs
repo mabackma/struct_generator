@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FinancingActApplicationType {
     #[serde(rename = "@id")]
     pub id: String,
@@ -49,18 +55,6 @@ pub struct FinancingActApplicationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlanAndSubsidyType {
-    #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
-    pub financing_act_application_stands: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PartOfProjectType {
     #[serde(rename = "@id")]
     pub id: IdStringType,
@@ -70,5 +64,11 @@ pub struct PartOfProjectType {
     pub financing_act_work_code: String,
     #[serde(rename = "PlanAndSubsidy")]
     pub plan_and_subsidy: PlanAndSubsidyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlanAndSubsidyType {
+    #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
+    pub financing_act_application_stands: Option<String>,
 }
 

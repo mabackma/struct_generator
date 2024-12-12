@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractEndingDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractType {
     #[serde(rename = "@parentId")]
     pub parent_id: String,
@@ -35,15 +29,21 @@ pub struct ContractBeginningDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ContractIdType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractWorkingSitesType {
     #[serde(rename = "ContractWorkingSiteDetails")]
     pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractIdType {
+pub struct ContractEndingDateType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

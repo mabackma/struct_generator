@@ -49,6 +49,12 @@ pub struct FinancingActCompletionDeclarationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PartOfProjectType {
     #[serde(rename = "@id")]
     pub id: IdStringType,
@@ -60,12 +66,6 @@ pub struct PartOfProjectType {
     pub payees_and_real_estates: String,
     #[serde(rename = "CompletionDataAndSubsidy")]
     pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

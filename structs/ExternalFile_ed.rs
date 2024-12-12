@@ -1,7 +1,31 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
+pub struct Bytes {
     #[serde(flatten)]
-    pub contractor_id: String20Type,
+    pub bytes: base64Binary,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Label {
+    #[serde(flatten)]
+    pub label: String100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ExternalFile {
+    #[serde(flatten)]
+    pub external_file: ExternalFileType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandId {
+    #[serde(flatten)]
+    pub stand_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +41,9 @@ pub struct StorageId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserId {
+pub struct ResourceId {
     #[serde(flatten)]
-    pub product_user_id: String50Type,
+    pub resource_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,27 +53,15 @@ pub struct FileName {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Bytes {
-    #[serde(flatten)]
-    pub bytes: base64Binary,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct FileFormat {
     #[serde(flatten)]
     pub file_format: String5Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandId {
+pub struct ProductUserId {
     #[serde(flatten)]
-    pub stand_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Label {
-    #[serde(flatten)]
-    pub label: String100Type,
+    pub product_user_id: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,20 +71,8 @@ pub struct DocumentClass {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ExternalFile {
+pub struct ContractorId {
     #[serde(flatten)]
-    pub external_file: ExternalFileType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: ERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
-    #[serde(flatten)]
-    pub resource_id: String20Type,
+    pub contractor_id: String20Type,
 }
 

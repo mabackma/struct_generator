@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
+pub struct MachineApplicationVersion {
     #[serde(flatten)]
-    pub resource_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardingDistance {
-    #[serde(flatten)]
-    pub forwarding_distance: nonNegativeInteger,
+    pub machine_application_version: String100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,15 +11,39 @@ pub struct StartDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoadGreenMass {
+pub struct LoadCount {
     #[serde(flatten)]
-    pub load_green_mass: Decimal3FractionDigitsType,
+    pub load_count: nonNegativeInteger,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EndDate {
+pub struct ForestOwner {
     #[serde(flatten)]
-    pub end_date: TimeStampType,
+    pub forest_owner: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardingDistance {
+    #[serde(flatten)]
+    pub forwarding_distance: nonNegativeInteger,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Load {
+    #[serde(flatten)]
+    pub load: LoadType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadNumber {
+    #[serde(flatten)]
+    pub load_number: nonNegativeInteger,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Bytes {
+    #[serde(flatten)]
+    pub bytes: base64Binary,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,15 +53,51 @@ pub struct MeasurementDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PartitialLoadId {
+    #[serde(flatten)]
+    pub partitial_load_id: nonNegativeInteger,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteForwardedProduction {
+    #[serde(flatten)]
+    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartitialLoad {
+    #[serde(flatten)]
+    pub partitial_load: PartitialLoadType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EndDate {
+    #[serde(flatten)]
+    pub end_date: TimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FileName {
+    #[serde(flatten)]
+    pub file_name: String100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct LoadVolume {
     #[serde(flatten)]
     pub load_volume: Decimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Load {
+pub struct LoadGreenMass {
     #[serde(flatten)]
-    pub load: LoadType,
+    pub load_green_mass: Decimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,33 +113,9 @@ pub struct StorageId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MachineApplicationVersion {
+pub struct StandId {
     #[serde(flatten)]
-    pub machine_application_version: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteForwardedProduction {
-    #[serde(flatten)]
-    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestOwner {
-    #[serde(flatten)]
-    pub forest_owner: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartitialLoad {
-    #[serde(flatten)]
-    pub partitial_load: PartitialLoadType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartitialLoadId {
-    #[serde(flatten)]
-    pub partitial_load_id: nonNegativeInteger,
+    pub stand_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,50 +125,20 @@ pub struct ServiceBuyerId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
-    #[serde(flatten)]
-    pub contractor_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoadCount {
-    #[serde(flatten)]
-    pub load_count: nonNegativeInteger,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoadNumber {
-    #[serde(flatten)]
-    pub load_number: nonNegativeInteger,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SendDate {
     #[serde(flatten)]
     pub send_date: TimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FileName {
+pub struct ContractorId {
     #[serde(flatten)]
-    pub file_name: String100Type,
+    pub contractor_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteId {
     #[serde(flatten)]
     pub working_site_id: ERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Bytes {
-    #[serde(flatten)]
-    pub bytes: base64Binary,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandId {
-    #[serde(flatten)]
-    pub stand_id: String20Type,
 }
 

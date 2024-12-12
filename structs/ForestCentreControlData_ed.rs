@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlObjectData {
+pub struct Objects {
     #[serde(flatten)]
-    pub control_object_data: ControlObjectDataType,
+    pub objects: ControlObjectsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,14 +11,14 @@ pub struct Object {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Objects {
-    #[serde(flatten)]
-    pub objects: ControlObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestCentreData {
     #[serde(flatten)]
     pub forest_centre_data: ForestCentreControlDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlObjectData {
+    #[serde(flatten)]
+    pub control_object_data: ControlObjectDataType,
 }
 

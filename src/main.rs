@@ -14,6 +14,7 @@ fn main() {
     create_file_dependencies(folder_path, &mut file_dependencies);
 
     let sorted_files = sort_files(&file_dependencies);
+
     for file in sorted_files {
         process_xsd_file(&file);
     }
@@ -26,7 +27,7 @@ fn main() {
 
     let content = read_xsd_file("schema.xsd").unwrap();
     let mut reader = Reader::from_str(&content);
-    create_structs(&mut reader, &mut structs, &mut element_definitions);
+    create_structs(&mut reader, &mut structs, &mut element_definitions, &content);
 
     structs_to_file(&structs, &file_name).unwrap();
     element_definitions_to_file(&element_definitions, &elements_file_name).unwrap(); */
@@ -139,7 +140,7 @@ fn process_xsd_file(current_file: &str) {
     let content = read_xsd_file(current_file).unwrap();
     let mut reader = Reader::from_str(&content);
 
-    create_structs(&mut reader, &mut structs, &mut element_definitions);
+    create_structs(&mut reader, &mut structs, &mut element_definitions, &content);
 
     structs_to_file(&structs, &file_name).unwrap();
     element_definitions_to_file(&element_definitions, &elements_file_name).unwrap();

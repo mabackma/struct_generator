@@ -1,7 +1,37 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TextType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValueType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VATType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SequenceNumberType {
     #[serde(flatten)]
     pub base: PositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TotalValueType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaidValueType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,27 +47,15 @@ pub struct VersionNoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InsertDateType {
+pub struct MeasurementDateType {
     #[serde(flatten)]
     pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TextType {
+pub struct InsertDateType {
     #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ValueType {
-    #[serde(flatten)]
-    pub base: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TotalValueType {
-    #[serde(flatten)]
-    pub base: Decimal2FractionDigitsType,
+    pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,26 +97,8 @@ pub struct MeasurementCertificateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaidValueType {
-    #[serde(flatten)]
-    pub base: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct MeasurementCertificateTypeType {
     #[serde(flatten)]
     pub base: MeasurementCertificateTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VATType {
-    #[serde(flatten)]
-    pub base: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementDateType {
-    #[serde(flatten)]
-    pub base: DateType,
 }
 
