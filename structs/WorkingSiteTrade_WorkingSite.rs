@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSiteDetailsType {
-    #[serde(flatten)]
-    pub base: WorkingSiteType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteKeyType {
     #[serde(rename = "@id")]
     pub id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferWorkingSiteDetailsType {
+    #[serde(flatten)]
+    pub base: WorkingSiteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

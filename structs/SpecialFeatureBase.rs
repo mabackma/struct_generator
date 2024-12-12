@@ -1,26 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRestrictionsType {
-    #[serde(rename = "UsingRestriction")]
-    pub using_restriction: Vec<UsingRestrictionType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifierTypeType {
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifierValueType {
-    #[serde(flatten)]
-    pub base: IdentifierValueType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StartDateType {
-    #[serde(flatten)]
-    pub base: DateYYYY-MMOrYYYY-MM-DDType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct IdentifierType {
     #[serde(rename = "IdentifierType")]
     pub identifier_type: IdentifierTypeType,
@@ -35,9 +13,19 @@ pub struct EndDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureInfoType {
+pub struct ValidityType {
+    #[serde(rename = "StartDate")]
+    pub start_date: StartDateType,
+    #[serde(rename = "EndDate")]
+    pub end_date: EndDateType,
+    #[serde(rename = "Explanation")]
+    pub explanation: ExplanationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StartDateType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: DateYYYY-MMOrYYYY-MM-DDType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,15 +35,25 @@ pub struct IdentifiersType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ExplanationType {
-    #[serde(flatten)]
-    pub base: String,
+pub struct UsingRestrictionsType {
+    #[serde(rename = "UsingRestriction")]
+    pub using_restriction: Vec<UsingRestrictionType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BufferDistanceType {
+pub struct IdentifierValueType {
     #[serde(flatten)]
-    pub base: Decimal4And2Type,
+    pub base: IdentifierValueType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IdentifierTypeType {
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ExplanationType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,18 +75,20 @@ pub struct UsingRestrictionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureInfoType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FeatureAdditionalInfoType {
     #[serde(flatten)]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValidityType {
-    #[serde(rename = "StartDate")]
-    pub start_date: StartDateType,
-    #[serde(rename = "EndDate")]
-    pub end_date: EndDateType,
-    #[serde(rename = "Explanation")]
-    pub explanation: ExplanationType,
+pub struct BufferDistanceType {
+    #[serde(flatten)]
+    pub base: Decimal4And2Type,
 }
 

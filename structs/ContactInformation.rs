@@ -1,19 +1,31 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EmailAddressType {
-    #[serde(flatten)]
-    pub base: SahkopostiosoiteTekstiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct LastNameType {
     #[serde(flatten)]
     pub base: SukuNimiTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PersonOrganizationNameType {
+pub struct CountryTextType {
     #[serde(flatten)]
-    pub base: OrganizationNameBaseType,
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PhoneNumberType {
+    #[serde(flatten)]
+    pub base: PuhelinnumeroTekstiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WholeNameType {
+    #[serde(flatten)]
+    pub base: NimiTekstiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AddressType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,25 +47,25 @@ pub struct ContactInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AddressType {
+pub struct OrganizationNameBaseType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: NimiTekstiTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationNameType {
+pub struct PostOfficeType {
     #[serde(flatten)]
-    pub base: OrganizationNameBaseType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PhoneNumberType {
-    #[serde(flatten)]
-    pub base: PuhelinnumeroTekstiTyyppi,
+    pub base: PostitoimipaikkaNimiTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TelefaxNumberType {
+    #[serde(flatten)]
+    pub base: PhoneNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MobilePhoneNumberType {
     #[serde(flatten)]
     pub base: PhoneNumberType,
 }
@@ -65,44 +77,32 @@ pub struct FirstNameType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MobilePhoneNumberType {
-    #[serde(flatten)]
-    pub base: PhoneNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WholeNameType {
-    #[serde(flatten)]
-    pub base: NimiTekstiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PostalCodeType {
     #[serde(flatten)]
     pub base: PostinumeroKoodiTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PostOfficeType {
+pub struct EmailAddressType {
     #[serde(flatten)]
-    pub base: PostitoimipaikkaNimiTyyppi,
+    pub base: SahkopostiosoiteTekstiTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CountryTextType {
+pub struct PersonOrganizationNameType {
     #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationNameBaseType {
-    #[serde(flatten)]
-    pub base: NimiTekstiTyyppi,
+    pub base: OrganizationNameBaseType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StateCodeType {
     #[serde(flatten)]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationNameType {
+    #[serde(flatten)]
+    pub base: OrganizationNameBaseType,
 }
 

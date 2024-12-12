@@ -1,16 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Sender {
-    #[serde(flatten)]
-    pub sender: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestObjectData {
-    #[serde(flatten)]
-    pub forest_object_data: ForestObjectDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Object {
     #[serde(flatten)]
     pub object: ForestObjectDataObjectType,
@@ -23,8 +11,20 @@ pub struct Description {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Sender {
+    #[serde(flatten)]
+    pub sender: ContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Objects {
     #[serde(flatten)]
     pub objects: ForestObjectDataObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestObjectData {
+    #[serde(flatten)]
+    pub forest_object_data: ForestObjectDataType,
 }
 

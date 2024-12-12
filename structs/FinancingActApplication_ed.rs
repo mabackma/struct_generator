@@ -1,25 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartOfProject {
-    #[serde(flatten)]
-    pub part_of_project: PartOfProjectType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OtherPublicSubstitute {
     #[serde(flatten)]
     pub other_public_substitute: OtherPublicSubstituteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingType {
+pub struct PartsOfProject {
     #[serde(flatten)]
-    pub financing_type: FinancingActFinancingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlanAndSubsidy {
-    #[serde(flatten)]
-    pub plan_and_subsidy: PlanAndSubsidyType,
+    pub parts_of_project: PartsOfProjectType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,14 +17,26 @@ pub struct FinancingActApplication {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MunicipalityNumber {
+pub struct PlanAndSubsidy {
     #[serde(flatten)]
-    pub municipality_number: MunicipalityNumberType,
+    pub plan_and_subsidy: PlanAndSubsidyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProject {
+pub struct FinancingType {
     #[serde(flatten)]
-    pub parts_of_project: PartsOfProjectType,
+    pub financing_type: FinancingActFinancingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartOfProject {
+    #[serde(flatten)]
+    pub part_of_project: PartOfProjectType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MunicipalityNumber {
+    #[serde(flatten)]
+    pub municipality_number: MunicipalityNumberType,
 }
 

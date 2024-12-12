@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObservationDate {
+pub struct TreeStandData {
     #[serde(flatten)]
-    pub observation_date: DateType,
+    pub tree_stand_data: TreeStandDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,9 +11,9 @@ pub struct UsingRightCompensationAmount {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MainFeature {
+pub struct FeatureType {
     #[serde(flatten)]
-    pub main_feature: YesNoType,
+    pub feature_type: FeatureTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,51 +23,15 @@ pub struct UsingRightCompensationResponsible {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureInfo {
+pub struct Identifiers {
     #[serde(flatten)]
-    pub feature_info: FeatureInfoType,
+    pub identifiers: IdentifiersType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDepotAccessibility {
+pub struct ObservationDate {
     #[serde(flatten)]
-    pub forest_depot_accessibility: ForestDepotAccessibilityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightExists {
-    #[serde(flatten)]
-    pub using_right_exists: YesNoNotKnownType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Validity {
-    #[serde(flatten)]
-    pub validity: ValidityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightCompensationDescription {
-    #[serde(flatten)]
-    pub using_right_compensation_description: String1500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureType {
-    #[serde(flatten)]
-    pub feature_type: FeatureTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureAdditionalInfo {
-    #[serde(flatten)]
-    pub feature_additional_info: FeatureAdditionalInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandData {
-    #[serde(flatten)]
-    pub tree_stand_data: TreeStandDataType,
+    pub observation_date: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,27 +41,15 @@ pub struct InventoryDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightExaminedDate {
+pub struct FeatureInfo {
     #[serde(flatten)]
-    pub using_right_examined_date: DateType,
+    pub feature_info: FeatureInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRight {
+pub struct Validity {
     #[serde(flatten)]
-    pub using_right: UsingRightType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightDescription {
-    #[serde(flatten)]
-    pub using_right_description: String1500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Identifiers {
-    #[serde(flatten)]
-    pub identifiers: IdentifiersType,
+    pub validity: ValidityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -107,9 +59,27 @@ pub struct FeatureAdditionalCode {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightCompensation {
+pub struct MainFeature {
     #[serde(flatten)]
-    pub using_right_compensation: YesNoNotKnownType,
+    pub main_feature: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureAdditionalInfo {
+    #[serde(flatten)]
+    pub feature_additional_info: FeatureAdditionalInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRightDescription {
+    #[serde(flatten)]
+    pub using_right_description: String1500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRightCompensationDescription {
+    #[serde(flatten)]
+    pub using_right_compensation_description: String1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,8 +89,38 @@ pub struct FeatureSpecificAdditionalVariables {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDepotAccessibility {
+    #[serde(flatten)]
+    pub forest_depot_accessibility: ForestDepotAccessibilityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRightExaminedDate {
+    #[serde(flatten)]
+    pub using_right_examined_date: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FeatureCode {
     #[serde(flatten)]
     pub feature_code: FeatureCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRightExists {
+    #[serde(flatten)]
+    pub using_right_exists: YesNoNotKnownType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRight {
+    #[serde(flatten)]
+    pub using_right: UsingRightType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRightCompensation {
+    #[serde(flatten)]
+    pub using_right_compensation: YesNoNotKnownType,
 }
 

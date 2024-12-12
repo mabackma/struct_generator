@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContactInformation {
+pub struct PreferredContactingMethods {
     #[serde(flatten)]
-    pub contact_information: ContactInformationType,
+    pub preferred_contacting_methods: PreferredContactingMethodsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestPropertyData {
+pub struct ContactInformation {
     #[serde(flatten)]
-    pub forest_property_data: ForestPropertyDataType,
+    pub contact_information: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +17,9 @@ pub struct RequestInfo {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestPropertyDataSet {
+pub struct ContactRequest {
     #[serde(flatten)]
-    pub forest_property_data_set: ForestPropertyDataSetType,
+    pub contact_request: ContactRequestType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,15 +35,15 @@ pub struct RequestCode {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PreferredContactingMethods {
+pub struct ForestPropertyDataSet {
     #[serde(flatten)]
-    pub preferred_contacting_methods: PreferredContactingMethodsType,
+    pub forest_property_data_set: ForestPropertyDataSetType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContactRequest {
+pub struct ForestPropertyData {
     #[serde(flatten)]
-    pub contact_request: ContactRequestType,
+    pub forest_property_data: ForestPropertyDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

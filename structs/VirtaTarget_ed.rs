@@ -1,19 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BasePartNumber {
+pub struct TargetExtraInfo {
     #[serde(flatten)]
-    pub base_part_number: VirtaPartNumberType,
+    pub target_extra_info: VirtaExtraInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TargetAnnouncedAmount {
     #[serde(flatten)]
     pub target_announced_amount: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatAdvertisement {
-    #[serde(flatten)]
-    pub habitat_advertisement: VirtaHabitatAdvertisementType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,9 +23,27 @@ pub struct Status2 {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatAdvertisement {
+    #[serde(flatten)]
+    pub habitat_advertisement: VirtaHabitatAdvertisementType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Target {
     #[serde(flatten)]
     pub target: TargetType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BasePartNumber {
+    #[serde(flatten)]
+    pub base_part_number: VirtaPartNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetParts {
+    #[serde(flatten)]
+    pub target_parts: TargetPartsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -44,17 +56,5 @@ pub struct TargetNumber {
 pub struct TargetId {
     #[serde(flatten)]
     pub target_id: string,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetExtraInfo {
-    #[serde(flatten)]
-    pub target_extra_info: VirtaExtraInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetParts {
-    #[serde(flatten)]
-    pub target_parts: TargetPartsType,
 }
 

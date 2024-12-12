@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InformedActor {
+pub struct SilviculturalOperation {
     #[serde(flatten)]
-    pub informed_actor: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationSystems {
-    #[serde(flatten)]
-    pub certification_systems: CertificationSystemsType,
+    pub silvicultural_operation: SilviculturalOperationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,39 +11,33 @@ pub struct RoadUsingRight {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteGeometries {
-    #[serde(flatten)]
-    pub working_site_geometries: WorkingSiteGeometriesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationSystem {
-    #[serde(flatten)]
-    pub certification_system: CertificationSystemType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstates {
-    #[serde(flatten)]
-    pub real_estates: RealEstatesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CFOWorkingSite {
     #[serde(flatten)]
     pub c_f_o_working_site: WorkingSiteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstate {
+pub struct SceneryWorkPermissionNeeded {
     #[serde(flatten)]
-    pub real_estate: RealEstateType,
+    pub scenery_work_permission_needed: SceneryWorkPermissionNeededType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteName {
+pub struct WorkingSitePlan {
     #[serde(flatten)]
-    pub working_site_name: WorkingSiteNameType,
+    pub working_site_plan: WorkingSitePlanType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SellerRepresentativePerson {
+    #[serde(flatten)]
+    pub seller_representative_person: SellerRepresentativePersonType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InformedActor {
+    #[serde(flatten)]
+    pub informed_actor: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,15 +47,21 @@ pub struct Sellers {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilviculturalOperations {
+pub struct VATInfo {
     #[serde(flatten)]
-    pub silvicultural_operations: SilviculturalOperationsType,
+    pub v_a_t_info: VATInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VATRegistrationDate {
+pub struct RealEstate {
     #[serde(flatten)]
-    pub v_a_t_registration_date: VATRegistrationDateType,
+    pub real_estate: RealEstateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilviculturalOperations {
+    #[serde(flatten)]
+    pub silvicultural_operations: SilviculturalOperationsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,9 +71,27 @@ pub struct CallForOfferWorkingSiteWoodTradeInfo {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlan {
+pub struct CallForOfferWorkingSiteSilvicultureInfo {
     #[serde(flatten)]
-    pub working_site_plan: WorkingSitePlanType,
+    pub call_for_offer_working_site_silviculture_info: CallForOfferWorkingSiteSilvicultureInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstates {
+    #[serde(flatten)]
+    pub real_estates: RealEstatesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CertificationSystems {
+    #[serde(flatten)]
+    pub certification_systems: CertificationSystemsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VATRegistrationDate {
+    #[serde(flatten)]
+    pub v_a_t_registration_date: VATRegistrationDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,39 +107,21 @@ pub struct WorkingSiteText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VATInfo {
+pub struct Products {
     #[serde(flatten)]
-    pub v_a_t_info: VATInfoType,
+    pub products: ProductsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SellerRepresentativePerson {
+pub struct CertificationSystem {
     #[serde(flatten)]
-    pub seller_representative_person: SellerRepresentativePersonType,
+    pub certification_system: CertificationSystemType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSiteSilvicultureInfo {
+pub struct WorkingSiteName {
     #[serde(flatten)]
-    pub call_for_offer_working_site_silviculture_info: CallForOfferWorkingSiteSilvicultureInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IncludeInOffer {
-    #[serde(flatten)]
-    pub include_in_offer: IncludeInOfferType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilviculturalOperation {
-    #[serde(flatten)]
-    pub silvicultural_operation: SilviculturalOperationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SceneryWorkPermissionNeeded {
-    #[serde(flatten)]
-    pub scenery_work_permission_needed: SceneryWorkPermissionNeededType,
+    pub working_site_name: WorkingSiteNameType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -137,8 +131,14 @@ pub struct SceneryWorkPermissionAcceptance {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Products {
+pub struct WorkingSiteGeometries {
     #[serde(flatten)]
-    pub products: ProductsType,
+    pub working_site_geometries: WorkingSiteGeometriesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IncludeInOffer {
+    #[serde(flatten)]
+    pub include_in_offer: IncludeInOfferType,
 }
 

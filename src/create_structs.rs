@@ -63,11 +63,7 @@ pub fn create_structs(
                     }
                 }
 
-                if e.name() == QName(b"xs:extension") {
-                    add_extension_fields(&mut stack, e);
-                }
-
-                if e.name() == QName(b"xs:restriction") {
+                if e.name() == QName(b"xs:extension") || e.name() == QName(b"xs:restriction") {
                     add_extension_fields(&mut stack, e);
                 }
 
@@ -80,11 +76,7 @@ pub fn create_structs(
                 }
             }
             Ok(Empty(ref e)) => {
-                if e.name() == QName(b"xs:extension") {
-                    add_extension_fields(&mut stack, e);
-                }
-
-                if e.name() == QName(b"xs:restriction") {
+                if e.name() == QName(b"xs:extension") || e.name() == QName(b"xs:restriction") {
                     add_extension_fields(&mut stack, e);
                 }
 
@@ -201,24 +193,6 @@ fn add_extension_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
         });
     }
 }
-
-/* // Add restriction fields to the struct
-fn add_restriction_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
-    // If there's a parent struct, add this struct as a field to it
-    if let Some(parent_struct) = stack.last_mut() {
-        let mut field_type = "".to_string();
-
-        if let Some(typ) = restriction_type(e) {
-            field_type = remove_prefix(&typ);
-        }
-
-        // Add the field to the parent struct
-        parent_struct.fields.push(XMLField {
-            name: "base".to_string(),
-            field_type,
-        });
-    }
-} */
 
 // Move attributes to the beginning of the struct
 fn attributes_first(structs: &mut HashMap<String, XMLStruct>) {

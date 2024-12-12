@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
+pub struct StanfordFile {
     #[serde(flatten)]
-    pub working_site_id: ERPIdType,
+    pub stanford_file: StanfordFileType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,15 +11,21 @@ pub struct FileName {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StanfordFile {
+pub struct Bytes {
     #[serde(flatten)]
-    pub stanford_file: StanfordFileType,
+    pub bytes: base64Binary,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ServiceBuyerId {
     #[serde(flatten)]
     pub service_buyer_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -32,11 +38,5 @@ pub struct FileType {
 pub struct ResourceId {
     #[serde(flatten)]
     pub resource_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Bytes {
-    #[serde(flatten)]
-    pub bytes: base64Binary,
 }
 

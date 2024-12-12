@@ -1,16 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QualitySystemsType {
-    #[serde(rename = "QualitySystem", skip_serializing_if = "Option::is_none")]
-    pub quality_system: Option<Vec<QualitySystemType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CollectiveAgreementsType {
-    #[serde(rename = "CollectiveAgreement")]
-    pub collective_agreement: Vec<String100Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct EmployerRegisterType {
     #[serde(rename = "Registered")]
     pub registered: YesNoType,
@@ -21,11 +9,15 @@ pub struct EmployerRegisterType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationSystemsType {
-    #[serde(rename = "CertificationSystem", skip_serializing_if = "Option::is_none")]
-    pub certification_system: Option<Vec<String>>,
-    #[serde(flatten)]
-    pub base: CertificationSystemType,
+pub struct SubContractorsType {
+    #[serde(rename = "SubContractor", skip_serializing_if = "Option::is_none")]
+    pub sub_contractor: Option<Vec<String20Type>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QualitySystemsType {
+    #[serde(rename = "QualitySystem", skip_serializing_if = "Option::is_none")]
+    pub quality_system: Option<Vec<QualitySystemType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,8 +75,16 @@ pub struct CompanyInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SubContractorsType {
-    #[serde(rename = "SubContractor", skip_serializing_if = "Option::is_none")]
-    pub sub_contractor: Option<Vec<String20Type>>,
+pub struct CertificationSystemsType {
+    #[serde(rename = "CertificationSystem", skip_serializing_if = "Option::is_none")]
+    pub certification_system: Option<Vec<String>>,
+    #[serde(flatten)]
+    pub base: CertificationSystemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CollectiveAgreementsType {
+    #[serde(rename = "CollectiveAgreement")]
+    pub collective_agreement: Vec<String100Type>,
 }
 

@@ -37,16 +37,16 @@ pub struct WorkingSiteForwardingQualityControlType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OrientationType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ScaleDataType {
     #[serde(rename = "ScaledMass")]
     pub scaled_mass: Decimal1FractionDigitType,
     #[serde(rename = "Orientation")]
     pub orientation: OrientationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrientationType {
-    #[serde(flatten)]
-    pub base: String,
 }
 

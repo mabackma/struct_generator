@@ -5,6 +5,8 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, Read, Write};
 use phf::{Map, phf_map};
+use std::path::Path;
+use std::fs;
 
 static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "boolean" => "bool",
@@ -94,6 +96,8 @@ pub fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) ->
         structs_string.push_str("}\n\n");
     }
 
+    create_directory(&file_name);
+
     // Write the string to the file
     let mut file = File::create(file_name)?;
     file.write_all(structs_string.as_bytes())?;
@@ -114,9 +118,25 @@ pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>
         element_definitions_string.push_str("}\n\n");
     }
 
+    create_directory(&file_name);
+
     // Write the string to the file
     let mut file = File::create(file_name)?;
     file.write_all(element_definitions_string.as_bytes())?;
 
     Ok(())
+}
+
+fn create_directory(file_name: &str) {
+    let path_vec = file_name.split("/").collect::<Vec<&str>>();
+    let path = path_vec[..path_vec.len() - 1].join("/");
+
+    // Check if the directory exists
+    if !Path::new(&path).exists() {
+        // Create the directory since it does not exist
+        match fs::create_dir_all(path) {
+            Ok(_) => println!("Directory created for file: {}", file_name),
+            Err(e) => eprintln!("Failed to create directory for file: {}. Error: {}", file_name, e),
+        }
+    }
 }

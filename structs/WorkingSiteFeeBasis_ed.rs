@@ -5,21 +5,57 @@ pub struct WorkCodes {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Id {
+pub struct WorkingSiteId {
     #[serde(flatten)]
-    pub id: PositiveIntegerType,
+    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NeedToCheck {
+pub struct FeeBaseListItem {
     #[serde(flatten)]
-    pub need_to_check: YesNoType,
+    pub fee_base_list_item: FeebaseListItemType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFeeBasis {
+pub struct StandNumber {
     #[serde(flatten)]
-    pub working_site_fee_basis: WorkingSiteFeeBasisType,
+    pub stand_number: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeListId {
+    #[serde(flatten)]
+    pub fee_list_id: PositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasis {
+    #[serde(flatten)]
+    pub fee_basis: FeeBasisType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeYesNo {
+    #[serde(flatten)]
+    pub fee_yes_no: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBaseList {
+    #[serde(flatten)]
+    pub fee_base_list: FeeBaseListType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Stands {
+    #[serde(flatten)]
+    pub stands: StandsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,21 +71,9 @@ pub struct Infotext {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
+pub struct WorkingSiteFeeBasis {
     #[serde(flatten)]
-    pub resource_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBaseList {
-    #[serde(flatten)]
-    pub fee_base_list: FeeBaseListType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBaseListItem {
-    #[serde(flatten)]
-    pub fee_base_list_item: FeebaseListItemType,
+    pub working_site_fee_basis: WorkingSiteFeeBasisType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,33 +83,9 @@ pub struct FeeId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeListId {
-    #[serde(flatten)]
-    pub fee_list_id: PositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct FeeValue {
     #[serde(flatten)]
     pub fee_value: String10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Stands {
-    #[serde(flatten)]
-    pub stands: StandsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasis {
-    #[serde(flatten)]
-    pub fee_basis: FeeBasisType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,26 +95,26 @@ pub struct WorkCode {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBase {
+pub struct Id {
     #[serde(flatten)]
-    pub fee_base: FeeBasisDataType,
+    pub id: PositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumber {
+pub struct NeedToCheck {
     #[serde(flatten)]
-    pub stand_number: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeYesNo {
-    #[serde(flatten)]
-    pub fee_yes_no: YesNoType,
+    pub need_to_check: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FeeAssortment {
     #[serde(flatten)]
     pub fee_assortment: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBase {
+    #[serde(flatten)]
+    pub fee_base: FeeBasisDataType,
 }
 

@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpareTreeCategory {
+pub struct ContractorId {
     #[serde(flatten)]
-    pub spare_tree_category: SpareTreeCategoryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpareTrees {
-    #[serde(flatten)]
-    pub spare_trees: SpareTreesType,
+    pub contractor_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,15 +11,9 @@ pub struct MeanDiameterOfSpareTrees {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RetentionTreeTarget {
+pub struct DiameterClassOfSpareTrees {
     #[serde(flatten)]
-    pub retention_tree_target: PositiveInteger5digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanHeightOfSpareTrees {
-    #[serde(flatten)]
-    pub mean_height_of_spare_trees: HeightType,
+    pub diameter_class_of_spare_trees: PositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,9 +23,27 @@ pub struct VolumeOfSpareTrees {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterClassOfSpareTrees {
+pub struct RetentionTreeTarget {
     #[serde(flatten)]
-    pub diameter_class_of_spare_trees: PositiveInteger4digitsType,
+    pub retention_tree_target: PositiveInteger5digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpareTrees {
+    #[serde(flatten)]
+    pub spare_trees: SpareTreesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpareTreeCategory {
+    #[serde(flatten)]
+    pub spare_tree_category: SpareTreeCategoryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpecies {
+    #[serde(flatten)]
+    pub tree_species: TreeSpeciesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,14 +53,8 @@ pub struct AmountOfSpareTrees {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
+pub struct MeanHeightOfSpareTrees {
     #[serde(flatten)]
-    pub contractor_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpecies {
-    #[serde(flatten)]
-    pub tree_species: TreeSpeciesType,
+    pub mean_height_of_spare_trees: HeightType,
 }
 

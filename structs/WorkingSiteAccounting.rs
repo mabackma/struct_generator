@@ -1,34 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentDataType {
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: String20Type,
-    #[serde(rename = "Code")]
-    pub code: String50Type,
-    #[serde(rename = "Name")]
-    pub name: String50Type,
-    #[serde(rename = "PlannedVolume")]
-    pub planned_volume: Decimal3FractionDigitsType,
-    #[serde(rename = "HarvestedVolume")]
-    pub harvested_volume: Decimal3FractionDigitsType,
-    #[serde(rename = "HarvestedVolumeAccounted")]
-    pub harvested_volume_accounted: Decimal3FractionDigitsType,
-    #[serde(rename = "ForwardedVolume")]
-    pub forwarded_volume: Decimal3FractionDigitsType,
-    #[serde(rename = "ForwardedVolumeAccounted")]
-    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
-    #[serde(rename = "ForestHaulageDistance")]
-    pub forest_haulage_distance: PositiveInteger4digitsType,
-    #[serde(rename = "ForestHaulageDistanceContinued", skip_serializing_if = "Option::is_none")]
-    pub forest_haulage_distance_continued: Option<PositiveInteger4digitsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodeDataType {
     #[serde(rename = "WorkCode")]
     pub work_code: WorkCodeType,
@@ -66,5 +36,35 @@ pub struct WorkingSiteAccountingType {
 pub struct WorkCodesType {
     #[serde(rename = "WorkCode")]
     pub work_code: Vec<WorkCodeDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentDataType {
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: String20Type,
+    #[serde(rename = "Code")]
+    pub code: String50Type,
+    #[serde(rename = "Name")]
+    pub name: String50Type,
+    #[serde(rename = "PlannedVolume")]
+    pub planned_volume: Decimal3FractionDigitsType,
+    #[serde(rename = "HarvestedVolume")]
+    pub harvested_volume: Decimal3FractionDigitsType,
+    #[serde(rename = "HarvestedVolumeAccounted")]
+    pub harvested_volume_accounted: Decimal3FractionDigitsType,
+    #[serde(rename = "ForwardedVolume")]
+    pub forwarded_volume: Decimal3FractionDigitsType,
+    #[serde(rename = "ForwardedVolumeAccounted")]
+    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
+    #[serde(rename = "ForestHaulageDistance")]
+    pub forest_haulage_distance: PositiveInteger4digitsType,
+    #[serde(rename = "ForestHaulageDistanceContinued", skip_serializing_if = "Option::is_none")]
+    pub forest_haulage_distance_continued: Option<PositiveInteger4digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 

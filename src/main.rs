@@ -15,33 +15,8 @@ fn main() {
 
     let sorted_files = sort_files(&file_dependencies);
     for file in sorted_files {
-        println!("Processing {}...", file);
-        println!("  {:#?}", file_dependencies.get(&file));
-        println!();
+        process_xsd_file(&file);
     }
-/*     for entry in fs::read_dir(folder_path).unwrap() {
-        let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
-        let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
-
-        let entry = entry.unwrap();
-        let path = entry.path();
-
-        // Check if the entry is a file and has a `.xsd` extension
-        if path.is_file() && path.extension().and_then(|ext| ext.to_str()) == Some("xsd") {
-            let current_file = path.file_name().unwrap().to_str().unwrap();
-            let mut file_name = current_file.replace(".xsd", ".rs");
-            file_name = "./structs/".to_string() + &file_name;
-
-            let elements_file_name = "./structs/".to_string() + &current_file.replace(".xsd", "_ed.rs");
-            
-            let content = read_xsd_file(path.to_str().unwrap()).unwrap();
-            let mut reader = Reader::from_str(&content);
-            create_structs(&mut reader, &mut structs, &mut element_definitions);
-
-            structs_to_file(&structs, &file_name).unwrap();
-            element_definitions_to_file(&element_definitions, &elements_file_name).unwrap();
-        }
-    } */
 
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
@@ -149,4 +124,23 @@ fn topological_sort(
         visited.insert(file_name.to_string());
         sorted_files.push(file_name.to_string());
     }
+}
+
+// Creates the structs and element definitions and writes them to files in the `structs` folder
+fn process_xsd_file(current_file: &str) {
+    let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
+    let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
+
+    let mut file_name = current_file.split("/").collect::<Vec<&str>>().last().unwrap().to_string();
+    file_name = "./structs/".to_string() + &file_name.replace(".xsd", ".rs");
+    
+    let elements_file_name = file_name.replace(".rs", "_ed.rs");
+
+    let content = read_xsd_file(current_file).unwrap();
+    let mut reader = Reader::from_str(&content);
+
+    create_structs(&mut reader, &mut structs, &mut element_definitions);
+
+    structs_to_file(&structs, &file_name).unwrap();
+    element_definitions_to_file(&element_definitions, &elements_file_name).unwrap();
 }

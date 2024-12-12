@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Stand {
+    #[serde(flatten)]
+    pub stand: StandType1,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SpecialFeatures {
     #[serde(flatten)]
     pub special_features: SpecialFeaturesType,
@@ -8,12 +14,6 @@ pub struct SpecialFeatures {
 pub struct Stands {
     #[serde(flatten)]
     pub stands: StandsType1,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Stand {
-    #[serde(flatten)]
-    pub stand: StandType1,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

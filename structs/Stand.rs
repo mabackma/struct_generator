@@ -1,24 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandType1 {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "@realEstateId")]
-    pub real_estate_id: String,
-    #[serde(rename = "@parcelId")]
-    pub parcel_id: String,
-    #[serde(rename = "StandBasicData")]
-    pub stand_basic_data: StandBasicDataWithGeometryType,
-    #[serde(rename = "TreeStandData", skip_serializing_if = "Option::is_none")]
-    pub tree_stand_data: Option<String>,
-    #[serde(rename = "Operations", skip_serializing_if = "Option::is_none")]
-    pub operations: Option<String>,
-    #[serde(rename = "PlannedOperationChains", skip_serializing_if = "Option::is_none")]
-    pub planned_operation_chains: Option<String>,
-    #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
-    pub special_features: Option<SpecialFeaturesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StandBasicDataWithGeometryType {
     #[serde(flatten)]
     pub base: StandBasicDataType,
@@ -42,5 +22,25 @@ pub struct StandsType1 {
 pub struct SpecialFeaturesType {
     #[serde(rename = "SpecialFeature")]
     pub special_feature: Vec<BasicFeature1Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandType1 {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "@realEstateId")]
+    pub real_estate_id: String,
+    #[serde(rename = "@parcelId")]
+    pub parcel_id: String,
+    #[serde(rename = "StandBasicData")]
+    pub stand_basic_data: StandBasicDataWithGeometryType,
+    #[serde(rename = "TreeStandData", skip_serializing_if = "Option::is_none")]
+    pub tree_stand_data: Option<String>,
+    #[serde(rename = "Operations", skip_serializing_if = "Option::is_none")]
+    pub operations: Option<String>,
+    #[serde(rename = "PlannedOperationChains", skip_serializing_if = "Option::is_none")]
+    pub planned_operation_chains: Option<String>,
+    #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
+    pub special_features: Option<SpecialFeaturesType>,
 }
 
