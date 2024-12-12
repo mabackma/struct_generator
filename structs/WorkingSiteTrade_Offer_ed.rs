@@ -1,25 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferWoodTradeInfo {
+    #[serde(flatten)]
+    pub call_for_offer_wood_trade_info: CallForOfferWoodTradeInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CallForOfferText {
     #[serde(flatten)]
     pub call_for_offer_text: CallForOfferTextType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferBusinessSender {
+pub struct TechnicalContactPerson {
     #[serde(flatten)]
-    pub call_for_offer_business_sender: CallForOfferBusinessSenderType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDate {
-    #[serde(flatten)]
-    pub offer_expiration_date: OfferExpirationDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWoodTradeInfo {
-    #[serde(flatten)]
-    pub call_for_offer_wood_trade_info: CallForOfferWoodTradeInfoType,
+    pub technical_contact_person: TechnicalContactPersonType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,9 +35,15 @@ pub struct OfferDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPerson {
+pub struct CallForOfferBusinessSender {
     #[serde(flatten)]
-    pub technical_contact_person: TechnicalContactPersonType,
+    pub call_for_offer_business_sender: CallForOfferBusinessSenderType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDate {
+    #[serde(flatten)]
+    pub offer_expiration_date: OfferExpirationDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

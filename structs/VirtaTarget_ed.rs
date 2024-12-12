@@ -1,25 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TargetNumber {
-    #[serde(flatten)]
-    pub target_number: PositiveDecimalMax5IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatAdvertisement {
-    #[serde(flatten)]
-    pub habitat_advertisement: VirtaHabitatAdvertisementType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetExtraInfo {
-    #[serde(flatten)]
-    pub target_extra_info: VirtaExtraInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Status2 {
     #[serde(flatten)]
     pub status2: ChangeStateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BasePartNumber {
+    #[serde(flatten)]
+    pub base_part_number: VirtaPartNumberType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,15 +17,15 @@ pub struct TargetParts {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EstablishedPartNumber {
+pub struct TargetAnnouncedAmount {
     #[serde(flatten)]
-    pub established_part_number: VirtaPartNumberType,
+    pub target_announced_amount: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BasePartNumber {
+pub struct TargetExtraInfo {
     #[serde(flatten)]
-    pub base_part_number: VirtaPartNumberType,
+    pub target_extra_info: VirtaExtraInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,8 +41,20 @@ pub struct TargetId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TargetAnnouncedAmount {
+pub struct TargetNumber {
     #[serde(flatten)]
-    pub target_announced_amount: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+    pub target_number: PositiveDecimalMax5IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EstablishedPartNumber {
+    #[serde(flatten)]
+    pub established_part_number: VirtaPartNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatAdvertisement {
+    #[serde(flatten)]
+    pub habitat_advertisement: VirtaHabitatAdvertisementType,
 }
 

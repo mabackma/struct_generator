@@ -17,15 +17,15 @@ pub struct Header {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TransmissionTime {
-    #[serde(flatten)]
-    pub transmission_time: dateTime,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct EntityTag {
     #[serde(flatten)]
     pub entity_tag: EntityTagType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TransmissionTime {
+    #[serde(flatten)]
+    pub transmission_time: dateTime,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

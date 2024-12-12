@@ -25,19 +25,13 @@ pub struct ForestUseDeclarationsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationReferenceType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AcceptanceDateType {
     #[serde(flatten)]
     pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalTextType {
+pub struct DeclarationReferenceType {
     #[serde(flatten)]
     pub base: String,
 }
@@ -46,5 +40,11 @@ pub struct AdditionalTextType {
 pub struct SpecialPermissionType {
     #[serde(flatten)]
     pub base: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalTextType {
+    #[serde(flatten)]
+    pub base: String,
 }
 

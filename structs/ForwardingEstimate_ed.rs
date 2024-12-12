@@ -1,13 +1,31 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StorageId {
+    #[serde(flatten)]
+    pub storage_id: ERPIdType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardingEstimate {
+    #[serde(flatten)]
+    pub forwarding_estimate: ForwardingEstimateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Volume {
+    #[serde(flatten)]
+    pub volume: PositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Code {
     #[serde(flatten)]
     pub code: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Day {
+pub struct Loads {
     #[serde(flatten)]
-    pub day: DateType,
+    pub loads: PositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +35,9 @@ pub struct ResourceId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentId {
+pub struct StartTime {
     #[serde(flatten)]
-    pub assortment_id: ERPIdType,
+    pub start_time: TimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,27 +47,15 @@ pub struct Assortment {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Unit {
+pub struct Day {
     #[serde(flatten)]
-    pub unit: WorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
-    #[serde(flatten)]
-    pub service_buyer_id: String20Type,
+    pub day: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Assortments {
     #[serde(flatten)]
     pub assortments: AssortmentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageId {
-    #[serde(flatten)]
-    pub storage_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,26 +71,20 @@ pub struct DestinationStorage {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Volume {
+pub struct AssortmentId {
     #[serde(flatten)]
-    pub volume: PositiveInteger4digitsType,
+    pub assortment_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StartTime {
+pub struct ServiceBuyerId {
     #[serde(flatten)]
-    pub start_time: TimeStampType,
+    pub service_buyer_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Loads {
+pub struct Unit {
     #[serde(flatten)]
-    pub loads: PositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardingEstimate {
-    #[serde(flatten)]
-    pub forwarding_estimate: ForwardingEstimateType,
+    pub unit: WorkCodeUnitType,
 }
 

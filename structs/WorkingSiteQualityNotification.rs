@@ -39,12 +39,6 @@ pub struct WorkingSiteQualityNotificationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonsType {
-    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
-    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct DisQualificationReasonDataType {
     #[serde(rename = "DisQualificationReason")]
     pub dis_qualification_reason: String10Type,
@@ -52,5 +46,11 @@ pub struct DisQualificationReasonDataType {
     pub dis_qualification_reason_text: String200Type,
     #[serde(rename = "DisQualificationPercentage")]
     pub dis_qualification_percentage: Decimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DisQualificationReasonsType {
+    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
+    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
 }
 

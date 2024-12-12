@@ -1,31 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CountryCode {
+pub struct PostOffice {
     #[serde(flatten)]
-    pub country_code: ISO3166char2CountryType,
+    pub post_office: PostOfficeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LastName {
+pub struct PersonOrganizationName {
     #[serde(flatten)]
-    pub last_name: LastNameType,
+    pub person_organization_name: PersonOrganizationNameType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MobilePhoneNumber {
+pub struct PostalCode {
     #[serde(flatten)]
-    pub mobile_phone_number: MobilePhoneNumberType,
+    pub postal_code: PostalCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StateText {
+pub struct OrganizationName {
     #[serde(flatten)]
-    pub state_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PhoneNumber {
-    #[serde(flatten)]
-    pub phone_number: PhoneNumberType,
+    pub organization_name: OrganizationNameType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,9 +35,33 @@ pub struct EmailAddress {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Address {
+pub struct FirstName {
     #[serde(flatten)]
-    pub address: AddressType,
+    pub first_name: FirstNameType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessId {
+    #[serde(flatten)]
+    pub business_id: YritysTunnusTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PersonId {
+    #[serde(flatten)]
+    pub person_id: HenkiloTunnusTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StateText {
+    #[serde(flatten)]
+    pub state_text: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CountryCode {
+    #[serde(flatten)]
+    pub country_code: ISO3166char2CountryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,15 +77,15 @@ pub struct ContactInformation {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationName {
+pub struct MobilePhoneNumber {
     #[serde(flatten)]
-    pub organization_name: OrganizationNameType,
+    pub mobile_phone_number: MobilePhoneNumberType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessId {
+pub struct Address {
     #[serde(flatten)]
-    pub business_id: YritysTunnusTyyppi,
+    pub address: AddressType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,21 +95,9 @@ pub struct CountryText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PersonId {
+pub struct PhoneNumber {
     #[serde(flatten)]
-    pub person_id: HenkiloTunnusTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostOffice {
-    #[serde(flatten)]
-    pub post_office: PostOfficeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostalCode {
-    #[serde(flatten)]
-    pub postal_code: PostalCodeType,
+    pub phone_number: PhoneNumberType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -101,14 +107,8 @@ pub struct StateCode {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FirstName {
+pub struct LastName {
     #[serde(flatten)]
-    pub first_name: FirstNameType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PersonOrganizationName {
-    #[serde(flatten)]
-    pub person_organization_name: PersonOrganizationNameType,
+    pub last_name: LastNameType,
 }
 

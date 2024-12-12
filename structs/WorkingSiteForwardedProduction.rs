@@ -1,30 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoadType {
-    #[serde(rename = "LoadNumber")]
-    pub load_number: u32,
-    #[serde(rename = "ForwardingDistance")]
-    pub forwarding_distance: u32,
-    #[serde(rename = "MeasurementDate")]
-    pub measurement_date: TimeStampType,
-    #[serde(rename = "PartitialLoad")]
-    pub partitial_load: Vec<PartitialLoadType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartitialLoadType {
-    #[serde(rename = "PartitialLoadId")]
-    pub partitial_load_id: u32,
-    #[serde(rename = "Assortment")]
-    pub assortment: String50Type,
-    #[serde(rename = "StorageId")]
-    pub storage_id: ERPIdType,
-    #[serde(rename = "LoadVolume", skip_serializing_if = "Option::is_none")]
-    pub load_volume: Option<Decimal3FractionDigitsType>,
-    #[serde(rename = "LoadGreenMass")]
-    pub load_green_mass: Decimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteForwardedProductionType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -56,5 +30,31 @@ pub struct WorkingSiteForwardedProductionType {
     pub load_count: u32,
     #[serde(rename = "Load")]
     pub load: Vec<LoadType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadType {
+    #[serde(rename = "LoadNumber")]
+    pub load_number: u32,
+    #[serde(rename = "ForwardingDistance")]
+    pub forwarding_distance: u32,
+    #[serde(rename = "MeasurementDate")]
+    pub measurement_date: TimeStampType,
+    #[serde(rename = "PartitialLoad")]
+    pub partitial_load: Vec<PartitialLoadType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartitialLoadType {
+    #[serde(rename = "PartitialLoadId")]
+    pub partitial_load_id: u32,
+    #[serde(rename = "Assortment")]
+    pub assortment: String50Type,
+    #[serde(rename = "StorageId")]
+    pub storage_id: ERPIdType,
+    #[serde(rename = "LoadVolume", skip_serializing_if = "Option::is_none")]
+    pub load_volume: Option<Decimal3FractionDigitsType>,
+    #[serde(rename = "LoadGreenMass")]
+    pub load_green_mass: Decimal3FractionDigitsType,
 }
 

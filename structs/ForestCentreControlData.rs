@@ -1,15 +1,15 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ControlObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<ForestCentreControlObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestCentreControlDataType {
     #[serde(flatten)]
     pub base: ForestCentreDataType,
     #[serde(rename = "ControlObjectData")]
     pub control_object_data: ControlObjectDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<ForestCentreControlObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

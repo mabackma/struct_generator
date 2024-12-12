@@ -1,11 +1,11 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NotificationTypeType {
+pub struct RecipientTypeType {
     #[serde(flatten)]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RecipientTypeType {
+pub struct NotificationTypeType {
     #[serde(flatten)]
     pub base: String,
 }

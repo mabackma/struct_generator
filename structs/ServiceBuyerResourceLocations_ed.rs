@@ -1,31 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Location {
+pub struct ResourceLocations {
     #[serde(flatten)]
-    pub location: PointGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: ERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
-    #[serde(flatten)]
-    pub contractor_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceLocation {
-    #[serde(flatten)]
-    pub resource_location: ResourceLocationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
-    #[serde(flatten)]
-    pub service_buyer_id: String20Type,
+    pub resource_locations: ResourceLocationsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,9 +11,9 @@ pub struct ServiceBuyerResourceLocations {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
+pub struct ServiceBuyerId {
     #[serde(flatten)]
-    pub resource_id: String20Type,
+    pub service_buyer_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,8 +23,32 @@ pub struct LocationTimestamp {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceLocations {
+pub struct Location {
     #[serde(flatten)]
-    pub resource_locations: ResourceLocationsType,
+    pub location: PointGeometryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractorId {
+    #[serde(flatten)]
+    pub contractor_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: ERPIdType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceLocation {
+    #[serde(flatten)]
+    pub resource_location: ResourceLocationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: String20Type,
 }
 

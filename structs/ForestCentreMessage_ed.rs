@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclaration {
+pub struct Message {
     #[serde(flatten)]
-    pub forest_use_declaration: ForestUseDeclarationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActApplication {
-    #[serde(flatten)]
-    pub financing_act_application: FinancingActApplicationType,
+    pub message: MessageType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,27 +11,33 @@ pub struct ForestCentreMessage {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringData {
-    #[serde(flatten)]
-    pub self_monitoring_data: ForestCentreSelfMonitoringDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Message {
-    #[serde(flatten)]
-    pub message: MessageType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct FinancingActCompletionDeclaration {
     #[serde(flatten)]
     pub financing_act_completion_declaration: FinancingActCompletionDeclarationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TimeStamp {
+pub struct ForestUseDeclaration {
     #[serde(flatten)]
-    pub time_stamp: TimeStampType,
+    pub forest_use_declaration: ForestUseDeclarationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SenderEmail {
+    #[serde(flatten)]
+    pub sender_email: EmailAddressType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringData {
+    #[serde(flatten)]
+    pub self_monitoring_data: ForestCentreSelfMonitoringDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActApplication {
+    #[serde(flatten)]
+    pub financing_act_application: FinancingActApplicationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,14 +47,14 @@ pub struct MooseDamageDeclaration {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDataUpdate {
+pub struct TimeStamp {
     #[serde(flatten)]
-    pub forest_data_update: ForestDataUpdateType,
+    pub time_stamp: TimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SenderEmail {
+pub struct ForestDataUpdate {
     #[serde(flatten)]
-    pub sender_email: EmailAddressType,
+    pub forest_data_update: ForestDataUpdateType,
 }
 

@@ -1,25 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyID {
-    #[serde(flatten)]
-    pub company_i_d: CompanyIDType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentCompactClasses {
     #[serde(flatten)]
     pub assortment_compact_classes: AssortmentCompactClassesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EndDate {
-    #[serde(flatten)]
-    pub end_date: EndDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseModeCode {
-    #[serde(flatten)]
-    pub purchase_mode_code: PurchaseModeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,15 +11,33 @@ pub struct RoundWoodSalesData {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StartDate {
+pub struct AreaCode {
     #[serde(flatten)]
-    pub start_date: StartDateType,
+    pub area_code: AreaCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AreaType {
     #[serde(flatten)]
     pub area_type: AreaTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StartDate {
+    #[serde(flatten)]
+    pub start_date: StartDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EndDate {
+    #[serde(flatten)]
+    pub end_date: EndDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompanyID {
+    #[serde(flatten)]
+    pub company_i_d: CompanyIDType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,8 +53,8 @@ pub struct RoundWoodSalesRow {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaCode {
+pub struct PurchaseModeCode {
     #[serde(flatten)]
-    pub area_code: AreaCodeType,
+    pub purchase_mode_code: PurchaseModeType,
 }
 

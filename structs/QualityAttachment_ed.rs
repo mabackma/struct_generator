@@ -5,9 +5,9 @@ pub struct Filename {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ModificationDate {
+pub struct QualityAttachment {
     #[serde(flatten)]
-    pub modification_date: DateType,
+    pub quality_attachment: QualityAttachmentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +17,15 @@ pub struct Bytes {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QualityAttachment {
+pub struct Version {
     #[serde(flatten)]
-    pub quality_attachment: QualityAttachmentType,
+    pub version: String10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Assortment {
+    #[serde(flatten)]
+    pub assortment: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,9 +35,9 @@ pub struct ServiceBuyerId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Version {
+pub struct ModificationDate {
     #[serde(flatten)]
-    pub version: String10Type,
+    pub modification_date: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -44,11 +50,5 @@ pub struct Infotext {
 pub struct DestinationStorage {
     #[serde(flatten)]
     pub destination_storage: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Assortment {
-    #[serde(flatten)]
-    pub assortment: String50Type,
 }
 

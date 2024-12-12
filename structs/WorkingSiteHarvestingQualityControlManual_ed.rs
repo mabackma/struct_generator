@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
+pub struct ControlLogVolume {
     #[serde(flatten)]
-    pub working_site_id: ERPIdType,
+    pub control_log_volume: Decimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementId {
+pub struct ControlLogCount {
     #[serde(flatten)]
-    pub measurement_id: PositiveIntegerType,
+    pub control_log_count: PositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,39 +23,33 @@ pub struct Measurer {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlLogLength {
-    #[serde(flatten)]
-    pub control_log_length: PositiveInteger5digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementDate {
-    #[serde(flatten)]
-    pub measurement_date: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LogCount {
-    #[serde(flatten)]
-    pub log_count: PositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ServiceBuyerId {
     #[serde(flatten)]
     pub service_buyer_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Measurement {
+pub struct Temperature {
     #[serde(flatten)]
-    pub measurement: MeasurementDataType,
+    pub temperature: integer,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelectionType {
+    #[serde(flatten)]
+    pub selection_type: String10Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct InfoText {
     #[serde(flatten)]
     pub info_text: String200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,33 +65,9 @@ pub struct LogVolume {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlLogVolume {
+pub struct ControlLogLength {
     #[serde(flatten)]
-    pub control_log_volume: Decimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Temperature {
-    #[serde(flatten)]
-    pub temperature: integer,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlLogCount {
-    #[serde(flatten)]
-    pub control_log_count: PositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
-    #[serde(flatten)]
-    pub resource_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelectionType {
-    #[serde(flatten)]
-    pub selection_type: String10Type,
+    pub control_log_length: PositiveInteger5digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -101,21 +77,45 @@ pub struct ProductKey {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct LogCount {
+    #[serde(flatten)]
+    pub log_count: PositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MeasurerType {
     #[serde(flatten)]
     pub measurer_type: MeasurerTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LogLength {
-    #[serde(flatten)]
-    pub log_length: PositiveInteger5digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Measurements {
     #[serde(flatten)]
     pub measurements: MeasurementsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Measurement {
+    #[serde(flatten)]
+    pub measurement: MeasurementDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementDate {
+    #[serde(flatten)]
+    pub measurement_date: TimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementId {
+    #[serde(flatten)]
+    pub measurement_id: PositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LogLength {
+    #[serde(flatten)]
+    pub log_length: PositiveInteger5digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

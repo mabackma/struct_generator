@@ -5,21 +5,15 @@ pub struct ServiceBuyerId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteNumber {
-    #[serde(flatten)]
-    pub working_site_number: WorkingSiteNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteStatus {
-    #[serde(flatten)]
-    pub working_site_status: WorkingSiteStatusType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ResourceId {
     #[serde(flatten)]
     pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractorId {
+    #[serde(flatten)]
+    pub contractor_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,8 +35,14 @@ pub struct WorkingSiteId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
+pub struct WorkingSiteNumber {
     #[serde(flatten)]
-    pub contractor_id: String20Type,
+    pub working_site_number: WorkingSiteNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteStatus {
+    #[serde(flatten)]
+    pub working_site_status: WorkingSiteStatusType,
 }
 

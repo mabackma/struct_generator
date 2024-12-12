@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceIdType {
+pub struct BusinessAcceptanceDateType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,15 +11,21 @@ pub struct MessageTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalInformationType {
+pub struct BusinessAcceptanceActorType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceDateType {
+pub struct BusinessMessageTimeStampType {
     #[serde(flatten)]
-    pub base: DateType,
+    pub base: TimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceIdType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,14 +53,8 @@ pub struct BusinessAcceptanceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessMessageTimeStampType {
+pub struct AdditionalInformationType {
     #[serde(flatten)]
-    pub base: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceActorType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
+    pub base: String,
 }
 

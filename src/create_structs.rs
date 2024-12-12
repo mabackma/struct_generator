@@ -1,5 +1,5 @@
 use crate::element_utils::{element_name, element_reference, element_type, extension_type, parse_type, reference_type};
-use crate::string_utils::remove_prefix;
+use crate::string_utils::{remove_prefix, slice_element_contents};
 
 use std::collections::HashMap;
 use quick_xml::events::BytesStart;
@@ -42,9 +42,11 @@ pub fn create_structs(
     reader: &mut Reader<&[u8]>,
     structs: &mut HashMap<String, XMLStruct>,
     element_definitions: &mut HashMap<String, String>,
+    content: &str,
 ) {
     let mut stack: Vec<XMLStruct> = Vec::new(); // Stack to keep track of active structs
     let mut current_name = String::new(); // Name of the current structure
+    let mut anonymous_complex_types: Vec<String> = Vec::new(); // Anonymous complex types
 
     loop {
         match reader.read_event() {
@@ -63,37 +65,29 @@ pub fn create_structs(
                     }
                 }
 
-                if e.name() == QName(b"xs:extension") {
-                    add_extension_fields(&mut stack, e);
-                }
-
-                if e.name() == QName(b"xs:restriction") {
+                if e.name() == QName(b"xs:extension") || e.name() == QName(b"xs:restriction") {
                     add_extension_fields(&mut stack, e);
                 }
 
                 if e.name() == QName(b"xs:element") {
-                    add_definition(e, element_definitions);
+                    add_definition(e, element_definitions, content, &mut stack, &mut current_name, &mut anonymous_complex_types);
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
-                    elements_and_groups(&mut stack, e, &element_definitions);
+                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types);
                 }
             }
             Ok(Empty(ref e)) => {
-                if e.name() == QName(b"xs:extension") {
-                    add_extension_fields(&mut stack, e);
-                }
-
-                if e.name() == QName(b"xs:restriction") {
+                if e.name() == QName(b"xs:extension") || e.name() == QName(b"xs:restriction") {
                     add_extension_fields(&mut stack, e);
                 }
 
                 if e.name() == QName(b"xs:element") {
-                    add_definition(e, element_definitions);
+                    add_definition(e, element_definitions, content, &mut stack, &mut current_name, &mut anonymous_complex_types);
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
-                    elements_and_groups(&mut stack, e, &element_definitions);
+                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types);
                 }
             }
             Ok(End(ref e)) => {
@@ -107,6 +101,7 @@ pub fn create_structs(
 
                         // Update the final struct with new fields or insert it if it doesn't exist
                         if let Some(existing_struct) = structs.get_mut(&completed_struct.name.clone()) {
+
                             // Merge fields: add only new unique fields
                             for field in completed_struct.fields {
                                 if !existing_struct.fields.iter().any(|f| f.name == field.name) {
@@ -114,6 +109,7 @@ pub fn create_structs(
                                 }
                             }
                         } else {
+
                             // No existing struct, insert the completed struct as it is
                             structs.insert(completed_struct.name.clone(), completed_struct.clone());
                         }
@@ -129,23 +125,45 @@ pub fn create_structs(
 }
 
 // Add element definitions to the hashmap
-pub fn add_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>) {
+pub fn add_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>, content: &str, stack: &mut Vec<XMLStruct>, current_name: &mut String, anonymous_complex_types: &mut Vec<String>) {
     let name = element_name(e);
     let typ = element_type(e);
 
     if let Some(n) = name {
         if let Some(t) = typ {
             if element_definitions.contains_key(&n) && element_definitions[&n] != t {
-                println!("Existing definition {}: {} -> {}", n, element_definitions[&n], t);
+                //println!("Existing definition {}: {} -> {}", n, element_definitions[&n], t);
             }
 
             element_definitions.insert(n, t);
+        } else {
+            if let Some(_) = slice_element_contents(content, &n) {
+
+                // Update the current name when creating a new struct
+                *current_name = n.clone();
+
+                anonymous_complex_types.push(n.clone());
+
+                // Create a struct for the anonymous complex type
+                let new_struct = XMLStruct {
+                    name: n.clone(),
+                    fields: Vec::new(),
+                };
+
+                stack.push(new_struct.clone());
+
+                // Create element definition using the name of the element and "Type"
+                element_definitions.insert(n.clone() + "Type", n);
+            } else {
+                println!("No type for element: {}", n);
+            }
         }
     }
 }
 
 // Add elements, groups, and attributes as fields to the struct
-fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &HashMap<String, String>) {
+fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &HashMap<String, String>, anonymous_complex_types: &mut Vec<String>) {
+
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
         let mut name = element_name(e);
@@ -166,6 +184,7 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
             n = remove_prefix(&n);
             field_type = remove_prefix(&field_type);
 
+            // Define vector and optional types
             parse_type(e, &mut field_type);
 
             if e.name() == QName(b"xs:attribute") {
@@ -173,7 +192,8 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
             }
 
             // Check if the field already exists
-            if !parent_struct.fields.iter().any(|field| field.name == n) {
+            if !parent_struct.fields.iter().any(|field| field.name == n) && !anonymous_complex_types.contains(&n) {
+
                 // Add the field to the parent struct
                 parent_struct.fields.push(XMLField {
                     name: n.clone(),
@@ -186,6 +206,7 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
 
 // Add extension fields to the struct
 fn add_extension_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
+
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
         let mut field_type = "".to_string();
@@ -201,24 +222,6 @@ fn add_extension_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
         });
     }
 }
-
-/* // Add restriction fields to the struct
-fn add_restriction_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
-    // If there's a parent struct, add this struct as a field to it
-    if let Some(parent_struct) = stack.last_mut() {
-        let mut field_type = "".to_string();
-
-        if let Some(typ) = restriction_type(e) {
-            field_type = remove_prefix(&typ);
-        }
-
-        // Add the field to the parent struct
-        parent_struct.fields.push(XMLField {
-            name: "base".to_string(),
-            field_type,
-        });
-    }
-} */
 
 // Move attributes to the beginning of the struct
 fn attributes_first(structs: &mut HashMap<String, XMLStruct>) {

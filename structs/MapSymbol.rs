@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbolsType {
+    #[serde(rename = "Symbol")]
+    pub symbol: Vec<MapSymbolDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MapSymbolType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -6,12 +12,6 @@ pub struct MapSymbolType {
     pub working_site_id: ERPIdType,
     #[serde(rename = "MapSymbols")]
     pub map_symbols: MapSymbolsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolsType {
-    #[serde(rename = "Symbol")]
-    pub symbol: Vec<MapSymbolDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

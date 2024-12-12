@@ -5,7 +5,7 @@ pub struct FeatureAdditionalCodeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureTypeType {
+pub struct OriginalFeatureCodeType {
     #[serde(flatten)]
     pub base: String,
 }
@@ -17,7 +17,7 @@ pub struct FeatureCodeExtensionsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OriginalFeatureCodeType {
+pub struct FeatureTypeType {
     #[serde(flatten)]
     pub base: String,
 }

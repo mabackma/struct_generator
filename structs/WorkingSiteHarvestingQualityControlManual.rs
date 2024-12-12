@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementsType {
-    #[serde(rename = "Measurement")]
-    pub measurement: Vec<MeasurementDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct MeasurementDataType {
     #[serde(rename = "MeasurementId")]
     pub measurement_id: PositiveIntegerType,
@@ -32,6 +26,12 @@ pub struct MeasurementDataType {
     pub log_count: PositiveInteger2digitsType,
     #[serde(rename = "ControlLogCount")]
     pub control_log_count: PositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementsType {
+    #[serde(rename = "Measurement")]
+    pub measurement: Vec<MeasurementDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

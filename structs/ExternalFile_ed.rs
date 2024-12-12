@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceId {
+pub struct Bytes {
     #[serde(flatten)]
-    pub resource_id: String20Type,
+    pub bytes: base64Binary,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,33 +11,9 @@ pub struct Label {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FileFormat {
-    #[serde(flatten)]
-    pub file_format: String5Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
-    #[serde(flatten)]
-    pub contractor_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ExternalFile {
     #[serde(flatten)]
     pub external_file: ExternalFileType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Bytes {
-    #[serde(flatten)]
-    pub bytes: base64Binary,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,15 +23,15 @@ pub struct StandId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentClass {
+pub struct WorkingSiteId {
     #[serde(flatten)]
-    pub document_class: DocumentClassType,
+    pub working_site_id: ERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserId {
+pub struct ServiceBuyerId {
     #[serde(flatten)]
-    pub product_user_id: String50Type,
+    pub service_buyer_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,14 +41,38 @@ pub struct StorageId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FileName {
     #[serde(flatten)]
     pub file_name: String100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerId {
+pub struct FileFormat {
     #[serde(flatten)]
-    pub service_buyer_id: String20Type,
+    pub file_format: String5Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductUserId {
+    #[serde(flatten)]
+    pub product_user_id: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DocumentClass {
+    #[serde(flatten)]
+    pub document_class: DocumentClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractorId {
+    #[serde(flatten)]
+    pub contractor_id: String20Type,
 }
 

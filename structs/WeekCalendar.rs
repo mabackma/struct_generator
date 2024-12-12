@@ -1,7 +1,23 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DayType {
+    #[serde(rename = "CalendarDay")]
+    pub calendar_day: DateType,
+    #[serde(rename = "Hours")]
+    pub hours: PositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct DaysType {
     #[serde(rename = "Day", skip_serializing_if = "Option::is_none")]
     pub day: Option<Vec<DayType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WeekCalendarType {
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: String20Type,
+    #[serde(rename = "Resources")]
+    pub resources: ResourcesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -30,21 +46,5 @@ pub struct ResourceDataType {
     pub working_hours_sunday: PositiveInteger2digitsType,
     #[serde(rename = "Days")]
     pub days: DaysType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DayType {
-    #[serde(rename = "CalendarDay")]
-    pub calendar_day: DateType,
-    #[serde(rename = "Hours")]
-    pub hours: PositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WeekCalendarType {
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: String20Type,
-    #[serde(rename = "Resources")]
-    pub resources: ResourcesType,
 }
 

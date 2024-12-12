@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<BasicFeature1Type>,
+pub struct StandsType1 {
+    #[serde(rename = "Stand")]
+    pub stand: Vec<StandType1>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -16,6 +16,12 @@ pub struct StandBasicDataWithGeometryType {
     pub polygon_geometry: String,
     #[serde(rename = "MultiPolygonGeometry")]
     pub multi_polygon_geometry: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<BasicFeature1Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -36,11 +42,5 @@ pub struct StandType1 {
     pub planned_operation_chains: Option<String>,
     #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
     pub special_features: Option<SpecialFeaturesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType1 {
-    #[serde(rename = "Stand")]
-    pub stand: Vec<StandType1>,
 }
 
