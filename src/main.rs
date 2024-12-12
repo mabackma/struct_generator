@@ -8,7 +8,7 @@ use quick_xml::events::Event::{Start, Empty, Eof};
 use quick_xml::name::QName;
 
 fn main() {
-    let folder_path = "./MetsatietostandardiskeematV33.03/V33"; // Path to your folder containing XSD files
+    let folder_path = "./MetsatietostandardiskeematV33.03"; // Path to your folder containing XSD files
     
     let mut file_dependencies: HashMap<String, HashSet<String>> = HashMap::new();
     create_file_dependencies(folder_path, &mut file_dependencies);
@@ -64,9 +64,21 @@ fn create_file_dependencies(folder_path: &str, file_dependencies: &mut HashMap<S
         let entry = entry.unwrap();
         let path = entry.path();
 
+        // Convert the path to a string and replace backslashes with forward slashes
+        let mut path_location = path.to_str().unwrap().to_string().replace("\\", "/");
+        if path_location.ends_with(".xsd") || path_location.ends_with(".dtd") {
+            let file_name = path_location.split("/").collect::<Vec<&str>>().last().unwrap().to_string();
+            path_location = path_location.replace(file_name.as_str(), "");
+        }
+
+        // If the entry is a directory, call this function recursively
+        if path.is_dir() {
+            create_file_dependencies(path.to_str().unwrap(), file_dependencies);
+        }
+
         // Check if the entry is a file and has a `.xsd` extension
         if path.is_file() && path.extension().and_then(|ext| ext.to_str()) == Some("xsd") {
-            let current_file = path.file_name().unwrap().to_str().unwrap();
+            let current_file = path.to_str().unwrap().replace("\\", "/");
             let content = read_xsd_file(path.to_str().unwrap()).unwrap();
             let mut reader = Reader::from_str(&content);
             let mut dependencies = HashSet::new();
@@ -75,20 +87,14 @@ fn create_file_dependencies(folder_path: &str, file_dependencies: &mut HashMap<S
             loop {
                 match reader.read_event() {
 
-                    Ok(Start(ref e)) => {
+                    Ok(Start(ref e)) | Ok(Empty(ref e)) => {
                         if e.name() == QName(b"xs:import") {
                             if let Some(location) = e.attributes().filter_map(|a| a.ok())
                                 .find(|a| a.key == QName(b"schemaLocation"))
                                 .and_then(|a| String::from_utf8(a.value.to_vec()).ok()) {
-                                dependencies.insert(location);
-                            }
-                        }
-                    },
-                    Ok(Empty(ref e)) => {
-                        if e.name() == QName(b"xs:import") {
-                            if let Some(location) = e.attributes().filter_map(|a| a.ok())
-                                .find(|a| a.key == QName(b"schemaLocation"))
-                                .and_then(|a| String::from_utf8(a.value.to_vec()).ok()) {
+
+                                // Add the dependency to the set
+                                let location = path_location.clone() + &location;
                                 dependencies.insert(location);
                             }
                         }
