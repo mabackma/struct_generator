@@ -15,7 +15,7 @@ fn main() {
 
     let sorted_files = sort_files(&file_dependencies);
     for file in sorted_files {
-        println!("{}", file);
+        println!("Processing {}...", file);
         println!("  {:#?}", file_dependencies.get(&file));
         println!();
     }
@@ -117,7 +117,8 @@ fn sort_files(file_dependencies: &HashMap<String, HashSet<String>>) -> Vec<Strin
 }
 
 // Depth-first traversal and sorting
-// Changed two .xsd files because they had circular dependencies: WorkingSiteTrade_Product.xsd and WorkingSiteTrade_Common.xsd
+// Changed two .xsd files because they had circular dependencies:
+// WorkingSiteTrade_CallForOfferWorkingSite.xsd and WorkingSiteTrade_Assortment.xsd
 fn topological_sort(
     file_name: &str,
     file_dependencies: &HashMap<String, HashSet<String>>,
