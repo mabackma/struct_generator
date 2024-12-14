@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
+pub struct AgeType {
     #[serde(flatten)]
-    pub base: TreeSpeciesType,
+    pub base: CoAgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
+pub struct TreeSpeciesType {
     #[serde(flatten)]
-    pub base: StoreyType,
+    pub base: CoTreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BasalAreaType {
+    #[serde(flatten)]
+    pub base: CoBasalAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,27 +23,21 @@ pub struct StemDistributionStrataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AgeType {
+pub struct StoreyType {
     #[serde(flatten)]
-    pub base: AgeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BasalAreaType {
-    #[serde(flatten)]
-    pub base: BasalAreaType,
+    pub base: CoStoreyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StemDistributionStratumType {
     #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "ChangeState", skip_serializing_if = "Option::is_none")]
-    pub change_state: Option<ChangeStateType>,
-    #[serde(rename = "ChangeTime", skip_serializing_if = "Option::is_none")]
-    pub change_time: Option<ChangeTimeType>,
+    pub id: Xsstring,
+    #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
+    pub co_change_state: Option<String>,
+    #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
+    pub co_change_time: Option<String>,
     #[serde(rename = "StratumNumber", skip_serializing_if = "Option::is_none")]
-    pub stratum_number: Option<StratumNumberType>,
+    pub stratum_number: Option<CoStratumNumberType>,
     #[serde(rename = "TreeSpecies")]
     pub tree_species: TreeSpeciesType,
     #[serde(rename = "Storey", skip_serializing_if = "Option::is_none")]
@@ -46,7 +46,7 @@ pub struct StemDistributionStratumType {
     pub age: Option<AgeType>,
     #[serde(rename = "BasalArea")]
     pub basal_area: BasalAreaType,
-    #[serde(rename = "DistributionModelGroup")]
-    pub distribution_model_group: String,
+    #[serde(rename = "CddDistributionModelGroup")]
+    pub cdd_distribution_model_group: String,
 }
 

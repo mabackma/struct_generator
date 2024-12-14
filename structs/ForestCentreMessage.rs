@@ -1,20 +1,20 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestCentreMessageType {
     #[serde(rename = "@id")]
-    pub id: String,
+    pub id: Xsstring,
     #[serde(rename = "@schemaPackageVersion")]
-    pub schema_package_version: ForestDataStandardSchemaPackageVersionType,
+    pub schema_package_version: CoForestDataStandardSchemaPackageVersionType,
     #[serde(rename = "@schemaPackageSubversion")]
-    pub schema_package_subversion: ForestDataStandardSchemaPackageSubversionType,
+    pub schema_package_subversion: CoForestDataStandardSchemaPackageSubversionType,
     #[serde(rename = "@schemaPackageVersionDate")]
-    pub schema_package_version_date: DateType,
+    pub schema_package_version_date: CoDateType,
     #[serde(rename = "TimeStamp")]
-    pub time_stamp: TimeStampType,
+    pub time_stamp: CoTimeStampType,
     #[serde(rename = "Message")]
-    pub message: MessageType,
+    pub message: CoMessageType,
     #[serde(rename = "SenderEmail", skip_serializing_if = "Option::is_none")]
-    pub sender_email: Option<EmailAddressType>,
+    pub sender_email: Option<CiEmailAddressType>,
     #[serde(rename = "ForestUseDeclaration")]
-    pub forest_use_declaration: ForestUseDeclarationType,
+    pub forest_use_declaration: FudForestUseDeclarationType,
 }
 

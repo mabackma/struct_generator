@@ -18,7 +18,7 @@ fn main() {
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
     for file in sorted_files {
-        println!("Processing file: {}", file);
+        //println!("Processing file: {}", file);
         process_xsd_file(&file, &mut element_definitions);
     }
 

@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstatesType {
+    #[serde(rename = "RealEstate")]
+    pub real_estate: Vec<RealEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct RealEstatesWithOwnersInformationType2 {
     #[serde(rename = "RealEstateOwners")]
     pub real_estate_owners: RealEstateOwnersType,
@@ -13,7 +19,7 @@ pub struct RealEstateType {
     #[serde(rename = "RealEstateOwners", skip_serializing_if = "Option::is_none")]
     pub real_estate_owners: Option<RealEstateOwnersType>,
     #[serde(rename = "Parcels", skip_serializing_if = "Option::is_none")]
-    pub parcels: Option<String>,
+    pub parcels: Option<ParcelsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -25,14 +31,8 @@ pub struct RealEstatesWithOwnersInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstatesType {
-    #[serde(rename = "RealEstate")]
-    pub real_estate: Vec<RealEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct RealEstateOwnersType {
     #[serde(rename = "RealEstateOwner")]
-    pub real_estate_owner: Vec<ContactInformationType>,
+    pub real_estate_owner: Vec<CiContactInformationType>,
 }
 
