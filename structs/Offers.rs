@@ -7,6 +7,6 @@ pub struct Offers {
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: DateType,
     #[serde(rename = "Offer", skip_serializing_if = "Option::is_none")]
-    pub offer: Option<Vec<String>>,
+    pub offer: Option<Vec<OfferType>>,
 }
 

@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaInspectionTypeType {
+pub struct VirtaProjectStatusType {
     #[serde(flatten)]
-    pub base: VirtaInspectionTypeType,
+    pub base: VirtaProjectStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSaveIncompleteType {
+pub struct AnnouncementIdType {
     #[serde(flatten)]
-    pub base: VirtaSaveIncompleteType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -19,9 +19,27 @@ pub struct InspectionDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AnnouncementIdType {
+pub struct DataInformationType {
+    #[serde(rename = "DataName")]
+    pub data_name: String,
+    #[serde(rename = "DataId")]
+    pub data_id: String,
+    #[serde(rename = "InspectorName")]
+    pub inspector_name: String,
+    #[serde(rename = "Password")]
+    pub password: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaInspectionTypeType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: VirtaInspectionTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTargetSelectionType {
+    #[serde(flatten)]
+    pub base: VirtaTargetSelectionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -31,21 +49,27 @@ pub struct VirtaMastoInspectionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPhaseType {
+    #[serde(flatten)]
+    pub base: VirtaPhaseType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaAdvertiserType {
+    #[serde(flatten)]
+    pub base: VirtaAdvertiserType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaSumTableAreaType {
     #[serde(flatten)]
     pub base: VirtaSumTableAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaAdvertisementDatingType {
-    #[serde(flatten)]
-    pub base: VirtaAdvertisementDatingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPhaseType {
-    #[serde(flatten)]
-    pub base: VirtaPhaseType,
+pub struct TargetsType {
+    #[serde(rename = "Target")]
+    pub target: Vec<PositiveIntegerType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -151,19 +175,25 @@ pub struct InspectionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HelpGeometriesType {
-    #[serde(rename = "PolygonGeometry", skip_serializing_if = "Option::is_none")]
-    pub polygon_geometry: Option<Vec<String>>,
-    #[serde(rename = "LineGeometry", skip_serializing_if = "Option::is_none")]
-    pub line_geometry: Option<Vec<String>>,
-    #[serde(rename = "PointGeometry", skip_serializing_if = "Option::is_none")]
-    pub point_geometry: Option<Vec<String>>,
+pub struct VirtaIdType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaProjectStatusType {
+pub struct VirtaSaveIncompleteType {
     #[serde(flatten)]
-    pub base: VirtaProjectStatusType,
+    pub base: VirtaSaveIncompleteType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HelpGeometriesType {
+    #[serde(rename = "PolygonGeometry", skip_serializing_if = "Option::is_none")]
+    pub polygon_geometry: Option<Vec<PolygonGeometryType>>,
+    #[serde(rename = "LineGeometry", skip_serializing_if = "Option::is_none")]
+    pub line_geometry: Option<Vec<LineGeometryType>>,
+    #[serde(rename = "PointGeometry", skip_serializing_if = "Option::is_none")]
+    pub point_geometry: Option<Vec<PointGeometryType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -173,44 +203,14 @@ pub struct VirtaLawType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaIdType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DataInformationType {
-    #[serde(rename = "DataName")]
-    pub data_name: String,
-    #[serde(rename = "DataId")]
-    pub data_id: String,
-    #[serde(rename = "InspectorName")]
-    pub inspector_name: String,
-    #[serde(rename = "Password")]
-    pub password: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetsType {
-    #[serde(rename = "Target")]
-    pub target: Vec<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaAdvertiserType {
-    #[serde(flatten)]
-    pub base: VirtaAdvertiserType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaApprovalType {
     #[serde(flatten)]
     pub base: VirtaApprovalType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTargetSelectionType {
+pub struct VirtaAdvertisementDatingType {
     #[serde(flatten)]
-    pub base: VirtaTargetSelectionType,
+    pub base: VirtaAdvertisementDatingType,
 }
 

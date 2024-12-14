@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalCodeType {
+pub struct PublicityType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: PublicityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,11 +11,67 @@ pub struct TechnicalContactPersonType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: OperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RelatedCallForOffersType {
+    #[serde(rename = "RelatedCallForOffer")]
+    pub related_call_for_offer: Vec<RelatedCallForOfferType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RelatedCallForOfferType {
+    #[serde(rename = "RelatedCallForOfferId")]
+    pub related_call_for_offer_id: String,
+    #[serde(rename = "RelatedCallForOfferDescription", skip_serializing_if = "Option::is_none")]
+    pub related_call_for_offer_description: Option<String1500Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PurchaseModeType {
+    #[serde(flatten)]
+    pub base: PurchaseModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalCodeType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsedPricingMethodTypeType {
+    #[serde(flatten)]
+    pub base: UsedPricingMethodTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferSilvicultureInfoType {
+    #[serde(rename = "IncludePaymentPlan", skip_serializing_if = "Option::is_none")]
+    pub include_payment_plan: Option<IncludePaymentPlanType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CallForOfferType {
     #[serde(rename = "@id")]
     pub id: String,
     #[serde(rename = "TimeStamp")]
-    pub time_stamp: String,
+    pub time_stamp: TimeStampType,
     #[serde(rename = "RelatedCallForOffers", skip_serializing_if = "Option::is_none")]
     pub related_call_for_offers: Option<RelatedCallForOffersType>,
     #[serde(rename = "AdditionalCode", skip_serializing_if = "Option::is_none")]
@@ -37,64 +93,8 @@ pub struct CallForOfferType {
     #[serde(rename = "CallForOfferSilvicultureInfo", skip_serializing_if = "Option::is_none")]
     pub call_for_offer_silviculture_info: Option<CallForOfferSilvicultureInfoType>,
     #[serde(rename = "CallForOfferWorkingSites")]
-    pub call_for_offer_working_sites: String,
+    pub call_for_offer_working_sites: CallForOfferWorkingSitesType,
     #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub documents: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PublicityType {
-    #[serde(flatten)]
-    pub base: PublicityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RelatedCallForOffersType {
-    #[serde(rename = "RelatedCallForOffer")]
-    pub related_call_for_offer: Vec<RelatedCallForOfferType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferSilvicultureInfoType {
-    #[serde(rename = "IncludePaymentPlan", skip_serializing_if = "Option::is_none")]
-    pub include_payment_plan: Option<IncludePaymentPlanType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethodTypeType {
-    #[serde(flatten)]
-    pub base: UsedPricingMethodTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseModeType {
-    #[serde(flatten)]
-    pub base: PurchaseModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: OperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RelatedCallForOfferType {
-    #[serde(rename = "RelatedCallForOfferId")]
-    pub related_call_for_offer_id: String,
-    #[serde(rename = "RelatedCallForOfferDescription", skip_serializing_if = "Option::is_none")]
-    pub related_call_for_offer_description: Option<String1500Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: DateType,
+    pub documents: Option<DocumentsType>,
 }
 

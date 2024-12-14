@@ -45,24 +45,23 @@ pub fn to_snake_case(name: &str) -> String {
     snake_case
 }
 
-// Slice the content of an element using find and rfind
-pub fn slice_element_contents(content: &str, element_name: &str) -> Option<String> {
-
-    // Find the start and end positions for the <xs:element name="CallForOffers">
-    let start_tag = format!("<xs:element name=\"{}\">", element_name);
-    let end_tag = "</xs:element>";
-
+pub fn slice_contents(content: &str, tag: &str, name: &str) -> Option<String> {
+    
     // Find the start and end positions of the element
+    let start_tag = format!("<xs:{} name=\"{}\">", tag, name);
+    let end_tag = format!("</xs:{}>", tag);
+
+    // Find the start position of the element
     if let Some(start_pos) = content.find(&start_tag) {
-        if let Some(end_pos) = content.rfind(end_tag) {
-            // Slice the content between the start and end positions
-            let start_pos = start_pos + start_tag.len();
+        // Find the first occurrence of the end tag after the start position
+        if let Some(relative_end_pos) = content[start_pos..].find(&end_tag) {
+            let end_pos = start_pos + relative_end_pos + end_tag.len();
+
+            // Slice the content including the start and end tags
             let element_content = &content[start_pos..end_pos];
-            Some(element_content.trim().to_string())
-        } else {
-            None
+            return Some(element_content.trim().to_string());
         }
-    } else {
-        None
     }
+
+    None
 }

@@ -2,6 +2,8 @@ use std::collections::HashMap;
 use quick_xml::events::BytesStart;
 use quick_xml::name::QName;
 
+use crate::string_utils::remove_prefix;
+
 // Retrieve the element reference
 pub fn element_reference(e: &BytesStart<'_>) -> Option<String> {
     let e_ref = e.attributes().filter_map(|a| a.ok())
@@ -41,8 +43,13 @@ pub fn extension_type(e: &BytesStart<'_>) -> Option<String> {
 // Retrieve the type of the reference
 pub fn reference_type(ref_name: &str, element_definitions: &HashMap<String, String>) -> Option<String> {
     // Search for the reference type in the element definitions
-    if let Some(typ) = element_definitions.get(ref_name) {        
+    if let Some(typ) = element_definitions.get(&remove_prefix(ref_name)) {        
         return Some(typ.clone());
+    }
+    //println!("Reference type not found: {}", ref_name);
+    if ref_name == "ProposalAndOriginalYearGroup" {
+        //println!("Reference type not found: {}", ref_name);
+        //println!("{:?}", element_definitions);
     }
 
     // TODO: Implement a way to get the reference type from the XSD file 

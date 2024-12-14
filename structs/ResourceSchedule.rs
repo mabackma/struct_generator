@@ -1,15 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitesType {
-    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
-    pub working_site: Option<Vec<WorkingSiteType>>,
+pub struct ResourcesType {
+    #[serde(rename = "Resource")]
+    pub resource: Vec<ResourceDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceScheduleType {
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: String20Type,
-    #[serde(rename = "Resources")]
-    pub resources: ResourcesType,
+pub struct WorkingSitesType {
+    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
+    pub working_site: Option<Vec<WorkingSiteType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -45,8 +43,10 @@ pub struct WorkingSiteType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourcesType {
-    #[serde(rename = "Resource")]
-    pub resource: Vec<ResourceDataType>,
+pub struct ResourceScheduleType {
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: String20Type,
+    #[serde(rename = "Resources")]
+    pub resources: ResourcesType,
 }
 

@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStrataType {
-    #[serde(rename = "TreeStratum")]
-    pub tree_stratum: Vec<TreeStratumType>,
+pub struct StemCountType {
+    #[serde(flatten)]
+    pub base: StemCountType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,63 +11,15 @@ pub struct VolumeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolumeType {
-    #[serde(flatten)]
-    pub base: PulpWoodVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogVolumeType {
-    #[serde(flatten)]
-    pub base: SawLogVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStrata2Type {
-    #[serde(rename = "TreeStratum")]
-    pub tree_stratum: Vec<TreeStratum2Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
-    #[serde(flatten)]
-    pub base: TreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LeafBiomassType {
-    #[serde(flatten)]
-    pub base: LeafBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SeedlingOriginType {
-    #[serde(flatten)]
-    pub base: SeedlingOriginType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AgeType {
-    #[serde(flatten)]
-    pub base: AgeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StemBiomassType {
     #[serde(flatten)]
     pub base: StemBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BranchBiomassType {
-    #[serde(flatten)]
-    pub base: BranchBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StumpBiomassType {
-    #[serde(flatten)]
-    pub base: StumpBiomassType,
+pub struct TreesType {
+    #[serde(rename = "TreeListItem", skip_serializing_if = "Option::is_none")]
+    pub tree_list_item: Option<Vec<TreeListItemType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -75,9 +27,9 @@ pub struct TreeStratumType {
     #[serde(rename = "@id")]
     pub id: String,
     #[serde(rename = "ChangeState", skip_serializing_if = "Option::is_none")]
-    pub change_state: Option<String>,
+    pub change_state: Option<ChangeStateType>,
     #[serde(rename = "ChangeTime", skip_serializing_if = "Option::is_none")]
-    pub change_time: Option<String>,
+    pub change_time: Option<ChangeTimeType>,
     #[serde(rename = "StratumNumber")]
     pub stratum_number: StratumNumberType,
     #[serde(rename = "TreeSpecies")]
@@ -117,7 +69,7 @@ pub struct TreeStratumType {
     #[serde(rename = "StumpBiomass", skip_serializing_if = "Option::is_none")]
     pub stump_biomass: Option<StumpBiomassType>,
     #[serde(rename = "DataSource", skip_serializing_if = "Option::is_none")]
-    pub data_source: Option<String>,
+    pub data_source: Option<DataSourceType>,
     #[serde(rename = "Value", skip_serializing_if = "Option::is_none")]
     pub value: Option<Decimal2FractionDigitsType>,
     #[serde(rename = "Currency", skip_serializing_if = "Option::is_none")]
@@ -127,21 +79,9 @@ pub struct TreeStratumType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemCountType {
-    #[serde(flatten)]
-    pub base: StemCountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeGrowthType {
-    #[serde(flatten)]
-    pub base: VolumeGrowthType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: StoreyType,
+pub struct TreeStrataType {
+    #[serde(rename = "TreeStratum")]
+    pub tree_stratum: Vec<TreeStratumType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -151,13 +91,73 @@ pub struct SawLogPercentType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeGrowthType {
+    #[serde(flatten)]
+    pub base: VolumeGrowthType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SeedlingOriginType {
+    #[serde(flatten)]
+    pub base: SeedlingOriginType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StumpBiomassType {
+    #[serde(flatten)]
+    pub base: StumpBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeStrata2Type {
+    #[serde(rename = "TreeStratum")]
+    pub tree_stratum: Vec<TreeStratum2Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+    #[serde(flatten)]
+    pub base: TreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PulpWoodVolumeType {
+    #[serde(flatten)]
+    pub base: PulpWoodVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanDiameterType {
+    #[serde(flatten)]
+    pub base: DiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogVolumeType {
+    #[serde(flatten)]
+    pub base: SawLogVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LeafBiomassType {
+    #[serde(flatten)]
+    pub base: LeafBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BranchBiomassType {
+    #[serde(flatten)]
+    pub base: BranchBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeStratum2Type {
     #[serde(rename = "@id")]
     pub id: String,
     #[serde(rename = "ChangeState", skip_serializing_if = "Option::is_none")]
-    pub change_state: Option<String>,
+    pub change_state: Option<ChangeStateType>,
     #[serde(rename = "ChangeTime", skip_serializing_if = "Option::is_none")]
-    pub change_time: Option<String>,
+    pub change_time: Option<ChangeTimeType>,
     #[serde(rename = "StratumNumber", skip_serializing_if = "Option::is_none")]
     pub stratum_number: Option<StratumNumberType>,
     #[serde(rename = "TreeSpecies", skip_serializing_if = "Option::is_none")]
@@ -197,7 +197,7 @@ pub struct TreeStratum2Type {
     #[serde(rename = "StumpBiomass", skip_serializing_if = "Option::is_none")]
     pub stump_biomass: Option<StumpBiomassType>,
     #[serde(rename = "DataSource", skip_serializing_if = "Option::is_none")]
-    pub data_source: Option<String>,
+    pub data_source: Option<DataSourceType>,
     #[serde(rename = "Value", skip_serializing_if = "Option::is_none")]
     pub value: Option<Decimal2FractionDigitsType>,
     #[serde(rename = "Currency", skip_serializing_if = "Option::is_none")]
@@ -207,14 +207,14 @@ pub struct TreeStratum2Type {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
+pub struct AgeType {
     #[serde(flatten)]
-    pub base: DiameterType,
+    pub base: AgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreesType {
-    #[serde(rename = "TreeListItem", skip_serializing_if = "Option::is_none")]
-    pub tree_list_item: Option<Vec<TreeListItemType>>,
+pub struct StoreyType {
+    #[serde(flatten)]
+    pub base: StoreyType,
 }
 

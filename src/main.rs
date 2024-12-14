@@ -15,8 +15,11 @@ fn main() {
 
     let sorted_files = sort_files(&file_dependencies);
 
+    let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
+
     for file in sorted_files {
-        process_xsd_file(&file);
+        println!("Processing file: {}", file);
+        process_xsd_file(&file, &mut element_definitions);
     }
 
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
@@ -128,9 +131,8 @@ fn topological_sort(
 }
 
 // Creates the structs and element definitions and writes them to files in the `structs` folder
-fn process_xsd_file(current_file: &str) {
+fn process_xsd_file(current_file: &str, element_definitions: &mut HashMap<String, String>) {
     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
-    let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
     let mut file_name = current_file.split("/").collect::<Vec<&str>>().last().unwrap().to_string();
     file_name = "./structs/".to_string() + &file_name.replace(".xsd", ".rs");
@@ -140,7 +142,7 @@ fn process_xsd_file(current_file: &str) {
     let content = read_xsd_file(current_file).unwrap();
     let mut reader = Reader::from_str(&content);
 
-    create_structs(&mut reader, &mut structs, &mut element_definitions, &content);
+    create_structs(&mut reader, &mut structs, element_definitions, &content);
 
     structs_to_file(&structs, &file_name).unwrap();
     element_definitions_to_file(&element_definitions, &elements_file_name).unwrap();

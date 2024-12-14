@@ -1,34 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MessageTypeType {
-    #[serde(flatten)]
-    pub base: MessageTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceActorType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessMessageTimeStampType {
-    #[serde(flatten)]
-    pub base: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceIdType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct BusinessAcceptanceType {
     #[serde(rename = "@message")]
     pub message: MessageTypeType,
@@ -37,7 +7,7 @@ pub struct BusinessAcceptanceType {
     #[serde(rename = "@parentVersionNo")]
     pub parent_version_no: String,
     #[serde(rename = "TimeStamp")]
-    pub time_stamp: String,
+    pub time_stamp: TimeStampType,
     #[serde(rename = "BusinessMessageTimeStamp")]
     pub business_message_time_stamp: BusinessMessageTimeStampType,
     #[serde(rename = "BusinessAcceptanceActor")]
@@ -53,8 +23,38 @@ pub struct BusinessAcceptanceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceIdType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AdditionalInformationType {
     #[serde(flatten)]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageTypeType {
+    #[serde(flatten)]
+    pub base: MessageTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessMessageTimeStampType {
+    #[serde(flatten)]
+    pub base: TimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceActorType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
 }
 
