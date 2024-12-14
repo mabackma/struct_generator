@@ -1,15 +1,15 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OrientationType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CalibrationType {
     #[serde(rename = "CalibrationDate")]
     pub calibration_date: TimeStampType,
     #[serde(rename = "CalibrationAdjustment")]
     pub calibration_adjustment: PositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrientationType {
-    #[serde(flatten)]
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

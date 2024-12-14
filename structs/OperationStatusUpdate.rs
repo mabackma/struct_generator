@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationsType {
-    #[serde(rename = "Operation")]
-    pub operation: Vec<OperationDefType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationDefType {
     #[serde(rename = "@parentId")]
     pub parent_id: String,
@@ -13,7 +7,7 @@ pub struct OperationDefType {
     #[serde(rename = "@mainType")]
     pub main_type: MainTypeType,
     #[serde(rename = "TimeStamp")]
-    pub time_stamp: String,
+    pub time_stamp: TimeStampType,
     #[serde(rename = "OperationType")]
     pub operation_type: OperationTypeType,
     #[serde(rename = "OperationStatus")]
@@ -25,7 +19,9 @@ pub struct OperationDefType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationTypeType {
+pub struct MainTypeType {
+    #[serde(flatten)]
+    pub base: MainTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,14 +31,18 @@ pub struct ActingDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MainTypeType {
-    #[serde(flatten)]
-    pub base: MainTypeType,
+pub struct OperationsType {
+    #[serde(rename = "Operation")]
+    pub operation: Vec<OperationDefType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ResponsibleActorType {
     #[serde(flatten)]
     pub base: ContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationTypeType {
 }
 

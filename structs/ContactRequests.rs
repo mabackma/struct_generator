@@ -7,6 +7,6 @@ pub struct ContactRequests {
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: DateType,
     #[serde(rename = "ContactRequest")]
-    pub contact_request: Vec<String>,
+    pub contact_request: Vec<ContactRequestType>,
 }
 

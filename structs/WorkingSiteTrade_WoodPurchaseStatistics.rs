@@ -1,31 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RoundWoodSalesRowsType {
-    #[serde(rename = "RoundWoodSalesRow")]
-    pub round_wood_sales_row: Vec<RoundWoodSalesRowType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaTypeType {
+pub struct EndDateType {
     #[serde(flatten)]
-    pub base: AreaTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StartDateType {
-    #[serde(flatten)]
-    pub base: AlkuPvmTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RoundWoodSalesDataType {
-    #[serde(rename = "CompanyID")]
-    pub company_i_d: CompanyIDType,
-    #[serde(rename = "StartDate")]
-    pub start_date: StartDateType,
-    #[serde(rename = "EndDate")]
-    pub end_date: EndDateType,
-    #[serde(rename = "RoundWoodSalesRows")]
-    pub round_wood_sales_rows: RoundWoodSalesRowsType,
+    pub base: LoppuPvmTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,9 +17,21 @@ pub struct RoundWoodSalesRowType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyIDType {
+pub struct RoundWoodSalesDataType {
+    #[serde(rename = "CompanyID")]
+    pub company_i_d: CompanyIDType,
+    #[serde(rename = "StartDate")]
+    pub start_date: StartDateType,
+    #[serde(rename = "EndDate")]
+    pub end_date: EndDateType,
+    #[serde(rename = "RoundWoodSalesRows")]
+    pub round_wood_sales_rows: RoundWoodSalesRowsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaTypeType {
     #[serde(flatten)]
-    pub base: YritysTunnusTyyppi,
+    pub base: AreaTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,8 +41,20 @@ pub struct AreaCodeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EndDateType {
+pub struct CompanyIDType {
     #[serde(flatten)]
-    pub base: LoppuPvmTyyppi,
+    pub base: YritysTunnusTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StartDateType {
+    #[serde(flatten)]
+    pub base: AlkuPvmTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RoundWoodSalesRowsType {
+    #[serde(rename = "RoundWoodSalesRow")]
+    pub round_wood_sales_row: Vec<RoundWoodSalesRowType>,
 }
 

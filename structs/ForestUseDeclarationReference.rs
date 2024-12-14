@@ -5,7 +5,7 @@ pub struct ForestUseDeclarationType {
     #[serde(rename = "@id")]
     pub id: String,
     #[serde(rename = "TimeStamp")]
-    pub time_stamp: String,
+    pub time_stamp: TimeStampType,
     #[serde(rename = "DeclarationReference")]
     pub declaration_reference: DeclarationReferenceType,
     #[serde(rename = "AcceptanceDate")]
@@ -37,14 +37,14 @@ pub struct DeclarationReferenceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialPermissionType {
-    #[serde(flatten)]
-    pub base: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AdditionalTextType {
     #[serde(flatten)]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialPermissionType {
+    #[serde(flatten)]
+    pub base: YesNoType,
 }
 

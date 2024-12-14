@@ -1,30 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectGeometryType {
-    #[serde(rename = "ChangeState", skip_serializing_if = "Option::is_none")]
-    pub change_state: Option<String>,
-    #[serde(rename = "ChangeTime", skip_serializing_if = "Option::is_none")]
-    pub change_time: Option<String>,
-    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
-    pub area: Option<AreaType>,
-    #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
-    pub area_decrease: Option<AreaType>,
-    #[serde(rename = "AlternativeGeometriesGroup")]
-    pub alternative_geometries_group: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectsType {
-    #[serde(rename = "ParentObject")]
-    pub parent_object: Vec<ParentObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestRealizationDataType {
     #[serde(rename = "@id")]
     pub id: String,
@@ -59,11 +33,37 @@ pub struct GeometryObjectType {
     #[serde(rename = "StandBasicData", skip_serializing_if = "Option::is_none")]
     pub stand_basic_data: Option<StandBasicDataType>,
     #[serde(rename = "TreeStandData", skip_serializing_if = "Option::is_none")]
-    pub tree_stand_data: Option<String>,
+    pub tree_stand_data: Option<TreeStandDataType>,
     #[serde(rename = "Operations", skip_serializing_if = "Option::is_none")]
-    pub operations: Option<String>,
+    pub operations: Option<OperationsType>,
     #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
-    pub special_features: Option<String>,
+    pub special_features: Option<SpecialFeaturesType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParentObjectsType {
+    #[serde(rename = "ParentObject")]
+    pub parent_object: Vec<ParentObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectGeometryType {
+    #[serde(rename = "ChangeState", skip_serializing_if = "Option::is_none")]
+    pub change_state: Option<ChangeStateType>,
+    #[serde(rename = "ChangeTime", skip_serializing_if = "Option::is_none")]
+    pub change_time: Option<ChangeTimeType>,
+    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
+    pub area: Option<AreaType>,
+    #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
+    pub area_decrease: Option<AreaType>,
+    #[serde(rename = "AlternativeGeometriesGroup")]
+    pub alternative_geometries_group: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectTypeType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

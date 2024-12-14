@@ -1,7 +1,15 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
+pub struct WorkCodeDataType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "AmountPlanned")]
+    pub amount_planned: Decimal3FractionDigitsType,
+    #[serde(rename = "AmountNotified")]
+    pub amount_notified: Decimal3FractionDigitsType,
+    #[serde(rename = "AmountAccounted")]
+    pub amount_accounted: Decimal3FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: WorkCodeUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,23 +37,15 @@ pub struct AssortmentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeDataType>,
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeDataType {
+pub struct WorkCodesType {
     #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "AmountPlanned")]
-    pub amount_planned: Decimal3FractionDigitsType,
-    #[serde(rename = "AmountNotified")]
-    pub amount_notified: Decimal3FractionDigitsType,
-    #[serde(rename = "AmountAccounted")]
-    pub amount_accounted: Decimal3FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: WorkCodeUnitType,
+    pub work_code: Vec<WorkCodeDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

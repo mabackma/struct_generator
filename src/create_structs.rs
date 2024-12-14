@@ -1,5 +1,5 @@
 use crate::element_utils::{element_name, element_reference, element_type, extension_type, parse_type, reference_type};
-use crate::string_utils::{remove_prefix, slice_element_contents};
+use crate::string_utils::{remove_prefix, slice_contents};
 
 use std::collections::HashMap;
 use quick_xml::events::BytesStart;
@@ -70,7 +70,11 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:element") {
-                    add_definition(e, element_definitions, content, &mut stack, &mut current_name, &mut anonymous_complex_types);
+                    add_element_definition(e, element_definitions, content, &mut stack, &mut current_name, &mut anonymous_complex_types);
+                }
+
+                if e.name() == QName(b"xs:group") {
+                    add_group_definition(e, content, structs, &mut current_name, &mut anonymous_complex_types);
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
@@ -83,7 +87,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:element") {
-                    add_definition(e, element_definitions, content, &mut stack, &mut current_name, &mut anonymous_complex_types);
+                    add_element_definition(e, element_definitions, content, &mut stack, &mut current_name, &mut anonymous_complex_types);
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
@@ -98,7 +102,7 @@ pub fn create_structs(
                         if completed_struct.name != current_name {
                             panic!("XML structure mismatch: expected {}, found {}", completed_struct.name, current_name);
                         }
-
+                        
                         // Update the final struct with new fields or insert it if it doesn't exist
                         if let Some(existing_struct) = structs.get_mut(&completed_struct.name.clone()) {
 
@@ -125,7 +129,7 @@ pub fn create_structs(
 }
 
 // Add element definitions to the hashmap
-pub fn add_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>, content: &str, stack: &mut Vec<XMLStruct>, current_name: &mut String, anonymous_complex_types: &mut Vec<String>) {
+pub fn add_element_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>, content: &str, stack: &mut Vec<XMLStruct>, current_name: &mut String, anonymous_complex_types: &mut Vec<String>) {
     let name = element_name(e);
     let typ = element_type(e);
 
@@ -137,8 +141,8 @@ pub fn add_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<Stri
 
             element_definitions.insert(n, t);
         } else {
-            if let Some(_) = slice_element_contents(content, &n) {
-
+            if let Some(_) = slice_contents(content, "element",&n) {
+                println!("Anonymous complex type: {}", n);
                 // Update the current name when creating a new struct
                 *current_name = n.clone();
 
@@ -155,7 +159,65 @@ pub fn add_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<Stri
                 // Create element definition using the name of the element and "Type"
                 element_definitions.insert(n.clone() + "Type", n);
             } else {
-                println!("No type for element: {}", n);
+                //println!("No type for element: {}", n);
+            }
+        }
+    }
+}
+
+// Add group definitions directly to the final structs
+fn add_group_definition(e: &BytesStart<'_>, content: &str, structs: &mut HashMap<String, XMLStruct>,  current_name: &mut String, anonymous_complex_types: &mut Vec<String>) {
+
+    if let Some(group_slice) = slice_contents(content, "group", &element_name(e).unwrap_or("".to_string())) {
+        let mut group_reader = Reader::from_str(&group_slice);
+        let mut group_types = HashMap::new();
+
+        loop {
+            match group_reader.read_event() {
+                Ok(Start(ref ge)) => {
+                    if ge.name() == QName(b"xs:element") {
+                        if let Some(r) = element_name(ge) {
+                            let mut field_type = r.clone();
+
+                            // Check if the field is a vector or optional
+                            parse_type(ge, &mut field_type);
+
+                            group_types.insert(r,field_type);
+                        }
+                    }
+                },
+                Ok(Empty(ref ge)) => {
+                    if ge.name() == QName(b"xs:element") {
+                        if let Some(r) = element_reference(ge) {
+                            let mut field_type = r.clone();
+
+                            // Check if the field is a vector or optional
+                            parse_type(ge, &mut field_type);
+
+                            group_types.insert(r,field_type);
+                        }
+                    }
+                },
+                Ok(End(ref ge)) => {
+                    if ge.name() == QName(b"xs:group") {
+                        let name = element_name(e).unwrap_or("".to_string());
+    
+                        // Create a struct for the group type
+                        let new_struct = XMLStruct {
+                            name: name.clone(),
+                            fields: group_types.iter().map(|t| XMLField {
+                                name: t.0.to_string(),
+                                field_type: t.1.to_string(),
+                            }).collect(),
+                        };
+                        
+                        structs.insert(name.clone(), new_struct.clone());
+
+                        break;
+                    }
+                },
+                Ok(Eof) => break,
+                _ => {}
             }
         }
     }

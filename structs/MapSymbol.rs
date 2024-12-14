@@ -59,6 +59,6 @@ pub struct MapSymbolDataType {
     #[serde(rename = "SpareGroupOfTrees", skip_serializing_if = "Option::is_none")]
     pub spare_group_of_trees: Option<SpareTreesByCategoryType>,
     #[serde(rename = "UsingRestrictions", skip_serializing_if = "Option::is_none")]
-    pub using_restrictions: Option<String>,
+    pub using_restrictions: Option<UsingRestrictionsType>,
 }
 

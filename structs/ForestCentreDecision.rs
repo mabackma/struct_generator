@@ -1,7 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidiesType {
-    #[serde(rename = "Subsidy")]
-    pub subsidy: Vec<SubsidyType>,
+pub struct StandsType {
+    #[serde(rename = "Stand")]
+    pub stand: Vec<StandType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CaseActionType {
+    #[serde(rename = "ActionType")]
+    pub action_type: String,
+    #[serde(rename = "ActionDescription", skip_serializing_if = "Option::is_none")]
+    pub action_description: Option<String1000Type>,
+    #[serde(rename = "ActionDate")]
+    pub action_date: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReasonType {
+    #[serde(rename = "ReasonCode")]
+    pub reason_code: String10Type,
+    #[serde(rename = "ReasonDescription")]
+    pub reason_description: String1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -39,55 +57,9 @@ pub struct SubsidyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReasonsType {
-    #[serde(rename = "Reason")]
-    pub reason: Vec<ReasonType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType {
-    #[serde(rename = "Stand")]
-    pub stand: Vec<StandType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionHandlerType {
-    #[serde(rename = "@role")]
-    pub role: String100Type,
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActDataType {
-    #[serde(rename = "WorksDueDate")]
-    pub works_due_date: DateType,
-    #[serde(rename = "CompletionDeclarationDeliveryDueDate")]
-    pub completion_declaration_delivery_due_date: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreDecisionDataType {
-    #[serde(flatten)]
-    pub base: ForestCentreDataType,
-    #[serde(rename = "ForestCentreDecision")]
-    pub forest_centre_decision: ForestCentreDecisionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CaseActionType {
-    #[serde(rename = "ActionType")]
-    pub action_type: String,
-    #[serde(rename = "ActionDescription", skip_serializing_if = "Option::is_none")]
-    pub action_description: Option<String1000Type>,
-    #[serde(rename = "ActionDate")]
-    pub action_date: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionReceiversType {
-    #[serde(rename = "DecisionReceiver")]
-    pub decision_receiver: Vec<ContactInformationType>,
+pub struct SubsidyArgumentType {
+    #[serde(rename = "SubsidyArgumentText")]
+    pub subsidy_argument_text: Vec<String5000Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -101,11 +73,9 @@ pub struct WorkType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReasonType {
-    #[serde(rename = "ReasonCode")]
-    pub reason_code: String10Type,
-    #[serde(rename = "ReasonDescription")]
-    pub reason_description: String1000Type,
+pub struct ReasonsType {
+    #[serde(rename = "Reason")]
+    pub reason: Vec<ReasonType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -115,9 +85,47 @@ pub struct JustificationsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionGeometriesType {
-    #[serde(rename = "DecisionGeometry")]
-    pub decision_geometry: Vec<DecisionGeometryType>,
+pub struct FinancingActDataType {
+    #[serde(rename = "WorksDueDate")]
+    pub works_due_date: DateType,
+    #[serde(rename = "CompletionDeclarationDeliveryDueDate")]
+    pub completion_declaration_delivery_due_date: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstateType {
+    #[serde(flatten)]
+    pub base: BaseRealEstateType2,
+    #[serde(rename = "SubsidyZone")]
+    pub subsidy_zone: ForestActAreaType,
+    #[serde(rename = "Stands", skip_serializing_if = "Option::is_none")]
+    pub stands: Option<StandsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CaseActionsType {
+    #[serde(rename = "CaseAction")]
+    pub case_action: Vec<CaseActionType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreDecisionDataType {
+    #[serde(flatten)]
+    pub base: ForestCentreDataType,
+    #[serde(rename = "ForestCentreDecision")]
+    pub forest_centre_decision: ForestCentreDecisionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DecisionHandlersType {
+    #[serde(rename = "DecisionHandler")]
+    pub decision_handler: Vec<DecisionHandlerType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DecisionReceiversType {
+    #[serde(rename = "DecisionReceiver")]
+    pub decision_receiver: Vec<ContactInformationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -135,13 +143,13 @@ pub struct ForestCentreDecisionType {
     #[serde(rename = "DecisionDate")]
     pub decision_date: DateType,
     #[serde(rename = "CustomerReference", skip_serializing_if = "Option::is_none")]
-    pub customer_reference: Option<String>,
+    pub customer_reference: Option<ReferenceType>,
     #[serde(rename = "FinancingActApplicationReference", skip_serializing_if = "Option::is_none")]
-    pub financing_act_application_reference: Option<String>,
+    pub financing_act_application_reference: Option<ReferenceType>,
     #[serde(rename = "CompletionDeclarationReference", skip_serializing_if = "Option::is_none")]
-    pub completion_declaration_reference: Option<String>,
+    pub completion_declaration_reference: Option<ReferenceType>,
     #[serde(rename = "ForestUseDeclarationReference", skip_serializing_if = "Option::is_none")]
-    pub forest_use_declaration_reference: Option<String>,
+    pub forest_use_declaration_reference: Option<ReferenceType>,
     #[serde(rename = "Acceptance")]
     pub acceptance: AcceptanceType,
     #[serde(rename = "CaseActions")]
@@ -171,15 +179,21 @@ pub struct ForestCentreDecisionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandType {
-    #[serde(rename = "@id")]
-    pub id: IdStringNotEmptyType,
-    #[serde(rename = "StandNumber")]
-    pub stand_number: StandNumberType,
-    #[serde(rename = "StandNumberExtension", skip_serializing_if = "Option::is_none")]
-    pub stand_number_extension: Option<StandNumberExtensionType>,
-    #[serde(rename = "StandReference", skip_serializing_if = "Option::is_none")]
-    pub stand_reference: Option<ReferenceType>,
+pub struct DecisionGeometriesType {
+    #[serde(rename = "DecisionGeometry")]
+    pub decision_geometry: Vec<DecisionGeometryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorksType {
+    #[serde(rename = "Work")]
+    pub work: Vec<WorkType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubsidiesType {
+    #[serde(rename = "Subsidy")]
+    pub subsidy: Vec<SubsidyType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -197,9 +211,15 @@ pub struct DecisionGeometryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstatesType {
-    #[serde(rename = "RealEstate")]
-    pub real_estate: Vec<RealEstateType>,
+pub struct StandType {
+    #[serde(rename = "@id")]
+    pub id: IdStringNotEmptyType,
+    #[serde(rename = "StandNumber")]
+    pub stand_number: StandNumberType,
+    #[serde(rename = "StandNumberExtension", skip_serializing_if = "Option::is_none")]
+    pub stand_number_extension: Option<StandNumberExtensionType>,
+    #[serde(rename = "StandReference", skip_serializing_if = "Option::is_none")]
+    pub stand_reference: Option<ReferenceType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -215,36 +235,16 @@ pub struct DecisionContactInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidyArgumentType {
-    #[serde(rename = "SubsidyArgumentText")]
-    pub subsidy_argument_text: Vec<String5000Type>,
+pub struct RealEstatesType {
+    #[serde(rename = "RealEstate")]
+    pub real_estate: Vec<RealEstateType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionHandlersType {
-    #[serde(rename = "DecisionHandler")]
-    pub decision_handler: Vec<DecisionHandlerType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CaseActionsType {
-    #[serde(rename = "CaseAction")]
-    pub case_action: Vec<CaseActionType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorksType {
-    #[serde(rename = "Work")]
-    pub work: Vec<WorkType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateType {
+pub struct DecisionHandlerType {
+    #[serde(rename = "@role")]
+    pub role: String100Type,
     #[serde(flatten)]
-    pub base: BaseRealEstateType2,
-    #[serde(rename = "SubsidyZone")]
-    pub subsidy_zone: ForestActAreaType,
-    #[serde(rename = "Stands", skip_serializing_if = "Option::is_none")]
-    pub stands: Option<StandsType>,
+    pub base: ContactInformationType,
 }
 

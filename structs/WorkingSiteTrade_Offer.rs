@@ -1,23 +1,23 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OfferTextType {
     #[serde(flatten)]
     pub base: String1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferBusinessSenderType {
+pub struct TechnicalContactPersonType {
     #[serde(flatten)]
     pub base: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferDateType {
     #[serde(flatten)]
     pub base: DateType,
 }
@@ -31,7 +31,7 @@ pub struct OfferType {
     #[serde(rename = "@versionNo")]
     pub version_no: i32,
     #[serde(rename = "TimeStamp")]
-    pub time_stamp: String,
+    pub time_stamp: TimeStampType,
     #[serde(rename = "OfferBusinessSender")]
     pub offer_business_sender: OfferBusinessSenderType,
     #[serde(rename = "CallForOfferBusinessSender", skip_serializing_if = "Option::is_none")]
@@ -47,15 +47,15 @@ pub struct OfferType {
     #[serde(rename = "CallForOfferText", skip_serializing_if = "Option::is_none")]
     pub call_for_offer_text: Option<CallForOfferTextType>,
     #[serde(rename = "OfferWorkingSites")]
-    pub offer_working_sites: String,
+    pub offer_working_sites: OfferWorkingSitesType,
     #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub documents: Option<String>,
+    pub documents: Option<DocumentsType>,
     #[serde(rename = "CallForOfferWoodTradeInfo", skip_serializing_if = "Option::is_none")]
     pub call_for_offer_wood_trade_info: Option<CallForOfferWoodTradeInfoType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
+pub struct OfferBusinessSenderType {
     #[serde(flatten)]
     pub base: ContactInformationType,
 }
