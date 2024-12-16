@@ -1,19 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ShortERPIdType {
+pub struct LoadRatingType {
     #[serde(flatten)]
-    pub base: BdtString20Type,
+    pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MonthType {
+pub struct PricingMethodType {
     #[serde(flatten)]
-    pub base: Xsinteger,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessageType {
-    #[serde(flatten)]
-    pub base: Xsinteger,
+    pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,19 +17,13 @@ pub struct SpareTreesByCategoryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ERPIdType {
+pub struct CommonMessageType {
     #[serde(flatten)]
-    pub base: BdtString50Type,
+    pub base: Xsinteger,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TaxNumberType {
-    #[serde(flatten)]
-    pub base: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StanfordTreeSpeciesType {
+pub struct MonthType {
     #[serde(flatten)]
     pub base: Xsinteger,
 }
@@ -59,6 +47,24 @@ pub struct SpareTreesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DitchTypeType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StanfordTreeSpeciesType {
+    #[serde(flatten)]
+    pub base: Xsinteger,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ERPIdType {
+    #[serde(flatten)]
+    pub base: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FinalAuditSpareTreesType {
     #[serde(flatten)]
     pub base: SpareTreesType,
@@ -79,27 +85,15 @@ pub struct QualityOfTreeSpeciesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ShortERPIdType {
+    #[serde(flatten)]
+    pub base: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteNumberType {
     #[serde(flatten)]
     pub base: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoadRatingType {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HopperTypeType {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaCodeType {
-    #[serde(flatten)]
-    pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -109,20 +103,26 @@ pub struct ContractorsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DitchTypeType {
+pub struct HopperTypeType {
     #[serde(flatten)]
     pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PricingMethodType {
+pub struct TaxNumberType {
     #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ScaleFactorTreeSpeciesType {
     #[serde(flatten)]
     pub base: Xsinteger,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaCodeType {
+    #[serde(flatten)]
+    pub base: Xsstring,
 }
 

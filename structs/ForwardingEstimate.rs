@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentDataType {
     #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
     pub assortment_id: Option<WctERPIdType>,
@@ -36,5 +30,11 @@ pub struct ForwardingEstimateType {
     pub start_time: BdtTimeStampType,
     #[serde(rename = "Assortments")]
     pub assortments: AssortmentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 

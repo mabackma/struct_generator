@@ -1,22 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisType {
-    #[serde(rename = "FeeBase")]
-    pub fee_base: Vec<FeeBasisDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<BdtWorkCodeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBaseListType {
-    #[serde(rename = "FeeBaseListItem")]
-    pub fee_base_list_item: Vec<FeebaseListItemType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteFeeBasisType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -29,9 +11,9 @@ pub struct WorkingSiteFeeBasisType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType {
-    #[serde(rename = "StandNumber")]
-    pub stand_number: Vec<BdtString20Type>,
+pub struct FeeBaseListType {
+    #[serde(rename = "FeeBaseListItem")]
+    pub fee_base_list_item: Vec<FeebaseListItemType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -40,6 +22,18 @@ pub struct FeebaseListItemType {
     pub id: BdtPositiveIntegerType,
     #[serde(rename = "FeeValue")]
     pub fee_value: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandsType {
+    #[serde(rename = "StandNumber")]
+    pub stand_number: Vec<BdtString20Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisType {
+    #[serde(rename = "FeeBase")]
+    pub fee_base: Vec<FeeBasisDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -64,5 +58,11 @@ pub struct FeeBasisDataType {
     pub work_codes: Option<WorkCodesType>,
     #[serde(rename = "FeeBaseList", skip_serializing_if = "Option::is_none")]
     pub fee_base_list: Option<FeeBaseListType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<BdtWorkCodeType>,
 }
 

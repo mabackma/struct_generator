@@ -5,16 +5,6 @@ pub struct DisQualificationReasonsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonDataType {
-    #[serde(rename = "DisQualificationReason")]
-    pub dis_qualification_reason: BdtString10Type,
-    #[serde(rename = "DisQualificationReasonText")]
-    pub dis_qualification_reason_text: BdtString200Type,
-    #[serde(rename = "DisQualificationPercentage")]
-    pub dis_qualification_percentage: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteQualityNotificationType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -52,5 +42,15 @@ pub struct WorkingSiteQualityNotificationType {
     pub image: Option<Xsbase64Binary>,
     #[serde(rename = "DisQualificationReasons")]
     pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DisQualificationReasonDataType {
+    #[serde(rename = "DisQualificationReason")]
+    pub dis_qualification_reason: BdtString10Type,
+    #[serde(rename = "DisQualificationReasonText")]
+    pub dis_qualification_reason_text: BdtString200Type,
+    #[serde(rename = "DisQualificationPercentage")]
+    pub dis_qualification_percentage: BdtDecimal2FractionDigitsType,
 }
 

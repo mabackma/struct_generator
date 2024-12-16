@@ -5,7 +5,19 @@ pub struct VirtaHabitatAdvertisementType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TargetPartsType {
+    #[serde(rename = "TpTargetPart")]
+    pub tp_target_part: Vec<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaPartNumberType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaExtraInfoType {
     #[serde(flatten)]
     pub base: Xsstring,
 }
@@ -32,17 +44,5 @@ pub struct TargetType {
     pub gml_polygon: Option<String>,
     #[serde(rename = "TargetParts", skip_serializing_if = "Option::is_none")]
     pub target_parts: Option<TargetPartsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetPartsType {
-    #[serde(rename = "TpTargetPart")]
-    pub tp_target_part: Vec<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaExtraInfoType {
-    #[serde(flatten)]
-    pub base: Xsstring,
 }
 

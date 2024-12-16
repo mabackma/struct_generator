@@ -1,4 +1,18 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OrientationType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CalibrationType {
+    #[serde(rename = "CalibrationDate")]
+    pub calibration_date: BdtTimeStampType,
+    #[serde(rename = "CalibrationAdjustment")]
+    pub calibration_adjustment: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteForwardingQualityControlType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -26,20 +40,6 @@ pub struct WorkingSiteForwardingQualityControlType {
     pub scale_data: Vec<ScaleDataType>,
     #[serde(rename = "Calibration", skip_serializing_if = "Option::is_none")]
     pub calibration: Option<Vec<CalibrationType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CalibrationType {
-    #[serde(rename = "CalibrationDate")]
-    pub calibration_date: BdtTimeStampType,
-    #[serde(rename = "CalibrationAdjustment")]
-    pub calibration_adjustment: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrientationType {
-    #[serde(flatten)]
-    pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

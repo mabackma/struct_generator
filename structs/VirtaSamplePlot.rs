@@ -1,4 +1,16 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreesType {
+    #[serde(rename = "TrTree")]
+    pub tr_tree: Vec<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaEvaluationType {
+    #[serde(flatten)]
+    pub base: CoVirtaEvaluationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SamplePlotType {
     #[serde(rename = "Status4", skip_serializing_if = "Option::is_none")]
     pub status4: Option<CoChangeStateType>,
@@ -32,17 +44,5 @@ pub struct SamplePlotType {
     pub second_storey_trees: Option<Xsinteger>,
     #[serde(rename = "Trees", skip_serializing_if = "Option::is_none")]
     pub trees: Option<TreesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaEvaluationType {
-    #[serde(flatten)]
-    pub base: CoVirtaEvaluationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreesType {
-    #[serde(rename = "TrTree")]
-    pub tr_tree: Vec<String>,
 }
 

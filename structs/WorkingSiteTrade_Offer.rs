@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferBusinessSenderType {
+pub struct OfferDateType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,9 +49,9 @@ pub struct OfferExpirationDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDateType {
+pub struct OfferBusinessSenderType {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

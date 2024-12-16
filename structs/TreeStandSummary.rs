@@ -1,25 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
+pub struct VolumeType {
     #[serde(flatten)]
-    pub base: CoDiameterType,
+    pub base: CoVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemCountType {
+pub struct MeanAgeType {
     #[serde(flatten)]
-    pub base: CoStemCountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemBiomassType {
-    #[serde(flatten)]
-    pub base: CoStemBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeGrowthType {
-    #[serde(flatten)]
-    pub base: CoVolumeGrowthType,
+    pub base: CoAgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -85,15 +73,33 @@ pub struct SawLogVolumeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StemCountType {
+    #[serde(flatten)]
+    pub base: CoStemCountType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeGrowthType {
+    #[serde(flatten)]
+    pub base: CoVolumeGrowthType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LeafBiomassType {
+    #[serde(flatten)]
+    pub base: CoLeafBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct BranchBiomassType {
     #[serde(flatten)]
     pub base: CoBranchBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanAgeType {
+pub struct StemBiomassType {
     #[serde(flatten)]
-    pub base: CoAgeType,
+    pub base: CoStemBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -153,14 +159,8 @@ pub struct StumpBiomassType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LeafBiomassType {
+pub struct MeanDiameterType {
     #[serde(flatten)]
-    pub base: CoLeafBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
-    #[serde(flatten)]
-    pub base: CoVolumeType,
+    pub base: CoDiameterType,
 }
 

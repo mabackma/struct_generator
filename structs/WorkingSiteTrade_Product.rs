@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ProductType {
     #[serde(rename = "@id")]
     pub id: Xsstring,
@@ -39,17 +33,21 @@ pub struct ProductType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationModeType {
     #[serde(flatten)]
     pub base: CoOperationModeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductKeyGroup {
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationInfoGroup {
+pub struct ConsumptionType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -61,18 +59,20 @@ pub struct PlannedResourceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
-    #[serde(flatten)]
-    pub base: CoUnitPerHectareType,
+pub struct OperationInfoGroup {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
+pub struct ProductKeyGroup {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OperationTypeType {
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionUnitType {
+    #[serde(flatten)]
+    pub base: CoUnitPerHectareType,
 }
 

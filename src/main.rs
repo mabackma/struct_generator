@@ -102,8 +102,8 @@ fn sort_files(file_dependencies: &HashMap<String, HashSet<String>>) -> Vec<Strin
 }
 
 // Depth-first traversal and sorting
-// Changed two .xsd files because they had circular dependencies:
-// WorkingSiteTrade_CallForOfferWorkingSite.xsd and WorkingSiteTrade_Assortment.xsd
+// Changed three .xsd files because they had circular dependencies:
+// WorkingSiteTrade_CallForOfferWorkingSite.xsd, WorkingSiteTrade_WorkingSite.xsd and WorkingSiteTrade_Assortment.xsd
 fn topological_sort(
     file_name: &str,
     file_dependencies: &HashMap<String, HashSet<String>>,

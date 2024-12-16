@@ -5,16 +5,6 @@ pub struct MapSymbolsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: WctERPIdType,
-    #[serde(rename = "MapSymbols")]
-    pub map_symbols: MapSymbolsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct MapSymbolDataType {
     #[serde(rename = "MapSymbolId", skip_serializing_if = "Option::is_none")]
     pub map_symbol_id: Option<WctERPIdType>,
@@ -60,5 +50,15 @@ pub struct MapSymbolDataType {
     pub spare_group_of_trees: Option<WctSpareTreesByCategoryType>,
     #[serde(rename = "SfUsingRestrictions", skip_serializing_if = "Option::is_none")]
     pub sf_using_restrictions: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbolType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: BdtString20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: WctERPIdType,
+    #[serde(rename = "MapSymbols")]
+    pub map_symbols: MapSymbolsType,
 }
 

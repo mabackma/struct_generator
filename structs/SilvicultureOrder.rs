@@ -1,9 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: BdtString100Type,
-    #[serde(rename = "Data")]
-    pub data: XshexBinary,
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -43,14 +41,16 @@ pub struct WorkCodeInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeInfoType>,
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: BdtString100Type,
+    #[serde(rename = "Data")]
+    pub data: XshexBinary,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeInfoType>,
 }
 

@@ -5,9 +5,15 @@ pub struct TreeSpeciesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemCountType {
+pub struct DeadTreeTypeType {
     #[serde(flatten)]
-    pub base: CoStemCountType,
+    pub base: CoDeadTreeTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanDiameterType {
+    #[serde(flatten)]
+    pub base: CoDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -31,9 +37,9 @@ pub struct DeadTreeStratumType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeTypeType {
+pub struct VolumeType {
     #[serde(flatten)]
-    pub base: CoDeadTreeTypeType,
+    pub base: CoVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -43,14 +49,8 @@ pub struct DeadTreeStrataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
+pub struct StemCountType {
     #[serde(flatten)]
-    pub base: CoVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
-    #[serde(flatten)]
-    pub base: CoDiameterType,
+    pub base: CoStemCountType,
 }
 
