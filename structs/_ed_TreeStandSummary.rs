@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanHeight {
+pub struct MeanStumpDiameter {
     #[serde(flatten)]
-    pub mean_height: MeanHeightType,
+    pub mean_stump_diameter: CoDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,15 +11,15 @@ pub struct MeanAge {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValueGrowthPercent {
+pub struct MainTreeSpecies {
     #[serde(flatten)]
-    pub value_growth_percent: Decimal2FractionDigitsType,
+    pub main_tree_species: CoTreeSpeciesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DominantHeight {
+pub struct DevelopmentClass {
     #[serde(flatten)]
-    pub dominant_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub development_class: CoDevelopmentClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,26 +29,8 @@ pub struct TreeStandSummary {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanStumpDiameter {
+pub struct DominantHeight {
     #[serde(flatten)]
-    pub mean_stump_diameter: DiameterType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Currency {
-    #[serde(flatten)]
-    pub currency: CurrencyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DevelopmentClass {
-    #[serde(flatten)]
-    pub development_class: DevelopmentClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainTreeSpecies {
-    #[serde(flatten)]
-    pub main_tree_species: TreeSpeciesType,
+    pub dominant_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 

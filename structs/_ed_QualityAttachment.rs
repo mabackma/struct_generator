@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Version {
     #[serde(flatten)]
-    pub version: String10Type,
+    pub version: BdtString10Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

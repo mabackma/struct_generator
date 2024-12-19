@@ -4,3 +4,9 @@ pub struct Envelope {
     pub envelope: EnvelopeType,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Message {
+    #[serde(flatten)]
+    pub message: PayloadType,
+}
+

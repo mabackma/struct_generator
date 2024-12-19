@@ -5,9 +5,9 @@ pub struct ForestCentrePayments {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Payments {
+pub struct Payees {
     #[serde(flatten)]
-    pub payments: PaymentsType,
+    pub payees: PayeesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,14 +17,14 @@ pub struct PaymentTexts {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Payees {
+pub struct Payments {
     #[serde(flatten)]
-    pub payees: PayeesType,
+    pub payments: PaymentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PaymentText {
     #[serde(flatten)]
-    pub payment_text: String5000Type,
+    pub payment_text: CoString5000Type,
 }
 

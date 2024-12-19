@@ -1,49 +1,49 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RadiusReduction {
-    #[serde(flatten)]
-    pub radius_reduction: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ReductionAvgDiameterSummary {
     #[serde(flatten)]
-    pub reduction_avg_diameter_summary: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RemainingTrees {
-    #[serde(flatten)]
-    pub remaining_trees: FinalAuditAnswerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ReductionCountSummary {
-    #[serde(flatten)]
-    pub reduction_count_summary: PositiveInteger5digitsType,
+    pub reduction_avg_diameter_summary: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ReductionAvgDiameter {
     #[serde(flatten)]
-    pub reduction_avg_diameter: Decimal2FractionDigitsType,
+    pub reduction_avg_diameter: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Damages {
     #[serde(flatten)]
-    pub damages: FinalAuditAnswerType,
+    pub damages: BdtFinalAuditAnswerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReductionStumpHeight {
+pub struct AgeSummary {
     #[serde(flatten)]
-    pub reduction_stump_height: FinalAuditAnswerType,
+    pub age_summary: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReductionCount {
+pub struct StandAvgAgeSummary {
     #[serde(flatten)]
-    pub reduction_count: PositiveInteger2digitsType,
+    pub stand_avg_age_summary: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandAvgHeightSummary {
+    #[serde(flatten)]
+    pub stand_avg_height_summary: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReductionCountSummary {
+    #[serde(flatten)]
+    pub reduction_count_summary: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanDiameterSummary {
+    #[serde(flatten)]
+    pub mean_diameter_summary: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,8 +53,68 @@ pub struct WorkingSiteQualityControlPlantManagement {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MeanHeightSummary {
+    #[serde(flatten)]
+    pub mean_height_summary: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReductionStumpHeight {
+    #[serde(flatten)]
+    pub reduction_stump_height: BdtFinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemCountSummary {
+    #[serde(flatten)]
+    pub stem_count_summary: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandAvgDiameterSummary {
+    #[serde(flatten)]
+    pub stand_avg_diameter_summary: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RemainingTrees {
+    #[serde(flatten)]
+    pub remaining_trees: BdtFinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandAvgStemCountSummary {
+    #[serde(flatten)]
+    pub stand_avg_stem_count_summary: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RadiusReduction {
+    #[serde(flatten)]
+    pub radius_reduction: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct HarvestedTrees {
     #[serde(flatten)]
-    pub harvested_trees: FinalAuditAnswerType,
+    pub harvested_trees: BdtFinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSummaries {
+    #[serde(flatten)]
+    pub tree_summaries: SamplePlotTreesSummaryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSummary {
+    #[serde(flatten)]
+    pub tree_summary: TreeSummaryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReductionCount {
+    #[serde(flatten)]
+    pub reduction_count: BdtPositiveInteger2digitsType,
 }
 

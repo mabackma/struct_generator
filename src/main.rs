@@ -167,6 +167,18 @@ fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>
         }
     }
 
+    for (key, value) in new_structs.iter() {
+        if structs.contains_key(key) {
+            
+            for field in value.fields.iter() {
+                if !structs.get(key).unwrap().fields.iter().any(|f| f.name == field.name) {
+                    structs.get_mut(key).unwrap().fields.push(field.clone());
+                    //println!("Field {}: {} added to struct: {}", field.name, field.field_type, key);
+                }
+            }
+        }
+    }
+
     // Write the new structs to a file
     if new_structs.len() > 0 {
         structs_to_file(&new_structs, &file_name).unwrap();

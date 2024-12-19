@@ -1,67 +1,43 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrderId {
+pub struct EnvironmentalTidinessNoticed {
     #[serde(flatten)]
-    pub order_id: ERPIdType,
+    pub environmental_tidiness_noticed: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct hasFoundNewEnvironmentalObjects {
+pub struct PlantStorageManagementText {
     #[serde(flatten)]
-    pub has_found_new_environmental_objects: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotCount {
-    #[serde(flatten)]
-    pub sample_plot_count: PositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlantStorageManagement {
-    #[serde(flatten)]
-    pub plant_storage_management: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroup {
-    #[serde(flatten)]
-    pub work_code_group: WorkCodeGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilConditioningMethodCorrectText {
-    #[serde(flatten)]
-    pub soil_conditioning_method_correct_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingInstructionsSufficientText {
-    #[serde(flatten)]
-    pub working_instructions_sufficient_text: String200Type,
+    pub plant_storage_management_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SoilConditioningMethod {
     #[serde(flatten)]
-    pub soil_conditioning_method: WorkCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LimitsToWaterSystem {
-    #[serde(flatten)]
-    pub limits_to_water_system: YesNoType,
+    pub soil_conditioning_method: BdtWorkCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SilvicultureQuality {
     #[serde(flatten)]
-    pub silviculture_quality: WorkingQualityType,
+    pub silviculture_quality: BdtWorkingQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureQualityText {
+    #[serde(flatten)]
+    pub silviculture_quality_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodeQualifier {
     #[serde(flatten)]
-    pub work_code_qualifier: WorkCodeQualifierType1,
+    pub work_code_qualifier: BdtWorkCodeQualifierType1,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureMethodCorrectText {
+    #[serde(flatten)]
+    pub silviculture_method_correct_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,164 +47,20 @@ pub struct WorkingSiteFinalAuditSilviculture {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Images {
+pub struct EnvironmentalTidinessNoticedText {
     #[serde(flatten)]
-    pub images: PositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSafetyNoticedText {
-    #[serde(flatten)]
-    pub working_safety_noticed_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterEconomySystemsNoticed {
-    #[serde(flatten)]
-    pub water_economy_systems_noticed: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Audit {
-    #[serde(flatten)]
-    pub audit: AuditionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Audits {
-    #[serde(flatten)]
-    pub audits: AuditsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NewEnvironmentalObjectsText {
-    #[serde(flatten)]
-    pub new_environmental_objects_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureMethodCorrectText {
-    #[serde(flatten)]
-    pub silviculture_method_correct_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BioMassCollectionDoneText {
-    #[serde(flatten)]
-    pub bio_mass_collection_done_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilConditioningQuality {
-    #[serde(flatten)]
-    pub soil_conditioning_quality: WorkingQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotCountRequired {
-    #[serde(flatten)]
-    pub sample_plot_count_required: PositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlantStorageManagementText {
-    #[serde(flatten)]
-    pub plant_storage_management_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalObjectsNoticedText {
-    #[serde(flatten)]
-    pub environmental_objects_noticed_text: String200Type,
+    pub environmental_tidiness_noticed_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SilvicultureMethodCorrect {
     #[serde(flatten)]
-    pub silviculture_method_correct: YesNoType,
+    pub silviculture_method_correct: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WaterSystemProtectionText {
+pub struct PlantStorageManagement {
     #[serde(flatten)]
-    pub water_system_protection_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureQualityText {
-    #[serde(flatten)]
-    pub silviculture_quality_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalTidinessNoticedText {
-    #[serde(flatten)]
-    pub environmental_tidiness_noticed_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilConditioningQualityText {
-    #[serde(flatten)]
-    pub soil_conditioning_quality_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterEconomySystemsNoticedText {
-    #[serde(flatten)]
-    pub water_economy_systems_noticed_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSafetyNoticed {
-    #[serde(flatten)]
-    pub working_safety_noticed: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterSystemProtection {
-    #[serde(flatten)]
-    pub water_system_protection: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LimitsToWaterSystemText {
-    #[serde(flatten)]
-    pub limits_to_water_system_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingInstructionsSufficient {
-    #[serde(flatten)]
-    pub working_instructions_sufficient: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalObjectsNoticed {
-    #[serde(flatten)]
-    pub environmental_objects_noticed: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingTime {
-    #[serde(flatten)]
-    pub working_time: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalTidinessNoticed {
-    #[serde(flatten)]
-    pub environmental_tidiness_noticed: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BioMassCollectionDone {
-    #[serde(flatten)]
-    pub bio_mass_collection_done: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilConditioningMethodCorrect {
-    #[serde(flatten)]
-    pub soil_conditioning_method_correct: YesNoType,
+    pub plant_storage_management: BdtYesNoType,
 }
 

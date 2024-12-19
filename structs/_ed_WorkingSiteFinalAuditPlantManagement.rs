@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PlantManagementQuality {
+    #[serde(flatten)]
+    pub plant_management_quality: BdtWorkingQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteFinalAuditPlantManagement {
     #[serde(flatten)]
     pub working_site_final_audit_plant_management: WorkingSiteFinalAuditPlantManagementType,
@@ -7,12 +13,6 @@ pub struct WorkingSiteFinalAuditPlantManagement {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PlantManagementQualityText {
     #[serde(flatten)]
-    pub plant_management_quality_text: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlantManagementQuality {
-    #[serde(flatten)]
-    pub plant_management_quality: WorkingQualityType,
+    pub plant_management_quality_text: BdtString200Type,
 }
 

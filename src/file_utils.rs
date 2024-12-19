@@ -1,5 +1,5 @@
 use crate::create_structs::XMLStruct;
-use crate::string_utils::{remove_prefix, to_snake_case};
+use crate::string_utils::{handle_prefix, to_snake_case};
 
 use std::collections::HashMap;
 use std::fs::File;
@@ -114,7 +114,7 @@ pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>
         element_definitions_string.push_str("#[derive(Debug, Serialize, Deserialize)]\n");
         element_definitions_string.push_str(&format!("pub struct {} {{\n", name));
         element_definitions_string.push_str("    #[serde(flatten)]\n");
-        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), remove_prefix(typ)));
+        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), handle_prefix(typ)));
         element_definitions_string.push_str("}\n\n");
     }
 

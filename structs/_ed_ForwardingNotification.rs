@@ -1,37 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SentStorageVolume {
+pub struct ScaleFactors {
     #[serde(flatten)]
-    pub sent_storage_volume: Decimal3FractionDigitsType,
+    pub scale_factors: ScaleFactorsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StorageFinished {
+pub struct IsForestHaulageDistanceContinued {
     #[serde(flatten)]
-    pub storage_finished: YesNoType,
+    pub is_forest_haulage_distance_continued: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Density {
+pub struct ScaleAssortmentType {
     #[serde(flatten)]
-    pub density: Decimal3FractionDigitsType,
+    pub scale_assortment_type: BdtScaleAssortmentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StartLoadNumber {
+pub struct SentWorkingSiteVolume {
     #[serde(flatten)]
-    pub start_load_number: PositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageFinishedDate {
-    #[serde(flatten)]
-    pub forest_haulage_finished_date: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SnowOrIce {
-    #[serde(flatten)]
-    pub snow_or_ice: YesNoType,
+    pub sent_working_site_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,141 +29,33 @@ pub struct ForwardingNotification {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ChangeVolume {
-    #[serde(flatten)]
-    pub change_volume: Decimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinishedDate {
-    #[serde(flatten)]
-    pub working_site_finished_date: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Month {
-    #[serde(flatten)]
-    pub month: MonthType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleFactors {
-    #[serde(flatten)]
-    pub scale_factors: ScaleFactorsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleFactor {
-    #[serde(flatten)]
-    pub scale_factor: ScaleFactorDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct EndLoadNumber {
     #[serde(flatten)]
-    pub end_load_number: PositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SemiDry {
-    #[serde(flatten)]
-    pub semi_dry: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NewDestinationStorage {
-    #[serde(flatten)]
-    pub new_destination_storage: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageFinishedDate {
-    #[serde(flatten)]
-    pub storage_finished_date: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HumidityMeasured {
-    #[serde(flatten)]
-    pub humidity_measured: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleTransformation {
-    #[serde(flatten)]
-    pub scale_transformation: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessage {
-    #[serde(flatten)]
-    pub common_message: CommonMessageDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OldCode {
-    #[serde(flatten)]
-    pub old_code: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NotificationDate {
-    #[serde(flatten)]
-    pub notification_date: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessageId {
-    #[serde(flatten)]
-    pub common_message_id: CommonMessageType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoadRange {
-    #[serde(flatten)]
-    pub load_range: LoadRangeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OldDestinationStorage {
-    #[serde(flatten)]
-    pub old_destination_storage: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Humidity {
-    #[serde(flatten)]
-    pub humidity: Decimal1FractionDigitType,
+    pub end_load_number: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Finished {
     #[serde(flatten)]
-    pub finished: YesNoType,
+    pub finished: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinished {
+pub struct CommonMessageId {
     #[serde(flatten)]
-    pub working_site_finished: YesNoType,
+    pub common_message_id: WctCommonMessageType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WeightClass {
+pub struct NotificationDate {
     #[serde(flatten)]
-    pub weight_class: PositiveInteger1digitsType,
+    pub notification_date: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SentWorkingSiteVolume {
+pub struct CleanlinessClass {
     #[serde(flatten)]
-    pub sent_working_site_volume: Decimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Weight {
-    #[serde(flatten)]
-    pub weight: Integer7digitsType,
+    pub cleanliness_class: BdtCleanlinessClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -185,57 +65,153 @@ pub struct AssortmentsChange {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct IsForestHaulageDistanceContinued {
+pub struct StartLoadNumber {
     #[serde(flatten)]
-    pub is_forest_haulage_distance_continued: YesNoType,
+    pub start_load_number: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CodeName {
+pub struct WorkingSiteFinished {
     #[serde(flatten)]
-    pub code_name: String50Type,
+    pub working_site_finished: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Month {
+    #[serde(flatten)]
+    pub month: WctMonthType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ChangeVolume {
+    #[serde(flatten)]
+    pub change_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SemiDry {
+    #[serde(flatten)]
+    pub semi_dry: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Humidity {
+    #[serde(flatten)]
+    pub humidity: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HasAssortmentChanges {
+    #[serde(flatten)]
+    pub has_assortment_changes: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Covered {
     #[serde(flatten)]
-    pub covered: YesNoType,
+    pub covered: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HarvesterVolume {
+pub struct ForestHaulageFinishedDate {
     #[serde(flatten)]
-    pub harvester_volume: Decimal3FractionDigitsType,
+    pub forest_haulage_finished_date: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessageFreeText {
+pub struct WeightClass {
     #[serde(flatten)]
-    pub common_message_free_text: String200Type,
+    pub weight_class: BdtPositiveInteger1digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SentStorageVolume {
+    #[serde(flatten)]
+    pub sent_storage_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageFinished {
+    #[serde(flatten)]
+    pub storage_finished: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinishedDate {
+    #[serde(flatten)]
+    pub working_site_finished_date: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NewCode {
+    #[serde(flatten)]
+    pub new_code: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct HarvestingFinishedDate {
     #[serde(flatten)]
-    pub harvesting_finished_date: TimeStampType,
+    pub harvesting_finished_date: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HumidityMeasured {
+    #[serde(flatten)]
+    pub humidity_measured: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleFactor {
+    #[serde(flatten)]
+    pub scale_factor: ScaleFactorDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeltedWater {
+    #[serde(flatten)]
+    pub melted_water: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommonMessage {
+    #[serde(flatten)]
+    pub common_message: CommonMessageDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommonMessageFreeText {
+    #[serde(flatten)]
+    pub common_message_free_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NewDestinationStorage {
+    #[serde(flatten)]
+    pub new_destination_storage: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ClientApplicationId {
     #[serde(flatten)]
-    pub client_application_id: ClientApplicationIdType,
+    pub client_application_id: BdtClientApplicationIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessages {
+pub struct StorageFinishedDate {
     #[serde(flatten)]
-    pub common_messages: CommonMessagesType,
+    pub storage_finished_date: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CleanlinessClass {
+pub struct LoadRange {
     #[serde(flatten)]
-    pub cleanliness_class: CleanlinessClassType,
+    pub load_range: LoadRangeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Weight {
+    #[serde(flatten)]
+    pub weight: BdtInteger7digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -245,26 +221,56 @@ pub struct AssortmentsChanges {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeltedWater {
+pub struct OldDestinationStorage {
     #[serde(flatten)]
-    pub melted_water: YesNoType,
+    pub old_destination_storage: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HasAssortmentChanges {
+pub struct OldCode {
     #[serde(flatten)]
-    pub has_assortment_changes: YesNoType,
+    pub old_code: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleAssortmentType {
+pub struct HarvesterVolume {
     #[serde(flatten)]
-    pub scale_assortment_type: ScaleAssortmentType,
+    pub harvester_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NewCode {
+pub struct LoadCount {
     #[serde(flatten)]
-    pub new_code: String50Type,
+    pub load_count: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SnowOrIce {
+    #[serde(flatten)]
+    pub snow_or_ice: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleTransformation {
+    #[serde(flatten)]
+    pub scale_transformation: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Density {
+    #[serde(flatten)]
+    pub density: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CodeName {
+    #[serde(flatten)]
+    pub code_name: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommonMessages {
+    #[serde(flatten)]
+    pub common_messages: CommonMessagesType,
 }
 

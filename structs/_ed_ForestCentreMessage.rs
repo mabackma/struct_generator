@@ -5,20 +5,20 @@ pub struct ForestCentreMessage {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDataUpdate {
-    #[serde(flatten)]
-    pub forest_data_update: ForestDataUpdateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SenderEmail {
     #[serde(flatten)]
-    pub sender_email: EmailAddressType,
+    pub sender_email: CiEmailAddressType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SelfMonitoringData {
     #[serde(flatten)]
-    pub self_monitoring_data: ForestCentreSelfMonitoringDataType,
+    pub self_monitoring_data: CodForestCentreSelfMonitoringDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDataUpdate {
+    #[serde(flatten)]
+    pub forest_data_update: CodForestDataUpdateType,
 }
 

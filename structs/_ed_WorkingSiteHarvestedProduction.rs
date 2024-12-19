@@ -1,37 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolumes {
+pub struct StemTypeVolumes {
     #[serde(flatten)]
-    pub assortment_volumes: AssortmentVolumesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LengthClass {
-    #[serde(flatten)]
-    pub length_class: PositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentName {
-    #[serde(flatten)]
-    pub assortment_name: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserId {
-    #[serde(flatten)]
-    pub product_user_id: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentMatrixVolumes {
-    #[serde(flatten)]
-    pub assortment_matrix_volumes: AssortmentMatrixVolumesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterClass {
-    #[serde(flatten)]
-    pub diameter_class: PositiveInteger4digitsType,
+    pub stem_type_volumes: StemTypeVolumesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,21 +11,33 @@ pub struct AssortmentMatrixVolume {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIds {
+pub struct RunningMeters {
     #[serde(flatten)]
-    pub product_user_ids: ProductUserIdsType,
+    pub running_meters: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolumeUnclassified {
+pub struct AssortmentMatrixVolumes {
     #[serde(flatten)]
-    pub assortment_volume_unclassified: AssortmentVolumeUnclassifiedType,
+    pub assortment_matrix_volumes: AssortmentMatrixVolumesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DBH {
+pub struct SendDate {
     #[serde(flatten)]
-    pub dbh: PositiveInteger3digitsType,
+    pub send_date: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LengthClass {
+    #[serde(flatten)]
+    pub length_class: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductGroupName {
+    #[serde(flatten)]
+    pub product_group_name: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,15 +47,27 @@ pub struct StemTypeVolume {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RunningMeters {
+pub struct AssortmentVolumesUnclassified {
     #[serde(flatten)]
-    pub running_meters: Decimal3FractionDigitsType,
+    pub assortment_volumes_unclassified: AssortmentVolumesUnclassifiedType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterClass {
+    #[serde(flatten)]
+    pub diameter_class: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentVolumes {
+    #[serde(flatten)]
+    pub assortment_volumes: AssortmentVolumesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ModificationDate {
     #[serde(flatten)]
-    pub modification_date: TimeStampType,
+    pub modification_date: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,44 +77,14 @@ pub struct WorkingSiteHarvestedProduction {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InfoText {
+pub struct DBH {
     #[serde(flatten)]
-    pub info_text: String1000Type,
+    pub dbh: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Quality {
+pub struct AssortmentVolumeUnclassified {
     #[serde(flatten)]
-    pub quality: String5Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Count {
-    #[serde(flatten)]
-    pub count: PositiveInteger6digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductGroupName {
-    #[serde(flatten)]
-    pub product_group_name: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeVolumes {
-    #[serde(flatten)]
-    pub stem_type_volumes: StemTypeVolumesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolume {
-    #[serde(flatten)]
-    pub assortment_volume: AssortmentVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolumesUnclassified {
-    #[serde(flatten)]
-    pub assortment_volumes_unclassified: AssortmentVolumesUnclassifiedType,
+    pub assortment_volume_unclassified: AssortmentVolumeUnclassifiedType,
 }
 

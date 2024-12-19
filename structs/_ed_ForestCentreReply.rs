@@ -1,43 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MessageType {
-    #[serde(flatten)]
-    pub message_type: MessageType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KeyInfoAsText {
-    #[serde(flatten)]
-    pub key_info_as_text: String2000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KeyElementId {
-    #[serde(flatten)]
-    pub key_element_id: IdStringNotEmptyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KeyElementNS {
-    #[serde(flatten)]
-    pub key_element_n_s: String500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Acceptance {
-    #[serde(flatten)]
-    pub acceptance: AcceptanceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ErrorMessageData {
     #[serde(flatten)]
     pub error_message_data: ErrorMessageDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorCode {
+pub struct Acceptance {
     #[serde(flatten)]
-    pub error_code: String25Type,
+    pub acceptance: CoAcceptanceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreMessageReference {
+    #[serde(flatten)]
+    pub forest_centre_message_reference: CoReferenceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,15 +23,63 @@ pub struct ErrorMessages {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessage {
+pub struct KeyElementName {
     #[serde(flatten)]
-    pub error_message: String1000Type,
+    pub key_element_name: CoString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ArrivalDate {
+pub struct ReplyCode {
     #[serde(flatten)]
-    pub arrival_date: DateType,
+    pub reply_code: CoReplyCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorMessage {
+    #[serde(flatten)]
+    pub error_message: CoString1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KeyElementId {
+    #[serde(flatten)]
+    pub key_element_id: CoIdStringNotEmptyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RegistrationId {
+    #[serde(flatten)]
+    pub registration_id: CoReferenceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageType {
+    #[serde(flatten)]
+    pub message_type: CoMessageType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReferenceType {
+    #[serde(flatten)]
+    pub reference_type: CoForestCentreMessageReferenceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorCode {
+    #[serde(flatten)]
+    pub error_code: CoString25Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalInfo {
+    #[serde(flatten)]
+    pub additional_info: CoString1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KeyInfoAsText {
+    #[serde(flatten)]
+    pub key_info_as_text: CoString2000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,38 +89,14 @@ pub struct ForestCentreReply {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReferenceType {
+pub struct ArrivalDate {
     #[serde(flatten)]
-    pub reference_type: ForestCentreMessageReferenceType,
+    pub arrival_date: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreMessageReference {
+pub struct KeyElementNS {
     #[serde(flatten)]
-    pub forest_centre_message_reference: ReferenceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KeyElementName {
-    #[serde(flatten)]
-    pub key_element_name: String200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RegistrationId {
-    #[serde(flatten)]
-    pub registration_id: ReferenceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalInfo {
-    #[serde(flatten)]
-    pub additional_info: String1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ReplyCode {
-    #[serde(flatten)]
-    pub reply_code: ReplyCodeType,
+    pub key_element_n_s: CoString500Type,
 }
 

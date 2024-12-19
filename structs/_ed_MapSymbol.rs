@@ -1,61 +1,31 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpareGroupOfTrees {
+pub struct Depth {
     #[serde(flatten)]
-    pub spare_group_of_trees: SpareTreesByCategoryType,
+    pub depth: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MapSymbolName {
     #[serde(flatten)]
-    pub map_symbol_name: String20Type,
+    pub map_symbol_name: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Depth {
+pub struct SpareGroupOfTrees {
     #[serde(flatten)]
-    pub depth: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbols {
-    #[serde(flatten)]
-    pub map_symbols: MapSymbolsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CanModify {
-    #[serde(flatten)]
-    pub can_modify: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Geometry {
-    #[serde(flatten)]
-    pub geometry: AlternativeGeometries2Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbol {
-    #[serde(flatten)]
-    pub map_symbol: MapSymbolType,
+    pub spare_group_of_trees: WctSpareTreesByCategoryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Width {
     #[serde(flatten)]
-    pub width: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub width: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DitchOrRoadPlanName {
+pub struct MaterialInfoText {
     #[serde(flatten)]
-    pub ditch_or_road_plan_name: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialCode {
-    #[serde(flatten)]
-    pub material_code: MaterialCodeType,
+    pub material_info_text: BdtString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,20 +35,20 @@ pub struct Symbol {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbols {
+    #[serde(flatten)]
+    pub map_symbols: MapSymbolsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbol {
+    #[serde(flatten)]
+    pub map_symbol: MapSymbolType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct DitchType {
     #[serde(flatten)]
-    pub ditch_type: DitchTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Length {
-    #[serde(flatten)]
-    pub length: PositiveInteger5digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialInfoText {
-    #[serde(flatten)]
-    pub material_info_text: String1000Type,
+    pub ditch_type: WctDitchTypeType,
 }
 

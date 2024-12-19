@@ -1,19 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FinancingType {
     #[serde(flatten)]
-    pub financing_type: FinancingActFinancingType,
+    pub financing_type: CoFinancingActFinancingType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActApplication {
+pub struct OtherPublicSubstitute {
     #[serde(flatten)]
-    pub financing_act_application: FinancingActApplicationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlanAndSubsidy {
-    #[serde(flatten)]
-    pub plan_and_subsidy: PlanAndSubsidyType,
+    pub other_public_substitute: CoOtherPublicSubstituteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,8 +23,14 @@ pub struct PartOfProject {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OtherPublicSubstitute {
+pub struct FinancingActApplication {
     #[serde(flatten)]
-    pub other_public_substitute: OtherPublicSubstituteType,
+    pub financing_act_application: FinancingActApplicationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlanAndSubsidy {
+    #[serde(flatten)]
+    pub plan_and_subsidy: PlanAndSubsidyType,
 }
 

@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LocationTimestamp {
+pub struct ResourceLocations {
     #[serde(flatten)]
-    pub location_timestamp: TimeStampType,
+    pub resource_locations: ResourceLocationsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,8 +17,8 @@ pub struct ServiceBuyerResourceLocations {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceLocations {
+pub struct LocationTimestamp {
     #[serde(flatten)]
-    pub resource_locations: ResourceLocationsType,
+    pub location_timestamp: BdtTimeStampType,
 }
 

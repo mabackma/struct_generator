@@ -7,10 +7,10 @@ pub struct ObjectsRealizationDataType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ObjectRealizationType {
     #[serde(rename = "@id")]
-    pub id: String,
+    pub id: Xsstring,
     #[serde(rename = "@parentId")]
-    pub parent_id: String,
-    #[serde(rename = "TreeStandDataDate")]
-    pub tree_stand_data_date: Vec<TreeStandDataDate2Type>,
+    pub parent_id: Xsstring,
+    #[serde(rename = "TsTreeStandDataDate")]
+    pub ts_tree_stand_data_date: Vec<String>,
 }
 

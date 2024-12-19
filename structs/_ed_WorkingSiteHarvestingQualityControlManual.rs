@@ -1,25 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LogVolume {
+pub struct MeasurementId {
     #[serde(flatten)]
-    pub log_volume: Decimal3FractionDigitsType,
+    pub measurement_id: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LogCount {
+    #[serde(flatten)]
+    pub log_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ControlLogCount {
     #[serde(flatten)]
-    pub control_log_count: PositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementId {
-    #[serde(flatten)]
-    pub measurement_id: PositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteHarvestingQualityControlManual {
-    #[serde(flatten)]
-    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
+    pub control_log_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,15 +23,9 @@ pub struct Measurement {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlLogLength {
+pub struct Temperature {
     #[serde(flatten)]
-    pub control_log_length: PositiveInteger5digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LogCount {
-    #[serde(flatten)]
-    pub log_count: PositiveInteger2digitsType,
+    pub temperature: Xsinteger,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,32 +35,8 @@ pub struct Measurements {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LogLength {
+pub struct WorkingSiteHarvestingQualityControlManual {
     #[serde(flatten)]
-    pub log_length: PositiveInteger5digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Temperature {
-    #[serde(flatten)]
-    pub temperature: integer,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelectionType {
-    #[serde(flatten)]
-    pub selection_type: String10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductKey {
-    #[serde(flatten)]
-    pub product_key: ERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlLogVolume {
-    #[serde(flatten)]
-    pub control_log_volume: Decimal3FractionDigitsType,
+    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
 }
 

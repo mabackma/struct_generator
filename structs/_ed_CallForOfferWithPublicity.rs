@@ -7,6 +7,6 @@ pub struct CallForOfferWithPublicityType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PublicityOrganizations {
     #[serde(flatten)]
-    pub publicity_organizations: OrganizationsType,
+    pub publicity_organizations: OOrganizationsType,
 }
 

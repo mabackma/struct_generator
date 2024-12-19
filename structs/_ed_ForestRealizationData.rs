@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectType {
+pub struct ParentObjects {
     #[serde(flatten)]
-    pub parent_object_type: ObjectTypeType,
+    pub parent_objects: ParentObjectsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -13,7 +13,7 @@ pub struct GeometryObject {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ParentObjectId {
     #[serde(flatten)]
-    pub parent_object_id: IdStringNotEmptyType,
+    pub parent_object_id: CoIdStringNotEmptyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,15 +23,15 @@ pub struct ForestRealizationData {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjects {
-    #[serde(flatten)]
-    pub parent_objects: ParentObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ParentObject {
     #[serde(flatten)]
     pub parent_object: ParentObjectType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParentObjectType {
+    #[serde(flatten)]
+    pub parent_object_type: ObjectTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use quick_xml::events::BytesStart;
 use quick_xml::name::QName;
 
-use crate::string_utils::remove_prefix;
+use crate::string_utils::handle_prefix;
 
 // Retrieve the element reference
 pub fn element_reference(e: &BytesStart<'_>) -> Option<String> {
@@ -43,7 +43,7 @@ pub fn extension_type(e: &BytesStart<'_>) -> Option<String> {
 // Retrieve the type of the reference
 pub fn reference_type(ref_name: &str, element_definitions: &HashMap<String, String>) -> Option<String> {
     // Search for the reference type in the element definitions
-    if let Some(typ) = element_definitions.get(&remove_prefix(ref_name)) {        
+    if let Some(typ) = element_definitions.get(&handle_prefix(ref_name)) {        
         return Some(typ.clone());
     }
     //println!("Reference type not found: {}", ref_name);
