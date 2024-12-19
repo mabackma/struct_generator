@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteKeyType {
-    #[serde(rename = "@id")]
-    pub id: String,
+pub struct OfferWorkingSiteDetailsType {
+    #[serde(flatten)]
+    pub base: OwsWorkingSiteType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferWorkingSiteDetailsType {
+    #[serde(flatten)]
+    pub base: CfowsWorkingSiteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -13,9 +19,9 @@ pub struct CallForOfferWorkingSitesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferWorkingSiteDetailsType {
-    #[serde(flatten)]
-    pub base: WorkingSiteType,
+pub struct WorkingSiteKeyType {
+    #[serde(rename = "@id")]
+    pub id: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -24,11 +30,5 @@ pub struct OfferWorkingSitesType {
     pub working_site_key: Vec<WorkingSiteKeyType>,
     #[serde(rename = "OfferWorkingSiteDetails")]
     pub offer_working_site_details: Vec<OfferWorkingSiteDetailsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSiteDetailsType {
-    #[serde(flatten)]
-    pub base: WorkingSiteType,
 }
 

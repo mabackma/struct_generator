@@ -1,6 +1,6 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct EnvelopesType {
-    #[serde(rename = "Envelope")]
-    pub envelope: Vec<EnvelopeType>,
+    #[serde(rename = "EnvlEnvelope")]
+    pub envl_envelope: Vec<String>,
 }
 

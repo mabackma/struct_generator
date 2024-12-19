@@ -1,12 +1,25 @@
 pub fn remove_prefix(name: &str) -> String {
     let mut parts = name.split(':').collect::<Vec<&str>>();
 
-    if parts.len() > 1 {
+/*     if parts.len() > 1 {
         parts.remove(0);
         return parts.join("");
+    } */
+
+    if parts.len() > 1 {
+        let new_name = parts.join("");
+        return capitalize_first(&new_name).to_string();
     }
 
     name.to_string()
+}
+
+fn capitalize_first(name: &str) -> String {
+    let mut chars = name.chars();
+    match chars.next() {
+        None => String::new(),
+        Some(first_char) => first_char.to_uppercase().collect::<String>() + chars.as_str(),
+    }
 }
 
 pub fn to_snake_case(name: &str) -> String {

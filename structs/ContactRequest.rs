@@ -1,46 +1,46 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PreferredContactingMethodsType {
-    #[serde(rename = "PreferredContactingMethod")]
-    pub preferred_contacting_method: Vec<PreferredContactingMethodType>,
+pub struct RequestCodeType {
+    #[serde(flatten)]
+    pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ContactRequestType {
     #[serde(rename = "@id")]
-    pub id: String,
+    pub id: Xsstring,
     #[serde(rename = "@source")]
-    pub source: String,
+    pub source: Xsstring,
     #[serde(rename = "ContactInformation")]
-    pub contact_information: ContactInformationType,
+    pub contact_information: CiContactInformationType,
     #[serde(rename = "ContactMunicipality")]
-    pub contact_municipality: MunicipalityNumberType,
+    pub contact_municipality: CoMunicipalityNumberType,
     #[serde(rename = "ContactLocationInformation")]
-    pub contact_location_information: AlternativeGeometriesType,
+    pub contact_location_information: GdtAlternativeGeometriesType,
     #[serde(rename = "RequestCode")]
     pub request_code: RequestCodeType,
     #[serde(rename = "RequestInfo", skip_serializing_if = "Option::is_none")]
-    pub request_info: Option<String2000Type>,
+    pub request_info: Option<CoString2000Type>,
     #[serde(rename = "PreferredContactingMethods", skip_serializing_if = "Option::is_none")]
     pub preferred_contacting_methods: Option<PreferredContactingMethodsType>,
     #[serde(rename = "CreateDate")]
-    pub create_date: DateType,
+    pub create_date: CoDateType,
     #[serde(rename = "ExpirationDate", skip_serializing_if = "Option::is_none")]
-    pub expiration_date: Option<DateType>,
+    pub expiration_date: Option<CoDateType>,
     #[serde(rename = "ForestPropertyDataSet", skip_serializing_if = "Option::is_none")]
     pub forest_property_data_set: Option<ForestPropertyDataSetType>,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub documents: Option<DocumentsType>,
+    #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
+    pub wtco_documents: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreferredContactingMethodsType {
+    #[serde(rename = "PreferredContactingMethod")]
+    pub preferred_contacting_method: Vec<CoPreferredContactingMethodType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestPropertyDataSetType {
     #[serde(rename = "ForestPropertyData")]
-    pub forest_property_data: Vec<ForestPropertyDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RequestCodeType {
-    #[serde(flatten)]
-    pub base: String,
+    pub forest_property_data: Vec<FdForestPropertyDataType>,
 }
 

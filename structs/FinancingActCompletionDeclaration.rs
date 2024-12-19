@@ -1,76 +1,76 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PartOfProjectType {
+    #[serde(rename = "@id")]
+    pub id: CoIdStringType,
+    #[serde(rename = "FacAreaNo")]
+    pub fac_area_no: String,
+    #[serde(rename = "FacFinancingActWorkCode")]
+    pub fac_financing_act_work_code: String,
+    #[serde(rename = "FacPayeesAndRealEstates")]
+    pub fac_payees_and_real_estates: String,
+    #[serde(rename = "CompletionDataAndSubsidy")]
+    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PartsOfProjectType {
     #[serde(rename = "PartOfProject")]
     pub part_of_project: Vec<PartOfProjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartOfProjectType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "AreaNo")]
-    pub area_no: PositiveInteger4digitsType,
-    #[serde(rename = "FinancingActWorkCode")]
-    pub financing_act_work_code: FinancingActWorkCodeType,
-    #[serde(rename = "PayeesAndRealEstates")]
-    pub payees_and_real_estates: PayeesAndRealEstatesType,
-    #[serde(rename = "CompletionDataAndSubsidy")]
-    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+pub struct CompletionDataAndSubsidyType {
+    #[serde(rename = "FacFinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_completion_stands: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FinancingActCompletionDeclarationType {
     #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "UpdatePreviousMessage")]
-    pub update_previous_message: YesNoType,
-    #[serde(rename = "CompletionDeclarationReference")]
-    pub completion_declaration_reference: ReferenceType,
-    #[serde(rename = "FinancingActNumber")]
-    pub financing_act_number: FinancingActNumberType,
-    #[serde(rename = "FinancingActApplicationReference", skip_serializing_if = "Option::is_none")]
-    pub financing_act_application_reference: Option<ReferenceType>,
-    #[serde(rename = "CustomerReference", skip_serializing_if = "Option::is_none")]
-    pub customer_reference: Option<ReferenceType>,
+    pub id: Xsstring,
+    #[serde(rename = "FacUpdatePreviousMessage")]
+    pub fac_update_previous_message: String,
+    #[serde(rename = "FacCompletionDeclarationReference")]
+    pub fac_completion_declaration_reference: String,
+    #[serde(rename = "FacFinancingActNumber")]
+    pub fac_financing_act_number: String,
+    #[serde(rename = "FacFinancingActApplicationReference", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_application_reference: Option<String>,
+    #[serde(rename = "FacCustomerReference", skip_serializing_if = "Option::is_none")]
+    pub fac_customer_reference: Option<String>,
     #[serde(rename = "BankReferenceNumber", skip_serializing_if = "Option::is_none")]
-    pub bank_reference_number: Option<BankReferenceNumberType>,
+    pub bank_reference_number: Option<CoBankReferenceNumberType>,
     #[serde(rename = "FinancingActProjectCompleted")]
-    pub financing_act_project_completed: YesNoType,
+    pub financing_act_project_completed: CoYesNoType,
     #[serde(rename = "ExtraFinancingApplication")]
-    pub extra_financing_application: YesNoType,
+    pub extra_financing_application: CoYesNoType,
     #[serde(rename = "OtherPublicSubstitute")]
-    pub other_public_substitute: OtherPublicSubstituteType,
-    #[serde(rename = "FinancingActCompletionDeclarationTextInformation", skip_serializing_if = "Option::is_none")]
-    pub financing_act_completion_declaration_text_information: Option<String2000Type>,
-    #[serde(rename = "Language")]
-    pub language: LanguageCode1Type,
-    #[serde(rename = "ElectronicNotification")]
-    pub electronic_notification: ElectronicNotificationType,
-    #[serde(rename = "Sender")]
-    pub sender: ContactInformationType,
-    #[serde(rename = "Attorney", skip_serializing_if = "Option::is_none")]
-    pub attorney: Option<AttorneyType>,
-    #[serde(rename = "SentDate")]
-    pub sent_date: DateType,
-    #[serde(rename = "StartDate")]
-    pub start_date: StartDateType,
-    #[serde(rename = "EndDate")]
-    pub end_date: EndDateType,
-    #[serde(rename = "FinancingActRealEstates")]
-    pub financing_act_real_estates: FinancingActRealEstatesType,
-    #[serde(rename = "CompletionDeclarationActors")]
-    pub completion_declaration_actors: CompletionDeclarationActorsType,
-    #[serde(rename = "WorkingRepresentatives", skip_serializing_if = "Option::is_none")]
-    pub working_representatives: Option<WorkingRepresentativesType>,
+    pub other_public_substitute: CoOtherPublicSubstituteType,
+    #[serde(rename = "FacFinancingActCompletionDeclarationTextInformation", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_completion_declaration_text_information: Option<String>,
+    #[serde(rename = "FacLanguage")]
+    pub fac_language: String,
+    #[serde(rename = "FacElectronicNotification")]
+    pub fac_electronic_notification: String,
+    #[serde(rename = "FacSender")]
+    pub fac_sender: String,
+    #[serde(rename = "FacAttorney", skip_serializing_if = "Option::is_none")]
+    pub fac_attorney: Option<String>,
+    #[serde(rename = "FacSentDate")]
+    pub fac_sent_date: String,
+    #[serde(rename = "FacStartDate")]
+    pub fac_start_date: String,
+    #[serde(rename = "FacEndDate")]
+    pub fac_end_date: String,
+    #[serde(rename = "FacFinancingActRealEstates")]
+    pub fac_financing_act_real_estates: String,
+    #[serde(rename = "FacCompletionDeclarationActors")]
+    pub fac_completion_declaration_actors: String,
+    #[serde(rename = "FacWorkingRepresentatives", skip_serializing_if = "Option::is_none")]
+    pub fac_working_representatives: Option<String>,
     #[serde(rename = "PartsOfProject")]
     pub parts_of_project: PartsOfProjectType,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub documents: Option<DocumentsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompletionDataAndSubsidyType {
-    #[serde(rename = "FinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
-    pub financing_act_completion_stands: Option<FinancingActCompletionStandsType>,
+    #[serde(rename = "FacDocuments", skip_serializing_if = "Option::is_none")]
+    pub fac_documents: Option<String>,
 }
 

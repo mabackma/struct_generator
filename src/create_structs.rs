@@ -136,7 +136,7 @@ pub fn add_element_definition(e: &BytesStart<'_>, element_definitions: &mut Hash
     if let Some(n) = name {
         if let Some(t) = typ {
             if element_definitions.contains_key(&n) && element_definitions[&n] != t {
-                //println!("Existing definition {}: {} -> {}", n, element_definitions[&n], t);
+                println!("Existing definition {}: {} -> {}", n, element_definitions[&n], t);
             }
 
             element_definitions.insert(n, t);
