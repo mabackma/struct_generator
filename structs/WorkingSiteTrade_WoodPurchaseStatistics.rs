@@ -1,31 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaTypeType {
-    #[serde(flatten)]
-    pub base: CoAreaTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AreaCodeType {
     #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EndDateType {
+pub struct AreaTypeType {
     #[serde(flatten)]
-    pub base: JhsLoppuPvmTyyppi,
+    pub base: AreaTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RoundWoodSalesRowType {
-    #[serde(rename = "AreaType")]
-    pub area_type: AreaTypeType,
-    #[serde(rename = "AreaCode")]
-    pub area_code: AreaCodeType,
-    #[serde(rename = "PurchaseModeCode")]
-    pub purchase_mode_code: WtcoPurchaseModeType,
-    #[serde(rename = "AssortmentCompactClasses")]
-    pub assortment_compact_classes: AsAssortmentCompactClassesType,
+pub struct StartDateType {
+    #[serde(flatten)]
+    pub base: AlkuPvmTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,12 +37,24 @@ pub struct RoundWoodSalesDataType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CompanyIDType {
     #[serde(flatten)]
-    pub base: JhsYritysTunnusTyyppi,
+    pub base: YritysTunnusTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StartDateType {
+pub struct RoundWoodSalesRowType {
+    #[serde(rename = "AreaType")]
+    pub area_type: AreaTypeType,
+    #[serde(rename = "AreaCode")]
+    pub area_code: AreaCodeType,
+    #[serde(rename = "PurchaseModeCode")]
+    pub purchase_mode_code: PurchaseModeType,
+    #[serde(rename = "AssortmentCompactClasses")]
+    pub assortment_compact_classes: AssortmentCompactClassesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EndDateType {
     #[serde(flatten)]
-    pub base: JhsAlkuPvmTyyppi,
+    pub base: LoppuPvmTyyppi,
 }
 

@@ -1,15 +1,15 @@
 pub fn remove_prefix(name: &str) -> String {
     let mut parts = name.split(':').collect::<Vec<&str>>();
 
-/*     if parts.len() > 1 {
+    if parts.len() > 1 {
         parts.remove(0);
         return parts.join("");
-    } */
+    }
 
-    if parts.len() > 1 {
+/*     if parts.len() > 1 {
         let new_name = parts.join("");
         return capitalize_first(&new_name).to_string();
-    }
+    } */
 
     name.to_string()
 }

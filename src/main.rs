@@ -15,13 +15,27 @@ fn main() {
 
     let sorted_files = sort_files(&file_dependencies);
 
+    let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
+
+    let mut total_struct_count = 0;
+    let mut total_element_count = 0;
 
     for file in sorted_files {
         //println!("Processing file: {}", file);
-        process_xsd_file(&file, &mut element_definitions);
+        let counts = process_xsd_file(&file, &mut structs, &mut element_definitions);
+        total_struct_count += counts.0;
+        total_element_count += counts.1;
     }
+    
+    structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
+    element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs").unwrap();
 
+
+    println!("Total number of structs: {}", total_struct_count);
+    println!("Actual number of structs: {}", structs.len());
+    println!("Total number of element definitions: {}", total_element_count);
+    println!("Actual number of element definitions: {}", element_definitions.len());
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -131,19 +145,39 @@ fn topological_sort(
 }
 
 // Creates the structs and element definitions and writes them to files in the `structs` folder
-fn process_xsd_file(current_file: &str, element_definitions: &mut HashMap<String, String>) {
-    let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
+fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>, element_definitions: &mut HashMap<String, String>) -> (usize, usize) {
+    let mut new_structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
+    let mut new_element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
     let mut file_name = current_file.split("/").collect::<Vec<&str>>().last().unwrap().to_string();
     file_name = "./structs/".to_string() + &file_name.replace(".xsd", ".rs");
     
-    let elements_file_name = file_name.replace(".rs", "_ed.rs");
+    let elements_file_name = "./structs/_ed_".to_string() + &file_name.replace("./structs/", "");
 
     let content = read_xsd_file(current_file).unwrap();
     let mut reader = Reader::from_str(&content);
 
-    create_structs(&mut reader, &mut structs, element_definitions, &content);
+    let current_definitions = element_definitions.clone();
 
-    structs_to_file(&structs, &file_name).unwrap();
-    element_definitions_to_file(&element_definitions, &elements_file_name).unwrap();
+    create_structs(&mut reader, &mut new_structs, element_definitions, &content);
+
+    for (key, value) in element_definitions.iter() {
+        if !current_definitions.contains_key(key) {
+            new_element_definitions.insert(key.to_string(), value.to_string());
+        }
+    }
+
+    // Write the new structs to a file
+    if new_structs.len() > 0 {
+        structs_to_file(&new_structs, &file_name).unwrap();
+    }
+
+    structs.extend(new_structs.clone());
+
+    // Write the new element definitions to a file
+    if new_element_definitions.len() > 0 {
+        element_definitions_to_file(&new_element_definitions, &elements_file_name).unwrap();
+    }
+
+    (new_structs.len(), new_element_definitions.len())
 }

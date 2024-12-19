@@ -1,20 +1,20 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct QualityAttachmentType {
     #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
+    pub service_buyer_id: String20Type,
     #[serde(rename = "DestinationStorage")]
-    pub destination_storage: BdtString20Type,
+    pub destination_storage: String20Type,
     #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
-    pub assortment: Option<BdtString50Type>,
+    pub assortment: Option<String50Type>,
     #[serde(rename = "ModificationDate")]
-    pub modification_date: BdtDateType,
+    pub modification_date: DateType,
     #[serde(rename = "Version")]
-    pub version: BdtString10Type,
+    pub version: String10Type,
     #[serde(rename = "Infotext", skip_serializing_if = "Option::is_none")]
-    pub infotext: Option<BdtString1000Type>,
+    pub infotext: Option<String1000Type>,
     #[serde(rename = "Filename")]
-    pub filename: BdtString100Type,
+    pub filename: String100Type,
     #[serde(rename = "Bytes")]
-    pub bytes: Xsbase64Binary,
+    pub bytes: Vec<u8>,
 }
 

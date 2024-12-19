@@ -1,25 +1,55 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VATType {
+pub struct SequenceNumberType {
     #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+    pub base: PositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TextType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValueType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TotalValueType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CurrencyType {
     #[serde(flatten)]
-    pub base: CoCurrencyType,
+    pub base: CurrencyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaidValueType {
+    #[serde(flatten)]
+    pub base: Decimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementCertificateTypeType {
+    #[serde(flatten)]
+    pub base: MeasurementCertificateTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MeasurementCertificateType {
     #[serde(rename = "@parentId")]
-    pub parent_id: Xsstring,
+    pub parent_id: String,
     #[serde(rename = "@id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "@versionNo")]
     pub version_no: VersionNoType,
-    #[serde(rename = "CoTimeStamp")]
-    pub co_time_stamp: String,
+    #[serde(rename = "TimeStamp")]
+    pub time_stamp: TimeStampType,
     #[serde(rename = "SequenceNumber")]
     pub sequence_number: SequenceNumberType,
     #[serde(rename = "MeasurementDate")]
@@ -40,65 +70,35 @@ pub struct MeasurementCertificateType {
     pub paid_value: Option<PaidValueType>,
     #[serde(rename = "Currency")]
     pub currency: CurrencyType,
-    #[serde(rename = "AsAssortmentClasses")]
-    pub as_assortment_classes: String,
+    #[serde(rename = "AssortmentClasses")]
+    pub assortment_classes: AssortmentClassesType,
     #[serde(rename = "PaymentTransactions", skip_serializing_if = "Option::is_none")]
-    pub payment_transactions: Option<WtcoPaymentTransactionsType>,
-    #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
-    pub wtco_documents: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SequenceNumberType {
-    #[serde(flatten)]
-    pub base: CoPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InsertDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TotalValueType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VersionNoType {
-    #[serde(flatten)]
-    pub base: CoPositiveIntegerType,
+    pub payment_transactions: Option<PaymentTransactionsType>,
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
+    pub documents: Option<DocumentsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MeasurementDateType {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementCertificateTypeType {
+pub struct VersionNoType {
     #[serde(flatten)]
-    pub base: CoMeasurementCertificateTypeType,
+    pub base: PositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValueType {
+pub struct VATType {
     #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+    pub base: Decimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaidValueType {
+pub struct InsertDateType {
     #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TextType {
-    #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: DateType,
 }
 
