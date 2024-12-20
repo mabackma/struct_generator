@@ -5,12 +5,6 @@ pub struct Loads {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Day {
-    #[serde(flatten)]
-    pub day: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForwardingEstimate {
     #[serde(flatten)]
     pub forwarding_estimate: ForwardingEstimateType,

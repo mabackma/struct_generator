@@ -5,27 +5,9 @@ pub struct PaidValue {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementCertificate {
-    #[serde(flatten)]
-    pub measurement_certificate: MeasurementCertificateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct InsertDate {
     #[serde(flatten)]
     pub insert_date: InsertDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SequenceNumber {
-    #[serde(flatten)]
-    pub sequence_number: SequenceNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VAT {
-    #[serde(flatten)]
-    pub vat: VATType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -38,5 +20,11 @@ pub struct Text {
 pub struct MeasurementCertificateType {
     #[serde(flatten)]
     pub measurement_certificate_type: MeasurementCertificateTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementCertificate {
+    #[serde(flatten)]
+    pub measurement_certificate: MeasurementCertificateType,
 }
 

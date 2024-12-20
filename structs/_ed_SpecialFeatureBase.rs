@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureCode {
+pub struct FeatureInfo {
     #[serde(flatten)]
-    pub feature_code: CoFeatureCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainFeature {
-    #[serde(flatten)]
-    pub main_feature: CoYesNoType,
+    pub feature_info: FeatureInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,33 +17,9 @@ pub struct Explanation {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BufferDistance {
-    #[serde(flatten)]
-    pub buffer_distance: BufferDistanceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionDescription {
-    #[serde(flatten)]
-    pub restriction_description: CoString1500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct UsingRestriction {
     #[serde(flatten)]
     pub using_restriction: UsingRestrictionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureType {
-    #[serde(flatten)]
-    pub feature_type: CoFeatureTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureAdditionalCode {
-    #[serde(flatten)]
-    pub feature_additional_code: CoFeatureAdditionalCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,9 +29,9 @@ pub struct EndDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionOutOfObject {
+pub struct RestrictionStartDate {
     #[serde(flatten)]
-    pub restriction_out_of_object: CoYesNoType,
+    pub restriction_start_date: StartDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,21 +41,33 @@ pub struct FeatureAdditionalInfo {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureInfo {
+pub struct RestrictionDescription {
     #[serde(flatten)]
-    pub feature_info: FeatureInfoType,
+    pub restriction_description: CoString1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StartDate {
+pub struct FeatureCode {
     #[serde(flatten)]
-    pub start_date: StartDateType,
+    pub feature_code: CoFeatureCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionStartDate {
+pub struct UsingRestrictions {
     #[serde(flatten)]
-    pub restriction_start_date: StartDateType,
+    pub using_restrictions: UsingRestrictionsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureAdditionalCode {
+    #[serde(flatten)]
+    pub feature_additional_code: CoFeatureAdditionalCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureType {
+    #[serde(flatten)]
+    pub feature_type: CoFeatureTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,8 +77,26 @@ pub struct Validity {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRestrictions {
+pub struct BufferDistance {
     #[serde(flatten)]
-    pub using_restrictions: UsingRestrictionsType,
+    pub buffer_distance: BufferDistanceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StartDate {
+    #[serde(flatten)]
+    pub start_date: StartDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainFeature {
+    #[serde(flatten)]
+    pub main_feature: CoYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RestrictionOutOfObject {
+    #[serde(flatten)]
+    pub restriction_out_of_object: CoYesNoType,
 }
 

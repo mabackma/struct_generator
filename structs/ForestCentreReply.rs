@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorMessagesType {
+    #[serde(rename = "ErrorMessageData")]
+    pub error_message_data: Vec<ErrorMessageDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestCentreReplyType {
     #[serde(rename = "@schemaPackageVersion")]
     pub schema_package_version: CoForestDataStandardSchemaPackageVersionType,
@@ -24,12 +30,6 @@ pub struct ForestCentreReplyType {
     pub error_messages: Option<ErrorMessagesType>,
     #[serde(rename = "AdditionalInfo", skip_serializing_if = "Option::is_none")]
     pub additional_info: Option<CoString1000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessagesType {
-    #[serde(rename = "ErrorMessageData")]
-    pub error_message_data: Vec<ErrorMessageDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

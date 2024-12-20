@@ -1,19 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Data {
+pub struct WorkCodeGroup {
     #[serde(flatten)]
-    pub data: XshexBinary,
+    pub work_code_group: BdtWorkCodeGroupType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureOrder {
+pub struct Attachment {
     #[serde(flatten)]
-    pub silviculture_order: SilvicultureOrderType,
+    pub attachment: AttachmentDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Attachments {
+pub struct InfoText {
     #[serde(flatten)]
-    pub attachments: AttachmentsType,
+    pub info_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,20 +23,38 @@ pub struct OperationalRegion {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Attachments {
+    #[serde(flatten)]
+    pub attachments: AttachmentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureOrder {
+    #[serde(flatten)]
+    pub silviculture_order: SilvicultureOrderType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Data {
+    #[serde(flatten)]
+    pub data: XshexBinary,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct BeginDate {
     #[serde(flatten)]
     pub begin_date: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerArea {
+pub struct OrderId {
     #[serde(flatten)]
-    pub service_buyer_area: BdtString20Type,
+    pub order_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Attachment {
+pub struct ServiceBuyerArea {
     #[serde(flatten)]
-    pub attachment: AttachmentDataType,
+    pub service_buyer_area: BdtString20Type,
 }
 

@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StumpLiftingSuitableText {
-    #[serde(flatten)]
-    pub stump_lifting_suitable_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StumpLiftingSuitable {
     #[serde(flatten)]
     pub stump_lifting_suitable: BdtYesNoType,
@@ -17,9 +11,15 @@ pub struct WorkingSiteFinalAuditStumpLifting {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RemainingStumpCountText {
+pub struct StumpLiftingQuality {
     #[serde(flatten)]
-    pub remaining_stump_count_text: BdtString200Type,
+    pub stump_lifting_quality: BdtWorkingQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StumpLiftingSuitableText {
+    #[serde(flatten)]
+    pub stump_lifting_suitable_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,14 +29,14 @@ pub struct RemainingStumpCount {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StumpLiftingQuality {
-    #[serde(flatten)]
-    pub stump_lifting_quality: BdtWorkingQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StumpLiftingQualityText {
     #[serde(flatten)]
     pub stump_lifting_quality_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RemainingStumpCountText {
+    #[serde(flatten)]
+    pub remaining_stump_count_text: BdtString200Type,
 }
 

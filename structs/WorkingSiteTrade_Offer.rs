@@ -1,19 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
+pub struct OfferDateType {
     #[serde(flatten)]
     pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferBusinessSenderType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OfferTextType {
     #[serde(flatten)]
     pub base: CoString1500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,13 +49,13 @@ pub struct OfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDateType {
+pub struct TechnicalContactPersonType {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
+pub struct OfferBusinessSenderType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
 }

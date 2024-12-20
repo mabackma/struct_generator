@@ -5,9 +5,9 @@ pub struct ContractBeginningDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSites {
+pub struct ContractWorkingSiteDetails {
     #[serde(flatten)]
-    pub contract_working_sites: ContractWorkingSitesType,
+    pub contract_working_site_details: ContractWorkingSiteDetailsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,21 +17,9 @@ pub struct ContractText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractId {
+pub struct ContractWorkingSites {
     #[serde(flatten)]
-    pub contract_id: ContractIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Contract {
-    #[serde(flatten)]
-    pub contract: ContractType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSiteDetails {
-    #[serde(flatten)]
-    pub contract_working_site_details: ContractWorkingSiteDetailsType,
+    pub contract_working_sites: ContractWorkingSitesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestrictions {
+pub struct GrowthPlaceDataSource {
     #[serde(flatten)]
-    pub silviculture_restrictions: SilvicultureRestrictionsType,
+    pub growth_place_data_source: CoDataSourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,8 +17,8 @@ pub struct SilvicultureRestrictionDetails {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GrowthPlaceDataSource {
+pub struct SilvicultureRestrictions {
     #[serde(flatten)]
-    pub growth_place_data_source: CoDataSourceType,
+    pub silviculture_restrictions: SilvicultureRestrictionsType,
 }
 

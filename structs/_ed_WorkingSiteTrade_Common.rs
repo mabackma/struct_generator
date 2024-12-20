@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationSystems {
+pub struct Seller {
     #[serde(flatten)]
-    pub certification_systems: CertificationSystemsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethod {
-    #[serde(flatten)]
-    pub used_pricing_method: UsedPricingMethodType,
+    pub seller: SellerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,15 +11,21 @@ pub struct WorkingSiteGeometry {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TotalValue {
+pub struct WorkingSitePaymentTransactions {
     #[serde(flatten)]
-    pub total_value: TotalPriceType,
+    pub working_site_payment_transactions: OfferWorkingSitePaymentTransactionsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationResponsible {
+pub struct Documents {
     #[serde(flatten)]
-    pub forest_use_declaration_responsible: CoForestUseDeclarationResponsibleType,
+    pub documents: DocumentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VATStatus {
+    #[serde(flatten)]
+    pub v_a_t_status: VATStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,27 +35,33 @@ pub struct CuttingPlannerLiability {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePaymentTransactions {
+pub struct PaymentTransaction {
     #[serde(flatten)]
-    pub working_site_payment_transactions: OfferWorkingSitePaymentTransactionsType,
+    pub payment_transaction: PaymentTransactionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VATRegistrationDate {
+pub struct PaymentTransactionDescription {
     #[serde(flatten)]
-    pub v_a_t_registration_date: VATRegistrationDateType,
+    pub payment_transaction_description: PaymentTransactionDescriptionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResource {
+pub struct IncludeForestFundPayment {
     #[serde(flatten)]
-    pub planned_resource: PlannedResourceType,
+    pub include_forest_fund_payment: IncludeForestFundPaymentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseMode {
+pub struct PaymentTransactions {
     #[serde(flatten)]
-    pub purchase_mode: PurchaseModeType,
+    pub payment_transactions: PaymentTransactionsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TotalValue {
+    #[serde(flatten)]
+    pub total_value: TotalPriceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,21 +71,33 @@ pub struct SupplyPoint {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethods {
+pub struct PaymentTransactionCategory {
     #[serde(flatten)]
-    pub used_pricing_methods: UsedPricingMethodsType,
+    pub payment_transaction_category: CoMoneyTransactionCategoryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FellingRightValidityDate {
+pub struct PurchaseMode {
     #[serde(flatten)]
-    pub felling_right_validity_date: FellingRightValidityDateType,
+    pub purchase_mode: PurchaseModeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactions {
+pub struct Cuttings {
     #[serde(flatten)]
-    pub payment_transactions: PaymentTransactionsType,
+    pub cuttings: CuttingsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UnitValue {
+    #[serde(flatten)]
+    pub unit_value: UnitPriceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CertificationSystems {
+    #[serde(flatten)]
+    pub certification_systems: CertificationSystemsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,51 +113,15 @@ pub struct PaymentTransactionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactionCategory {
+pub struct VATRegistrationDate {
     #[serde(flatten)]
-    pub payment_transaction_category: CoMoneyTransactionCategoryType,
+    pub v_a_t_registration_date: VATRegistrationDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct IncludeForestFundPayment {
+pub struct UsedPricingMethod {
     #[serde(flatten)]
-    pub include_forest_fund_payment: IncludeForestFundPaymentType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlanner {
-    #[serde(flatten)]
-    pub working_site_planner: WorkingSitePlannerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Cuttings {
-    #[serde(flatten)]
-    pub cuttings: CuttingsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VATStatus {
-    #[serde(flatten)]
-    pub v_a_t_status: VATStatusType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransaction {
-    #[serde(flatten)]
-    pub payment_transaction: PaymentTransactionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Seller {
-    #[serde(flatten)]
-    pub seller: SellerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactionDescription {
-    #[serde(flatten)]
-    pub payment_transaction_description: PaymentTransactionDescriptionType,
+    pub used_pricing_method: UsedPricingMethodType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -149,14 +131,38 @@ pub struct IncludePaymentPlan {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UnitValue {
+pub struct PlannedResource {
     #[serde(flatten)]
-    pub unit_value: UnitPriceType,
+    pub planned_resource: PlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CertificationSystem {
     #[serde(flatten)]
     pub certification_system: CertificationSystemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationResponsible {
+    #[serde(flatten)]
+    pub forest_use_declaration_responsible: CoForestUseDeclarationResponsibleType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsedPricingMethods {
+    #[serde(flatten)]
+    pub used_pricing_methods: UsedPricingMethodsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FellingRightValidityDate {
+    #[serde(flatten)]
+    pub felling_right_validity_date: FellingRightValidityDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitePlanner {
+    #[serde(flatten)]
+    pub working_site_planner: WorkingSitePlannerType,
 }
 

@@ -1,37 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementMethod {
+pub struct UnitPrice {
     #[serde(flatten)]
-    pub measurement_method: CoMeasurementMethodType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentCompactClasses {
-    #[serde(flatten)]
-    pub assortment_compact_classes: AssortmentCompactClassesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClasses {
-    #[serde(flatten)]
-    pub assortment_classes: AssortmentClassesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PricingMethod {
-    #[serde(flatten)]
-    pub pricing_method: CoUsedPricingMethodType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Quantity {
-    #[serde(flatten)]
-    pub quantity: WtcoQuantityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLots {
-    #[serde(flatten)]
-    pub wood_lots: WoodLotsType,
+    pub unit_price: WtcoUnitPriceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,75 +11,33 @@ pub struct AssortmentsCompact {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentClasses {
+    #[serde(flatten)]
+    pub assortment_classes: AssortmentClassesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct GradeCode {
     #[serde(flatten)]
     pub grade_code: CoGradeCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PriceItem {
+pub struct AssortmentCompact {
     #[serde(flatten)]
-    pub price_item: PriceItemType,
+    pub assortment_compact: AssortmentCompactType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClassCode {
+pub struct Quantity {
     #[serde(flatten)]
-    pub assortment_class_code: AssortmentClassCodeType,
+    pub quantity: WtcoQuantityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentMainGroup {
+pub struct MeasurementMethod {
     #[serde(flatten)]
-    pub assortment_main_group: CoAssortmentMainGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotInformationTypeDescription {
-    #[serde(flatten)]
-    pub wood_lot_information_type_description: CoString500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuantityUnit {
-    #[serde(flatten)]
-    pub quantity_unit: WtcoQuantityUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TotalPrice {
-    #[serde(flatten)]
-    pub total_price: WtcoTotalPriceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Woodlot {
-    #[serde(flatten)]
-    pub woodlot: WoodLotType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClass {
-    #[serde(flatten)]
-    pub assortment_class: AssortmentClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LengthMin {
-    #[serde(flatten)]
-    pub length_min: LengthMinType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentInfo {
-    #[serde(flatten)]
-    pub assortment_info: AssortmentInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotInformationValue {
-    #[serde(flatten)]
-    pub wood_lot_information_value: WoodLotInformationValueType,
+    pub measurement_method: CoMeasurementMethodType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,9 +47,87 @@ pub struct LengthMax {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterMax {
+    #[serde(flatten)]
+    pub diameter_max: DiameterMaxType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentMainGroup {
+    #[serde(flatten)]
+    pub assortment_main_group: CoAssortmentMainGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PriceMatrix {
     #[serde(flatten)]
     pub price_matrix: PriceMatrixType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PricingMethod {
+    #[serde(flatten)]
+    pub pricing_method: CoUsedPricingMethodType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentClassCode {
+    #[serde(flatten)]
+    pub assortment_class_code: AssortmentClassCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PriceItem {
+    #[serde(flatten)]
+    pub price_item: PriceItemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentInfo {
+    #[serde(flatten)]
+    pub assortment_info: AssortmentInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LengthMin {
+    #[serde(flatten)]
+    pub length_min: LengthMinType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentClass {
+    #[serde(flatten)]
+    pub assortment_class: AssortmentClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WoodLots {
+    #[serde(flatten)]
+    pub wood_lots: WoodLotsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterMin {
+    #[serde(flatten)]
+    pub diameter_min: DiameterMinType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WoodLotInformationValue {
+    #[serde(flatten)]
+    pub wood_lot_information_value: WoodLotInformationValueType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentCompactClasses {
+    #[serde(flatten)]
+    pub assortment_compact_classes: AssortmentCompactClassesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TotalPrice {
+    #[serde(flatten)]
+    pub total_price: WtcoTotalPriceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -137,8 +143,20 @@ pub struct WoodLotInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentCompact {
+pub struct Woodlot {
     #[serde(flatten)]
-    pub assortment_compact: AssortmentCompactType,
+    pub woodlot: WoodLotType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuantityUnit {
+    #[serde(flatten)]
+    pub quantity_unit: WtcoQuantityUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WoodLotInformationTypeDescription {
+    #[serde(flatten)]
+    pub wood_lot_information_type_description: CoString500Type,
 }
 

@@ -33,16 +33,7 @@ fn main() {
     
     modify_struct_keys(&mut structs, prefixes);
 
-    for (_, value) in structs.iter_mut() {
-        for field in value.fields.iter_mut() {
-            if field.name.contains(':') {
-                field.name = field.name.replace(":", "_");
-            }
-            if field.field_type.contains(":") {
-                field.field_type = field.field_type.replace(":", "_");
-            }
-        }
-    }
+    fix_fields_with_colons(&mut structs);
 
     structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
     element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
@@ -86,6 +77,19 @@ fn modify_struct_keys(structs: &mut HashMap<String, XMLStruct>, prefixes: &mut H
     }
 
     *structs = new_structs;
+}
+
+fn fix_fields_with_colons(structs: &mut HashMap<String, XMLStruct>) {
+    for (_, value) in structs.iter_mut() {
+        for field in value.fields.iter_mut() {
+            if field.name.contains(':') {
+                field.name = field.name.replace(":", "_");
+            }
+            if field.field_type.contains(":") {
+                field.field_type = field.field_type.replace(":", "_");
+            }
+        }
+    }
 }
 
 fn create_file_dependencies(folder_path: &str, file_dependencies: &mut HashMap<String, HashSet<String>>) {

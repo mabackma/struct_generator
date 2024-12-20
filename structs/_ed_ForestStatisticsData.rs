@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsAssortmentCompactClasses {
+pub struct ForestStatisticsData {
     #[serde(flatten)]
-    pub statistics_assortment_compact_classes: AssortmentCompactClassesType,
+    pub forest_statistics_data: ForestStatisticsDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,15 +11,9 @@ pub struct StatisticsQuantities {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsOperation {
+pub struct LoggingsRow {
     #[serde(flatten)]
-    pub statistics_operation: StatisticsOperationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRow {
-    #[serde(flatten)]
-    pub operation_row: OperationRowType,
+    pub loggings_row: LoggingsRowType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,15 +23,9 @@ pub struct ReportedStatisticsOperationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestStatisticsData {
+pub struct StatisticsQuantity {
     #[serde(flatten)]
-    pub forest_statistics_data: ForestStatisticsDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingsRow {
-    #[serde(flatten)]
-    pub loggings_row: LoggingsRowType,
+    pub statistics_quantity: StatisticsQuantityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,9 +35,21 @@ pub struct ForestOwnerGroup {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsQuantity {
+pub struct StatisticsOperation {
     #[serde(flatten)]
-    pub statistics_quantity: StatisticsQuantityType,
+    pub statistics_operation: StatisticsOperationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoggingsRows {
+    #[serde(flatten)]
+    pub loggings_rows: LoggingsRowsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatisticsAssortmentCompactClasses {
+    #[serde(flatten)]
+    pub statistics_assortment_compact_classes: AssortmentCompactClassesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,8 +59,8 @@ pub struct OperationRows {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingsRows {
+pub struct OperationRow {
     #[serde(flatten)]
-    pub loggings_rows: LoggingsRowsType,
+    pub operation_row: OperationRowType,
 }
 

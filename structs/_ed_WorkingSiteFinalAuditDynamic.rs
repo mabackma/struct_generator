@@ -1,67 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Audition {
-    #[serde(flatten)]
-    pub audition: AuditionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionAsText {
-    #[serde(flatten)]
-    pub question_as_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditDynamic {
-    #[serde(flatten)]
-    pub working_site_final_audit_dynamic: WorkingSiteFinalAuditDynamicType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceType {
-    #[serde(flatten)]
-    pub resource_type: BdtResourceTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attribute {
-    #[serde(flatten)]
-    pub attribute: AttributeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditIdentifier {
-    #[serde(flatten)]
-    pub final_audit_identifier: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct QuestionAnswerAsText {
     #[serde(flatten)]
     pub question_answer_as_text: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionAnswerText {
+pub struct Questions {
     #[serde(flatten)]
-    pub question_answer_text: BdtString50Type,
+    pub questions: AuditsListType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionResource {
+pub struct QuestionAnswerAdditionalText {
     #[serde(flatten)]
-    pub audition_resource: AuditionResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attributes {
-    #[serde(flatten)]
-    pub attributes: AttributesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttributeName {
-    #[serde(flatten)]
-    pub attribute_name: BdtString100Type,
+    pub question_answer_additional_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,9 +23,15 @@ pub struct Question {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditSpareTrees {
+pub struct FinalAuditName {
     #[serde(flatten)]
-    pub final_audit_spare_trees: FinalAuditSpareTreesByCategoryType,
+    pub final_audit_name: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditDynamic {
+    #[serde(flatten)]
+    pub working_site_final_audit_dynamic: WorkingSiteFinalAuditDynamicType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,9 +41,51 @@ pub struct FinalAuditIdentifierVersion {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Questions {
+pub struct FinalAuditSpareTrees {
     #[serde(flatten)]
-    pub questions: AuditsListType,
+    pub final_audit_spare_trees: FinalAuditSpareTreesByCategoryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditIdentifier {
+    #[serde(flatten)]
+    pub final_audit_identifier: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuestionAsText {
+    #[serde(flatten)]
+    pub question_as_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attributes {
+    #[serde(flatten)]
+    pub attributes: AttributesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionResource {
+    #[serde(flatten)]
+    pub audition_resource: AuditionResourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attribute {
+    #[serde(flatten)]
+    pub attribute: AttributeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttributeName {
+    #[serde(flatten)]
+    pub attribute_name: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuestionAnswerText {
+    #[serde(flatten)]
+    pub question_answer_text: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -101,14 +101,8 @@ pub struct AuditionResources {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditName {
+pub struct Audition {
     #[serde(flatten)]
-    pub final_audit_name: BdtString100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionAnswerAdditionalText {
-    #[serde(flatten)]
-    pub question_answer_additional_text: BdtString200Type,
+    pub audition: AuditionType,
 }
 

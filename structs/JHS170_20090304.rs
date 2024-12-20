@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct KuolemaPvmTyyppi {
+pub struct LajiTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoppuPvmTyyppi {
     #[serde(flatten)]
     pub base: Xsdate,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AlkuHetkiTyyppi {
+pub struct KatuNimiTyyppi {
     #[serde(flatten)]
-    pub base: XsdateTime,
+    pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,19 +23,79 @@ pub struct MaatunnusKoodiTyyppi {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaayksikkoNimiTyyppi {
+pub struct VoimassaoloKytkinTyyppi {
+    #[serde(flatten)]
+    pub base: Xsboolean,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NimilajiKoodiTyyppi {
     #[serde(flatten)]
     pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct KutsumaNimiTyyppi {
+pub struct IBANTunnusTyyppi {
     #[serde(flatten)]
     pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BICKoodiTyyppi {
+pub struct AmmattiKoodiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PankkitiliTunnusTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ToinenRiviTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CareOfTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OsoiteNumeroTyyppi {
+    #[serde(flatten)]
+    pub base: Xsdecimal,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SahkopostiosoiteTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SiviilisaatyTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EnsimmainenRiviTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SahkoinenAsiointiTunnusTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PuhelinnumeroTekstiTyyppi {
     #[serde(flatten)]
     pub base: Xsstring,
 }
@@ -41,7 +107,199 @@ pub struct UlkomaaHenkiloTunnusTyyppi {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SiviilisaatyTekstiTyyppi {
+pub struct TurvakieltoKytkinTyyppi {
+    #[serde(flatten)]
+    pub base: Xsboolean,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EtuNimiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PostilokeroTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaayksikkoNimiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KansalaisuusKoodiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KolmasRiviTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SukupuoliKoodiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UlkomaaPostitoimipaikkaNimiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ViidesRiviTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SyntymaPvmTyyppi {
+    #[serde(flatten)]
+    pub base: Xsdate,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KuntaKoodiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HuoneistotunnisteJakokirjainTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlayksikkoNimiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SukuNimiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlkuHetkiTyyppi {
+    #[serde(flatten)]
+    pub base: XsdateTime,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KutsumaNimiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NimiTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FaksinumeroTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EtunimetNimiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HuoneistotunnisteKirjainTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IkaluokkaTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KuolemaPvmTyyppi {
+    #[serde(flatten)]
+    pub base: Xsdate,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LajiKoodiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VakinainenKytkinTyyppi {
+    #[serde(flatten)]
+    pub base: Xsboolean,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValiaikainenHenkiloTunnusTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PostilokerolyhenneTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValtiotunnusKoodiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatusryhmaTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HuoltosuhdeTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct YritysTunnusTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KuvausTekstiTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HenkiloTunnusTyyppi {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PostinumeroKoodiTyyppi {
     #[serde(flatten)]
     pub base: Xsstring,
 }
@@ -59,91 +317,19 @@ pub struct KuntaNumeroTyyppi {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HuoneistotunnisteNumeroTyyppi {
-    #[serde(flatten)]
-    pub base: Xsdecimal,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NeljasRiviTekstiTyyppi {
+pub struct KuudesRiviTekstiTyyppi {
     #[serde(flatten)]
     pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatusryhmaTekstiTyyppi {
+pub struct AlkuPvmTyyppi {
     #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: Xsdate,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PostilokeroTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ViidesRiviTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FaksinumeroTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct YritysTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OsoiteNumeroTyyppi {
-    #[serde(flatten)]
-    pub base: Xsdecimal,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IkaluokkaTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NimiTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HenkiloTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LajiTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PankkitiliTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AmmattiKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EtuNimiTyyppi {
+pub struct BICKoodiTyyppi {
     #[serde(flatten)]
     pub base: Xsstring,
 }
@@ -155,105 +341,15 @@ pub struct LoppuHetkiTyyppi {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PostilokerolyhenneTekstiTyyppi {
+pub struct NeljasRiviTekstiTyyppi {
     #[serde(flatten)]
     pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SukupuoliKoodiTyyppi {
+pub struct HuoneistotunnisteNumeroTyyppi {
     #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SukuNimiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnsimmainenRiviTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SahkopostiosoiteTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UlkomaaPostitoimipaikkaNimiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KieliKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PuhelinnumeroTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LajiKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SahkoinenAsiointiTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoppuPvmTyyppi {
-    #[serde(flatten)]
-    pub base: Xsdate,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EtunimetNimiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SyntymaPvmTyyppi {
-    #[serde(flatten)]
-    pub base: Xsdate,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TurvakieltoKytkinTyyppi {
-    #[serde(flatten)]
-    pub base: Xsboolean,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CareOfTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KuudesRiviTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HuoneistotunnisteJakokirjainTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: Xsdecimal,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -263,104 +359,8 @@ pub struct PostitoimipaikkaNimiTyyppi {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NimilajiKoodiTyyppi {
+pub struct KieliKoodiTyyppi {
     #[serde(flatten)]
     pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HuoneistotunnisteKirjainTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KatuNimiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ToinenRiviTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ValiaikainenHenkiloTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KolmasRiviTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KuntaKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KansalaisuusKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ValtiotunnusKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AlayksikkoNimiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VoimassaoloKytkinTyyppi {
-    #[serde(flatten)]
-    pub base: Xsboolean,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HuoltosuhdeTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IBANTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VakinainenKytkinTyyppi {
-    #[serde(flatten)]
-    pub base: Xsboolean,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KuvausTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostinumeroKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AlkuPvmTyyppi {
-    #[serde(flatten)]
-    pub base: Xsdate,
 }
 

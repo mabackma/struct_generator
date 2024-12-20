@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MultiPolygonGeometry {
-    #[serde(flatten)]
-    pub multi_polygon_geometry: ExtendedMultiPolygonGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PolygonGeometry {
     #[serde(flatten)]
     pub polygon_geometry: PolygonGeometryType,
@@ -14,5 +8,11 @@ pub struct PolygonGeometry {
 pub struct PointGeometry {
     #[serde(flatten)]
     pub point_geometry: PointGeometryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MultiPolygonGeometry {
+    #[serde(flatten)]
+    pub multi_polygon_geometry: ExtendedMultiPolygonGeometryType,
 }
 

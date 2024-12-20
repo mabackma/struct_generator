@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct RoundWoodSalesData {
+    #[serde(flatten)]
+    pub round_wood_sales_data: RoundWoodSalesDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct RoundWoodSalesRow {
     #[serde(flatten)]
     pub round_wood_sales_row: RoundWoodSalesRowType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaCode {
+pub struct CompanyID {
     #[serde(flatten)]
-    pub area_code: AreaCodeType,
+    pub company_i_d: CompanyIDType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,21 +23,15 @@ pub struct AreaType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RoundWoodSalesData {
+pub struct AreaCode {
     #[serde(flatten)]
-    pub round_wood_sales_data: RoundWoodSalesDataType,
+    pub area_code: AreaCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PurchaseModeCode {
     #[serde(flatten)]
     pub purchase_mode_code: WtcoPurchaseModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyID {
-    #[serde(flatten)]
-    pub company_i_d: CompanyIDType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

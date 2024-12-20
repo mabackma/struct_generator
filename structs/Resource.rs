@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PeripheralsType {
+    #[serde(rename = "PeripheralCode", skip_serializing_if = "Option::is_none")]
+    pub peripheral_code: Option<Vec<BdtPeripheralCodeType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ResourceType {
     #[serde(rename = "Contractors")]
     pub contractors: WctContractorsType,
@@ -87,21 +93,15 @@ pub struct ResourceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeInfoType>,
+pub struct WorkCodeGroupsType {
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: Vec<BdtWorkCodeGroupType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ServiceTypesType {
     #[serde(rename = "ServiceType")]
     pub service_type: Vec<BdtServiceTypeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroupsType {
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: Vec<BdtWorkCodeGroupType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -115,8 +115,8 @@ pub struct WorkCodeInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PeripheralsType {
-    #[serde(rename = "PeripheralCode", skip_serializing_if = "Option::is_none")]
-    pub peripheral_code: Option<Vec<BdtPeripheralCodeType>>,
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeInfoType>,
 }
 

@@ -1,4 +1,16 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StatusCodeType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RecipientTypeType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct NotificationTypeType {
     #[serde(flatten)]
     pub base: Xsstring,
@@ -30,17 +42,5 @@ pub struct SmsOperatorStatusType {
     pub original_message: BdtString1000Type,
     #[serde(rename = "StatusMessage", skip_serializing_if = "Option::is_none")]
     pub status_message: Option<BdtString100Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RecipientTypeType {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatusCodeType {
-    #[serde(flatten)]
-    pub base: Xsstring,
 }
 

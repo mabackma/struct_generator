@@ -1,31 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StateCode {
-    #[serde(flatten)]
-    pub state_code: StateCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct BusinessId {
     #[serde(flatten)]
     pub business_id: JhsYritysTunnusTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WholeName {
+pub struct PersonId {
     #[serde(flatten)]
-    pub whole_name: WholeNameType,
+    pub person_id: JhsHenkiloTunnusTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FirstName {
     #[serde(flatten)]
     pub first_name: FirstNameType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CountryCode {
-    #[serde(flatten)]
-    pub country_code: CoISO3166char2CountryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,21 +29,27 @@ pub struct StateText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TelefaxNumber {
+pub struct CountryCode {
     #[serde(flatten)]
-    pub telefax_number: TelefaxNumberType,
+    pub country_code: CoISO3166char2CountryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PersonId {
+pub struct PersonOrganizationName {
     #[serde(flatten)]
-    pub person_id: JhsHenkiloTunnusTyyppi,
+    pub person_organization_name: PersonOrganizationNameType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CountryText {
+pub struct StateCode {
     #[serde(flatten)]
-    pub country_text: CountryTextType,
+    pub state_code: StateCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WholeName {
+    #[serde(flatten)]
+    pub whole_name: WholeNameType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,14 +59,20 @@ pub struct OrganizationName {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LastName {
+pub struct TelefaxNumber {
     #[serde(flatten)]
-    pub last_name: LastNameType,
+    pub telefax_number: TelefaxNumberType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PersonOrganizationName {
+pub struct CountryText {
     #[serde(flatten)]
-    pub person_organization_name: PersonOrganizationNameType,
+    pub country_text: CountryTextType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LastName {
+    #[serde(flatten)]
+    pub last_name: LastNameType,
 }
 

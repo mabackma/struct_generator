@@ -1,49 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct KilometersWithCaravan {
-    #[serde(flatten)]
-    pub kilometers_with_caravan: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TravelStartTime {
     #[serde(flatten)]
     pub travel_start_time: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteTravelNotification {
+pub struct Kilometers {
     #[serde(flatten)]
-    pub working_site_travel_notification: WorkingSiteTravelNotificationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KilometersWithTrailer {
-    #[serde(flatten)]
-    pub kilometers_with_trailer: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ExtraPerson4 {
-    #[serde(flatten)]
-    pub extra_person4: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ExtraPersonText {
-    #[serde(flatten)]
-    pub extra_person_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Route {
-    #[serde(flatten)]
-    pub route: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KilometersWithBreakHouse {
-    #[serde(flatten)]
-    pub kilometers_with_break_house: BdtPositiveInteger4digitsType,
+    pub kilometers: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,15 +29,27 @@ pub struct ExtraPerson1 {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SittingMoneyKilometers {
+pub struct KilometersWithCaravan {
     #[serde(flatten)]
-    pub sitting_money_kilometers: BdtPositiveInteger4digitsType,
+    pub kilometers_with_caravan: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Kilometers {
+pub struct ExtraPerson4 {
     #[serde(flatten)]
-    pub kilometers: BdtPositiveInteger4digitsType,
+    pub extra_person4: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Route {
+    #[serde(flatten)]
+    pub route: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KilometersWithTrailer {
+    #[serde(flatten)]
+    pub kilometers_with_trailer: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,8 +59,32 @@ pub struct ExtraPerson2 {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ExtraPersonText {
+    #[serde(flatten)]
+    pub extra_person_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SittingMoneyKilometers {
+    #[serde(flatten)]
+    pub sitting_money_kilometers: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteTravelNotification {
+    #[serde(flatten)]
+    pub working_site_travel_notification: WorkingSiteTravelNotificationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TravelEndTime {
     #[serde(flatten)]
     pub travel_end_time: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KilometersWithBreakHouse {
+    #[serde(flatten)]
+    pub kilometers_with_break_house: BdtPositiveInteger4digitsType,
 }
 

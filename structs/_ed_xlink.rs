@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct locator {
+pub struct arc {
     #[serde(flatten)]
-    pub locator: XlinklocatorType,
+    pub arc: XlinkarcType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,14 +11,14 @@ pub struct resource {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct title {
+pub struct locator {
     #[serde(flatten)]
-    pub title: XlinktitleEltType,
+    pub locator: XlinklocatorType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct arc {
+pub struct title {
     #[serde(flatten)]
-    pub arc: XlinkarcType,
+    pub title: XlinktitleEltType,
 }
 

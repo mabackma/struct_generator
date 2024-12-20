@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
+pub struct DeadTreeTypeType {
     #[serde(flatten)]
-    pub base: CoTreeSpeciesType,
+    pub base: CoDeadTreeTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeadTreeStrataType {
+    #[serde(rename = "DeadTreeStratum")]
+    pub dead_tree_stratum: Vec<DeadTreeStratumType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -25,6 +31,12 @@ pub struct DeadTreeStratumType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+    #[serde(flatten)]
+    pub base: CoTreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MeanDiameterType {
     #[serde(flatten)]
     pub base: CoDiameterType,
@@ -37,20 +49,8 @@ pub struct StemCountType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeStrataType {
-    #[serde(rename = "DeadTreeStratum")]
-    pub dead_tree_stratum: Vec<DeadTreeStratumType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct VolumeType {
     #[serde(flatten)]
     pub base: CoVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeTypeType {
-    #[serde(flatten)]
-    pub base: CoDeadTreeTypeType,
 }
 

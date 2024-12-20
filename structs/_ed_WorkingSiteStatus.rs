@@ -4,9 +4,3 @@ pub struct WorkingSiteStatus {
     pub working_site_status: WorkingSiteStatusType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteNumber {
-    #[serde(flatten)]
-    pub working_site_number: WctWorkingSiteNumberType,
-}
-

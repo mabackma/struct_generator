@@ -1,5 +1,5 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureCodeExtensionsType {
+pub struct FeatureAdditionalCodeType {
     #[serde(flatten)]
     pub base: Xsstring,
 }
@@ -11,13 +11,13 @@ pub struct FeatureTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureAdditionalCodeType {
+pub struct OriginalFeatureCodeType {
     #[serde(flatten)]
     pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OriginalFeatureCodeType {
+pub struct FeatureCodeExtensionsType {
     #[serde(flatten)]
     pub base: Xsstring,
 }
