@@ -5,13 +5,13 @@ pub struct FeatureTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OriginalFeatureCodeType {
+pub struct FeatureCodeExtensionsType {
     #[serde(flatten)]
     pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureCodeExtensionsType {
+pub struct OriginalFeatureCodeType {
     #[serde(flatten)]
     pub base: Xsstring,
 }

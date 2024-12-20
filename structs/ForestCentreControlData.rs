@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<CodForestCentreControlObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ControlObjectDataType {
     #[serde(rename = "@id")]
     pub id: CoIdStringType,
@@ -20,5 +14,11 @@ pub struct ForestCentreControlDataType {
     pub base: FccForestCentreDataType,
     #[serde(rename = "ControlObjectData")]
     pub control_object_data: ControlObjectDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<CodForestCentreControlObjectType>,
 }
 

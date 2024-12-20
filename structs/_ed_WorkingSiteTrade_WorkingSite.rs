@@ -5,6 +5,12 @@ pub struct OfferWorkingSites {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferWorkingSites {
+    #[serde(flatten)]
+    pub call_for_offer_working_sites: CallForOfferWorkingSitesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OfferWorkingSiteDetails {
     #[serde(flatten)]
     pub offer_working_site_details: OfferWorkingSiteDetailsType,
@@ -14,12 +20,6 @@ pub struct OfferWorkingSiteDetails {
 pub struct CallForOfferWorkingSiteDetails {
     #[serde(flatten)]
     pub call_for_offer_working_site_details: CallForOfferWorkingSiteDetailsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSites {
-    #[serde(flatten)]
-    pub call_for_offer_working_sites: CallForOfferWorkingSitesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

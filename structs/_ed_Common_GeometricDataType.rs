@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PolygonGeometry {
+pub struct PointGeometry {
     #[serde(flatten)]
-    pub polygon_geometry: PolygonGeometryType,
+    pub point_geometry: PointGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,8 +11,8 @@ pub struct MultiPolygonGeometry {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PointGeometry {
+pub struct PolygonGeometry {
     #[serde(flatten)]
-    pub point_geometry: PointGeometryType,
+    pub polygon_geometry: PolygonGeometryType,
 }
 

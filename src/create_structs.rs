@@ -43,6 +43,7 @@ pub fn create_structs(
     structs: &mut HashMap<String, XMLStruct>,
     element_definitions: &mut HashMap<String, String>,
     content: &str,
+    prefixes: &mut HashMap<String, String>,
 ) {
     let mut stack: Vec<XMLStruct> = Vec::new(); // Stack to keep track of active structs
     let mut current_name = String::new(); // Name of the current structure
@@ -66,7 +67,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:extension") || e.name() == QName(b"xs:restriction") {
-                    add_extension_fields(&mut stack, e);
+                    add_extension_fields(&mut stack, e, prefixes);
                 }
 
                 if e.name() == QName(b"xs:element") {
@@ -78,12 +79,12 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
-                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types);
+                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types, prefixes);
                 }
             }
             Ok(Empty(ref e)) => {
                 if e.name() == QName(b"xs:extension") || e.name() == QName(b"xs:restriction") {
-                    add_extension_fields(&mut stack, e);
+                    add_extension_fields(&mut stack, e, prefixes);
                 }
 
                 if e.name() == QName(b"xs:element") {
@@ -91,7 +92,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
-                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types);
+                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types, prefixes);
                 }
             }
             Ok(End(ref e)) => {
@@ -224,7 +225,7 @@ fn add_group_definition(e: &BytesStart<'_>, content: &str, structs: &mut HashMap
 }
 
 // Add elements, groups, and attributes as fields to the struct
-fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &HashMap<String, String>, anonymous_complex_types: &mut Vec<String>) {
+fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &HashMap<String, String>, anonymous_complex_types: &mut Vec<String>, prefixes: &mut HashMap<String, String>) {
 
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
@@ -239,12 +240,12 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
 
             if let Some(typ) = element_type(e) {
                 field_type = typ;
-            } else if let Some(typ) = reference_type(&n, element_definitions) {
+            } else if let Some(typ) = reference_type(&n, element_definitions, prefixes) {
                 field_type = typ;   
             }
 
-            n = handle_prefix(&n);
-            field_type = handle_prefix(&field_type);
+            n = handle_prefix(&n, prefixes);
+            field_type = handle_prefix(&field_type, prefixes);
 
             // Define vector and optional types
             parse_type(e, &mut field_type);
@@ -267,14 +268,14 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
 }
 
 // Add extension fields to the struct
-fn add_extension_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
+fn add_extension_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, prefixes: &mut HashMap<String, String>) {
 
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
         let mut field_type = "".to_string();
 
         if let Some(typ) = extension_type(e) {
-            field_type = handle_prefix(&typ);
+            field_type = handle_prefix(&typ, prefixes);
         }
 
         // Add the field to the parent struct

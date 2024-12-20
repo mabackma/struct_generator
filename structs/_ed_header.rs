@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Action {
+    #[serde(flatten)]
+    pub action: CoActionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Header {
     #[serde(flatten)]
     pub header: HeaderType,
@@ -11,9 +17,9 @@ pub struct EntityTag {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Action {
+pub struct Priority {
     #[serde(flatten)]
-    pub action: CoActionType,
+    pub priority: CoPriorityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

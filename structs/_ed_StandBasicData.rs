@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestrictions {
+pub struct CompleteState {
     #[serde(flatten)]
-    pub silviculture_restrictions: SilvicultureRestrictionsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GrowthPlaceDataSource {
-    #[serde(flatten)]
-    pub growth_place_data_source: CoDataSourceType,
+    pub complete_state: CoCompleteStateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,8 +11,14 @@ pub struct SilvicultureRestrictionDetails {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompleteState {
+pub struct SilvicultureRestrictions {
     #[serde(flatten)]
-    pub complete_state: CoCompleteStateType,
+    pub silviculture_restrictions: SilvicultureRestrictionsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GrowthPlaceDataSource {
+    #[serde(flatten)]
+    pub growth_place_data_source: CoDataSourceType,
 }
 

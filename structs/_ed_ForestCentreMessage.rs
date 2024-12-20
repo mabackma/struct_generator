@@ -5,12 +5,6 @@ pub struct ForestCentreMessage {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SenderEmail {
-    #[serde(flatten)]
-    pub sender_email: CiEmailAddressType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SelfMonitoringData {
     #[serde(flatten)]
     pub self_monitoring_data: CodForestCentreSelfMonitoringDataType,
@@ -20,5 +14,11 @@ pub struct SelfMonitoringData {
 pub struct ForestDataUpdate {
     #[serde(flatten)]
     pub forest_data_update: CodForestDataUpdateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SenderEmail {
+    #[serde(flatten)]
+    pub sender_email: CiEmailAddressType,
 }
 

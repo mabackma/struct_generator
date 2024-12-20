@@ -106,7 +106,7 @@ pub fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) ->
 }
 
 // Write the element definitions to a file
-pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>, file_name: &str) -> io::Result<()> {
+pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>, file_name: &str, prefixes: &mut HashMap<String, String>) -> io::Result<()> {
     let mut element_definitions_string = String::new();
 
     // Build the element definitions as a string
@@ -114,7 +114,7 @@ pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>
         element_definitions_string.push_str("#[derive(Debug, Serialize, Deserialize)]\n");
         element_definitions_string.push_str(&format!("pub struct {} {{\n", name));
         element_definitions_string.push_str("    #[serde(flatten)]\n");
-        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), handle_prefix(typ)));
+        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), handle_prefix(typ, prefixes)));
         element_definitions_string.push_str("}\n\n");
     }
 

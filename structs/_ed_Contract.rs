@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Contract {
+pub struct WorkingAreas {
     #[serde(flatten)]
-    pub contract: ContractType,
+    pub working_areas: WorkingAreasType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValidityDateBegin {
+    #[serde(flatten)]
+    pub validity_date_begin: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,18 +29,6 @@ pub struct ContractInfo {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValidityDateBegin {
-    #[serde(flatten)]
-    pub validity_date_begin: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubContractorsAllowed {
-    #[serde(flatten)]
-    pub sub_contractors_allowed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingArea {
     #[serde(flatten)]
     pub working_area: WorkingAreaType,
@@ -47,9 +41,9 @@ pub struct ValidityDateEnd {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingAreas {
+pub struct SubContractorsAllowed {
     #[serde(flatten)]
-    pub working_areas: WorkingAreasType,
+    pub sub_contractors_allowed: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

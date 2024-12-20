@@ -1,58 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditFertilizationType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: WctERPIdType,
-    #[serde(rename = "ContractorId", skip_serializing_if = "Option::is_none")]
-    pub contractor_id: Option<BdtString20Type>,
-    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<BdtString20Type>,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: BdtWorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: BdtWorkCodeType,
-    #[serde(rename = "Area")]
-    pub area: BdtDecimal2FractionDigitsType,
-    #[serde(rename = "WorkingTime")]
-    pub working_time: BdtDateType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
-    #[serde(rename = "SamplePlotCount")]
-    pub sample_plot_count: BdtPositiveInteger3digitsType,
-    #[serde(rename = "SamplePlotCountRequired")]
-    pub sample_plot_count_required: BdtPositiveInteger3digitsType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString1000Type>,
-    #[serde(rename = "FertilizerVolumeOrdered")]
-    pub fertilizer_volume_ordered: BdtPositiveIntegerType,
-    #[serde(rename = "FertilizerVolumeMeasured")]
-    pub fertilizer_volume_measured: BdtPositiveIntegerType,
-    #[serde(rename = "FertilizerVolumeMeasuredText", skip_serializing_if = "Option::is_none")]
-    pub fertilizer_volume_measured_text: Option<BdtString200Type>,
-    #[serde(rename = "Images")]
-    pub images: BdtPositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<BdtFinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: BdtFinalAuditerTypeType,
-    #[serde(rename = "FinalAuditerId")]
-    pub final_auditer_id: BdtString20Type,
-    #[serde(rename = "FinalAuditerName")]
-    pub final_auditer_name: BdtString50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: BdtTimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AuditsType {
     #[serde(rename = "FertilizationTotalAudit")]
     pub fertilization_total_audit: BdtWorkingQualityType,
@@ -102,5 +48,59 @@ pub struct AuditsType {
     pub working_instructions_sufficient: BdtYesNoType,
     #[serde(rename = "WorkingInstructionsSufficientText", skip_serializing_if = "Option::is_none")]
     pub working_instructions_sufficient_text: Option<BdtString200Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<BdtFinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: BdtFinalAuditerTypeType,
+    #[serde(rename = "FinalAuditerId")]
+    pub final_auditer_id: BdtString20Type,
+    #[serde(rename = "FinalAuditerName")]
+    pub final_auditer_name: BdtString50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: BdtTimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditFertilizationType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: BdtString20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: WctERPIdType,
+    #[serde(rename = "ContractorId", skip_serializing_if = "Option::is_none")]
+    pub contractor_id: Option<BdtString20Type>,
+    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
+    pub resource_id: Option<BdtString20Type>,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: BdtWorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: BdtWorkCodeType,
+    #[serde(rename = "Area")]
+    pub area: BdtDecimal2FractionDigitsType,
+    #[serde(rename = "WorkingTime")]
+    pub working_time: BdtDateType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "SamplePlotCount")]
+    pub sample_plot_count: BdtPositiveInteger3digitsType,
+    #[serde(rename = "SamplePlotCountRequired")]
+    pub sample_plot_count_required: BdtPositiveInteger3digitsType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString1000Type>,
+    #[serde(rename = "FertilizerVolumeOrdered")]
+    pub fertilizer_volume_ordered: BdtPositiveIntegerType,
+    #[serde(rename = "FertilizerVolumeMeasured")]
+    pub fertilizer_volume_measured: BdtPositiveIntegerType,
+    #[serde(rename = "FertilizerVolumeMeasuredText", skip_serializing_if = "Option::is_none")]
+    pub fertilizer_volume_measured_text: Option<BdtString200Type>,
+    #[serde(rename = "Images")]
+    pub images: BdtPositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
 }
 

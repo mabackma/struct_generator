@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DeadTreeStratum {
+    #[serde(flatten)]
+    pub dead_tree_stratum: DeadTreeStratumType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct DeadTreeStrata {
     #[serde(flatten)]
     pub dead_tree_strata: DeadTreeStrataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeStratum {
+pub struct MeanDiameter {
     #[serde(flatten)]
-    pub dead_tree_stratum: DeadTreeStratumType,
+    pub mean_diameter: MeanDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

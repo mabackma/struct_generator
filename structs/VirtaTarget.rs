@@ -29,12 +29,6 @@ pub struct TargetType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatAdvertisementType {
-    #[serde(flatten)]
-    pub base: CoVirtaHabitatAdvertisementType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TargetPartsType {
     #[serde(rename = "TpTargetPart")]
     pub tp_target_part: Vec<String>,
@@ -44,5 +38,11 @@ pub struct TargetPartsType {
 pub struct VirtaPartNumberType {
     #[serde(flatten)]
     pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatAdvertisementType {
+    #[serde(flatten)]
+    pub base: CoVirtaHabitatAdvertisementType,
 }
 

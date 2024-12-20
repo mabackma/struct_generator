@@ -1,43 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransaction {
+pub struct WorkingSitePlanner {
     #[serde(flatten)]
-    pub payment_transaction: PaymentTransactionType,
+    pub working_site_planner: WorkingSitePlannerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VATStatus {
+pub struct Seller {
     #[serde(flatten)]
-    pub v_a_t_status: VATStatusType,
+    pub seller: SellerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactionType {
+pub struct UsedPricingMethod {
     #[serde(flatten)]
-    pub payment_transaction_type: CoMoneyTransactionTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationSystems {
-    #[serde(flatten)]
-    pub certification_systems: CertificationSystemsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationSystem {
-    #[serde(flatten)]
-    pub certification_system: CertificationSystemType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResource {
-    #[serde(flatten)]
-    pub planned_resource: PlannedResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePaymentTransactions {
-    #[serde(flatten)]
-    pub working_site_payment_transactions: OfferWorkingSitePaymentTransactionsType,
+    pub used_pricing_method: UsedPricingMethodType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,57 +29,27 @@ pub struct UnitValue {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactionDescription {
+pub struct VATStatus {
     #[serde(flatten)]
-    pub payment_transaction_description: PaymentTransactionDescriptionType,
+    pub v_a_t_status: VATStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteGeometry {
+pub struct WorkingSitePaymentTransactions {
     #[serde(flatten)]
-    pub working_site_geometry: SfLocatedSpecialFeature2Type,
+    pub working_site_payment_transactions: OfferWorkingSitePaymentTransactionsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Seller {
+pub struct CertificationSystems {
     #[serde(flatten)]
-    pub seller: SellerType,
+    pub certification_systems: CertificationSystemsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SupplyPoint {
+pub struct TotalValue {
     #[serde(flatten)]
-    pub supply_point: SupplyPointType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingPlannerLiability {
-    #[serde(flatten)]
-    pub cutting_planner_liability: CuttingPlannerLiabilityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseMode {
-    #[serde(flatten)]
-    pub purchase_mode: PurchaseModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Documents {
-    #[serde(flatten)]
-    pub documents: DocumentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlanDate {
-    #[serde(flatten)]
-    pub working_site_plan_date: WorkingSitePlanDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethods {
-    #[serde(flatten)]
-    pub used_pricing_methods: UsedPricingMethodsType,
+    pub total_value: TotalPriceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,9 +59,51 @@ pub struct Cuttings {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethod {
+pub struct PaymentTransactionDescription {
     #[serde(flatten)]
-    pub used_pricing_method: UsedPricingMethodType,
+    pub payment_transaction_description: PaymentTransactionDescriptionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CertificationSystem {
+    #[serde(flatten)]
+    pub certification_system: CertificationSystemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentTransactionType {
+    #[serde(flatten)]
+    pub payment_transaction_type: CoMoneyTransactionTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PurchaseMode {
+    #[serde(flatten)]
+    pub purchase_mode: PurchaseModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitePlanDate {
+    #[serde(flatten)]
+    pub working_site_plan_date: WorkingSitePlanDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentTransaction {
+    #[serde(flatten)]
+    pub payment_transaction: PaymentTransactionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationResponsible {
+    #[serde(flatten)]
+    pub forest_use_declaration_responsible: CoForestUseDeclarationResponsibleType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsedPricingMethods {
+    #[serde(flatten)]
+    pub used_pricing_methods: UsedPricingMethodsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -131,9 +119,9 @@ pub struct IncludePaymentPlan {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationResponsible {
+pub struct WorkingSiteGeometry {
     #[serde(flatten)]
-    pub forest_use_declaration_responsible: CoForestUseDeclarationResponsibleType,
+    pub working_site_geometry: SfLocatedSpecialFeature2Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -143,9 +131,9 @@ pub struct IncludeForestFundPayment {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TotalValue {
+pub struct FellingRightValidityDate {
     #[serde(flatten)]
-    pub total_value: TotalPriceType,
+    pub felling_right_validity_date: FellingRightValidityDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -155,14 +143,20 @@ pub struct VATRegistrationDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FellingRightValidityDate {
+pub struct PlannedResource {
     #[serde(flatten)]
-    pub felling_right_validity_date: FellingRightValidityDateType,
+    pub planned_resource: PlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlanner {
+pub struct SupplyPoint {
     #[serde(flatten)]
-    pub working_site_planner: WorkingSitePlannerType,
+    pub supply_point: SupplyPointType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingPlannerLiability {
+    #[serde(flatten)]
+    pub cutting_planner_liability: CuttingPlannerLiabilityType,
 }
 

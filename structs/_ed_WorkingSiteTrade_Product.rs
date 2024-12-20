@@ -11,6 +11,12 @@ pub struct Product {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Code {
+    #[serde(flatten)]
+    pub code: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Consumption {
     #[serde(flatten)]
     pub consumption: ConsumptionType,
@@ -20,5 +26,11 @@ pub struct Consumption {
 pub struct ConsumptionUnit {
     #[serde(flatten)]
     pub consumption_unit: ConsumptionUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Unit {
+    #[serde(flatten)]
+    pub unit: Xsstring,
 }
 

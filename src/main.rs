@@ -1,5 +1,6 @@
 use struct_generator::create_structs::{create_structs, XMLStruct};
 use struct_generator::file_utils::{element_definitions_to_file, read_xsd_file, structs_to_file};
+use struct_generator::string_utils::capitalize_first;
 
 use std::collections::{HashMap, HashSet};
 use std::fs;
@@ -21,21 +22,36 @@ fn main() {
     let mut total_struct_count = 0;
     let mut total_element_count = 0;
 
+    let prefixes = &mut HashMap::new();
+
     for file in sorted_files {
         //println!("Processing file: {}", file);
-        let counts = process_xsd_file(&file, &mut structs, &mut element_definitions);
+        let counts = process_xsd_file(&file, &mut structs, &mut element_definitions, prefixes);
         total_struct_count += counts.0;
         total_element_count += counts.1;
     }
     
-    structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
-    element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs").unwrap();
+    let final_structs = modify_struct_keys(structs, prefixes);
+
+    // TODO: Fix fields with colons in their names
+    for (key, value) in final_structs.iter() {
+        for field in value.fields.iter() {
+            if field.name.contains(':') || field.field_type.contains(":") {
+                println!("Field: {}: {:?}", field.name, field.field_type);
+            }
+        }
+    }
+
+    structs_to_file(&final_structs, "structs/__all_structs.rs").unwrap();
+    element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
 
 
     println!("Total number of structs: {}", total_struct_count);
-    println!("Actual number of structs: {}", structs.len());
+    println!("Actual number of structs: {}", final_structs.len());
     println!("Total number of element definitions: {}", total_element_count);
     println!("Actual number of element definitions: {}", element_definitions.len());
+
+    println!("Prefix count: {}", prefixes.len());
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -48,6 +64,26 @@ fn main() {
 
     structs_to_file(&structs, &file_name).unwrap();
     element_definitions_to_file(&element_definitions, &elements_file_name).unwrap(); */
+}
+
+fn modify_struct_keys(structs: HashMap<String, XMLStruct>, prefixes: &mut HashMap<String, String>) -> HashMap<String, XMLStruct> {
+    let mut new_structs = HashMap::new();
+
+    for prefix in prefixes.iter() {
+        structs.iter().for_each(|(key, value)| {
+            let p_value = capitalize_first(prefix.1);
+
+            if prefix.0.replace(&p_value, "") == *key {
+                let new_key = format!("{}{}", p_value, key);
+                new_structs.insert(new_key.clone(), value.clone());
+                //println!("{} -> {}", key, new_key);
+            } else {
+                new_structs.insert(key.clone(), value.clone());
+            }
+        });
+    }
+
+    new_structs
 }
 
 fn create_file_dependencies(folder_path: &str, file_dependencies: &mut HashMap<String, HashSet<String>>) {
@@ -145,7 +181,7 @@ fn topological_sort(
 }
 
 // Creates the structs and element definitions and writes them to files in the `structs` folder
-fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>, element_definitions: &mut HashMap<String, String>) -> (usize, usize) {
+fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>, element_definitions: &mut HashMap<String, String>, prefixes: &mut HashMap<String, String>) -> (usize, usize) {
     let mut new_structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut new_element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -159,7 +195,7 @@ fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>
 
     let current_definitions = element_definitions.clone();
 
-    create_structs(&mut reader, &mut new_structs, element_definitions, &content);
+    create_structs(&mut reader, &mut new_structs, element_definitions, &content, prefixes);
 
     for (key, value) in element_definitions.iter() {
         if !current_definitions.contains_key(key) {
@@ -188,7 +224,7 @@ fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>
 
     // Write the new element definitions to a file
     if new_element_definitions.len() > 0 {
-        element_definitions_to_file(&new_element_definitions, &elements_file_name).unwrap();
+        element_definitions_to_file(&new_element_definitions, &elements_file_name, prefixes).unwrap();
     }
 
     (new_structs.len(), new_element_definitions.len())

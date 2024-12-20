@@ -1,4 +1,22 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeDataType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: BdtWorkCodeType,
+    #[serde(rename = "AmountPlanned")]
+    pub amount_planned: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "AmountLeft")]
+    pub amount_left: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: BdtWorkCodeUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteEndNotificationType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -41,6 +59,12 @@ pub struct AssortmentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct FulfilledAreasType {
+    #[serde(rename = "FulfilledArea")]
+    pub fulfilled_area: Vec<FulfilledAreaType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FulfilledAreaType {
     #[serde(rename = "Geometry")]
     pub geometry: GdtPolygonOrMultiPolygon2Type,
@@ -49,32 +73,8 @@ pub struct FulfilledAreaType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FulfilledAreasType {
-    #[serde(rename = "FulfilledArea")]
-    pub fulfilled_area: Vec<FulfilledAreaType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeDataType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: BdtWorkCodeType,
-    #[serde(rename = "AmountPlanned")]
-    pub amount_planned: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "AmountLeft")]
-    pub amount_left: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: BdtWorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentsType {
     #[serde(rename = "Assortment")]
     pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeDataType>,
 }
 

@@ -1,22 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestEnergySuitable {
-    #[serde(flatten)]
-    pub forest_energy_suitable: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditBioMassForwarding {
-    #[serde(flatten)]
-    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BioMassQualityText {
-    #[serde(flatten)]
-    pub bio_mass_quality_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestEnergySuitableText {
     #[serde(flatten)]
     pub forest_energy_suitable_text: BdtString200Type,
@@ -38,5 +20,23 @@ pub struct RemainingBiomassText {
 pub struct BioMassQuality {
     #[serde(flatten)]
     pub bio_mass_quality: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditBioMassForwarding {
+    #[serde(flatten)]
+    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestEnergySuitable {
+    #[serde(flatten)]
+    pub forest_energy_suitable: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BioMassQualityText {
+    #[serde(flatten)]
+    pub bio_mass_quality_text: BdtString200Type,
 }
 

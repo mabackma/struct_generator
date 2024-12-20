@@ -35,9 +35,9 @@ pub struct StandBasicDataWithGeometryType {
     #[serde(flatten)]
     pub base: StandBasicDataType,
     #[serde(rename = "Area")]
-    pub area: AreaType,
+    pub area: BdtDecimal2FractionDigitsType,
     #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
-    pub area_decrease: Option<AreaDecreaseType>,
+    pub area_decrease: Option<String>,
     #[serde(rename = "GdtPolygonGeometry")]
     pub gdt_polygon_geometry: String,
     #[serde(rename = "GdtMultiPolygonGeometry")]

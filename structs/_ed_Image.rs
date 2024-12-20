@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Filename {
+pub struct MapSymbolType {
     #[serde(flatten)]
-    pub filename: BdtString100Type,
+    pub map_symbol_type: BdtFeatureCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,21 +11,9 @@ pub struct SubCategory {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Photographer {
+pub struct MapSymbolId {
     #[serde(flatten)]
-    pub photographer: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Category {
-    #[serde(flatten)]
-    pub category: BdtImageCategoryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolType {
-    #[serde(flatten)]
-    pub map_symbol_type: BdtFeatureCodeType,
+    pub map_symbol_id: WctERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,26 +23,44 @@ pub struct Image {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InsertedMapSymbolId {
-    #[serde(flatten)]
-    pub inserted_map_symbol_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ImageDate {
     #[serde(flatten)]
     pub image_date: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Position {
+pub struct Filename {
     #[serde(flatten)]
-    pub position: GdtPointGeometryType,
+    pub filename: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolId {
+pub struct Category {
     #[serde(flatten)]
-    pub map_symbol_id: WctERPIdType,
+    pub category: BdtImageCategoryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Bytes {
+    #[serde(flatten)]
+    pub bytes: Xsbase64Binary,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Photographer {
+    #[serde(flatten)]
+    pub photographer: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InsertedMapSymbolId {
+    #[serde(flatten)]
+    pub inserted_map_symbol_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Position {
+    #[serde(flatten)]
+    pub position: GdtPointGeometryType,
 }
 

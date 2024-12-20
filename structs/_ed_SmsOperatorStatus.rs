@@ -1,7 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct NotificationType {
+    #[serde(flatten)]
+    pub notification_type: NotificationTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SendTimestamp {
     #[serde(flatten)]
     pub send_timestamp: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RecipientType {
+    #[serde(flatten)]
+    pub recipient_type: RecipientTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,21 +23,9 @@ pub struct SenderUserId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NotificationType {
-    #[serde(flatten)]
-    pub notification_type: NotificationTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OriginalMessage {
     #[serde(flatten)]
     pub original_message: BdtString1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatusMessage {
-    #[serde(flatten)]
-    pub status_message: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -38,17 +38,5 @@ pub struct StatusTimestamp {
 pub struct SmsOperatorStatus {
     #[serde(flatten)]
     pub sms_operator_status: SmsOperatorStatusType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatusCode {
-    #[serde(flatten)]
-    pub status_code: StatusCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RecipientType {
-    #[serde(flatten)]
-    pub recipient_type: RecipientTypeType,
 }
 

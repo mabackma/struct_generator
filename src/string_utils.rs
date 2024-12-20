@@ -1,5 +1,8 @@
-pub fn handle_prefix(name: &str) -> String {
-    let mut parts = name.split(':').collect::<Vec<&str>>();
+use std::collections::HashMap;
+
+pub fn handle_prefix(name: &str, prefixes: &mut HashMap<String, String>) -> String {
+    let parts = name.split(':').collect::<Vec<&str>>();
+    let prefix = parts[0];
 
 /*     if parts.len() > 1 {
         parts.remove(0);
@@ -7,14 +10,18 @@ pub fn handle_prefix(name: &str) -> String {
     } */
 
     if parts.len() > 1 {
-        let new_name = parts.join("");
-        return capitalize_first(&new_name).to_string();
+        let complete_name = parts.join("");
+        let complete_name = capitalize_first(&complete_name).to_string();
+
+        prefixes.insert(complete_name.clone(), prefix.to_string());
+
+        return complete_name;
     }
 
     name.to_string()
 }
 
-fn capitalize_first(name: &str) -> String {
+pub fn capitalize_first(name: &str) -> String {
     let mut chars = name.chars();
     match chars.next() {
         None => String::new(),
