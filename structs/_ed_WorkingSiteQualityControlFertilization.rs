@@ -1,7 +1,37 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Hoppers {
+pub struct HopperType {
     #[serde(flatten)]
-    pub hoppers: HoppersType,
+    pub hopper_type: WctHopperTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurerId {
+    #[serde(flatten)]
+    pub measurer_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteQualityControlFertilization {
+    #[serde(flatten)]
+    pub working_site_quality_control_fertilization: WorkingSiteQualityControlFertilizationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurerName {
+    #[serde(flatten)]
+    pub measurer_name: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Hopper {
+    #[serde(flatten)]
+    pub hopper: HopperType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanVolume {
+    #[serde(flatten)]
+    pub mean_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,33 +47,15 @@ pub struct HopperLocationFromGPS {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Hopper {
+pub struct Hoppers {
     #[serde(flatten)]
-    pub hopper: HopperType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HopperType {
-    #[serde(flatten)]
-    pub hopper_type: WctHopperTypeType,
+    pub hoppers: HoppersType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AverageVolume {
     #[serde(flatten)]
     pub average_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurerName {
-    #[serde(flatten)]
-    pub measurer_name: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteQualityControlFertilization {
-    #[serde(flatten)]
-    pub working_site_quality_control_fertilization: WorkingSiteQualityControlFertilizationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -56,17 +68,5 @@ pub struct HopperNumber {
 pub struct PilotName {
     #[serde(flatten)]
     pub pilot_name: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanVolume {
-    #[serde(flatten)]
-    pub mean_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurerId {
-    #[serde(flatten)]
-    pub measurer_id: BdtString20Type,
 }
 

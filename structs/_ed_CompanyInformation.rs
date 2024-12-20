@@ -1,19 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SubContractor {
+pub struct RepresentativePerson {
     #[serde(flatten)]
-    pub sub_contractor: BdtString20Type,
+    pub representative_person: BdtContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QualitySystems {
+pub struct TaxDebt {
     #[serde(flatten)]
-    pub quality_systems: QualitySystemsType,
+    pub tax_debt: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LegalAccidentInsurance {
+pub struct CollectiveAgreement {
     #[serde(flatten)]
-    pub legal_accident_insurance: BdtDateType,
+    pub collective_agreement: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EmployeeWrittenAgreement {
+    #[serde(flatten)]
+    pub employee_written_agreement: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,27 +35,33 @@ pub struct EmployeeHealthCareInfo {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PreDebtCollectionRegister {
-    #[serde(flatten)]
-    pub pre_debt_collection_register: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypes {
-    #[serde(flatten)]
-    pub service_types: BdtServiceTypesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SubContractorWrittenAgreement {
     #[serde(flatten)]
     pub sub_contractor_written_agreement: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContactPersonInFinland {
+pub struct IsActive {
     #[serde(flatten)]
-    pub contact_person_in_finland: BdtContactInformationType,
+    pub is_active: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EmployeeHealthCare {
+    #[serde(flatten)]
+    pub employee_health_care: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LegalAccidentInsurance {
+    #[serde(flatten)]
+    pub legal_accident_insurance: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreDebtCollectionRegister {
+    #[serde(flatten)]
+    pub pre_debt_collection_register: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,27 +77,9 @@ pub struct Registered {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EmployeePensionCertificate {
+pub struct SubContractor {
     #[serde(flatten)]
-    pub employee_pension_certificate: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubContractors {
-    #[serde(flatten)]
-    pub sub_contractors: SubContractorsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TradeRegistration {
-    #[serde(flatten)]
-    pub trade_registration: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CollectiveAgreement {
-    #[serde(flatten)]
-    pub collective_agreement: BdtString100Type,
+    pub sub_contractor: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,21 +89,27 @@ pub struct EmployerRegister {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EmployeeHealthCare {
+pub struct SubContractors {
     #[serde(flatten)]
-    pub employee_health_care: BdtYesNoType,
+    pub sub_contractors: SubContractorsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RepresentativePerson {
+pub struct QualitySystems {
     #[serde(flatten)]
-    pub representative_person: BdtContactInformationType,
+    pub quality_systems: QualitySystemsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EmployeeWrittenAgreement {
+pub struct TradeRegistration {
     #[serde(flatten)]
-    pub employee_written_agreement: BdtYesNoType,
+    pub trade_registration: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompanyType {
+    #[serde(flatten)]
+    pub company_type: BdtCompanyTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,32 +119,26 @@ pub struct CollectiveAgreements {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyInformation {
-    #[serde(flatten)]
-    pub company_information: CompanyInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IsActive {
-    #[serde(flatten)]
-    pub is_active: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct BankCode {
     #[serde(flatten)]
     pub bank_code: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TaxDebt {
+pub struct EmployeePensionCertificate {
     #[serde(flatten)]
-    pub tax_debt: BdtDateType,
+    pub employee_pension_certificate: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyType {
+pub struct CompanyInformation {
     #[serde(flatten)]
-    pub company_type: BdtCompanyTypeType,
+    pub company_information: CompanyInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContactPersonInFinland {
+    #[serde(flatten)]
+    pub contact_person_in_finland: BdtContactInformationType,
 }
 

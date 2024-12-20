@@ -1,25 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageDistanceContinued {
+pub struct ForwardedVolumeAccounted {
     #[serde(flatten)]
-    pub forest_haulage_distance_continued: BdtPositiveInteger4digitsType,
+    pub forwarded_volume_accounted: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContarctorId {
+pub struct WorkingSiteAccounting {
     #[serde(flatten)]
-    pub contarctor_id: BdtString20Type,
+    pub working_site_accounting: WorkingSiteAccountingType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AccountingDate {
+pub struct PlannedVolume {
     #[serde(flatten)]
-    pub accounting_date: BdtTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AmountPlanned {
-    #[serde(flatten)]
-    pub amount_planned: BdtDecimal3FractionDigitsType,
+    pub planned_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,15 +23,21 @@ pub struct HarvestedVolume {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodes {
+pub struct ContarctorId {
     #[serde(flatten)]
-    pub work_codes: WorkCodesType,
+    pub contarctor_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AmountAccounted {
+pub struct HarvestedVolumeAccounted {
     #[serde(flatten)]
-    pub amount_accounted: BdtDecimal3FractionDigitsType,
+    pub harvested_volume_accounted: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccountingDate {
+    #[serde(flatten)]
+    pub accounting_date: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,9 +47,15 @@ pub struct FinalAccounting {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HarvestedVolumeAccounted {
+pub struct ForestHaulageDistanceContinued {
     #[serde(flatten)]
-    pub harvested_volume_accounted: BdtDecimal3FractionDigitsType,
+    pub forest_haulage_distance_continued: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountAccounted {
+    #[serde(flatten)]
+    pub amount_accounted: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -62,29 +68,5 @@ pub struct AmountNotified {
 pub struct ForwardedVolume {
     #[serde(flatten)]
     pub forwarded_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardedVolumeAccounted {
-    #[serde(flatten)]
-    pub forwarded_volume_accounted: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedVolume {
-    #[serde(flatten)]
-    pub planned_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteAccounting {
-    #[serde(flatten)]
-    pub working_site_accounting: WorkingSiteAccountingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DestinationStorage {
-    #[serde(flatten)]
-    pub destination_storage: BdtString20Type,
 }
 

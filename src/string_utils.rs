@@ -4,11 +4,6 @@ pub fn handle_prefix(name: &str, prefixes: &mut HashMap<String, String>) -> Stri
     let parts = name.split(':').collect::<Vec<&str>>();
     let prefix = parts[0];
 
-/*     if parts.len() > 1 {
-        parts.remove(0);
-        return parts.join("");
-    } */
-
     if parts.len() > 1 {
         let complete_name = parts.join("");
         let complete_name = capitalize_first(&complete_name).to_string();

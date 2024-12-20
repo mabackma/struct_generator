@@ -1,16 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoadType {
-    #[serde(rename = "LoadNumber")]
-    pub load_number: XsnonNegativeInteger,
-    #[serde(rename = "ForwardingDistance")]
-    pub forwarding_distance: XsnonNegativeInteger,
-    #[serde(rename = "MeasurementDate")]
-    pub measurement_date: BdtTimeStampType,
-    #[serde(rename = "PartitialLoad")]
-    pub partitial_load: Vec<PartitialLoadType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteForwardedProductionType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -42,6 +30,18 @@ pub struct WorkingSiteForwardedProductionType {
     pub load_count: XsnonNegativeInteger,
     #[serde(rename = "Load")]
     pub load: Vec<LoadType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadType {
+    #[serde(rename = "LoadNumber")]
+    pub load_number: XsnonNegativeInteger,
+    #[serde(rename = "ForwardingDistance")]
+    pub forwarding_distance: XsnonNegativeInteger,
+    #[serde(rename = "MeasurementDate")]
+    pub measurement_date: BdtTimeStampType,
+    #[serde(rename = "PartitialLoad")]
+    pub partitial_load: Vec<PartitialLoadType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Minutes {
-    #[serde(flatten)]
-    pub minutes: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Sawinghours {
     #[serde(flatten)]
     pub sawinghours: SawinghoursDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Minutes {
+    #[serde(flatten)]
+    pub minutes: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

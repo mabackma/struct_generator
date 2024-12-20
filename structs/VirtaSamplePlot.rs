@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaEvaluationType {
-    #[serde(flatten)]
-    pub base: CoVirtaEvaluationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TreesType {
     #[serde(rename = "TrTree")]
     pub tr_tree: Vec<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaEvaluationType {
+    #[serde(flatten)]
+    pub base: CoVirtaEvaluationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

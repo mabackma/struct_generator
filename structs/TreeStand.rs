@@ -1,13 +1,31 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OperationTreeReductionType {
+    #[serde(rename = "StumpStemCount", skip_serializing_if = "Option::is_none")]
+    pub stump_stem_count: Option<CoPositiveInteger6digitsType>,
+    #[serde(rename = "StumpMeanDiameter", skip_serializing_if = "Option::is_none")]
+    pub stump_mean_diameter: Option<CoPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlternativeIdentifierType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeStandDataType {
+    #[serde(rename = "TreeStandDataDate")]
+    pub tree_stand_data_date: Vec<TreeStandDataDateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SpareTreeGroupsType {
     #[serde(rename = "SpareTreeGroup")]
     pub spare_tree_group: SpareTreeGroupType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandDataMomentType {
-    #[serde(flatten)]
-    pub base: CoTreeStandDataMomentType,
+pub struct NotEmptyTreeSpeciesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -22,16 +40,6 @@ pub struct SpareTreeGroupType {
     pub mean_diameter: Option<CoPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
     #[serde(rename = "AverageHeight", skip_serializing_if = "Option::is_none")]
     pub average_height: Option<CoPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NotEmptyTreeSpeciesType {
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandDataType {
-    #[serde(rename = "TreeStandDataDate")]
-    pub tree_stand_data_date: Vec<TreeStandDataDateType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -61,12 +69,6 @@ pub struct TreeStandDataDate2Type {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AlternativeIdentifierType {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SeedlingStratumType {
     #[serde(rename = "TreeSpecies", skip_serializing_if = "Option::is_none")]
     pub tree_species: Option<NotEmptyTreeSpeciesType>,
@@ -83,17 +85,15 @@ pub struct SeedlingStratumType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationTreeReductionType {
-    #[serde(rename = "StumpStemCount", skip_serializing_if = "Option::is_none")]
-    pub stump_stem_count: Option<CoPositiveInteger6digitsType>,
-    #[serde(rename = "StumpMeanDiameter", skip_serializing_if = "Option::is_none")]
-    pub stump_mean_diameter: Option<CoPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
+pub struct SeedlingDataType {
+    #[serde(rename = "SeedlingStratum")]
+    pub seedling_stratum: Vec<SeedlingStratumType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesSummaryType {
-    #[serde(rename = "TreeSpeciesData")]
-    pub tree_species_data: Vec<TreeSpeciesDataType>,
+pub struct TreeStandDataMomentType {
+    #[serde(flatten)]
+    pub base: CoTreeStandDataMomentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -110,12 +110,6 @@ pub struct TreeSpeciesDataType {
     pub total_pulpwood_volume: Option<CoPulpWoodVolumeType>,
     #[serde(rename = "TotalVolume", skip_serializing_if = "Option::is_none")]
     pub total_volume: Option<CoVolumeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SeedlingDataType {
-    #[serde(rename = "SeedlingStratum")]
-    pub seedling_stratum: Vec<SeedlingStratumType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -144,5 +138,11 @@ pub struct TreeStandDataDateType {
     pub sd_stem_distribution: Option<String>,
     #[serde(rename = "SdsStemDistributionStrata", skip_serializing_if = "Option::is_none")]
     pub sds_stem_distribution_strata: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesSummaryType {
+    #[serde(rename = "TreeSpeciesData")]
+    pub tree_species_data: Vec<TreeSpeciesDataType>,
 }
 

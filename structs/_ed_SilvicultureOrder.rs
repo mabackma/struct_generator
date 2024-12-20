@@ -5,9 +5,9 @@ pub struct BeginDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerArea {
+pub struct Attachments {
     #[serde(flatten)]
-    pub service_buyer_area: BdtString20Type,
+    pub attachments: AttachmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,26 +17,14 @@ pub struct SilvicultureOrder {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Data {
-    #[serde(flatten)]
-    pub data: XshexBinary,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Attachment {
     #[serde(flatten)]
     pub attachment: AttachmentDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationalRegion {
+pub struct Data {
     #[serde(flatten)]
-    pub operational_region: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attachments {
-    #[serde(flatten)]
-    pub attachments: AttachmentsType,
+    pub data: XshexBinary,
 }
 

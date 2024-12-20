@@ -1,43 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteNumberType {
+    #[serde(flatten)]
+    pub base: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadRatingType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct HopperTypeType {
     #[serde(flatten)]
     pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorsType {
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: Vec<BdtString20Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleFactorTreeSpeciesType {
-    #[serde(flatten)]
-    pub base: Xsinteger,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ERPIdType {
-    #[serde(flatten)]
-    pub base: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StanfordTreeSpeciesType {
-    #[serde(flatten)]
-    pub base: Xsinteger,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DitchTypeType {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpareTreesByCategoryType {
-    #[serde(rename = "SpareTrees")]
-    pub spare_trees: Vec<SpareTreesType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,7 +25,31 @@ pub struct FinalAuditSpareTreesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoadRatingType {
+pub struct ERPIdType {
+    #[serde(flatten)]
+    pub base: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DitchTypeType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaCodeType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MonthType {
+    #[serde(flatten)]
+    pub base: Xsinteger,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResponsibleOfPreClearingType {
     #[serde(flatten)]
     pub base: Xsstring,
 }
@@ -61,27 +61,27 @@ pub struct CommonMessageType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PricingMethodType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractorsType {
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: Vec<BdtString20Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ShortERPIdType {
     #[serde(flatten)]
     pub base: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResponsibleOfPreClearingType {
+pub struct StanfordTreeSpeciesType {
     #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteNumberType {
-    #[serde(flatten)]
-    pub base: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaCodeType {
-    #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: Xsinteger,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -103,18 +103,6 @@ pub struct SpareTreesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PricingMethodType {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MonthType {
-    #[serde(flatten)]
-    pub base: Xsinteger,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct QualityOfTreeSpeciesType {
     #[serde(flatten)]
     pub base: Xsstring,
@@ -124,5 +112,17 @@ pub struct QualityOfTreeSpeciesType {
 pub struct TaxNumberType {
     #[serde(flatten)]
     pub base: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpareTreesByCategoryType {
+    #[serde(rename = "SpareTrees")]
+    pub spare_trees: Vec<SpareTreesType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleFactorTreeSpeciesType {
+    #[serde(flatten)]
+    pub base: Xsinteger,
 }
 

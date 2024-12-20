@@ -5,21 +5,9 @@ pub struct OtherConservationMethodsText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DitchingBreaksText {
+pub struct NotificationsAndImprovementsText {
     #[serde(flatten)]
-    pub ditching_breaks_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SettlingBasins {
-    #[serde(flatten)]
-    pub settling_basins: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditSoilConditioning {
-    #[serde(flatten)]
-    pub working_site_final_audit_soil_conditioning: WorkingSiteFinalAuditSoilConditioningType,
+    pub notifications_and_improvements_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,9 +17,15 @@ pub struct StumpsLiftedText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SurfaceDrainingAreas {
+pub struct OtherConservationMethods {
     #[serde(flatten)]
-    pub surface_draining_areas: BdtYesNoType,
+    pub other_conservation_methods: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DitchingBreaks {
+    #[serde(flatten)]
+    pub ditching_breaks: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,15 +35,15 @@ pub struct ClearingDoneText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SettlingPits {
+pub struct NotificationsAndImprovements {
     #[serde(flatten)]
-    pub settling_pits: BdtYesNoType,
+    pub notifications_and_improvements: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ClearingDone {
+pub struct SurfaceDrainingAreas {
     #[serde(flatten)]
-    pub clearing_done: BdtYesNoType,
+    pub surface_draining_areas: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,15 +53,33 @@ pub struct SettlingPitsText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NotificationsAndImprovementsText {
+pub struct ClearingDone {
     #[serde(flatten)]
-    pub notifications_and_improvements_text: BdtString200Type,
+    pub clearing_done: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SettlingBasinsText {
+pub struct DitchingBreaksText {
     #[serde(flatten)]
-    pub settling_basins_text: BdtString200Type,
+    pub ditching_breaks_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditSoilConditioning {
+    #[serde(flatten)]
+    pub working_site_final_audit_soil_conditioning: WorkingSiteFinalAuditSoilConditioningType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SettlingBasins {
+    #[serde(flatten)]
+    pub settling_basins: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SettlingPits {
+    #[serde(flatten)]
+    pub settling_pits: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,20 +95,8 @@ pub struct StumpsLifted {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NotificationsAndImprovements {
+pub struct SettlingBasinsText {
     #[serde(flatten)]
-    pub notifications_and_improvements: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OtherConservationMethods {
-    #[serde(flatten)]
-    pub other_conservation_methods: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DitchingBreaks {
-    #[serde(flatten)]
-    pub ditching_breaks: BdtYesNoType,
+    pub settling_basins_text: BdtString200Type,
 }
 

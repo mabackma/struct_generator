@@ -1,4 +1,12 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: BdtString100Type,
+    #[serde(rename = "Data")]
+    pub data: XshexBinary,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AttachmentsType {
     #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
     pub attachment: Option<Vec<AttachmentDataType>>,
@@ -29,6 +37,12 @@ pub struct SilvicultureOrderType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeInfoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodeInfoType {
     #[serde(rename = "WorkCodeGroup")]
     pub work_code_group: BdtWorkCodeGroupType,
@@ -38,19 +52,5 @@ pub struct WorkCodeInfoType {
     pub amount: BdtDecimal2FractionDigitsType,
     #[serde(rename = "Unit")]
     pub unit: BdtWorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: BdtString100Type,
-    #[serde(rename = "Data")]
-    pub data: XshexBinary,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeInfoType>,
 }
 

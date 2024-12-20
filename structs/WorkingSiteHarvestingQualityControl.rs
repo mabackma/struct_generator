@@ -33,38 +33,6 @@ pub struct LogDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlStemSelectionType {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CaliperType {
-    #[serde(rename = "CaliperId", skip_serializing_if = "Option::is_none")]
-    pub caliper_id: Option<BdtString200Type>,
-    #[serde(rename = "CaliperApplication", skip_serializing_if = "Option::is_none")]
-    pub caliper_application: Option<BdtString200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemDataType {
-    #[serde(rename = "StemId")]
-    pub stem_id: BdtPositiveIntegerType,
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: WctStanfordTreeSpeciesType,
-    #[serde(rename = "StemType", skip_serializing_if = "Option::is_none")]
-    pub stem_type: Option<BdtHarvestingStemTypeType>,
-    #[serde(rename = "SelectionType")]
-    pub selection_type: ControlStemSelectionType,
-    #[serde(rename = "RandomControlStemRejectedReason", skip_serializing_if = "Option::is_none")]
-    pub random_control_stem_rejected_reason: Option<BdtString100Type>,
-    #[serde(rename = "StemCoordinates", skip_serializing_if = "Option::is_none")]
-    pub stem_coordinates: Option<GdtPointGeometryType>,
-    #[serde(rename = "Log", skip_serializing_if = "Option::is_none")]
-    pub log: Option<Vec<LogDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct DiameterCalibrationType {
     #[serde(rename = "TreeSpecies")]
     pub tree_species: WctStanfordTreeSpeciesType,
@@ -81,17 +49,9 @@ pub struct DiameterCalibrationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LengthCalibrationType {
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: WctStanfordTreeSpeciesType,
-    #[serde(rename = "LengthCalibrationDate")]
-    pub length_calibration_date: BdtTimeStampType,
-    #[serde(rename = "LengthCalibrationReason")]
-    pub length_calibration_reason: BdtString200Type,
-    #[serde(rename = "LengthCalibrationDescription")]
-    pub length_calibration_description: BdtString200Type,
-    #[serde(rename = "LengthCalibrationAdjustment")]
-    pub length_calibration_adjustment: BdtInteger3digitsType,
+pub struct ControlStemSelectionType {
+    #[serde(flatten)]
+    pub base: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -126,5 +86,45 @@ pub struct WorkingSiteHarvestingQualityControlType {
     pub diameter_calibration: Option<Vec<DiameterCalibrationType>>,
     #[serde(rename = "Caliper", skip_serializing_if = "Option::is_none")]
     pub caliper: Option<CaliperType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LengthCalibrationType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: WctStanfordTreeSpeciesType,
+    #[serde(rename = "LengthCalibrationDate")]
+    pub length_calibration_date: BdtTimeStampType,
+    #[serde(rename = "LengthCalibrationReason")]
+    pub length_calibration_reason: BdtString200Type,
+    #[serde(rename = "LengthCalibrationDescription")]
+    pub length_calibration_description: BdtString200Type,
+    #[serde(rename = "LengthCalibrationAdjustment")]
+    pub length_calibration_adjustment: BdtInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CaliperType {
+    #[serde(rename = "CaliperId", skip_serializing_if = "Option::is_none")]
+    pub caliper_id: Option<BdtString200Type>,
+    #[serde(rename = "CaliperApplication", skip_serializing_if = "Option::is_none")]
+    pub caliper_application: Option<BdtString200Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemDataType {
+    #[serde(rename = "StemId")]
+    pub stem_id: BdtPositiveIntegerType,
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: WctStanfordTreeSpeciesType,
+    #[serde(rename = "StemType", skip_serializing_if = "Option::is_none")]
+    pub stem_type: Option<BdtHarvestingStemTypeType>,
+    #[serde(rename = "SelectionType")]
+    pub selection_type: ControlStemSelectionType,
+    #[serde(rename = "RandomControlStemRejectedReason", skip_serializing_if = "Option::is_none")]
+    pub random_control_stem_rejected_reason: Option<BdtString100Type>,
+    #[serde(rename = "StemCoordinates", skip_serializing_if = "Option::is_none")]
+    pub stem_coordinates: Option<GdtPointGeometryType>,
+    #[serde(rename = "Log", skip_serializing_if = "Option::is_none")]
+    pub log: Option<Vec<LogDataType>>,
 }
 

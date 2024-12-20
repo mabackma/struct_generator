@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Id {
-    #[serde(flatten)]
-    pub id: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct HelpGeometryType {
     #[serde(flatten)]
     pub help_geometry_type: Xsstring,

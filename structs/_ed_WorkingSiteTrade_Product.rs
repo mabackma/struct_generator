@@ -5,15 +5,15 @@ pub struct ProductName {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Product {
+pub struct Description {
     #[serde(flatten)]
-    pub product: ProductType,
+    pub description: CoString1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Code {
+pub struct Product {
     #[serde(flatten)]
-    pub code: Xsstring,
+    pub product: ProductType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -26,11 +26,5 @@ pub struct Consumption {
 pub struct ConsumptionUnit {
     #[serde(flatten)]
     pub consumption_unit: ConsumptionUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Unit {
-    #[serde(flatten)]
-    pub unit: Xsstring,
 }
 

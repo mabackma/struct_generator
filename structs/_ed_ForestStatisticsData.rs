@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestStatisticsData {
+pub struct OperationRow {
     #[serde(flatten)]
-    pub forest_statistics_data: ForestStatisticsDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingsRow {
-    #[serde(flatten)]
-    pub loggings_row: LoggingsRowType,
+    pub operation_row: OperationRowType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +11,9 @@ pub struct StatisticsAssortmentCompactClasses {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestOwnerGroup {
+pub struct OperationRows {
     #[serde(flatten)]
-    pub forest_owner_group: ForestOwnerGroupType,
+    pub operation_rows: OperationRowsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,9 +23,21 @@ pub struct ReportedStatisticsOperationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRow {
+pub struct LoggingsRow {
     #[serde(flatten)]
-    pub operation_row: OperationRowType,
+    pub loggings_row: LoggingsRowType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestOwnerGroup {
+    #[serde(flatten)]
+    pub forest_owner_group: ForestOwnerGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestStatisticsData {
+    #[serde(flatten)]
+    pub forest_statistics_data: ForestStatisticsDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,20 +53,14 @@ pub struct StatisticsQuantities {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRows {
+pub struct LoggingsRows {
     #[serde(flatten)]
-    pub operation_rows: OperationRowsType,
+    pub loggings_rows: LoggingsRowsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StatisticsQuantity {
     #[serde(flatten)]
     pub statistics_quantity: StatisticsQuantityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingsRows {
-    #[serde(flatten)]
-    pub loggings_rows: LoggingsRowsType,
 }
 

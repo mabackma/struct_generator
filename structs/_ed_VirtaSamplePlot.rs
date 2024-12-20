@@ -1,16 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotEastingCoordinate {
-    #[serde(flatten)]
-    pub sample_plot_easting_coordinate: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotStubDiameter {
-    #[serde(flatten)]
-    pub sample_plot_stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Status4 {
     #[serde(flatten)]
     pub status4: CoChangeStateType,
@@ -23,21 +11,15 @@ pub struct SamplePlotNorthingCoordinate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotTrackDistance {
+pub struct SamplePlotStubDiameter {
     #[serde(flatten)]
-    pub sample_plot_track_distance: Xsinteger,
+    pub sample_plot_stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SecondStoreyTrees {
+pub struct SamplePlotEastingCoordinate {
     #[serde(flatten)]
-    pub second_storey_trees: Xsinteger,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotMeanHeight {
-    #[serde(flatten)]
-    pub sample_plot_mean_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub sample_plot_easting_coordinate: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,9 +35,27 @@ pub struct SamplePlotMeanDiameter {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotMeanHeight {
+    #[serde(flatten)]
+    pub sample_plot_mean_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SamplePlotTrackDepth {
     #[serde(flatten)]
     pub sample_plot_track_depth: Xsinteger,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotDominantHeight {
+    #[serde(flatten)]
+    pub sample_plot_dominant_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotTrackDistance {
+    #[serde(flatten)]
+    pub sample_plot_track_distance: Xsinteger,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,8 +65,8 @@ pub struct SamplePlotBasalArea {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotDominantHeight {
+pub struct SecondStoreyTrees {
     #[serde(flatten)]
-    pub sample_plot_dominant_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub second_storey_trees: Xsinteger,
 }
 

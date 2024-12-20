@@ -1,19 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TurningPlace {
+pub struct RoadStructureDrainage {
     #[serde(flatten)]
-    pub turning_place: BdtWorkingQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LandScapingText {
-    #[serde(flatten)]
-    pub land_scaping_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditRoadMaking {
-    #[serde(flatten)]
-    pub working_site_final_audit_road_making: WorkingSiteFinalAuditRoadMakingType,
+    pub road_structure_drainage: BdtWorkingQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,33 +11,9 @@ pub struct FeedbackForPlannerText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TurningPlaceText {
+pub struct PipeInstallationText {
     #[serde(flatten)]
-    pub turning_place_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RoadStructureText {
-    #[serde(flatten)]
-    pub road_structure_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterProtectionAction {
-    #[serde(flatten)]
-    pub water_protection_action: BdtWorkingQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RoadStructure {
-    #[serde(flatten)]
-    pub road_structure: BdtWorkingQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PassingPlaceText {
-    #[serde(flatten)]
-    pub passing_place_text: BdtString200Type,
+    pub pipe_installation_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,21 +23,51 @@ pub struct PassingPlace {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PassingPlaceText {
+    #[serde(flatten)]
+    pub passing_place_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErosionBlockingAction {
+    #[serde(flatten)]
+    pub erosion_blocking_action: BdtWorkingQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TurningPlaceText {
+    #[serde(flatten)]
+    pub turning_place_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditRoadMaking {
+    #[serde(flatten)]
+    pub working_site_final_audit_road_making: WorkingSiteFinalAuditRoadMakingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct RoadStructureShape {
     #[serde(flatten)]
     pub road_structure_shape: BdtWorkingQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeedbackForPlanner {
+pub struct WaterProtectionAction {
     #[serde(flatten)]
-    pub feedback_for_planner: BdtWorkingQualityType,
+    pub water_protection_action: BdtWorkingQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RoadStructureDrainageText {
+pub struct WaterProtectionActionText {
     #[serde(flatten)]
-    pub road_structure_drainage_text: BdtString200Type,
+    pub water_protection_action_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LandScapingText {
+    #[serde(flatten)]
+    pub land_scaping_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,38 +83,44 @@ pub struct ErosionBlockingActionText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TurningPlace {
+    #[serde(flatten)]
+    pub turning_place: BdtWorkingQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PipeInstallation {
     #[serde(flatten)]
     pub pipe_installation: BdtWorkingQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ErosionBlockingAction {
+pub struct RoadStructure {
     #[serde(flatten)]
-    pub erosion_blocking_action: BdtWorkingQualityType,
+    pub road_structure: BdtWorkingQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RoadStructureDrainageText {
+    #[serde(flatten)]
+    pub road_structure_drainage_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeedbackForPlanner {
+    #[serde(flatten)]
+    pub feedback_for_planner: BdtWorkingQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RoadStructureText {
+    #[serde(flatten)]
+    pub road_structure_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RoadStructureShapeText {
     #[serde(flatten)]
     pub road_structure_shape_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterProtectionActionText {
-    #[serde(flatten)]
-    pub water_protection_action_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PipeInstallationText {
-    #[serde(flatten)]
-    pub pipe_installation_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RoadStructureDrainage {
-    #[serde(flatten)]
-    pub road_structure_drainage: BdtWorkingQualityType,
 }
 

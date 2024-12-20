@@ -31,10 +31,10 @@ fn main() {
         total_element_count += counts.1;
     }
     
-    let final_structs = modify_struct_keys(structs, prefixes);
+    modify_struct_keys(&mut structs, prefixes);
 
     // TODO: Fix fields with colons in their names
-    for (key, value) in final_structs.iter() {
+    for (_, value) in structs.iter() {
         for field in value.fields.iter() {
             if field.name.contains(':') || field.field_type.contains(":") {
                 println!("Field: {}: {:?}", field.name, field.field_type);
@@ -42,12 +42,12 @@ fn main() {
         }
     }
 
-    structs_to_file(&final_structs, "structs/__all_structs.rs").unwrap();
+    structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
     element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
 
 
     println!("Total number of structs: {}", total_struct_count);
-    println!("Actual number of structs: {}", final_structs.len());
+    println!("Actual number of structs: {}", structs.len());
     println!("Total number of element definitions: {}", total_element_count);
     println!("Actual number of element definitions: {}", element_definitions.len());
 
@@ -66,7 +66,7 @@ fn main() {
     element_definitions_to_file(&element_definitions, &elements_file_name).unwrap(); */
 }
 
-fn modify_struct_keys(structs: HashMap<String, XMLStruct>, prefixes: &mut HashMap<String, String>) -> HashMap<String, XMLStruct> {
+fn modify_struct_keys(structs: &mut HashMap<String, XMLStruct>, prefixes: &mut HashMap<String, String>) {
     let mut new_structs = HashMap::new();
 
     for prefix in prefixes.iter() {
@@ -83,7 +83,7 @@ fn modify_struct_keys(structs: HashMap<String, XMLStruct>, prefixes: &mut HashMa
         });
     }
 
-    new_structs
+    *structs = new_structs;
 }
 
 fn create_file_dependencies(folder_path: &str, file_dependencies: &mut HashMap<String, HashSet<String>>) {

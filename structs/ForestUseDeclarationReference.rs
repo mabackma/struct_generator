@@ -1,7 +1,27 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialPermissionType {
+pub struct ForestUseDeclarationType {
+    #[serde(rename = "@parentId")]
+    pub parent_id: Xsstring,
+    #[serde(rename = "@id")]
+    pub id: Xsstring,
+    #[serde(rename = "CoTimeStamp")]
+    pub co_time_stamp: String,
+    #[serde(rename = "DeclarationReference")]
+    pub declaration_reference: DeclarationReferenceType,
+    #[serde(rename = "AcceptanceDate")]
+    pub acceptance_date: AcceptanceDateType,
+    #[serde(rename = "SpecialPermission")]
+    pub special_permission: SpecialPermissionType,
+    #[serde(rename = "AdditionalText", skip_serializing_if = "Option::is_none")]
+    pub additional_text: Option<AdditionalTextType>,
+    #[serde(rename = "OriginalXmlFile", skip_serializing_if = "Option::is_none")]
+    pub original_xml_file: Option<Xmimebase64Binary>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AcceptanceDateType {
     #[serde(flatten)]
-    pub base: CoYesNoType,
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,28 +43,8 @@ pub struct ForestUseDeclarationsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AcceptanceDateType {
+pub struct SpecialPermissionType {
     #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationType {
-    #[serde(rename = "@parentId")]
-    pub parent_id: Xsstring,
-    #[serde(rename = "@id")]
-    pub id: Xsstring,
-    #[serde(rename = "CoTimeStamp")]
-    pub co_time_stamp: String,
-    #[serde(rename = "DeclarationReference")]
-    pub declaration_reference: DeclarationReferenceType,
-    #[serde(rename = "AcceptanceDate")]
-    pub acceptance_date: AcceptanceDateType,
-    #[serde(rename = "SpecialPermission")]
-    pub special_permission: SpecialPermissionType,
-    #[serde(rename = "AdditionalText", skip_serializing_if = "Option::is_none")]
-    pub additional_text: Option<AdditionalTextType>,
-    #[serde(rename = "OriginalXmlFile", skip_serializing_if = "Option::is_none")]
-    pub original_xml_file: Option<Xmimebase64Binary>,
+    pub base: CoYesNoType,
 }
 

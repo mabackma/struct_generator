@@ -1,19 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Interrupted {
+pub struct WorkingSiteEndNotification {
     #[serde(flatten)]
-    pub interrupted: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Supported {
-    #[serde(flatten)]
-    pub supported: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AmountLeft {
-    #[serde(flatten)]
-    pub amount_left: BdtDecimal3FractionDigitsType,
+    pub working_site_end_notification: WorkingSiteEndNotificationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,9 +11,39 @@ pub struct VolumeLeft {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UnfulfilledArea {
+pub struct WorkCodes {
     #[serde(flatten)]
-    pub unfulfilled_area: GdtPolygonOrMultiPolygon2Type,
+    pub work_codes: WorkCodesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Interrupted {
+    #[serde(flatten)]
+    pub interrupted: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContactorId {
+    #[serde(flatten)]
+    pub contactor_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountPlanned {
+    #[serde(flatten)]
+    pub amount_planned: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Unit {
+    #[serde(flatten)]
+    pub unit: BdtWorkCodeUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Infotext {
+    #[serde(flatten)]
+    pub infotext: BdtString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,14 +59,44 @@ pub struct CodeGroup {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteEndNotification {
+pub struct Supported {
     #[serde(flatten)]
-    pub working_site_end_notification: WorkingSiteEndNotificationType,
+    pub supported: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContactorId {
+pub struct UnfulfilledArea {
     #[serde(flatten)]
-    pub contactor_id: BdtString20Type,
+    pub unfulfilled_area: GdtPolygonOrMultiPolygon2Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Geometry {
+    #[serde(flatten)]
+    pub geometry: GdtPolygonOrMultiPolygon2Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCode {
+    #[serde(flatten)]
+    pub work_code: BdtWorkCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Assortments {
+    #[serde(flatten)]
+    pub assortments: AssortmentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountLeft {
+    #[serde(flatten)]
+    pub amount_left: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Code {
+    #[serde(flatten)]
+    pub code: BdtString50Type,
 }
 

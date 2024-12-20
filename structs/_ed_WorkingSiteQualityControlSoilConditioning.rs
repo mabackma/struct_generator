@@ -1,7 +1,37 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasureDate {
+pub struct TaxNumber {
     #[serde(flatten)]
-    pub measure_date: BdtDateType,
+    pub tax_number: WctTaxNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CultivationScope {
+    #[serde(flatten)]
+    pub cultivation_scope: BdtFinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Radius {
+    #[serde(flatten)]
+    pub radius: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NearestCultivatedSpotWidth {
+    #[serde(flatten)]
+    pub nearest_cultivated_spot_width: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlantSiteCountSummary {
+    #[serde(flatten)]
+    pub plant_site_count_summary: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GeometryRequired {
+    #[serde(flatten)]
+    pub geometry_required: GdtPointGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,21 +47,9 @@ pub struct SamplePlot {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MineralSoilLayer {
+pub struct NearestCultivatedSpotHeight {
     #[serde(flatten)]
-    pub mineral_soil_layer: BdtFinalAuditAnswerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotInfoText {
-    #[serde(flatten)]
-    pub sample_plot_info_text: BdtString1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlantSiteCountSummary {
-    #[serde(flatten)]
-    pub plant_site_count_summary: BdtPositiveInteger4digitsType,
+    pub nearest_cultivated_spot_height: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,9 +59,9 @@ pub struct NearestCultivatedSpotLength {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteQualityControlSoilConditioning {
+pub struct GeometryReal {
     #[serde(flatten)]
-    pub working_site_quality_control_soil_conditioning: WorkingSiteQualityControlSoilConditioningType,
+    pub geometry_real: GdtPointGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,63 +71,15 @@ pub struct PlantingSiteCount {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotNumber {
+pub struct WorkingSiteQualityControlSoilConditioning {
     #[serde(flatten)]
-    pub sample_plot_number: BdtPositiveInteger3digitsType,
+    pub working_site_quality_control_soil_conditioning: WorkingSiteQualityControlSoilConditioningType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct isGPSlocation {
+pub struct MineralSoilLayer {
     #[serde(flatten)]
-    pub is_g_p_slocation: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotMeasurementSummary {
-    #[serde(flatten)]
-    pub sample_plot_measurement_summary: SamplePlotMeasurementSummaryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DitchMoundsCount {
-    #[serde(flatten)]
-    pub ditch_mounds_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TaxNumber {
-    #[serde(flatten)]
-    pub tax_number: WctTaxNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScalpsCount {
-    #[serde(flatten)]
-    pub scalps_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BulgeHeight {
-    #[serde(flatten)]
-    pub bulge_height: BdtFinalAuditAnswerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CultivationScope {
-    #[serde(flatten)]
-    pub cultivation_scope: BdtFinalAuditAnswerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NearestCultivatedSpotWidth {
-    #[serde(flatten)]
-    pub nearest_cultivated_spot_width: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScalpedMoundsCount {
-    #[serde(flatten)]
-    pub scalped_mounds_count: BdtPositiveInteger2digitsType,
+    pub mineral_soil_layer: BdtFinalAuditAnswerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,15 +89,21 @@ pub struct SamplePlots {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryRequired {
+pub struct Measurable {
     #[serde(flatten)]
-    pub geometry_required: GdtPointGeometryType,
+    pub measurable: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RockySoil {
+pub struct ScalpedMoundsCount {
     #[serde(flatten)]
-    pub rocky_soil: BdtYesNoType,
+    pub scalped_mounds_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct isGPSlocation {
+    #[serde(flatten)]
+    pub is_g_p_slocation: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -137,9 +113,15 @@ pub struct SamplePlotSummary {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DitchesInAdditionToCultivation {
+pub struct ScalpsCount {
     #[serde(flatten)]
-    pub ditches_in_addition_to_cultivation: BdtPositiveInteger4digitsType,
+    pub scalps_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotMeasurementSummary {
+    #[serde(flatten)]
+    pub sample_plot_measurement_summary: SamplePlotMeasurementSummaryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -149,15 +131,9 @@ pub struct TurnoverMoundsCount {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummaries {
+pub struct DitchesInAdditionToCultivation {
     #[serde(flatten)]
-    pub sample_plot_summaries: SamplePlotSummariesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Measurable {
-    #[serde(flatten)]
-    pub measurable: BdtYesNoType,
+    pub ditches_in_addition_to_cultivation: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -167,26 +143,50 @@ pub struct SoilConditioningDepth {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NearestCultivatedSpotHeight {
+pub struct SamplePlotNumber {
     #[serde(flatten)]
-    pub nearest_cultivated_spot_height: BdtPositiveInteger2digitsType,
+    pub sample_plot_number: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryReal {
+pub struct RockySoil {
     #[serde(flatten)]
-    pub geometry_real: GdtPointGeometryType,
+    pub rocky_soil: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Radius {
+pub struct BulgeHeight {
     #[serde(flatten)]
-    pub radius: BdtDecimal2FractionDigitsType,
+    pub bulge_height: BdtFinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasureDate {
+    #[serde(flatten)]
+    pub measure_date: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct UserId {
     #[serde(flatten)]
     pub user_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DitchMoundsCount {
+    #[serde(flatten)]
+    pub ditch_mounds_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotInfoText {
+    #[serde(flatten)]
+    pub sample_plot_info_text: BdtString1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotSummaries {
+    #[serde(flatten)]
+    pub sample_plot_summaries: SamplePlotSummariesType,
 }
 

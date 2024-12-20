@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Status5 {
+pub struct DamageClass {
     #[serde(flatten)]
-    pub status5: CoChangeStateType,
+    pub damage_class: VirtaDamageClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StubDiameter {
+pub struct Status5 {
     #[serde(flatten)]
-    pub stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub status5: CoChangeStateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +17,9 @@ pub struct WorkQuality {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeHeight {
+pub struct Tree {
     #[serde(flatten)]
-    pub tree_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub tree: TreeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,14 +29,20 @@ pub struct TreeCount {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreeHeight {
+    #[serde(flatten)]
+    pub tree_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeDiameter {
     #[serde(flatten)]
     pub tree_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DamageClass {
+pub struct StubDiameter {
     #[serde(flatten)]
-    pub damage_class: VirtaDamageClassType,
+    pub stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 

@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InsertDate {
+pub struct VAT {
     #[serde(flatten)]
-    pub insert_date: InsertDateType,
+    pub vat: VATType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,15 +11,15 @@ pub struct MeasurementCertificate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SequenceNumber {
+pub struct InsertDate {
     #[serde(flatten)]
-    pub sequence_number: SequenceNumberType,
+    pub insert_date: InsertDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Text {
+pub struct PaidValue {
     #[serde(flatten)]
-    pub text: TextType,
+    pub paid_value: PaidValueType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,14 +29,8 @@ pub struct MeasurementCertificateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VAT {
+pub struct SequenceNumber {
     #[serde(flatten)]
-    pub vat: VATType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaidValue {
-    #[serde(flatten)]
-    pub paid_value: PaidValueType,
+    pub sequence_number: SequenceNumberType,
 }
 

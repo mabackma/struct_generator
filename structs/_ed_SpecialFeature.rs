@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureSpecificAdditionalVariables {
+    #[serde(flatten)]
+    pub feature_specific_additional_variables: FeatureSpecificAdditionalVariableType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct UsingRightExists {
     #[serde(flatten)]
     pub using_right_exists: CoYesNoNotKnownType,
@@ -11,9 +17,9 @@ pub struct UsingRight {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightCompensationResponsible {
+pub struct UsingRightExaminedDate {
     #[serde(flatten)]
-    pub using_right_compensation_responsible: CoUsingRightResponsibleType,
+    pub using_right_examined_date: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,9 +29,9 @@ pub struct ForestDepotAccessibility {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObservationDate {
+pub struct UsingRightCompensationDescription {
     #[serde(flatten)]
-    pub observation_date: CoDateType,
+    pub using_right_compensation_description: CoString1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,27 +41,9 @@ pub struct UsingRightDescription {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightExaminedDate {
-    #[serde(flatten)]
-    pub using_right_examined_date: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightCompensationDescription {
-    #[serde(flatten)]
-    pub using_right_compensation_description: CoString1500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct UsingRightCompensation {
     #[serde(flatten)]
     pub using_right_compensation: CoYesNoNotKnownType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InventoryDate {
-    #[serde(flatten)]
-    pub inventory_date: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,8 +53,20 @@ pub struct UsingRightCompensationAmount {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureSpecificAdditionalVariables {
+pub struct UsingRightCompensationResponsible {
     #[serde(flatten)]
-    pub feature_specific_additional_variables: FeatureSpecificAdditionalVariableType,
+    pub using_right_compensation_responsible: CoUsingRightResponsibleType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObservationDate {
+    #[serde(flatten)]
+    pub observation_date: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InventoryDate {
+    #[serde(flatten)]
+    pub inventory_date: CoDateType,
 }
 
