@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateOwners {
+pub struct RealEstates {
     #[serde(flatten)]
-    pub real_estate_owners: RealEstateOwnersType,
+    pub real_estates: BaseRealEstatesType2,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -14,5 +14,11 @@ pub struct BaseRealEstates {
 pub struct RealEstateOwner {
     #[serde(flatten)]
     pub real_estate_owner: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstateOwners {
+    #[serde(flatten)]
+    pub real_estate_owners: RealEstateOwnersType,
 }
 

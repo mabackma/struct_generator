@@ -1,43 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UserRolesType {
-    #[serde(rename = "UserRole")]
-    pub user_role: Vec<BdtUserRoleType>,
+pub struct WorkCodeGroupsType {
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: Vec<BdtWorkCodeGroupType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LanguagesType {
     #[serde(rename = "Language")]
     pub language: Vec<BdtLanguageCode1Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MachinesType {
-    #[serde(rename = "Machine", skip_serializing_if = "Option::is_none")]
-    pub machine: Option<Vec<BdtMachineTypeType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TrainingsType {
-    #[serde(rename = "Training", skip_serializing_if = "Option::is_none")]
-    pub training: Option<Vec<TrainingDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypesType {
-    #[serde(rename = "ServiceType")]
-    pub service_type: Vec<BdtServiceTypeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<Vec<BdtWorkCodeType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroupsType {
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: Vec<BdtWorkCodeGroupType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -50,16 +20,6 @@ pub struct EmploymentDataType {
     pub working_contract: BdtYesNoType,
     #[serde(rename = "Active")]
     pub active: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TrainingDataType {
-    #[serde(rename = "TrainingId")]
-    pub training_id: BdtPositiveInteger4digitsType,
-    #[serde(rename = "TrainingFreeText", skip_serializing_if = "Option::is_none")]
-    pub training_free_text: Option<BdtString50Type>,
-    #[serde(rename = "TrainingDate")]
-    pub training_date: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -118,5 +78,45 @@ pub struct UserInformationType {
     pub e101: BdtYesNoType,
     #[serde(rename = "A1")]
     pub a1: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<Vec<BdtWorkCodeType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TrainingDataType {
+    #[serde(rename = "TrainingId")]
+    pub training_id: BdtPositiveInteger4digitsType,
+    #[serde(rename = "TrainingFreeText", skip_serializing_if = "Option::is_none")]
+    pub training_free_text: Option<BdtString50Type>,
+    #[serde(rename = "TrainingDate")]
+    pub training_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UserRolesType {
+    #[serde(rename = "UserRole")]
+    pub user_role: Vec<BdtUserRoleType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypesType {
+    #[serde(rename = "ServiceType")]
+    pub service_type: Vec<BdtServiceTypeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TrainingsType {
+    #[serde(rename = "Training", skip_serializing_if = "Option::is_none")]
+    pub training: Option<Vec<TrainingDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MachinesType {
+    #[serde(rename = "Machine", skip_serializing_if = "Option::is_none")]
+    pub machine: Option<Vec<BdtMachineTypeType>>,
 }
 

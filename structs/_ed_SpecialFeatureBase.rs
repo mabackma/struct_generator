@@ -1,7 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureInfo {
+pub struct FeatureCode {
     #[serde(flatten)]
-    pub feature_info: FeatureInfoType,
+    pub feature_code: CoFeatureCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainFeature {
+    #[serde(flatten)]
+    pub main_feature: CoYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RestrictionEndDate {
+    #[serde(flatten)]
+    pub restriction_end_date: EndDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,21 +35,9 @@ pub struct RestrictionDescription {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureAdditionalInfo {
+pub struct UsingRestriction {
     #[serde(flatten)]
-    pub feature_additional_info: FeatureAdditionalInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRestrictions {
-    #[serde(flatten)]
-    pub using_restrictions: UsingRestrictionsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionOutOfObject {
-    #[serde(flatten)]
-    pub restriction_out_of_object: CoYesNoType,
+    pub using_restriction: UsingRestrictionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,15 +47,39 @@ pub struct FeatureType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionEndDate {
+pub struct FeatureAdditionalCode {
     #[serde(flatten)]
-    pub restriction_end_date: EndDateType,
+    pub feature_additional_code: CoFeatureAdditionalCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRestriction {
+pub struct EndDate {
     #[serde(flatten)]
-    pub using_restriction: UsingRestrictionType,
+    pub end_date: EndDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RestrictionOutOfObject {
+    #[serde(flatten)]
+    pub restriction_out_of_object: CoYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureAdditionalInfo {
+    #[serde(flatten)]
+    pub feature_additional_info: FeatureAdditionalInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureInfo {
+    #[serde(flatten)]
+    pub feature_info: FeatureInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StartDate {
+    #[serde(flatten)]
+    pub start_date: StartDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,26 +89,14 @@ pub struct RestrictionStartDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MainFeature {
-    #[serde(flatten)]
-    pub main_feature: CoYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureCode {
-    #[serde(flatten)]
-    pub feature_code: CoFeatureCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureAdditionalCode {
-    #[serde(flatten)]
-    pub feature_additional_code: CoFeatureAdditionalCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Validity {
     #[serde(flatten)]
     pub validity: ValidityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRestrictions {
+    #[serde(flatten)]
+    pub using_restrictions: UsingRestrictionsType,
 }
 

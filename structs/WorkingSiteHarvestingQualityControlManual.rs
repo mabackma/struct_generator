@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementsType {
+    #[serde(rename = "Measurement")]
+    pub measurement: Vec<MeasurementDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteHarvestingQualityControlManualType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -42,11 +48,5 @@ pub struct MeasurementDataType {
     pub log_count: BdtPositiveInteger2digitsType,
     #[serde(rename = "ControlLogCount")]
     pub control_log_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementsType {
-    #[serde(rename = "Measurement")]
-    pub measurement: Vec<MeasurementDataType>,
 }
 

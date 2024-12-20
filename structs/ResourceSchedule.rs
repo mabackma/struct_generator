@@ -13,12 +13,6 @@ pub struct ResourcesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitesType {
-    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
-    pub working_site: Option<Vec<WorkingSiteType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ResourceDataType {
     #[serde(rename = "StanfordResourceId", skip_serializing_if = "Option::is_none")]
     pub stanford_resource_id: Option<BdtString100Type>,
@@ -48,5 +42,11 @@ pub struct WorkingSiteType {
     pub end_date: BdtDateType,
     #[serde(rename = "ForwarderDelay", skip_serializing_if = "Option::is_none")]
     pub forwarder_delay: Option<BdtPositiveInteger2digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitesType {
+    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
+    pub working_site: Option<Vec<WorkingSiteType>>,
 }
 

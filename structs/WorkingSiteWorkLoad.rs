@@ -1,13 +1,23 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkGrouMembersType {
+    #[serde(rename = "WorkGrouMember")]
+    pub work_grou_member: Vec<WorkGrouMemberType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FeeBasisType {
     #[serde(rename = "FeeBase")]
     pub fee_base: Vec<FeeBasisDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkGrouMembersType {
-    #[serde(rename = "WorkGrouMember")]
-    pub work_grou_member: Vec<WorkGrouMemberType>,
+pub struct WorkGrouMemberType {
+    #[serde(rename = "ResourceId")]
+    pub resource_id: WctShortERPIdType,
+    #[serde(rename = "UserId")]
+    pub user_id: WctShortERPIdType,
+    #[serde(rename = "TaxNumber", skip_serializing_if = "Option::is_none")]
+    pub tax_number: Option<WctTaxNumberType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -81,6 +91,12 @@ pub struct WorkingSiteWorkLoadType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialsType {
+    #[serde(rename = "Material")]
+    pub material: Vec<MaterialType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FeeBasisDataType {
     #[serde(rename = "FeeId")]
     pub fee_id: BdtString10Type,
@@ -96,16 +112,6 @@ pub struct FeeBasisDataType {
     pub infotext: Option<BdtString1000Type>,
     #[serde(rename = "NeedToCheck", skip_serializing_if = "Option::is_none")]
     pub need_to_check: Option<BdtYesNoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkGrouMemberType {
-    #[serde(rename = "ResourceId")]
-    pub resource_id: WctShortERPIdType,
-    #[serde(rename = "UserId")]
-    pub user_id: WctShortERPIdType,
-    #[serde(rename = "TaxNumber", skip_serializing_if = "Option::is_none")]
-    pub tax_number: Option<WctTaxNumberType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -136,11 +142,5 @@ pub struct MaterialType {
     pub length: Option<BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
     #[serde(rename = "GrainSize", skip_serializing_if = "Option::is_none")]
     pub grain_size: Option<BdtPositiveInteger3digitsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialsType {
-    #[serde(rename = "Material")]
-    pub material: Vec<MaterialType>,
 }
 

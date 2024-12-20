@@ -5,9 +5,9 @@ pub struct ForwardedVolumeAccounted {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteAccounting {
+pub struct HarvestedVolumeAccounted {
     #[serde(flatten)]
-    pub working_site_accounting: WorkingSiteAccountingType,
+    pub harvested_volume_accounted: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,21 +17,9 @@ pub struct PlannedVolume {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HarvestedVolume {
+pub struct ForwardedVolume {
     #[serde(flatten)]
-    pub harvested_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContarctorId {
-    #[serde(flatten)]
-    pub contarctor_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HarvestedVolumeAccounted {
-    #[serde(flatten)]
-    pub harvested_volume_accounted: BdtDecimal3FractionDigitsType,
+    pub forwarded_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,21 +29,15 @@ pub struct AccountingDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct HarvestedVolume {
+    #[serde(flatten)]
+    pub harvested_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FinalAccounting {
     #[serde(flatten)]
     pub final_accounting: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageDistanceContinued {
-    #[serde(flatten)]
-    pub forest_haulage_distance_continued: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AmountAccounted {
-    #[serde(flatten)]
-    pub amount_accounted: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,8 +47,20 @@ pub struct AmountNotified {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardedVolume {
+pub struct WorkingSiteAccounting {
     #[serde(flatten)]
-    pub forwarded_volume: BdtDecimal3FractionDigitsType,
+    pub working_site_accounting: WorkingSiteAccountingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountAccounted {
+    #[serde(flatten)]
+    pub amount_accounted: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContarctorId {
+    #[serde(flatten)]
+    pub contarctor_id: BdtString20Type,
 }
 

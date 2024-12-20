@@ -11,12 +11,6 @@ pub struct Description {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Product {
-    #[serde(flatten)]
-    pub product: ProductType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Consumption {
     #[serde(flatten)]
     pub consumption: ConsumptionType,
@@ -26,5 +20,11 @@ pub struct Consumption {
 pub struct ConsumptionUnit {
     #[serde(flatten)]
     pub consumption_unit: ConsumptionUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Product {
+    #[serde(flatten)]
+    pub product: ProductType,
 }
 

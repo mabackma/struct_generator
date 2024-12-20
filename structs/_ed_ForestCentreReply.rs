@@ -1,25 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct KeyElementNS {
+pub struct ErrorMessage {
     #[serde(flatten)]
-    pub key_element_n_s: CoString500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreReply {
-    #[serde(flatten)]
-    pub forest_centre_reply: ForestCentreReplyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessageData {
-    #[serde(flatten)]
-    pub error_message_data: ErrorMessageDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MessageType {
-    #[serde(flatten)]
-    pub message_type: CoMessageType,
+    pub error_message: CoString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,18 +17,6 @@ pub struct KeyElementId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct KeyInfoAsText {
-    #[serde(flatten)]
-    pub key_info_as_text: CoString2000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RegistrationId {
-    #[serde(flatten)]
-    pub registration_id: CoReferenceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ReplyCode {
     #[serde(flatten)]
     pub reply_code: CoReplyCodeType,
@@ -59,9 +29,27 @@ pub struct KeyElementName {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorCode {
+pub struct KeyElementNS {
     #[serde(flatten)]
-    pub error_code: CoString25Type,
+    pub key_element_n_s: CoString500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KeyInfoAsText {
+    #[serde(flatten)]
+    pub key_info_as_text: CoString2000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageType {
+    #[serde(flatten)]
+    pub message_type: CoMessageType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreReply {
+    #[serde(flatten)]
+    pub forest_centre_reply: ForestCentreReplyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,8 +65,20 @@ pub struct ReferenceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessage {
+pub struct RegistrationId {
     #[serde(flatten)]
-    pub error_message: CoString1000Type,
+    pub registration_id: CoReferenceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorMessageData {
+    #[serde(flatten)]
+    pub error_message_data: ErrorMessageDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorCode {
+    #[serde(flatten)]
+    pub error_code: CoString25Type,
 }
 

@@ -1,49 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentMatrixVolumes {
+    #[serde(flatten)]
+    pub assortment_matrix_volumes: AssortmentMatrixVolumesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct LengthClass {
     #[serde(flatten)]
     pub length_class: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentName {
-    #[serde(flatten)]
-    pub assortment_name: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Quality {
-    #[serde(flatten)]
-    pub quality: BdtString5Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeVolume {
-    #[serde(flatten)]
-    pub stem_type_volume: StemTypeVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolume {
-    #[serde(flatten)]
-    pub assortment_volume: AssortmentVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Count {
-    #[serde(flatten)]
-    pub count: BdtPositiveInteger6digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DBH {
-    #[serde(flatten)]
-    pub dbh: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolumesUnclassified {
-    #[serde(flatten)]
-    pub assortment_volumes_unclassified: AssortmentVolumesUnclassifiedType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,39 +17,27 @@ pub struct AssortmentVolumes {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DestinationStorage {
+pub struct RunningMeters {
     #[serde(flatten)]
-    pub destination_storage: BdtString20Type,
+    pub running_meters: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InfoText {
+pub struct ModificationDate {
     #[serde(flatten)]
-    pub info_text: BdtString1000Type,
+    pub modification_date: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductGroupName {
+pub struct StemTypeVolume {
     #[serde(flatten)]
-    pub product_group_name: BdtString50Type,
+    pub stem_type_volume: StemTypeVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterClass {
+pub struct AssortmentVolumesUnclassified {
     #[serde(flatten)]
-    pub diameter_class: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentMatrixVolumes {
-    #[serde(flatten)]
-    pub assortment_matrix_volumes: AssortmentMatrixVolumesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserId {
-    #[serde(flatten)]
-    pub product_user_id: BdtString100Type,
+    pub assortment_volumes_unclassified: AssortmentVolumesUnclassifiedType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,27 +47,27 @@ pub struct StemTypeVolumes {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolumeUnclassified {
-    #[serde(flatten)]
-    pub assortment_volume_unclassified: AssortmentVolumeUnclassifiedType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RunningMeters {
-    #[serde(flatten)]
-    pub running_meters: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentMatrixVolume {
     #[serde(flatten)]
     pub assortment_matrix_volume: AssortmentMatrixVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIds {
+pub struct StandId {
     #[serde(flatten)]
-    pub product_user_ids: ProductUserIdsType,
+    pub stand_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentVolumeUnclassified {
+    #[serde(flatten)]
+    pub assortment_volume_unclassified: AssortmentVolumeUnclassifiedType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MachineApplicationVersion {
+    #[serde(flatten)]
+    pub machine_application_version: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -125,8 +77,50 @@ pub struct WorkingSiteHarvestedProduction {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ModificationDate {
+pub struct FileName {
     #[serde(flatten)]
-    pub modification_date: BdtTimeStampType,
+    pub file_name: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DBH {
+    #[serde(flatten)]
+    pub dbh: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductGroupName {
+    #[serde(flatten)]
+    pub product_group_name: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SendDate {
+    #[serde(flatten)]
+    pub send_date: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductUserId {
+    #[serde(flatten)]
+    pub product_user_id: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductUserIds {
+    #[serde(flatten)]
+    pub product_user_ids: ProductUserIdsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Bytes {
+    #[serde(flatten)]
+    pub bytes: Xsbase64Binary,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Quality {
+    #[serde(flatten)]
+    pub quality: BdtString5Type,
 }
 

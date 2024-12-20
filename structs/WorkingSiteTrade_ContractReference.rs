@@ -5,9 +5,29 @@ pub struct ContractEndingDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSitesType {
-    #[serde(rename = "ContractWorkingSiteDetails")]
-    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
+pub struct ContractWorkingSiteDetailsType {
+    #[serde(rename = "@parentId")]
+    pub parent_id: Xsstring,
+    #[serde(rename = "@parentVersionNo")]
+    pub parent_version_no: Xsint,
+    #[serde(rename = "@id")]
+    pub id: Xsstring,
+    #[serde(rename = "WorkingSiteText", skip_serializing_if = "Option::is_none")]
+    pub working_site_text: Option<CoString1500Type>,
+    #[serde(rename = "AsAssortmentClasses")]
+    pub as_assortment_classes: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractIdType {
+    #[serde(flatten)]
+    pub base: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractBeginningDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,28 +55,8 @@ pub struct ContractType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractBeginningDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSiteDetailsType {
-    #[serde(rename = "@parentId")]
-    pub parent_id: Xsstring,
-    #[serde(rename = "@parentVersionNo")]
-    pub parent_version_no: Xsint,
-    #[serde(rename = "@id")]
-    pub id: Xsstring,
-    #[serde(rename = "WorkingSiteText", skip_serializing_if = "Option::is_none")]
-    pub working_site_text: Option<CoString1500Type>,
-    #[serde(rename = "AsAssortmentClasses")]
-    pub as_assortment_classes: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractIdType {
-    #[serde(flatten)]
-    pub base: Xsstring,
+pub struct ContractWorkingSitesType {
+    #[serde(rename = "ContractWorkingSiteDetails")]
+    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
 }
 

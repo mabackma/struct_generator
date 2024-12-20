@@ -33,11 +33,13 @@ fn main() {
     
     modify_struct_keys(&mut structs, prefixes);
 
-    // TODO: Fix fields with colons in their names
-    for (_, value) in structs.iter() {
-        for field in value.fields.iter() {
-            if field.name.contains(':') || field.field_type.contains(":") {
-                println!("Field: {}: {:?}", field.name, field.field_type);
+    for (_, value) in structs.iter_mut() {
+        for field in value.fields.iter_mut() {
+            if field.name.contains(':') {
+                field.name = field.name.replace(":", "_");
+            }
+            if field.field_type.contains(":") {
+                field.field_type = field.field_type.replace(":", "_");
             }
         }
     }

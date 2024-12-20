@@ -1,34 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Photographer {
-    #[serde(flatten)]
-    pub photographer: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InsertedMapSymbolId {
-    #[serde(flatten)]
-    pub inserted_map_symbol_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubCategory {
-    #[serde(flatten)]
-    pub sub_category: BdtImageSubCategoryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ImageDate {
-    #[serde(flatten)]
-    pub image_date: BdtTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolId {
-    #[serde(flatten)]
-    pub map_symbol_id: WctERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct MapSymbolType {
     #[serde(flatten)]
     pub map_symbol_type: BdtFeatureCodeType,
@@ -41,9 +11,9 @@ pub struct Category {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Filename {
+pub struct Photographer {
     #[serde(flatten)]
-    pub filename: BdtString100Type,
+    pub photographer: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,8 +23,32 @@ pub struct Position {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Image {
+pub struct MapSymbolId {
     #[serde(flatten)]
-    pub image: ImageType,
+    pub map_symbol_id: WctERPIdType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Filename {
+    #[serde(flatten)]
+    pub filename: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InsertedMapSymbolId {
+    #[serde(flatten)]
+    pub inserted_map_symbol_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ImageDate {
+    #[serde(flatten)]
+    pub image_date: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubCategory {
+    #[serde(flatten)]
+    pub sub_category: BdtImageSubCategoryType,
 }
 

@@ -1,4 +1,18 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifiersType {
+    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
+    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifierType {
+    #[serde(rename = "Type")]
+    pub r#type: Xsinteger,
+    #[serde(rename = "Value")]
+    pub value: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeListItemType {
     #[serde(rename = "@id")]
     pub id: Xsstring,
@@ -28,19 +42,5 @@ pub struct TreeListItemType {
     pub pulp_wood_volume: Option<CoPulpWoodVolumeType>,
     #[serde(rename = "TreeIdentifiers", skip_serializing_if = "Option::is_none")]
     pub tree_identifiers: Option<TreeIdentifiersType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifiersType {
-    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
-    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifierType {
-    #[serde(rename = "Type")]
-    pub r#type: Xsinteger,
-    #[serde(rename = "Value")]
-    pub value: Xsstring,
 }
 

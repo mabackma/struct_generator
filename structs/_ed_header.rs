@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EntityTag {
-    #[serde(flatten)]
-    pub entity_tag: CoEntityTagType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Action {
     #[serde(flatten)]
     pub action: CoActionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Priority {
+    #[serde(flatten)]
+    pub priority: CoPriorityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,14 +17,14 @@ pub struct TransmissionTime {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Header {
+pub struct EntityTag {
     #[serde(flatten)]
-    pub header: HeaderType,
+    pub entity_tag: CoEntityTagType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Priority {
+pub struct Header {
     #[serde(flatten)]
-    pub priority: CoPriorityType,
+    pub header: HeaderType,
 }
 

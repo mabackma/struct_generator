@@ -1,4 +1,18 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<BdtFinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: BdtFinalAuditerTypeType,
+    #[serde(rename = "FinalAuditer")]
+    pub final_auditer: BdtString50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: BdtTimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteFinalAuditStumpLiftingType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -72,19 +86,5 @@ pub struct AuditsType {
     pub stump_lifting_quality: Option<BdtWorkingQualityType>,
     #[serde(rename = "StumpLiftingQualityText", skip_serializing_if = "Option::is_none")]
     pub stump_lifting_quality_text: Option<BdtString200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<BdtFinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: BdtFinalAuditerTypeType,
-    #[serde(rename = "FinalAuditer")]
-    pub final_auditer: BdtString50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: BdtTimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: BdtYesNoType,
 }
 

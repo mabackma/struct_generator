@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorId {
+pub struct RetentionTreeTarget {
     #[serde(flatten)]
-    pub contractor_id: BdtString20Type,
+    pub retention_tree_target: BdtPositiveInteger5digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpareTrees {
+pub struct AmountOfSpareTrees {
     #[serde(flatten)]
-    pub spare_trees: SpareTreesType,
+    pub amount_of_spare_trees: BdtPositiveInteger5digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +17,21 @@ pub struct MeanDiameterOfSpareTrees {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RetentionTreeTarget {
+pub struct SpareTreeCategory {
     #[serde(flatten)]
-    pub retention_tree_target: BdtPositiveInteger5digitsType,
+    pub spare_tree_category: BdtSpareTreeCategoryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpecies {
+    #[serde(flatten)]
+    pub tree_species: BdtTreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractorId {
+    #[serde(flatten)]
+    pub contractor_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,26 +41,20 @@ pub struct DiameterClassOfSpareTrees {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanHeightOfSpareTrees {
-    #[serde(flatten)]
-    pub mean_height_of_spare_trees: BdtHeightType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpareTreeCategory {
-    #[serde(flatten)]
-    pub spare_tree_category: BdtSpareTreeCategoryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct VolumeOfSpareTrees {
     #[serde(flatten)]
     pub volume_of_spare_trees: BdtVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AmountOfSpareTrees {
+pub struct MeanHeightOfSpareTrees {
     #[serde(flatten)]
-    pub amount_of_spare_trees: BdtPositiveInteger5digitsType,
+    pub mean_height_of_spare_trees: BdtHeightType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpareTrees {
+    #[serde(flatten)]
+    pub spare_trees: SpareTreesType,
 }
 

@@ -1,19 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifier {
+pub struct TreeListItem {
     #[serde(flatten)]
-    pub tree_identifier: TreeIdentifierType,
+    pub tree_list_item: TreeListItemType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeNumber {
+pub struct TreeClass {
     #[serde(flatten)]
-    pub tree_number: Xsinteger,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpecies {
-    #[serde(flatten)]
-    pub tree_species: CoTreeSpeciesType,
+    pub tree_class: CoTreeClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,9 +23,9 @@ pub struct Value {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClass {
+pub struct TreeNumber {
     #[serde(flatten)]
-    pub tree_class: CoTreeClassType,
+    pub tree_number: Xsinteger,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,8 +35,8 @@ pub struct TreeIdentifiers {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeListItem {
+pub struct TreeIdentifier {
     #[serde(flatten)]
-    pub tree_list_item: TreeListItemType,
+    pub tree_identifier: TreeIdentifierType,
 }
 

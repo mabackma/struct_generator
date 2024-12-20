@@ -3,13 +3,19 @@ pub struct StandBasicDataWithGeometryType {
     #[serde(flatten)]
     pub base: StandBasicDataType,
     #[serde(rename = "Area")]
-    pub area: BdtDecimal2FractionDigitsType,
+    pub area: AreaType,
     #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
     pub area_decrease: Option<String>,
     #[serde(rename = "GdtPolygonGeometry")]
     pub gdt_polygon_geometry: String,
     #[serde(rename = "GdtMultiPolygonGeometry")]
     pub gdt_multi_polygon_geometry: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<SfBasicFeature1Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -30,12 +36,6 @@ pub struct StandType1 {
     pub op_planned_operation_chains: Option<String>,
     #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
     pub special_features: Option<SpecialFeaturesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<SfBasicFeature1Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
