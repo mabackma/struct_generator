@@ -128,6 +128,8 @@ pub fn create_structs(
         }
     }
 
+    remove_empty_structs(structs);
+    
     attributes_first(structs);
 }
 
@@ -312,5 +314,20 @@ fn attributes_first(structs: &mut HashMap<String, XMLStruct>) {
             name: xml_struct.name.clone(),
             fields: attribute_fields,
         };
+    }
+}
+
+// Remove empty structs
+fn remove_empty_structs(structs: &mut HashMap<String, XMLStruct>) {
+    let mut empty_structs: Vec<String> = Vec::new();
+
+    for (name, xml_struct) in structs.iter() {
+        if xml_struct.fields.is_empty() {
+            empty_structs.push(name.clone());
+        }
+    }
+
+    for name in empty_structs {
+        structs.remove(&name);
     }
 }

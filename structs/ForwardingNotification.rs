@@ -1,15 +1,21 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct CommonMessageDataType {
+    #[serde(rename = "CommonMessageId", skip_serializing_if = "Option::is_none")]
+    pub common_message_id: Option<WctCommonMessageType>,
+    #[serde(rename = "CommonMessageFreeText", skip_serializing_if = "Option::is_none")]
+    pub common_message_free_text: Option<BdtString200Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentsType {
     #[serde(rename = "Assortment")]
     pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessageDataType {
-    #[serde(rename = "CommonMessageId", skip_serializing_if = "Option::is_none")]
-    pub common_message_id: Option<WctCommonMessageType>,
-    #[serde(rename = "CommonMessageFreeText", skip_serializing_if = "Option::is_none")]
-    pub common_message_free_text: Option<BdtString200Type>,
+pub struct CommonMessagesType {
+    #[serde(rename = "CommonMessage", skip_serializing_if = "Option::is_none")]
+    pub common_message: Option<Vec<CommonMessageDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -57,6 +63,38 @@ pub struct ScaleFactorDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentDataType {
+    #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
+    pub assortment_id: Option<WctERPIdType>,
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: BdtString20Type,
+    #[serde(rename = "Code")]
+    pub code: BdtString50Type,
+    #[serde(rename = "Volume")]
+    pub volume: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "Unit", skip_serializing_if = "Option::is_none")]
+    pub unit: Option<BdtWorkCodeUnitType>,
+    #[serde(rename = "SentStorageVolume")]
+    pub sent_storage_volume: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "SentWorkingSiteVolume")]
+    pub sent_working_site_volume: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "HarvesterVolume", skip_serializing_if = "Option::is_none")]
+    pub harvester_volume: Option<BdtDecimal3FractionDigitsType>,
+    #[serde(rename = "ForestHaulageDistanceContinued", skip_serializing_if = "Option::is_none")]
+    pub forest_haulage_distance_continued: Option<BdtPositiveIntegerType>,
+    #[serde(rename = "Covered")]
+    pub covered: BdtYesNoType,
+    #[serde(rename = "HasAssortmentChanges")]
+    pub has_assortment_changes: BdtYesNoType,
+    #[serde(rename = "ScaleTransformation")]
+    pub scale_transformation: BdtYesNoType,
+    #[serde(rename = "Finished")]
+    pub finished: BdtYesNoType,
+    #[serde(rename = "DeliveryUserId", skip_serializing_if = "Option::is_none")]
+    pub delivery_user_id: Option<BdtString50Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ForwardingNotificationType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -97,35 +135,9 @@ pub struct ForwardingNotificationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentDataType {
-    #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
-    pub assortment_id: Option<WctERPIdType>,
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: BdtString20Type,
-    #[serde(rename = "Code")]
-    pub code: BdtString50Type,
-    #[serde(rename = "Volume")]
-    pub volume: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "Unit", skip_serializing_if = "Option::is_none")]
-    pub unit: Option<BdtWorkCodeUnitType>,
-    #[serde(rename = "SentStorageVolume")]
-    pub sent_storage_volume: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "SentWorkingSiteVolume")]
-    pub sent_working_site_volume: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "HarvesterVolume", skip_serializing_if = "Option::is_none")]
-    pub harvester_volume: Option<BdtDecimal3FractionDigitsType>,
-    #[serde(rename = "ForestHaulageDistanceContinued", skip_serializing_if = "Option::is_none")]
-    pub forest_haulage_distance_continued: Option<BdtPositiveIntegerType>,
-    #[serde(rename = "Covered")]
-    pub covered: BdtYesNoType,
-    #[serde(rename = "HasAssortmentChanges")]
-    pub has_assortment_changes: BdtYesNoType,
-    #[serde(rename = "ScaleTransformation")]
-    pub scale_transformation: BdtYesNoType,
-    #[serde(rename = "Finished")]
-    pub finished: BdtYesNoType,
-    #[serde(rename = "DeliveryUserId", skip_serializing_if = "Option::is_none")]
-    pub delivery_user_id: Option<BdtString50Type>,
+pub struct AssortmentsChangesType {
+    #[serde(rename = "AssortmentsChange", skip_serializing_if = "Option::is_none")]
+    pub assortments_change: Option<Vec<AssortmentChangeDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -134,18 +146,6 @@ pub struct LoadRangeType {
     pub start_load_number: BdtPositiveInteger4digitsType,
     #[serde(rename = "EndLoadNumber")]
     pub end_load_number: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsChangesType {
-    #[serde(rename = "AssortmentsChange", skip_serializing_if = "Option::is_none")]
-    pub assortments_change: Option<Vec<AssortmentChangeDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessagesType {
-    #[serde(rename = "CommonMessage", skip_serializing_if = "Option::is_none")]
-    pub common_message: Option<Vec<CommonMessageDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

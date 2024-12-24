@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RequestCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PreferredContactingMethodsType {
     #[serde(rename = "PreferredContactingMethod")]
     pub preferred_contacting_method: Vec<CoPreferredContactingMethodType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestPropertyDataSetType {
+    #[serde(rename = "ForestPropertyData")]
+    pub forest_property_data: Vec<FdForestPropertyDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -39,8 +39,8 @@ pub struct ContactRequestType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestPropertyDataSetType {
-    #[serde(rename = "ForestPropertyData")]
-    pub forest_property_data: Vec<FdForestPropertyDataType>,
+pub struct RequestCodeType {
+    #[serde(flatten)]
+    pub base: String,
 }
 

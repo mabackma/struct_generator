@@ -5,15 +5,15 @@ pub struct Header {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EntityTag {
-    #[serde(flatten)]
-    pub entity_tag: CoEntityTagType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TransmissionTime {
     #[serde(flatten)]
     pub transmission_time: chrono::NaiveDateTime,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EntityTag {
+    #[serde(flatten)]
+    pub entity_tag: CoEntityTagType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

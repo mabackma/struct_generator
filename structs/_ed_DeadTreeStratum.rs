@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeStrata {
-    #[serde(flatten)]
-    pub dead_tree_strata: DeadTreeStrataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct DeadTreeStratum {
     #[serde(flatten)]
     pub dead_tree_stratum: DeadTreeStratumType,
@@ -14,5 +8,11 @@ pub struct DeadTreeStratum {
 pub struct DeadTreeType {
     #[serde(flatten)]
     pub dead_tree_type: DeadTreeTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeadTreeStrata {
+    #[serde(flatten)]
+    pub dead_tree_strata: DeadTreeStrataType,
 }
 

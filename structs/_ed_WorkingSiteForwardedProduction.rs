@@ -1,19 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartitialLoad {
+pub struct PartitialLoadId {
     #[serde(flatten)]
-    pub partitial_load: PartitialLoadType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoadVolume {
-    #[serde(flatten)]
-    pub load_volume: BdtDecimal3FractionDigitsType,
+    pub partitial_load_id: u32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteForwardedProduction {
     #[serde(flatten)]
     pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadGreenMass {
+    #[serde(flatten)]
+    pub load_green_mass: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,20 +29,32 @@ pub struct ForwardingDistance {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoadGreenMass {
+pub struct LoadCount {
     #[serde(flatten)]
-    pub load_green_mass: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartitialLoadId {
-    #[serde(flatten)]
-    pub partitial_load_id: u32,
+    pub load_count: u32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Load {
     #[serde(flatten)]
     pub load: LoadType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadVolume {
+    #[serde(flatten)]
+    pub load_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MachineApplicationVersion {
+    #[serde(flatten)]
+    pub machine_application_version: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartitialLoad {
+    #[serde(flatten)]
+    pub partitial_load: PartitialLoadType,
 }
 

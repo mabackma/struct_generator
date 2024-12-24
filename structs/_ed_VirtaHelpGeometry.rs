@@ -1,18 +1,12 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LineGeometry {
-    #[serde(flatten)]
-    pub line_geometry: LineGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct HelpGeometryType {
     #[serde(flatten)]
     pub help_geometry_type: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Id {
+pub struct LineGeometry {
     #[serde(flatten)]
-    pub id: String,
+    pub line_geometry: LineGeometryType,
 }
 

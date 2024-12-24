@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QualitySystemsType {
-    #[serde(rename = "QualitySystem", skip_serializing_if = "Option::is_none")]
-    pub quality_system: Option<Vec<BdtQualitySystemType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CertificationSystemsType {
     #[serde(rename = "CertificationSystem", skip_serializing_if = "Option::is_none")]
     pub certification_system: Option<Vec<WtcoCertificationSystemType>>,
@@ -13,15 +7,15 @@ pub struct CertificationSystemsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CollectiveAgreementsType {
-    #[serde(rename = "CollectiveAgreement")]
-    pub collective_agreement: Vec<BdtString100Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SubContractorsType {
     #[serde(rename = "SubContractor", skip_serializing_if = "Option::is_none")]
     pub sub_contractor: Option<Vec<BdtString20Type>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CollectiveAgreementsType {
+    #[serde(rename = "CollectiveAgreement")]
+    pub collective_agreement: Vec<BdtString100Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -32,6 +26,12 @@ pub struct EmployerRegisterType {
     pub start_date: Option<BdtDateType>,
     #[serde(rename = "EndDate", skip_serializing_if = "Option::is_none")]
     pub end_date: Option<BdtDateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QualitySystemsType {
+    #[serde(rename = "QualitySystem", skip_serializing_if = "Option::is_none")]
+    pub quality_system: Option<Vec<BdtQualitySystemType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

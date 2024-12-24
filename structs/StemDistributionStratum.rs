@@ -5,12 +5,6 @@ pub struct StemDistributionStrataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: CoStoreyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StemDistributionStratumType {
     #[serde(rename = "@id")]
     pub id: String,
@@ -36,6 +30,12 @@ pub struct StemDistributionStratumType {
 pub struct TreeSpeciesType {
     #[serde(flatten)]
     pub base: CoTreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoreyType {
+    #[serde(flatten)]
+    pub base: CoStoreyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -49,6 +49,7 @@ static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "base64Binary" => "Vec<u8>",
     "hexBinary" => "Vec<u8>",
     "anySimpleType" => "String",
+    "CoDateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
 };
 
 // Reads an XML file and returns its contents as a string

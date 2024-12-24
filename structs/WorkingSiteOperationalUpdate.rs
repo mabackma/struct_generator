@@ -1,9 +1,17 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StorageForestHaulageDistanceGroup {
-    #[serde(rename = "StorageId")]
-    pub storage_id: StorageId,
-    #[serde(rename = "ForestHaulageDistance")]
-    pub forest_haulage_distance: ForestHaulageDistance,
+pub struct StoragesType {
+    #[serde(rename = "Storage", skip_serializing_if = "Option::is_none")]
+    pub storage: Option<Vec<StorageType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductUserIdsType {
+    #[serde(rename = "@Status")]
+    pub status: BdtAssortmentStatusType,
+    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
+    pub product_user_id: Option<Vec<String>>,
+    #[serde(flatten)]
+    pub base: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -91,6 +99,18 @@ pub struct StorageType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
+    pub assortment: Option<Vec<AssortmentType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageForestHaulageDistanceType {
+    #[serde(rename = "StorageForestHaulageDistanceGroup")]
+    pub storage_forest_haulage_distance_group: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteOperationalUpdateType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -141,36 +161,16 @@ pub struct WorkingSiteOperationalUpdateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIdsType {
-    #[serde(rename = "@Status")]
-    pub status: BdtAssortmentStatusType,
-    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
-    pub product_user_id: Option<Vec<String>>,
-    #[serde(flatten)]
-    pub base: BdtString100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoragesType {
-    #[serde(rename = "Storage", skip_serializing_if = "Option::is_none")]
-    pub storage: Option<Vec<StorageType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
-    pub assortment: Option<Vec<AssortmentType>>,
+pub struct StorageForestHaulageDistanceGroup {
+    #[serde(rename = "StorageId")]
+    pub storage_id: StorageId,
+    #[serde(rename = "ForestHaulageDistance")]
+    pub forest_haulage_distance: ForestHaulageDistance,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StoragesForestHaulageDistancesType {
     #[serde(rename = "StorageForestHaulageDistance")]
     pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageForestHaulageDistanceType {
-    #[serde(rename = "StorageForestHaulageDistanceGroup")]
-    pub storage_forest_haulage_distance_group: String,
 }
 

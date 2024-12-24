@@ -1,7 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationsType {
-    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
-    pub organization: Option<Vec<OrganizationType>>,
+pub struct ServicesType {
+    #[serde(rename = "Service")]
+    pub service: Vec<OrganizationServiceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationRoleType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationServiceType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -25,20 +37,8 @@ pub struct RolesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationRoleType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServicesType {
-    #[serde(rename = "Service")]
-    pub service: Vec<OrganizationServiceType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
-    #[serde(flatten)]
-    pub base: String,
+pub struct OrganizationsType {
+    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
+    pub organization: Option<Vec<OrganizationType>>,
 }
 

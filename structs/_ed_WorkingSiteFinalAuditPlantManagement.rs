@@ -1,37 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandId {
+pub struct WorkCodeQualifier {
     #[serde(flatten)]
-    pub stand_id: BdtString20Type,
+    pub work_code_qualifier: BdtWorkCodeQualifierType1,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlantManagementQuality {
+pub struct SamplePlotCount {
     #[serde(flatten)]
-    pub plant_management_quality: BdtWorkingQualityType,
+    pub sample_plot_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuditsList {
+pub struct WorkingSiteFinalAuditPlantManagement {
     #[serde(flatten)]
-    pub audits_list: AuditsListType,
+    pub working_site_final_audit_plant_management: WorkingSiteFinalAuditPlantManagementType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuditQuestion {
+pub struct SamplePlotCountRequired {
     #[serde(flatten)]
-    pub audit_question: AuditQuestionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionAnswer {
-    #[serde(flatten)]
-    pub question_answer: BdtFinalAuditAnswerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalObjectNoticed {
-    #[serde(flatten)]
-    pub environmental_object_noticed: BdtYesNoType,
+    pub sample_plot_count_required: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,26 +29,14 @@ pub struct PlantManagementQualityText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalObjectNoticedText {
+pub struct OrderId {
     #[serde(flatten)]
-    pub environmental_object_noticed_text: BdtString200Type,
+    pub order_id: WctERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionId {
+pub struct PlantManagementQuality {
     #[serde(flatten)]
-    pub question_id: BdtFinalAuditQuestionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NewEnvironmentalObjects {
-    #[serde(flatten)]
-    pub new_environmental_objects: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditPlantManagement {
-    #[serde(flatten)]
-    pub working_site_final_audit_plant_management: WorkingSiteFinalAuditPlantManagementType,
+    pub plant_management_quality: BdtWorkingQualityType,
 }
 

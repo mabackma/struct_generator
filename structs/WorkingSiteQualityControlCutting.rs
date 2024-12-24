@@ -1,7 +1,33 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OtherTreeSpeciesDataType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: BdtTreeSpeciesType,
+    #[serde(rename = "StemCountOtherTreeSpecies", skip_serializing_if = "Option::is_none")]
+    pub stem_count_other_tree_species: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "MeanHeightOtherTreeSpecies", skip_serializing_if = "Option::is_none")]
+    pub mean_height_other_tree_species: Option<BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
+    #[serde(rename = "BasalAreaOtherTreeSpecies", skip_serializing_if = "Option::is_none")]
+    pub basal_area_other_tree_species: Option<BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
+    #[serde(rename = "MeanDiameterOtherTreeSpecies", skip_serializing_if = "Option::is_none")]
+    pub mean_diameter_other_tree_species: Option<BdtPositiveInteger3digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeSummariesType {
     #[serde(rename = "TreeSummary")]
     pub tree_summary: Vec<TreeSummaryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OtherTreeSpeciesType {
+    #[serde(rename = "OtherTreeSpecies")]
+    pub other_tree_species: Vec<OtherTreeSpeciesDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotSummariesType {
+    #[serde(rename = "SamplePlotSummary")]
+    pub sample_plot_summary: Vec<SamplePlotSummaryType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,9 +79,39 @@ pub struct WorkingSiteQualityControlBaseCuttingType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OtherTreeSpeciesType {
-    #[serde(rename = "OtherTreeSpecies")]
-    pub other_tree_species: Vec<OtherTreeSpeciesDataType>,
+pub struct SamplePlotMeasurementSummaryType {
+    #[serde(rename = "MeasurerType")]
+    pub measurer_type: BdtMeasurerTypeType,
+    #[serde(rename = "StandAvgDiameterSummary")]
+    pub stand_avg_diameter_summary: BdtPositiveInteger3digitsType,
+    #[serde(rename = "StandAvgHeightSummary")]
+    pub stand_avg_height_summary: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    #[serde(rename = "StandAvgDominantHeight", skip_serializing_if = "Option::is_none")]
+    pub stand_avg_dominant_height: Option<BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
+    #[serde(rename = "StandAvgAgeSummary", skip_serializing_if = "Option::is_none")]
+    pub stand_avg_age_summary: Option<BdtPositiveInteger3digitsType>,
+    #[serde(rename = "StandAvgStemCountSummary")]
+    pub stand_avg_stem_count_summary: BdtPositiveInteger5digitsType,
+    #[serde(rename = "StandBasalAreaSummary", skip_serializing_if = "Option::is_none")]
+    pub stand_basal_area_summary: Option<BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
+    #[serde(rename = "StandVolumeSummary", skip_serializing_if = "Option::is_none")]
+    pub stand_volume_summary: Option<BdtPositiveInteger3digitsType>,
+    #[serde(rename = "StandStemDamagesPercentage", skip_serializing_if = "Option::is_none")]
+    pub stand_stem_damages_percentage: Option<BdtPercentWithFraction1Type>,
+    #[serde(rename = "StandRootDamagesPercentage", skip_serializing_if = "Option::is_none")]
+    pub stand_root_damages_percentage: Option<BdtPercentWithFraction1Type>,
+    #[serde(rename = "StandCorrectHeightStumpsPercentage", skip_serializing_if = "Option::is_none")]
+    pub stand_correct_height_stumps_percentage: Option<BdtPercentWithFraction1Type>,
+    #[serde(rename = "StandTooHeightStumpsPercentage", skip_serializing_if = "Option::is_none")]
+    pub stand_too_height_stumps_percentage: Option<BdtPercentWithFraction1Type>,
+    #[serde(rename = "StandVehiclePathTooDeepPercentage", skip_serializing_if = "Option::is_none")]
+    pub stand_vehicle_path_too_deep_percentage: Option<BdtPercentWithFraction1Type>,
+    #[serde(rename = "StandAvgVehiclePathDistance", skip_serializing_if = "Option::is_none")]
+    pub stand_avg_vehicle_path_distance: Option<BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType>,
+    #[serde(rename = "StandVehiclePathWidth", skip_serializing_if = "Option::is_none")]
+    pub stand_vehicle_path_width: Option<BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType>,
+    #[serde(rename = "TreeSummaries")]
+    pub tree_summaries: TreeSummariesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -179,20 +235,6 @@ pub struct WorkingSiteQualityControlCuttingType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OtherTreeSpeciesDataType {
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: BdtTreeSpeciesType,
-    #[serde(rename = "StemCountOtherTreeSpecies", skip_serializing_if = "Option::is_none")]
-    pub stem_count_other_tree_species: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "MeanHeightOtherTreeSpecies", skip_serializing_if = "Option::is_none")]
-    pub mean_height_other_tree_species: Option<BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
-    #[serde(rename = "BasalAreaOtherTreeSpecies", skip_serializing_if = "Option::is_none")]
-    pub basal_area_other_tree_species: Option<BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
-    #[serde(rename = "MeanDiameterOtherTreeSpecies", skip_serializing_if = "Option::is_none")]
-    pub mean_diameter_other_tree_species: Option<BdtPositiveInteger3digitsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SamplePlotsType {
     #[serde(rename = "SamplePlot")]
     pub sample_plot: Vec<SamplePlotType>,
@@ -204,47 +246,5 @@ pub struct SamplePlotSummaryType {
     pub stand_id: BdtString20Type,
     #[serde(rename = "SamplePlotMeasurementSummary")]
     pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummariesType {
-    #[serde(rename = "SamplePlotSummary")]
-    pub sample_plot_summary: Vec<SamplePlotSummaryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotMeasurementSummaryType {
-    #[serde(rename = "MeasurerType")]
-    pub measurer_type: BdtMeasurerTypeType,
-    #[serde(rename = "StandAvgDiameterSummary")]
-    pub stand_avg_diameter_summary: BdtPositiveInteger3digitsType,
-    #[serde(rename = "StandAvgHeightSummary")]
-    pub stand_avg_height_summary: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-    #[serde(rename = "StandAvgDominantHeight", skip_serializing_if = "Option::is_none")]
-    pub stand_avg_dominant_height: Option<BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
-    #[serde(rename = "StandAvgAgeSummary", skip_serializing_if = "Option::is_none")]
-    pub stand_avg_age_summary: Option<BdtPositiveInteger3digitsType>,
-    #[serde(rename = "StandAvgStemCountSummary")]
-    pub stand_avg_stem_count_summary: BdtPositiveInteger5digitsType,
-    #[serde(rename = "StandBasalAreaSummary", skip_serializing_if = "Option::is_none")]
-    pub stand_basal_area_summary: Option<BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
-    #[serde(rename = "StandVolumeSummary", skip_serializing_if = "Option::is_none")]
-    pub stand_volume_summary: Option<BdtPositiveInteger3digitsType>,
-    #[serde(rename = "StandStemDamagesPercentage", skip_serializing_if = "Option::is_none")]
-    pub stand_stem_damages_percentage: Option<BdtPercentWithFraction1Type>,
-    #[serde(rename = "StandRootDamagesPercentage", skip_serializing_if = "Option::is_none")]
-    pub stand_root_damages_percentage: Option<BdtPercentWithFraction1Type>,
-    #[serde(rename = "StandCorrectHeightStumpsPercentage", skip_serializing_if = "Option::is_none")]
-    pub stand_correct_height_stumps_percentage: Option<BdtPercentWithFraction1Type>,
-    #[serde(rename = "StandTooHeightStumpsPercentage", skip_serializing_if = "Option::is_none")]
-    pub stand_too_height_stumps_percentage: Option<BdtPercentWithFraction1Type>,
-    #[serde(rename = "StandVehiclePathTooDeepPercentage", skip_serializing_if = "Option::is_none")]
-    pub stand_vehicle_path_too_deep_percentage: Option<BdtPercentWithFraction1Type>,
-    #[serde(rename = "StandAvgVehiclePathDistance", skip_serializing_if = "Option::is_none")]
-    pub stand_avg_vehicle_path_distance: Option<BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType>,
-    #[serde(rename = "StandVehiclePathWidth", skip_serializing_if = "Option::is_none")]
-    pub stand_vehicle_path_width: Option<BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType>,
-    #[serde(rename = "TreeSummaries")]
-    pub tree_summaries: TreeSummariesType,
 }
 

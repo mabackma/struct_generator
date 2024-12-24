@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandSummary {
+pub struct DevelopmentClass {
     #[serde(flatten)]
-    pub tree_stand_summary: TreeStandSummaryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanStumpDiameter {
-    #[serde(flatten)]
-    pub mean_stump_diameter: CoDiameterType,
+    pub development_class: CoDevelopmentClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,14 +17,20 @@ pub struct MeanAge {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DevelopmentClass {
+pub struct MeanStumpDiameter {
     #[serde(flatten)]
-    pub development_class: CoDevelopmentClassType,
+    pub mean_stump_diameter: CoDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MainTreeSpecies {
     #[serde(flatten)]
     pub main_tree_species: CoTreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeStandSummary {
+    #[serde(flatten)]
+    pub tree_stand_summary: TreeStandSummaryType,
 }
 

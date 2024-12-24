@@ -1,4 +1,16 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StatusCode {
+    #[serde(flatten)]
+    pub status_code: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatusMessage {
+    #[serde(flatten)]
+    pub status_message: BdtString1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ReplyTo {
     #[serde(flatten)]
     pub reply_to: BdtString50Type,

@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Day {
+pub struct Loads {
     #[serde(flatten)]
-    pub day: BdtDateType,
+    pub loads: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StartTime {
+    #[serde(flatten)]
+    pub start_time: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,14 +17,8 @@ pub struct ForwardingEstimate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentId {
+pub struct Day {
     #[serde(flatten)]
-    pub assortment_id: WctERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Loads {
-    #[serde(flatten)]
-    pub loads: BdtPositiveInteger3digitsType,
+    pub day: BdtDateType,
 }
 

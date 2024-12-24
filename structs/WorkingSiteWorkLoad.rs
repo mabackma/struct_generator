@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialsType {
-    #[serde(rename = "Material")]
-    pub material: Vec<MaterialType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteWorkLoadType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -94,6 +88,12 @@ pub struct WorkGrouMemberType {
     pub user_id: WctShortERPIdType,
     #[serde(rename = "TaxNumber", skip_serializing_if = "Option::is_none")]
     pub tax_number: Option<WctTaxNumberType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialsType {
+    #[serde(rename = "Material")]
+    pub material: Vec<MaterialType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

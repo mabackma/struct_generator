@@ -1,18 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartitialLoadType {
-    #[serde(rename = "PartitialLoadId")]
-    pub partitial_load_id: u32,
-    #[serde(rename = "Assortment")]
-    pub assortment: BdtString50Type,
-    #[serde(rename = "StorageId")]
-    pub storage_id: WctERPIdType,
-    #[serde(rename = "LoadVolume", skip_serializing_if = "Option::is_none")]
-    pub load_volume: Option<BdtDecimal3FractionDigitsType>,
-    #[serde(rename = "LoadGreenMass")]
-    pub load_green_mass: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct LoadType {
     #[serde(rename = "LoadNumber")]
     pub load_number: u32,
@@ -56,5 +42,19 @@ pub struct WorkingSiteForwardedProductionType {
     pub load_count: u32,
     #[serde(rename = "Load")]
     pub load: Vec<LoadType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartitialLoadType {
+    #[serde(rename = "PartitialLoadId")]
+    pub partitial_load_id: u32,
+    #[serde(rename = "Assortment")]
+    pub assortment: BdtString50Type,
+    #[serde(rename = "StorageId")]
+    pub storage_id: WctERPIdType,
+    #[serde(rename = "LoadVolume", skip_serializing_if = "Option::is_none")]
+    pub load_volume: Option<BdtDecimal3FractionDigitsType>,
+    #[serde(rename = "LoadGreenMass")]
+    pub load_green_mass: BdtDecimal3FractionDigitsType,
 }
 

@@ -1,7 +1,43 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolumeType {
+pub struct SawLogVolumeType {
     #[serde(flatten)]
-    pub base: CoPulpWoodVolumeType,
+    pub base: CoSawLogVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BranchBiomassType {
+    #[serde(flatten)]
+    pub base: CoBranchBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemBiomassType {
+    #[serde(flatten)]
+    pub base: CoStemBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeGrowthType {
+    #[serde(flatten)]
+    pub base: CoVolumeGrowthType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SeedlingOriginType {
+    #[serde(flatten)]
+    pub base: CoSeedlingOriginType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanDiameterType {
+    #[serde(flatten)]
+    pub base: CoDiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LeafBiomassType {
+    #[serde(flatten)]
+    pub base: CoLeafBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,15 +47,51 @@ pub struct AgeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogPercentType {
+pub struct TreeStrata2Type {
+    #[serde(rename = "TreeStratum")]
+    pub tree_stratum: Vec<TreeStratum2Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PulpWoodVolumeType {
     #[serde(flatten)]
-    pub base: CoSawLogPercentType,
+    pub base: CoPulpWoodVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreesType {
+    #[serde(rename = "TreeListItem", skip_serializing_if = "Option::is_none")]
+    pub tree_list_item: Option<Vec<TliTreeListItemType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+    #[serde(flatten)]
+    pub base: CoTreeSpeciesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TreeStrataType {
     #[serde(rename = "TreeStratum")]
     pub tree_stratum: Vec<TreeStratumType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogPercentType {
+    #[serde(flatten)]
+    pub base: CoSawLogPercentType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeType {
+    #[serde(flatten)]
+    pub base: CoVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemCountType {
+    #[serde(flatten)]
+    pub base: CoStemCountType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,87 +151,9 @@ pub struct TreeStratum2Type {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
-    #[serde(flatten)]
-    pub base: CoVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BranchBiomassType {
-    #[serde(flatten)]
-    pub base: CoBranchBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogVolumeType {
-    #[serde(flatten)]
-    pub base: CoSawLogVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StumpBiomassType {
     #[serde(flatten)]
     pub base: CoStumpBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SeedlingOriginType {
-    #[serde(flatten)]
-    pub base: CoSeedlingOriginType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LeafBiomassType {
-    #[serde(flatten)]
-    pub base: CoLeafBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: CoStoreyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemBiomassType {
-    #[serde(flatten)]
-    pub base: CoStemBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
-    #[serde(flatten)]
-    pub base: CoTreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
-    #[serde(flatten)]
-    pub base: CoDiameterType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemCountType {
-    #[serde(flatten)]
-    pub base: CoStemCountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeGrowthType {
-    #[serde(flatten)]
-    pub base: CoVolumeGrowthType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStrata2Type {
-    #[serde(rename = "TreeStratum")]
-    pub tree_stratum: Vec<TreeStratum2Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreesType {
-    #[serde(rename = "TreeListItem", skip_serializing_if = "Option::is_none")]
-    pub tree_list_item: Option<Vec<TliTreeListItemType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -216,5 +210,11 @@ pub struct TreeStratumType {
     pub currency: Option<CoCurrencyType>,
     #[serde(rename = "ValueGrowthPercent", skip_serializing_if = "Option::is_none")]
     pub value_growth_percent: Option<CoDecimal2FractionDigitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoreyType {
+    #[serde(flatten)]
+    pub base: CoStoreyType,
 }
 
