@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolName {
+pub struct MapSymbol {
     #[serde(flatten)]
-    pub map_symbol_name: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Width {
-    #[serde(flatten)]
-    pub width: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub map_symbol: MapSymbolType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,15 +11,45 @@ pub struct DitchOrRoadPlanName {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpareGroupOfTrees {
+pub struct MapSymbols {
     #[serde(flatten)]
-    pub spare_group_of_trees: WctSpareTreesByCategoryType,
+    pub map_symbols: MapSymbolsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CanModify {
+pub struct DitchType {
     #[serde(flatten)]
-    pub can_modify: BdtYesNoType,
+    pub ditch_type: WctDitchTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialInfoText {
+    #[serde(flatten)]
+    pub material_info_text: BdtString1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbolName {
+    #[serde(flatten)]
+    pub map_symbol_name: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Length {
+    #[serde(flatten)]
+    pub length: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Depth {
+    #[serde(flatten)]
+    pub depth: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Width {
+    #[serde(flatten)]
+    pub width: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,44 +65,14 @@ pub struct MaterialCode {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbol {
+pub struct SpareGroupOfTrees {
     #[serde(flatten)]
-    pub map_symbol: MapSymbolType,
+    pub spare_group_of_trees: WctSpareTreesByCategoryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DitchType {
+pub struct CanModify {
     #[serde(flatten)]
-    pub ditch_type: WctDitchTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbols {
-    #[serde(flatten)]
-    pub map_symbols: MapSymbolsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Length {
-    #[serde(flatten)]
-    pub length: BdtPositiveInteger5digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialInfoText {
-    #[serde(flatten)]
-    pub material_info_text: BdtString1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Geometry {
-    #[serde(flatten)]
-    pub geometry: GdtAlternativeGeometries2Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Depth {
-    #[serde(flatten)]
-    pub depth: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub can_modify: BdtYesNoType,
 }
 

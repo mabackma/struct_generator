@@ -1,19 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceId {
+pub struct BusinessAcceptanceStatus {
     #[serde(flatten)]
-    pub business_acceptance_id: BusinessAcceptanceIdType,
+    pub business_acceptance_status: CoBusinessAcceptanceStatusType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessMessageTimeStamp {
+    #[serde(flatten)]
+    pub business_message_time_stamp: BusinessMessageTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AdditionalInformation {
     #[serde(flatten)]
     pub additional_information: AdditionalInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceStatus {
-    #[serde(flatten)]
-    pub business_acceptance_status: CoBusinessAcceptanceStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,9 +29,9 @@ pub struct BusinessAcceptance {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessMessageTimeStamp {
+pub struct BusinessAcceptanceId {
     #[serde(flatten)]
-    pub business_message_time_stamp: BusinessMessageTimeStampType,
+    pub business_acceptance_id: BusinessAcceptanceIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

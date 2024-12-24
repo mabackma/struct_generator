@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PlanAndSubsidyType {
+    #[serde(rename = "FacFinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_application_stands: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FinancingActApplicationType {
     #[serde(rename = "@id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "FacUpdatePreviousMessage")]
     pub fac_update_previous_message: String,
     #[serde(rename = "FacFinancingActApplicationReference")]
@@ -52,12 +58,6 @@ pub struct FinancingActApplicationType {
 pub struct PartsOfProjectType {
     #[serde(rename = "PartOfProject")]
     pub part_of_project: Vec<PartOfProjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlanAndSubsidyType {
-    #[serde(rename = "FacFinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_application_stands: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

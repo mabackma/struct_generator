@@ -1,15 +1,21 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestCodeType {
     #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreferredContactingMethodsType {
+    #[serde(rename = "PreferredContactingMethod")]
+    pub preferred_contacting_method: Vec<CoPreferredContactingMethodType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ContactRequestType {
     #[serde(rename = "@id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "@source")]
-    pub source: Xsstring,
+    pub source: String,
     #[serde(rename = "ContactInformation")]
     pub contact_information: CiContactInformationType,
     #[serde(rename = "ContactMunicipality")]
@@ -30,12 +36,6 @@ pub struct ContactRequestType {
     pub forest_property_data_set: Option<ForestPropertyDataSetType>,
     #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
     pub wtco_documents: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreferredContactingMethodsType {
-    #[serde(rename = "PreferredContactingMethod")]
-    pub preferred_contacting_method: Vec<CoPreferredContactingMethodType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

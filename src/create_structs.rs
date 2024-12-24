@@ -108,7 +108,9 @@ pub fn create_structs(
                         if let Some(existing_struct) = structs.get_mut(&completed_struct.name.clone()) {
 
                             // Merge fields: add only new unique fields
-                            for field in completed_struct.fields {
+                            for mut field in completed_struct.fields {
+                                field.field_type = field.field_type.replace("xs:", "");
+
                                 if !existing_struct.fields.iter().any(|f| f.name == field.name) {
                                     existing_struct.fields.push(field.clone());
                                 }
@@ -137,7 +139,7 @@ pub fn add_element_definition(e: &BytesStart<'_>, element_definitions: &mut Hash
     if let Some(n) = name {
         if let Some(t) = typ {
             if element_definitions.contains_key(&n) && element_definitions[&n] != t {
-                //println!("Existing definition {}: {} -> {}", n, element_definitions[&n], t);
+                println!("Existing definition {}: {} -> {}", n, element_definitions[&n], t);
             }
 
             element_definitions.insert(n, t);
@@ -246,6 +248,9 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
 
             n = handle_prefix(&n, prefixes);
             field_type = handle_prefix(&field_type, prefixes);
+
+            // Handle the case where the prefix is Xs
+            field_type = field_type.replace("Xs", "");
 
             // Define vector and optional types
             parse_type(e, &mut field_type);

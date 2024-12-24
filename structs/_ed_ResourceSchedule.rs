@@ -11,26 +11,20 @@ pub struct ResourceSchedule {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSites {
+    #[serde(flatten)]
+    pub working_sites: WorkingSitesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSite {
     #[serde(flatten)]
     pub working_site: WorkingSiteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteNumber {
-    #[serde(flatten)]
-    pub working_site_number: WctWorkingSiteNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TeamName {
     #[serde(flatten)]
     pub team_name: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSites {
-    #[serde(flatten)]
-    pub working_sites: WorkingSitesType,
 }
 

@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDate {
+pub struct Offer {
     #[serde(flatten)]
-    pub offer_date: OfferDateType,
+    pub offer: OfferType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,14 +11,14 @@ pub struct OfferBusinessSender {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Offer {
-    #[serde(flatten)]
-    pub offer: OfferType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OfferText {
     #[serde(flatten)]
     pub offer_text: OfferTextType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferDate {
+    #[serde(flatten)]
+    pub offer_date: OfferDateType,
 }
 

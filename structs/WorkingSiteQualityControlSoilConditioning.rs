@@ -1,18 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotsType {
-    #[serde(rename = "SamplePlot")]
-    pub sample_plot: Vec<SamplePlotType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummaryType {
-    #[serde(rename = "StandNumber")]
-    pub stand_number: BdtString20Type,
-    #[serde(rename = "SamplePlotMeasurementSummary")]
-    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteQualityControlSoilConditioningBaseType {
     #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
     pub service_buyer_id: Option<BdtString20Type>,
@@ -27,15 +13,9 @@ pub struct WorkingSiteQualityControlSoilConditioningBaseType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringWorkingSiteQualityControlSoilConditioningType {
-    #[serde(flatten)]
-    pub base: WorkingSiteQualityControlSoilConditioningBaseType,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
-    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
-    pub sample_plots: Option<SamplePlotsType>,
+pub struct SamplePlotsType {
+    #[serde(rename = "SamplePlot")]
+    pub sample_plot: Vec<SamplePlotType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,6 +26,36 @@ pub struct SamplePlotMeasurementSummaryType {
     pub plant_site_count_summary: Option<BdtPositiveInteger4digitsType>,
     #[serde(rename = "DitchesInAdditionToCultivation", skip_serializing_if = "Option::is_none")]
     pub ditches_in_addition_to_cultivation: Option<BdtPositiveInteger4digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteQualityControlSoilConditioningType {
+    #[serde(flatten)]
+    pub base: WorkingSiteQualityControlSoilConditioningBaseType,
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: BdtString20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: WctERPIdType,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "SamplePlotSummaries")]
+    pub sample_plot_summaries: SamplePlotSummariesType,
+    #[serde(rename = "SamplePlots")]
+    pub sample_plots: SamplePlotsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotSummariesType {
+    #[serde(rename = "SamplePlotSummary")]
+    pub sample_plot_summary: Vec<SamplePlotSummaryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotSummaryType {
+    #[serde(rename = "StandNumber")]
+    pub stand_number: BdtString20Type,
+    #[serde(rename = "SamplePlotMeasurementSummary")]
+    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -115,24 +125,14 @@ pub struct SamplePlotType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummariesType {
-    #[serde(rename = "SamplePlotSummary")]
-    pub sample_plot_summary: Vec<SamplePlotSummaryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteQualityControlSoilConditioningType {
+pub struct SelfMonitoringWorkingSiteQualityControlSoilConditioningType {
     #[serde(flatten)]
     pub base: WorkingSiteQualityControlSoilConditioningBaseType,
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: WctERPIdType,
     #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
     pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "SamplePlotSummaries")]
-    pub sample_plot_summaries: SamplePlotSummariesType,
-    #[serde(rename = "SamplePlots")]
-    pub sample_plots: SamplePlotsType,
+    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
+    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
+    pub sample_plots: Option<SamplePlotsType>,
 }
 

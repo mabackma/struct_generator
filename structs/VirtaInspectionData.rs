@@ -1,7 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaApprovalType {
+    #[serde(flatten)]
+    pub base: CoVirtaApprovalType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaPhaseType {
     #[serde(flatten)]
     pub base: CoVirtaPhaseType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaProjectStatusType {
+    #[serde(flatten)]
+    pub base: CoVirtaProjectStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -13,15 +25,9 @@ pub struct InspectionDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaAdvertisementDatingType {
-    #[serde(flatten)]
-    pub base: CoVirtaAdvertisementDatingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct InspectionType {
     #[serde(rename = "InternalInspectionId")]
-    pub internal_inspection_id: Xsstring,
+    pub internal_inspection_id: String,
     #[serde(rename = "VirtaId")]
     pub virta_id: VirtaIdType,
     #[serde(rename = "InspectionType", skip_serializing_if = "Option::is_none")]
@@ -35,19 +41,19 @@ pub struct InspectionType {
     #[serde(rename = "KemeraId", skip_serializing_if = "Option::is_none")]
     pub kemera_id: Option<VirtaIdType>,
     #[serde(rename = "EstateOwner", skip_serializing_if = "Option::is_none")]
-    pub estate_owner: Option<Xsstring>,
+    pub estate_owner: Option<string>,
     #[serde(rename = "MunicipalityNumber", skip_serializing_if = "Option::is_none")]
     pub municipality_number: Option<JhsKuntaKoodiTyyppi>,
     #[serde(rename = "GroupNumber", skip_serializing_if = "Option::is_none")]
-    pub group_number: Option<Xsstring>,
+    pub group_number: Option<string>,
     #[serde(rename = "UnitNumber", skip_serializing_if = "Option::is_none")]
-    pub unit_number: Option<Xsstring>,
+    pub unit_number: Option<string>,
     #[serde(rename = "UnseparatedParcelNumber", skip_serializing_if = "Option::is_none")]
-    pub unseparated_parcel_number: Option<Xsstring>,
+    pub unseparated_parcel_number: Option<string>,
     #[serde(rename = "UnseparatedParcel", skip_serializing_if = "Option::is_none")]
-    pub unseparated_parcel: Option<Xsstring>,
+    pub unseparated_parcel: Option<string>,
     #[serde(rename = "KemeraMunicipalityId", skip_serializing_if = "Option::is_none")]
-    pub kemera_municipality_id: Option<Xsstring>,
+    pub kemera_municipality_id: Option<string>,
     #[serde(rename = "ArrivalDate", skip_serializing_if = "Option::is_none")]
     pub arrival_date: Option<CoDateMmDdYyyyType>,
     #[serde(rename = "TargetSelection", skip_serializing_if = "Option::is_none")]
@@ -121,27 +127,21 @@ pub struct InspectionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSumTableAreaType {
+pub struct VirtaLawType {
     #[serde(flatten)]
-    pub base: CoVirtaSumTableAreaType,
+    pub base: CoVirtaLawType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaApprovalType {
+pub struct VirtaMastoInspectionType {
     #[serde(flatten)]
-    pub base: CoVirtaApprovalType,
+    pub base: CoVirtaMastoInspectionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaIdType {
+pub struct AnnouncementIdType {
     #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTargetSelectionType {
-    #[serde(flatten)]
-    pub base: CoVirtaTargetSelectionType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -155,9 +155,45 @@ pub struct HelpGeometriesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AnnouncementIdType {
+pub struct TargetsType {
+    #[serde(rename = "TgtTarget")]
+    pub tgt_target: Vec<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaIdType {
     #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DataInformationType {
+    #[serde(rename = "DataName")]
+    pub data_name: String,
+    #[serde(rename = "DataId")]
+    pub data_id: String,
+    #[serde(rename = "InspectorName")]
+    pub inspector_name: String,
+    #[serde(rename = "Password")]
+    pub password: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaSumTableAreaType {
+    #[serde(flatten)]
+    pub base: CoVirtaSumTableAreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaAdvertisementDatingType {
+    #[serde(flatten)]
+    pub base: CoVirtaAdvertisementDatingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTargetSelectionType {
+    #[serde(flatten)]
+    pub base: CoVirtaTargetSelectionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -167,50 +203,14 @@ pub struct VirtaAdvertiserType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaMastoInspectionType {
+pub struct VirtaInspectionTypeType {
     #[serde(flatten)]
-    pub base: CoVirtaMastoInspectionType,
+    pub base: CoVirtaInspectionTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaSaveIncompleteType {
     #[serde(flatten)]
     pub base: CoVirtaSaveIncompleteType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DataInformationType {
-    #[serde(rename = "DataName")]
-    pub data_name: Xsstring,
-    #[serde(rename = "DataId")]
-    pub data_id: Xsstring,
-    #[serde(rename = "InspectorName")]
-    pub inspector_name: Xsstring,
-    #[serde(rename = "Password")]
-    pub password: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaLawType {
-    #[serde(flatten)]
-    pub base: CoVirtaLawType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetsType {
-    #[serde(rename = "TgtTarget")]
-    pub tgt_target: Vec<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaProjectStatusType {
-    #[serde(flatten)]
-    pub base: CoVirtaProjectStatusType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaInspectionTypeType {
-    #[serde(flatten)]
-    pub base: CoVirtaInspectionTypeType,
 }
 

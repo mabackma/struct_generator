@@ -11,12 +11,12 @@ pub struct StanfordFileType {
     #[serde(rename = "FileType")]
     pub file_type: FileTypeType,
     #[serde(rename = "Bytes")]
-    pub bytes: Xsbase64Binary,
+    pub bytes: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FileTypeType {
     #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: String,
 }
 

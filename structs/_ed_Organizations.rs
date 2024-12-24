@@ -5,9 +5,9 @@ pub struct Services {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Role {
+pub struct Roles {
     #[serde(flatten)]
-    pub role: OrganizationRoleType,
+    pub roles: RolesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,20 +17,20 @@ pub struct Service {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Organizations {
-    #[serde(flatten)]
-    pub organizations: OrganizationsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Roles {
-    #[serde(flatten)]
-    pub roles: RolesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Organization {
     #[serde(flatten)]
     pub organization: OrganizationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Role {
+    #[serde(flatten)]
+    pub role: OrganizationRoleType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Organizations {
+    #[serde(flatten)]
+    pub organizations: OrganizationsType,
 }
 

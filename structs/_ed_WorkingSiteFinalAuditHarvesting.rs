@@ -1,31 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForwarderId {
+pub struct VehiclePathPressures {
     #[serde(flatten)]
-    pub forwarder_id: BdtString20Type,
+    pub vehicle_path_pressures: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SaveTreesLeft {
+pub struct StorageText {
     #[serde(flatten)]
-    pub save_trees_left: BdtYesNoType,
+    pub storage_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditHarvesting {
+pub struct PurchaseContractId {
     #[serde(flatten)]
-    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpareTreesFromMapSymbols {
-    #[serde(flatten)]
-    pub spare_trees_from_map_symbols: WctSpareTreesByCategoryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreClearingText {
-    #[serde(flatten)]
-    pub pre_clearing_text: BdtString200Type,
+    pub purchase_contract_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,27 +23,27 @@ pub struct HarvesterId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StumpTreatment {
+pub struct RoadDamages {
     #[serde(flatten)]
-    pub stump_treatment: BdtYesNoNotNeededType,
+    pub road_damages: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SeparateSpareTrees {
+pub struct WorkingSiteFinalAuditHarvesting {
     #[serde(flatten)]
-    pub separate_spare_trees: WctSpareTreesByCategoryType,
+    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SaveTreesLeftText {
+pub struct ForwarderId {
     #[serde(flatten)]
-    pub save_trees_left_text: BdtString200Type,
+    pub forwarder_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PreClearing {
+pub struct PreClearingText {
     #[serde(flatten)]
-    pub pre_clearing: BdtYesNoNotNeededType,
+    pub pre_clearing_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,14 +53,92 @@ pub struct StumpTreatmentText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HighStumpsText {
+pub struct TreeDamages {
     #[serde(flatten)]
-    pub high_stumps_text: BdtString200Type,
+    pub tree_damages: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SaveTreesLeftText {
+    #[serde(flatten)]
+    pub save_trees_left_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VehiclePathPressuresText {
+    #[serde(flatten)]
+    pub vehicle_path_pressures_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct hasEnvironmentalObjectsText {
+    #[serde(flatten)]
+    pub has_environmental_objects_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreClearing {
+    #[serde(flatten)]
+    pub pre_clearing: BdtYesNoNotNeededType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct HighStumps {
     #[serde(flatten)]
     pub high_stumps: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RoadDamagesText {
+    #[serde(flatten)]
+    pub road_damages_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeDamagesText {
+    #[serde(flatten)]
+    pub tree_damages_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpareTreesFromMapSymbols {
+    #[serde(flatten)]
+    pub spare_trees_from_map_symbols: WctSpareTreesByCategoryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Storage {
+    #[serde(flatten)]
+    pub storage: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SaveTreesLeft {
+    #[serde(flatten)]
+    pub save_trees_left: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct hasEnvironmentalObjects {
+    #[serde(flatten)]
+    pub has_environmental_objects: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HighStumpsText {
+    #[serde(flatten)]
+    pub high_stumps_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SeparateSpareTrees {
+    #[serde(flatten)]
+    pub separate_spare_trees: WctSpareTreesByCategoryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StumpTreatment {
+    #[serde(flatten)]
+    pub stump_treatment: BdtYesNoNotNeededType,
 }
 

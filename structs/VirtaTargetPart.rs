@@ -1,19 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaReasonType {
+pub struct VirtaTreeDecimalType {
     #[serde(flatten)]
-    pub base: CoVirtaReasonType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatCodeType {
-    #[serde(flatten)]
-    pub base: CoVirtaHabitatCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaStandQualityType {
-    #[serde(flatten)]
-    pub base: CoVirtaStandQualityType,
+    pub base: f64,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,21 +11,27 @@ pub struct VirtaCultivationMaterialType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatTypeType {
+pub struct VirtaPlantEvaluationType {
     #[serde(flatten)]
-    pub base: CoVirtaHabitatTypeType,
+    pub base: CoVirtaPlantEvaluationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTreeDecimalType {
+pub struct VirtaCuttingByMachineType {
     #[serde(flatten)]
-    pub base: Xsdecimal,
+    pub base: CoVirtaCuttingByMachineType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaGroundManipulationMethodType {
+pub struct VirtaHabitatCodeType {
     #[serde(flatten)]
-    pub base: CoVirtaGroundManipulationMethodType,
+    pub base: CoVirtaHabitatCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatSurvivingType {
+    #[serde(flatten)]
+    pub base: CoVirtaHabitatSurvivingType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,11 +47,23 @@ pub struct VirtaInspectionMethodType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaStandQualityType {
+    #[serde(flatten)]
+    pub base: CoVirtaStandQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatTypeType {
+    #[serde(flatten)]
+    pub base: CoVirtaHabitatTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TargetPartType {
     #[serde(rename = "Status3", skip_serializing_if = "Option::is_none")]
     pub status3: Option<CoChangeStateType>,
     #[serde(rename = "PartNumber")]
-    pub part_number: Xsstring,
+    pub part_number: String,
     #[serde(rename = "PartsDetectedArea", skip_serializing_if = "Option::is_none")]
     pub parts_detected_area: Option<CoPositiveDecimalMax4IntegralPartMax2FractionalPartType>,
     #[serde(rename = "CuttingMethod", skip_serializing_if = "Option::is_none")]
@@ -97,7 +103,7 @@ pub struct TargetPartType {
     #[serde(rename = "DeadStemCount", skip_serializing_if = "Option::is_none")]
     pub dead_stem_count: Option<CoPositiveInteger6digitsType>,
     #[serde(rename = "Volume", skip_serializing_if = "Option::is_none")]
-    pub volume: Option<Xsdecimal>,
+    pub volume: Option<decimal>,
     #[serde(rename = "BasalArea", skip_serializing_if = "Option::is_none")]
     pub basal_area: Option<CoPositiveInteger6digitsType>,
     #[serde(rename = "MeanDiameter", skip_serializing_if = "Option::is_none")]
@@ -181,9 +187,9 @@ pub struct TargetPartType {
     #[serde(rename = "HarvestingSeason", skip_serializing_if = "Option::is_none")]
     pub harvesting_season: Option<VirtaHarvestingSeasonType>,
     #[serde(rename = "PartEastingCoordinate", skip_serializing_if = "Option::is_none")]
-    pub part_easting_coordinate: Option<Xsstring>,
+    pub part_easting_coordinate: Option<string>,
     #[serde(rename = "PartNorthingCoordinate", skip_serializing_if = "Option::is_none")]
-    pub part_northing_coordinate: Option<Xsstring>,
+    pub part_northing_coordinate: Option<string>,
     #[serde(rename = "NotDamagedCount", skip_serializing_if = "Option::is_none")]
     pub not_damaged_count: Option<CoPositiveInteger6digitsType>,
     #[serde(rename = "Class1damageCount", skip_serializing_if = "Option::is_none")]
@@ -247,17 +253,17 @@ pub struct TargetPartType {
     #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
     pub sample_plots: Option<SamplePlotsType>,
     #[serde(rename = "GeometryStatus", skip_serializing_if = "Option::is_none")]
-    pub geometry_status: Option<Xsstring>,
+    pub geometry_status: Option<string>,
     #[serde(rename = "GeometryId", skip_serializing_if = "Option::is_none")]
-    pub geometry_id: Option<Xsstring>,
+    pub geometry_id: Option<string>,
     #[serde(rename = "GmlPolygon", skip_serializing_if = "Option::is_none")]
     pub gml_polygon: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTotalEstimationType {
+pub struct VirtaReasonType {
     #[serde(flatten)]
-    pub base: CoVirtaTotalEstimationType,
+    pub base: CoVirtaReasonType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -267,51 +273,15 @@ pub struct SamplePlotsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSuggestionType {
-    #[serde(flatten)]
-    pub base: CoVirtaSuggestionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHarvestingSeasonType {
-    #[serde(flatten)]
-    pub base: CoVirtaHarvestingSeasonType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaCuttingByMachineType {
-    #[serde(flatten)]
-    pub base: CoVirtaCuttingByMachineType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaReviewType {
-    #[serde(flatten)]
-    pub base: CoVirtaReviewType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaExceptionalPermitForHandlingType {
     #[serde(flatten)]
     pub base: CoVirtaExceptionalPermitForHandlingType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaRegenerationType {
+pub struct VirtaGroundManipulationMethodType {
     #[serde(flatten)]
-    pub base: CoVirtaRegenerationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTargetPartStatusType {
-    #[serde(flatten)]
-    pub base: CoVirtaTargetPartStatusType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPlantEvaluationType {
-    #[serde(flatten)]
-    pub base: CoVirtaPlantEvaluationType,
+    pub base: CoVirtaGroundManipulationMethodType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -321,8 +291,38 @@ pub struct VirtaHarvestingClassificationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatSurvivingType {
+pub struct VirtaTotalEstimationType {
     #[serde(flatten)]
-    pub base: CoVirtaHabitatSurvivingType,
+    pub base: CoVirtaTotalEstimationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaRegenerationType {
+    #[serde(flatten)]
+    pub base: CoVirtaRegenerationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaSuggestionType {
+    #[serde(flatten)]
+    pub base: CoVirtaSuggestionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTargetPartStatusType {
+    #[serde(flatten)]
+    pub base: CoVirtaTargetPartStatusType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHarvestingSeasonType {
+    #[serde(flatten)]
+    pub base: CoVirtaHarvestingSeasonType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaReviewType {
+    #[serde(flatten)]
+    pub base: CoVirtaReviewType,
 }
 

@@ -3,7 +3,7 @@ pub struct hexBinary {
     #[serde(rename = "@XmimecontentType")]
     pub xmimecontent_type: String,
     #[serde(flatten)]
-    pub base: XshexBinary,
+    pub base: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,6 +11,6 @@ pub struct base64Binary {
     #[serde(rename = "@XmimecontentType")]
     pub xmimecontent_type: String,
     #[serde(flatten)]
-    pub base: Xsbase64Binary,
+    pub base: Vec<u8>,
 }
 

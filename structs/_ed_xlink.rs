@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct arc {
-    #[serde(flatten)]
-    pub arc: XlinkarcType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct resource {
     #[serde(flatten)]
     pub resource: XlinkresourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct arc {
+    #[serde(flatten)]
+    pub arc: XlinkarcType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

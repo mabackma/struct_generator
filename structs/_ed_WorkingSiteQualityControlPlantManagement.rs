@@ -5,9 +5,15 @@ pub struct WorkingSiteQualityControlPlantManagement {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReductionCount {
+pub struct ReductionStumpHeight {
     #[serde(flatten)]
-    pub reduction_count: BdtPositiveInteger2digitsType,
+    pub reduction_stump_height: BdtFinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Measurable {
+    #[serde(flatten)]
+    pub measurable: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +23,9 @@ pub struct HarvestedTrees {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReductionStumpHeight {
+pub struct RemainingTrees {
     #[serde(flatten)]
-    pub reduction_stump_height: BdtFinalAuditAnswerType,
+    pub remaining_trees: BdtFinalAuditAnswerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,21 +35,15 @@ pub struct SamplePlotSummaries {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryRequired {
+pub struct ReductionAvgDiameterSummary {
     #[serde(flatten)]
-    pub geometry_required: GdtPointGeometryType,
+    pub reduction_avg_diameter_summary: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RemainingTrees {
+pub struct ReductionCount {
     #[serde(flatten)]
-    pub remaining_trees: BdtFinalAuditAnswerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryReal {
-    #[serde(flatten)]
-    pub geometry_real: GdtPointGeometryType,
+    pub reduction_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,9 +53,9 @@ pub struct Damages {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReductionAvgDiameter {
+pub struct GeometryReal {
     #[serde(flatten)]
-    pub reduction_avg_diameter: BdtDecimal2FractionDigitsType,
+    pub geometry_real: GdtPointGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,9 +65,9 @@ pub struct ReductionCountSummary {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReductionAvgDiameterSummary {
+pub struct GeometryRequired {
     #[serde(flatten)]
-    pub reduction_avg_diameter_summary: BdtDecimal2FractionDigitsType,
+    pub geometry_required: GdtPointGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,8 +77,8 @@ pub struct RadiusReduction {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Measurable {
+pub struct ReductionAvgDiameter {
     #[serde(flatten)]
-    pub measurable: BdtYesNoType,
+    pub reduction_avg_diameter: BdtDecimal2FractionDigitsType,
 }
 

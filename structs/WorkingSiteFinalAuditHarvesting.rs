@@ -1,30 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditBaseHarvestingType {
-    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
-    pub service_buyer_id: Option<BdtString20Type>,
-    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
-    pub working_site_id: Option<WctERPIdType>,
-    #[serde(rename = "HarvesterId", skip_serializing_if = "Option::is_none")]
-    pub harvester_id: Option<BdtString20Type>,
-    #[serde(rename = "ForwarderId", skip_serializing_if = "Option::is_none")]
-    pub forwarder_id: Option<BdtString20Type>,
-    #[serde(rename = "PurchaseContractId", skip_serializing_if = "Option::is_none")]
-    pub purchase_contract_id: Option<BdtString20Type>,
-    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
-    pub work_code_group: Option<BdtWorkCodeGroupType>,
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<BdtWorkCodeType>,
-    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
-    pub audit: Option<AuditionType>,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString1000Type>,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
-    pub audits: Option<AuditsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteFinalAuditHarvestingType {
     #[serde(flatten)]
     pub base: WorkingSiteFinalAuditBaseHarvestingType,
@@ -50,6 +24,50 @@ pub struct WorkingSiteFinalAuditHarvestingType {
     pub images: BdtPositiveInteger2digitsType,
     #[serde(rename = "Audits")]
     pub audits: AuditsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringFinalAuditHarvestingType {
+    #[serde(flatten)]
+    pub base: WorkingSiteFinalAuditBaseHarvestingType,
+    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
+    pub work_code_group: Option<BdtWorkCodeGroupType>,
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<BdtWorkCodeType>,
+    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
+    pub audit: Option<AuditionType>,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString1000Type>,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
+    pub audits: Option<AuditsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditBaseHarvestingType {
+    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
+    pub service_buyer_id: Option<BdtString20Type>,
+    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
+    pub working_site_id: Option<WctERPIdType>,
+    #[serde(rename = "HarvesterId", skip_serializing_if = "Option::is_none")]
+    pub harvester_id: Option<BdtString20Type>,
+    #[serde(rename = "ForwarderId", skip_serializing_if = "Option::is_none")]
+    pub forwarder_id: Option<BdtString20Type>,
+    #[serde(rename = "PurchaseContractId", skip_serializing_if = "Option::is_none")]
+    pub purchase_contract_id: Option<BdtString20Type>,
+    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
+    pub work_code_group: Option<BdtWorkCodeGroupType>,
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<BdtWorkCodeType>,
+    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
+    pub audit: Option<AuditionType>,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString1000Type>,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
+    pub audits: Option<AuditsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -132,23 +150,5 @@ pub struct AuditsType {
     pub separate_spare_trees: Option<WctSpareTreesByCategoryType>,
     #[serde(rename = "SpareTreesFromMapSymbols", skip_serializing_if = "Option::is_none")]
     pub spare_trees_from_map_symbols: Option<WctSpareTreesByCategoryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringFinalAuditHarvestingType {
-    #[serde(flatten)]
-    pub base: WorkingSiteFinalAuditBaseHarvestingType,
-    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
-    pub work_code_group: Option<BdtWorkCodeGroupType>,
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<BdtWorkCodeType>,
-    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
-    pub audit: Option<AuditionType>,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString1000Type>,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
-    pub audits: Option<AuditsType>,
 }
 

@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Priority {
+pub struct Header {
     #[serde(flatten)]
-    pub priority: CoPriorityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TransmissionTime {
-    #[serde(flatten)]
-    pub transmission_time: XsdateTime,
+    pub header: HeaderType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +11,9 @@ pub struct EntityTag {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Header {
+pub struct TransmissionTime {
     #[serde(flatten)]
-    pub header: HeaderType,
+    pub transmission_time: chrono::NaiveDateTime,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

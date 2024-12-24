@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationReferenceType {
+pub struct SpecialPermissionType {
     #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: CoYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationsType {
+    #[serde(rename = "ForestUseDeclarationReference")]
+    pub forest_use_declaration_reference: Vec<ForestUseDeclarationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,17 +17,11 @@ pub struct AcceptanceDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialPermissionType {
-    #[serde(flatten)]
-    pub base: CoYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestUseDeclarationType {
     #[serde(rename = "@parentId")]
-    pub parent_id: Xsstring,
+    pub parent_id: String,
     #[serde(rename = "@id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "CoTimeStamp")]
     pub co_time_stamp: String,
     #[serde(rename = "DeclarationReference")]
@@ -37,14 +37,14 @@ pub struct ForestUseDeclarationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationsType {
-    #[serde(rename = "ForestUseDeclarationReference")]
-    pub forest_use_declaration_reference: Vec<ForestUseDeclarationType>,
+pub struct DeclarationReferenceType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AdditionalTextType {
     #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: String,
 }
 

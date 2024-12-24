@@ -1,25 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CountType {
+pub struct DiameterType {
     #[serde(flatten)]
-    pub base: Xsstring,
+    pub base: CoDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemDistributionType {
-    #[serde(rename = "Tree")]
-    pub tree: Vec<TreeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolumeType {
+pub struct TreeClassType {
     #[serde(flatten)]
-    pub base: CoPulpWoodVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: CoStoreyType,
+    pub base: CoTreeClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -39,27 +27,21 @@ pub struct AgeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
+pub struct PulpWoodVolumeType {
     #[serde(flatten)]
-    pub base: CoVolumeType,
+    pub base: CoPulpWoodVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TreeNumberType {
     #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClassType {
-    #[serde(flatten)]
-    pub base: CoTreeClassType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TreeType {
     #[serde(rename = "@id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
     pub co_change_state: Option<String>,
     #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
@@ -93,14 +75,32 @@ pub struct TreeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterType {
-    #[serde(flatten)]
-    pub base: CoDiameterType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SawLogPercentType {
     #[serde(flatten)]
     pub base: CoSawLogPercentType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemDistributionType {
+    #[serde(rename = "Tree")]
+    pub tree: Vec<TreeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CountType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeType {
+    #[serde(flatten)]
+    pub base: CoVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoreyType {
+    #[serde(flatten)]
+    pub base: CoStoreyType,
 }
 

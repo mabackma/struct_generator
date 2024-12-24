@@ -1,13 +1,55 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ContractCode {
+    #[serde(flatten)]
+    pub contract_code: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeGroups {
+    #[serde(flatten)]
+    pub work_code_groups: WorkCodeGroupsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCode {
+    #[serde(flatten)]
+    pub work_code: BdtWorkCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Geometry {
+    #[serde(flatten)]
+    pub geometry: GdtPolygonOrMultiPolygon2Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ValidityDateBegin {
     #[serde(flatten)]
     pub validity_date_begin: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingArea {
+pub struct OperationalRegion {
     #[serde(flatten)]
-    pub working_area: WorkingAreaType,
+    pub operational_region: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompanyMode {
+    #[serde(flatten)]
+    pub company_mode: BdtCompanyModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodes {
+    #[serde(flatten)]
+    pub work_codes: WorkCodesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingAreas {
+    #[serde(flatten)]
+    pub working_areas: WorkingAreasType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,15 +59,21 @@ pub struct SubContractorsAllowed {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Contract {
+pub struct WorkCodeGroup {
     #[serde(flatten)]
-    pub contract: ContractType,
+    pub work_code_group: BdtWorkCodeGroupType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyMode {
+pub struct MeasureDeviceCheckRequired {
     #[serde(flatten)]
-    pub company_mode: BdtCompanyModeType,
+    pub measure_device_check_required: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypes {
+    #[serde(flatten)]
+    pub service_types: ServiceTypesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,26 +89,20 @@ pub struct ContractInfo {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractCode {
+pub struct WorkingArea {
     #[serde(flatten)]
-    pub contract_code: BdtString50Type,
+    pub working_area: WorkingAreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Contract {
+    #[serde(flatten)]
+    pub contract: ContractType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ContractId {
     #[serde(flatten)]
     pub contract_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingAreas {
-    #[serde(flatten)]
-    pub working_areas: WorkingAreasType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasureDeviceCheckRequired {
-    #[serde(flatten)]
-    pub measure_device_check_required: BdtYesNoType,
 }
 

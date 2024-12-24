@@ -76,7 +76,7 @@ pub fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) ->
 
         for field in xml_struct.fields.iter() {
             // Get Rust primitive type from XSD type
-            let field_type = if let Some(field_type) = XSD_TO_RUST.get(&field.field_type) {
+            let field_type = if let Some(field_type) = XSD_TO_RUST.get(&field.field_type.replace("Xs", "")) {
                 field_type.to_string()
             } else {
                 field.field_type.to_string()
@@ -114,7 +114,16 @@ pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>
         element_definitions_string.push_str("#[derive(Debug, Serialize, Deserialize)]\n");
         element_definitions_string.push_str(&format!("pub struct {} {{\n", name));
         element_definitions_string.push_str("    #[serde(flatten)]\n");
-        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), handle_prefix(typ, prefixes)));
+
+        let field_type = handle_prefix(typ, prefixes);
+
+        let typ = if let Some(ft) = XSD_TO_RUST.get(&field_type.replace("Xs", "")) {
+            ft.to_string()
+        } else {
+            field_type.to_string()
+        };
+
+        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), typ));
         element_definitions_string.push_str("}\n\n");
     }
 

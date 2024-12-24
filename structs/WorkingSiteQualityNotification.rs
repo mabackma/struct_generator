@@ -37,9 +37,9 @@ pub struct WorkingSiteQualityNotificationType {
     #[serde(rename = "CuttingAccuracySign")]
     pub cutting_accuracy_sign: BdtString5Type,
     #[serde(rename = "Document", skip_serializing_if = "Option::is_none")]
-    pub document: Option<Xsbase64Binary>,
+    pub document: Option<base64Binary>,
     #[serde(rename = "Image", skip_serializing_if = "Option::is_none")]
-    pub image: Option<Xsbase64Binary>,
+    pub image: Option<base64Binary>,
     #[serde(rename = "DisQualificationReasons")]
     pub dis_qualification_reasons: DisQualificationReasonsType,
 }

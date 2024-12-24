@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompletionDataAndSubsidyType {
-    #[serde(rename = "FacFinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_completion_stands: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PartOfProjectType {
     #[serde(rename = "@id")]
     pub id: CoIdStringType,
@@ -19,9 +13,21 @@ pub struct PartOfProjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct CompletionDataAndSubsidyType {
+    #[serde(rename = "FacFinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_completion_stands: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FinancingActCompletionDeclarationType {
     #[serde(rename = "@id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "FacUpdatePreviousMessage")]
     pub fac_update_previous_message: String,
     #[serde(rename = "FacCompletionDeclarationReference")]
@@ -66,11 +72,5 @@ pub struct FinancingActCompletionDeclarationType {
     pub parts_of_project: PartsOfProjectType,
     #[serde(rename = "FacDocuments", skip_serializing_if = "Option::is_none")]
     pub fac_documents: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
 }
 

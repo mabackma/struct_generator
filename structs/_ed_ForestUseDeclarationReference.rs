@@ -1,25 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OriginalXmlFile {
+pub struct ForestUseDeclarationReference {
     #[serde(flatten)]
-    pub original_xml_file: Xmimebase64Binary,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationReference {
-    #[serde(flatten)]
-    pub declaration_reference: DeclarationReferenceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AcceptanceDate {
-    #[serde(flatten)]
-    pub acceptance_date: AcceptanceDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationReferences {
-    #[serde(flatten)]
-    pub forest_use_declaration_references: ForestUseDeclarationsType,
+    pub forest_use_declaration_reference: ForestUseDeclarationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,8 +17,26 @@ pub struct AdditionalText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationReference {
+pub struct DeclarationReference {
     #[serde(flatten)]
-    pub forest_use_declaration_reference: ForestUseDeclarationType,
+    pub declaration_reference: DeclarationReferenceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OriginalXmlFile {
+    #[serde(flatten)]
+    pub original_xml_file: Xmimebase64Binary,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AcceptanceDate {
+    #[serde(flatten)]
+    pub acceptance_date: AcceptanceDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationReferences {
+    #[serde(flatten)]
+    pub forest_use_declaration_references: ForestUseDeclarationsType,
 }
 
