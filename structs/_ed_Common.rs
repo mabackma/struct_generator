@@ -1,43 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PostOffice {
+pub struct DocumentDate {
     #[serde(flatten)]
-    pub post_office: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Reference {
-    #[serde(flatten)]
-    pub reference: ReferenceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Biomass {
-    #[serde(flatten)]
-    pub biomass: BiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BankAccount {
-    #[serde(flatten)]
-    pub bank_account: BankAccountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Area {
-    #[serde(flatten)]
-    pub area: AreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ExtraInfo {
-    #[serde(flatten)]
-    pub extra_info: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PhoneNumber {
-    #[serde(flatten)]
-    pub phone_number: String20Type,
+    pub document_date: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,57 +11,9 @@ pub struct Document {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionType {
+pub struct StemCount {
     #[serde(flatten)]
-    pub restriction_type: RestrictionTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentClass {
-    #[serde(flatten)]
-    pub document_class: DocumentClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ChangeState {
-    #[serde(flatten)]
-    pub change_state: ChangeStateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionCode {
-    #[serde(flatten)]
-    pub restriction_code: RestrictionCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemType {
-    #[serde(flatten)]
-    pub stem_type: StemTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceType {
-    #[serde(flatten)]
-    pub service_type: ServiceTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LanguageCode {
-    #[serde(flatten)]
-    pub language_code: LanguageCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Identifiers {
-    #[serde(flatten)]
-    pub identifiers: IdentifiersType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WideCertificationSystem {
-    #[serde(flatten)]
-    pub wide_certification_system: WideCertificationSystemType,
+    pub stem_count: StemCountType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -107,27 +23,9 @@ pub struct Storey {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BranchBiomass {
+pub struct FileBinary {
     #[serde(flatten)]
-    pub branch_biomass: BranchBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifierValue {
-    #[serde(flatten)]
-    pub identifier_value: IdentifierValueType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogVolume {
-    #[serde(flatten)]
-    pub saw_log_volume: SawLogVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeGrowth {
-    #[serde(flatten)]
-    pub volume_growth: VolumeGrowthType,
+    pub file_binary: FileBinaryRestrictedSizeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -137,33 +35,9 @@ pub struct Name {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Height {
+pub struct DocumentClass {
     #[serde(flatten)]
-    pub height: HeightType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FileBinary {
-    #[serde(flatten)]
-    pub file_binary: FileBinaryRestrictedSizeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Age {
-    #[serde(flatten)]
-    pub age: AgeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BIC {
-    #[serde(flatten)]
-    pub bic: BICType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IBAN {
-    #[serde(flatten)]
-    pub iban: IBANType,
+    pub document_class: DocumentClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -173,27 +47,27 @@ pub struct IdentifierType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContactInformation {
+pub struct DocumentDescription {
     #[serde(flatten)]
-    pub contact_information: ContactInformationType,
+    pub document_description: DocumentDescriptionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StumpBiomass {
+pub struct IdentifierValue {
     #[serde(flatten)]
-    pub stump_biomass: StumpBiomassType,
+    pub identifier_value: IdentifierValueType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FileType {
+pub struct ExtraInfo {
     #[serde(flatten)]
-    pub file_type: FileTypeType,
+    pub extra_info: String100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ChangeTime {
+pub struct IBAN {
     #[serde(flatten)]
-    pub change_time: ChangeTimeType,
+    pub iban: IBANType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -203,9 +77,9 @@ pub struct Identifier {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Address {
+pub struct BIC {
     #[serde(flatten)]
-    pub address: String50Type,
+    pub bic: BICType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -215,39 +89,15 @@ pub struct EmailAddress {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentFileName {
+pub struct BankAccount {
     #[serde(flatten)]
-    pub document_file_name: DocumentFileNameType,
+    pub bank_account: BankAccountType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StratumNumber {
+pub struct BranchBiomass {
     #[serde(flatten)]
-    pub stratum_number: StratumNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemCount {
-    #[serde(flatten)]
-    pub stem_count: StemCountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolume {
-    #[serde(flatten)]
-    pub pulp_wood_volume: PulpWoodVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentDate {
-    #[serde(flatten)]
-    pub document_date: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostalCode {
-    #[serde(flatten)]
-    pub postal_code: String10Type,
+    pub branch_biomass: BranchBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -257,15 +107,21 @@ pub struct StemBiomass {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogPercent {
+pub struct Diameter {
     #[serde(flatten)]
-    pub saw_log_percent: SawLogPercentType,
+    pub diameter: DiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentDescription {
+pub struct TimeStamp {
     #[serde(flatten)]
-    pub document_description: DocumentDescriptionType,
+    pub time_stamp: TimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogPercent {
+    #[serde(flatten)]
+    pub saw_log_percent: SawLogPercentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -281,15 +137,123 @@ pub struct BankReferenceNumber {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TimeStamp {
+pub struct RestrictionCode {
     #[serde(flatten)]
-    pub time_stamp: TimeStampType,
+    pub restriction_code: RestrictionCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Volume {
+pub struct Identifiers {
     #[serde(flatten)]
-    pub volume: VolumeType,
+    pub identifiers: IdentifiersType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Age {
+    #[serde(flatten)]
+    pub age: AgeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StumpBiomass {
+    #[serde(flatten)]
+    pub stump_biomass: StumpBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Biomass {
+    #[serde(flatten)]
+    pub biomass: BiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LanguageCode {
+    #[serde(flatten)]
+    pub language_code: LanguageCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StratumNumber {
+    #[serde(flatten)]
+    pub stratum_number: StratumNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceType {
+    #[serde(flatten)]
+    pub service_type: ServiceTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeGrowth {
+    #[serde(flatten)]
+    pub volume_growth: VolumeGrowthType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ChangeState {
+    #[serde(flatten)]
+    pub change_state: ChangeStateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContactInformation {
+    #[serde(flatten)]
+    pub contact_information: ContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WideCertificationSystem {
+    #[serde(flatten)]
+    pub wide_certification_system: WideCertificationSystemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PulpWoodVolume {
+    #[serde(flatten)]
+    pub pulp_wood_volume: PulpWoodVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LeafBiomass {
+    #[serde(flatten)]
+    pub leaf_biomass: LeafBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PostOffice {
+    #[serde(flatten)]
+    pub post_office: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Height {
+    #[serde(flatten)]
+    pub height: HeightType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PostalCode {
+    #[serde(flatten)]
+    pub postal_code: String10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Address {
+    #[serde(flatten)]
+    pub address: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FileType {
+    #[serde(flatten)]
+    pub file_type: FileTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Reference {
+    #[serde(flatten)]
+    pub reference: ReferenceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -299,8 +263,50 @@ pub struct BasalArea {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LeafBiomass {
+pub struct ChangeTime {
     #[serde(flatten)]
-    pub leaf_biomass: LeafBiomassType,
+    pub change_time: ChangeTimeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Volume {
+    #[serde(flatten)]
+    pub volume: VolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogVolume {
+    #[serde(flatten)]
+    pub saw_log_volume: SawLogVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemType {
+    #[serde(flatten)]
+    pub stem_type: StemTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RestrictionType {
+    #[serde(flatten)]
+    pub restriction_type: RestrictionTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DocumentFileName {
+    #[serde(flatten)]
+    pub document_file_name: DocumentFileNameType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PhoneNumber {
+    #[serde(flatten)]
+    pub phone_number: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Area {
+    #[serde(flatten)]
+    pub area: AreaType,
 }
 

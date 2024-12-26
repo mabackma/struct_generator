@@ -7,8 +7,8 @@ pub struct ForestPropertyDataType {
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: CoDateType,
     #[serde(rename = "ReRealEstates", skip_serializing_if = "Option::is_none")]
-    pub re_real_estates: Option<String>,
+    pub re_real_estates: Option<RealEstates>,
     #[serde(rename = "StStands", skip_serializing_if = "Option::is_none")]
-    pub st_stands: Option<String>,
+    pub st_stands: Option<Stands>,
 }
 

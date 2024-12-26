@@ -1,25 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeAssortment {
+pub struct WorkingSiteFeeBasis {
     #[serde(flatten)]
-    pub fee_assortment: BdtString50Type,
+    pub working_site_fee_basis: WorkingSiteFeeBasisType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeListId {
+pub struct FeeBaseListItem {
     #[serde(flatten)]
-    pub fee_list_id: BdtPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeValue {
-    #[serde(flatten)]
-    pub fee_value: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBase {
-    #[serde(flatten)]
-    pub fee_base: FeeBasisDataType,
+    pub fee_base_list_item: FeebaseListItemType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,26 +17,8 @@ pub struct FeeBaseList {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeYesNo {
+pub struct WorkCodes {
     #[serde(flatten)]
-    pub fee_yes_no: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFeeBasis {
-    #[serde(flatten)]
-    pub working_site_fee_basis: WorkingSiteFeeBasisType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NeedToCheck {
-    #[serde(flatten)]
-    pub need_to_check: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBaseListItem {
-    #[serde(flatten)]
-    pub fee_base_list_item: FeebaseListItemType,
+    pub work_codes: WorkCodesType,
 }
 

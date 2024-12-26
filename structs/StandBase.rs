@@ -5,6 +5,12 @@ pub struct StandBasicDataDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AreaDecreaseType {
+    #[serde(flatten)]
+    pub base: CoAreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StandInfoType {
     #[serde(rename = "@infoProviderRole")]
     pub info_provider_role: CoInfoProviderRoleType,
@@ -21,26 +27,20 @@ pub struct AreaType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StandNumberType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StandNumberExtensionType {
     #[serde(flatten)]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaDecreaseType {
-    #[serde(flatten)]
-    pub base: CoAreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct IdentifiersType {
     #[serde(rename = "Identifier")]
     pub identifier: Vec<CoIdentifierType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberType {
-    #[serde(flatten)]
-    pub base: String,
 }
 

@@ -69,18 +69,6 @@ pub struct WorkingSiteWorkLoadType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisType {
-    #[serde(rename = "FeeBase")]
-    pub fee_base: Vec<FeeBasisDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkGrouMembersType {
-    #[serde(rename = "WorkGrouMember")]
-    pub work_grou_member: Vec<WorkGrouMemberType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkGrouMemberType {
     #[serde(rename = "ResourceId")]
     pub resource_id: WctShortERPIdType,
@@ -94,6 +82,24 @@ pub struct WorkGrouMemberType {
 pub struct MaterialsType {
     #[serde(rename = "Material")]
     pub material: Vec<MaterialType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisDataType {
+    #[serde(rename = "FeeId")]
+    pub fee_id: BdtString10Type,
+    #[serde(rename = "FeeListId", skip_serializing_if = "Option::is_none")]
+    pub fee_list_id: Option<BdtPositiveIntegerType>,
+    #[serde(rename = "FeeYesNo", skip_serializing_if = "Option::is_none")]
+    pub fee_yes_no: Option<BdtYesNoType>,
+    #[serde(rename = "FeeValue", skip_serializing_if = "Option::is_none")]
+    pub fee_value: Option<BdtString10Type>,
+    #[serde(rename = "FeeAssortment", skip_serializing_if = "Option::is_none")]
+    pub fee_assortment: Option<BdtString50Type>,
+    #[serde(rename = "Infotext", skip_serializing_if = "Option::is_none")]
+    pub infotext: Option<BdtString1000Type>,
+    #[serde(rename = "NeedToCheck", skip_serializing_if = "Option::is_none")]
+    pub need_to_check: Option<BdtYesNoType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -127,20 +133,14 @@ pub struct MaterialType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisDataType {
-    #[serde(rename = "FeeId")]
-    pub fee_id: BdtString10Type,
-    #[serde(rename = "FeeListId", skip_serializing_if = "Option::is_none")]
-    pub fee_list_id: Option<BdtPositiveIntegerType>,
-    #[serde(rename = "FeeYesNo", skip_serializing_if = "Option::is_none")]
-    pub fee_yes_no: Option<BdtYesNoType>,
-    #[serde(rename = "FeeValue", skip_serializing_if = "Option::is_none")]
-    pub fee_value: Option<BdtString10Type>,
-    #[serde(rename = "FeeAssortment", skip_serializing_if = "Option::is_none")]
-    pub fee_assortment: Option<BdtString50Type>,
-    #[serde(rename = "Infotext", skip_serializing_if = "Option::is_none")]
-    pub infotext: Option<BdtString1000Type>,
-    #[serde(rename = "NeedToCheck", skip_serializing_if = "Option::is_none")]
-    pub need_to_check: Option<BdtYesNoType>,
+pub struct FeeBasisType {
+    #[serde(rename = "FeeBase")]
+    pub fee_base: Vec<FeeBasisDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkGrouMembersType {
+    #[serde(rename = "WorkGrouMember")]
+    pub work_grou_member: Vec<WorkGrouMemberType>,
 }
 

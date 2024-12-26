@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FileName {
-    #[serde(flatten)]
-    pub file_name: BdtString100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Label {
     #[serde(flatten)]
     pub label: BdtString100Type,

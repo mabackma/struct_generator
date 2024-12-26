@@ -42,21 +42,20 @@ pub fn extension_type(e: &BytesStart<'_>) -> Option<String> {
 
 // Retrieve the type of the reference
 pub fn reference_type(ref_name: &str, element_definitions: &HashMap<String, String>, prefixes: &mut HashMap<String, String>) -> Option<String> {
+    let complete_name = handle_prefix(ref_name, prefixes);
+
     // Search for the reference type in the element definitions
-    if let Some(typ) = element_definitions.get(&handle_prefix(ref_name, prefixes)) {        
+    if let Some(typ) = element_definitions.get(&complete_name) {     
         return Some(typ.clone());
-    }
-    //println!("Reference type not found: {}", ref_name);
-    if ref_name == "ProposalAndOriginalYearGroup" {
-        //println!("Reference type not found: {}", ref_name);
-        //println!("{:?}", element_definitions);
+    } 
+
+    // Extract the reference type from the reference name
+    if ref_name.contains(':') {
+        let ref_type = ref_name.split(':').collect::<Vec<&str>>()[1];
+        return Some(ref_type.to_string());
     }
 
-    // TODO: Implement a way to get the reference type from the XSD file 
-    // refferred to in the beginning of the file with the `xs:import` tag
-
-    //Some(ref_name.to_string())
-    Some("String".to_string())
+    Some(ref_name.to_string())
 }
 
 

@@ -1,37 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductGroupName {
-    #[serde(flatten)]
-    pub product_group_name: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolumes {
-    #[serde(flatten)]
-    pub assortment_volumes: AssortmentVolumesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LengthClass {
-    #[serde(flatten)]
-    pub length_class: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentMatrixVolumes {
     #[serde(flatten)]
     pub assortment_matrix_volumes: AssortmentMatrixVolumesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeVolume {
-    #[serde(flatten)]
-    pub stem_type_volume: StemTypeVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentMatrixVolume {
-    #[serde(flatten)]
-    pub assortment_matrix_volume: AssortmentMatrixVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,6 +17,30 @@ pub struct AssortmentVolumesUnclassified {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct RunningMeters {
+    #[serde(flatten)]
+    pub running_meters: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentVolumes {
+    #[serde(flatten)]
+    pub assortment_volumes: AssortmentVolumesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LengthClass {
+    #[serde(flatten)]
+    pub length_class: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemTypeVolume {
+    #[serde(flatten)]
+    pub stem_type_volume: StemTypeVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteHarvestedProduction {
     #[serde(flatten)]
     pub working_site_harvested_production: WorkingSiteHarvestedProductionType,
@@ -59,9 +53,15 @@ pub struct StemTypeVolumes {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RunningMeters {
+pub struct ProductGroupName {
     #[serde(flatten)]
-    pub running_meters: BdtDecimal3FractionDigitsType,
+    pub product_group_name: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentMatrixVolume {
+    #[serde(flatten)]
+    pub assortment_matrix_volume: AssortmentMatrixVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

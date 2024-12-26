@@ -1,19 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RequestInfo {
+pub struct ExpirationDate {
     #[serde(flatten)]
-    pub request_info: CoString2000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RequestCode {
-    #[serde(flatten)]
-    pub request_code: RequestCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContactRequest {
-    #[serde(flatten)]
-    pub contact_request: ContactRequestType,
+    pub expiration_date: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,9 +23,9 @@ pub struct PreferredContactingMethod {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContactMunicipality {
+pub struct RequestCode {
     #[serde(flatten)]
-    pub contact_municipality: CoMunicipalityNumberType,
+    pub request_code: RequestCodeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,14 +35,26 @@ pub struct ContactLocationInformation {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ExpirationDate {
+pub struct ContactMunicipality {
     #[serde(flatten)]
-    pub expiration_date: CoDateType,
+    pub contact_municipality: CoMunicipalityNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RequestInfo {
+    #[serde(flatten)]
+    pub request_info: CoString2000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestPropertyDataSet {
     #[serde(flatten)]
     pub forest_property_data_set: ForestPropertyDataSetType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContactRequest {
+    #[serde(flatten)]
+    pub contact_request: ContactRequestType,
 }
 

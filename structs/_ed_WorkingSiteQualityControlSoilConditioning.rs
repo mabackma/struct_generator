@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ScalpsCount {
+pub struct BulgeHeight {
     #[serde(flatten)]
-    pub scalps_count: BdtPositiveInteger2digitsType,
+    pub bulge_height: BdtFinalAuditAnswerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TurnoverMoundsCount {
+pub struct PlantingSiteCount {
     #[serde(flatten)]
-    pub turnover_mounds_count: BdtPositiveInteger2digitsType,
+    pub planting_site_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,27 +17,15 @@ pub struct DitchesInAdditionToCultivation {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MineralSoilLayer {
+pub struct TurnoverMoundsCount {
     #[serde(flatten)]
-    pub mineral_soil_layer: BdtFinalAuditAnswerType,
+    pub turnover_mounds_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteQualityControlSoilConditioning {
+pub struct ScalpsCount {
     #[serde(flatten)]
-    pub working_site_quality_control_soil_conditioning: WorkingSiteQualityControlSoilConditioningType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DitchMoundsCount {
-    #[serde(flatten)]
-    pub ditch_mounds_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlantingSiteCount {
-    #[serde(flatten)]
-    pub planting_site_count: BdtPositiveInteger2digitsType,
+    pub scalps_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,21 +41,27 @@ pub struct NearestCultivatedSpotWidth {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DitchMoundsCount {
+    #[serde(flatten)]
+    pub ditch_mounds_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ScalpedMoundsCount {
     #[serde(flatten)]
     pub scalped_mounds_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NearestCultivatedSpotLength {
+pub struct WorkingSiteQualityControlSoilConditioning {
     #[serde(flatten)]
-    pub nearest_cultivated_spot_length: BdtPositiveInteger3digitsType,
+    pub working_site_quality_control_soil_conditioning: WorkingSiteQualityControlSoilConditioningType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SoilType {
+pub struct NearestCultivatedSpotHeight {
     #[serde(flatten)]
-    pub soil_type: BdtCompactSoilTypeType,
+    pub nearest_cultivated_spot_height: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,20 +71,26 @@ pub struct CultivationScope {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MineralSoilLayer {
+    #[serde(flatten)]
+    pub mineral_soil_layer: BdtFinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PlantSiteCountSummary {
     #[serde(flatten)]
     pub plant_site_count_summary: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BulgeHeight {
+pub struct NearestCultivatedSpotLength {
     #[serde(flatten)]
-    pub bulge_height: BdtFinalAuditAnswerType,
+    pub nearest_cultivated_spot_length: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NearestCultivatedSpotHeight {
+pub struct RockySoil {
     #[serde(flatten)]
-    pub nearest_cultivated_spot_height: BdtPositiveInteger2digitsType,
+    pub rocky_soil: BdtYesNoType,
 }
 

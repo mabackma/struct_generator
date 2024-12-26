@@ -1,25 +1,15 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentDataType {
-    #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
-    pub assortment_id: Option<WctERPIdType>,
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: BdtString20Type,
-    #[serde(rename = "Code", skip_serializing_if = "Option::is_none")]
-    pub code: Option<BdtString50Type>,
-    #[serde(rename = "Name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<BdtString50Type>,
-    #[serde(rename = "CodeGroup")]
-    pub code_group: BdtAssortmentGroupType,
-    #[serde(rename = "Volume")]
-    pub volume: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: BdtWorkCodeUnitType,
-    #[serde(rename = "BeginDate")]
-    pub begin_date: BdtDateType,
-    #[serde(rename = "EndDate")]
-    pub end_date: BdtDateType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString200Type>,
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: BdtString100Type,
+    #[serde(rename = "Data")]
+    pub data: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,16 +37,26 @@ pub struct HarvestingOrderType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: BdtString100Type,
-    #[serde(rename = "Data")]
-    pub data: Vec<u8>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
+pub struct AssortmentDataType {
+    #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
+    pub assortment_id: Option<WctERPIdType>,
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: BdtString20Type,
+    #[serde(rename = "Code", skip_serializing_if = "Option::is_none")]
+    pub code: Option<BdtString50Type>,
+    #[serde(rename = "Name", skip_serializing_if = "Option::is_none")]
+    pub name: Option<BdtString50Type>,
+    #[serde(rename = "CodeGroup")]
+    pub code_group: BdtAssortmentGroupType,
+    #[serde(rename = "Volume")]
+    pub volume: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: BdtWorkCodeUnitType,
+    #[serde(rename = "BeginDate")]
+    pub begin_date: BdtDateType,
+    #[serde(rename = "EndDate")]
+    pub end_date: BdtDateType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString200Type>,
 }
 

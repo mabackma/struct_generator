@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
+pub struct OperationModeType {
     #[serde(flatten)]
-    pub base: CoUnitPerHectareType,
+    pub base: CoOperationModeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
+pub struct ConsumptionUnitType {
     #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+    pub base: CoUnitPerHectareType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,17 +17,9 @@ pub struct ProductsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: WtcPlannedResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
+pub struct ConsumptionType {
     #[serde(flatten)]
-    pub base: CoOperationModeType,
+    pub base: CoDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,7 +33,7 @@ pub struct ProductType {
     #[serde(rename = "@productId")]
     pub product_id: String,
     #[serde(rename = "ProductKeyGroup")]
-    pub product_key_group: String,
+    pub product_key_group: ProductKeyGroup,
     #[serde(rename = "ProductName")]
     pub product_name: CoString500Type,
     #[serde(rename = "Quantity")]
@@ -62,5 +54,13 @@ pub struct ProductType {
     pub planned_resource: Option<WtcPlannedResourceType>,
     #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
     pub description: Option<CoString1500Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: WtcPlannedResourceType,
 }
 

@@ -45,6 +45,10 @@ fn main() {
     println!("Actual number of element definitions: {}", element_definitions.len());
 
     println!("Prefix count: {}", prefixes.len());
+
+    for prefix in prefixes.iter() {
+        //println!("{} -> {}", prefix.0, prefix.1);
+    }
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -59,6 +63,7 @@ fn main() {
     element_definitions_to_file(&element_definitions, &elements_file_name).unwrap(); */
 }
 
+// Modify the keys of the structs to include the prefixes
 fn modify_struct_keys(structs: &mut HashMap<String, XMLStruct>, prefixes: &mut HashMap<String, String>) {
     let mut new_structs = HashMap::new();
 
@@ -75,7 +80,7 @@ fn modify_struct_keys(structs: &mut HashMap<String, XMLStruct>, prefixes: &mut H
             }
         });
     }
-
+    
     *structs = new_structs;
 }
 

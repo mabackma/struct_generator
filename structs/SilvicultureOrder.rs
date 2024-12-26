@@ -11,6 +11,20 @@ pub struct WorkCodeInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: BdtString100Type,
+    #[serde(rename = "Data")]
+    pub data: Vec<u8>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SilvicultureOrderType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -32,20 +46,6 @@ pub struct SilvicultureOrderType {
     pub info_text: Option<BdtString200Type>,
     #[serde(rename = "Attachments", skip_serializing_if = "Option::is_none")]
     pub attachments: Option<AttachmentsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: BdtString100Type,
-    #[serde(rename = "Data")]
-    pub data: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

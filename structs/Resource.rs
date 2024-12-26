@@ -1,35 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PeripheralsType {
-    #[serde(rename = "PeripheralCode", skip_serializing_if = "Option::is_none")]
-    pub peripheral_code: Option<Vec<BdtPeripheralCodeType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypesType {
-    #[serde(rename = "ServiceType")]
-    pub service_type: Vec<BdtServiceTypeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodeGroupsType {
     #[serde(rename = "WorkCodeGroup")]
     pub work_code_group: Vec<BdtWorkCodeGroupType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeInfoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeInfoType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: BdtWorkCodeType,
-    #[serde(rename = "Productivity")]
-    pub productivity: BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType,
-    #[serde(rename = "ProductivityUnit")]
-    pub productivity_unit: BdtWorkCodeUnitType,
+pub struct PeripheralsType {
+    #[serde(rename = "PeripheralCode", skip_serializing_if = "Option::is_none")]
+    pub peripheral_code: Option<Vec<BdtPeripheralCodeType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -118,5 +96,27 @@ pub struct ResourceType {
     pub external_system_in_use: Option<BdtYesNoType>,
     #[serde(rename = "ExternalSystemName", skip_serializing_if = "Option::is_none")]
     pub external_system_name: Option<BdtString50Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeInfoType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: BdtWorkCodeType,
+    #[serde(rename = "Productivity")]
+    pub productivity: BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType,
+    #[serde(rename = "ProductivityUnit")]
+    pub productivity_unit: BdtWorkCodeUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeInfoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypesType {
+    #[serde(rename = "ServiceType")]
+    pub service_type: Vec<BdtServiceTypeType>,
 }
 

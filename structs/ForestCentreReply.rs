@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessagesType {
-    #[serde(rename = "ErrorMessageData")]
-    pub error_message_data: Vec<ErrorMessageDataType>,
+pub struct EstateOwnerType {
+    #[serde(rename = "CiNameAndOrganizationGroup")]
+    pub ci_name_and_organization_group: Vec<NameAndOrganizationGroup>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -22,12 +22,6 @@ pub struct ErrorMessageDataType {
     pub error_code: CoString25Type,
     #[serde(rename = "ErrorMessage")]
     pub error_message: CoString1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EstateOwnerType {
-    #[serde(rename = "CiNameAndOrganizationGroup")]
-    pub ci_name_and_organization_group: Vec<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -56,5 +50,11 @@ pub struct ForestCentreReplyType {
     pub error_messages: Option<ErrorMessagesType>,
     #[serde(rename = "AdditionalInfo", skip_serializing_if = "Option::is_none")]
     pub additional_info: Option<CoString1000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorMessagesType {
+    #[serde(rename = "ErrorMessageData")]
+    pub error_message_data: Vec<ErrorMessageDataType>,
 }
 

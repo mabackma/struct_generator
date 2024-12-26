@@ -7,7 +7,7 @@ pub struct CallForOfferWithPublicity {
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: CoDateType,
     #[serde(rename = "CfoCallForOffer")]
-    pub cfo_call_for_offer: Vec<String>,
+    pub cfo_call_for_offer: Vec<CallForOffer>,
     #[serde(rename = "Publicity")]
     pub publicity: CoPublicityType,
     #[serde(rename = "PublicityOrganizations", skip_serializing_if = "Option::is_none")]

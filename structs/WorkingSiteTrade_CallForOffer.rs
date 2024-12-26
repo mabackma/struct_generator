@@ -7,21 +7,21 @@ pub struct RelatedCallForOfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct UsedPricingMethodTypeType {
+    #[serde(flatten)]
+    pub base: CoUsedPricingMethodTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PublicityType {
+    #[serde(flatten)]
+    pub base: CoPublicityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct RelatedCallForOffersType {
     #[serde(rename = "RelatedCallForOffer")]
     pub related_call_for_offer: Vec<RelatedCallForOfferType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalCodeType {
-    #[serde(flatten)]
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -37,41 +37,11 @@ pub struct PurchaseModeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PublicityType {
-    #[serde(flatten)]
-    pub base: CoPublicityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethodTypeType {
-    #[serde(flatten)]
-    pub base: CoUsedPricingMethodTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: CoOperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CallForOfferType {
     #[serde(rename = "@id")]
     pub id: String,
     #[serde(rename = "CoTimeStamp")]
-    pub co_time_stamp: String,
+    pub co_time_stamp: TimeStamp,
     #[serde(rename = "RelatedCallForOffers", skip_serializing_if = "Option::is_none")]
     pub related_call_for_offers: Option<RelatedCallForOffersType>,
     #[serde(rename = "AdditionalCode", skip_serializing_if = "Option::is_none")]
@@ -93,8 +63,38 @@ pub struct CallForOfferType {
     #[serde(rename = "CallForOfferSilvicultureInfo", skip_serializing_if = "Option::is_none")]
     pub call_for_offer_silviculture_info: Option<CallForOfferSilvicultureInfoType>,
     #[serde(rename = "WsCallForOfferWorkingSites")]
-    pub ws_call_for_offer_working_sites: String,
+    pub ws_call_for_offer_working_sites: CallForOfferWorkingSites,
     #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
-    pub wtco_documents: Option<String>,
+    pub wtco_documents: Option<Documents>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TechnicalContactPersonType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalCodeType {
+    #[serde(flatten)]
+    pub base: String,
 }
 

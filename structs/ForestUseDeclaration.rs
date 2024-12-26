@@ -1,13 +1,51 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LocationEstatesType {
-    #[serde(rename = "LocationEstate")]
-    pub location_estate: Vec<FccLocationEstateType>,
+pub struct ProcessingAreaType {
+    #[serde(rename = "@id")]
+    pub id: CoIdStringType,
+    #[serde(rename = "ProcessingAreaNumber")]
+    pub processing_area_number: ProcessingAreaNumberType,
+    #[serde(rename = "ProcessingAreaReference")]
+    pub processing_area_reference: CoReferenceType,
+    #[serde(rename = "DeclarationStands")]
+    pub declaration_stands: DeclarationStandsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreasType {
+    #[serde(rename = "ProcessingArea")]
+    pub processing_area: Vec<ProcessingAreaType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreaNumberType {
+    #[serde(flatten)]
+    pub base: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MeanDiameterType {
     #[serde(flatten)]
     pub base: CoDiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationOtherOperationsType {
+    #[serde(rename = "DeclarationOtherOperation")]
+    pub declaration_other_operation: Vec<CoDeclarationOtherOperationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SenderType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+    #[serde(rename = "PowerOfAttorney")]
+    pub power_of_attorney: FccPowerOfAttorneyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<SpfLocatedSpecialFeature3Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -31,29 +69,23 @@ pub struct ForestUseDeclarationType {
     #[serde(rename = "DeclarationRealEstates")]
     pub declaration_real_estates: DeclarationRealEstatesType,
     #[serde(rename = "FccDocuments", skip_serializing_if = "Option::is_none")]
-    pub fcc_documents: Option<String>,
+    pub fcc_documents: Option<Documents>,
     #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
     pub special_features: Option<SpecialFeaturesType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SenderType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
-    #[serde(rename = "PowerOfAttorney")]
-    pub power_of_attorney: FccPowerOfAttorneyType,
+pub struct HabitatOperationsType {
+    #[serde(rename = "HabitatOperation")]
+    pub habitat_operation: Vec<CoHabitatOperationsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreaNumberType {
+pub struct DeclarationRealEstatesType {
     #[serde(flatten)]
-    pub base: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreasType {
-    #[serde(rename = "ProcessingArea")]
-    pub processing_area: Vec<ProcessingAreaType>,
+    pub base: ReRealEstatesWithOwnersInformationType2,
+    #[serde(rename = "ProcessingAreas")]
+    pub processing_areas: ProcessingAreasType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,46 +145,14 @@ pub struct DeclarationStandType {
     #[serde(rename = "DeclarationStandTextInformation", skip_serializing_if = "Option::is_none")]
     pub declaration_stand_text_information: Option<CoString2000Type>,
     #[serde(rename = "GmlpolygonProperty")]
-    pub gmlpolygon_property: String,
+    pub gmlpolygon_property: polygonProperty,
     #[serde(rename = "LocationEstates")]
     pub location_estates: LocationEstatesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationRealEstatesType {
-    #[serde(flatten)]
-    pub base: ReRealEstatesWithOwnersInformationType2,
-    #[serde(rename = "ProcessingAreas")]
-    pub processing_areas: ProcessingAreasType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreaType {
-    #[serde(rename = "@id")]
-    pub id: CoIdStringType,
-    #[serde(rename = "ProcessingAreaNumber")]
-    pub processing_area_number: ProcessingAreaNumberType,
-    #[serde(rename = "ProcessingAreaReference")]
-    pub processing_area_reference: CoReferenceType,
-    #[serde(rename = "DeclarationStands")]
-    pub declaration_stands: DeclarationStandsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatOperationsType {
-    #[serde(rename = "HabitatOperation")]
-    pub habitat_operation: Vec<CoHabitatOperationsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationOtherOperationsType {
-    #[serde(rename = "DeclarationOtherOperation")]
-    pub declaration_other_operation: Vec<CoDeclarationOtherOperationType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<SpfLocatedSpecialFeature3Type>,
+pub struct LocationEstatesType {
+    #[serde(rename = "LocationEstate")]
+    pub location_estate: Vec<FccLocationEstateType>,
 }
 

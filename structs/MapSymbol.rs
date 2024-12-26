@@ -53,7 +53,7 @@ pub struct MapSymbolDataType {
     #[serde(rename = "SpareGroupOfTrees", skip_serializing_if = "Option::is_none")]
     pub spare_group_of_trees: Option<WctSpareTreesByCategoryType>,
     #[serde(rename = "SfUsingRestrictions", skip_serializing_if = "Option::is_none")]
-    pub sf_using_restrictions: Option<String>,
+    pub sf_using_restrictions: Option<UsingRestrictions>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
