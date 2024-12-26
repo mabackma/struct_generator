@@ -23,6 +23,6 @@ pub struct ExternalFileType {
     #[serde(rename = "DocumentClass", skip_serializing_if = "Option::is_none")]
     pub document_class: Option<BdtDocumentClassType>,
     #[serde(rename = "Bytes")]
-    pub bytes: Xsbase64Binary,
+    pub bytes: Vec<u8>,
 }
 

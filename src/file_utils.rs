@@ -1,5 +1,5 @@
 use crate::create_structs::XMLStruct;
-use crate::string_utils::{remove_prefix, to_snake_case};
+use crate::string_utils::{handle_prefix, to_snake_case};
 
 use std::collections::HashMap;
 use std::fs::File;
@@ -49,6 +49,7 @@ static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "base64Binary" => "Vec<u8>",
     "hexBinary" => "Vec<u8>",
     "anySimpleType" => "String",
+    "CoDateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
 };
 
 // Reads an XML file and returns its contents as a string
@@ -76,7 +77,7 @@ pub fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) ->
 
         for field in xml_struct.fields.iter() {
             // Get Rust primitive type from XSD type
-            let field_type = if let Some(field_type) = XSD_TO_RUST.get(&field.field_type) {
+            let field_type = if let Some(field_type) = XSD_TO_RUST.get(&field.field_type.replace("Xs", "")) {
                 field_type.to_string()
             } else {
                 field.field_type.to_string()
@@ -106,7 +107,7 @@ pub fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) ->
 }
 
 // Write the element definitions to a file
-pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>, file_name: &str) -> io::Result<()> {
+pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>, file_name: &str, prefixes: &mut HashMap<String, String>) -> io::Result<()> {
     let mut element_definitions_string = String::new();
 
     // Build the element definitions as a string
@@ -114,7 +115,16 @@ pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>
         element_definitions_string.push_str("#[derive(Debug, Serialize, Deserialize)]\n");
         element_definitions_string.push_str(&format!("pub struct {} {{\n", name));
         element_definitions_string.push_str("    #[serde(flatten)]\n");
-        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), remove_prefix(typ)));
+
+        let field_type = handle_prefix(typ, prefixes);
+
+        let typ = if let Some(ft) = XSD_TO_RUST.get(&field_type.replace("Xs", "")) {
+            ft.to_string()
+        } else {
+            field_type.to_string()
+        };
+
+        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), typ));
         element_definitions_string.push_str("}\n\n");
     }
 

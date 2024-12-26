@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestCentreMessageType {
     #[serde(rename = "@id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "@schemaPackageVersion")]
     pub schema_package_version: CoForestDataStandardSchemaPackageVersionType,
     #[serde(rename = "@schemaPackageSubversion")]

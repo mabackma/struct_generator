@@ -1,5 +1,5 @@
 use crate::element_utils::{element_name, element_reference, element_type, extension_type, parse_type, reference_type};
-use crate::string_utils::{remove_prefix, slice_contents};
+use crate::string_utils::{handle_prefix, slice_contents};
 
 use std::collections::HashMap;
 use quick_xml::events::BytesStart;
@@ -43,6 +43,7 @@ pub fn create_structs(
     structs: &mut HashMap<String, XMLStruct>,
     element_definitions: &mut HashMap<String, String>,
     content: &str,
+    prefixes: &mut HashMap<String, String>,
 ) {
     let mut stack: Vec<XMLStruct> = Vec::new(); // Stack to keep track of active structs
     let mut current_name = String::new(); // Name of the current structure
@@ -54,7 +55,7 @@ pub fn create_structs(
                 if e.name() == QName(b"xs:complexType") || e.name() == QName(b"xs:simpleType") {
                     if let Some(name) = element_name(e) {
                         current_name = name.clone();
-
+                        //println!("Creating struct: {}", name);
                         // Create a new struct for this element
                         let new_struct = XMLStruct {
                             name: current_name.clone(),
@@ -66,7 +67,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:extension") || e.name() == QName(b"xs:restriction") {
-                    add_extension_fields(&mut stack, e);
+                    add_extension_fields(&mut stack, e, prefixes);
                 }
 
                 if e.name() == QName(b"xs:element") {
@@ -78,12 +79,12 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
-                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types);
+                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types, prefixes);
                 }
             }
             Ok(Empty(ref e)) => {
                 if e.name() == QName(b"xs:extension") || e.name() == QName(b"xs:restriction") {
-                    add_extension_fields(&mut stack, e);
+                    add_extension_fields(&mut stack, e, prefixes);
                 }
 
                 if e.name() == QName(b"xs:element") {
@@ -91,7 +92,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
-                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types);
+                    elements_and_groups(&mut stack, e, &element_definitions, &mut anonymous_complex_types, prefixes);
                 }
             }
             Ok(End(ref e)) => {
@@ -107,7 +108,9 @@ pub fn create_structs(
                         if let Some(existing_struct) = structs.get_mut(&completed_struct.name.clone()) {
 
                             // Merge fields: add only new unique fields
-                            for field in completed_struct.fields {
+                            for mut field in completed_struct.fields {
+                                field.field_type = field.field_type.replace("xs:", "");
+
                                 if !existing_struct.fields.iter().any(|f| f.name == field.name) {
                                     existing_struct.fields.push(field.clone());
                                 }
@@ -125,6 +128,8 @@ pub fn create_structs(
         }
     }
 
+    remove_empty_structs(structs);
+
     attributes_first(structs);
 }
 
@@ -136,19 +141,19 @@ pub fn add_element_definition(e: &BytesStart<'_>, element_definitions: &mut Hash
     if let Some(n) = name {
         if let Some(t) = typ {
             if element_definitions.contains_key(&n) && element_definitions[&n] != t {
-                println!("Existing definition {}: {} -> {}", n, element_definitions[&n], t);
+                //println!("Existing definition {}: {} -> {}", n, element_definitions[&n], t);
             }
 
             element_definitions.insert(n, t);
         } else {
             if let Some(_) = slice_contents(content, "element",&n) {
-                println!("Anonymous complex type: {}", n);
                 // Update the current name when creating a new struct
                 *current_name = n.clone();
 
                 anonymous_complex_types.push(n.clone());
 
                 // Create a struct for the anonymous complex type
+                //println!("Creating struct for anonymous complex type: {}", n);
                 let new_struct = XMLStruct {
                     name: n.clone(),
                     fields: Vec::new(),
@@ -201,7 +206,7 @@ fn add_group_definition(e: &BytesStart<'_>, content: &str, structs: &mut HashMap
                 Ok(End(ref ge)) => {
                     if ge.name() == QName(b"xs:group") {
                         let name = element_name(e).unwrap_or("".to_string());
-    
+                        //println!("Creating struct for group: {}", name);
                         // Create a struct for the group type
                         let new_struct = XMLStruct {
                             name: name.clone(),
@@ -224,7 +229,7 @@ fn add_group_definition(e: &BytesStart<'_>, content: &str, structs: &mut HashMap
 }
 
 // Add elements, groups, and attributes as fields to the struct
-fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &HashMap<String, String>, anonymous_complex_types: &mut Vec<String>) {
+fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &HashMap<String, String>, anonymous_complex_types: &mut Vec<String>, prefixes: &mut HashMap<String, String>) {
 
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
@@ -239,12 +244,15 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
 
             if let Some(typ) = element_type(e) {
                 field_type = typ;
-            } else if let Some(typ) = reference_type(&n, element_definitions) {
+            } else if let Some(typ) = reference_type(&n, element_definitions, prefixes) {
                 field_type = typ;   
             }
 
-            n = remove_prefix(&n);
-            field_type = remove_prefix(&field_type);
+            n = handle_prefix(&n, prefixes);
+            field_type = handle_prefix(&field_type, prefixes);
+
+            // Handle the case where the prefix is Xs
+            field_type = field_type.replace("Xs", "");
 
             // Define vector and optional types
             parse_type(e, &mut field_type);
@@ -267,14 +275,14 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
 }
 
 // Add extension fields to the struct
-fn add_extension_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>) {
+fn add_extension_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, prefixes: &mut HashMap<String, String>) {
 
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
         let mut field_type = "".to_string();
 
         if let Some(typ) = extension_type(e) {
-            field_type = remove_prefix(&typ);
+            field_type = handle_prefix(&typ, prefixes);
         }
 
         // Add the field to the parent struct
@@ -306,5 +314,20 @@ fn attributes_first(structs: &mut HashMap<String, XMLStruct>) {
             name: xml_struct.name.clone(),
             fields: attribute_fields,
         };
+    }
+}
+
+// Remove empty structs
+fn remove_empty_structs(structs: &mut HashMap<String, XMLStruct>) {
+    let mut empty_structs: Vec<String> = Vec::new();
+
+    for (name, xml_struct) in structs.iter() {
+        if xml_struct.fields.is_empty() {
+            empty_structs.push(name.clone());
+        }
+    }
+
+    for name in empty_structs {
+        structs.remove(&name);
     }
 }

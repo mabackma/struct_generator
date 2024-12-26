@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessagesType {
-    #[serde(rename = "ErrorMessageData")]
-    pub error_message_data: Vec<ErrorMessageDataType>,
+pub struct EstateOwnerType {
+    #[serde(rename = "CiNameAndOrganizationGroup")]
+    pub ci_name_and_organization_group: Vec<NameAndOrganizationGroup>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,8 +53,8 @@ pub struct ForestCentreReplyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EstateOwnerType {
-    #[serde(rename = "CiNameAndOrganizationGroup")]
-    pub ci_name_and_organization_group: Vec<String>,
+pub struct ErrorMessagesType {
+    #[serde(rename = "ErrorMessageData")]
+    pub error_message_data: Vec<ErrorMessageDataType>,
 }
 

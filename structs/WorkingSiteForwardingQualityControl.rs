@@ -1,15 +1,17 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrientationType {
-    #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CalibrationType {
     #[serde(rename = "CalibrationDate")]
     pub calibration_date: BdtTimeStampType,
     #[serde(rename = "CalibrationAdjustment")]
     pub calibration_adjustment: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleDataType {
+    #[serde(rename = "ScaledMass")]
+    pub scaled_mass: BdtDecimal1FractionDigitType,
+    #[serde(rename = "Orientation")]
+    pub orientation: OrientationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,7 +37,7 @@ pub struct WorkingSiteForwardingQualityControlType {
     #[serde(rename = "FileName")]
     pub file_name: BdtString100Type,
     #[serde(rename = "Bytes")]
-    pub bytes: Xsbase64Binary,
+    pub bytes: Vec<u8>,
     #[serde(rename = "ScaleData")]
     pub scale_data: Vec<ScaleDataType>,
     #[serde(rename = "Calibration", skip_serializing_if = "Option::is_none")]
@@ -43,10 +45,8 @@ pub struct WorkingSiteForwardingQualityControlType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleDataType {
-    #[serde(rename = "ScaledMass")]
-    pub scaled_mass: BdtDecimal1FractionDigitType,
-    #[serde(rename = "Orientation")]
-    pub orientation: OrientationType,
+pub struct OrientationType {
+    #[serde(flatten)]
+    pub base: String,
 }
 

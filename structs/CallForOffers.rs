@@ -7,6 +7,6 @@ pub struct CallForOffers {
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: CoDateType,
     #[serde(rename = "CfoCallForOffer")]
-    pub cfo_call_for_offer: Vec<String>,
+    pub cfo_call_for_offer: Vec<CallForOffer>,
 }
 

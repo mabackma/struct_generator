@@ -7,6 +7,6 @@ pub struct BusinessAcceptancesType {
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: CoDateType,
     #[serde(rename = "BaBusinessAcceptance", skip_serializing_if = "Option::is_none")]
-    pub ba_business_acceptance: Option<Vec<String>>,
+    pub ba_business_acceptance: Option<Vec<BusinessAcceptance>>,
 }
 

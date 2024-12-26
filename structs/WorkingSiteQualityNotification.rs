@@ -1,4 +1,14 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DisQualificationReasonDataType {
+    #[serde(rename = "DisQualificationReason")]
+    pub dis_qualification_reason: BdtString10Type,
+    #[serde(rename = "DisQualificationReasonText")]
+    pub dis_qualification_reason_text: BdtString200Type,
+    #[serde(rename = "DisQualificationPercentage")]
+    pub dis_qualification_percentage: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct DisQualificationReasonsType {
     #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
     pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
@@ -37,20 +47,10 @@ pub struct WorkingSiteQualityNotificationType {
     #[serde(rename = "CuttingAccuracySign")]
     pub cutting_accuracy_sign: BdtString5Type,
     #[serde(rename = "Document", skip_serializing_if = "Option::is_none")]
-    pub document: Option<Xsbase64Binary>,
+    pub document: Option<base64Binary>,
     #[serde(rename = "Image", skip_serializing_if = "Option::is_none")]
-    pub image: Option<Xsbase64Binary>,
+    pub image: Option<base64Binary>,
     #[serde(rename = "DisQualificationReasons")]
     pub dis_qualification_reasons: DisQualificationReasonsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonDataType {
-    #[serde(rename = "DisQualificationReason")]
-    pub dis_qualification_reason: BdtString10Type,
-    #[serde(rename = "DisQualificationReasonText")]
-    pub dis_qualification_reason_text: BdtString200Type,
-    #[serde(rename = "DisQualificationPercentage")]
-    pub dis_qualification_percentage: BdtDecimal2FractionDigitsType,
 }
 

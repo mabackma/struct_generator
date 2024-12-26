@@ -1,15 +1,39 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionUnitType {
+    #[serde(flatten)]
+    pub base: CoUnitPerHectareType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ProductType {
     #[serde(rename = "@id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "@operationId")]
-    pub operation_id: Xsstring,
+    pub operation_id: String,
     #[serde(rename = "@standId")]
-    pub stand_id: Xsstring,
+    pub stand_id: String,
     #[serde(rename = "@productId")]
-    pub product_id: Xsstring,
+    pub product_id: String,
     #[serde(rename = "ProductKeyGroup")]
-    pub product_key_group: String,
+    pub product_key_group: ProductKeyGroup,
     #[serde(rename = "ProductName")]
     pub product_name: CoString500Type,
     #[serde(rename = "Quantity")]
@@ -33,46 +57,10 @@ pub struct ProductType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: CoOperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PlannedResourceType {
     #[serde(rename = "@Id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "PlannedResource")]
     pub planned_resource: WtcPlannedResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationInfoGroup {
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductKeyGroup {
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationTypeType {
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
-    #[serde(flatten)]
-    pub base: CoUnitPerHectareType,
 }
 

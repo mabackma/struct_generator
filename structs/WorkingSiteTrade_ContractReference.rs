@@ -1,45 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractEndingDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractWorkingSitesType {
     #[serde(rename = "ContractWorkingSiteDetails")]
     pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractIdType {
+pub struct ContractBeginningDateType {
     #[serde(flatten)]
-    pub base: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSiteDetailsType {
-    #[serde(rename = "@parentId")]
-    pub parent_id: Xsstring,
-    #[serde(rename = "@parentVersionNo")]
-    pub parent_version_no: Xsint,
-    #[serde(rename = "@id")]
-    pub id: Xsstring,
-    #[serde(rename = "WorkingSiteText", skip_serializing_if = "Option::is_none")]
-    pub working_site_text: Option<CoString1500Type>,
-    #[serde(rename = "AsAssortmentClasses")]
-    pub as_assortment_classes: String,
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ContractType {
     #[serde(rename = "@parentId")]
-    pub parent_id: Xsstring,
+    pub parent_id: String,
     #[serde(rename = "@parentVersionNo")]
-    pub parent_version_no: Xsint,
+    pub parent_version_no: i32,
     #[serde(rename = "@id")]
-    pub id: Xsstring,
+    pub id: String,
     #[serde(rename = "CoTimeStamp")]
-    pub co_time_stamp: String,
+    pub co_time_stamp: TimeStamp,
     #[serde(rename = "ContractId")]
     pub contract_id: ContractIdType,
     #[serde(rename = "ContractBeginningDate")]
@@ -51,11 +31,31 @@ pub struct ContractType {
     #[serde(rename = "ContractWorkingSites", skip_serializing_if = "Option::is_none")]
     pub contract_working_sites: Option<ContractWorkingSitesType>,
     #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
-    pub wtco_documents: Option<String>,
+    pub wtco_documents: Option<Documents>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractBeginningDateType {
+pub struct ContractWorkingSiteDetailsType {
+    #[serde(rename = "@parentId")]
+    pub parent_id: String,
+    #[serde(rename = "@parentVersionNo")]
+    pub parent_version_no: i32,
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "WorkingSiteText", skip_serializing_if = "Option::is_none")]
+    pub working_site_text: Option<CoString1500Type>,
+    #[serde(rename = "AsAssortmentClasses")]
+    pub as_assortment_classes: AssortmentClasses,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractIdType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractEndingDateType {
     #[serde(flatten)]
     pub base: CoDateType,
 }
