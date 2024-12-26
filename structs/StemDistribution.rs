@@ -1,7 +1,37 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterType {
+    #[serde(flatten)]
+    pub base: CoDiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PulpWoodVolumeType {
+    #[serde(flatten)]
+    pub base: CoPulpWoodVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeClassType {
+    #[serde(flatten)]
+    pub base: CoTreeClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoreyType {
+    #[serde(flatten)]
+    pub base: CoStoreyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CountType {
     #[serde(flatten)]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AgeType {
+    #[serde(flatten)]
+    pub base: CoAgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -14,30 +44,6 @@ pub struct SawLogVolumeType {
 pub struct StemDistributionType {
     #[serde(rename = "Tree")]
     pub tree: Vec<TreeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeNumberType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClassType {
-    #[serde(flatten)]
-    pub base: CoTreeClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterType {
-    #[serde(flatten)]
-    pub base: CoDiameterType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
-    #[serde(flatten)]
-    pub base: CoVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,21 +83,15 @@ pub struct TreeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
+pub struct TreeNumberType {
     #[serde(flatten)]
-    pub base: CoStoreyType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AgeType {
+pub struct VolumeType {
     #[serde(flatten)]
-    pub base: CoAgeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolumeType {
-    #[serde(flatten)]
-    pub base: CoPulpWoodVolumeType,
+    pub base: CoVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

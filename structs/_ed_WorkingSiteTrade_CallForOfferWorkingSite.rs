@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InformedActor {
+pub struct SceneryWorkPermissionAcceptance {
     #[serde(flatten)]
-    pub informed_actor: CiContactInformationType,
+    pub scenery_work_permission_acceptance: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,57 +11,21 @@ pub struct IncludeInOffer {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SceneryWorkPermissionAcceptance {
-    #[serde(flatten)]
-    pub scenery_work_permission_acceptance: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteName {
-    #[serde(flatten)]
-    pub working_site_name: WtcoWorkingSiteNameType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilviculturalOperation {
-    #[serde(flatten)]
-    pub silvicultural_operation: SilviculturalOperationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSiteSilvicultureInfo {
-    #[serde(flatten)]
-    pub call_for_offer_working_site_silviculture_info: CallForOfferWorkingSiteSilvicultureInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSitePlan {
     #[serde(flatten)]
     pub working_site_plan: WtcoWorkingSitePlanType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SceneryWorkPermissionNeeded {
-    #[serde(flatten)]
-    pub scenery_work_permission_needed: CoSceneryWorkPermissionNeededType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Products {
-    #[serde(flatten)]
-    pub products: PrProductsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RoadUsingRight {
-    #[serde(flatten)]
-    pub road_using_right: WtcoRoadUsingRightType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CallForOfferWorkingSiteWoodTradeInfo {
     #[serde(flatten)]
     pub call_for_offer_working_site_wood_trade_info: WtcoCallForOfferWorkingSiteWoodTradeInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteName {
+    #[serde(flatten)]
+    pub working_site_name: WtcoWorkingSiteNameType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,9 +47,27 @@ pub struct CFOWorkingSite {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SilviculturalOperation {
+    #[serde(flatten)]
+    pub silvicultural_operation: SilviculturalOperationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteGeometries {
     #[serde(flatten)]
     pub working_site_geometries: WtcoWorkingSiteGeometriesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RoadUsingRight {
+    #[serde(flatten)]
+    pub road_using_right: WtcoRoadUsingRightType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VATInfo {
+    #[serde(flatten)]
+    pub v_a_t_info: WtcoVATInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,14 +77,32 @@ pub struct WorkingSiteText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct InformedActor {
+    #[serde(flatten)]
+    pub informed_actor: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Sellers {
     #[serde(flatten)]
     pub sellers: WtcoSellersType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VATInfo {
+pub struct Products {
     #[serde(flatten)]
-    pub v_a_t_info: WtcoVATInfoType,
+    pub products: PrProductsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SceneryWorkPermissionNeeded {
+    #[serde(flatten)]
+    pub scenery_work_permission_needed: CoSceneryWorkPermissionNeededType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferWorkingSiteSilvicultureInfo {
+    #[serde(flatten)]
+    pub call_for_offer_working_site_silviculture_info: CallForOfferWorkingSiteSilvicultureInfoType,
 }
 

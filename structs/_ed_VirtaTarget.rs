@@ -1,7 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TargetParts {
+pub struct Target {
     #[serde(flatten)]
-    pub target_parts: TargetPartsType,
+    pub target: TargetType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatAdvertisement {
+    #[serde(flatten)]
+    pub habitat_advertisement: VirtaHabitatAdvertisementType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetId {
+    #[serde(flatten)]
+    pub target_id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetExtraInfo {
+    #[serde(flatten)]
+    pub target_extra_info: VirtaExtraInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,9 +29,21 @@ pub struct TargetNumber {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TargetExtraInfo {
+pub struct EstablishedPartNumber {
     #[serde(flatten)]
-    pub target_extra_info: VirtaExtraInfoType,
+    pub established_part_number: VirtaPartNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetAnnouncedAmount {
+    #[serde(flatten)]
+    pub target_announced_amount: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetParts {
+    #[serde(flatten)]
+    pub target_parts: TargetPartsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -26,35 +56,5 @@ pub struct BasePartNumber {
 pub struct Status2 {
     #[serde(flatten)]
     pub status2: CoChangeStateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetAnnouncedAmount {
-    #[serde(flatten)]
-    pub target_announced_amount: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatAdvertisement {
-    #[serde(flatten)]
-    pub habitat_advertisement: VirtaHabitatAdvertisementType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EstablishedPartNumber {
-    #[serde(flatten)]
-    pub established_part_number: VirtaPartNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Target {
-    #[serde(flatten)]
-    pub target: TargetType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetId {
-    #[serde(flatten)]
-    pub target_id: String,
 }
 

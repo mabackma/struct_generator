@@ -1,4 +1,32 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditRoadMakingType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: BdtString20Type,
+    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
+    pub resource_id: Option<BdtString20Type>,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: WctERPIdType,
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: BdtString20Type,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: BdtWorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: BdtWorkCodeType,
+    #[serde(rename = "Area")]
+    pub area: BdtDecimal2FractionDigitsType,
+    #[serde(rename = "WorkingTime")]
+    pub working_time: BdtDateType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString1000Type>,
+    #[serde(rename = "Images")]
+    pub images: BdtPositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AuditionType {
     #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
     pub final_audit_type: Option<BdtFinalAuditTypeType>,
@@ -56,33 +84,5 @@ pub struct AuditsType {
     pub feedback_for_planner: Option<BdtWorkingQualityType>,
     #[serde(rename = "FeedbackForPlannerText", skip_serializing_if = "Option::is_none")]
     pub feedback_for_planner_text: Option<BdtString200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditRoadMakingType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
-    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<BdtString20Type>,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: WctERPIdType,
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: BdtString20Type,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: BdtWorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: BdtWorkCodeType,
-    #[serde(rename = "Area")]
-    pub area: BdtDecimal2FractionDigitsType,
-    #[serde(rename = "WorkingTime")]
-    pub working_time: BdtDateType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString1000Type>,
-    #[serde(rename = "Images")]
-    pub images: BdtPositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
 }
 

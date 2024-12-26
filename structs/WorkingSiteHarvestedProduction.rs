@@ -1,70 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeVolumeType {
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: WctStanfordTreeSpeciesType,
-    #[serde(rename = "StemType")]
-    pub stem_type: BdtHarvestingStemTypeType,
-    #[serde(rename = "DBH")]
-    pub dbh: BdtPositiveInteger3digitsType,
-    #[serde(rename = "Count")]
-    pub count: BdtPositiveInteger6digitsType,
-    #[serde(rename = "Volume")]
-    pub volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeVolumesType {
-    #[serde(rename = "StemTypeVolume")]
-    pub stem_type_volume: Vec<StemTypeVolumeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolumeType {
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: WctStanfordTreeSpeciesType,
-    #[serde(rename = "StemType")]
-    pub stem_type: BdtHarvestingStemTypeType,
-    #[serde(rename = "ProductUserId")]
-    pub product_user_id: BdtString100Type,
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: BdtString20Type,
-    #[serde(rename = "Assortment")]
-    pub assortment: BdtString50Type,
-    #[serde(rename = "Quality")]
-    pub quality: BdtString5Type,
-    #[serde(rename = "Count")]
-    pub count: BdtPositiveInteger6digitsType,
-    #[serde(rename = "Volume")]
-    pub volume: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "RunningMeters")]
-    pub running_meters: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentMatrixVolumeType {
-    #[serde(rename = "ProductUserId")]
-    pub product_user_id: BdtString100Type,
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: BdtString20Type,
-    #[serde(rename = "Assortment")]
-    pub assortment: BdtString50Type,
-    #[serde(rename = "AssortmentName")]
-    pub assortment_name: BdtString50Type,
-    #[serde(rename = "Quality")]
-    pub quality: BdtString5Type,
-    #[serde(rename = "LengthClass")]
-    pub length_class: BdtPositiveInteger4digitsType,
-    #[serde(rename = "DiameterClass")]
-    pub diameter_class: BdtPositiveInteger4digitsType,
-    #[serde(rename = "Count")]
-    pub count: BdtPositiveInteger6digitsType,
-    #[serde(rename = "Volume")]
-    pub volume: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "RunningMeters")]
-    pub running_meters: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteHarvestedProductionType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -107,17 +41,53 @@ pub struct WorkingSiteHarvestedProductionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIdsType {
-    #[serde(rename = "ProductUserId")]
-    pub product_user_id: BdtString100Type,
-    #[serde(rename = "ModificationDate")]
-    pub modification_date: BdtTimeStampType,
+pub struct AssortmentVolumesUnclassifiedType {
+    #[serde(rename = "AssortmentVolumeUnclassified")]
+    pub assortment_volume_unclassified: Vec<AssortmentVolumeUnclassifiedType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentMatrixVolumesType {
     #[serde(rename = "AssortmentMatrixVolume")]
     pub assortment_matrix_volume: Vec<AssortmentMatrixVolumeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentMatrixVolumeType {
+    #[serde(rename = "ProductUserId")]
+    pub product_user_id: BdtString100Type,
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: BdtString20Type,
+    #[serde(rename = "Assortment")]
+    pub assortment: BdtString50Type,
+    #[serde(rename = "AssortmentName")]
+    pub assortment_name: BdtString50Type,
+    #[serde(rename = "Quality")]
+    pub quality: BdtString5Type,
+    #[serde(rename = "LengthClass")]
+    pub length_class: BdtPositiveInteger4digitsType,
+    #[serde(rename = "DiameterClass")]
+    pub diameter_class: BdtPositiveInteger4digitsType,
+    #[serde(rename = "Count")]
+    pub count: BdtPositiveInteger6digitsType,
+    #[serde(rename = "Volume")]
+    pub volume: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "RunningMeters")]
+    pub running_meters: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemTypeVolumeType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: WctStanfordTreeSpeciesType,
+    #[serde(rename = "StemType")]
+    pub stem_type: BdtHarvestingStemTypeType,
+    #[serde(rename = "DBH")]
+    pub dbh: BdtPositiveInteger3digitsType,
+    #[serde(rename = "Count")]
+    pub count: BdtPositiveInteger6digitsType,
+    #[serde(rename = "Volume")]
+    pub volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -143,14 +113,44 @@ pub struct AssortmentVolumeUnclassifiedType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentVolumeType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: WctStanfordTreeSpeciesType,
+    #[serde(rename = "StemType")]
+    pub stem_type: BdtHarvestingStemTypeType,
+    #[serde(rename = "ProductUserId")]
+    pub product_user_id: BdtString100Type,
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: BdtString20Type,
+    #[serde(rename = "Assortment")]
+    pub assortment: BdtString50Type,
+    #[serde(rename = "Quality")]
+    pub quality: BdtString5Type,
+    #[serde(rename = "Count")]
+    pub count: BdtPositiveInteger6digitsType,
+    #[serde(rename = "Volume")]
+    pub volume: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "RunningMeters")]
+    pub running_meters: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemTypeVolumesType {
+    #[serde(rename = "StemTypeVolume")]
+    pub stem_type_volume: Vec<StemTypeVolumeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentVolumesType {
     #[serde(rename = "AssortmentVolume")]
     pub assortment_volume: Vec<AssortmentVolumeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentVolumesUnclassifiedType {
-    #[serde(rename = "AssortmentVolumeUnclassified")]
-    pub assortment_volume_unclassified: Vec<AssortmentVolumeUnclassifiedType>,
+pub struct ProductUserIdsType {
+    #[serde(rename = "ProductUserId")]
+    pub product_user_id: BdtString100Type,
+    #[serde(rename = "ModificationDate")]
+    pub modification_date: BdtTimeStampType,
 }
 

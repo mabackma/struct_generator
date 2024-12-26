@@ -1,16 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClass {
-    #[serde(flatten)]
-    pub tree_class: CoTreeClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifier {
-    #[serde(flatten)]
-    pub tree_identifier: TreeIdentifierType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Type {
     #[serde(flatten)]
     pub r#type: i32,
@@ -23,9 +11,9 @@ pub struct TreeIdentifiers {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeNumber {
+pub struct TreeIdentifier {
     #[serde(flatten)]
-    pub tree_number: i32,
+    pub tree_identifier: TreeIdentifierType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

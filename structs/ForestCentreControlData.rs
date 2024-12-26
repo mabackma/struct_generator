@@ -1,11 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlObjectDataType {
-    #[serde(rename = "@id")]
-    pub id: CoIdStringType,
-    #[serde(rename = "CodAdditionalDetails", skip_serializing_if = "Option::is_none")]
-    pub cod_additional_details: Option<AdditionalDetails>,
-    #[serde(rename = "Objects")]
-    pub objects: ControlObjectsType,
+pub struct ControlObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<CodForestCentreControlObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,8 +13,12 @@ pub struct ForestCentreControlDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<CodForestCentreControlObjectType>,
+pub struct ControlObjectDataType {
+    #[serde(rename = "@id")]
+    pub id: CoIdStringType,
+    #[serde(rename = "CodAdditionalDetails", skip_serializing_if = "Option::is_none")]
+    pub cod_additional_details: Option<AdditionalDetails>,
+    #[serde(rename = "Objects")]
+    pub objects: ControlObjectsType,
 }
 

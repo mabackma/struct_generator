@@ -1,13 +1,27 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectTypeType {
-    #[serde(flatten)]
-    pub base: String,
+pub struct ForestRealizationDataType {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "AdditionalDetails")]
+    pub additional_details: CoString2000Type,
+    #[serde(rename = "Sender")]
+    pub sender: CiContactInformationType,
+    #[serde(rename = "UseCase")]
+    pub use_case: String,
+    #[serde(rename = "GeometryObjects")]
+    pub geometry_objects: GeometryObjectsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct GeometryObjectsType {
     #[serde(rename = "GeometryObject")]
     pub geometry_object: Vec<GeometryObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectTypeType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -22,6 +36,14 @@ pub struct ObjectGeometryType {
     pub area_decrease: Option<CoAreaType>,
     #[serde(rename = "GdtAlternativeGeometriesGroup")]
     pub gdt_alternative_geometries_group: AlternativeGeometriesGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParentObjectType {
+    #[serde(rename = "ParentObjectType")]
+    pub parent_object_type: ObjectTypeType,
+    #[serde(rename = "ParentObjectId")]
+    pub parent_object_id: CoIdStringNotEmptyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -48,27 +70,5 @@ pub struct GeometryObjectType {
 pub struct ParentObjectsType {
     #[serde(rename = "ParentObject")]
     pub parent_object: Vec<ParentObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectType {
-    #[serde(rename = "ParentObjectType")]
-    pub parent_object_type: ObjectTypeType,
-    #[serde(rename = "ParentObjectId")]
-    pub parent_object_id: CoIdStringNotEmptyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestRealizationDataType {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "AdditionalDetails")]
-    pub additional_details: CoString2000Type,
-    #[serde(rename = "Sender")]
-    pub sender: CiContactInformationType,
-    #[serde(rename = "UseCase")]
-    pub use_case: String,
-    #[serde(rename = "GeometryObjects")]
-    pub geometry_objects: GeometryObjectsType,
 }
 

@@ -1,12 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CalibrationType {
-    #[serde(rename = "CalibrationDate")]
-    pub calibration_date: BdtTimeStampType,
-    #[serde(rename = "CalibrationAdjustment")]
-    pub calibration_adjustment: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ScaleDataType {
     #[serde(rename = "ScaledMass")]
     pub scaled_mass: BdtDecimal1FractionDigitType,
@@ -48,5 +40,13 @@ pub struct WorkingSiteForwardingQualityControlType {
 pub struct OrientationType {
     #[serde(flatten)]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CalibrationType {
+    #[serde(rename = "CalibrationDate")]
+    pub calibration_date: BdtTimeStampType,
+    #[serde(rename = "CalibrationAdjustment")]
+    pub calibration_adjustment: BdtPositiveInteger3digitsType,
 }
 

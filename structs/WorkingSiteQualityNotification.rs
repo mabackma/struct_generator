@@ -9,12 +9,6 @@ pub struct DisQualificationReasonDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonsType {
-    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
-    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteQualityNotificationType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -52,5 +46,11 @@ pub struct WorkingSiteQualityNotificationType {
     pub image: Option<base64Binary>,
     #[serde(rename = "DisQualificationReasons")]
     pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DisQualificationReasonsType {
+    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
+    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
 }
 

@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaDamageClassType {
-    #[serde(flatten)]
-    pub base: CoVirtaDamageClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeType {
     #[serde(rename = "Status5")]
     pub status5: CoChangeStateType,
@@ -32,5 +26,11 @@ pub struct TreeType {
 pub struct VirtaWorkQualityType {
     #[serde(flatten)]
     pub base: CoVirtaWorkQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaDamageClassType {
+    #[serde(flatten)]
+    pub base: CoVirtaDamageClassType,
 }
 

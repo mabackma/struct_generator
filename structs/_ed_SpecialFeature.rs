@@ -1,19 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightCompensationAmount {
+pub struct UsingRightDescription {
     #[serde(flatten)]
-    pub using_right_compensation_amount: CoDecimal7And2Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureSpecificAdditionalVariables {
-    #[serde(flatten)]
-    pub feature_specific_additional_variables: FeatureSpecificAdditionalVariableType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightCompensationDescription {
-    #[serde(flatten)]
-    pub using_right_compensation_description: CoString1500Type,
+    pub using_right_description: CoString1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,15 +11,33 @@ pub struct UsingRight {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRightExaminedDate {
+    #[serde(flatten)]
+    pub using_right_examined_date: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureSpecificAdditionalVariables {
+    #[serde(flatten)]
+    pub feature_specific_additional_variables: FeatureSpecificAdditionalVariableType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRightCompensationAmount {
+    #[serde(flatten)]
+    pub using_right_compensation_amount: CoDecimal7And2Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct InventoryDate {
     #[serde(flatten)]
     pub inventory_date: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightCompensation {
+pub struct ForestDepotAccessibility {
     #[serde(flatten)]
-    pub using_right_compensation: CoYesNoNotKnownType,
+    pub forest_depot_accessibility: CoForestDepotAccessibilityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,15 +47,9 @@ pub struct ObservationDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightDescription {
+pub struct UsingRightCompensation {
     #[serde(flatten)]
-    pub using_right_description: CoString1500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightExaminedDate {
-    #[serde(flatten)]
-    pub using_right_examined_date: CoDateType,
+    pub using_right_compensation: CoYesNoNotKnownType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,14 +59,14 @@ pub struct UsingRightExists {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightCompensationResponsible {
+pub struct UsingRightCompensationDescription {
     #[serde(flatten)]
-    pub using_right_compensation_responsible: CoUsingRightResponsibleType,
+    pub using_right_compensation_description: CoString1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDepotAccessibility {
+pub struct UsingRightCompensationResponsible {
     #[serde(flatten)]
-    pub forest_depot_accessibility: CoForestDepotAccessibilityType,
+    pub using_right_compensation_responsible: CoUsingRightResponsibleType,
 }
 

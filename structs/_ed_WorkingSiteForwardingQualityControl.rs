@@ -1,19 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Orientation {
+pub struct Calibration {
     #[serde(flatten)]
-    pub orientation: OrientationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CalibrationDate {
-    #[serde(flatten)]
-    pub calibration_date: BdtTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperatorId {
-    #[serde(flatten)]
-    pub operator_id: BdtString20Type,
+    pub calibration: CalibrationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,21 +11,15 @@ pub struct CalibrationAdjustment {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ScaledMass {
+pub struct ForestOwner {
     #[serde(flatten)]
-    pub scaled_mass: BdtDecimal1FractionDigitType,
+    pub forest_owner: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlReferenceMass {
+pub struct FileName {
     #[serde(flatten)]
-    pub control_reference_mass: BdtDecimal1FractionDigitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleData {
-    #[serde(flatten)]
-    pub scale_data: ScaleDataType,
+    pub file_name: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,8 +29,50 @@ pub struct WorkingSiteForwardingQualityControl {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Calibration {
+pub struct Orientation {
     #[serde(flatten)]
-    pub calibration: CalibrationType,
+    pub orientation: OrientationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleData {
+    #[serde(flatten)]
+    pub scale_data: ScaleDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaledMass {
+    #[serde(flatten)]
+    pub scaled_mass: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementDate {
+    #[serde(flatten)]
+    pub measurement_date: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CalibrationDate {
+    #[serde(flatten)]
+    pub calibration_date: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MachineApplicationVersion {
+    #[serde(flatten)]
+    pub machine_application_version: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperatorId {
+    #[serde(flatten)]
+    pub operator_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlReferenceMass {
+    #[serde(flatten)]
+    pub control_reference_mass: BdtDecimal1FractionDigitType,
 }
 

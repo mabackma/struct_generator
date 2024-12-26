@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Payments {
+pub struct DecidedAmountUnit {
     #[serde(flatten)]
-    pub payments: PaymentsType,
+    pub decided_amount_unit: FccDecidedAmountUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CaseNumber {
+pub struct ForestCentrePayments {
     #[serde(flatten)]
-    pub case_number: FccFinancingActNumberType,
+    pub forest_centre_payments: ForestCentrePaymentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DecidedTotalSubsidy {
+    #[serde(flatten)]
+    pub decided_total_subsidy: FccDecidedTotalSubsidyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,15 +29,15 @@ pub struct PaymentTexts {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DecidedTotalSubsidy {
+pub struct CostTypeDescription {
     #[serde(flatten)]
-    pub decided_total_subsidy: FccDecidedTotalSubsidyType,
+    pub cost_type_description: FccCostTypeDescriptionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Subsidies {
+pub struct Subsidy {
     #[serde(flatten)]
-    pub subsidies: SubsidiesType,
+    pub subsidy: SubsidyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,21 +47,9 @@ pub struct DecidedAmount {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CostTypeDescription {
+pub struct Subsidies {
     #[serde(flatten)]
-    pub cost_type_description: FccCostTypeDescriptionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecidedAmountUnit {
-    #[serde(flatten)]
-    pub decided_amount_unit: FccDecidedAmountUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentrePayments {
-    #[serde(flatten)]
-    pub forest_centre_payments: ForestCentrePaymentsType,
+    pub subsidies: SubsidiesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,8 +59,14 @@ pub struct PaymentText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Subsidy {
+pub struct Payments {
     #[serde(flatten)]
-    pub subsidy: SubsidyType,
+    pub payments: PaymentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CaseNumber {
+    #[serde(flatten)]
+    pub case_number: FccFinancingActNumberType,
 }
 

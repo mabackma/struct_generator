@@ -1,7 +1,41 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BaseRealEstatesType2 {
-    #[serde(rename = "RealEstate")]
-    pub real_estate: Vec<BaseRealEstateType2>,
+pub struct BaseRealEstateType2 {
+    #[serde(rename = "@id")]
+    pub id: CoIdStringNotEmptyType,
+    #[serde(rename = "RegisterUnitId")]
+    pub register_unit_id: RegisterUnitIdType,
+    #[serde(rename = "UnseparetedParcelTypeChar", skip_serializing_if = "Option::is_none")]
+    pub unsepareted_parcel_type_char: Option<UnseparetedParcelTypeCharType>,
+    #[serde(rename = "UnseparetedParcelNumber", skip_serializing_if = "Option::is_none")]
+    pub unsepareted_parcel_number: Option<UnseparetedParcelNumberType>,
+    #[serde(rename = "RealEstateName")]
+    pub real_estate_name: RealEstateNameType,
+    #[serde(rename = "LocationMunicipalityNumber")]
+    pub location_municipality_number: CoMunicipalityNumberType,
+    #[serde(rename = "LocationMunicipalityName", skip_serializing_if = "Option::is_none")]
+    pub location_municipality_name: Option<CoMunicipalityNameType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParcelType {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "ParcelNumber")]
+    pub parcel_number: ParcelNumberType,
+    #[serde(rename = "StStands", skip_serializing_if = "Option::is_none")]
+    pub st_stands: Option<Stands>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UnseparetedParcelTypeCharType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParcelNumberType {
+    #[serde(flatten)]
+    pub base: CoPositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,9 +45,59 @@ pub struct RealEstateNameType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct RegisterUnitIdType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BaseRealEstatesType2 {
+    #[serde(rename = "RealEstate")]
+    pub real_estate: Vec<BaseRealEstateType2>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaNumberType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UnseparetedParcelNumberType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EstateRegisterUnitGroup {
+    #[serde(rename = "UnitNumber")]
+    pub unit_number: UnitNumber,
+    #[serde(rename = "MunicipalityName", skip_serializing_if = "Option::is_none")]
+    pub municipality_name: Option<MunicipalityName>,
+    #[serde(rename = "GroupNumber")]
+    pub group_number: GroupNumber,
+    #[serde(rename = "MunicipalityNumber")]
+    pub municipality_number: MunicipalityNumber,
+    #[serde(rename = "AreaNumber")]
+    pub area_number: AreaNumber,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GroupNumberType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct UnitNumberType {
     #[serde(flatten)]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParcelsType {
+    #[serde(rename = "Parcel")]
+    pub parcel: Vec<ParcelType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -37,75 +121,9 @@ pub struct BaseRealEstateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GroupNumberType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EstateRegisterUnitGroup {
-    #[serde(rename = "UnitNumber")]
-    pub unit_number: UnitNumber,
-    #[serde(rename = "MunicipalityName", skip_serializing_if = "Option::is_none")]
-    pub municipality_name: Option<MunicipalityName>,
-    #[serde(rename = "MunicipalityNumber")]
-    pub municipality_number: MunicipalityNumber,
-    #[serde(rename = "AreaNumber")]
-    pub area_number: AreaNumber,
-    #[serde(rename = "GroupNumber")]
-    pub group_number: GroupNumber,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RegisterUnitIdType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParcelType {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "ParcelNumber")]
-    pub parcel_number: ParcelNumberType,
-    #[serde(rename = "StStands", skip_serializing_if = "Option::is_none")]
-    pub st_stands: Option<Stands>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParcelsType {
-    #[serde(rename = "Parcel")]
-    pub parcel: Vec<ParcelType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct BaseRealEstatesType {
     #[serde(rename = "BaseRealEstate")]
     pub base_real_estate: Vec<BaseRealEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParcelNumberType {
-    #[serde(flatten)]
-    pub base: CoPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BaseRealEstateType2 {
-    #[serde(rename = "@id")]
-    pub id: CoIdStringNotEmptyType,
-    #[serde(rename = "RegisterUnitId")]
-    pub register_unit_id: RegisterUnitIdType,
-    #[serde(rename = "UnseparetedParcelTypeChar", skip_serializing_if = "Option::is_none")]
-    pub unsepareted_parcel_type_char: Option<UnseparetedParcelTypeCharType>,
-    #[serde(rename = "UnseparetedParcelNumber", skip_serializing_if = "Option::is_none")]
-    pub unsepareted_parcel_number: Option<UnseparetedParcelNumberType>,
-    #[serde(rename = "RealEstateName")]
-    pub real_estate_name: RealEstateNameType,
-    #[serde(rename = "LocationMunicipalityNumber")]
-    pub location_municipality_number: CoMunicipalityNumberType,
-    #[serde(rename = "LocationMunicipalityName", skip_serializing_if = "Option::is_none")]
-    pub location_municipality_name: Option<CoMunicipalityNameType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -114,23 +132,5 @@ pub struct RealEstateDataType {
     pub id: String,
     #[serde(rename = "BaseRealEstate")]
     pub base_real_estate: BaseRealEstateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaNumberType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UnseparetedParcelTypeCharType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UnseparetedParcelNumberType {
-    #[serde(flatten)]
-    pub base: String,
 }
 

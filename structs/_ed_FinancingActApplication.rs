@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActApplication {
+pub struct FinancingType {
     #[serde(flatten)]
-    pub financing_act_application: FinancingActApplicationType,
+    pub financing_type: CoFinancingActFinancingType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,8 +11,8 @@ pub struct PlanAndSubsidy {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingType {
+pub struct FinancingActApplication {
     #[serde(flatten)]
-    pub financing_type: CoFinancingActFinancingType,
+    pub financing_act_application: FinancingActApplicationType,
 }
 

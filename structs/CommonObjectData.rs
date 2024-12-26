@@ -1,21 +1,31 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ActorTypeSpecifierType {
-    #[serde(flatten)]
-    pub base: String,
+pub struct ControlEvaluationsType {
+    #[serde(rename = "ControlEvaluation")]
+    pub control_evaluation: Vec<ControlEvaluationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectType {
-    #[serde(rename = "@id")]
-    pub id: CoIdStringNotEmptyType,
-    #[serde(rename = "@objectType")]
-    pub object_type: CoObjectTypeType,
-    #[serde(rename = "@objectTypeSpecifier")]
-    pub object_type_specifier: ObjectTypeSpecifierType,
-    #[serde(rename = "ObjectGeometry", skip_serializing_if = "Option::is_none")]
-    pub object_geometry: Option<ObjectGeometryType>,
-    #[serde(rename = "ObjectDataGroup", skip_serializing_if = "Option::is_none")]
-    pub object_data_group: Option<ObjectDataGroup>,
+pub struct ControlOverallEvaluationDataType {
+    #[serde(rename = "RestrictionBasedOnStoniness", skip_serializing_if = "Option::is_none")]
+    pub restriction_based_on_stoniness: Option<CoRestrictionBasedOnStoninessType>,
+    #[serde(rename = "PreclearingEvaluation", skip_serializing_if = "Option::is_none")]
+    pub preclearing_evaluation: Option<CoPreclearingEvaluationType>,
+    #[serde(rename = "DeclarationDeliveringEvaluation", skip_serializing_if = "Option::is_none")]
+    pub declaration_delivering_evaluation: Option<CoEvaluationCodeType>,
+    #[serde(rename = "AreaAndMapEvaluation", skip_serializing_if = "Option::is_none")]
+    pub area_and_map_evaluation: Option<CoEvaluationCodeType>,
+    #[serde(rename = "OtherEvaluation", skip_serializing_if = "Option::is_none")]
+    pub other_evaluation: Option<CoEvaluationCodeType>,
+    #[serde(rename = "TreeDamageOutsideStandEvaluation", skip_serializing_if = "Option::is_none")]
+    pub tree_damage_outside_stand_evaluation: Option<CoEvaluationCodeType>,
+    #[serde(rename = "TerrainDamageOutsideStandEvaluation", skip_serializing_if = "Option::is_none")]
+    pub terrain_damage_outside_stand_evaluation: Option<CoEvaluationCodeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeStandDataType {
+    #[serde(rename = "TreeStandDataDate")]
+    pub tree_stand_data_date: Vec<TsTreeStandDataDate2Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,49 +75,27 @@ pub struct MooseDamageDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringEvaluationType {
-    #[serde(rename = "@assessorActorId")]
-    pub assessor_actor_id: CoIdStringType,
-    #[serde(rename = "@assessObjectActorId")]
-    pub assess_object_actor_id: CoIdStringType,
-    #[serde(rename = "EvaluationCode", skip_serializing_if = "Option::is_none")]
-    pub evaluation_code: Option<CoEvaluationCodeType>,
-    #[serde(rename = "EvaluationText", skip_serializing_if = "Option::is_none")]
-    pub evaluation_text: Option<CoString1000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlDataSpecialFeaturesType {
-    #[serde(rename = "ControlDataSpecialFeature")]
-    pub control_data_special_feature: Vec<ControlDataSpecialFeatureType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreForestDataUpdateObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<ForestCentreForestDataUpdateObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DamageDataType {
-    #[serde(rename = "Damage")]
-    pub damage: Vec<DamageType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ActorType {
-    #[serde(rename = "@actorType")]
-    pub actor_type: CoActorTypeType,
-    #[serde(rename = "@actorTypeSpecifier")]
-    pub actor_type_specifier: ActorTypeSpecifierType,
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
-    #[serde(rename = "ControlAdditionalInformation", skip_serializing_if = "Option::is_none")]
-    pub control_additional_information: Option<ControlAdditionalInformationType>,
-    #[serde(rename = "PowerOfAttorney", skip_serializing_if = "Option::is_none")]
-    pub power_of_attorney: Option<FccPowerOfAttorneyType>,
-    #[serde(rename = "PowerOfAttorneyDate", skip_serializing_if = "Option::is_none")]
-    pub power_of_attorney_date: Option<FccPowerOfAttorneyDateType>,
+pub struct SelfMonitoringObjectDataType {
+    #[serde(rename = "SelfMonitoringStandArea", skip_serializing_if = "Option::is_none")]
+    pub self_monitoring_stand_area: Option<CoAreaType>,
+    #[serde(rename = "GoalTreeSpecies", skip_serializing_if = "Option::is_none")]
+    pub goal_tree_species: Option<CoTreeSpeciesType>,
+    #[serde(rename = "GoalStemCount", skip_serializing_if = "Option::is_none")]
+    pub goal_stem_count: Option<CoStemCountType>,
+    #[serde(rename = "GoalAmountOfSoilPreparationSpot", skip_serializing_if = "Option::is_none")]
+    pub goal_amount_of_soil_preparation_spot: Option<CoPositiveInteger5digitsType>,
+    #[serde(rename = "RealAmountOfSoilPreparationSpot", skip_serializing_if = "Option::is_none")]
+    pub real_amount_of_soil_preparation_spot: Option<CoPositiveInteger5digitsType>,
+    #[serde(rename = "EstimatedWorkingTimeConsumption", skip_serializing_if = "Option::is_none")]
+    pub estimated_working_time_consumption: Option<CoPositiveInteger5digitsType>,
+    #[serde(rename = "TimeIntervalForMeasuringSamplePlot", skip_serializing_if = "Option::is_none")]
+    pub time_interval_for_measuring_sample_plot: Option<CoPositiveInteger5digitsType>,
+    #[serde(rename = "Notices", skip_serializing_if = "Option::is_none")]
+    pub notices: Option<CoString1000Type>,
+    #[serde(rename = "WorkSafetyRisks", skip_serializing_if = "Option::is_none")]
+    pub work_safety_risks: Option<WorkSafetyRisksType>,
+    #[serde(rename = "SoilPreparationSpotsAreEnough", skip_serializing_if = "Option::is_none")]
+    pub soil_preparation_spots_are_enough: Option<CoYesNoType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -167,9 +155,303 @@ pub struct ForestCentreControlObjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProjectNoType {
+pub struct ControlForestUseDeclarationType {
+    #[serde(rename = "CuttingRealizationPractice", skip_serializing_if = "Option::is_none")]
+    pub cutting_realization_practice: Option<CoCuttingTypeType>,
+    #[serde(rename = "HarvestingSignControlClassifier", skip_serializing_if = "Option::is_none")]
+    pub harvesting_sign_control_classifier: Option<CoEvaluationCodeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<ObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlDataSpecialFeatureType {
+    #[serde(rename = "HabitatCode", skip_serializing_if = "Option::is_none")]
+    pub habitat_code: Option<CoExtendedHabitatCodeType>,
+    #[serde(rename = "HabitatType", skip_serializing_if = "Option::is_none")]
+    pub habitat_type: Option<CoHabitatTypeType>,
+    #[serde(rename = "HabitatSurviving", skip_serializing_if = "Option::is_none")]
+    pub habitat_surviving: Option<CoYesNoType>,
+    #[serde(rename = "ExceptionalPermitForHandling", skip_serializing_if = "Option::is_none")]
+    pub exceptional_permit_for_handling: Option<CoYesNoType>,
+    #[serde(rename = "HabitatLocation", skip_serializing_if = "Option::is_none")]
+    pub habitat_location: Option<CoHabitatLocationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TwoDigitPositiveIntegerType {
     #[serde(flatten)]
-    pub base: CoReferenceType,
+    pub base: i32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreSelfMonitoringDataType {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "UpdatePreviousMessage")]
+    pub update_previous_message: CoYesNoType,
+    #[serde(rename = "CommonObjectDataReference")]
+    pub common_object_data_reference: CoReferenceType,
+    #[serde(rename = "AdditionalDetails")]
+    pub additional_details: CoString2000Type,
+    #[serde(rename = "Sender")]
+    pub sender: CiContactInformationType,
+    #[serde(rename = "UseCase")]
+    pub use_case: CoForestDataUpdateUseCaseType,
+    #[serde(rename = "Objects")]
+    pub objects: ForestCentreSelfMonitoringObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DamageDataType {
+    #[serde(rename = "Damage")]
+    pub damage: Vec<DamageType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ActorsType {
+    #[serde(rename = "Actor")]
+    pub actor: Vec<ActorType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlDataSpecialFeaturesType {
+    #[serde(rename = "ControlDataSpecialFeature")]
+    pub control_data_special_feature: Vec<ControlDataSpecialFeatureType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringEvaluationType {
+    #[serde(rename = "@assessorActorId")]
+    pub assessor_actor_id: CoIdStringType,
+    #[serde(rename = "@assessObjectActorId")]
+    pub assess_object_actor_id: CoIdStringType,
+    #[serde(rename = "EvaluationCode", skip_serializing_if = "Option::is_none")]
+    pub evaluation_code: Option<CoEvaluationCodeType>,
+    #[serde(rename = "EvaluationText", skip_serializing_if = "Option::is_none")]
+    pub evaluation_text: Option<CoString1000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlEvaluationType {
+    #[serde(rename = "EvaluationCategory", skip_serializing_if = "Option::is_none")]
+    pub evaluation_category: Option<CoEvaluationSubjectType>,
+    #[serde(rename = "EvaluationCode", skip_serializing_if = "Option::is_none")]
+    pub evaluation_code: Option<integer>,
+    #[serde(rename = "EvaluationDescription", skip_serializing_if = "Option::is_none")]
+    pub evaluation_description: Option<CoString1000Type>,
+    #[serde(rename = "MainReason", skip_serializing_if = "Option::is_none")]
+    pub main_reason: Option<CoYesNoType>,
+    #[serde(rename = "ReasonCode", skip_serializing_if = "Option::is_none")]
+    pub reason_code: Option<integer>,
+    #[serde(rename = "ReasonDescription", skip_serializing_if = "Option::is_none")]
+    pub reason_description: Option<CoString1000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringObjectProtectionOperationsDataType {
+    #[serde(rename = "BorderingWithWaterAreaOrStream", skip_serializing_if = "Option::is_none")]
+    pub bordering_with_water_area_or_stream: Option<CoYesNoType>,
+    #[serde(rename = "LengthOfDitchDiggedDuringSoilPreparation", skip_serializing_if = "Option::is_none")]
+    pub length_of_ditch_digged_during_soil_preparation: Option<CoPositiveInteger6digitsType>,
+    #[serde(rename = "ObjectProtectionOperations", skip_serializing_if = "Option::is_none")]
+    pub object_protection_operations: Option<ObjectProtectionOperationsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlAdditionalInformationType {
+    #[serde(rename = "PreinformDate", skip_serializing_if = "Option::is_none")]
+    pub preinform_date: Option<CoDateType>,
+    #[serde(rename = "PreinformDetails", skip_serializing_if = "Option::is_none")]
+    pub preinform_details: Option<CoString1000Type>,
+    #[serde(rename = "InTerrain", skip_serializing_if = "Option::is_none")]
+    pub in_terrain: Option<CoYesNoType>,
+    #[serde(rename = "Comments", skip_serializing_if = "Option::is_none")]
+    pub comments: Option<CoString1000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: CoWorkCodeType,
+    #[serde(rename = "MaterialCode", skip_serializing_if = "Option::is_none")]
+    pub material_code: Option<CoMaterialCodeType>,
+    #[serde(rename = "WorkCompletionDate", skip_serializing_if = "Option::is_none")]
+    pub work_completion_date: Option<CoDateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreForestDataUpdateObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<ForestCentreForestDataUpdateObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorksType {
+    #[serde(rename = "Work")]
+    pub work: Vec<WorkType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ChildObjectsType {
+    #[serde(rename = "ChildObject")]
+    pub child_object: Vec<ChildObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommonObjectDataType {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "AdditionalDetails")]
+    pub additional_details: CoString2000Type,
+    #[serde(rename = "Sender")]
+    pub sender: CiContactInformationType,
+    #[serde(rename = "UseCase")]
+    pub use_case: CoUseCaseType,
+    #[serde(rename = "Objects")]
+    pub objects: ObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlObjectBasicDataType {
+    #[serde(rename = "ObjectReferenceType", skip_serializing_if = "Option::is_none")]
+    pub object_reference_type: Option<CoForestCentreMessageReferenceType>,
+    #[serde(rename = "ObjectReference", skip_serializing_if = "Option::is_none")]
+    pub object_reference: Option<CoReferenceType>,
+    #[serde(rename = "ControlledOperationType", skip_serializing_if = "Option::is_none")]
+    pub controlled_operation_type: Option<CoCostTypeNumberType>,
+    #[serde(rename = "ControlledOperationDescription", skip_serializing_if = "Option::is_none")]
+    pub controlled_operation_description: Option<CoString100Type>,
+    #[serde(rename = "ObjectNumber", skip_serializing_if = "Option::is_none")]
+    pub object_number: Option<ObjectNumberType>,
+    #[serde(rename = "ExtraInfo", skip_serializing_if = "Option::is_none")]
+    pub extra_info: Option<CoString1000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstateType {
+    #[serde(flatten)]
+    pub base: ReBaseRealEstateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDataUpdateUseCasesType {
+    #[serde(rename = "UseCase", skip_serializing_if = "Option::is_none")]
+    pub use_case: Option<Vec<CoForestDataUpdateUseCaseType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectDataGroup {
+    #[serde(rename = "StandBasicData", skip_serializing_if = "Option::is_none")]
+    pub stand_basic_data: Option<StandBasicData>,
+    #[serde(rename = "ControlDataRegeneration", skip_serializing_if = "Option::is_none")]
+    pub control_data_regeneration: Option<ControlDataRegeneration>,
+    #[serde(rename = "SamplePlotBasicData", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_basic_data: Option<SamplePlotBasicData>,
+    #[serde(rename = "MapSymbol:MapSymbol", skip_serializing_if = "Option::is_none")]
+    pub map_symbol:_map_symbol: Option<MapSymbol:MapSymbol>,
+    #[serde(rename = "workingSiteFinalAuditRoadMaking:WorkingSiteFinalAuditRoadMaking", skip_serializing_if = "Option::is_none")]
+    pub working_site_final_audit_road_making:_working_site_final_audit_road_making: Option<workingSiteFinalAuditRoadMaking:WorkingSiteFinalAuditRoadMaking>,
+    #[serde(rename = "workingSiteFinalAuditDraining:WorkingSiteFinalAuditDraining", skip_serializing_if = "Option::is_none")]
+    pub working_site_final_audit_draining:_working_site_final_audit_draining: Option<workingSiteFinalAuditDraining:WorkingSiteFinalAuditDraining>,
+    #[serde(rename = "ts:TreeStandData", skip_serializing_if = "Option::is_none")]
+    pub ts:_tree_stand_data: Option<ts:TreeStandData>,
+    #[serde(rename = "HarvestingSignData", skip_serializing_if = "Option::is_none")]
+    pub harvesting_sign_data: Option<HarvestingSignData>,
+    #[serde(rename = "ControlDataWaterSystemProtection", skip_serializing_if = "Option::is_none")]
+    pub control_data_water_system_protection: Option<ControlDataWaterSystemProtection>,
+    #[serde(rename = "TreeStandBasedData", skip_serializing_if = "Option::is_none")]
+    pub tree_stand_based_data: Option<TreeStandBasedData>,
+    #[serde(rename = "RestrictionData", skip_serializing_if = "Option::is_none")]
+    pub restriction_data: Option<RestrictionData>,
+    #[serde(rename = "ControlObjectBasicData", skip_serializing_if = "Option::is_none")]
+    pub control_object_basic_data: Option<ControlObjectBasicData>,
+    #[serde(rename = "ChildObjects", skip_serializing_if = "Option::is_none")]
+    pub child_objects: Option<ChildObjects>,
+    #[serde(rename = "ControlDataMooseDamageData", skip_serializing_if = "Option::is_none")]
+    pub control_data_moose_damage_data: Option<ControlDataMooseDamageData>,
+    #[serde(rename = "ControlBasicData", skip_serializing_if = "Option::is_none")]
+    pub control_basic_data: Option<ControlBasicData>,
+    #[serde(rename = "SoilData", skip_serializing_if = "Option::is_none")]
+    pub soil_data: Option<SoilData>,
+    #[serde(rename = "ControlOverallEvaluationData", skip_serializing_if = "Option::is_none")]
+    pub control_overall_evaluation_data: Option<ControlOverallEvaluationData>,
+    #[serde(rename = "st:SpecialFeatures", skip_serializing_if = "Option::is_none")]
+    pub st:_special_features: Option<st:SpecialFeatures>,
+    #[serde(rename = "SelfMonitoringObjectProtectionOperationsData", skip_serializing_if = "Option::is_none")]
+    pub self_monitoring_object_protection_operations_data: Option<SelfMonitoringObjectProtectionOperationsData>,
+    #[serde(rename = "Actors", skip_serializing_if = "Option::is_none")]
+    pub actors: Option<Actors>,
+    #[serde(rename = "op:Operations", skip_serializing_if = "Option::is_none")]
+    pub op:_operations: Option<op:Operations>,
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
+    pub documents: Option<Documents>,
+    #[serde(rename = "ControlStandBasicData", skip_serializing_if = "Option::is_none")]
+    pub control_stand_basic_data: Option<ControlStandBasicData>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotSizeType {
+    #[serde(flatten)]
+    pub base: CoDecimal3And2PositiveType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlDataSwampForestManagementType {
+    #[serde(rename = "DitchMeanDepth")]
+    pub ditch_mean_depth: String,
+    #[serde(rename = "DitchMeanWidth")]
+    pub ditch_mean_width: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlDataTreeStandDataDateType {
+    #[serde(flatten)]
+    pub base: TsTreeStandDataDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectGeometryType {
+    #[serde(rename = "@collectingMethod")]
+    pub collecting_method: CoCollectingMethodType,
+    #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
+    pub co_change_state: Option<ChangeState>,
+    #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
+    pub co_change_time: Option<ChangeTime>,
+    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
+    pub area: Option<CoAreaType>,
+    #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
+    pub area_decrease: Option<CoAreaType>,
+    #[serde(rename = "Length", skip_serializing_if = "Option::is_none")]
+    pub length: Option<CoDecimal1FractionDigitType>,
+    #[serde(rename = "GdtAlternativeGeometriesGroup")]
+    pub gdt_alternative_geometries_group: AlternativeGeometriesGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDataUpdateType {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "CommonObjectDataReference")]
+    pub common_object_data_reference: CoReferenceType,
+    #[serde(rename = "Objects")]
+    pub objects: ForestCentreForestDataUpdateObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringEvaluationsType {
+    #[serde(rename = "SelfMonitoringEvaluation")]
+    pub self_monitoring_evaluation: Vec<SelfMonitoringEvaluationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ThreeDigitPositiveIntegerType {
+    #[serde(flatten)]
+    pub base: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -211,39 +493,97 @@ pub struct ForestObjectDataObjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlEvaluationType {
-    #[serde(rename = "EvaluationCategory", skip_serializing_if = "Option::is_none")]
-    pub evaluation_category: Option<CoEvaluationSubjectType>,
-    #[serde(rename = "EvaluationCode", skip_serializing_if = "Option::is_none")]
-    pub evaluation_code: Option<integer>,
-    #[serde(rename = "EvaluationDescription", skip_serializing_if = "Option::is_none")]
-    pub evaluation_description: Option<CoString1000Type>,
-    #[serde(rename = "MainReason", skip_serializing_if = "Option::is_none")]
-    pub main_reason: Option<CoYesNoType>,
-    #[serde(rename = "ReasonCode", skip_serializing_if = "Option::is_none")]
-    pub reason_code: Option<integer>,
-    #[serde(rename = "ReasonDescription", skip_serializing_if = "Option::is_none")]
-    pub reason_description: Option<CoString1000Type>,
+pub struct RegenerationDataType {
+    #[serde(rename = "CultivatedCropStemCount")]
+    pub cultivated_crop_stem_count: CoStemCountType,
+    #[serde(rename = "NaturalCropStemCount")]
+    pub natural_crop_stem_count: CoStemCountType,
+    #[serde(rename = "CompletingNaturalCropStemCount", skip_serializing_if = "Option::is_none")]
+    pub completing_natural_crop_stem_count: Option<CoStemCountType>,
+    #[serde(rename = "CultivatedDeadStemCount", skip_serializing_if = "Option::is_none")]
+    pub cultivated_dead_stem_count: Option<CoStemCountType>,
+    #[serde(rename = "StockingWIthSeedlings")]
+    pub stocking_w_ith_seedlings: i32,
+    #[serde(rename = "GroundManipulationMethod")]
+    pub ground_manipulation_method: ThreeDigitPositiveIntegerType,
+    #[serde(rename = "RegenerationEnsuring", skip_serializing_if = "Option::is_none")]
+    pub regeneration_ensuring: Option<ThreeDigitPositiveIntegerType>,
+    #[serde(rename = "CultivationMaterial")]
+    pub cultivation_material: TwoDigitPositiveIntegerType,
+    #[serde(rename = "PlantingWorkQuality")]
+    pub planting_work_quality: i32,
+    #[serde(rename = "SoilModificationEstimate")]
+    pub soil_modification_estimate: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlDataSpecialFeatureType {
-    #[serde(rename = "HabitatCode", skip_serializing_if = "Option::is_none")]
-    pub habitat_code: Option<CoExtendedHabitatCodeType>,
-    #[serde(rename = "HabitatType", skip_serializing_if = "Option::is_none")]
-    pub habitat_type: Option<CoHabitatTypeType>,
-    #[serde(rename = "HabitatSurviving", skip_serializing_if = "Option::is_none")]
-    pub habitat_surviving: Option<CoYesNoType>,
-    #[serde(rename = "ExceptionalPermitForHandling", skip_serializing_if = "Option::is_none")]
-    pub exceptional_permit_for_handling: Option<CoYesNoType>,
-    #[serde(rename = "HabitatLocation", skip_serializing_if = "Option::is_none")]
-    pub habitat_location: Option<CoHabitatLocationType>,
+pub struct ForestCentreSelfMonitoringObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<ForestCentreSelfMonitoringObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorksType {
-    #[serde(rename = "Work")]
-    pub work: Vec<WorkType>,
+pub struct ObjectTypeSpecifierType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlStandBasicDataType {
+    #[serde(rename = "ControlStandArea", skip_serializing_if = "Option::is_none")]
+    pub control_stand_area: Option<CoAreaType>,
+    #[serde(rename = "InspectionMethod", skip_serializing_if = "Option::is_none")]
+    pub inspection_method: Option<CoInspectionMethodType>,
+    #[serde(rename = "ExtraInfo", skip_serializing_if = "Option::is_none")]
+    pub extra_info: Option<CoString1000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Decimal5_1Type {
+    #[serde(flatten)]
+    pub base: f64,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FourDigitPositiveIntegerType {
+    #[serde(flatten)]
+    pub base: i32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectProtectionOperationType {
+    #[serde(rename = "OperationCode", skip_serializing_if = "Option::is_none")]
+    pub operation_code: Option<CoObjectProtectionOperationCodeType>,
+    #[serde(rename = "OperationDescription", skip_serializing_if = "Option::is_none")]
+    pub operation_description: Option<CoString1000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlBasicDataType {
+    #[serde(rename = "UseCase", skip_serializing_if = "Option::is_none")]
+    pub use_case: Option<CoUseCaseType>,
+    #[serde(rename = "ControlNo", skip_serializing_if = "Option::is_none")]
+    pub control_no: Option<CoString100Type>,
+    #[serde(rename = "ForestUseDeclarationNumber", skip_serializing_if = "Option::is_none")]
+    pub forest_use_declaration_number: Option<FccForestUseDeclarationNumberType>,
+    #[serde(rename = "FinancingActNumber", skip_serializing_if = "Option::is_none")]
+    pub financing_act_number: Option<FccFinancingActNumberType>,
+    #[serde(rename = "ControlReferenceType", skip_serializing_if = "Option::is_none")]
+    pub control_reference_type: Option<CoForestCentreMessageReferenceType>,
+    #[serde(rename = "ControlReference", skip_serializing_if = "Option::is_none")]
+    pub control_reference: Option<CoReferenceType>,
+    #[serde(rename = "ControlDate", skip_serializing_if = "Option::is_none")]
+    pub control_date: Option<CoDateType>,
+    #[serde(rename = "TargetSelection", skip_serializing_if = "Option::is_none")]
+    pub target_selection: Option<CoTargetSelectionType>,
+    #[serde(rename = "ExtraInfo", skip_serializing_if = "Option::is_none")]
+    pub extra_info: Option<CoString500Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ActorTypeSpecifierType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -263,15 +603,53 @@ pub struct SelfMonitoringBasicDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Decimal3_1Type {
-    #[serde(flatten)]
-    pub base: f64,
+pub struct WorkSafetyRisksType {
+    #[serde(rename = "WorkSafetyRiskDescription")]
+    pub work_safety_risk_description: Vec<CoString1000Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<ObjectType>,
+pub struct DamageType {
+    #[serde(rename = "MainDamage", skip_serializing_if = "Option::is_none")]
+    pub main_damage: Option<CoYesNoType>,
+    #[serde(rename = "DamageSourceCode", skip_serializing_if = "Option::is_none")]
+    pub damage_source_code: Option<string>,
+    #[serde(rename = "DamageSourceDescription", skip_serializing_if = "Option::is_none")]
+    pub damage_source_description: Option<CoString100Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProjectNoType {
+    #[serde(flatten)]
+    pub base: CoReferenceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccessibilityDataType {
+    #[serde(rename = "Accessibility", skip_serializing_if = "Option::is_none")]
+    pub accessibility: Option<CoAccessibilityType>,
+    #[serde(rename = "TransportAccessibility", skip_serializing_if = "Option::is_none")]
+    pub transport_accessibility: Option<CoTransportAccessibilityType>,
+    #[serde(rename = "HarvestingAccessibility", skip_serializing_if = "Option::is_none")]
+    pub harvesting_accessibility: Option<CoHarvestingAccessibilityType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ActorTypeType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotBasicDataType {
+    #[serde(rename = "@timeStamp")]
+    pub time_stamp: CoTimeStampType,
+    #[serde(rename = "SamplePlotNumber", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_number: Option<TwoDigitPositiveIntegerType>,
+    #[serde(rename = "SamplePlotSize", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_size: Option<SamplePlotSizeType>,
+    #[serde(rename = "SamplePlotSizeTreeReduction", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_size_tree_reduction: Option<SamplePlotSizeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -317,253 +695,25 @@ pub struct ForestCentreSelfMonitoringObjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectDataGroup {
-    #[serde(rename = "Actors", skip_serializing_if = "Option::is_none")]
-    pub actors: Option<Actors>,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub documents: Option<Documents>,
-    #[serde(rename = "workingSiteFinalAuditDraining:WorkingSiteFinalAuditDraining", skip_serializing_if = "Option::is_none")]
-    pub working_site_final_audit_draining:_working_site_final_audit_draining: Option<workingSiteFinalAuditDraining:WorkingSiteFinalAuditDraining>,
-    #[serde(rename = "StandBasicData", skip_serializing_if = "Option::is_none")]
-    pub stand_basic_data: Option<StandBasicData>,
-    #[serde(rename = "RestrictionData", skip_serializing_if = "Option::is_none")]
-    pub restriction_data: Option<RestrictionData>,
-    #[serde(rename = "ControlDataRegeneration", skip_serializing_if = "Option::is_none")]
-    pub control_data_regeneration: Option<ControlDataRegeneration>,
-    #[serde(rename = "workingSiteFinalAuditRoadMaking:WorkingSiteFinalAuditRoadMaking", skip_serializing_if = "Option::is_none")]
-    pub working_site_final_audit_road_making:_working_site_final_audit_road_making: Option<workingSiteFinalAuditRoadMaking:WorkingSiteFinalAuditRoadMaking>,
-    #[serde(rename = "st:SpecialFeatures", skip_serializing_if = "Option::is_none")]
-    pub st:_special_features: Option<st:SpecialFeatures>,
-    #[serde(rename = "ControlDataWaterSystemProtection", skip_serializing_if = "Option::is_none")]
-    pub control_data_water_system_protection: Option<ControlDataWaterSystemProtection>,
-    #[serde(rename = "ts:TreeStandData", skip_serializing_if = "Option::is_none")]
-    pub ts:_tree_stand_data: Option<ts:TreeStandData>,
-    #[serde(rename = "SelfMonitoringObjectProtectionOperationsData", skip_serializing_if = "Option::is_none")]
-    pub self_monitoring_object_protection_operations_data: Option<SelfMonitoringObjectProtectionOperationsData>,
-    #[serde(rename = "MapSymbol:MapSymbol", skip_serializing_if = "Option::is_none")]
-    pub map_symbol:_map_symbol: Option<MapSymbol:MapSymbol>,
-    #[serde(rename = "SamplePlotBasicData", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_basic_data: Option<SamplePlotBasicData>,
-    #[serde(rename = "ControlBasicData", skip_serializing_if = "Option::is_none")]
-    pub control_basic_data: Option<ControlBasicData>,
-    #[serde(rename = "HarvestingSignData", skip_serializing_if = "Option::is_none")]
-    pub harvesting_sign_data: Option<HarvestingSignData>,
-    #[serde(rename = "TreeStandBasedData", skip_serializing_if = "Option::is_none")]
-    pub tree_stand_based_data: Option<TreeStandBasedData>,
-    #[serde(rename = "op:Operations", skip_serializing_if = "Option::is_none")]
-    pub op:_operations: Option<op:Operations>,
-    #[serde(rename = "ChildObjects", skip_serializing_if = "Option::is_none")]
-    pub child_objects: Option<ChildObjects>,
-    #[serde(rename = "ControlDataMooseDamageData", skip_serializing_if = "Option::is_none")]
-    pub control_data_moose_damage_data: Option<ControlDataMooseDamageData>,
-    #[serde(rename = "SoilData", skip_serializing_if = "Option::is_none")]
-    pub soil_data: Option<SoilData>,
-    #[serde(rename = "ControlObjectBasicData", skip_serializing_if = "Option::is_none")]
-    pub control_object_basic_data: Option<ControlObjectBasicData>,
-    #[serde(rename = "ControlOverallEvaluationData", skip_serializing_if = "Option::is_none")]
-    pub control_overall_evaluation_data: Option<ControlOverallEvaluationData>,
-    #[serde(rename = "ControlStandBasicData", skip_serializing_if = "Option::is_none")]
-    pub control_stand_basic_data: Option<ControlStandBasicData>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringObjectDataType {
-    #[serde(rename = "SelfMonitoringStandArea", skip_serializing_if = "Option::is_none")]
-    pub self_monitoring_stand_area: Option<CoAreaType>,
-    #[serde(rename = "GoalTreeSpecies", skip_serializing_if = "Option::is_none")]
-    pub goal_tree_species: Option<CoTreeSpeciesType>,
-    #[serde(rename = "GoalStemCount", skip_serializing_if = "Option::is_none")]
-    pub goal_stem_count: Option<CoStemCountType>,
-    #[serde(rename = "GoalAmountOfSoilPreparationSpot", skip_serializing_if = "Option::is_none")]
-    pub goal_amount_of_soil_preparation_spot: Option<CoPositiveInteger5digitsType>,
-    #[serde(rename = "RealAmountOfSoilPreparationSpot", skip_serializing_if = "Option::is_none")]
-    pub real_amount_of_soil_preparation_spot: Option<CoPositiveInteger5digitsType>,
-    #[serde(rename = "EstimatedWorkingTimeConsumption", skip_serializing_if = "Option::is_none")]
-    pub estimated_working_time_consumption: Option<CoPositiveInteger5digitsType>,
-    #[serde(rename = "TimeIntervalForMeasuringSamplePlot", skip_serializing_if = "Option::is_none")]
-    pub time_interval_for_measuring_sample_plot: Option<CoPositiveInteger5digitsType>,
-    #[serde(rename = "Notices", skip_serializing_if = "Option::is_none")]
-    pub notices: Option<CoString1000Type>,
-    #[serde(rename = "WorkSafetyRisks", skip_serializing_if = "Option::is_none")]
-    pub work_safety_risks: Option<WorkSafetyRisksType>,
-    #[serde(rename = "SoilPreparationSpotsAreEnough", skip_serializing_if = "Option::is_none")]
-    pub soil_preparation_spots_are_enough: Option<CoYesNoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AccessibilityDataType {
-    #[serde(rename = "Accessibility", skip_serializing_if = "Option::is_none")]
-    pub accessibility: Option<CoAccessibilityType>,
-    #[serde(rename = "TransportAccessibility", skip_serializing_if = "Option::is_none")]
-    pub transport_accessibility: Option<CoTransportAccessibilityType>,
-    #[serde(rename = "HarvestingAccessibility", skip_serializing_if = "Option::is_none")]
-    pub harvesting_accessibility: Option<CoHarvestingAccessibilityType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlStandBasicDataType {
-    #[serde(rename = "ControlStandArea", skip_serializing_if = "Option::is_none")]
-    pub control_stand_area: Option<CoAreaType>,
-    #[serde(rename = "InspectionMethod", skip_serializing_if = "Option::is_none")]
-    pub inspection_method: Option<CoInspectionMethodType>,
-    #[serde(rename = "ExtraInfo", skip_serializing_if = "Option::is_none")]
-    pub extra_info: Option<CoString1000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateType {
+pub struct Decimal3_1Type {
     #[serde(flatten)]
-    pub base: ReBaseRealEstateType,
+    pub base: f64,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlEvaluationsType {
-    #[serde(rename = "ControlEvaluation")]
-    pub control_evaluation: Vec<ControlEvaluationType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringObjectProtectionOperationsDataType {
-    #[serde(rename = "BorderingWithWaterAreaOrStream", skip_serializing_if = "Option::is_none")]
-    pub bordering_with_water_area_or_stream: Option<CoYesNoType>,
-    #[serde(rename = "LengthOfDitchDiggedDuringSoilPreparation", skip_serializing_if = "Option::is_none")]
-    pub length_of_ditch_digged_during_soil_preparation: Option<CoPositiveInteger6digitsType>,
-    #[serde(rename = "ObjectProtectionOperations", skip_serializing_if = "Option::is_none")]
-    pub object_protection_operations: Option<ObjectProtectionOperationsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlForestUseDeclarationType {
-    #[serde(rename = "CuttingRealizationPractice", skip_serializing_if = "Option::is_none")]
-    pub cutting_realization_practice: Option<CoCuttingTypeType>,
-    #[serde(rename = "HarvestingSignControlClassifier", skip_serializing_if = "Option::is_none")]
-    pub harvesting_sign_control_classifier: Option<CoEvaluationCodeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSizeType {
+pub struct ObjectNumberType {
     #[serde(flatten)]
-    pub base: CoDecimal3And2PositiveType,
+    pub base: CoPositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CommonObjectDataType {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "AdditionalDetails")]
-    pub additional_details: CoString2000Type,
-    #[serde(rename = "Sender")]
-    pub sender: CiContactInformationType,
-    #[serde(rename = "UseCase")]
-    pub use_case: CoUseCaseType,
-    #[serde(rename = "Objects")]
-    pub objects: ObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreSelfMonitoringObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<ForestCentreSelfMonitoringObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotBasicDataType {
-    #[serde(rename = "@timeStamp")]
-    pub time_stamp: CoTimeStampType,
-    #[serde(rename = "SamplePlotNumber", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_number: Option<TwoDigitPositiveIntegerType>,
-    #[serde(rename = "SamplePlotSize", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_size: Option<SamplePlotSizeType>,
-    #[serde(rename = "SamplePlotSizeTreeReduction", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_size_tree_reduction: Option<SamplePlotSizeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectTypeSpecifierType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectGeometryType {
-    #[serde(rename = "@collectingMethod")]
-    pub collecting_method: CoCollectingMethodType,
-    #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
-    pub co_change_state: Option<ChangeState>,
-    #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
-    pub co_change_time: Option<ChangeTime>,
-    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
-    pub area: Option<CoAreaType>,
-    #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
-    pub area_decrease: Option<CoAreaType>,
-    #[serde(rename = "Length", skip_serializing_if = "Option::is_none")]
-    pub length: Option<CoDecimal1FractionDigitType>,
-    #[serde(rename = "GdtAlternativeGeometriesGroup")]
-    pub gdt_alternative_geometries_group: AlternativeGeometriesGroup,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TwoDigitPositiveIntegerType {
-    #[serde(flatten)]
-    pub base: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectKeysType {
-    #[serde(rename = "StandKeyGroup1")]
-    pub stand_key_group1: StandKeyGroup1,
-    #[serde(rename = "StandKeyGroup2")]
-    pub stand_key_group2: StandKeyGroup2,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: CoWorkCodeType,
-    #[serde(rename = "MaterialCode", skip_serializing_if = "Option::is_none")]
-    pub material_code: Option<CoMaterialCodeType>,
-    #[serde(rename = "WorkCompletionDate", skip_serializing_if = "Option::is_none")]
-    pub work_completion_date: Option<CoDateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlOverallEvaluationDataType {
-    #[serde(rename = "RestrictionBasedOnStoniness", skip_serializing_if = "Option::is_none")]
-    pub restriction_based_on_stoniness: Option<CoRestrictionBasedOnStoninessType>,
-    #[serde(rename = "PreclearingEvaluation", skip_serializing_if = "Option::is_none")]
-    pub preclearing_evaluation: Option<CoPreclearingEvaluationType>,
-    #[serde(rename = "DeclarationDeliveringEvaluation", skip_serializing_if = "Option::is_none")]
-    pub declaration_delivering_evaluation: Option<CoEvaluationCodeType>,
-    #[serde(rename = "AreaAndMapEvaluation", skip_serializing_if = "Option::is_none")]
-    pub area_and_map_evaluation: Option<CoEvaluationCodeType>,
-    #[serde(rename = "OtherEvaluation", skip_serializing_if = "Option::is_none")]
-    pub other_evaluation: Option<CoEvaluationCodeType>,
-    #[serde(rename = "TreeDamageOutsideStandEvaluation", skip_serializing_if = "Option::is_none")]
-    pub tree_damage_outside_stand_evaluation: Option<CoEvaluationCodeType>,
-    #[serde(rename = "TerrainDamageOutsideStandEvaluation", skip_serializing_if = "Option::is_none")]
-    pub terrain_damage_outside_stand_evaluation: Option<CoEvaluationCodeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkSafetyRisksType {
-    #[serde(rename = "WorkSafetyRiskDescription")]
-    pub work_safety_risk_description: Vec<CoString1000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ChildObjectsType {
-    #[serde(rename = "ChildObject")]
-    pub child_object: Vec<ChildObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ChildObjectType {
-    #[serde(rename = "ChildObjectType")]
-    pub child_object_type: CoObjectTypeType,
-    #[serde(rename = "ChildObjectTypeSpecifier", skip_serializing_if = "Option::is_none")]
-    pub child_object_type_specifier: Option<ObjectTypeSpecifierType>,
-    #[serde(rename = "ChildObjectId")]
-    pub child_object_id: CoIdStringNotEmptyType,
+pub struct ObjectBasicDataType {
+    #[serde(rename = "ObjectNumber", skip_serializing_if = "Option::is_none")]
+    pub object_number: Option<ObjectNumberType>,
+    #[serde(rename = "ObjectReference", skip_serializing_if = "Option::is_none")]
+    pub object_reference: Option<CoReferenceType>,
+    #[serde(rename = "NonPersonificationId", skip_serializing_if = "Option::is_none")]
+    pub non_personification_id: Option<CoString100Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -607,161 +757,25 @@ pub struct ForestCentreForestDataUpdateObjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlBasicDataType {
-    #[serde(rename = "UseCase", skip_serializing_if = "Option::is_none")]
-    pub use_case: Option<CoUseCaseType>,
-    #[serde(rename = "ControlNo", skip_serializing_if = "Option::is_none")]
-    pub control_no: Option<CoString100Type>,
-    #[serde(rename = "ForestUseDeclarationNumber", skip_serializing_if = "Option::is_none")]
-    pub forest_use_declaration_number: Option<FccForestUseDeclarationNumberType>,
-    #[serde(rename = "FinancingActNumber", skip_serializing_if = "Option::is_none")]
-    pub financing_act_number: Option<FccFinancingActNumberType>,
-    #[serde(rename = "ControlReferenceType", skip_serializing_if = "Option::is_none")]
-    pub control_reference_type: Option<CoForestCentreMessageReferenceType>,
-    #[serde(rename = "ControlReference", skip_serializing_if = "Option::is_none")]
-    pub control_reference: Option<CoReferenceType>,
-    #[serde(rename = "ControlDate", skip_serializing_if = "Option::is_none")]
-    pub control_date: Option<CoDateType>,
-    #[serde(rename = "TargetSelection", skip_serializing_if = "Option::is_none")]
-    pub target_selection: Option<CoTargetSelectionType>,
-    #[serde(rename = "ExtraInfo", skip_serializing_if = "Option::is_none")]
-    pub extra_info: Option<CoString500Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectProtectionOperationType {
-    #[serde(rename = "OperationCode", skip_serializing_if = "Option::is_none")]
-    pub operation_code: Option<CoObjectProtectionOperationCodeType>,
-    #[serde(rename = "OperationDescription", skip_serializing_if = "Option::is_none")]
-    pub operation_description: Option<CoString1000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ActorsType {
-    #[serde(rename = "Actor")]
-    pub actor: Vec<ActorType>,
+pub struct ActorType {
+    #[serde(rename = "@actorType")]
+    pub actor_type: CoActorTypeType,
+    #[serde(rename = "@actorTypeSpecifier")]
+    pub actor_type_specifier: ActorTypeSpecifierType,
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+    #[serde(rename = "ControlAdditionalInformation", skip_serializing_if = "Option::is_none")]
+    pub control_additional_information: Option<ControlAdditionalInformationType>,
+    #[serde(rename = "PowerOfAttorney", skip_serializing_if = "Option::is_none")]
+    pub power_of_attorney: Option<FccPowerOfAttorneyType>,
+    #[serde(rename = "PowerOfAttorneyDate", skip_serializing_if = "Option::is_none")]
+    pub power_of_attorney_date: Option<FccPowerOfAttorneyDateType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RealEstatesType {
     #[serde(rename = "RealEstate")]
     pub real_estate: Vec<ReBaseRealEstateType2>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlAdditionalInformationType {
-    #[serde(rename = "PreinformDate", skip_serializing_if = "Option::is_none")]
-    pub preinform_date: Option<CoDateType>,
-    #[serde(rename = "PreinformDetails", skip_serializing_if = "Option::is_none")]
-    pub preinform_details: Option<CoString1000Type>,
-    #[serde(rename = "InTerrain", skip_serializing_if = "Option::is_none")]
-    pub in_terrain: Option<CoYesNoType>,
-    #[serde(rename = "Comments", skip_serializing_if = "Option::is_none")]
-    pub comments: Option<CoString1000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandDataType {
-    #[serde(rename = "TreeStandDataDate")]
-    pub tree_stand_data_date: Vec<TsTreeStandDataDate2Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectNumberType {
-    #[serde(flatten)]
-    pub base: CoPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectProtectionOperationsType {
-    #[serde(rename = "ObjectProtectionOperation")]
-    pub object_protection_operation: Vec<ObjectProtectionOperationType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlDataSwampForestManagementType {
-    #[serde(rename = "DitchMeanDepth")]
-    pub ditch_mean_depth: String,
-    #[serde(rename = "DitchMeanWidth")]
-    pub ditch_mean_width: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FourDigitPositiveIntegerType {
-    #[serde(flatten)]
-    pub base: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ActorTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDataUpdateType {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "CommonObjectDataReference")]
-    pub common_object_data_reference: CoReferenceType,
-    #[serde(rename = "Objects")]
-    pub objects: ForestCentreForestDataUpdateObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectBasicDataType {
-    #[serde(rename = "ObjectNumber", skip_serializing_if = "Option::is_none")]
-    pub object_number: Option<ObjectNumberType>,
-    #[serde(rename = "ObjectReference", skip_serializing_if = "Option::is_none")]
-    pub object_reference: Option<CoReferenceType>,
-    #[serde(rename = "NonPersonificationId", skip_serializing_if = "Option::is_none")]
-    pub non_personification_id: Option<CoString100Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlDataTreeStandDataDateType {
-    #[serde(flatten)]
-    pub base: TsTreeStandDataDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlObjectBasicDataType {
-    #[serde(rename = "ObjectReferenceType", skip_serializing_if = "Option::is_none")]
-    pub object_reference_type: Option<CoForestCentreMessageReferenceType>,
-    #[serde(rename = "ObjectReference", skip_serializing_if = "Option::is_none")]
-    pub object_reference: Option<CoReferenceType>,
-    #[serde(rename = "ControlledOperationType", skip_serializing_if = "Option::is_none")]
-    pub controlled_operation_type: Option<CoCostTypeNumberType>,
-    #[serde(rename = "ControlledOperationDescription", skip_serializing_if = "Option::is_none")]
-    pub controlled_operation_description: Option<CoString100Type>,
-    #[serde(rename = "ObjectNumber", skip_serializing_if = "Option::is_none")]
-    pub object_number: Option<ObjectNumberType>,
-    #[serde(rename = "ExtraInfo", skip_serializing_if = "Option::is_none")]
-    pub extra_info: Option<CoString1000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreSelfMonitoringDataType {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "UpdatePreviousMessage")]
-    pub update_previous_message: CoYesNoType,
-    #[serde(rename = "CommonObjectDataReference")]
-    pub common_object_data_reference: CoReferenceType,
-    #[serde(rename = "AdditionalDetails")]
-    pub additional_details: CoString2000Type,
-    #[serde(rename = "Sender")]
-    pub sender: CiContactInformationType,
-    #[serde(rename = "UseCase")]
-    pub use_case: CoForestDataUpdateUseCaseType,
-    #[serde(rename = "Objects")]
-    pub objects: ForestCentreSelfMonitoringObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringEvaluationsType {
-    #[serde(rename = "SelfMonitoringEvaluation")]
-    pub self_monitoring_evaluation: Vec<SelfMonitoringEvaluationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -789,49 +803,39 @@ pub struct HarvestingSignDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDataUpdateUseCasesType {
-    #[serde(rename = "UseCase", skip_serializing_if = "Option::is_none")]
-    pub use_case: Option<Vec<CoForestDataUpdateUseCaseType>>,
+pub struct ObjectProtectionOperationsType {
+    #[serde(rename = "ObjectProtectionOperation")]
+    pub object_protection_operation: Vec<ObjectProtectionOperationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RegenerationDataType {
-    #[serde(rename = "CultivatedCropStemCount")]
-    pub cultivated_crop_stem_count: CoStemCountType,
-    #[serde(rename = "NaturalCropStemCount")]
-    pub natural_crop_stem_count: CoStemCountType,
-    #[serde(rename = "CompletingNaturalCropStemCount", skip_serializing_if = "Option::is_none")]
-    pub completing_natural_crop_stem_count: Option<CoStemCountType>,
-    #[serde(rename = "CultivatedDeadStemCount", skip_serializing_if = "Option::is_none")]
-    pub cultivated_dead_stem_count: Option<CoStemCountType>,
-    #[serde(rename = "StockingWIthSeedlings")]
-    pub stocking_w_ith_seedlings: i32,
-    #[serde(rename = "GroundManipulationMethod")]
-    pub ground_manipulation_method: ThreeDigitPositiveIntegerType,
-    #[serde(rename = "RegenerationEnsuring", skip_serializing_if = "Option::is_none")]
-    pub regeneration_ensuring: Option<ThreeDigitPositiveIntegerType>,
-    #[serde(rename = "CultivationMaterial")]
-    pub cultivation_material: TwoDigitPositiveIntegerType,
-    #[serde(rename = "PlantingWorkQuality")]
-    pub planting_work_quality: i32,
-    #[serde(rename = "SoilModificationEstimate")]
-    pub soil_modification_estimate: i32,
+pub struct ObjectType {
+    #[serde(rename = "@id")]
+    pub id: CoIdStringNotEmptyType,
+    #[serde(rename = "@objectType")]
+    pub object_type: CoObjectTypeType,
+    #[serde(rename = "@objectTypeSpecifier")]
+    pub object_type_specifier: ObjectTypeSpecifierType,
+    #[serde(rename = "ObjectGeometry", skip_serializing_if = "Option::is_none")]
+    pub object_geometry: Option<ObjectGeometryType>,
+    #[serde(rename = "ObjectDataGroup", skip_serializing_if = "Option::is_none")]
+    pub object_data_group: Option<ObjectDataGroup>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ThreeDigitPositiveIntegerType {
+pub struct Decimal6_2Type {
     #[serde(flatten)]
-    pub base: i32,
+    pub base: f64,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DamageType {
-    #[serde(rename = "MainDamage", skip_serializing_if = "Option::is_none")]
-    pub main_damage: Option<CoYesNoType>,
-    #[serde(rename = "DamageSourceCode", skip_serializing_if = "Option::is_none")]
-    pub damage_source_code: Option<string>,
-    #[serde(rename = "DamageSourceDescription", skip_serializing_if = "Option::is_none")]
-    pub damage_source_description: Option<CoString100Type>,
+pub struct ChildObjectType {
+    #[serde(rename = "ChildObjectType")]
+    pub child_object_type: CoObjectTypeType,
+    #[serde(rename = "ChildObjectTypeSpecifier", skip_serializing_if = "Option::is_none")]
+    pub child_object_type_specifier: Option<ObjectTypeSpecifierType>,
+    #[serde(rename = "ChildObjectId")]
+    pub child_object_id: CoIdStringNotEmptyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -841,14 +845,10 @@ pub struct ControlDataForestRoadConstructionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Decimal5_1Type {
-    #[serde(flatten)]
-    pub base: f64,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Decimal6_2Type {
-    #[serde(flatten)]
-    pub base: f64,
+pub struct ObjectKeysType {
+    #[serde(rename = "StandKeyGroup1")]
+    pub stand_key_group1: StandKeyGroup1,
+    #[serde(rename = "StandKeyGroup2")]
+    pub stand_key_group2: StandKeyGroup2,
 }
 

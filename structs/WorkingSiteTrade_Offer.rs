@@ -1,16 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferTextType {
-    #[serde(flatten)]
-    pub base: CoString1500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OfferType {
     #[serde(rename = "@callForOfferId")]
     pub call_for_offer_id: String,
@@ -43,13 +31,25 @@ pub struct OfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OfferDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferTextType {
+    #[serde(flatten)]
+    pub base: CoString1500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OfferBusinessSenderType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDateType {
+pub struct OfferExpirationDateType {
     #[serde(flatten)]
     pub base: CoDateType,
 }

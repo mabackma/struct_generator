@@ -1,19 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForwarderDelay {
-    #[serde(flatten)]
-    pub forwarder_delay: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ResourceSchedule {
     #[serde(flatten)]
     pub resource_schedule: ResourceScheduleType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Resources {
-    #[serde(flatten)]
-    pub resources: ResourcesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -32,5 +20,11 @@ pub struct WorkingSites {
 pub struct TeamName {
     #[serde(flatten)]
     pub team_name: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwarderDelay {
+    #[serde(flatten)]
+    pub forwarder_delay: BdtPositiveInteger2digitsType,
 }
 

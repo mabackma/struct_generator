@@ -46,9 +46,7 @@ fn main() {
 
     println!("Prefix count: {}", prefixes.len());
 
-    for prefix in prefixes.iter() {
-        //println!("{} -> {}", prefix.0, prefix.1);
-    }
+    check_for_fields(&structs);
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -239,4 +237,14 @@ fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>
     }
 
     (new_structs.len(), new_element_definitions.len())
+}
+
+fn check_for_fields(structs: &HashMap<String, XMLStruct>) {
+    for (key, value) in structs.iter() {
+        for field in value.fields.iter() {
+            if field.field_type == *key {
+                println!("Field {} in struct {} has same name as struct!", field.name, key);
+            }
+        }
+    }
 }

@@ -1,43 +1,41 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PhoneAndTelefaxGroup {
-    #[serde(rename = "PhoneNumber", skip_serializing_if = "Option::is_none")]
-    pub phone_number: Option<PhoneNumber>,
-    #[serde(rename = "MobilePhoneNumber", skip_serializing_if = "Option::is_none")]
-    pub mobile_phone_number: Option<MobilePhoneNumber>,
-    #[serde(rename = "TelefaxNumber", skip_serializing_if = "Option::is_none")]
-    pub telefax_number: Option<TelefaxNumber>,
+pub struct PostAddressGroup {
+    #[serde(rename = "Address")]
+    pub address: Address,
+    #[serde(rename = "PostalCode")]
+    pub postal_code: PostalCode,
+    #[serde(rename = "StateCode", skip_serializing_if = "Option::is_none")]
+    pub state_code: Option<StateCode>,
+    #[serde(rename = "StateText", skip_serializing_if = "Option::is_none")]
+    pub state_text: Option<StateText>,
+    #[serde(rename = "CountryCode", skip_serializing_if = "Option::is_none")]
+    pub country_code: Option<CountryCode>,
+    #[serde(rename = "PostOffice")]
+    pub post_office: PostOffice,
+    #[serde(rename = "CountryText", skip_serializing_if = "Option::is_none")]
+    pub country_text: Option<CountryText>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AddressType {
+pub struct StateCodeType {
     #[serde(flatten)]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FirstAndLastNameGroup {
-    #[serde(rename = "FirstName")]
-    pub first_name: FirstName,
-    #[serde(rename = "LastName")]
-    pub last_name: LastName,
+pub struct PostOfficeType {
+    #[serde(flatten)]
+    pub base: JhsPostitoimipaikkaNimiTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PhoneNumberType {
-    #[serde(flatten)]
-    pub base: JhsPuhelinnumeroTekstiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MobilePhoneNumberType {
-    #[serde(flatten)]
-    pub base: PhoneNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LastNameType {
-    #[serde(flatten)]
-    pub base: JhsSukuNimiTyyppi,
+pub struct PhoneAndTelefaxGroup {
+    #[serde(rename = "TelefaxNumber", skip_serializing_if = "Option::is_none")]
+    pub telefax_number: Option<TelefaxNumber>,
+    #[serde(rename = "PhoneNumber", skip_serializing_if = "Option::is_none")]
+    pub phone_number: Option<PhoneNumber>,
+    #[serde(rename = "MobilePhoneNumber", skip_serializing_if = "Option::is_none")]
+    pub mobile_phone_number: Option<MobilePhoneNumber>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -55,63 +53,15 @@ pub struct PersonNameGroup {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EmailAddressType {
+pub struct PhoneNumberType {
     #[serde(flatten)]
-    pub base: JhsSahkopostiosoiteTekstiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostAddressGroup {
-    #[serde(rename = "CountryText", skip_serializing_if = "Option::is_none")]
-    pub country_text: Option<CountryText>,
-    #[serde(rename = "StateCode", skip_serializing_if = "Option::is_none")]
-    pub state_code: Option<StateCode>,
-    #[serde(rename = "PostalCode")]
-    pub postal_code: PostalCode,
-    #[serde(rename = "CountryCode", skip_serializing_if = "Option::is_none")]
-    pub country_code: Option<CountryCode>,
-    #[serde(rename = "Address")]
-    pub address: Address,
-    #[serde(rename = "PostOffice")]
-    pub post_office: PostOffice,
-    #[serde(rename = "StateText", skip_serializing_if = "Option::is_none")]
-    pub state_text: Option<StateText>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostOfficeType {
-    #[serde(flatten)]
-    pub base: JhsPostitoimipaikkaNimiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TelefaxNumberType {
-    #[serde(flatten)]
-    pub base: PhoneNumberType,
+    pub base: JhsPuhelinnumeroTekstiTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PersonOrganizationNameType {
     #[serde(flatten)]
     pub base: OrganizationNameBaseType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FirstNameType {
-    #[serde(flatten)]
-    pub base: JhsEtunimetNimiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WholeNameType {
-    #[serde(flatten)]
-    pub base: JhsNimiTekstiTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NameAndOrganizationGroup {
-    #[serde(rename = "OrganizationName")]
-    pub organization_name: OrganizationName,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -133,6 +83,54 @@ pub struct ContactInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct NameAndOrganizationGroup {
+    #[serde(rename = "OrganizationName")]
+    pub organization_name: OrganizationName,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationNameBaseType {
+    #[serde(flatten)]
+    pub base: JhsNimiTekstiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LastNameType {
+    #[serde(flatten)]
+    pub base: JhsSukuNimiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FirstNameType {
+    #[serde(flatten)]
+    pub base: JhsEtunimetNimiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WholeNameType {
+    #[serde(flatten)]
+    pub base: JhsNimiTekstiTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AddressType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MobilePhoneNumberType {
+    #[serde(flatten)]
+    pub base: PhoneNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TelefaxNumberType {
+    #[serde(flatten)]
+    pub base: PhoneNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OrganizationNameType {
     #[serde(flatten)]
     pub base: OrganizationNameBaseType,
@@ -145,14 +143,16 @@ pub struct CountryTextType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationNameBaseType {
-    #[serde(flatten)]
-    pub base: JhsNimiTekstiTyyppi,
+pub struct FirstAndLastNameGroup {
+    #[serde(rename = "LastName")]
+    pub last_name: LastName,
+    #[serde(rename = "FirstName")]
+    pub first_name: FirstName,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StateCodeType {
+pub struct EmailAddressType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: JhsSahkopostiosoiteTekstiTyyppi,
 }
 

@@ -1,26 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<Vec<BdtWorkCodeType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingAreaType {
-    #[serde(rename = "OperationalRegion")]
-    pub operational_region: BdtString50Type,
-    #[serde(rename = "Name")]
-    pub name: BdtString100Type,
-    #[serde(rename = "Geometry")]
-    pub geometry: GdtPolygonOrMultiPolygon2Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroupsType {
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: Vec<BdtWorkCodeGroupType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: BdtString20Type,
@@ -53,14 +31,36 @@ pub struct ContractType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingAreasType {
-    #[serde(rename = "WorkingArea", skip_serializing_if = "Option::is_none")]
-    pub working_area: Option<Vec<WorkingAreaType>>,
+pub struct WorkCodeGroupsType {
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: Vec<BdtWorkCodeGroupType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ServiceTypesType {
     #[serde(rename = "ServiceType")]
     pub service_type: Vec<BdtServiceTypeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingAreasType {
+    #[serde(rename = "WorkingArea", skip_serializing_if = "Option::is_none")]
+    pub working_area: Option<Vec<WorkingAreaType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<Vec<BdtWorkCodeType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingAreaType {
+    #[serde(rename = "OperationalRegion")]
+    pub operational_region: BdtString50Type,
+    #[serde(rename = "Name")]
+    pub name: BdtString100Type,
+    #[serde(rename = "Geometry")]
+    pub geometry: GdtPolygonOrMultiPolygon2Type,
 }
 

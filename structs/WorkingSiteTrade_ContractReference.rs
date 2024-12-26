@@ -5,6 +5,20 @@ pub struct ContractWorkingSitesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ContractWorkingSiteDetailsType {
+    #[serde(rename = "@parentId")]
+    pub parent_id: String,
+    #[serde(rename = "@parentVersionNo")]
+    pub parent_version_no: i32,
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "WorkingSiteText", skip_serializing_if = "Option::is_none")]
+    pub working_site_text: Option<CoString1500Type>,
+    #[serde(rename = "AsAssortmentClasses")]
+    pub as_assortment_classes: AssortmentClasses,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractBeginningDateType {
     #[serde(flatten)]
     pub base: CoDateType,
@@ -32,20 +46,6 @@ pub struct ContractType {
     pub contract_working_sites: Option<ContractWorkingSitesType>,
     #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
     pub wtco_documents: Option<Documents>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSiteDetailsType {
-    #[serde(rename = "@parentId")]
-    pub parent_id: String,
-    #[serde(rename = "@parentVersionNo")]
-    pub parent_version_no: i32,
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "WorkingSiteText", skip_serializing_if = "Option::is_none")]
-    pub working_site_text: Option<CoString1500Type>,
-    #[serde(rename = "AsAssortmentClasses")]
-    pub as_assortment_classes: AssortmentClasses,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

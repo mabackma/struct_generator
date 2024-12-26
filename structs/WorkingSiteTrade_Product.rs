@@ -1,7 +1,9 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: CoOperationModeType,
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: WtcPlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -14,12 +16,6 @@ pub struct ConsumptionUnitType {
 pub struct ProductsType {
     #[serde(rename = "Product")]
     pub product: Vec<ProductType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -57,10 +53,14 @@ pub struct ProductType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: WtcPlannedResourceType,
+pub struct ConsumptionType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
 }
 

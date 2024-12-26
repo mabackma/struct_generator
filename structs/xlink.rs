@@ -5,37 +5,25 @@ pub struct extended {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct locatorModel {
-    #[serde(rename = "xlink:title", skip_serializing_if = "Option::is_none")]
-    pub xlink:title: Option<Vec<xlink:title>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct resourceType {
-    #[serde(rename = "XlinkresourceModel")]
-    pub xlinkresource_model: resourceModel,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct labelType {
+pub struct toType {
     #[serde(flatten)]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct extendedModel {
-    #[serde(rename = "xlink:arc")]
-    pub xlink:arc: xlink:arc,
-    #[serde(rename = "xlink:resource")]
-    pub xlink:resource: xlink:resource,
-    #[serde(rename = "xlink:title")]
-    pub xlink:title: xlink:title,
-    #[serde(rename = "xlink:locator")]
-    pub xlink:locator: xlink:locator,
+pub struct actuateType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct hrefType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct typeType {
     #[serde(flatten)]
     pub base: String,
 }
@@ -47,7 +35,43 @@ pub struct fromType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct toType {
+pub struct locatorModel {
+    #[serde(rename = "xlink:title", skip_serializing_if = "Option::is_none")]
+    pub xlink:title: Option<Vec<xlink:title>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct showType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct arcroleType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct simple {
+    #[serde(rename = "XlinksimpleModel")]
+    pub xlinksimple_model: simpleModel,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct extendedModel {
+    #[serde(rename = "xlink:locator")]
+    pub xlink:locator: xlink:locator,
+    #[serde(rename = "xlink:title")]
+    pub xlink:title: xlink:title,
+    #[serde(rename = "xlink:arc")]
+    pub xlink:arc: xlink:arc,
+    #[serde(rename = "xlink:resource")]
+    pub xlink:resource: xlink:resource,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct roleType {
     #[serde(flatten)]
     pub base: String,
 }
@@ -65,39 +89,15 @@ pub struct titleEltType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct showType {
-    #[serde(flatten)]
-    pub base: String,
+pub struct arcModel {
+    #[serde(rename = "xlink:title", skip_serializing_if = "Option::is_none")]
+    pub xlink:title: Option<Vec<xlink:title>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct roleType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct simple {
-    #[serde(rename = "XlinksimpleModel")]
-    pub xlinksimple_model: simpleModel,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct actuateType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct locatorType {
-    #[serde(rename = "XlinklocatorModel")]
-    pub xlinklocator_model: locatorModel,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct typeType {
-    #[serde(flatten)]
-    pub base: String,
+pub struct resourceType {
+    #[serde(rename = "XlinkresourceModel")]
+    pub xlinkresource_model: resourceModel,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -107,14 +107,14 @@ pub struct titleAttrType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct arcModel {
-    #[serde(rename = "xlink:title", skip_serializing_if = "Option::is_none")]
-    pub xlink:title: Option<Vec<xlink:title>>,
+pub struct labelType {
+    #[serde(flatten)]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct arcroleType {
-    #[serde(flatten)]
-    pub base: String,
+pub struct locatorType {
+    #[serde(rename = "XlinklocatorModel")]
+    pub xlinklocator_model: locatorModel,
 }
 

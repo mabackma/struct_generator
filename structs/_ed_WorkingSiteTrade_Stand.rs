@@ -1,43 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Accessibility {
+    #[serde(flatten)]
+    pub accessibility: AccessibilityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoggingAccessibility {
+    #[serde(flatten)]
+    pub logging_accessibility: CoHarvestingAccessibilityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct BearingCapacityClass {
     #[serde(flatten)]
     pub bearing_capacity_class: BearingCapacityClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilType {
-    #[serde(flatten)]
-    pub soil_type: SoilTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandWoodTradeInfo {
-    #[serde(flatten)]
-    pub stand_wood_trade_info: StandWoodTradeInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedBasalArea {
-    #[serde(flatten)]
-    pub planned_basal_area: CoBasalAreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandSilvicultureInfo {
-    #[serde(flatten)]
-    pub stand_silviculture_info: StandSilvicultureInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ThinningYear {
-    #[serde(flatten)]
-    pub thinning_year: CoYearType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FertilityClass {
-    #[serde(flatten)]
-    pub fertility_class: FertilityClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,9 +29,9 @@ pub struct CuttingAreaPreclearingNeed {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingAccessibility {
+pub struct SilvicultureRestriction {
     #[serde(flatten)]
-    pub logging_accessibility: CoHarvestingAccessibilityType,
+    pub silviculture_restriction: CoSilvicultureRestrictionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,45 +41,9 @@ pub struct DitchingYear {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MainGroup {
+pub struct PlannedBasalArea {
     #[serde(flatten)]
-    pub main_group: CoMainGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandLocatedOnIsland {
-    #[serde(flatten)]
-    pub stand_located_on_island: CoYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandQuality {
-    #[serde(flatten)]
-    pub stand_quality: StandQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubGroup {
-    #[serde(flatten)]
-    pub sub_group: CoSubGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageAccessibility {
-    #[serde(flatten)]
-    pub forest_haulage_accessibility: CoHarvestingAccessibilityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DrainageState {
-    #[serde(flatten)]
-    pub drainage_state: DrainageStateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestriction {
-    #[serde(flatten)]
-    pub silviculture_restriction: CoSilvicultureRestrictionType,
+    pub planned_basal_area: CoBasalAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,21 +53,39 @@ pub struct StoutTimberClassifier {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StandSilvicultureInfo {
+    #[serde(flatten)]
+    pub stand_silviculture_info: StandSilvicultureInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestHaulageAccessibility {
+    #[serde(flatten)]
+    pub forest_haulage_accessibility: CoHarvestingAccessibilityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PlannedStemCount {
     #[serde(flatten)]
     pub planned_stem_count: CoStemCountType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageDistance {
+pub struct StandWoodTradeInfo {
     #[serde(flatten)]
-    pub forest_haulage_distance: ForestHaulageDistanceType,
+    pub stand_wood_trade_info: StandWoodTradeInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Accessibility {
+pub struct StandLocatedOnIsland {
     #[serde(flatten)]
-    pub accessibility: AccessibilityType,
+    pub stand_located_on_island: CoYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ThinningYear {
+    #[serde(flatten)]
+    pub thinning_year: CoYearType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

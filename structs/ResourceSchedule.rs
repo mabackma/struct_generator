@@ -1,12 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceScheduleType {
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: BdtString20Type,
-    #[serde(rename = "Resources")]
-    pub resources: ResourcesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ResourceDataType {
     #[serde(rename = "StanfordResourceId", skip_serializing_if = "Option::is_none")]
     pub stanford_resource_id: Option<BdtString100Type>,
@@ -18,6 +10,12 @@ pub struct ResourceDataType {
     pub resource_type: BdtResourceTypeType,
     #[serde(rename = "WorkingSites")]
     pub working_sites: WorkingSitesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourcesType {
+    #[serde(rename = "Resource")]
+    pub resource: Vec<ResourceDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -45,8 +43,10 @@ pub struct WorkingSiteType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourcesType {
-    #[serde(rename = "Resource")]
-    pub resource: Vec<ResourceDataType>,
+pub struct ResourceScheduleType {
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: BdtString20Type,
+    #[serde(rename = "Resources")]
+    pub resources: ResourcesType,
 }
 

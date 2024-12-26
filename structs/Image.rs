@@ -37,6 +37,32 @@ pub struct ImageType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringImageType {
+    #[serde(flatten)]
+    pub base: ImageBaseType,
+    #[serde(rename = "ServiceType", skip_serializing_if = "Option::is_none")]
+    pub service_type: Option<BdtServiceTypeType>,
+    #[serde(rename = "Category", skip_serializing_if = "Option::is_none")]
+    pub category: Option<BdtImageCategoryType>,
+    #[serde(rename = "SubCategory", skip_serializing_if = "Option::is_none")]
+    pub sub_category: Option<BdtImageSubCategoryType>,
+    #[serde(rename = "MapSymbolType", skip_serializing_if = "Option::is_none")]
+    pub map_symbol_type: Option<BdtFeatureCodeType>,
+    #[serde(rename = "Position", skip_serializing_if = "Option::is_none")]
+    pub position: Option<GdtPointGeometryType>,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString200Type>,
+    #[serde(rename = "Photographer", skip_serializing_if = "Option::is_none")]
+    pub photographer: Option<BdtString50Type>,
+    #[serde(rename = "ImageDate")]
+    pub image_date: BdtTimeStampType,
+    #[serde(rename = "Filename")]
+    pub filename: BdtString100Type,
+    #[serde(rename = "Bytes")]
+    pub bytes: Vec<u8>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ImageBaseType {
     #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
     pub service_buyer_id: Option<BdtString20Type>,
@@ -70,31 +96,5 @@ pub struct ImageBaseType {
     pub filename: Option<BdtString100Type>,
     #[serde(rename = "Bytes", skip_serializing_if = "Option::is_none")]
     pub bytes: Option<base64Binary>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringImageType {
-    #[serde(flatten)]
-    pub base: ImageBaseType,
-    #[serde(rename = "ServiceType", skip_serializing_if = "Option::is_none")]
-    pub service_type: Option<BdtServiceTypeType>,
-    #[serde(rename = "Category", skip_serializing_if = "Option::is_none")]
-    pub category: Option<BdtImageCategoryType>,
-    #[serde(rename = "SubCategory", skip_serializing_if = "Option::is_none")]
-    pub sub_category: Option<BdtImageSubCategoryType>,
-    #[serde(rename = "MapSymbolType", skip_serializing_if = "Option::is_none")]
-    pub map_symbol_type: Option<BdtFeatureCodeType>,
-    #[serde(rename = "Position", skip_serializing_if = "Option::is_none")]
-    pub position: Option<GdtPointGeometryType>,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString200Type>,
-    #[serde(rename = "Photographer", skip_serializing_if = "Option::is_none")]
-    pub photographer: Option<BdtString50Type>,
-    #[serde(rename = "ImageDate")]
-    pub image_date: BdtTimeStampType,
-    #[serde(rename = "Filename")]
-    pub filename: BdtString100Type,
-    #[serde(rename = "Bytes")]
-    pub bytes: Vec<u8>,
 }
 

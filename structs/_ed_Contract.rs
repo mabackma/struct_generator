@@ -11,33 +11,9 @@ pub struct CompanyMode {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SubContractorsAllowed {
+pub struct ValidityDateEnd {
     #[serde(flatten)]
-    pub sub_contractors_allowed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractInfo {
-    #[serde(flatten)]
-    pub contract_info: BdtString1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingArea {
-    #[serde(flatten)]
-    pub working_area: WorkingAreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ValidityDateBegin {
-    #[serde(flatten)]
-    pub validity_date_begin: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Contract {
-    #[serde(flatten)]
-    pub contract: ContractType,
+    pub validity_date_end: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,14 +23,32 @@ pub struct ContractCode {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValidityDateEnd {
+pub struct ValidityDateBegin {
     #[serde(flatten)]
-    pub validity_date_end: BdtDateType,
+    pub validity_date_begin: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingArea {
+    #[serde(flatten)]
+    pub working_area: WorkingAreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractInfo {
+    #[serde(flatten)]
+    pub contract_info: BdtString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MeasureDeviceCheckRequired {
     #[serde(flatten)]
     pub measure_device_check_required: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubContractorsAllowed {
+    #[serde(flatten)]
+    pub sub_contractors_allowed: BdtYesNoType,
 }
 
