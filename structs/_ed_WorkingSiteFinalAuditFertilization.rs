@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FertilizerVolumeMeasured {
+pub struct WaterEconomySystemNoticed {
     #[serde(flatten)]
-    pub fertilizer_volume_measured: BdtPositiveIntegerType,
+    pub water_economy_system_noticed: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,45 +17,15 @@ pub struct WaterEconomySystemNoticedText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FertilizationTotalAuditText {
-    #[serde(flatten)]
-    pub fertilization_total_audit_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentCleanlinessNoticed {
-    #[serde(flatten)]
-    pub environment_cleanliness_noticed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct FertilizationTotalAudit {
     #[serde(flatten)]
     pub fertilization_total_audit: BdtWorkingQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FertilizerVolumeMeasuredText {
+pub struct TreeOrGroundDamagesText {
     #[serde(flatten)]
-    pub fertilizer_volume_measured_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterEconomySystemNoticed {
-    #[serde(flatten)]
-    pub water_economy_system_noticed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AirdromeAsInstructed {
-    #[serde(flatten)]
-    pub airdrome_as_instructed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditFertilization {
-    #[serde(flatten)]
-    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
+    pub tree_or_ground_damages_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,9 +41,21 @@ pub struct TreeOrGroundDamages {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeOrGroundDamagesText {
+pub struct FertilizerVolumeMeasured {
     #[serde(flatten)]
-    pub tree_or_ground_damages_text: BdtString200Type,
+    pub fertilizer_volume_measured: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FertilizationTotalAuditText {
+    #[serde(flatten)]
+    pub fertilization_total_audit_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EnvironmentCleanlinessNoticed {
+    #[serde(flatten)]
+    pub environment_cleanliness_noticed: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,14 +65,32 @@ pub struct DrainStorageAsInstructedText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FertilizerVolumeOrdered {
+pub struct AirdromeAsInstructed {
     #[serde(flatten)]
-    pub fertilizer_volume_ordered: BdtPositiveIntegerType,
+    pub airdrome_as_instructed: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct EnvironmentCleanlinessNoticedText {
     #[serde(flatten)]
     pub environment_cleanliness_noticed_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FertilizerVolumeOrdered {
+    #[serde(flatten)]
+    pub fertilizer_volume_ordered: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditFertilization {
+    #[serde(flatten)]
+    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FertilizerVolumeMeasuredText {
+    #[serde(flatten)]
+    pub fertilizer_volume_measured_text: BdtString200Type,
 }
 

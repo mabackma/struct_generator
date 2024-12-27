@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsQuantities {
+pub struct ForestOwnerGroup {
     #[serde(flatten)]
-    pub statistics_quantities: StatisticsQuantitiesType,
+    pub forest_owner_group: ForestOwnerGroupType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,21 +11,45 @@ pub struct LoggingsRow {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StatisticsQuantities {
+    #[serde(flatten)]
+    pub statistics_quantities: StatisticsQuantitiesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationRow {
+    #[serde(flatten)]
+    pub operation_row: OperationRowType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoggingsRows {
+    #[serde(flatten)]
+    pub loggings_rows: LoggingsRowsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StatisticsAssortmentCompactClasses {
     #[serde(flatten)]
     pub statistics_assortment_compact_classes: AssortmentCompactClassesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestOwnerGroup {
+pub struct ForestStatisticsData {
     #[serde(flatten)]
-    pub forest_owner_group: ForestOwnerGroupType,
+    pub forest_statistics_data: ForestStatisticsDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ReportedStatisticsOperationType {
     #[serde(flatten)]
     pub reported_statistics_operation_type: CoReportedStatisticsOperationTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationRows {
+    #[serde(flatten)]
+    pub operation_rows: OperationRowsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -38,29 +62,5 @@ pub struct StatisticsQuantity {
 pub struct StatisticsOperation {
     #[serde(flatten)]
     pub statistics_operation: StatisticsOperationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRow {
-    #[serde(flatten)]
-    pub operation_row: OperationRowType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestStatisticsData {
-    #[serde(flatten)]
-    pub forest_statistics_data: ForestStatisticsDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRows {
-    #[serde(flatten)]
-    pub operation_rows: OperationRowsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingsRows {
-    #[serde(flatten)]
-    pub loggings_rows: LoggingsRowsType,
 }
 

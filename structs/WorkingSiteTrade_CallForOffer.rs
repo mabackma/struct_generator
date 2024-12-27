@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct UsedPricingMethodTypeType {
     #[serde(flatten)]
     pub base: CoUsedPricingMethodTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferSilvicultureInfoType {
-    #[serde(rename = "IncludePaymentPlan", skip_serializing_if = "Option::is_none")]
-    pub include_payment_plan: Option<WtcoIncludePaymentPlanType>,
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,23 +23,17 @@ pub struct AdditionalCodeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PublicityType {
-    #[serde(flatten)]
-    pub base: CoPublicityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseModeType {
-    #[serde(flatten)]
-    pub base: WtcoPurchaseModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct RelatedCallForOfferType {
     #[serde(rename = "RelatedCallForOfferId")]
     pub related_call_for_offer_id: String,
     #[serde(rename = "RelatedCallForOfferDescription", skip_serializing_if = "Option::is_none")]
-    pub related_call_for_offer_description: Option<CoString1500Type>,
+    pub related_call_for_offer_description: Option<String1500Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,7 +49,7 @@ pub struct CallForOfferType {
     #[serde(rename = "CallForOfferBusinessSender")]
     pub call_for_offer_business_sender: WtcoCallForOfferBusinessSenderType,
     #[serde(rename = "Sellers", skip_serializing_if = "Option::is_none")]
-    pub sellers: Option<WtcoSellersType>,
+    pub sellers: Option<SellersType>,
     #[serde(rename = "TechnicalContactPerson", skip_serializing_if = "Option::is_none")]
     pub technical_contact_person: Option<TechnicalContactPersonType>,
     #[serde(rename = "CallForOfferDate")]
@@ -69,9 +69,15 @@ pub struct CallForOfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
+pub struct RelatedCallForOffersType {
+    #[serde(rename = "RelatedCallForOffer")]
+    pub related_call_for_offer: Vec<RelatedCallForOfferType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferSilvicultureInfoType {
+    #[serde(rename = "IncludePaymentPlan", skip_serializing_if = "Option::is_none")]
+    pub include_payment_plan: Option<WtcoIncludePaymentPlanType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -81,20 +87,14 @@ pub struct TechnicalContactPersonType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RelatedCallForOffersType {
-    #[serde(rename = "RelatedCallForOffer")]
-    pub related_call_for_offer: Vec<RelatedCallForOfferType>,
+pub struct PurchaseModeType {
+    #[serde(flatten)]
+    pub base: WtcoPurchaseModeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
+pub struct PublicityType {
     #[serde(flatten)]
-    pub base: CoOperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
+    pub base: CoPublicityType,
 }
 

@@ -51,7 +51,7 @@ pub struct FinancingActCompletionDeclarationType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PartOfProjectType {
     #[serde(rename = "@id")]
-    pub id: CoIdStringType,
+    pub id: IdStringType,
     #[serde(rename = "FacAreaNo")]
     pub fac_area_no: AreaNo,
     #[serde(rename = "FacFinancingActWorkCode")]

@@ -5,15 +5,9 @@ pub struct Attachments {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerArea {
+pub struct Attachment {
     #[serde(flatten)]
-    pub service_buyer_area: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BeginDate {
-    #[serde(flatten)]
-    pub begin_date: BdtDateType,
+    pub attachment: AttachmentDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,8 +23,8 @@ pub struct Data {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Attachment {
+pub struct BeginDate {
     #[serde(flatten)]
-    pub attachment: AttachmentDataType,
+    pub begin_date: BdtDateType,
 }
 

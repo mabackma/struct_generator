@@ -1,4 +1,12 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifierType {
+    #[serde(rename = "Type")]
+    pub r#type: i32,
+    #[serde(rename = "Value")]
+    pub value: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeListItemType {
     #[serde(rename = "@id")]
     pub id: String,
@@ -34,13 +42,5 @@ pub struct TreeListItemType {
 pub struct TreeIdentifiersType {
     #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
     pub tree_identifier: Option<Vec<TreeIdentifierType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifierType {
-    #[serde(rename = "Type")]
-    pub r#type: i32,
-    #[serde(rename = "Value")]
-    pub value: String,
 }
 

@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectsRealizationDataType {
+    #[serde(rename = "ObjectRealization")]
+    pub object_realization: Vec<ObjectRealizationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ObjectRealizationType {
     #[serde(rename = "@id")]
     pub id: String,
@@ -6,11 +12,5 @@ pub struct ObjectRealizationType {
     pub parent_id: String,
     #[serde(rename = "TsTreeStandDataDate")]
     pub ts_tree_stand_data_date: Vec<TreeStandDataDate>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectsRealizationDataType {
-    #[serde(rename = "ObjectRealization")]
-    pub object_realization: Vec<ObjectRealizationType>,
 }
 

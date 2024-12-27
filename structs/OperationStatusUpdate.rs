@@ -1,7 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ActingDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ResponsibleActorType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationsType {
+    #[serde(rename = "Operation")]
+    pub operation: Vec<OperationDefType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainTypeType {
+    #[serde(flatten)]
+    pub base: CoMainTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -22,23 +40,5 @@ pub struct OperationDefType {
     pub acting_date: ActingDateType,
     #[serde(rename = "ResponsibleActor", skip_serializing_if = "Option::is_none")]
     pub responsible_actor: Option<ResponsibleActorType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainTypeType {
-    #[serde(flatten)]
-    pub base: CoMainTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ActingDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationsType {
-    #[serde(rename = "Operation")]
-    pub operation: Vec<OperationDefType>,
 }
 

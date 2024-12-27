@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Category {
-    #[serde(flatten)]
-    pub category: BdtImageCategoryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Photographer {
     #[serde(flatten)]
     pub photographer: BdtString50Type,
@@ -17,15 +11,15 @@ pub struct Position {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Filename {
-    #[serde(flatten)]
-    pub filename: BdtString100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct MapSymbolType {
     #[serde(flatten)]
     pub map_symbol_type: BdtFeatureCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubCategory {
+    #[serde(flatten)]
+    pub sub_category: BdtImageSubCategoryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,20 +29,8 @@ pub struct ImageDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Image {
+pub struct Category {
     #[serde(flatten)]
-    pub image: ImageType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Bytes {
-    #[serde(flatten)]
-    pub bytes: Vec<u8>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubCategory {
-    #[serde(flatten)]
-    pub sub_category: BdtImageSubCategoryType,
+    pub category: BdtImageCategoryType,
 }
 

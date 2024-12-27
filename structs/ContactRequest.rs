@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct RequestCodeType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ContactRequestType {
     #[serde(rename = "@id")]
     pub id: String,
@@ -24,12 +30,6 @@ pub struct ContactRequestType {
     pub forest_property_data_set: Option<ForestPropertyDataSetType>,
     #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
     pub wtco_documents: Option<Documents>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RequestCodeType {
-    #[serde(flatten)]
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

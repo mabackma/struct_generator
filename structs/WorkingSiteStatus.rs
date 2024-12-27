@@ -1,18 +1,18 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteStatusType {
     #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
+    pub service_buyer_id: String20Type,
     #[serde(rename = "ContractorId")]
-    pub contractor_id: BdtString20Type,
+    pub contractor_id: String20Type,
     #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<BdtString20Type>,
+    pub resource_id: Option<String20Type>,
     #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: WctERPIdType,
+    pub working_site_id: ERPIdType,
     #[serde(rename = "WorkingSiteNumber", skip_serializing_if = "Option::is_none")]
-    pub working_site_number: Option<WctWorkingSiteNumberType>,
+    pub working_site_number: Option<WorkingSiteNumberType>,
     #[serde(rename = "ServiceType")]
-    pub service_type: BdtServiceTypeType,
+    pub service_type: ServiceTypeType,
     #[serde(rename = "Status")]
-    pub status: BdtWorkingSiteStatusType,
+    pub status: WorkingSiteStatusType,
 }
 

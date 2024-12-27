@@ -1,4 +1,16 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct RolesType {
+    #[serde(rename = "Role")]
+    pub role: Vec<OrganizationRoleType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationRoleType {
+    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OrganizationType {
     #[serde(rename = "@id")]
     pub id: String,
@@ -19,26 +31,14 @@ pub struct OrganizationsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RolesType {
-    #[serde(rename = "Role")]
-    pub role: Vec<OrganizationRoleType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationRoleType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ServicesType {
     #[serde(rename = "Service")]
     pub service: Vec<OrganizationServiceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationServiceType {
+    #[serde(flatten)]
+    pub base: String,
 }
 

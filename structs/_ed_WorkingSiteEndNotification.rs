@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Supported {
+pub struct ContactorId {
     #[serde(flatten)]
-    pub supported: BdtYesNoType,
+    pub contactor_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,21 +11,9 @@ pub struct Interrupted {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContactorId {
+pub struct Supported {
     #[serde(flatten)]
-    pub contactor_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FulfilledArea {
-    #[serde(flatten)]
-    pub fulfilled_area: FulfilledAreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Infotext {
-    #[serde(flatten)]
-    pub infotext: BdtString1000Type,
+    pub supported: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,9 +23,21 @@ pub struct WorkingSiteEndNotification {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AmountPlanned {
+pub struct Geometry {
     #[serde(flatten)]
-    pub amount_planned: BdtDecimal3FractionDigitsType,
+    pub geometry: GdtPolygonOrMultiPolygon2Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Unit {
+    #[serde(flatten)]
+    pub unit: BdtWorkCodeUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FulfilledArea {
+    #[serde(flatten)]
+    pub fulfilled_area: FulfilledAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,8 +59,26 @@ pub struct AmountLeft {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Code {
+    #[serde(flatten)]
+    pub code: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct VolumeLeft {
     #[serde(flatten)]
     pub volume_left: BdtDecimal6TotalDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CodeGroup {
+    #[serde(flatten)]
+    pub code_group: BdtAssortmentGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountPlanned {
+    #[serde(flatten)]
+    pub amount_planned: BdtDecimal3FractionDigitsType,
 }
 

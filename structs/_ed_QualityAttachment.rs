@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ModificationDate {
+pub struct Filename {
     #[serde(flatten)]
-    pub modification_date: BdtDateType,
+    pub filename: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

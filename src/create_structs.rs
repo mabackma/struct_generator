@@ -103,23 +103,8 @@ pub fn create_structs(
                         if completed_struct.name != current_name {
                             panic!("XML structure mismatch: expected {}, found {}", completed_struct.name, current_name);
                         }
-                        
-                        // Update the final struct with new fields or insert it if it doesn't exist
-                        if let Some(existing_struct) = structs.get_mut(&completed_struct.name.clone()) {
 
-                            // Merge fields: add only new unique fields
-                            for mut field in completed_struct.fields {
-                                field.field_type = field.field_type.replace("xs:", "");
-
-                                if !existing_struct.fields.iter().any(|f| f.name == field.name) {
-                                    existing_struct.fields.push(field.clone());
-                                }
-                            }
-                        } else {
-
-                            // No existing struct, insert the completed struct as it is
-                            structs.insert(completed_struct.name.clone(), completed_struct.clone());
-                        }
+                        structs.insert(completed_struct.name.clone(), completed_struct.clone());
                     }
                 }
             }
@@ -244,12 +229,19 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
 
             if let Some(typ) = element_type(e) {
                 field_type = typ;
-            } else if let Some(typ) = reference_type(&n, element_definitions, prefixes) {
-                field_type = typ;   
-            }
 
-            n = handle_prefix(&n, prefixes);
-            field_type = handle_prefix(&field_type, prefixes);
+                n = handle_prefix(&n, prefixes);
+
+                let parts = field_type.split(':').collect::<Vec<&str>>();
+                if parts.len() > 1 {
+                    field_type = parts[1].to_string();
+                }
+            } else if let Some(typ) = reference_type(&n, element_definitions, prefixes) {
+                field_type = typ;
+
+                n = handle_prefix(&n, prefixes);
+                field_type = handle_prefix(&field_type, prefixes);
+            }
 
             // Handle the case where the prefix is Xs
             field_type = field_type.replace("Xs", "");

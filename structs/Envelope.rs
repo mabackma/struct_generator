@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
 pub struct EnvelopeType {
     #[serde(rename = "Header")]
-    pub header: HeaderHeaderType,
+    pub header: HeaderType,
     #[serde(rename = "Message")]
     pub message: PayloadType,
 }
@@ -9,106 +9,106 @@ pub struct EnvelopeType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PayloadType {
     #[serde(rename = "Acknowledge")]
-    pub acknowledge: AcknowledgeAcknowledgeType,
+    pub acknowledge: AcknowledgeType,
     #[serde(rename = "CompanyInformation")]
-    pub company_information: CompanyInformationCompanyInformationType,
+    pub company_information: CompanyInformationType,
     #[serde(rename = "Contract")]
-    pub contract: ContractContractType,
+    pub contract: ContractType,
     #[serde(rename = "ExternalFile")]
-    pub external_file: ExternalFileExternalFileType,
+    pub external_file: ExternalFileType,
     #[serde(rename = "ForwardingEstimate")]
-    pub forwarding_estimate: ForwardingEstimateForwardingEstimateType,
+    pub forwarding_estimate: ForwardingEstimateType,
     #[serde(rename = "ForwardingNotification")]
-    pub forwarding_notification: ForwardingNotificationForwardingNotificationType,
+    pub forwarding_notification: ForwardingNotificationType,
     #[serde(rename = "HarvestingOrder")]
-    pub harvesting_order: HarvestingOrderHarvestingOrderType,
+    pub harvesting_order: HarvestingOrderType,
     #[serde(rename = "Image")]
-    pub image: ImageImageType,
+    pub image: ImageType,
     #[serde(rename = "MapSymbol")]
-    pub map_symbol: MapSymbolMapSymbolType,
+    pub map_symbol: MapSymbolType,
     #[serde(rename = "OrderConfirmation")]
-    pub order_confirmation: OrderConfirmationOrderConfirmationType,
+    pub order_confirmation: OrderConfirmationType,
     #[serde(rename = "ProductInstructionProductInstruction")]
     pub product_instruction_product_instruction: ProductInstruction,
     #[serde(rename = "QualityAttachment")]
-    pub quality_attachment: QualityAttachmentQualityAttachmentType,
+    pub quality_attachment: QualityAttachmentType,
     #[serde(rename = "Resource")]
-    pub resource: ResourceResourceType,
+    pub resource: ResourceType,
     #[serde(rename = "ResourceSchedule")]
-    pub resource_schedule: ResourceScheduleResourceScheduleType,
+    pub resource_schedule: ResourceScheduleType,
     #[serde(rename = "SilvicultureOrder")]
-    pub silviculture_order: SilvicultureOrderSilvicultureOrderType,
+    pub silviculture_order: SilvicultureOrderType,
     #[serde(rename = "ServiceBuyerResourceLocations")]
-    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsServiceBuyerResourceLocationsType,
+    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
     #[serde(rename = "SmsOperatorStatus")]
-    pub sms_operator_status: SmsOperatorStatusSmsOperatorStatusType,
+    pub sms_operator_status: SmsOperatorStatusType,
     #[serde(rename = "StanfordFile")]
-    pub stanford_file: StanfordFileStanfordFileType,
+    pub stanford_file: StanfordFileType,
     #[serde(rename = "UserInformation")]
-    pub user_information: UserInformationUserInformationType,
+    pub user_information: UserInformationType,
     #[serde(rename = "WeekCalendar")]
-    pub week_calendar: WeekCalendarWeekCalendarType,
+    pub week_calendar: WeekCalendarType,
     #[serde(rename = "WorkingSiteAccounting")]
-    pub working_site_accounting: WorkingSiteAccountingWorkingSiteAccountingType,
+    pub working_site_accounting: WorkingSiteAccountingType,
     #[serde(rename = "WorkingSiteEndNotification")]
-    pub working_site_end_notification: WorkingSiteEndNotificationWorkingSiteEndNotificationType,
+    pub working_site_end_notification: WorkingSiteEndNotificationType,
     #[serde(rename = "WorkingSiteFeeBasis")]
-    pub working_site_fee_basis: WorkingSiteFeeBasisWorkingSiteFeeBasisType,
+    pub working_site_fee_basis: WorkingSiteFeeBasisType,
     #[serde(rename = "WorkingSiteFinalAuditBioMassForwarding")]
-    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingWorkingSiteFinalAuditBioMassForwardingType,
+    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
     #[serde(rename = "WorkingSiteFinalAuditDraining")]
-    pub working_site_final_audit_draining: WorkingSiteFinalAuditDrainingWorkingSiteFinalAuditDrainingType,
+    pub working_site_final_audit_draining: WorkingSiteFinalAuditDrainingType,
     #[serde(rename = "WorkingSiteFinalAuditFertilization")]
-    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationWorkingSiteFinalAuditFertilizationType,
+    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
     #[serde(rename = "WorkingSiteFinalAuditHarvesting")]
-    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingWorkingSiteFinalAuditHarvestingType,
+    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
     #[serde(rename = "WorkingSiteFinalAuditPlantManagement")]
-    pub working_site_final_audit_plant_management: WorkingSiteFinalAuditPlantManagementWorkingSiteFinalAuditPlantManagementType,
+    pub working_site_final_audit_plant_management: WorkingSiteFinalAuditPlantManagementType,
     #[serde(rename = "WorkingSiteFinalAuditRoadMaking")]
-    pub working_site_final_audit_road_making: WorkingSiteFinalAuditRoadMakingWorkingSiteFinalAuditRoadMakingType,
+    pub working_site_final_audit_road_making: WorkingSiteFinalAuditRoadMakingType,
     #[serde(rename = "WorkingSiteFinalAuditSilviculture")]
-    pub working_site_final_audit_silviculture: WorkingSiteFinalAuditSilvicultureWorkingSiteFinalAuditSilvicultureType,
+    pub working_site_final_audit_silviculture: WorkingSiteFinalAuditSilvicultureType,
     #[serde(rename = "WorkingSiteFinalAuditSoilConditioning")]
-    pub working_site_final_audit_soil_conditioning: WorkingSiteFinalAuditSoilConditioningWorkingSiteFinalAuditSoilConditioningType,
+    pub working_site_final_audit_soil_conditioning: WorkingSiteFinalAuditSoilConditioningType,
     #[serde(rename = "WorkingSiteFinalAuditStumpForwarding")]
-    pub working_site_final_audit_stump_forwarding: WorkingSiteFinalAuditStumpForwardingWorkingSiteFinalAuditStumpForwardingType,
+    pub working_site_final_audit_stump_forwarding: WorkingSiteFinalAuditStumpForwardingType,
     #[serde(rename = "WorkingSiteFinalAuditStumpLifting")]
-    pub working_site_final_audit_stump_lifting: WorkingSiteFinalAuditStumpLiftingWorkingSiteFinalAuditStumpLiftingType,
+    pub working_site_final_audit_stump_lifting: WorkingSiteFinalAuditStumpLiftingType,
     #[serde(rename = "WorkingSiteFinalAuditDynamic")]
-    pub working_site_final_audit_dynamic: WorkingSiteFinalAuditDynamicWorkingSiteFinalAuditDynamicType,
+    pub working_site_final_audit_dynamic: WorkingSiteFinalAuditDynamicType,
     #[serde(rename = "WorkingSiteForwardedProduction")]
-    pub working_site_forwarded_production: WorkingSiteForwardedProductionWorkingSiteForwardedProductionType,
+    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
     #[serde(rename = "WorkingSiteForwardingQualityControl")]
-    pub working_site_forwarding_quality_control: WorkingSiteForwardingQualityControlWorkingSiteForwardingQualityControlType,
+    pub working_site_forwarding_quality_control: WorkingSiteForwardingQualityControlType,
     #[serde(rename = "WorkingSiteHarvestedProduction")]
-    pub working_site_harvested_production: WorkingSiteHarvestedProductionWorkingSiteHarvestedProductionType,
+    pub working_site_harvested_production: WorkingSiteHarvestedProductionType,
     #[serde(rename = "WorkingSiteHarvestingQualityControl")]
-    pub working_site_harvesting_quality_control: WorkingSiteHarvestingQualityControlWorkingSiteHarvestingQualityControlType,
+    pub working_site_harvesting_quality_control: WorkingSiteHarvestingQualityControlType,
     #[serde(rename = "WorkingSiteHarvestingQualityControlManual")]
-    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualWorkingSiteHarvestingQualityControlManualType,
+    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
     #[serde(rename = "WorkingSiteOperational")]
-    pub working_site_operational: WorkingSiteOperationalWorkingSiteOperationalType,
+    pub working_site_operational: WorkingSiteOperationalType,
     #[serde(rename = "WorkingSiteOperationalUpdate")]
-    pub working_site_operational_update: WorkingSiteOperationalUpdateWorkingSiteOperationalUpdateType,
+    pub working_site_operational_update: WorkingSiteOperationalUpdateType,
     #[serde(rename = "WorkingSiteQualityControlCutting")]
-    pub working_site_quality_control_cutting: WorkingSiteQualityControlCuttingWorkingSiteQualityControlCuttingType,
+    pub working_site_quality_control_cutting: WorkingSiteQualityControlCuttingType,
     #[serde(rename = "WorkingSiteQualityControlFertilization")]
-    pub working_site_quality_control_fertilization: WorkingSiteQualityControlFertilizationWorkingSiteQualityControlFertilizationType,
+    pub working_site_quality_control_fertilization: WorkingSiteQualityControlFertilizationType,
     #[serde(rename = "WorkingSiteQualityControlPlantManagement")]
-    pub working_site_quality_control_plant_management: WorkingSiteQualityControlPlantManagementWorkingSiteQualityControlPlantManagementType,
+    pub working_site_quality_control_plant_management: WorkingSiteQualityControlPlantManagementType,
     #[serde(rename = "WorkingSiteQualityControlSilviculture")]
-    pub working_site_quality_control_silviculture: WorkingSiteQualityControlSilvicultureWorkingSiteQualityControlSilvicultureType,
+    pub working_site_quality_control_silviculture: WorkingSiteQualityControlSilvicultureType,
     #[serde(rename = "WorkingSiteQualityControlSoilConditioning")]
-    pub working_site_quality_control_soil_conditioning: WorkingSiteQualityControlSoilConditioningWorkingSiteQualityControlSoilConditioningType,
+    pub working_site_quality_control_soil_conditioning: WorkingSiteQualityControlSoilConditioningType,
     #[serde(rename = "WorkingSiteQualityNotification")]
-    pub working_site_quality_notification: WorkingSiteQualityNotificationWorkingSiteQualityNotificationType,
+    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
     #[serde(rename = "WorkingSiteStatus")]
-    pub working_site_status: WorkingSiteStatusWorkingSiteStatusType,
+    pub working_site_status: WorkingSiteStatusType,
     #[serde(rename = "WorkingSiteTravelNotification")]
-    pub working_site_travel_notification: WorkingSiteTravelNotificationWorkingSiteTravelNotificationType,
+    pub working_site_travel_notification: WorkingSiteTravelNotificationType,
     #[serde(rename = "WorkingSiteWorkLoad")]
-    pub working_site_work_load: WorkingSiteWorkLoadWorkingSiteWorkLoadType,
+    pub working_site_work_load: WorkingSiteWorkLoadType,
     #[serde(rename = "WorkingSiteWorkTime")]
-    pub working_site_work_time: WorkingSiteWorkTimeWorkingSiteWorkTimeType,
+    pub working_site_work_time: WorkingSiteWorkTimeType,
 }
 

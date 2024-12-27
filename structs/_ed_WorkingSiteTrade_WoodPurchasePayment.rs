@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Payee {
+pub struct TotalValue {
     #[serde(flatten)]
-    pub payee: PayeeType,
+    pub total_value: TotalValueType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +17,15 @@ pub struct Percent {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestFundPayment {
+pub struct DueDate {
     #[serde(flatten)]
-    pub forest_fund_payment: ForestFundPaymentType,
+    pub due_date: DueDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VAT {
+    #[serde(flatten)]
+    pub vat: VATType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,14 +41,20 @@ pub struct AdvanceTax {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Payment {
-    #[serde(flatten)]
-    pub payment: PaymentDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PaymentPermissionDate {
     #[serde(flatten)]
     pub payment_permission_date: PaymentPermissionDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestFundPayment {
+    #[serde(flatten)]
+    pub forest_fund_payment: ForestFundPaymentType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SequenceNumber {
+    #[serde(flatten)]
+    pub sequence_number: SequenceNumberType,
 }
 

@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemDistribution {
+pub struct Count {
     #[serde(flatten)]
-    pub stem_distribution: StemDistributionType,
+    pub count: CountType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClass {
+pub struct StemDistribution {
     #[serde(flatten)]
-    pub tree_class: TreeClassType,
+    pub stem_distribution: StemDistributionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,14 +17,20 @@ pub struct Tree {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Count {
+pub struct Trees {
     #[serde(flatten)]
-    pub count: CountType,
+    pub trees: StemDistributionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TreeNumber {
     #[serde(flatten)]
     pub tree_number: TreeNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeClass {
+    #[serde(flatten)]
+    pub tree_class: TreeClassType,
 }
 

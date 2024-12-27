@@ -11,12 +11,6 @@ pub struct Product {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Description {
-    #[serde(flatten)]
-    pub description: CoString1500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ConsumptionUnit {
     #[serde(flatten)]
     pub consumption_unit: ConsumptionUnitType,

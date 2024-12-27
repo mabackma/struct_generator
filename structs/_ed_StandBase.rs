@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberExtension {
+pub struct StandNumber {
     #[serde(flatten)]
-    pub stand_number_extension: StandNumberExtensionType,
+    pub stand_number: StandNumberType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,14 +17,20 @@ pub struct StandInfo {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestrictionEnds {
+pub struct StandNumberExtension {
     #[serde(flatten)]
-    pub silviculture_restriction_ends: CoDateType,
+    pub stand_number_extension: StandNumberExtensionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StandBasicDataDate {
     #[serde(flatten)]
     pub stand_basic_data_date: StandBasicDataDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureRestrictionEnds {
+    #[serde(flatten)]
+    pub silviculture_restriction_ends: CoDateType,
 }
 

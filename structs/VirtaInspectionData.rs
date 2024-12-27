@@ -1,13 +1,31 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaIdType {
-    #[serde(flatten)]
-    pub base: String,
+pub struct DataInformationType {
+    #[serde(rename = "DataName")]
+    pub data_name: String,
+    #[serde(rename = "DataId")]
+    pub data_id: String,
+    #[serde(rename = "InspectorName")]
+    pub inspector_name: String,
+    #[serde(rename = "Password")]
+    pub password: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AnnouncementIdType {
+pub struct VirtaMastoInspectionType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: CoVirtaMastoInspectionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPhaseType {
+    #[serde(flatten)]
+    pub base: CoVirtaPhaseType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTargetSelectionType {
+    #[serde(flatten)]
+    pub base: CoVirtaTargetSelectionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,29 +35,9 @@ pub struct VirtaSaveIncompleteType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InspectionDataType {
-    #[serde(rename = "DataInformation")]
-    pub data_information: DataInformationType,
-    #[serde(rename = "Inspection")]
-    pub inspection: Vec<InspectionType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaLawType {
     #[serde(flatten)]
     pub base: CoVirtaLawType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetsType {
-    #[serde(rename = "TgtTarget")]
-    pub tgt_target: Vec<Target>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSumTableAreaType {
-    #[serde(flatten)]
-    pub base: CoVirtaSumTableAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,9 +47,9 @@ pub struct VirtaInspectionTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTargetSelectionType {
+pub struct VirtaIdType {
     #[serde(flatten)]
-    pub base: CoVirtaTargetSelectionType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -157,9 +155,9 @@ pub struct InspectionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaProjectStatusType {
+pub struct AnnouncementIdType {
     #[serde(flatten)]
-    pub base: CoVirtaProjectStatusType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -169,15 +167,15 @@ pub struct VirtaAdvertiserType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaAdvertisementDatingType {
+pub struct VirtaSumTableAreaType {
     #[serde(flatten)]
-    pub base: CoVirtaAdvertisementDatingType,
+    pub base: CoVirtaSumTableAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaMastoInspectionType {
-    #[serde(flatten)]
-    pub base: CoVirtaMastoInspectionType,
+pub struct TargetsType {
+    #[serde(rename = "TgtTarget")]
+    pub tgt_target: Vec<Target>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -187,21 +185,17 @@ pub struct VirtaApprovalType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPhaseType {
-    #[serde(flatten)]
-    pub base: CoVirtaPhaseType,
+pub struct InspectionDataType {
+    #[serde(rename = "DataInformation")]
+    pub data_information: DataInformationType,
+    #[serde(rename = "Inspection")]
+    pub inspection: Vec<InspectionType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DataInformationType {
-    #[serde(rename = "DataName")]
-    pub data_name: String,
-    #[serde(rename = "DataId")]
-    pub data_id: String,
-    #[serde(rename = "InspectorName")]
-    pub inspector_name: String,
-    #[serde(rename = "Password")]
-    pub password: String,
+pub struct VirtaAdvertisementDatingType {
+    #[serde(flatten)]
+    pub base: CoVirtaAdvertisementDatingType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -212,5 +206,11 @@ pub struct HelpGeometriesType {
     pub hg_line_geometry: Option<Vec<LineGeometry>>,
     #[serde(rename = "HgPointGeometry", skip_serializing_if = "Option::is_none")]
     pub hg_point_geometry: Option<Vec<PointGeometry>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaProjectStatusType {
+    #[serde(flatten)]
+    pub base: CoVirtaProjectStatusType,
 }
 
