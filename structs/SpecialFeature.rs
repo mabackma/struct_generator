@@ -31,9 +31,49 @@ pub struct BasicFeature2Type {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifiersType {
+pub struct LocatedSpecialFeature2Type {
     #[serde(flatten)]
-    pub base: SfIdentifiersType,
+    pub base: BasicFeature2Type,
+    #[serde(rename = "GdtAlternativeGeometries2Group")]
+    pub gdt_alternative_geometries2_group: AlternativeGeometries2Group,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureSpecificAdditionalVariableType {
+    #[serde(rename = "ForestDepotAccessibility")]
+    pub forest_depot_accessibility: CoForestDepotAccessibilityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BasicFeature4Type {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
+    pub co_change_state: Option<ChangeState>,
+    #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
+    pub co_change_time: Option<ChangeTime>,
+    #[serde(rename = "Identifiers", skip_serializing_if = "Option::is_none")]
+    pub identifiers: Option<IdentifiersType>,
+    #[serde(rename = "MainFeature", skip_serializing_if = "Option::is_none")]
+    pub main_feature: Option<CoYesNoType>,
+    #[serde(rename = "FeatureType")]
+    pub feature_type: CoFeatureTypeType,
+    #[serde(rename = "FeatureDataGroup")]
+    pub feature_data_group: FeatureDataGroup,
+    #[serde(rename = "SfUsingRestrictions", skip_serializing_if = "Option::is_none")]
+    pub sf_using_restrictions: Option<UsingRestrictions>,
+    #[serde(rename = "Validity", skip_serializing_if = "Option::is_none")]
+    pub validity: Option<SfValidityType>,
+    #[serde(rename = "FeatureInfo", skip_serializing_if = "Option::is_none")]
+    pub feature_info: Option<SfFeatureInfoType>,
+    #[serde(rename = "FeatureAdditionalInfo", skip_serializing_if = "Option::is_none")]
+    pub feature_additional_info: Option<SfFeatureAdditionalInfoType>,
+    #[serde(rename = "InventoryDate", skip_serializing_if = "Option::is_none")]
+    pub inventory_date: Option<CoDateType>,
+    #[serde(rename = "TreeStandData", skip_serializing_if = "Option::is_none")]
+    pub tree_stand_data: Option<TsTreeStandDataType>,
+    #[serde(rename = "CoDataSource", skip_serializing_if = "Option::is_none")]
+    pub co_data_source: Option<DataSource>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -45,9 +85,11 @@ pub struct FeatureDataGroup {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureSpecificAdditionalVariableType {
-    #[serde(rename = "ForestDepotAccessibility")]
-    pub forest_depot_accessibility: CoForestDepotAccessibilityType,
+pub struct LocatedSpecialFeature3Type {
+    #[serde(flatten)]
+    pub base: BasicFeature3Type,
+    #[serde(rename = "GdtSimpleAlternativeGeometriesGroup")]
+    pub gdt_simple_alternative_geometries_group: SimpleAlternativeGeometriesGroup,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -85,6 +127,24 @@ pub struct BasicFeature1Type {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct BasicFeature3Type {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "FeatureDataGroup")]
+    pub feature_data_group: FeatureDataGroup,
+    #[serde(rename = "FeatureInfo", skip_serializing_if = "Option::is_none")]
+    pub feature_info: Option<SfFeatureInfoType>,
+    #[serde(rename = "FeatureAdditionalInfo", skip_serializing_if = "Option::is_none")]
+    pub feature_additional_info: Option<SfFeatureAdditionalInfoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IdentifiersType {
+    #[serde(flatten)]
+    pub base: SfIdentifiersType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct UsingRightType {
     #[serde(rename = "UsingRightExists")]
     pub using_right_exists: CoYesNoNotKnownType,
@@ -100,65 +160,5 @@ pub struct UsingRightType {
     pub using_right_compensation_responsible: CoUsingRightResponsibleType,
     #[serde(rename = "UsingRightDescription", skip_serializing_if = "Option::is_none")]
     pub using_right_description: Option<CoString1500Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BasicFeature3Type {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "FeatureDataGroup")]
-    pub feature_data_group: FeatureDataGroup,
-    #[serde(rename = "FeatureInfo", skip_serializing_if = "Option::is_none")]
-    pub feature_info: Option<SfFeatureInfoType>,
-    #[serde(rename = "FeatureAdditionalInfo", skip_serializing_if = "Option::is_none")]
-    pub feature_additional_info: Option<SfFeatureAdditionalInfoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BasicFeature4Type {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
-    pub co_change_state: Option<ChangeState>,
-    #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
-    pub co_change_time: Option<ChangeTime>,
-    #[serde(rename = "Identifiers", skip_serializing_if = "Option::is_none")]
-    pub identifiers: Option<IdentifiersType>,
-    #[serde(rename = "MainFeature", skip_serializing_if = "Option::is_none")]
-    pub main_feature: Option<CoYesNoType>,
-    #[serde(rename = "FeatureType")]
-    pub feature_type: CoFeatureTypeType,
-    #[serde(rename = "FeatureDataGroup")]
-    pub feature_data_group: FeatureDataGroup,
-    #[serde(rename = "SfUsingRestrictions", skip_serializing_if = "Option::is_none")]
-    pub sf_using_restrictions: Option<UsingRestrictions>,
-    #[serde(rename = "Validity", skip_serializing_if = "Option::is_none")]
-    pub validity: Option<SfValidityType>,
-    #[serde(rename = "FeatureInfo", skip_serializing_if = "Option::is_none")]
-    pub feature_info: Option<SfFeatureInfoType>,
-    #[serde(rename = "FeatureAdditionalInfo", skip_serializing_if = "Option::is_none")]
-    pub feature_additional_info: Option<SfFeatureAdditionalInfoType>,
-    #[serde(rename = "InventoryDate", skip_serializing_if = "Option::is_none")]
-    pub inventory_date: Option<CoDateType>,
-    #[serde(rename = "TreeStandData", skip_serializing_if = "Option::is_none")]
-    pub tree_stand_data: Option<TsTreeStandDataType>,
-    #[serde(rename = "CoDataSource", skip_serializing_if = "Option::is_none")]
-    pub co_data_source: Option<DataSource>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LocatedSpecialFeature3Type {
-    #[serde(flatten)]
-    pub base: BasicFeature3Type,
-    #[serde(rename = "GdtSimpleAlternativeGeometriesGroup")]
-    pub gdt_simple_alternative_geometries_group: SimpleAlternativeGeometriesGroup,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LocatedSpecialFeature2Type {
-    #[serde(flatten)]
-    pub base: BasicFeature2Type,
-    #[serde(rename = "GdtAlternativeGeometries2Group")]
-    pub gdt_alternative_geometries2_group: AlternativeGeometries2Group,
 }
 

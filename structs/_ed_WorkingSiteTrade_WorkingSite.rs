@@ -5,9 +5,9 @@ pub struct OfferWorkingSites {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteKey {
+pub struct CallForOfferWorkingSiteDetails {
     #[serde(flatten)]
-    pub working_site_key: WorkingSiteKeyType,
+    pub call_for_offer_working_site_details: CallForOfferWorkingSiteDetailsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +17,9 @@ pub struct OfferWorkingSiteDetails {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSiteDetails {
+pub struct WorkingSiteKey {
     #[serde(flatten)]
-    pub call_for_offer_working_site_details: CallForOfferWorkingSiteDetailsType,
+    pub working_site_key: WorkingSiteKeyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

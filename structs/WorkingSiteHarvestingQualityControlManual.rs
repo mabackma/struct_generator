@@ -1,4 +1,20 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteHarvestingQualityControlManualType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: BdtString20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: WctERPIdType,
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: BdtString20Type,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: BdtString20Type,
+    #[serde(rename = "InfoText")]
+    pub info_text: BdtString200Type,
+    #[serde(rename = "Measurements")]
+    pub measurements: MeasurementsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MeasurementsType {
     #[serde(rename = "Measurement")]
     pub measurement: Vec<MeasurementDataType>,
@@ -32,21 +48,5 @@ pub struct MeasurementDataType {
     pub log_count: BdtPositiveInteger2digitsType,
     #[serde(rename = "ControlLogCount")]
     pub control_log_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteHarvestingQualityControlManualType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: WctERPIdType,
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: BdtString20Type,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: BdtString20Type,
-    #[serde(rename = "InfoText")]
-    pub info_text: BdtString200Type,
-    #[serde(rename = "Measurements")]
-    pub measurements: MeasurementsType,
 }
 

@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Type {
+pub struct TreeListItem {
     #[serde(flatten)]
-    pub r#type: i32,
+    pub tree_list_item: TreeListItemType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifiers {
+pub struct Value {
     #[serde(flatten)]
-    pub tree_identifiers: TreeIdentifiersType,
+    pub value: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Type {
+    #[serde(flatten)]
+    pub r#type: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,8 +23,8 @@ pub struct TreeIdentifier {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeListItem {
+pub struct TreeIdentifiers {
     #[serde(flatten)]
-    pub tree_list_item: TreeListItemType,
+    pub tree_identifiers: TreeIdentifiersType,
 }
 

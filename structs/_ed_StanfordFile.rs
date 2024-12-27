@@ -4,3 +4,9 @@ pub struct StanfordFile {
     pub stanford_file: StanfordFileType,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FileName {
+    #[serde(flatten)]
+    pub file_name: BdtString100Type,
+}
+

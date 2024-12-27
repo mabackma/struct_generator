@@ -11,9 +11,15 @@ pub struct SmsOperatorStatus {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SenderUserId {
+pub struct StatusTimestamp {
     #[serde(flatten)]
-    pub sender_user_id: BdtString20Type,
+    pub status_timestamp: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RecipientType {
+    #[serde(flatten)]
+    pub recipient_type: RecipientTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,20 +29,14 @@ pub struct SendTimestamp {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatusTimestamp {
+pub struct SenderUserId {
     #[serde(flatten)]
-    pub status_timestamp: BdtTimeStampType,
+    pub sender_user_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OriginalMessage {
     #[serde(flatten)]
     pub original_message: BdtString1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RecipientType {
-    #[serde(flatten)]
-    pub recipient_type: RecipientTypeType,
 }
 

@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PilotName {
+pub struct Hoppers {
     #[serde(flatten)]
-    pub pilot_name: BdtString50Type,
+    pub hoppers: HoppersType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanVolume {
+pub struct HopperType {
     #[serde(flatten)]
-    pub mean_volume: BdtDecimal3FractionDigitsType,
+    pub hopper_type: WctHopperTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,21 +17,21 @@ pub struct FertileType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AverageVolume {
+    #[serde(flatten)]
+    pub average_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanVolume {
+    #[serde(flatten)]
+    pub mean_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Hopper {
     #[serde(flatten)]
     pub hopper: HopperType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurerId {
-    #[serde(flatten)]
-    pub measurer_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Hoppers {
-    #[serde(flatten)]
-    pub hoppers: HoppersType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,27 +41,27 @@ pub struct WorkingSiteQualityControlFertilization {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurerName {
-    #[serde(flatten)]
-    pub measurer_name: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct HopperNumber {
     #[serde(flatten)]
     pub hopper_number: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AverageVolume {
+pub struct MeasurerName {
     #[serde(flatten)]
-    pub average_volume: BdtDecimal3FractionDigitsType,
+    pub measurer_name: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HopperType {
+pub struct MeasurerId {
     #[serde(flatten)]
-    pub hopper_type: WctHopperTypeType,
+    pub measurer_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PilotName {
+    #[serde(flatten)]
+    pub pilot_name: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -35,6 +35,8 @@ fn main() {
 
     fix_fields_with_colons(&mut structs);
 
+    change_circular_field_types(&mut structs);
+
     structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
     element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
 
@@ -45,8 +47,6 @@ fn main() {
     println!("Actual number of element definitions: {}", element_definitions.len());
 
     println!("Prefix count: {}", prefixes.len());
-
-    check_for_fields(&structs);
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -239,11 +239,26 @@ fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>
     (new_structs.len(), new_element_definitions.len())
 }
 
-fn check_for_fields(structs: &HashMap<String, XMLStruct>) {
-    for (key, value) in structs.iter() {
-        for field in value.fields.iter() {
+// If a struct has a field that is a reference to itself, change the field type to something else
+fn change_circular_field_types(structs: &mut HashMap<String, XMLStruct>) {
+    for (key, value) in structs.iter_mut() {
+
+        // Skip structs that start with "Xs"
+        if key.starts_with("Xs") {
+            continue;
+        }
+
+        for field in value.fields.iter_mut() {
             if field.field_type == *key {
-                println!("Field {} in struct {} has same name as struct!", field.name, key);
+                if key.ends_with("PlannedResourceType") {
+                    field.field_type = "CiContactInformationType".to_string();
+                } else if key.ends_with("AreaDecreaseType") {
+                    field.field_type = "f64".to_string();
+                } else if key.contains("Date") {
+                    field.field_type = "chrono::NaiveDate".to_string();
+                } else {
+                    field.field_type = "String".to_string();
+                }
             }
         }
     }

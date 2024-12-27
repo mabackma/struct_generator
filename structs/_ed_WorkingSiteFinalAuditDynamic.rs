@@ -1,73 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Question {
-    #[serde(flatten)]
-    pub question: AuditQuestionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditIdentifier {
-    #[serde(flatten)]
-    pub final_audit_identifier: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditerType {
-    #[serde(flatten)]
-    pub final_auditer_type: BdtFinalAuditerTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditDate {
-    #[serde(flatten)]
-    pub final_audit_date: BdtTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionResources {
-    #[serde(flatten)]
-    pub audition_resources: AuditionResourcesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Questions {
-    #[serde(flatten)]
-    pub questions: AuditsListType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionResource {
-    #[serde(flatten)]
-    pub audition_resource: AuditionResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionAnswer {
-    #[serde(flatten)]
-    pub question_answer: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct FinalAuditIdentifierVersion {
     #[serde(flatten)]
     pub final_audit_identifier_version: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditSpareTrees {
-    #[serde(flatten)]
-    pub final_audit_spare_trees: FinalAuditSpareTreesByCategoryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attributes {
-    #[serde(flatten)]
-    pub attributes: AttributesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttributeValue {
-    #[serde(flatten)]
-    pub attribute_value: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,27 +11,9 @@ pub struct WorkingSiteFinalAuditDynamic {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditer {
+pub struct FinalAuditSpareTrees {
     #[serde(flatten)]
-    pub final_auditer: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditRequired {
-    #[serde(flatten)]
-    pub final_audit_required: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionAnswerAdditionalText {
-    #[serde(flatten)]
-    pub question_answer_additional_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttributeName {
-    #[serde(flatten)]
-    pub attribute_name: BdtString100Type,
+    pub final_audit_spare_trees: FinalAuditSpareTreesByCategoryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -107,9 +23,15 @@ pub struct FinalAuditName {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionId {
+pub struct AuditionResources {
     #[serde(flatten)]
-    pub question_id: WctERPIdType,
+    pub audition_resources: AuditionResourcesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Question {
+    #[serde(flatten)]
+    pub question: AuditQuestionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,27 +41,15 @@ pub struct QuestionAnswerText {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionAsText {
+pub struct AttributeValue {
     #[serde(flatten)]
-    pub question_as_text: BdtString200Type,
+    pub attribute_value: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditerId {
+pub struct FinalAuditIdentifier {
     #[serde(flatten)]
-    pub final_auditer_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuestionAnswerAsText {
-    #[serde(flatten)]
-    pub question_answer_as_text: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditType {
-    #[serde(flatten)]
-    pub final_audit_type: BdtFinalAuditTypeType,
+    pub final_audit_identifier: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -149,8 +59,50 @@ pub struct Audition {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct QuestionAsText {
+    #[serde(flatten)]
+    pub question_as_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Questions {
+    #[serde(flatten)]
+    pub questions: AuditsListType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuestionAnswerAsText {
+    #[serde(flatten)]
+    pub question_answer_as_text: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Attribute {
     #[serde(flatten)]
     pub attribute: AttributeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuestionAnswerAdditionalText {
+    #[serde(flatten)]
+    pub question_answer_additional_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionResource {
+    #[serde(flatten)]
+    pub audition_resource: AuditionResourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttributeName {
+    #[serde(flatten)]
+    pub attribute_name: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attributes {
+    #[serde(flatten)]
+    pub attributes: AttributesType,
 }
 

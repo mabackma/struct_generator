@@ -5,15 +5,9 @@ pub struct Action {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EntityTag {
+pub struct Priority {
     #[serde(flatten)]
-    pub entity_tag: CoEntityTagType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TransmissionTime {
-    #[serde(flatten)]
-    pub transmission_time: chrono::NaiveDateTime,
+    pub priority: CoPriorityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,14 +17,14 @@ pub struct Header {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TaxNumber {
+pub struct TransmissionTime {
     #[serde(flatten)]
-    pub tax_number: WctTaxNumberType,
+    pub transmission_time: chrono::NaiveDateTime,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Priority {
+pub struct EntityTag {
     #[serde(flatten)]
-    pub priority: CoPriorityType,
+    pub entity_tag: CoEntityTagType,
 }
 

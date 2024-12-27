@@ -1,355 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeltingDate {
+pub struct HumidityPercentage {
     #[serde(flatten)]
-    pub melting_date: BdtDateType,
+    pub humidity_percentage: BdtDecimal1FractionDigitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlowingEmail {
+pub struct Id {
     #[serde(flatten)]
-    pub plowing_email: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IslandWorkingSite {
-    #[serde(flatten)]
-    pub island_working_site: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MinLength {
-    #[serde(flatten)]
-    pub min_length: BdtPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HeightMin {
-    #[serde(flatten)]
-    pub height_min: BdtDecimal1FractionDigitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Storage {
-    #[serde(flatten)]
-    pub storage: StorageType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCertification {
-    #[serde(flatten)]
-    pub forest_certification: BdtCertificationSystemType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandTree {
-    #[serde(flatten)]
-    pub stand_tree: StandTreeCuttingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreNotificationAllowed {
-    #[serde(flatten)]
-    pub pre_notification_allowed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeliveryDate {
-    #[serde(flatten)]
-    pub delivery_date: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BiomassFinishedDate {
-    #[serde(flatten)]
-    pub biomass_finished_date: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlanningStatus {
-    #[serde(flatten)]
-    pub working_site_planning_status: BdtWorkingSitePlanningStatusType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisListItem {
-    #[serde(flatten)]
-    pub fee_basis_list_item: FeebasisListItemType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSafetyInfo {
-    #[serde(flatten)]
-    pub working_safety_info: BdtString3000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IsValueForceWorkingSite {
-    #[serde(flatten)]
-    pub is_value_force_working_site: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoragesForestHaulageDistances {
-    #[serde(flatten)]
-    pub storages_forest_haulage_distances: StoragesForestHaulageDistancesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageAdditionalRemarks {
-    #[serde(flatten)]
-    pub storage_additional_remarks: BdtString3000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ValueListItem {
-    #[serde(flatten)]
-    pub value_list_item: ValueListItemType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestPlanStandId {
-    #[serde(flatten)]
-    pub forest_plan_stand_id: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlanningInfo {
-    #[serde(flatten)]
-    pub working_site_planning_info: BdtString3000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FreezingDate {
-    #[serde(flatten)]
-    pub freezing_date: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandTreesStratumLeaving {
-    #[serde(flatten)]
-    pub stand_trees_stratum_leaving: StandTreesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Delivered {
-    #[serde(flatten)]
-    pub delivered: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesAttribute {
-    #[serde(flatten)]
-    pub tree_species_attribute: TreeSpeciesAttributeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TerrainPlanningDone {
-    #[serde(flatten)]
-    pub terrain_planning_done: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeliveryInfo {
-    #[serde(flatten)]
-    pub delivery_info: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeciduousTreeTargetDensityPercent {
-    #[serde(flatten)]
-    pub deciduous_tree_target_density_percent: BdtPercentType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeText {
-    #[serde(flatten)]
-    pub fee_text: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationTimeEnd {
-    #[serde(flatten)]
-    pub operation_time_end: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationStandExtraInfo {
-    #[serde(flatten)]
-    pub forest_use_declaration_stand_extra_info: BdtString2000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MixedForestRegenarationMethods {
-    #[serde(flatten)]
-    pub mixed_forest_regenaration_methods: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuthorizedToSend {
-    #[serde(flatten)]
-    pub authorized_to_send: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DitchOrRoadPlanId {
-    #[serde(flatten)]
-    pub ditch_or_road_plan_id: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationTimeStart {
-    #[serde(flatten)]
-    pub operation_time_start: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResponsibleOfPreClearing {
-    #[serde(flatten)]
-    pub responsible_of_pre_clearing: WctResponsibleOfPreClearingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageLandOwnerInformation {
-    #[serde(flatten)]
-    pub storage_land_owner_information: BdtContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FSFInformation {
-    #[serde(flatten)]
-    pub f_s_f_information: FSFInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingCode {
-    #[serde(flatten)]
-    pub working_code: BdtWorkCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FSFNumber {
-    #[serde(flatten)]
-    pub f_s_f_number: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParcelLabel {
-    #[serde(flatten)]
-    pub parcel_label: BdtString100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DefaultValue {
-    #[serde(flatten)]
-    pub default_value: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Bulk {
-    #[serde(flatten)]
-    pub bulk: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Organisation3 {
-    #[serde(flatten)]
-    pub organisation3: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageName {
-    #[serde(flatten)]
-    pub storage_name: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlowingArranged {
-    #[serde(flatten)]
-    pub plowing_arranged: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingsiteInfo {
-    #[serde(flatten)]
-    pub workingsite_info: BdtString3000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CommercialName {
-    #[serde(flatten)]
-    pub commercial_name: BdtString100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SodWorkingSite {
-    #[serde(flatten)]
-    pub sod_working_site: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlannedForHarvestingDate {
-    #[serde(flatten)]
-    pub working_site_planned_for_harvesting_date: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OwnerRepresentativePerson {
-    #[serde(flatten)]
-    pub owner_representative_person: BdtContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Owner {
-    #[serde(flatten)]
-    pub owner: BdtContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RegionOfOrigin {
-    #[serde(flatten)]
-    pub region_of_origin: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlowingName {
-    #[serde(flatten)]
-    pub plowing_name: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SendNotificationsAlways {
-    #[serde(flatten)]
-    pub send_notifications_always: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PersonRole {
-    #[serde(flatten)]
-    pub person_role: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QualityAttachments {
-    #[serde(flatten)]
-    pub quality_attachments: BdtString100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlanningOperation {
-    #[serde(flatten)]
-    pub working_site_planning_operation: BdtWorkingSitePlanningOperationStatusType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CodeGroup {
-    #[serde(flatten)]
-    pub code_group: BdtAssortmentGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceNameOfAPI {
-    #[serde(flatten)]
-    pub service_name_of_a_p_i: BdtServiceNameofAPIType,
+    pub id: BdtPositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -359,237 +17,9 @@ pub struct DeliveryNumber {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StumpRaising {
+pub struct MinDiameter {
     #[serde(flatten)]
-    pub stump_raising: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteOperational {
-    #[serde(flatten)]
-    pub working_site_operational: WorkingSiteOperationalType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TransportCompany {
-    #[serde(flatten)]
-    pub transport_company: BdtContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialAreaId {
-    #[serde(flatten)]
-    pub material_area_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseContractExtraInfo {
-    #[serde(flatten)]
-    pub purchase_contract_extra_info: BdtString3000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingControlRequired {
-    #[serde(flatten)]
-    pub cutting_control_required: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreviousBlocks {
-    #[serde(flatten)]
-    pub previous_blocks: PreviousBlockInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GrainSize {
-    #[serde(flatten)]
-    pub grain_size: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeType {
-    #[serde(flatten)]
-    pub fee_type: BdtFeeBasisValueType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ReadyToDo {
-    #[serde(flatten)]
-    pub ready_to_do: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Supported {
-    #[serde(flatten)]
-    pub supported: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CustomerRepresentativePerson {
-    #[serde(flatten)]
-    pub customer_representative_person: BdtContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Altitude {
-    #[serde(flatten)]
-    pub altitude: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attribute5 {
-    #[serde(flatten)]
-    pub attribute5: BdtWorkCodeQualifierType5,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialDeliveryType {
-    #[serde(flatten)]
-    pub material_delivery_type: MaterialDeliveryTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationNotNeeded {
-    #[serde(flatten)]
-    pub forest_use_declaration_not_needed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeBulk {
-    #[serde(flatten)]
-    pub stem_type_bulk: StemTypeBulkType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ListItem {
-    #[serde(flatten)]
-    pub list_item: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BiomassCollection {
-    #[serde(flatten)]
-    pub biomass_collection: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetDensity {
-    #[serde(flatten)]
-    pub target_density: BdtPositiveInteger5digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialProducer {
-    #[serde(flatten)]
-    pub material_producer: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryModificationAllowed {
-    #[serde(flatten)]
-    pub geometry_modification_allowed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DryingClass {
-    #[serde(flatten)]
-    pub drying_class: BdtDryingClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterSection {
-    #[serde(flatten)]
-    pub diameter_section: SectionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SendWorkingAloneNotification {
-    #[serde(flatten)]
-    pub send_working_alone_notification: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ListId {
-    #[serde(flatten)]
-    pub list_id: BdtPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TerrainClass {
-    #[serde(flatten)]
-    pub terrain_class: BdtTerrainClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SendNotifications {
-    #[serde(flatten)]
-    pub send_notifications: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Materials {
-    #[serde(flatten)]
-    pub materials: MaterialsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Material {
-    #[serde(flatten)]
-    pub material: MaterialType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AccessRightsInfo {
-    #[serde(flatten)]
-    pub access_rights_info: BdtString3000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRestriction {
-    #[serde(flatten)]
-    pub operation_restriction: OperationRestrictionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageInfo {
-    #[serde(flatten)]
-    pub storage_info: BdtString500Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageForestHaulageDistance {
-    #[serde(flatten)]
-    pub storage_forest_haulage_distance: StorageForestHaulageDistanceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NotificationContactPerson {
-    #[serde(flatten)]
-    pub notification_contact_person: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureContractNumber {
-    #[serde(flatten)]
-    pub silviculture_contract_number: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageLandOwner {
-    #[serde(flatten)]
-    pub storage_land_owner: BdtStorageLandOwnerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeliveryName {
-    #[serde(flatten)]
-    pub delivery_name: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InfoTextMandatory {
-    #[serde(flatten)]
-    pub info_text_mandatory: BdtYesNoType,
+    pub min_diameter: BdtPositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -599,147 +29,9 @@ pub struct HasSupport {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesAttributes {
+pub struct Organisation3 {
     #[serde(flatten)]
-    pub tree_species_attributes: TreeSpeciesAttributesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterSections {
-    #[serde(flatten)]
-    pub diameter_sections: DiameterSectionsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DegreeDays {
-    #[serde(flatten)]
-    pub degree_days: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageDryingClass {
-    #[serde(flatten)]
-    pub storage_drying_class: BdtStorageDryingClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganisationId {
-    #[serde(flatten)]
-    pub organisation_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalObjectInfo {
-    #[serde(flatten)]
-    pub environmental_object_info: BdtString3000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StumpTreatment {
-    #[serde(flatten)]
-    pub stump_treatment: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParcelNo {
-    #[serde(flatten)]
-    pub parcel_no: BdtPositiveInteger6digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandTreesCuttingVolume {
-    #[serde(flatten)]
-    pub stand_trees_cutting_volume: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeUnit {
-    #[serde(flatten)]
-    pub fee_unit: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TestAreaNumber {
-    #[serde(flatten)]
-    pub test_area_number: BdtPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PackagingDate {
-    #[serde(flatten)]
-    pub packaging_date: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeliveryRestriction {
-    #[serde(flatten)]
-    pub delivery_restriction: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractValidDate {
-    #[serde(flatten)]
-    pub contract_valid_date: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContinuousCoverForestry {
-    #[serde(flatten)]
-    pub continuous_cover_forestry: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreClearingInformation {
-    #[serde(flatten)]
-    pub pre_clearing_information: PreClearingInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlowingDate {
-    #[serde(flatten)]
-    pub plowing_date: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HumidityPercentage {
-    #[serde(flatten)]
-    pub humidity_percentage: BdtDecimal1FractionDigitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationHandlingInstructions {
-    #[serde(flatten)]
-    pub certification_handling_instructions: BdtString3000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResultsOfAccessibilityAnalysis {
-    #[serde(flatten)]
-    pub results_of_accessibility_analysis: ResultsOfAccessibilityAnalysisType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TransportArea {
-    #[serde(flatten)]
-    pub transport_area: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StormWorkingSite {
-    #[serde(flatten)]
-    pub storm_working_site: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandTreesCutting {
-    #[serde(flatten)]
-    pub stand_trees_cutting: StandTreesCuttingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageLinkedToWorkingSite {
-    #[serde(flatten)]
-    pub storage_linked_to_working_site: BdtYesNoType,
+    pub organisation3: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -749,207 +41,69 @@ pub struct ForestUseDeclaration {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceNameOfAPI {
+    #[serde(flatten)]
+    pub service_name_of_a_p_i: BdtServiceNameofAPIType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccessRightsInfo {
+    #[serde(flatten)]
+    pub access_rights_info: BdtString3000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParcelNo {
+    #[serde(flatten)]
+    pub parcel_no: BdtPositiveInteger6digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TransportCompany {
+    #[serde(flatten)]
+    pub transport_company: BdtContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DefaultValue {
+    #[serde(flatten)]
+    pub default_value: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Organisation1 {
     #[serde(flatten)]
     pub organisation1: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuthorizationsToSendWsoInformation {
+pub struct Attribute5 {
     #[serde(flatten)]
-    pub authorizations_to_send_wso_information: AuthorizationsToSendWsoInformationType,
+    pub attribute5: BdtWorkCodeQualifierType5,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Attribute1 {
+pub struct StandTreesStratumLeaving {
     #[serde(flatten)]
-    pub attribute1: BdtWorkCodeQualifierType1,
+    pub stand_trees_stratum_leaving: StandTreesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PreviousBlock {
+pub struct RegionOfOrigin {
     #[serde(flatten)]
-    pub previous_block: BdtString20Type,
+    pub region_of_origin: BdtString10Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StorageAddress {
+pub struct ForestCertification {
     #[serde(flatten)]
-    pub storage_address: BdtString500Type,
+    pub forest_certification: BdtCertificationSystemType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuthorizationToSendWsoInformation {
+pub struct TerrainClass {
     #[serde(flatten)]
-    pub authorization_to_send_wso_information: AuthorizationToSendWsoInformation,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementPlace {
-    #[serde(flatten)]
-    pub measurement_place: BdtMeasurementPlaceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MinDiameter {
-    #[serde(flatten)]
-    pub min_diameter: BdtPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductionFileSendFrequency {
-    #[serde(flatten)]
-    pub production_file_send_frequency: BdtPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestOwners {
-    #[serde(flatten)]
-    pub forest_owners: ForestOwnersType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Deliveries {
-    #[serde(flatten)]
-    pub deliveries: DeliveriesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StumpLiftingFinishedDate {
-    #[serde(flatten)]
-    pub stump_lifting_finished_date: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attribute3 {
-    #[serde(flatten)]
-    pub attribute3: BdtWorkCodeQualifierType3,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LabelPosition {
-    #[serde(flatten)]
-    pub label_position: GdtPointGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyer {
-    #[serde(flatten)]
-    pub service_buyer: ServiceBuyerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BeginNotificationAllowed {
-    #[serde(flatten)]
-    pub begin_notification_allowed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HeightMax {
-    #[serde(flatten)]
-    pub height_max: BdtDecimal1FractionDigitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandTreesCurrent {
-    #[serde(flatten)]
-    pub stand_trees_current: StandTreesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisList {
-    #[serde(flatten)]
-    pub fee_basis_list: FeeBasisListType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentIncrementAllowed {
-    #[serde(flatten)]
-    pub assortment_increment_allowed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CustomerType {
-    #[serde(flatten)]
-    pub customer_type: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeBulks {
-    #[serde(flatten)]
-    pub stem_type_bulks: StemTypeBulksType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SellersLogsInfo {
-    #[serde(flatten)]
-    pub sellers_logs_info: BdtString1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResultOfAccessibilityAnalysis {
-    #[serde(flatten)]
-    pub result_of_accessibility_analysis: ResultOfAccessibilityAnalysisType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlowingTelephone {
-    #[serde(flatten)]
-    pub plowing_telephone: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SellersLogs {
-    #[serde(flatten)]
-    pub sellers_logs: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attribute4 {
-    #[serde(flatten)]
-    pub attribute4: BdtWorkCodeQualifierType4,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationStandFellingPurpose {
-    #[serde(flatten)]
-    pub forest_use_declaration_stand_felling_purpose: BdtCuttingPurposeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Percentage {
-    #[serde(flatten)]
-    pub percentage: BdtDecimal1FractionDigitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BlockIsFSFBlock {
-    #[serde(flatten)]
-    pub block_is_f_s_f_block: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TurningPointClass {
-    #[serde(flatten)]
-    pub turning_point_class: BdtTurningPointClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Delivery {
-    #[serde(flatten)]
-    pub delivery: DeliveryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FSFValidity {
-    #[serde(flatten)]
-    pub f_s_f_validity: FSFValidityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Organisation2 {
-    #[serde(flatten)]
-    pub organisation2: BdtString20Type,
+    pub terrain_class: BdtTerrainClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -959,39 +113,39 @@ pub struct TestAreaRequired {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Organisation4 {
+pub struct AuthorizationsToSendWsoInformation {
     #[serde(flatten)]
-    pub organisation4: BdtString20Type,
+    pub authorizations_to_send_wso_information: AuthorizationsToSendWsoInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Supplier {
+pub struct FeeBasisList {
     #[serde(flatten)]
-    pub supplier: BdtString50Type,
+    pub fee_basis_list: FeeBasisListType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValueList {
+pub struct Deliveries {
     #[serde(flatten)]
-    pub value_list: ValueListType,
+    pub deliveries: DeliveriesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CanCultivateInAutumn {
+pub struct BiomassCollection {
     #[serde(flatten)]
-    pub can_cultivate_in_autumn: BdtYesNoType,
+    pub biomass_collection: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Attribute2 {
+pub struct StemTypeBulk {
     #[serde(flatten)]
-    pub attribute2: BdtWorkCodeQualifierType2,
+    pub stem_type_bulk: StemTypeBulkType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TestAreaMethod {
+pub struct PreClearingInformation {
     #[serde(flatten)]
-    pub test_area_method: BdtSamplePlotType,
+    pub pre_clearing_information: PreClearingInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -1001,39 +155,45 @@ pub struct StorageDisplayId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerContactInformation {
+pub struct MaterialDeliveryType {
     #[serde(flatten)]
-    pub service_buyer_contact_information: ServiceBuyerContactInformationType,
+    pub material_delivery_type: MaterialDeliveryTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingFinishedDate {
+pub struct DeciduousTreeTargetDensityPercent {
     #[serde(flatten)]
-    pub cutting_finished_date: BdtDateType,
+    pub deciduous_tree_target_density_percent: BdtPercentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Quality {
+pub struct Delivery {
     #[serde(flatten)]
-    pub quality: WctQualityOfTreeSpeciesType,
+    pub delivery: DeliveryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIds {
+pub struct OwnerRepresentativePerson {
     #[serde(flatten)]
-    pub product_user_ids: ProductUserIdsType,
+    pub owner_representative_person: BdtContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LargeSummaryReportRequired {
+pub struct Supplier {
     #[serde(flatten)]
-    pub large_summary_report_required: BdtYesNoType,
+    pub supplier: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialId {
+pub struct Attribute2 {
     #[serde(flatten)]
-    pub material_id: BdtString20Type,
+    pub attribute2: BdtWorkCodeQualifierType2,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FSFInformation {
+    #[serde(flatten)]
+    pub f_s_f_information: FSFInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -1049,21 +209,63 @@ pub struct UserCode {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DeliveryName {
+    #[serde(flatten)]
+    pub delivery_name: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuthorizationToSendWsoInformation {
+    #[serde(flatten)]
+    pub authorization_to_send_wso_information: AuthorizationToSendWsoInformation,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PreClearingExecutionTime {
     #[serde(flatten)]
     pub pre_clearing_execution_time: FSFValidityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OtherRemarks {
+pub struct Organisation2 {
     #[serde(flatten)]
-    pub other_remarks: BdtString3000Type,
+    pub organisation2: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Storages {
+pub struct FeeUnit {
     #[serde(flatten)]
-    pub storages: StoragesType,
+    pub fee_unit: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TestAreaMethod {
+    #[serde(flatten)]
+    pub test_area_method: BdtSamplePlotType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MinLength {
+    #[serde(flatten)]
+    pub min_length: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SodWorkingSite {
+    #[serde(flatten)]
+    pub sod_working_site: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesAttribute {
+    #[serde(flatten)]
+    pub tree_species_attribute: TreeSpeciesAttributeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValueList {
+    #[serde(flatten)]
+    pub value_list: ValueListType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -1073,14 +275,560 @@ pub struct FinancingSustainableForestry {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct LabelPosition {
+    #[serde(flatten)]
+    pub label_position: GdtPointGeometryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeltingDate {
+    #[serde(flatten)]
+    pub melting_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReadyToDo {
+    #[serde(flatten)]
+    pub ready_to_do: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Percentage {
+    #[serde(flatten)]
+    pub percentage: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Delivered {
+    #[serde(flatten)]
+    pub delivered: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FSFNumber {
+    #[serde(flatten)]
+    pub f_s_f_number: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeType {
+    #[serde(flatten)]
+    pub fee_type: BdtFeeBasisValueType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureContractNumber {
+    #[serde(flatten)]
+    pub silviculture_contract_number: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingCode {
+    #[serde(flatten)]
+    pub working_code: BdtWorkCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeliveryInfo {
+    #[serde(flatten)]
+    pub delivery_info: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerContactInformation {
+    #[serde(flatten)]
+    pub service_buyer_contact_information: ServiceBuyerContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitePlannedForHarvestingDate {
+    #[serde(flatten)]
+    pub working_site_planned_for_harvesting_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesAttributes {
+    #[serde(flatten)]
+    pub tree_species_attributes: TreeSpeciesAttributesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeText {
+    #[serde(flatten)]
+    pub fee_text: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FSFValidity {
+    #[serde(flatten)]
+    pub f_s_f_validity: FSFValidityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StumpLiftingFinishedDate {
+    #[serde(flatten)]
+    pub stump_lifting_finished_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DitchOrRoadPlanId {
+    #[serde(flatten)]
+    pub ditch_or_road_plan_id: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NotificationContactPerson {
+    #[serde(flatten)]
+    pub notification_contact_person: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationTimeStart {
+    #[serde(flatten)]
+    pub operation_time_start: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentIncrementAllowed {
+    #[serde(flatten)]
+    pub assortment_increment_allowed: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContinuousCoverForestry {
+    #[serde(flatten)]
+    pub continuous_cover_forestry: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Altitude {
+    #[serde(flatten)]
+    pub altitude: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingControlRequired {
+    #[serde(flatten)]
+    pub cutting_control_required: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Organisation4 {
+    #[serde(flatten)]
+    pub organisation4: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MixedForestRegenarationMethods {
+    #[serde(flatten)]
+    pub mixed_forest_regenaration_methods: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialAreaId {
+    #[serde(flatten)]
+    pub material_area_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attribute1 {
+    #[serde(flatten)]
+    pub attribute1: BdtWorkCodeQualifierType1,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SellersLogs {
+    #[serde(flatten)]
+    pub sellers_logs: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValueListItem {
+    #[serde(flatten)]
+    pub value_list_item: ValueListItemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductionFileSendFrequency {
+    #[serde(flatten)]
+    pub production_file_send_frequency: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InfoTextMandatory {
+    #[serde(flatten)]
+    pub info_text_mandatory: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResultsOfAccessibilityAnalysis {
+    #[serde(flatten)]
+    pub results_of_accessibility_analysis: ResultsOfAccessibilityAnalysisType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandTreesCuttingVolume {
+    #[serde(flatten)]
+    pub stand_trees_cutting_volume: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeliveryDate {
+    #[serde(flatten)]
+    pub delivery_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BeginNotificationAllowed {
+    #[serde(flatten)]
+    pub begin_notification_allowed: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationStandFellingPurpose {
+    #[serde(flatten)]
+    pub forest_use_declaration_stand_felling_purpose: BdtCuttingPurposeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OtherRemarks {
+    #[serde(flatten)]
+    pub other_remarks: BdtString3000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemTypeBulks {
+    #[serde(flatten)]
+    pub stem_type_bulks: StemTypeBulksType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestOwners {
+    #[serde(flatten)]
+    pub forest_owners: ForestOwnersType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterSections {
+    #[serde(flatten)]
+    pub diameter_sections: DiameterSectionsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandTreesCurrent {
+    #[serde(flatten)]
+    pub stand_trees_current: StandTreesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IsValueForceWorkingSite {
+    #[serde(flatten)]
+    pub is_value_force_working_site: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attribute4 {
+    #[serde(flatten)]
+    pub attribute4: BdtWorkCodeQualifierType4,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BiomassFinishedDate {
+    #[serde(flatten)]
+    pub biomass_finished_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResultOfAccessibilityAnalysis {
+    #[serde(flatten)]
+    pub result_of_accessibility_analysis: ResultOfAccessibilityAnalysisType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganisationId {
+    #[serde(flatten)]
+    pub organisation_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuthorizedToSend {
+    #[serde(flatten)]
+    pub authorized_to_send: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SendWorkingAloneNotification {
+    #[serde(flatten)]
+    pub send_working_alone_notification: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationTimeEnd {
+    #[serde(flatten)]
+    pub operation_time_end: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IslandWorkingSite {
+    #[serde(flatten)]
+    pub island_working_site: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationNotNeeded {
+    #[serde(flatten)]
+    pub forest_use_declaration_not_needed: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingFinishedDate {
+    #[serde(flatten)]
+    pub cutting_finished_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PersonRole {
+    #[serde(flatten)]
+    pub person_role: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyer {
+    #[serde(flatten)]
+    pub service_buyer: ServiceBuyerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TransportArea {
+    #[serde(flatten)]
+    pub transport_area: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreviousBlock {
+    #[serde(flatten)]
+    pub previous_block: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QualityAttachments {
+    #[serde(flatten)]
+    pub quality_attachments: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisListItem {
+    #[serde(flatten)]
+    pub fee_basis_list_item: FeebasisListItemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestPlanStandId {
+    #[serde(flatten)]
+    pub forest_plan_stand_id: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StumpRaising {
+    #[serde(flatten)]
+    pub stump_raising: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BlockIsFSFBlock {
+    #[serde(flatten)]
+    pub block_is_f_s_f_block: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandTree {
+    #[serde(flatten)]
+    pub stand_tree: StandTreeCuttingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterSection {
+    #[serde(flatten)]
+    pub diameter_section: SectionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CustomerType {
+    #[serde(flatten)]
+    pub customer_type: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationStandExtraInfo {
+    #[serde(flatten)]
+    pub forest_use_declaration_stand_extra_info: BdtString2000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SendNotifications {
+    #[serde(flatten)]
+    pub send_notifications: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetDensity {
+    #[serde(flatten)]
+    pub target_density: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TestAreaNumber {
+    #[serde(flatten)]
+    pub test_area_number: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PreviousBlockState {
     #[serde(flatten)]
     pub previous_block_state: BdtPreviousBlockStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestSystemPaymentReference {
+pub struct StandTreesCutting {
     #[serde(flatten)]
-    pub forest_system_payment_reference: BdtString50Type,
+    pub stand_trees_cutting: StandTreesCuttingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractValidDate {
+    #[serde(flatten)]
+    pub contract_valid_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationRestriction {
+    #[serde(flatten)]
+    pub operation_restriction: OperationRestrictionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StormWorkingSite {
+    #[serde(flatten)]
+    pub storm_working_site: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SendNotificationsAlways {
+    #[serde(flatten)]
+    pub send_notifications_always: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageDryingClass {
+    #[serde(flatten)]
+    pub storage_drying_class: BdtStorageDryingClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LargeSummaryReportRequired {
+    #[serde(flatten)]
+    pub large_summary_report_required: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DryingClass {
+    #[serde(flatten)]
+    pub drying_class: BdtDryingClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CustomerRepresentativePerson {
+    #[serde(flatten)]
+    pub customer_representative_person: BdtContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attribute3 {
+    #[serde(flatten)]
+    pub attribute3: BdtWorkCodeQualifierType3,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SellersLogsInfo {
+    #[serde(flatten)]
+    pub sellers_logs_info: BdtString1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Bulk {
+    #[serde(flatten)]
+    pub bulk: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreviousBlocks {
+    #[serde(flatten)]
+    pub previous_blocks: PreviousBlockInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResponsibleOfPreClearing {
+    #[serde(flatten)]
+    pub responsible_of_pre_clearing: WctResponsibleOfPreClearingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteOperational {
+    #[serde(flatten)]
+    pub working_site_operational: WorkingSiteOperationalType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreNotificationAllowed {
+    #[serde(flatten)]
+    pub pre_notification_allowed: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CertificationHandlingInstructions {
+    #[serde(flatten)]
+    pub certification_handling_instructions: BdtString3000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ListItem {
+    #[serde(flatten)]
+    pub list_item: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DegreeDays {
+    #[serde(flatten)]
+    pub degree_days: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Owner {
+    #[serde(flatten)]
+    pub owner: BdtContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommercialName {
+    #[serde(flatten)]
+    pub commercial_name: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParcelLabel {
+    #[serde(flatten)]
+    pub parcel_label: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ListId {
+    #[serde(flatten)]
+    pub list_id: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TerrainPlanningDone {
+    #[serde(flatten)]
+    pub terrain_planning_done: BdtYesNoType,
 }
 

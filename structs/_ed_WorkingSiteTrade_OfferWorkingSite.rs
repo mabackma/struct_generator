@@ -1,19 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct FellingRightDuration {
+    #[serde(flatten)]
+    pub felling_right_duration: FellingRightDurationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OfferWorkingSiteSilvicultureInfo {
     #[serde(flatten)]
     pub offer_working_site_silviculture_info: OfferWorkingSiteSilvicultureInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DueDate {
+pub struct SilvicultureValidity {
     #[serde(flatten)]
-    pub due_date: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FellingRightDuration {
-    #[serde(flatten)]
-    pub felling_right_duration: FellingRightDurationType,
+    pub silviculture_validity: SilvicultureValidityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,21 +29,9 @@ pub struct IncludedInOffer {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Text {
+pub struct PurchaserRepresentativePerson {
     #[serde(flatten)]
-    pub text: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferWorkingSiteSilvicultureText {
-    #[serde(flatten)]
-    pub offer_working_site_silviculture_text: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureValidity {
-    #[serde(flatten)]
-    pub silviculture_validity: SilvicultureValidityType,
+    pub purchaser_representative_person: PurchaserRepresentativePersonType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,14 +41,26 @@ pub struct OWorkingSite {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaserRepresentativePerson {
+pub struct DueDate {
     #[serde(flatten)]
-    pub purchaser_representative_person: PurchaserRepresentativePersonType,
+    pub due_date: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OfferWorkingSitePaymentTransactions {
     #[serde(flatten)]
     pub offer_working_site_payment_transactions: WtcoOfferWorkingSitePaymentTransactionsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Text {
+    #[serde(flatten)]
+    pub text: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferWorkingSiteSilvicultureText {
+    #[serde(flatten)]
+    pub offer_working_site_silviculture_text: String,
 }
 

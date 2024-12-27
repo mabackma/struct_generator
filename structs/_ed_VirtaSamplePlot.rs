@@ -1,7 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSize {
+pub struct SamplePlotBasalArea {
     #[serde(flatten)]
-    pub sample_plot_size: i32,
+    pub sample_plot_basal_area: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -11,45 +11,9 @@ pub struct SamplePlotNorthingCoordinate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotMeanHeight {
-    #[serde(flatten)]
-    pub sample_plot_mean_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SamplePlotTrackDepth {
     #[serde(flatten)]
     pub sample_plot_track_depth: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotStubDiameter {
-    #[serde(flatten)]
-    pub sample_plot_stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotTrackDistance {
-    #[serde(flatten)]
-    pub sample_plot_track_distance: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlot {
-    #[serde(flatten)]
-    pub sample_plot: SamplePlotType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotEastingCoordinate {
-    #[serde(flatten)]
-    pub sample_plot_easting_coordinate: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotTrackWidth {
-    #[serde(flatten)]
-    pub sample_plot_track_width: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,9 +23,21 @@ pub struct SamplePlotMeanDiameter {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotEastingCoordinate {
+    #[serde(flatten)]
+    pub sample_plot_easting_coordinate: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SecondStoreyTrees {
     #[serde(flatten)]
     pub second_storey_trees: i32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotTrackDistance {
+    #[serde(flatten)]
+    pub sample_plot_track_distance: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,21 +47,21 @@ pub struct SamplePlotDominantHeight {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotNumber {
+pub struct SamplePlotTrackWidth {
     #[serde(flatten)]
-    pub sample_plot_number: String,
+    pub sample_plot_track_width: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotBasalArea {
+pub struct SamplePlotStubDiameter {
     #[serde(flatten)]
-    pub sample_plot_basal_area: i32,
+    pub sample_plot_stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SoilModificationEstimate {
+pub struct SamplePlotMeanHeight {
     #[serde(flatten)]
-    pub soil_modification_estimate: VirtaEvaluationType,
+    pub sample_plot_mean_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

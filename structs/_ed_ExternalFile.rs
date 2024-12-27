@@ -5,12 +5,6 @@ pub struct ExternalFile {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserId {
-    #[serde(flatten)]
-    pub product_user_id: BdtString50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct Label {
     #[serde(flatten)]
     pub label: BdtString100Type,

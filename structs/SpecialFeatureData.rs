@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<SfLocatedSpecialFeature1Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SpecialFeatureDataType {
     #[serde(rename = "@schemaPackageVersion")]
     pub schema_package_version: CoForestDataStandardSchemaPackageVersionType,
@@ -8,11 +14,5 @@ pub struct SpecialFeatureDataType {
     pub schema_package_version_date: CoDateType,
     #[serde(rename = "SpecialFeatures")]
     pub special_features: SpecialFeaturesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<SfLocatedSpecialFeature1Type>,
 }
 

@@ -1,25 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DecidedAmountUnit {
-    #[serde(flatten)]
-    pub decided_amount_unit: FccDecidedAmountUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestCentrePayments {
     #[serde(flatten)]
     pub forest_centre_payments: ForestCentrePaymentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecidedTotalSubsidy {
-    #[serde(flatten)]
-    pub decided_total_subsidy: FccDecidedTotalSubsidyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Payees {
-    #[serde(flatten)]
-    pub payees: PayeesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,33 +11,9 @@ pub struct PaymentTexts {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CostTypeDescription {
+pub struct Payees {
     #[serde(flatten)]
-    pub cost_type_description: FccCostTypeDescriptionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Subsidy {
-    #[serde(flatten)]
-    pub subsidy: SubsidyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecidedAmount {
-    #[serde(flatten)]
-    pub decided_amount: FccDecidedAmountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Subsidies {
-    #[serde(flatten)]
-    pub subsidies: SubsidiesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentText {
-    #[serde(flatten)]
-    pub payment_text: CoString5000Type,
+    pub payees: PayeesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,8 +23,8 @@ pub struct Payments {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CaseNumber {
+pub struct PaymentText {
     #[serde(flatten)]
-    pub case_number: FccFinancingActNumberType,
+    pub payment_text: CoString5000Type,
 }
 

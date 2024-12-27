@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PreferredContactingMethodsType {
-    #[serde(rename = "PreferredContactingMethod")]
-    pub preferred_contacting_method: Vec<CoPreferredContactingMethodType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ContactRequestType {
     #[serde(rename = "@id")]
     pub id: String,
@@ -36,6 +30,12 @@ pub struct ContactRequestType {
 pub struct RequestCodeType {
     #[serde(flatten)]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreferredContactingMethodsType {
+    #[serde(rename = "PreferredContactingMethod")]
+    pub preferred_contacting_method: Vec<CoPreferredContactingMethodType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

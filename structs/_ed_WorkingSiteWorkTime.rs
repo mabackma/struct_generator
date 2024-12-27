@@ -1,13 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Sawinghours {
-    #[serde(flatten)]
-    pub sawinghours: SawinghoursDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteWorkTime {
     #[serde(flatten)]
     pub working_site_work_time: WorkingSiteWorkTimeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Sawinghours {
+    #[serde(flatten)]
+    pub sawinghours: SawinghoursDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

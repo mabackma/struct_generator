@@ -1,19 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Measurement {
+pub struct Temperature {
     #[serde(flatten)]
-    pub measurement: MeasurementDataType,
+    pub temperature: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementId {
+pub struct MeasurementDate {
     #[serde(flatten)]
-    pub measurement_id: BdtPositiveIntegerType,
+    pub measurement_date: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteHarvestingQualityControlManual {
+pub struct LogVolume {
     #[serde(flatten)]
-    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
+    pub log_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,9 +23,45 @@ pub struct LogCount {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Temperature {
+pub struct ProductKey {
     #[serde(flatten)]
-    pub temperature: i32,
+    pub product_key: WctERPIdType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlLogLength {
+    #[serde(flatten)]
+    pub control_log_length: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlLogCount {
+    #[serde(flatten)]
+    pub control_log_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Measurement {
+    #[serde(flatten)]
+    pub measurement: MeasurementDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteHarvestingQualityControlManual {
+    #[serde(flatten)]
+    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelectionType {
+    #[serde(flatten)]
+    pub selection_type: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementId {
+    #[serde(flatten)]
+    pub measurement_id: BdtPositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,8 +71,14 @@ pub struct Measurements {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlLogCount {
+pub struct ControlLogVolume {
     #[serde(flatten)]
-    pub control_log_count: BdtPositiveInteger2digitsType,
+    pub control_log_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LogLength {
+    #[serde(flatten)]
+    pub log_length: BdtPositiveInteger5digitsType,
 }
 

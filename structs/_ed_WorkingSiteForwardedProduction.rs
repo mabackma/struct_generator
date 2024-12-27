@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Load {
+pub struct LoadVolume {
     #[serde(flatten)]
-    pub load: LoadType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandId {
-    #[serde(flatten)]
-    pub stand_id: BdtString20Type,
+    pub load_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,21 +11,15 @@ pub struct PartitialLoadId {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoadVolume {
+pub struct Load {
     #[serde(flatten)]
-    pub load_volume: BdtDecimal3FractionDigitsType,
+    pub load: LoadType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteForwardedProduction {
+pub struct ForwardingDistance {
     #[serde(flatten)]
-    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SendDate {
-    #[serde(flatten)]
-    pub send_date: BdtTimeStampType,
+    pub forwarding_distance: u32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,14 +35,8 @@ pub struct PartitialLoad {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardingDistance {
+pub struct WorkingSiteForwardedProduction {
     #[serde(flatten)]
-    pub forwarding_distance: u32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoadNumber {
-    #[serde(flatten)]
-    pub load_number: u32,
+    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
 }
 

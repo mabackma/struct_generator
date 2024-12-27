@@ -5,9 +5,9 @@ pub struct Attachments {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Attachment {
+pub struct ServiceBuyerArea {
     #[serde(flatten)]
-    pub attachment: AttachmentDataType,
+    pub service_buyer_area: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,14 +17,20 @@ pub struct BeginDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureOrder {
+    #[serde(flatten)]
+    pub silviculture_order: SilvicultureOrderType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Data {
     #[serde(flatten)]
     pub data: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureOrder {
+pub struct Attachment {
     #[serde(flatten)]
-    pub silviculture_order: SilvicultureOrderType,
+    pub attachment: AttachmentDataType,
 }
 

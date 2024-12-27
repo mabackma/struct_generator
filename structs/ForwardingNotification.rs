@@ -1,60 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsChangesType {
-    #[serde(rename = "AssortmentsChange", skip_serializing_if = "Option::is_none")]
-    pub assortments_change: Option<Vec<AssortmentChangeDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleFactorDataType {
-    #[serde(rename = "ScaleAssortmentType")]
-    pub scale_assortment_type: BdtScaleAssortmentType,
-    #[serde(rename = "LoadCount")]
-    pub load_count: BdtPositiveIntegerType,
-    #[serde(rename = "Area")]
-    pub area: WctAreaCodeType,
-    #[serde(rename = "Code")]
-    pub code: BdtString50Type,
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: BdtString20Type,
-    #[serde(rename = "CodeName")]
-    pub code_name: BdtString50Type,
-    #[serde(rename = "TreeSpecies", skip_serializing_if = "Option::is_none")]
-    pub tree_species: Option<WctScaleFactorTreeSpeciesType>,
-    #[serde(rename = "Month", skip_serializing_if = "Option::is_none")]
-    pub month: Option<WctMonthType>,
-    #[serde(rename = "HarvestingFinishedDate", skip_serializing_if = "Option::is_none")]
-    pub harvesting_finished_date: Option<BdtTimeStampType>,
-    #[serde(rename = "SemiDry", skip_serializing_if = "Option::is_none")]
-    pub semi_dry: Option<BdtYesNoType>,
-    #[serde(rename = "SnowOrIce", skip_serializing_if = "Option::is_none")]
-    pub snow_or_ice: Option<BdtYesNoType>,
-    #[serde(rename = "WeightClass", skip_serializing_if = "Option::is_none")]
-    pub weight_class: Option<BdtPositiveInteger1digitsType>,
-    #[serde(rename = "Humidity", skip_serializing_if = "Option::is_none")]
-    pub humidity: Option<BdtDecimal1FractionDigitType>,
-    #[serde(rename = "HumidityMeasured", skip_serializing_if = "Option::is_none")]
-    pub humidity_measured: Option<BdtYesNoType>,
-    #[serde(rename = "ForestHaulageFinishedDate", skip_serializing_if = "Option::is_none")]
-    pub forest_haulage_finished_date: Option<BdtTimeStampType>,
-    #[serde(rename = "CleanlinessClass", skip_serializing_if = "Option::is_none")]
-    pub cleanliness_class: Option<BdtCleanlinessClassType>,
-    #[serde(rename = "Weight")]
-    pub weight: BdtInteger7digitsType,
-    #[serde(rename = "Density")]
-    pub density: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "Volume")]
-    pub volume: BdtDecimal3FractionDigitsType,
-    #[serde(rename = "MeltedWater", skip_serializing_if = "Option::is_none")]
-    pub melted_water: Option<BdtYesNoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CommonMessagesType {
     #[serde(rename = "CommonMessage", skip_serializing_if = "Option::is_none")]
     pub common_message: Option<Vec<CommonMessageDataType>>,
@@ -66,6 +10,12 @@ pub struct CommonMessageDataType {
     pub common_message_id: Option<WctCommonMessageType>,
     #[serde(rename = "CommonMessageFreeText", skip_serializing_if = "Option::is_none")]
     pub common_message_free_text: Option<BdtString200Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleFactorsType {
+    #[serde(rename = "ScaleFactor", skip_serializing_if = "Option::is_none")]
+    pub scale_factor: Option<Vec<ScaleFactorDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -109,9 +59,17 @@ pub struct ForwardingNotificationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleFactorsType {
-    #[serde(rename = "ScaleFactor", skip_serializing_if = "Option::is_none")]
-    pub scale_factor: Option<Vec<ScaleFactorDataType>>,
+pub struct LoadRangeType {
+    #[serde(rename = "StartLoadNumber")]
+    pub start_load_number: BdtPositiveInteger4digitsType,
+    #[serde(rename = "EndLoadNumber")]
+    pub end_load_number: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsChangesType {
+    #[serde(rename = "AssortmentsChange", skip_serializing_if = "Option::is_none")]
+    pub assortments_change: Option<Vec<AssortmentChangeDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -161,10 +119,52 @@ pub struct AssortmentChangeDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoadRangeType {
-    #[serde(rename = "StartLoadNumber")]
-    pub start_load_number: BdtPositiveInteger4digitsType,
-    #[serde(rename = "EndLoadNumber")]
-    pub end_load_number: BdtPositiveInteger4digitsType,
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleFactorDataType {
+    #[serde(rename = "ScaleAssortmentType")]
+    pub scale_assortment_type: BdtScaleAssortmentType,
+    #[serde(rename = "LoadCount")]
+    pub load_count: BdtPositiveIntegerType,
+    #[serde(rename = "Area")]
+    pub area: WctAreaCodeType,
+    #[serde(rename = "Code")]
+    pub code: BdtString50Type,
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: BdtString20Type,
+    #[serde(rename = "CodeName")]
+    pub code_name: BdtString50Type,
+    #[serde(rename = "TreeSpecies", skip_serializing_if = "Option::is_none")]
+    pub tree_species: Option<WctScaleFactorTreeSpeciesType>,
+    #[serde(rename = "Month", skip_serializing_if = "Option::is_none")]
+    pub month: Option<WctMonthType>,
+    #[serde(rename = "HarvestingFinishedDate", skip_serializing_if = "Option::is_none")]
+    pub harvesting_finished_date: Option<BdtTimeStampType>,
+    #[serde(rename = "SemiDry", skip_serializing_if = "Option::is_none")]
+    pub semi_dry: Option<BdtYesNoType>,
+    #[serde(rename = "SnowOrIce", skip_serializing_if = "Option::is_none")]
+    pub snow_or_ice: Option<BdtYesNoType>,
+    #[serde(rename = "WeightClass", skip_serializing_if = "Option::is_none")]
+    pub weight_class: Option<BdtPositiveInteger1digitsType>,
+    #[serde(rename = "Humidity", skip_serializing_if = "Option::is_none")]
+    pub humidity: Option<BdtDecimal1FractionDigitType>,
+    #[serde(rename = "HumidityMeasured", skip_serializing_if = "Option::is_none")]
+    pub humidity_measured: Option<BdtYesNoType>,
+    #[serde(rename = "ForestHaulageFinishedDate", skip_serializing_if = "Option::is_none")]
+    pub forest_haulage_finished_date: Option<BdtTimeStampType>,
+    #[serde(rename = "CleanlinessClass", skip_serializing_if = "Option::is_none")]
+    pub cleanliness_class: Option<BdtCleanlinessClassType>,
+    #[serde(rename = "Weight")]
+    pub weight: BdtInteger7digitsType,
+    #[serde(rename = "Density")]
+    pub density: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "Volume")]
+    pub volume: BdtDecimal3FractionDigitsType,
+    #[serde(rename = "MeltedWater", skip_serializing_if = "Option::is_none")]
+    pub melted_water: Option<BdtYesNoType>,
 }
 

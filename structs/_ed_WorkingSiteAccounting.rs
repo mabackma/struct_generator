@@ -1,13 +1,7 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AmountAccounted {
+pub struct AmountNotified {
     #[serde(flatten)]
-    pub amount_accounted: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCode {
-    #[serde(flatten)]
-    pub work_code: BdtWorkCodeType,
+    pub amount_notified: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -17,9 +11,9 @@ pub struct HarvestedVolumeAccounted {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AmountNotified {
+pub struct ContarctorId {
     #[serde(flatten)]
-    pub amount_notified: BdtDecimal3FractionDigitsType,
+    pub contarctor_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,33 +23,15 @@ pub struct FinalAccounting {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContarctorId {
+pub struct AmountAccounted {
     #[serde(flatten)]
-    pub contarctor_id: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodes {
-    #[serde(flatten)]
-    pub work_codes: WorkCodesType,
+    pub amount_accounted: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AccountingDate {
     #[serde(flatten)]
     pub accounting_date: BdtTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardedVolume {
-    #[serde(flatten)]
-    pub forwarded_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AmountPlanned {
-    #[serde(flatten)]
-    pub amount_planned: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -68,6 +44,18 @@ pub struct ForwardedVolumeAccounted {
 pub struct PlannedVolume {
     #[serde(flatten)]
     pub planned_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardedVolume {
+    #[serde(flatten)]
+    pub forwarded_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestHaulageDistanceContinued {
+    #[serde(flatten)]
+    pub forest_haulage_distance_continued: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
