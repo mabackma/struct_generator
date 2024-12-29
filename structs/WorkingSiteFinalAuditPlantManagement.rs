@@ -99,6 +99,44 @@ pub struct AuditionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringWorkingSiteFinalAuditPlantManagementType {
+    #[serde(flatten)]
+    pub base: WorkingSiteFinalAuditPlantManagementBaseType,
+    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
+    pub work_code_group: Option<BdtWorkCodeGroupType>,
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<BdtWorkCodeType>,
+    #[serde(rename = "WorkCodeQualifier", skip_serializing_if = "Option::is_none")]
+    pub work_code_qualifier: Option<BdtWorkCodeQualifierType1>,
+    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
+    pub area: Option<BdtDecimal2FractionDigitsType>,
+    #[serde(rename = "WorkingTime", skip_serializing_if = "Option::is_none")]
+    pub working_time: Option<BdtDateType>,
+    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
+    pub audit: Option<AuditionType>,
+    #[serde(rename = "SamplePlotCount", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_count: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "SamplePlotCountRequired", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_count_required: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString1000Type>,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
+    #[serde(rename = "AuditsList")]
+    pub audits_list: AuditsListType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditQuestionType {
+    #[serde(rename = "QuestionId")]
+    pub question_id: BdtFinalAuditQuestionType,
+    #[serde(rename = "QuestionAnswer")]
+    pub question_answer: BdtFinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AuditsType {
     #[serde(rename = "PlantManagementQuality")]
     pub plant_management_quality: WorkingQualityType,
@@ -127,46 +165,8 @@ pub struct AuditsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuditQuestionType {
-    #[serde(rename = "QuestionId")]
-    pub question_id: BdtFinalAuditQuestionType,
-    #[serde(rename = "QuestionAnswer")]
-    pub question_answer: BdtFinalAuditAnswerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AuditsListType {
     #[serde(rename = "AuditQuestion")]
     pub audit_question: AuditQuestionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringWorkingSiteFinalAuditPlantManagementType {
-    #[serde(flatten)]
-    pub base: WorkingSiteFinalAuditPlantManagementBaseType,
-    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
-    pub work_code_group: Option<BdtWorkCodeGroupType>,
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<BdtWorkCodeType>,
-    #[serde(rename = "WorkCodeQualifier", skip_serializing_if = "Option::is_none")]
-    pub work_code_qualifier: Option<BdtWorkCodeQualifierType1>,
-    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
-    pub area: Option<BdtDecimal2FractionDigitsType>,
-    #[serde(rename = "WorkingTime", skip_serializing_if = "Option::is_none")]
-    pub working_time: Option<BdtDateType>,
-    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
-    pub audit: Option<AuditionType>,
-    #[serde(rename = "SamplePlotCount", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_count: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "SamplePlotCountRequired", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_count_required: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString1000Type>,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
-    #[serde(rename = "AuditsList")]
-    pub audits_list: AuditsListType,
 }
 

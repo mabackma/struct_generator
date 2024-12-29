@@ -1,4 +1,18 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ForestRealizationDataType {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "AdditionalDetails")]
+    pub additional_details: CoString2000Type,
+    #[serde(rename = "Sender")]
+    pub sender: CiContactInformationType,
+    #[serde(rename = "UseCase")]
+    pub use_case: String,
+    #[serde(rename = "GeometryObjects")]
+    pub geometry_objects: GeometryObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ObjectGeometryType {
     #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
     pub co_change_state: Option<ChangeState>,
@@ -21,29 +35,21 @@ pub struct ParentObjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryObjectsType {
-    #[serde(rename = "GeometryObject")]
-    pub geometry_object: Vec<GeometryObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestRealizationDataType {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "AdditionalDetails")]
-    pub additional_details: CoString2000Type,
-    #[serde(rename = "Sender")]
-    pub sender: CiContactInformationType,
-    #[serde(rename = "UseCase")]
-    pub use_case: String,
-    #[serde(rename = "GeometryObjects")]
-    pub geometry_objects: GeometryObjectsType,
+pub struct ObjectTypeType {
+    #[serde(rename = "base")]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ParentObjectsType {
     #[serde(rename = "ParentObject")]
     pub parent_object: Vec<ParentObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GeometryObjectsType {
+    #[serde(rename = "GeometryObject")]
+    pub geometry_object: Vec<GeometryObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -64,11 +70,5 @@ pub struct GeometryObjectType {
     pub op_operations: Option<Operations>,
     #[serde(rename = "StSpecialFeatures", skip_serializing_if = "Option::is_none")]
     pub st_special_features: Option<SpecialFeatures>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectTypeType {
-    #[serde(flatten)]
-    pub base: String,
 }
 

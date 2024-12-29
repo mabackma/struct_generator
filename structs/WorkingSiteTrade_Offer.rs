@@ -1,11 +1,11 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferTextType {
+pub struct OfferBusinessSenderType {
     #[serde(flatten)]
-    pub base: CoString1500Type,
+    pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferBusinessSenderType {
+pub struct TechnicalContactPersonType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
 }
@@ -17,9 +17,15 @@ pub struct OfferDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
+pub struct OfferTextType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
+    pub base: CoString1500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -52,11 +58,5 @@ pub struct OfferType {
     pub wtco_documents: Option<Documents>,
     #[serde(rename = "CallForOfferWoodTradeInfo", skip_serializing_if = "Option::is_none")]
     pub call_for_offer_wood_trade_info: Option<WtcoCallForOfferWoodTradeInfoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
 }
 

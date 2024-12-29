@@ -1,4 +1,14 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct LogMeasurementsType {
+    #[serde(rename = "LogDiameter")]
+    pub log_diameter: PositiveInteger3digitsType,
+    #[serde(rename = "ControlLogDiameter")]
+    pub control_log_diameter: PositiveInteger3digitsType,
+    #[serde(rename = "MeasurementDate")]
+    pub measurement_date: TimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CaliperType {
     #[serde(rename = "CaliperId", skip_serializing_if = "Option::is_none")]
     pub caliper_id: Option<String200Type>,
@@ -8,7 +18,7 @@ pub struct CaliperType {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ControlStemSelectionType {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
     pub base: String,
 }
 
@@ -34,30 +44,6 @@ pub struct LogDataType {
     pub log_length_class: Option<PositiveInteger4digitsType>,
     #[serde(rename = "LogMeasurements")]
     pub log_measurements: Vec<LogMeasurementsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LengthCalibrationType {
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: StanfordTreeSpeciesType,
-    #[serde(rename = "LengthCalibrationDate")]
-    pub length_calibration_date: TimeStampType,
-    #[serde(rename = "LengthCalibrationReason")]
-    pub length_calibration_reason: String200Type,
-    #[serde(rename = "LengthCalibrationDescription")]
-    pub length_calibration_description: String200Type,
-    #[serde(rename = "LengthCalibrationAdjustment")]
-    pub length_calibration_adjustment: Integer3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LogMeasurementsType {
-    #[serde(rename = "LogDiameter")]
-    pub log_diameter: PositiveInteger3digitsType,
-    #[serde(rename = "ControlLogDiameter")]
-    pub control_log_diameter: PositiveInteger3digitsType,
-    #[serde(rename = "MeasurementDate")]
-    pub measurement_date: TimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -126,5 +112,19 @@ pub struct StemDataType {
     pub stem_coordinates: Option<PointGeometryType>,
     #[serde(rename = "Log", skip_serializing_if = "Option::is_none")]
     pub log: Option<Vec<LogDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LengthCalibrationType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: StanfordTreeSpeciesType,
+    #[serde(rename = "LengthCalibrationDate")]
+    pub length_calibration_date: TimeStampType,
+    #[serde(rename = "LengthCalibrationReason")]
+    pub length_calibration_reason: String200Type,
+    #[serde(rename = "LengthCalibrationDescription")]
+    pub length_calibration_description: String200Type,
+    #[serde(rename = "LengthCalibrationAdjustment")]
+    pub length_calibration_adjustment: Integer3digitsType,
 }
 

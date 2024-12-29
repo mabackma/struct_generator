@@ -1,4 +1,14 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbolType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "MapSymbols")]
+    pub map_symbols: MapSymbolsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MapSymbolsType {
     #[serde(rename = "Symbol")]
     pub symbol: Vec<MapSymbolDataType>,
@@ -50,15 +60,5 @@ pub struct MapSymbolDataType {
     pub spare_group_of_trees: Option<SpareTreesByCategoryType>,
     #[serde(rename = "SfUsingRestrictions", skip_serializing_if = "Option::is_none")]
     pub sf_using_restrictions: Option<UsingRestrictions>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "MapSymbols")]
-    pub map_symbols: MapSymbolsType,
 }
 

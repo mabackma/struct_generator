@@ -1,16 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoadType {
-    #[serde(rename = "LoadNumber")]
-    pub load_number: u32,
-    #[serde(rename = "ForwardingDistance")]
-    pub forwarding_distance: u32,
-    #[serde(rename = "MeasurementDate")]
-    pub measurement_date: TimeStampType,
-    #[serde(rename = "PartitialLoad")]
-    pub partitial_load: Vec<PartitialLoadType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PartitialLoadType {
     #[serde(rename = "PartitialLoadId")]
     pub partitial_load_id: u32,
@@ -56,5 +44,17 @@ pub struct WorkingSiteForwardedProductionType {
     pub load_count: u32,
     #[serde(rename = "Load")]
     pub load: Vec<LoadType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadType {
+    #[serde(rename = "LoadNumber")]
+    pub load_number: u32,
+    #[serde(rename = "ForwardingDistance")]
+    pub forwarding_distance: u32,
+    #[serde(rename = "MeasurementDate")]
+    pub measurement_date: TimeStampType,
+    #[serde(rename = "PartitialLoad")]
+    pub partitial_load: Vec<PartitialLoadType>,
 }
 

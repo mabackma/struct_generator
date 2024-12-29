@@ -41,7 +41,11 @@ pub fn extension_type(e: &BytesStart<'_>) -> Option<String> {
 }
 
 // Retrieve the type of the reference
-pub fn reference_type(ref_name: &str, element_definitions: &HashMap<String, String>, prefixes: &mut HashMap<String, String>) -> Option<String> {
+pub fn reference_type(
+    ref_name: &str, 
+    element_definitions: &HashMap<String, String>, 
+    prefixes: &mut HashMap<String, String>
+) -> Option<String> {
     let complete_name = handle_prefix(ref_name, prefixes);
 
     // Search for the reference type in the element definitions
@@ -60,7 +64,10 @@ pub fn reference_type(ref_name: &str, element_definitions: &HashMap<String, Stri
 
 
 // Check if the type is a vector or optional
-pub fn parse_type(e: &BytesStart<'_>, field_type: &mut String) {
+pub fn parse_type(
+    e: &BytesStart<'_>, 
+    field_type: &mut String
+) {
     if is_element_vec(e) {
         if is_element_optional(e) {
             *field_type = format!("Option<Vec<{}>>", field_type);

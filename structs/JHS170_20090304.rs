@@ -1,366 +1,366 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AlkuPvmTyyppi {
-    #[serde(flatten)]
-    pub base: chrono::NaiveDate,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostilokeroTekstiTyyppi {
-    #[serde(flatten)]
+pub struct HuoneistotunnisteJakokirjainTekstiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AmmattiKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NimilajiKoodiTyyppi {
-    #[serde(flatten)]
+pub struct PostitoimipaikkaNimiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct KuntaNumeroTyyppi {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
     pub base: f64,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SyntymaPvmTyyppi {
-    #[serde(flatten)]
-    pub base: chrono::NaiveDate,
+pub struct LoppuHetkiTyyppi {
+    #[serde(rename = "base")]
+    pub base: chrono::NaiveDateTime,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValiaikainenHenkiloTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EdellinenSukuNimiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HuoneistotunnisteJakokirjainTekstiTyyppi {
-    #[serde(flatten)]
+pub struct HuoltosuhdeTekstiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct IBANTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EtuNimiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KieliKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KuntaKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ValtiotunnusKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AlkuHetkiTyyppi {
-    #[serde(flatten)]
-    pub base: chrono::NaiveDateTime,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SahkopostiosoiteTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HenkiloTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KolmasRiviTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LajiTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ViidesRiviTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BICKoodiTyyppi {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct IkaluokkaTekstiTyyppi {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LajiKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostinumeroKoodiTyyppi {
-    #[serde(flatten)]
+pub struct LajiTekstiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CareOfTekstiTyyppi {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HuoneistotunnisteNumeroTyyppi {
-    #[serde(flatten)]
-    pub base: f64,
+pub struct AlkuHetkiTyyppi {
+    #[serde(rename = "base")]
+    pub base: chrono::NaiveDateTime,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PostitoimipaikkaNimiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SahkoinenAsiointiTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoppuPvmTyyppi {
-    #[serde(flatten)]
-    pub base: chrono::NaiveDate,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VoimassaoloKytkinTyyppi {
-    #[serde(flatten)]
-    pub base: bool,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HuoltosuhdeTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KuudesRiviTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HuoneistotunnisteKirjainTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct YritysTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaatunnusKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NimiTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SiviilisaatyTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PuhelinnumeroTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnsimmainenRiviTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KansalaisuusKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PankkitiliTunnusTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UlkomaaPostitoimipaikkaNimiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PostilokerolyhenneTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KuvausTekstiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KatuNimiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EtunimetNimiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OsoiteNumeroTyyppi {
-    #[serde(flatten)]
-    pub base: f64,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SukuNimiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SukupuoliKoodiTyyppi {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NeljasRiviTekstiTyyppi {
-    #[serde(flatten)]
+pub struct FaksinumeroTekstiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct KuolemaPvmTyyppi {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
     pub base: chrono::NaiveDate,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VakinainenKytkinTyyppi {
-    #[serde(flatten)]
-    pub base: bool,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct KutsumaNimiTyyppi {
-    #[serde(flatten)]
+pub struct PostilokeroTekstiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FaksinumeroTekstiTyyppi {
-    #[serde(flatten)]
+pub struct SukupuoliKoodiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ToinenRiviTekstiTyyppi {
-    #[serde(flatten)]
+pub struct EtuNimiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LoppuHetkiTyyppi {
-    #[serde(flatten)]
-    pub base: chrono::NaiveDateTime,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UlkomaaHenkiloTunnusTyyppi {
-    #[serde(flatten)]
+pub struct EdellinenSukuNimiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaayksikkoNimiTyyppi {
-    #[serde(flatten)]
+pub struct HuoneistotunnisteNumeroTyyppi {
+    #[serde(rename = "base")]
+    pub base: f64,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SahkopostiosoiteTekstiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TurvakieltoKytkinTyyppi {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
     pub base: bool,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatusryhmaTekstiTyyppi {
-    #[serde(flatten)]
+pub struct SahkoinenAsiointiTunnusTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct PaayksikkoNimiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SyntymaPvmTyyppi {
+    #[serde(rename = "base")]
+    pub base: chrono::NaiveDate,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AlayksikkoNimiTyyppi {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OsoiteNumeroTyyppi {
+    #[serde(rename = "base")]
+    pub base: f64,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NimiTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EtunimetNimiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LajiKoodiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UlkomaaHenkiloTunnusTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SiviilisaatyTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoppuPvmTyyppi {
+    #[serde(rename = "base")]
+    pub base: chrono::NaiveDate,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KuntaKoodiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValiaikainenHenkiloTunnusTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KolmasRiviTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HuoneistotunnisteKirjainTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EnsimmainenRiviTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaatunnusKoodiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KuudesRiviTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KatuNimiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlkuPvmTyyppi {
+    #[serde(rename = "base")]
+    pub base: chrono::NaiveDate,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PuhelinnumeroTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BICKoodiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SukuNimiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NimilajiKoodiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValtiotunnusKoodiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PostilokerolyhenneTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VakinainenKytkinTyyppi {
+    #[serde(rename = "base")]
+    pub base: bool,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KansalaisuusKoodiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ToinenRiviTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VoimassaoloKytkinTyyppi {
+    #[serde(rename = "base")]
+    pub base: bool,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ViidesRiviTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct YritysTunnusTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KuvausTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PostinumeroKoodiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UlkomaaPostitoimipaikkaNimiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatusryhmaTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PankkitiliTunnusTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KutsumaNimiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NeljasRiviTekstiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HenkiloTunnusTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KieliKoodiTyyppi {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmmattiKoodiTyyppi {
+    #[serde(rename = "base")]
     pub base: String,
 }
 

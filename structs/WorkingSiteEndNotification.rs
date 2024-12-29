@@ -1,24 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FulfilledAreasType {
-    #[serde(rename = "FulfilledArea")]
-    pub fulfilled_area: Vec<FulfilledAreaType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FulfilledAreaType {
-    #[serde(rename = "Geometry")]
-    pub geometry: PolygonOrMultiPolygon2Type,
-    #[serde(rename = "Supported", skip_serializing_if = "Option::is_none")]
-    pub supported: Option<YesNoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteEndNotificationType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -42,6 +22,26 @@ pub struct WorkingSiteEndNotificationType {
     pub assortments: Option<AssortmentsType>,
     #[serde(rename = "WorkCodes", skip_serializing_if = "Option::is_none")]
     pub work_codes: Option<WorkCodesType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FulfilledAreaType {
+    #[serde(rename = "Geometry")]
+    pub geometry: PolygonOrMultiPolygon2Type,
+    #[serde(rename = "Supported", skip_serializing_if = "Option::is_none")]
+    pub supported: Option<YesNoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -73,8 +73,8 @@ pub struct WorkCodeDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
+pub struct FulfilledAreasType {
+    #[serde(rename = "FulfilledArea")]
+    pub fulfilled_area: Vec<FulfilledAreaType>,
 }
 

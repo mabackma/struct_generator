@@ -1,24 +1,24 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OriginalFeatureCodeType {
-    #[serde(flatten)]
+pub struct FeatureAdditionalCodeType {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FeatureCodeExtensionsType {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OriginalFeatureCodeType {
+    #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FeatureTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureAdditionalCodeType {
-    #[serde(flatten)]
+    #[serde(rename = "base")]
     pub base: String,
 }
 

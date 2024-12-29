@@ -2,7 +2,7 @@
 pub struct HeaderType {
     #[serde(rename = "MessageType")]
     pub message_type: MessageType,
-    #[serde(flatten)]
+    #[serde(rename = "base")]
     pub base: String,
 }
 

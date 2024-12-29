@@ -52,6 +52,13 @@ static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "CoDateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
 };
 
+const RUST_TYPES: &[&str] = &[
+    "bool", "f64", "f32", "i32", "u32", "i8", "i16", "i64", 
+    "u8", "u16", "u64", "String", "chrono::NaiveDate", 
+    "chrono::NaiveTime", "chrono::NaiveDateTime", 
+    "std::time::Duration", "Vec<u8>",
+];
+
 // Reads an XML file and returns its contents as a string
 pub fn read_xsd_file(file_name: &str) -> io::Result<String> {
     let mut file = File::open(file_name)?;
@@ -66,11 +73,61 @@ pub fn read_xsd_file(file_name: &str) -> io::Result<String> {
     Ok(xsd_string)
 }
 
-// Write the structs to a file
-pub fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) -> io::Result<()> {
+// Save the structs and definitions to a file
+pub fn structs_and_definitions_to_file(
+    structs: &HashMap<String, XMLStruct>, 
+    element_definitions: &HashMap<String, String>, 
+    prefixes: &mut HashMap<String, String>, 
+    file_name: &str
+) -> io::Result<()> {
     let mut structs_string = String::new();
 
-    // Build the structs as a string
+    // Add element definitions to the string
+    structs_string.push_str(&generate_element_definitions(element_definitions, prefixes));
+
+    // Add structs to the string
+    structs_string.push_str(&generate_structs(structs));
+
+    create_directory(&file_name);
+
+    // Write the string to the file
+    let mut file = File::create(file_name)?;
+    file.write_all(structs_string.as_bytes())?;
+
+    Ok(())
+}
+
+// Build the element definitions as a string
+fn generate_element_definitions(
+    element_definitions: &HashMap<String, String>, 
+    prefixes: &mut HashMap<String, String>
+) -> String {
+    let mut definitions_string = String::new();
+
+    for (name, typ) in element_definitions.iter() {
+        definitions_string.push_str("#[derive(Debug, Serialize, Deserialize)]\n");
+        definitions_string.push_str(&format!("pub struct {} {{\n", name));
+        definitions_string.push_str("    #[serde(flatten)]\n");
+
+        let field_type = handle_prefix(typ, prefixes);
+
+        let typ = if let Some(ft) = XSD_TO_RUST.get(&field_type.replace("Xs", "")) {
+            ft.to_string()
+        } else {
+            field_type.to_string()
+        };
+
+        definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), typ));
+        definitions_string.push_str("}\n\n");
+    }
+
+    definitions_string
+}
+
+// Build the structs as a string
+fn generate_structs(structs: &HashMap<String, XMLStruct>) -> String {
+    let mut structs_string = String::new();
+
     for (name, xml_struct) in structs.iter() {
         structs_string.push_str(&format!("#[derive(Debug, Serialize, Deserialize)]"));
         structs_string.push_str(&format!("\npub struct {} {{\n", name));
@@ -83,7 +140,7 @@ pub fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) ->
                 field.field_type.to_string()
             };
 
-            if field.name == "base" {
+            if field.name == "base" && !RUST_TYPES.contains(&field_type.as_str()) {
                 structs_string.push_str(&format!("    #[serde(flatten)]\n"));
             } else if field.field_type.starts_with("Option<") {
                 structs_string.push_str(&format!("    #[serde(rename = \"{}\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
@@ -97,46 +154,10 @@ pub fn structs_to_file(structs: &HashMap<String, XMLStruct>, file_name: &str) ->
         structs_string.push_str("}\n\n");
     }
 
-    create_directory(&file_name);
-
-    // Write the string to the file
-    let mut file = File::create(file_name)?;
-    file.write_all(structs_string.as_bytes())?;
-
-    Ok(())
+    structs_string
 }
 
-// Write the element definitions to a file
-pub fn element_definitions_to_file(element_definitions: &HashMap<String, String>, file_name: &str, prefixes: &mut HashMap<String, String>) -> io::Result<()> {
-    let mut element_definitions_string = String::new();
-
-    // Build the element definitions as a string
-    for (name, typ) in element_definitions.iter() {
-        element_definitions_string.push_str("#[derive(Debug, Serialize, Deserialize)]\n");
-        element_definitions_string.push_str(&format!("pub struct {} {{\n", name));
-        element_definitions_string.push_str("    #[serde(flatten)]\n");
-
-        let field_type = handle_prefix(typ, prefixes);
-
-        let typ = if let Some(ft) = XSD_TO_RUST.get(&field_type.replace("Xs", "")) {
-            ft.to_string()
-        } else {
-            field_type.to_string()
-        };
-
-        element_definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), typ));
-        element_definitions_string.push_str("}\n\n");
-    }
-
-    create_directory(&file_name);
-
-    // Write the string to the file
-    let mut file = File::create(file_name)?;
-    file.write_all(element_definitions_string.as_bytes())?;
-
-    Ok(())
-}
-
+// Create a directory for the file if it does not exist
 fn create_directory(file_name: &str) {
     let path_vec = file_name.split("/").collect::<Vec<&str>>();
     let path = path_vec[..path_vec.len() - 1].join("/");

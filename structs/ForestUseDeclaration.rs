@@ -1,21 +1,15 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LocationEstatesType {
-    #[serde(rename = "LocationEstate")]
-    pub location_estate: Vec<FccLocationEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationStandsType {
-    #[serde(rename = "DeclarationStand")]
-    pub declaration_stand: Vec<DeclarationStandType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SenderType {
+pub struct DeclarationRealEstatesType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
-    #[serde(rename = "PowerOfAttorney")]
-    pub power_of_attorney: FccPowerOfAttorneyType,
+    pub base: ReRealEstatesWithOwnersInformationType2,
+    #[serde(rename = "ProcessingAreas")]
+    pub processing_areas: ProcessingAreasType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationOtherOperationsType {
+    #[serde(rename = "DeclarationOtherOperation")]
+    pub declaration_other_operation: Vec<CoDeclarationOtherOperationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -45,18 +39,6 @@ pub struct ForestUseDeclarationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreaNumberType {
-    #[serde(flatten)]
-    pub base: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreasType {
-    #[serde(rename = "ProcessingArea")]
-    pub processing_area: Vec<ProcessingAreaType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ProcessingAreaType {
     #[serde(rename = "@id")]
     pub id: IdStringType,
@@ -66,6 +48,18 @@ pub struct ProcessingAreaType {
     pub processing_area_reference: CoReferenceType,
     #[serde(rename = "DeclarationStands")]
     pub declaration_stands: DeclarationStandsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LocationEstatesType {
+    #[serde(rename = "LocationEstate")]
+    pub location_estate: Vec<FccLocationEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreasType {
+    #[serde(rename = "ProcessingArea")]
+    pub processing_area: Vec<ProcessingAreaType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -131,9 +125,23 @@ pub struct HabitatOperationsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationOtherOperationsType {
-    #[serde(rename = "DeclarationOtherOperation")]
-    pub declaration_other_operation: Vec<CoDeclarationOtherOperationType>,
+pub struct SenderType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+    #[serde(rename = "PowerOfAttorney")]
+    pub power_of_attorney: FccPowerOfAttorneyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreaNumberType {
+    #[serde(rename = "base")]
+    pub base: i32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationStandsType {
+    #[serde(rename = "DeclarationStand")]
+    pub declaration_stand: Vec<DeclarationStandType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -146,13 +154,5 @@ pub struct SpecialFeaturesType {
 pub struct MeanDiameterType {
     #[serde(flatten)]
     pub base: CoDiameterType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationRealEstatesType {
-    #[serde(flatten)]
-    pub base: ReRealEstatesWithOwnersInformationType2,
-    #[serde(rename = "ProcessingAreas")]
-    pub processing_areas: ProcessingAreasType,
 }
 

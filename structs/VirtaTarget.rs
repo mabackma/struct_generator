@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPartNumberType {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TargetType {
     #[serde(rename = "Status2")]
     pub status2: CoChangeStateType,
@@ -23,15 +29,9 @@ pub struct TargetType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPartNumberType {
-    #[serde(flatten)]
+pub struct VirtaExtraInfoType {
+    #[serde(rename = "base")]
     pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatAdvertisementType {
-    #[serde(flatten)]
-    pub base: CoVirtaHabitatAdvertisementType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -41,8 +41,8 @@ pub struct TargetPartsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaExtraInfoType {
+pub struct VirtaHabitatAdvertisementType {
     #[serde(flatten)]
-    pub base: String,
+    pub base: CoVirtaHabitatAdvertisementType,
 }
 

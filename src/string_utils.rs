@@ -1,6 +1,9 @@
 use std::collections::HashMap;
 
-pub fn handle_prefix(name: &str, prefixes: &mut HashMap<String, String>) -> String {
+pub fn handle_prefix(
+    name: &str, 
+    prefixes: &mut HashMap<String, String>
+) -> String {
     let parts = name.split(':').collect::<Vec<&str>>();
     let prefix = parts[0];
 
@@ -60,7 +63,11 @@ pub fn to_snake_case(name: &str) -> String {
     snake_case
 }
 
-pub fn slice_contents(content: &str, tag: &str, name: &str) -> Option<String> {
+pub fn slice_contents(
+    content: &str, 
+    tag: &str, 
+    name: &str
+) -> Option<String> {
     
     // Find the start and end positions of the element
     let start_tag = format!("<xs:{} name=\"{}\">", tag, name);

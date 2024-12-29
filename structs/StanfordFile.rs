@@ -1,10 +1,4 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FileTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StanfordFileType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -18,5 +12,11 @@ pub struct StanfordFileType {
     pub file_type: FileTypeType,
     #[serde(rename = "Bytes")]
     pub bytes: Vec<u8>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FileTypeType {
+    #[serde(rename = "base")]
+    pub base: String,
 }
 
