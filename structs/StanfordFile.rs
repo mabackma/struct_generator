@@ -1,4 +1,4 @@
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct StanfordFile {
     #[serde(flatten)]
     pub stanford_file: StanfordFileType,

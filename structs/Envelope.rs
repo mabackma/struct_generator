@@ -1,4 +1,4 @@
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Envelope {
     #[serde(flatten)]
     pub envelope: EnvelopeType,

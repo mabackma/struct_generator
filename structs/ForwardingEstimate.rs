@@ -1,13 +1,25 @@
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
+pub struct AssortmentId {
+    #[serde(flatten)]
+    pub assortment_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct ForwardingEstimate {
+    #[serde(flatten)]
+    pub forwarding_estimate: ForwardingEstimateType,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct Loads {
     #[serde(flatten)]
     pub loads: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardingEstimate {
-    #[serde(flatten)]
-    pub forwarding_estimate: ForwardingEstimateType,
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -24,12 +36,6 @@ pub struct ForwardingEstimateType {
     pub start_time: TimeStampType,
     #[serde(rename = "Assortments")]
     pub assortments: AssortmentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

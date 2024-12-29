@@ -1,37 +1,25 @@
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BeginDate {
-    #[serde(flatten)]
-    pub begin_date: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attachment {
-    #[serde(flatten)]
-    pub attachment: AttachmentDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attachments {
-    #[serde(flatten)]
-    pub attachments: AttachmentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Data {
-    #[serde(flatten)]
-    pub data: Vec<u8>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct SilvicultureOrder {
     #[serde(flatten)]
     pub silviculture_order: SilvicultureOrderType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerArea {
-    #[serde(flatten)]
-    pub service_buyer_area: BdtString20Type,
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeInfoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeInfoType {
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: WorkCodeGroupType,
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<WorkCodeType>,
+    #[serde(rename = "Amount")]
+    pub amount: Decimal2FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: WorkCodeUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,15 +47,9 @@ pub struct SilvicultureOrderType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeInfoType {
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: WorkCodeGroupType,
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<WorkCodeType>,
-    #[serde(rename = "Amount")]
-    pub amount: Decimal2FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: WorkCodeUnitType,
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -76,17 +58,5 @@ pub struct AttachmentDataType {
     pub name: String100Type,
     #[serde(rename = "Data")]
     pub data: Vec<u8>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeInfoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 

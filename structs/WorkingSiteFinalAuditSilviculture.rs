@@ -1,211 +1,333 @@
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotCountRequired {
-    #[serde(flatten)]
-    pub sample_plot_count_required: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilConditioningQuality {
-    #[serde(flatten)]
-    pub soil_conditioning_quality: BdtWorkingQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureQualityText {
-    #[serde(flatten)]
-    pub silviculture_quality_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlantStorageManagement {
-    #[serde(flatten)]
-    pub plant_storage_management: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BioMassCollectionDoneText {
-    #[serde(flatten)]
-    pub bio_mass_collection_done_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct LimitsToWaterSystem {
     #[serde(flatten)]
     pub limits_to_water_system: BdtYesNoType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct hasFoundNewEnvironmentalObjects {
+#[derive(Serialize, Deserialize)]
+pub struct SoilConditioningQuality {
     #[serde(flatten)]
-    pub has_found_new_environmental_objects: BdtYesNoType,
+    pub soil_conditioning_quality: BdtWorkingQualityType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotCount {
+#[derive(Serialize, Deserialize)]
+pub struct PlantStorageManagementText {
     #[serde(flatten)]
-    pub sample_plot_count: BdtPositiveInteger3digitsType,
+    pub plant_storage_management_text: BdtString200Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditer {
+#[derive(Serialize, Deserialize)]
+pub struct SilvicultureMethodCorrectText {
     #[serde(flatten)]
-    pub final_auditer: BdtString50Type,
+    pub silviculture_method_correct_text: BdtString200Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingInstructionsSufficient {
+#[derive(Serialize, Deserialize)]
+pub struct FinalAuditDate {
     #[serde(flatten)]
-    pub working_instructions_sufficient: BdtYesNoType,
+    pub final_audit_date: BdtTimeStampType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSafetyNoticedText {
+#[derive(Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditSilviculture {
     #[serde(flatten)]
-    pub working_safety_noticed_text: BdtString200Type,
+    pub working_site_final_audit_silviculture: WorkingSiteFinalAuditSilvicultureType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterEconomySystemsNoticed {
+#[derive(Serialize, Deserialize)]
+pub struct LimitsToWaterSystemText {
     #[serde(flatten)]
-    pub water_economy_systems_noticed: BdtYesNoType,
+    pub limits_to_water_system_text: BdtString200Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSafetyNoticed {
-    #[serde(flatten)]
-    pub working_safety_noticed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct SoilConditioningMethodCorrectText {
     #[serde(flatten)]
     pub soil_conditioning_method_correct_text: BdtString200Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalObjectsNoticedText {
+#[derive(Serialize, Deserialize)]
+pub struct SamplePlotCount {
     #[serde(flatten)]
-    pub environmental_objects_noticed_text: BdtString200Type,
+    pub sample_plot_count: BdtPositiveInteger3digitsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureMethodCorrect {
+#[derive(Serialize, Deserialize)]
+pub struct SilvicultureQuality {
     #[serde(flatten)]
-    pub silviculture_method_correct: BdtYesNoType,
+    pub silviculture_quality: BdtWorkingQualityType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeQualifier {
+#[derive(Serialize, Deserialize)]
+pub struct WorkingInstructionsSufficientText {
     #[serde(flatten)]
-    pub work_code_qualifier: BdtWorkCodeQualifierType1,
+    pub working_instructions_sufficient_text: BdtString200Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterSystemProtectionText {
+#[derive(Serialize, Deserialize)]
+pub struct Audits {
     #[serde(flatten)]
-    pub water_system_protection_text: BdtString200Type,
+    pub audits: AuditsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalTidinessNoticed {
-    #[serde(flatten)]
-    pub environmental_tidiness_noticed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct NewEnvironmentalObjectsText {
     #[serde(flatten)]
     pub new_environmental_objects_text: BdtString200Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
+pub struct SoilConditioningMethodCorrect {
+    #[serde(flatten)]
+    pub soil_conditioning_method_correct: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WaterEconomySystemsNoticed {
+    #[serde(flatten)]
+    pub water_economy_systems_noticed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct BioMassCollectionDone {
+    #[serde(flatten)]
+    pub bio_mass_collection_done: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct EnvironmentalObjectsNoticedText {
+    #[serde(flatten)]
+    pub environmental_objects_noticed_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct BioMassCollectionDoneText {
+    #[serde(flatten)]
+    pub bio_mass_collection_done_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Audit {
+    #[serde(flatten)]
+    pub audit: AuditionType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct hasFoundNewEnvironmentalObjects {
+    #[serde(flatten)]
+    pub has_found_new_environmental_objects: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct SilvicultureMethodCorrect {
+    #[serde(flatten)]
+    pub silviculture_method_correct: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct EnvironmentalTidinessNoticed {
+    #[serde(flatten)]
+    pub environmental_tidiness_noticed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct FinalAuditType {
+    #[serde(flatten)]
+    pub final_audit_type: BdtFinalAuditTypeType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WorkingInstructionsSufficient {
+    #[serde(flatten)]
+    pub working_instructions_sufficient: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct PlantStorageManagement {
+    #[serde(flatten)]
+    pub plant_storage_management: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct FinalAuditRequired {
+    #[serde(flatten)]
+    pub final_audit_required: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct SamplePlotCountRequired {
+    #[serde(flatten)]
+    pub sample_plot_count_required: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WaterSystemProtection {
+    #[serde(flatten)]
+    pub water_system_protection: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct EnvironmentalObjectsNoticed {
+    #[serde(flatten)]
+    pub environmental_objects_noticed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct SoilConditioningMethod {
+    #[serde(flatten)]
+    pub soil_conditioning_method: BdtWorkCodeType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WorkingTime {
+    #[serde(flatten)]
+    pub working_time: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WorkCodeGroup {
+    #[serde(flatten)]
+    pub work_code_group: BdtWorkCodeGroupType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct FinalAuditerType {
+    #[serde(flatten)]
+    pub final_auditer_type: BdtFinalAuditerTypeType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WaterEconomySystemsNoticedText {
+    #[serde(flatten)]
+    pub water_economy_systems_noticed_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WorkingSafetyNoticed {
+    #[serde(flatten)]
+    pub working_safety_noticed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WorkCodeQualifier {
+    #[serde(flatten)]
+    pub work_code_qualifier: BdtWorkCodeQualifierType1,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct OrderId {
+    #[serde(flatten)]
+    pub order_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WaterSystemProtectionText {
+    #[serde(flatten)]
+    pub water_system_protection_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct EnvironmentalTidinessNoticedText {
+    #[serde(flatten)]
+    pub environmental_tidiness_noticed_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WorkingSafetyNoticedText {
+    #[serde(flatten)]
+    pub working_safety_noticed_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct FinalAuditer {
+    #[serde(flatten)]
+    pub final_auditer: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct SilvicultureQualityText {
+    #[serde(flatten)]
+    pub silviculture_quality_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct SoilConditioningQualityText {
     #[serde(flatten)]
     pub soil_conditioning_quality_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SoilConditioningMethod {
-    #[serde(flatten)]
-    pub soil_conditioning_method: BdtWorkCodeType,
+pub struct WorkingSiteFinalAuditSilvicultureBaseType {
+    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
+    pub service_buyer_id: Option<BdtString20Type>,
+    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
+    pub resource_id: Option<BdtString20Type>,
+    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
+    pub working_site_id: Option<WctERPIdType>,
+    #[serde(rename = "ContractorId", skip_serializing_if = "Option::is_none")]
+    pub contractor_id: Option<BdtString20Type>,
+    #[serde(rename = "OrderId", skip_serializing_if = "Option::is_none")]
+    pub order_id: Option<WctERPIdType>,
+    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
+    pub work_code_group: Option<BdtWorkCodeGroupType>,
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<BdtWorkCodeType>,
+    #[serde(rename = "WorkCodeQualifier", skip_serializing_if = "Option::is_none")]
+    pub work_code_qualifier: Option<BdtWorkCodeQualifierType1>,
+    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
+    pub area: Option<BdtDecimal2FractionDigitsType>,
+    #[serde(rename = "WorkingTime", skip_serializing_if = "Option::is_none")]
+    pub working_time: Option<BdtDateType>,
+    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
+    pub audit: Option<AuditionType>,
+    #[serde(rename = "SamplePlotCount", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_count: Option<BdtPositiveInteger3digitsType>,
+    #[serde(rename = "SamplePlotCountRequired", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_count_required: Option<BdtPositiveInteger3digitsType>,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString1000Type>,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
+    pub audits: Option<AuditsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SoilConditioningMethodCorrect {
+pub struct WorkingSiteFinalAuditSilvicultureType {
     #[serde(flatten)]
-    pub soil_conditioning_method_correct: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrderId {
-    #[serde(flatten)]
-    pub order_id: WctERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterEconomySystemsNoticedText {
-    #[serde(flatten)]
-    pub water_economy_systems_noticed_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalTidinessNoticedText {
-    #[serde(flatten)]
-    pub environmental_tidiness_noticed_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureQuality {
-    #[serde(flatten)]
-    pub silviculture_quality: BdtWorkingQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingInstructionsSufficientText {
-    #[serde(flatten)]
-    pub working_instructions_sufficient_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlantStorageManagementText {
-    #[serde(flatten)]
-    pub plant_storage_management_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WaterSystemProtection {
-    #[serde(flatten)]
-    pub water_system_protection: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditSilviculture {
-    #[serde(flatten)]
-    pub working_site_final_audit_silviculture: WorkingSiteFinalAuditSilvicultureType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LimitsToWaterSystemText {
-    #[serde(flatten)]
-    pub limits_to_water_system_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureMethodCorrectText {
-    #[serde(flatten)]
-    pub silviculture_method_correct_text: BdtString200Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvironmentalObjectsNoticed {
-    #[serde(flatten)]
-    pub environmental_objects_noticed: BdtYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BioMassCollectionDone {
-    #[serde(flatten)]
-    pub bio_mass_collection_done: BdtYesNoType,
+    pub base: WorkingSiteFinalAuditSilvicultureBaseType,
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: BdtString20Type,
+    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
+    pub resource_id: Option<BdtString20Type>,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: WctERPIdType,
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: BdtString20Type,
+    #[serde(rename = "OrderId", skip_serializing_if = "Option::is_none")]
+    pub order_id: Option<WctERPIdType>,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: BdtWorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: BdtWorkCodeType,
+    #[serde(rename = "WorkCodeQualifier", skip_serializing_if = "Option::is_none")]
+    pub work_code_qualifier: Option<BdtWorkCodeQualifierType1>,
+    #[serde(rename = "Area")]
+    pub area: BdtDecimal2FractionDigitsType,
+    #[serde(rename = "WorkingTime")]
+    pub working_time: BdtDateType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "SamplePlotCount")]
+    pub sample_plot_count: BdtPositiveInteger3digitsType,
+    #[serde(rename = "SamplePlotCountRequired", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_count_required: Option<BdtPositiveInteger3digitsType>,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString1000Type>,
+    #[serde(rename = "Images")]
+    pub images: BdtPositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -282,80 +404,6 @@ pub struct AuditsType {
     pub bio_mass_collection_done: Option<YesNoType>,
     #[serde(rename = "BioMassCollectionDoneText", skip_serializing_if = "Option::is_none")]
     pub bio_mass_collection_done_text: Option<String200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditSilvicultureBaseType {
-    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
-    pub service_buyer_id: Option<BdtString20Type>,
-    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<BdtString20Type>,
-    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
-    pub working_site_id: Option<WctERPIdType>,
-    #[serde(rename = "ContractorId", skip_serializing_if = "Option::is_none")]
-    pub contractor_id: Option<BdtString20Type>,
-    #[serde(rename = "OrderId", skip_serializing_if = "Option::is_none")]
-    pub order_id: Option<WctERPIdType>,
-    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
-    pub work_code_group: Option<BdtWorkCodeGroupType>,
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<BdtWorkCodeType>,
-    #[serde(rename = "WorkCodeQualifier", skip_serializing_if = "Option::is_none")]
-    pub work_code_qualifier: Option<BdtWorkCodeQualifierType1>,
-    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
-    pub area: Option<BdtDecimal2FractionDigitsType>,
-    #[serde(rename = "WorkingTime", skip_serializing_if = "Option::is_none")]
-    pub working_time: Option<BdtDateType>,
-    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
-    pub audit: Option<AuditionType>,
-    #[serde(rename = "SamplePlotCount", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_count: Option<BdtPositiveInteger3digitsType>,
-    #[serde(rename = "SamplePlotCountRequired", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_count_required: Option<BdtPositiveInteger3digitsType>,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString1000Type>,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
-    pub audits: Option<AuditsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditSilvicultureType {
-    #[serde(flatten)]
-    pub base: WorkingSiteFinalAuditSilvicultureBaseType,
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
-    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<BdtString20Type>,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: WctERPIdType,
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: BdtString20Type,
-    #[serde(rename = "OrderId", skip_serializing_if = "Option::is_none")]
-    pub order_id: Option<WctERPIdType>,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: BdtWorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: BdtWorkCodeType,
-    #[serde(rename = "WorkCodeQualifier", skip_serializing_if = "Option::is_none")]
-    pub work_code_qualifier: Option<BdtWorkCodeQualifierType1>,
-    #[serde(rename = "Area")]
-    pub area: BdtDecimal2FractionDigitsType,
-    #[serde(rename = "WorkingTime")]
-    pub working_time: BdtDateType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
-    #[serde(rename = "SamplePlotCount")]
-    pub sample_plot_count: BdtPositiveInteger3digitsType,
-    #[serde(rename = "SamplePlotCountRequired", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_count_required: Option<BdtPositiveInteger3digitsType>,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString1000Type>,
-    #[serde(rename = "Images")]
-    pub images: BdtPositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

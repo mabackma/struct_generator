@@ -105,7 +105,7 @@ fn generate_element_definitions(
     let mut definitions_string = String::new();
 
     for (name, typ) in element_definitions.iter() {
-        definitions_string.push_str("#[derive(Debug, Serialize, Deserialize)]\n");
+        definitions_string.push_str("#[derive(Serialize, Deserialize)]\n");
         definitions_string.push_str(&format!("pub struct {} {{\n", name));
         definitions_string.push_str("    #[serde(flatten)]\n");
 

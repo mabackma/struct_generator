@@ -1,37 +1,43 @@
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Service {
+#[derive(Serialize, Deserialize)]
+pub struct Services {
     #[serde(flatten)]
-    pub service: OrganizationServiceType,
+    pub services: ServicesType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Role {
     #[serde(flatten)]
     pub role: OrganizationRoleType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
+pub struct Roles {
+    #[serde(flatten)]
+    pub roles: RolesType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Service {
+    #[serde(flatten)]
+    pub service: OrganizationServiceType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Organizations {
+    #[serde(flatten)]
+    pub organizations: OrganizationsType,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct Organization {
     #[serde(flatten)]
     pub organization: OrganizationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Organizations {
-    #[serde(flatten)]
-    pub organizations: OrganizationsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Roles {
-    #[serde(flatten)]
-    pub roles: RolesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Services {
-    #[serde(flatten)]
-    pub services: ServicesType,
+pub struct OrganizationServiceType {
+    #[serde(rename = "base")]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,7 +55,7 @@ pub struct OrganizationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
+pub struct OrganizationRoleType {
     #[serde(rename = "base")]
     pub base: String,
 }
@@ -70,11 +76,5 @@ pub struct RolesType {
 pub struct ServicesType {
     #[serde(rename = "Service")]
     pub service: Vec<OrganizationServiceType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationRoleType {
-    #[serde(rename = "base")]
-    pub base: String,
 }
 

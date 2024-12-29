@@ -1,4 +1,4 @@
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct BusinessAcceptances {
     #[serde(flatten)]
     pub business_acceptances: BusinessAcceptancesType,

@@ -1,13 +1,13 @@
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Version {
-    #[serde(flatten)]
-    pub version: BdtString10Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct QualityAttachment {
     #[serde(flatten)]
     pub quality_attachment: QualityAttachmentType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Version {
+    #[serde(flatten)]
+    pub version: BdtString10Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
