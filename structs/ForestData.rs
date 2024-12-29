@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ForestPropertyData {
+    #[serde(flatten)]
+    pub forest_property_data: ForestPropertyDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestPropertyDataType {
     #[serde(rename = "@schemaPackageVersion")]
     pub schema_package_version: ForestDataStandardSchemaPackageVersionType,

@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StanfordFile {
+    #[serde(flatten)]
+    pub stanford_file: StanfordFileType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StanfordFileType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,

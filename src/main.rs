@@ -210,15 +210,14 @@ fn process_xsd_file(
     let content = read_xsd_file(current_file).unwrap();
     let mut reader = Reader::from_str(&content);
 
-    create_structs(&mut reader, &mut new_structs, element_definitions, &content, prefixes);
-
     let current_definitions = element_definitions.clone();
+
+    create_structs(&mut reader, &mut new_structs, element_definitions, &content, prefixes);
 
     for (key, value) in element_definitions.iter() {
 
         // Add the new element definitions to the existing ones
         if !current_definitions.contains_key(key) {
-            println!("{} -> {}", key, value);
             new_element_definitions.insert(key.to_string(), value.to_string());
         }
     }

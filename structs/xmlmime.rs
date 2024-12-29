@@ -1,5 +1,5 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct base64Binary {
+pub struct hexBinary {
     #[serde(rename = "@XmimecontentType")]
     pub xmimecontent_type: contentType,
     #[serde(rename = "base")]
@@ -7,7 +7,7 @@ pub struct base64Binary {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct hexBinary {
+pub struct base64Binary {
     #[serde(rename = "@XmimecontentType")]
     pub xmimecontent_type: contentType,
     #[serde(rename = "base")]

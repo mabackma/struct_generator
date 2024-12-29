@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OffersType {
+    #[serde(flatten)]
+    pub offers_type: Offers,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Offers {
     #[serde(rename = "@schemaPackageVersion")]
     pub schema_package_version: ForestDataStandardSchemaPackageVersionType,

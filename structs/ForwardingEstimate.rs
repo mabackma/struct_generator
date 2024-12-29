@@ -1,7 +1,13 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
+pub struct Loads {
+    #[serde(flatten)]
+    pub loads: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardingEstimate {
+    #[serde(flatten)]
+    pub forwarding_estimate: ForwardingEstimateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -18,6 +24,12 @@ pub struct ForwardingEstimateType {
     pub start_time: TimeStampType,
     #[serde(rename = "Assortments")]
     pub assortments: AssortmentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

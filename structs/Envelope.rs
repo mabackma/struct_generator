@@ -1,4 +1,10 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Envelope {
+    #[serde(flatten)]
+    pub envelope: EnvelopeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct EnvelopeType {
     #[serde(rename = "Header")]
     pub header: HeaderType,

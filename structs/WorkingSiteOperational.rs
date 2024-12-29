@@ -1,103 +1,879 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisType {
-    #[serde(rename = "FeeBasis", skip_serializing_if = "Option::is_none")]
-    pub fee_basis: Option<Vec<FeeBasisDataType>>,
+pub struct StandTreesCuttingVolume {
+    #[serde(flatten)]
+    pub stand_trees_cutting_volume: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeebasisListItemType {
-    #[serde(rename = "Id")]
-    pub id: PositiveIntegerType,
-    #[serde(rename = "FeeText")]
-    pub fee_text: String50Type,
-    #[serde(rename = "FeeUnit")]
-    pub fee_unit: String10Type,
-    #[serde(rename = "DefaultValue", skip_serializing_if = "Option::is_none")]
-    pub default_value: Option<String50Type>,
+pub struct ContinuousCoverForestry {
+    #[serde(flatten)]
+    pub continuous_cover_forestry: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandType {
-    #[serde(rename = "StandId")]
-    pub stand_id: String20Type,
-    #[serde(rename = "Geometry")]
-    pub geometry: PolygonOrMultiPolygon2Type,
-    #[serde(rename = "RegisterUnitId", skip_serializing_if = "Option::is_none")]
-    pub register_unit_id: Option<String20Type>,
-    #[serde(rename = "ParcelNo", skip_serializing_if = "Option::is_none")]
-    pub parcel_no: Option<PositiveInteger6digitsType>,
-    #[serde(rename = "ParcelLabel", skip_serializing_if = "Option::is_none")]
-    pub parcel_label: Option<String100Type>,
-    #[serde(rename = "ForestPlanStandId", skip_serializing_if = "Option::is_none")]
-    pub forest_plan_stand_id: Option<String10Type>,
-    #[serde(rename = "DitchOrRoadPlanId", skip_serializing_if = "Option::is_none")]
-    pub ditch_or_road_plan_id: Option<String10Type>,
-    #[serde(rename = "DitchOrRoadPlanName", skip_serializing_if = "Option::is_none")]
-    pub ditch_or_road_plan_name: Option<String100Type>,
-    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
-    pub area: Option<Decimal2FractionDigitsType>,
-    #[serde(rename = "FertilityClass", skip_serializing_if = "Option::is_none")]
-    pub fertility_class: Option<FertilityClassType>,
-    #[serde(rename = "StumpTreatment", skip_serializing_if = "Option::is_none")]
-    pub stump_treatment: Option<YesNoType>,
-    #[serde(rename = "BiomassCollection", skip_serializing_if = "Option::is_none")]
-    pub biomass_collection: Option<YesNoType>,
-    #[serde(rename = "StumpRaising", skip_serializing_if = "Option::is_none")]
-    pub stump_raising: Option<YesNoType>,
-    #[serde(rename = "DevelopmentClass", skip_serializing_if = "Option::is_none")]
-    pub development_class: Option<WideDevelopmentClassType>,
-    #[serde(rename = "SoilType", skip_serializing_if = "Option::is_none")]
-    pub soil_type: Option<SoilTypeType>,
-    #[serde(rename = "Supported", skip_serializing_if = "Option::is_none")]
-    pub supported: Option<YesNoType>,
-    #[serde(rename = "SamplePlotCount", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_count: Option<PositiveIntegerType>,
-    #[serde(rename = "LabelPosition", skip_serializing_if = "Option::is_none")]
-    pub label_position: Option<PointGeometryType>,
-    #[serde(rename = "StandInfo", skip_serializing_if = "Option::is_none")]
-    pub stand_info: Option<String1000Type>,
-    #[serde(rename = "ForestUseDeclarationStandExtraInfo", skip_serializing_if = "Option::is_none")]
-    pub forest_use_declaration_stand_extra_info: Option<String2000Type>,
-    #[serde(rename = "ForestUseDeclarationStandFellingPurpose", skip_serializing_if = "Option::is_none")]
-    pub forest_use_declaration_stand_felling_purpose: Option<CuttingPurposeType>,
-    #[serde(rename = "StandTreesCuttingVolume", skip_serializing_if = "Option::is_none")]
-    pub stand_trees_cutting_volume: Option<PositiveInteger4digitsType>,
-    #[serde(rename = "GrowingTreeSpecies", skip_serializing_if = "Option::is_none")]
-    pub growing_tree_species: Option<TreeSpeciesType>,
-    #[serde(rename = "TargetDensityGroup", skip_serializing_if = "Option::is_none")]
-    pub target_density_group: Option<TargetDensityGroup>,
-    #[serde(rename = "WorkCodes")]
-    pub work_codes: WorkCodesType,
-    #[serde(rename = "Materials", skip_serializing_if = "Option::is_none")]
-    pub materials: Option<MaterialsType>,
-    #[serde(rename = "StandTreesCutting", skip_serializing_if = "Option::is_none")]
-    pub stand_trees_cutting: Option<StandTreesCuttingType>,
-    #[serde(rename = "StandTreesCurrent", skip_serializing_if = "Option::is_none")]
-    pub stand_trees_current: Option<StandTreesType>,
-    #[serde(rename = "StandTreesStratumLeaving", skip_serializing_if = "Option::is_none")]
-    pub stand_trees_stratum_leaving: Option<StandTreesType>,
-    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
-    pub sample_plots: Option<SamplePlotsType>,
+pub struct OtherRemarks {
+    #[serde(flatten)]
+    pub other_remarks: BdtString3000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PreClearingInformationType {
-    #[serde(rename = "ResponsibleOfPreClearing", skip_serializing_if = "Option::is_none")]
-    pub responsible_of_pre_clearing: Option<ResponsibleOfPreClearingType>,
-    #[serde(rename = "PreClearingExecutionTime", skip_serializing_if = "Option::is_none")]
-    pub pre_clearing_execution_time: Option<FSFValidityType>,
+pub struct DeliveryName {
+    #[serde(flatten)]
+    pub delivery_name: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeliveriesType {
-    #[serde(rename = "Delivery")]
-    pub delivery: Vec<DeliveryType>,
+pub struct ResponsibleOfPreClearing {
+    #[serde(flatten)]
+    pub responsible_of_pre_clearing: WctResponsibleOfPreClearingType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StorageForestHaulageDistanceType {
-    #[serde(rename = "StorageForestHaulageDistanceGroup")]
-    pub storage_forest_haulage_distance_group: StorageForestHaulageDistanceGroup,
+pub struct CertificationHandlingInstructions {
+    #[serde(flatten)]
+    pub certification_handling_instructions: BdtString3000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Organisation4 {
+    #[serde(flatten)]
+    pub organisation4: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationTimeStart {
+    #[serde(flatten)]
+    pub operation_time_start: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IslandWorkingSite {
+    #[serde(flatten)]
+    pub island_working_site: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HumidityPercentage {
+    #[serde(flatten)]
+    pub humidity_percentage: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganisationId {
+    #[serde(flatten)]
+    pub organisation_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationRestriction {
+    #[serde(flatten)]
+    pub operation_restriction: OperationRestrictionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractValidDate {
+    #[serde(flatten)]
+    pub contract_valid_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationalRegion {
+    #[serde(flatten)]
+    pub operational_region: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeltingDate {
+    #[serde(flatten)]
+    pub melting_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductionFileSendFrequency {
+    #[serde(flatten)]
+    pub production_file_send_frequency: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SodWorkingSite {
+    #[serde(flatten)]
+    pub sod_working_site: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureContractNumber {
+    #[serde(flatten)]
+    pub silviculture_contract_number: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandTree {
+    #[serde(flatten)]
+    pub stand_tree: StandTreeCuttingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValueList {
+    #[serde(flatten)]
+    pub value_list: ValueListType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreviousBlockState {
+    #[serde(flatten)]
+    pub previous_block_state: BdtPreviousBlockStatusType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreNotificationAllowed {
+    #[serde(flatten)]
+    pub pre_notification_allowed: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Percentage {
+    #[serde(flatten)]
+    pub percentage: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CustomerRepresentativePerson {
+    #[serde(flatten)]
+    pub customer_representative_person: BdtContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationTimeEnd {
+    #[serde(flatten)]
+    pub operation_time_end: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeciduousTreeTargetDensityPercent {
+    #[serde(flatten)]
+    pub deciduous_tree_target_density_percent: BdtPercentType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Delivery {
+    #[serde(flatten)]
+    pub delivery: DeliveryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HasSupport {
+    #[serde(flatten)]
+    pub has_support: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DryingClass {
+    #[serde(flatten)]
+    pub drying_class: BdtDryingClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeliveryNumber {
+    #[serde(flatten)]
+    pub delivery_number: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ListItem {
+    #[serde(flatten)]
+    pub list_item: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Organisation2 {
+    #[serde(flatten)]
+    pub organisation2: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attribute2 {
+    #[serde(flatten)]
+    pub attribute2: BdtWorkCodeQualifierType2,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attribute4 {
+    #[serde(flatten)]
+    pub attribute4: BdtWorkCodeQualifierType4,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LargeSummaryReportRequired {
+    #[serde(flatten)]
+    pub large_summary_report_required: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UserCode {
+    #[serde(flatten)]
+    pub user_code: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TransportArea {
+    #[serde(flatten)]
+    pub transport_area: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RegionOfOrigin {
+    #[serde(flatten)]
+    pub region_of_origin: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterSections {
+    #[serde(flatten)]
+    pub diameter_sections: DiameterSectionsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SellersLogs {
+    #[serde(flatten)]
+    pub sellers_logs: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeliveryInfo {
+    #[serde(flatten)]
+    pub delivery_info: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteNumber {
+    #[serde(flatten)]
+    pub working_site_number: WctWorkingSiteNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesAttribute {
+    #[serde(flatten)]
+    pub tree_species_attribute: TreeSpeciesAttributeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BiomassFinishedDate {
+    #[serde(flatten)]
+    pub biomass_finished_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerContactInformation {
+    #[serde(flatten)]
+    pub service_buyer_contact_information: ServiceBuyerContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesAttributes {
+    #[serde(flatten)]
+    pub tree_species_attributes: TreeSpeciesAttributesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingSustainableForestry {
+    #[serde(flatten)]
+    pub financing_sustainable_forestry: FinancingSustainableForestryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FSFInformation {
+    #[serde(flatten)]
+    pub f_s_f_information: FSFInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Altitude {
+    #[serde(flatten)]
+    pub altitude: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestPlanStandId {
+    #[serde(flatten)]
+    pub forest_plan_stand_id: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeUnit {
+    #[serde(flatten)]
+    pub fee_unit: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommercialName {
+    #[serde(flatten)]
+    pub commercial_name: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandTreesCurrent {
+    #[serde(flatten)]
+    pub stand_trees_current: StandTreesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParcelNo {
+    #[serde(flatten)]
+    pub parcel_no: BdtPositiveInteger6digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InfoTextMandatory {
+    #[serde(flatten)]
+    pub info_text_mandatory: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Organisation1 {
+    #[serde(flatten)]
+    pub organisation1: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingCode {
+    #[serde(flatten)]
+    pub working_code: BdtWorkCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValueListItem {
+    #[serde(flatten)]
+    pub value_list_item: ValueListItemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageDryingClass {
+    #[serde(flatten)]
+    pub storage_drying_class: BdtStorageDryingClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MinDiameter {
+    #[serde(flatten)]
+    pub min_diameter: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FSFNumber {
+    #[serde(flatten)]
+    pub f_s_f_number: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterSection {
+    #[serde(flatten)]
+    pub diameter_section: SectionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StormWorkingSite {
+    #[serde(flatten)]
+    pub storm_working_site: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationStandExtraInfo {
+    #[serde(flatten)]
+    pub forest_use_declaration_stand_extra_info: BdtString2000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MixedForestRegenarationMethods {
+    #[serde(flatten)]
+    pub mixed_forest_regenaration_methods: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeliveryDate {
+    #[serde(flatten)]
+    pub delivery_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TerrainClass {
+    #[serde(flatten)]
+    pub terrain_class: BdtTerrainClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attribute5 {
+    #[serde(flatten)]
+    pub attribute5: BdtWorkCodeQualifierType5,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParcelLabel {
+    #[serde(flatten)]
+    pub parcel_label: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingFinishedDate {
+    #[serde(flatten)]
+    pub cutting_finished_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestOwners {
+    #[serde(flatten)]
+    pub forest_owners: ForestOwnersType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetDensity {
+    #[serde(flatten)]
+    pub target_density: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ListId {
+    #[serde(flatten)]
+    pub list_id: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LabelPosition {
+    #[serde(flatten)]
+    pub label_position: GdtPointGeometryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitePlannedForHarvestingDate {
+    #[serde(flatten)]
+    pub working_site_planned_for_harvesting_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FSFValidity {
+    #[serde(flatten)]
+    pub f_s_f_validity: FSFValidityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TestAreaRequired {
+    #[serde(flatten)]
+    pub test_area_required: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceNameOfAPI {
+    #[serde(flatten)]
+    pub service_name_of_a_p_i: BdtServiceNameofAPIType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreviousBlock {
+    #[serde(flatten)]
+    pub previous_block: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Delivered {
+    #[serde(flatten)]
+    pub delivered: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Supplier {
+    #[serde(flatten)]
+    pub supplier: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteOperational {
+    #[serde(flatten)]
+    pub working_site_operational: WorkingSiteOperationalType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemTypeBulk {
+    #[serde(flatten)]
+    pub stem_type_bulk: StemTypeBulkType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Bulk {
+    #[serde(flatten)]
+    pub bulk: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DefaultValue {
+    #[serde(flatten)]
+    pub default_value: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageDisplayId {
+    #[serde(flatten)]
+    pub storage_display_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationNotNeeded {
+    #[serde(flatten)]
+    pub forest_use_declaration_not_needed: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attribute1 {
+    #[serde(flatten)]
+    pub attribute1: BdtWorkCodeQualifierType1,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreviousBlocks {
+    #[serde(flatten)]
+    pub previous_blocks: PreviousBlockInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Owner {
+    #[serde(flatten)]
+    pub owner: BdtContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyer {
+    #[serde(flatten)]
+    pub service_buyer: ServiceBuyerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationStandFellingPurpose {
+    #[serde(flatten)]
+    pub forest_use_declaration_stand_felling_purpose: BdtCuttingPurposeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TransportCompany {
+    #[serde(flatten)]
+    pub transport_company: BdtContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BiomassCollection {
+    #[serde(flatten)]
+    pub biomass_collection: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuthorizationsToSendWsoInformation {
+    #[serde(flatten)]
+    pub authorizations_to_send_wso_information: AuthorizationsToSendWsoInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Deliveries {
+    #[serde(flatten)]
+    pub deliveries: DeliveriesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StumpLiftingFinishedDate {
+    #[serde(flatten)]
+    pub stump_lifting_finished_date: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReadyToDo {
+    #[serde(flatten)]
+    pub ready_to_do: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialAreaId {
+    #[serde(flatten)]
+    pub material_area_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MinLength {
+    #[serde(flatten)]
+    pub min_length: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialDeliveryType {
+    #[serde(flatten)]
+    pub material_delivery_type: MaterialDeliveryTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Organisation3 {
+    #[serde(flatten)]
+    pub organisation3: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Attribute3 {
+    #[serde(flatten)]
+    pub attribute3: BdtWorkCodeQualifierType3,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TestAreaNumber {
+    #[serde(flatten)]
+    pub test_area_number: BdtPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisList {
+    #[serde(flatten)]
+    pub fee_basis_list: FeeBasisListType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SendWorkingAloneNotification {
+    #[serde(flatten)]
+    pub send_working_alone_notification: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DitchOrRoadPlanId {
+    #[serde(flatten)]
+    pub ditch_or_road_plan_id: BdtString10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SendNotificationsAlways {
+    #[serde(flatten)]
+    pub send_notifications_always: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResultsOfAccessibilityAnalysis {
+    #[serde(flatten)]
+    pub results_of_accessibility_analysis: ResultsOfAccessibilityAnalysisType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeType {
+    #[serde(flatten)]
+    pub fee_type: BdtFeeBasisValueType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IsValueForceWorkingSite {
+    #[serde(flatten)]
+    pub is_value_force_working_site: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCertification {
+    #[serde(flatten)]
+    pub forest_certification: BdtCertificationSystemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SendNotifications {
+    #[serde(flatten)]
+    pub send_notifications: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisListItem {
+    #[serde(flatten)]
+    pub fee_basis_list_item: FeebasisListItemType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OwnerRepresentativePerson {
+    #[serde(flatten)]
+    pub owner_representative_person: BdtContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BeginNotificationAllowed {
+    #[serde(flatten)]
+    pub begin_notification_allowed: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CustomerType {
+    #[serde(flatten)]
+    pub customer_type: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingControlRequired {
+    #[serde(flatten)]
+    pub cutting_control_required: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TerrainPlanningDone {
+    #[serde(flatten)]
+    pub terrain_planning_done: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TestAreaMethod {
+    #[serde(flatten)]
+    pub test_area_method: BdtSamplePlotType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeText {
+    #[serde(flatten)]
+    pub fee_text: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainWorkCode {
+    #[serde(flatten)]
+    pub main_work_code: BdtMainWorkCodeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandTreesStratumLeaving {
+    #[serde(flatten)]
+    pub stand_trees_stratum_leaving: StandTreesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PersonRole {
+    #[serde(flatten)]
+    pub person_role: BdtString50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuthorizedToSend {
+    #[serde(flatten)]
+    pub authorized_to_send: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccessRightsInfo {
+    #[serde(flatten)]
+    pub access_rights_info: BdtString3000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteStatus {
+    #[serde(flatten)]
+    pub working_site_status: BdtWorkingSiteStatusType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DegreeDays {
+    #[serde(flatten)]
+    pub degree_days: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BlockIsFSFBlock {
+    #[serde(flatten)]
+    pub block_is_f_s_f_block: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreClearingInformation {
+    #[serde(flatten)]
+    pub pre_clearing_information: PreClearingInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Supported {
+    #[serde(flatten)]
+    pub supported: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentIncrementAllowed {
+    #[serde(flatten)]
+    pub assortment_increment_allowed: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResultOfAccessibilityAnalysis {
+    #[serde(flatten)]
+    pub result_of_accessibility_analysis: ResultOfAccessibilityAnalysisType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuthorizationToSendWsoInformation {
+    #[serde(flatten)]
+    pub authorization_to_send_wso_information: AuthorizationToSendWsoInformation,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemTypeBulks {
+    #[serde(flatten)]
+    pub stem_type_bulks: StemTypeBulksType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreClearingExecutionTime {
+    #[serde(flatten)]
+    pub pre_clearing_execution_time: FSFValidityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SellersLogsInfo {
+    #[serde(flatten)]
+    pub sellers_logs_info: BdtString1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NotificationContactPerson {
+    #[serde(flatten)]
+    pub notification_contact_person: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandTreesCutting {
+    #[serde(flatten)]
+    pub stand_trees_cutting: StandTreesCuttingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QualityAttachments {
+    #[serde(flatten)]
+    pub quality_attachments: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StumpRaising {
+    #[serde(flatten)]
+    pub stump_raising: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoragesForestHaulageDistancesType {
+    #[serde(rename = "StorageForestHaulageDistance")]
+    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotsType {
+    #[serde(rename = "SamplePlot", skip_serializing_if = "Option::is_none")]
+    pub sample_plot: Option<Vec<SamplePlotType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
+    pub assortment: Option<Vec<AssortmentType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterSectionsType {
+    #[serde(rename = "DiameterSection")]
+    pub diameter_section: Vec<SectionType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeatureType {
+    #[serde(rename = "SfFeatureDataGroup")]
+    pub sf_feature_data_group: FeatureDataGroup,
+    #[serde(rename = "SfFeatureInfo", skip_serializing_if = "Option::is_none")]
+    pub sf_feature_info: Option<FeatureInfo>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -111,81 +887,117 @@ pub struct TreeSpeciesAttributeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitePriorityType {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SectionType {
+    #[serde(rename = "Organisation1", skip_serializing_if = "Option::is_none")]
+    pub organisation1: Option<String20Type>,
+    #[serde(rename = "Organisation2", skip_serializing_if = "Option::is_none")]
+    pub organisation2: Option<String20Type>,
+    #[serde(rename = "Organisation3", skip_serializing_if = "Option::is_none")]
+    pub organisation3: Option<String20Type>,
+    #[serde(rename = "Organisation4", skip_serializing_if = "Option::is_none")]
+    pub organisation4: Option<String20Type>,
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: StanfordTreeSpeciesType,
+    #[serde(rename = "Description")]
+    pub description: String100Type,
+    #[serde(rename = "Code")]
+    pub code: String20Type,
+    #[serde(rename = "MinDiameter")]
+    pub min_diameter: PositiveIntegerType,
+    #[serde(rename = "MinLength")]
+    pub min_length: PositiveIntegerType,
+    #[serde(rename = "UserCode")]
+    pub user_code: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValueListType {
+    #[serde(rename = "ValueListItem")]
+    pub value_list_item: Vec<ValueListItemType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandTreeType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: TreeSpeciesType,
+    #[serde(rename = "Storey", skip_serializing_if = "Option::is_none")]
+    pub storey: Option<StoreyType>,
+    #[serde(rename = "BasalArea")]
+    pub basal_area: Decimal2FractionDigitsType,
+    #[serde(rename = "MeanHeight")]
+    pub mean_height: Decimal1FractionDigitType,
+    #[serde(rename = "StemCount")]
+    pub stem_count: PositiveIntegerType,
+    #[serde(rename = "Age", skip_serializing_if = "Option::is_none")]
+    pub age: Option<PositiveIntegerType>,
+    #[serde(rename = "MeanDiameter", skip_serializing_if = "Option::is_none")]
+    pub mean_diameter: Option<PositiveIntegerType>,
+    #[serde(rename = "Volume", skip_serializing_if = "Option::is_none")]
+    pub volume: Option<PositiveInteger4digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FSFValidityType {
+    #[serde(rename = "StartDate", skip_serializing_if = "Option::is_none")]
+    pub start_date: Option<DateType>,
+    #[serde(rename = "EndDate", skip_serializing_if = "Option::is_none")]
+    pub end_date: Option<DateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StoragesType {
     #[serde(rename = "Storage", skip_serializing_if = "Option::is_none")]
     pub storage: Option<Vec<StorageType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FSFInformationType {
-    #[serde(rename = "FSFNumber", skip_serializing_if = "Option::is_none")]
-    pub f_s_f_number: Option<String50Type>,
-    #[serde(rename = "FSFValidity", skip_serializing_if = "Option::is_none")]
-    pub f_s_f_validity: Option<FSFValidityType>,
+pub struct SamplePlotType {
+    #[serde(rename = "TestAreaNumber")]
+    pub test_area_number: PositiveIntegerType,
+    #[serde(rename = "Geometry")]
+    pub geometry: PointGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotsType {
-    #[serde(rename = "SamplePlot", skip_serializing_if = "Option::is_none")]
-    pub sample_plot: Option<Vec<SamplePlotType>>,
+pub struct AuthorizationsToSendWsoInformationType {
+    #[serde(rename = "AuthorizationToSendWsoInformation")]
+    pub authorization_to_send_wso_information: Vec<AuthorizationToSendWsoInformation>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValueListItemType {
-    #[serde(rename = "ListId")]
-    pub list_id: PositiveIntegerType,
-    #[serde(rename = "ListItem")]
-    pub list_item: String50Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerType {
-    #[serde(rename = "PersonId", skip_serializing_if = "Option::is_none")]
-    pub person_id: Option<String20Type>,
-    #[serde(rename = "OrganisationId", skip_serializing_if = "Option::is_none")]
-    pub organisation_id: Option<String20Type>,
-    #[serde(rename = "PersonRole", skip_serializing_if = "Option::is_none")]
-    pub person_role: Option<String50Type>,
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "PhoneNumber")]
-    pub phone_number: String20Type,
-    #[serde(rename = "EmailAddress")]
-    pub email_address: String50Type,
-    #[serde(rename = "LanguageCode")]
-    pub language_code: LanguageCodeType,
-    #[serde(rename = "SendWorkingAloneNotification", skip_serializing_if = "Option::is_none")]
-    pub send_working_alone_notification: Option<YesNoType>,
-    #[serde(rename = "SendNotifications", skip_serializing_if = "Option::is_none")]
-    pub send_notifications: Option<YesNoType>,
-    #[serde(rename = "NotificationContactPerson", skip_serializing_if = "Option::is_none")]
-    pub notification_contact_person: Option<YesNoType>,
+pub struct ProductUserIdsType {
+    #[serde(rename = "@DeliveryUserId")]
+    pub delivery_user_id: String50Type,
+    #[serde(rename = "ProductUserId")]
+    pub product_user_id: Vec<BdtString100Type>,
+    #[serde(flatten)]
+    pub base: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StorageForestHaulageDistanceGroup {
-    #[serde(rename = "StorageId")]
-    pub storage_id: StorageId,
     #[serde(rename = "ForestHaulageDistance")]
     pub forest_haulage_distance: ForestHaulageDistance,
+    #[serde(rename = "StorageId")]
+    pub storage_id: StorageId,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeliveryType {
-    #[serde(rename = "DeliveryUserId")]
-    pub delivery_user_id: String50Type,
-    #[serde(rename = "DeliveryInfo")]
-    pub delivery_info: String50Type,
-    #[serde(rename = "DeliveryName")]
-    pub delivery_name: String50Type,
+pub struct ForestOwnersType {
+    #[serde(rename = "ForestOwner")]
+    pub forest_owner: Vec<ForestOwnerType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeBulkType {
-    #[serde(rename = "StemType")]
-    pub stem_type: HarvestingStemTypeType,
-    #[serde(rename = "Bulk")]
-    pub bulk: PositiveIntegerType,
+pub struct MaterialDeliveryTypeType {
+    #[serde(rename = "base")]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -231,9 +1043,213 @@ pub struct AssortmentType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestOwnersType {
-    #[serde(rename = "ForestOwner")]
-    pub forest_owner: Vec<ForestOwnerType>,
+pub struct MaterialType {
+    #[serde(rename = "MaterialId")]
+    pub material_id: String20Type,
+    #[serde(rename = "MaterialCode")]
+    pub material_code: MaterialCodeType,
+    #[serde(rename = "CommercialName", skip_serializing_if = "Option::is_none")]
+    pub commercial_name: Option<String100Type>,
+    #[serde(rename = "Amount")]
+    pub amount: Decimal2FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: MaterialUnitType,
+    #[serde(rename = "Supplier", skip_serializing_if = "Option::is_none")]
+    pub supplier: Option<String50Type>,
+    #[serde(rename = "MaterialProducer", skip_serializing_if = "Option::is_none")]
+    pub material_producer: Option<String50Type>,
+    #[serde(rename = "Diameter", skip_serializing_if = "Option::is_none")]
+    pub diameter: Option<PositiveInteger4digitsType>,
+    #[serde(rename = "Length", skip_serializing_if = "Option::is_none")]
+    pub length: Option<PositiveDecimalMax2IntegralPartMax1FractionalPartType>,
+    #[serde(rename = "GrainSize", skip_serializing_if = "Option::is_none")]
+    pub grain_size: Option<PositiveInteger3digitsType>,
+    #[serde(rename = "DeliveryNumber", skip_serializing_if = "Option::is_none")]
+    pub delivery_number: Option<String20Type>,
+    #[serde(rename = "Delivered", skip_serializing_if = "Option::is_none")]
+    pub delivered: Option<YesNoType>,
+    #[serde(rename = "DeliveryDate", skip_serializing_if = "Option::is_none")]
+    pub delivery_date: Option<DateType>,
+    #[serde(rename = "PackagingDate", skip_serializing_if = "Option::is_none")]
+    pub packaging_date: Option<DateType>,
+    #[serde(rename = "FreezingDate", skip_serializing_if = "Option::is_none")]
+    pub freezing_date: Option<DateType>,
+    #[serde(rename = "MeltingDate", skip_serializing_if = "Option::is_none")]
+    pub melting_date: Option<DateType>,
+    #[serde(rename = "Infotext", skip_serializing_if = "Option::is_none")]
+    pub infotext: Option<String100Type>,
+    #[serde(rename = "StorageId", skip_serializing_if = "Option::is_none")]
+    pub storage_id: Option<ERPIdType>,
+    #[serde(rename = "MaterialDeliveryType", skip_serializing_if = "Option::is_none")]
+    pub material_delivery_type: Option<MaterialDeliveryTypeType>,
+    #[serde(rename = "RegionOfOrigin", skip_serializing_if = "Option::is_none")]
+    pub region_of_origin: Option<String10Type>,
+    #[serde(rename = "DegreeDays", skip_serializing_if = "Option::is_none")]
+    pub degree_days: Option<PositiveInteger4digitsType>,
+    #[serde(rename = "Altitude", skip_serializing_if = "Option::is_none")]
+    pub altitude: Option<PositiveInteger4digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialsType {
+    #[serde(rename = "Material", skip_serializing_if = "Option::is_none")]
+    pub material: Option<Vec<MaterialType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisType {
+    #[serde(rename = "FeeBasis", skip_serializing_if = "Option::is_none")]
+    pub fee_basis: Option<Vec<FeeBasisDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FSFInformationType {
+    #[serde(rename = "FSFNumber", skip_serializing_if = "Option::is_none")]
+    pub f_s_f_number: Option<String50Type>,
+    #[serde(rename = "FSFValidity", skip_serializing_if = "Option::is_none")]
+    pub f_s_f_validity: Option<FSFValidityType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestOwnerType {
+    #[serde(rename = "Owner")]
+    pub owner: ContactInformationType,
+    #[serde(rename = "OwnerRepresentativePerson", skip_serializing_if = "Option::is_none")]
+    pub owner_representative_person: Option<ContactInformationType>,
+    #[serde(rename = "RealEstates", skip_serializing_if = "Option::is_none")]
+    pub real_estates: Option<RealEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingSustainableForestryType {
+    #[serde(rename = "BlockIsFSFBlock", skip_serializing_if = "Option::is_none")]
+    pub block_is_f_s_f_block: Option<YesNoType>,
+    #[serde(rename = "FSFInformation", skip_serializing_if = "Option::is_none")]
+    pub f_s_f_information: Option<Vec<FSFInformationType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<SpecialFeatureType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResultOfAccessibilityAnalysisType {
+    #[serde(rename = "Accessibility")]
+    pub accessibility: AccessibilityType,
+    #[serde(rename = "Percentage")]
+    pub percentage: Decimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandTreesCuttingType {
+    #[serde(rename = "StandTree", skip_serializing_if = "Option::is_none")]
+    pub stand_tree: Option<Vec<StandTreeCuttingType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerType {
+    #[serde(rename = "PersonId", skip_serializing_if = "Option::is_none")]
+    pub person_id: Option<String20Type>,
+    #[serde(rename = "OrganisationId", skip_serializing_if = "Option::is_none")]
+    pub organisation_id: Option<String20Type>,
+    #[serde(rename = "PersonRole", skip_serializing_if = "Option::is_none")]
+    pub person_role: Option<String50Type>,
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "PhoneNumber")]
+    pub phone_number: String20Type,
+    #[serde(rename = "EmailAddress")]
+    pub email_address: String50Type,
+    #[serde(rename = "LanguageCode")]
+    pub language_code: LanguageCodeType,
+    #[serde(rename = "SendWorkingAloneNotification", skip_serializing_if = "Option::is_none")]
+    pub send_working_alone_notification: Option<YesNoType>,
+    #[serde(rename = "SendNotifications", skip_serializing_if = "Option::is_none")]
+    pub send_notifications: Option<YesNoType>,
+    #[serde(rename = "NotificationContactPerson", skip_serializing_if = "Option::is_none")]
+    pub notification_contact_person: Option<YesNoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemTypeBulkType {
+    #[serde(rename = "StemType")]
+    pub stem_type: HarvestingStemTypeType,
+    #[serde(rename = "Bulk")]
+    pub bulk: PositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeType {
+    #[serde(rename = "WorkingCode")]
+    pub working_code: WorkCodeType,
+    #[serde(rename = "Amount")]
+    pub amount: Decimal2FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: WorkCodeUnitType,
+    #[serde(rename = "DifficultyClass", skip_serializing_if = "Option::is_none")]
+    pub difficulty_class: Option<DifficultyClassType>,
+    #[serde(rename = "Attribute1", skip_serializing_if = "Option::is_none")]
+    pub attribute1: Option<Vec<WorkCodeQualifierType1>>,
+    #[serde(rename = "Attribute2", skip_serializing_if = "Option::is_none")]
+    pub attribute2: Option<Vec<WorkCodeQualifierType2>>,
+    #[serde(rename = "Attribute3", skip_serializing_if = "Option::is_none")]
+    pub attribute3: Option<Vec<WorkCodeQualifierType3>>,
+    #[serde(rename = "Attribute4", skip_serializing_if = "Option::is_none")]
+    pub attribute4: Option<Vec<WorkCodeQualifierType4>>,
+    #[serde(rename = "Attribute5", skip_serializing_if = "Option::is_none")]
+    pub attribute5: Option<Vec<WorkCodeQualifierType5>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerContactInformationType {
+    #[serde(rename = "ServiceBuyer")]
+    pub service_buyer: Vec<ServiceBuyerType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesAttributesType {
+    #[serde(rename = "TreeSpeciesAttribute", skip_serializing_if = "Option::is_none")]
+    pub tree_species_attribute: Option<Vec<TreeSpeciesAttributeType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetDensityGroup {
+    #[serde(rename = "DeciduousTreeTargetDensityPercent", skip_serializing_if = "Option::is_none")]
+    pub deciduous_tree_target_density_percent: Option<DeciduousTreeTargetDensityPercent>,
+    #[serde(rename = "TargetDensity", skip_serializing_if = "Option::is_none")]
+    pub target_density: Option<TargetDensity>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstateType {
+    #[serde(rename = "RealEstatesGroup")]
+    pub real_estates_group: Vec<RealEstatesGroup>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeliveriesType {
+    #[serde(rename = "Delivery")]
+    pub delivery: Vec<DeliveryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageForestHaulageDistanceType {
+    #[serde(rename = "StorageForestHaulageDistanceGroup")]
+    pub storage_forest_haulage_distance_group: StorageForestHaulageDistanceGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreviousBlockInfoType {
+    #[serde(rename = "PreviousBlock", skip_serializing_if = "Option::is_none")]
+    pub previous_block: Option<Vec<String20Type>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -281,91 +1297,9 @@ pub struct StorageType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandTreeType {
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: TreeSpeciesType,
-    #[serde(rename = "Storey", skip_serializing_if = "Option::is_none")]
-    pub storey: Option<StoreyType>,
-    #[serde(rename = "BasalArea")]
-    pub basal_area: Decimal2FractionDigitsType,
-    #[serde(rename = "MeanHeight")]
-    pub mean_height: Decimal1FractionDigitType,
-    #[serde(rename = "StemCount")]
-    pub stem_count: PositiveIntegerType,
-    #[serde(rename = "Age", skip_serializing_if = "Option::is_none")]
-    pub age: Option<PositiveIntegerType>,
-    #[serde(rename = "MeanDiameter", skip_serializing_if = "Option::is_none")]
-    pub mean_diameter: Option<PositiveIntegerType>,
-    #[serde(rename = "Volume", skip_serializing_if = "Option::is_none")]
-    pub volume: Option<PositiveInteger4digitsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuthorizationToSendWsoInformation {
-    #[serde(rename = "ServiceNameOfAPI")]
-    pub service_name_of_a_p_i: ServiceNameofAPIType,
-    #[serde(rename = "AuthorizedToSend")]
-    pub authorized_to_send: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstatesGroup {
-    #[serde(rename = "RealEstate")]
-    pub real_estate: RealEstate,
-    #[serde(rename = "RealEstateName", skip_serializing_if = "Option::is_none")]
-    pub real_estate_name: Option<RealEstateName>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRestrictionType {
-    #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String1000Type>,
-    #[serde(rename = "StartDate", skip_serializing_if = "Option::is_none")]
-    pub start_date: Option<DateType>,
-    #[serde(rename = "EndDate", skip_serializing_if = "Option::is_none")]
-    pub end_date: Option<DateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResultsOfAccessibilityAnalysisType {
-    #[serde(rename = "ResultOfAccessibilityAnalysis")]
-    pub result_of_accessibility_analysis: Vec<ResultOfAccessibilityAnalysisType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SectionType {
-    #[serde(rename = "Organisation1", skip_serializing_if = "Option::is_none")]
-    pub organisation1: Option<String20Type>,
-    #[serde(rename = "Organisation2", skip_serializing_if = "Option::is_none")]
-    pub organisation2: Option<String20Type>,
-    #[serde(rename = "Organisation3", skip_serializing_if = "Option::is_none")]
-    pub organisation3: Option<String20Type>,
-    #[serde(rename = "Organisation4", skip_serializing_if = "Option::is_none")]
-    pub organisation4: Option<String20Type>,
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: StanfordTreeSpeciesType,
-    #[serde(rename = "Description")]
-    pub description: String100Type,
-    #[serde(rename = "Code")]
-    pub code: String20Type,
-    #[serde(rename = "MinDiameter")]
-    pub min_diameter: PositiveIntegerType,
-    #[serde(rename = "MinLength")]
-    pub min_length: PositiveIntegerType,
-    #[serde(rename = "UserCode")]
-    pub user_code: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisListType {
-    #[serde(rename = "FeeBasisListItem")]
-    pub fee_basis_list_item: Vec<FeebasisListItemType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandTreesCuttingType {
+pub struct StandTreesType {
     #[serde(rename = "StandTree", skip_serializing_if = "Option::is_none")]
-    pub stand_tree: Option<Vec<StandTreeCuttingType>>,
+    pub stand_tree: Option<Vec<StandTreeType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -377,79 +1311,21 @@ pub struct StandTreeCuttingType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeType {
-    #[serde(rename = "WorkingCode")]
-    pub working_code: WorkCodeType,
-    #[serde(rename = "Amount")]
-    pub amount: Decimal2FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: WorkCodeUnitType,
-    #[serde(rename = "DifficultyClass", skip_serializing_if = "Option::is_none")]
-    pub difficulty_class: Option<DifficultyClassType>,
-    #[serde(rename = "Attribute1", skip_serializing_if = "Option::is_none")]
-    pub attribute1: Option<Vec<WorkCodeQualifierType1>>,
-    #[serde(rename = "Attribute2", skip_serializing_if = "Option::is_none")]
-    pub attribute2: Option<Vec<WorkCodeQualifierType2>>,
-    #[serde(rename = "Attribute3", skip_serializing_if = "Option::is_none")]
-    pub attribute3: Option<Vec<WorkCodeQualifierType3>>,
-    #[serde(rename = "Attribute4", skip_serializing_if = "Option::is_none")]
-    pub attribute4: Option<Vec<WorkCodeQualifierType4>>,
-    #[serde(rename = "Attribute5", skip_serializing_if = "Option::is_none")]
-    pub attribute5: Option<Vec<WorkCodeQualifierType5>>,
+pub struct FeebasisListItemType {
+    #[serde(rename = "Id")]
+    pub id: PositiveIntegerType,
+    #[serde(rename = "FeeText")]
+    pub fee_text: String50Type,
+    #[serde(rename = "FeeUnit")]
+    pub fee_unit: String10Type,
+    #[serde(rename = "DefaultValue", skip_serializing_if = "Option::is_none")]
+    pub default_value: Option<String50Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialsType {
-    #[serde(rename = "Material", skip_serializing_if = "Option::is_none")]
-    pub material: Option<Vec<MaterialType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerContactInformationType {
-    #[serde(rename = "ServiceBuyer")]
-    pub service_buyer: Vec<ServiceBuyerType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateType {
-    #[serde(rename = "RealEstatesGroup")]
-    pub real_estates_group: Vec<RealEstatesGroup>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuthorizationsToSendWsoInformationType {
-    #[serde(rename = "AuthorizationToSendWsoInformation")]
-    pub authorization_to_send_wso_information: Vec<AuthorizationToSendWsoInformation>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotType {
-    #[serde(rename = "TestAreaNumber")]
-    pub test_area_number: PositiveIntegerType,
-    #[serde(rename = "Geometry")]
-    pub geometry: PointGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationType {
-    #[serde(rename = "StartDate", skip_serializing_if = "Option::is_none")]
-    pub start_date: Option<DateType>,
-    #[serde(rename = "EndDate", skip_serializing_if = "Option::is_none")]
-    pub end_date: Option<DateType>,
-    #[serde(rename = "ForestUseDeclarationNotNeeded", skip_serializing_if = "Option::is_none")]
-    pub forest_use_declaration_not_needed: Option<YesNoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreviousBlockInfoType {
-    #[serde(rename = "PreviousBlock", skip_serializing_if = "Option::is_none")]
-    pub previous_block: Option<Vec<String20Type>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterSectionsType {
-    #[serde(rename = "DiameterSection")]
-    pub diameter_section: Vec<SectionType>,
+pub struct ResultsOfAccessibilityAnalysisType {
+    #[serde(rename = "ResultOfAccessibilityAnalysis")]
+    pub result_of_accessibility_analysis: Vec<ResultOfAccessibilityAnalysisType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -645,27 +1521,19 @@ pub struct WorkingSiteOperationalType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValueListType {
-    #[serde(rename = "ValueListItem")]
-    pub value_list_item: Vec<ValueListItemType>,
+pub struct RealEstatesGroup {
+    #[serde(rename = "RealEstate")]
+    pub real_estate: RealEstate,
+    #[serde(rename = "RealEstateName", skip_serializing_if = "Option::is_none")]
+    pub real_estate_name: Option<RealEstateName>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandTreesType {
-    #[serde(rename = "StandTree", skip_serializing_if = "Option::is_none")]
-    pub stand_tree: Option<Vec<StandTreeType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialDeliveryTypeType {
-    #[serde(rename = "base")]
-    pub base: String,
+pub struct AuthorizationToSendWsoInformation {
+    #[serde(rename = "ServiceNameOfAPI")]
+    pub service_name_of_a_p_i: ServiceNameofAPIType,
+    #[serde(rename = "AuthorizedToSend")]
+    pub authorized_to_send: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -675,113 +1543,83 @@ pub struct StemTypeBulksType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TargetDensityGroup {
-    #[serde(rename = "DeciduousTreeTargetDensityPercent", skip_serializing_if = "Option::is_none")]
-    pub deciduous_tree_target_density_percent: Option<DeciduousTreeTargetDensityPercent>,
-    #[serde(rename = "TargetDensity", skip_serializing_if = "Option::is_none")]
-    pub target_density: Option<TargetDensity>,
+pub struct DeliveryType {
+    #[serde(rename = "DeliveryUserId")]
+    pub delivery_user_id: String50Type,
+    #[serde(rename = "DeliveryInfo")]
+    pub delivery_info: String50Type,
+    #[serde(rename = "DeliveryName")]
+    pub delivery_name: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
-    pub assortment: Option<Vec<AssortmentType>>,
+pub struct StandType {
+    #[serde(rename = "StandId")]
+    pub stand_id: String20Type,
+    #[serde(rename = "Geometry")]
+    pub geometry: PolygonOrMultiPolygon2Type,
+    #[serde(rename = "RegisterUnitId", skip_serializing_if = "Option::is_none")]
+    pub register_unit_id: Option<String20Type>,
+    #[serde(rename = "ParcelNo", skip_serializing_if = "Option::is_none")]
+    pub parcel_no: Option<PositiveInteger6digitsType>,
+    #[serde(rename = "ParcelLabel", skip_serializing_if = "Option::is_none")]
+    pub parcel_label: Option<String100Type>,
+    #[serde(rename = "ForestPlanStandId", skip_serializing_if = "Option::is_none")]
+    pub forest_plan_stand_id: Option<String10Type>,
+    #[serde(rename = "DitchOrRoadPlanId", skip_serializing_if = "Option::is_none")]
+    pub ditch_or_road_plan_id: Option<String10Type>,
+    #[serde(rename = "DitchOrRoadPlanName", skip_serializing_if = "Option::is_none")]
+    pub ditch_or_road_plan_name: Option<String100Type>,
+    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
+    pub area: Option<Decimal2FractionDigitsType>,
+    #[serde(rename = "FertilityClass", skip_serializing_if = "Option::is_none")]
+    pub fertility_class: Option<FertilityClassType>,
+    #[serde(rename = "StumpTreatment", skip_serializing_if = "Option::is_none")]
+    pub stump_treatment: Option<YesNoType>,
+    #[serde(rename = "BiomassCollection", skip_serializing_if = "Option::is_none")]
+    pub biomass_collection: Option<YesNoType>,
+    #[serde(rename = "StumpRaising", skip_serializing_if = "Option::is_none")]
+    pub stump_raising: Option<YesNoType>,
+    #[serde(rename = "DevelopmentClass", skip_serializing_if = "Option::is_none")]
+    pub development_class: Option<WideDevelopmentClassType>,
+    #[serde(rename = "SoilType", skip_serializing_if = "Option::is_none")]
+    pub soil_type: Option<SoilTypeType>,
+    #[serde(rename = "Supported", skip_serializing_if = "Option::is_none")]
+    pub supported: Option<YesNoType>,
+    #[serde(rename = "SamplePlotCount", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_count: Option<PositiveIntegerType>,
+    #[serde(rename = "LabelPosition", skip_serializing_if = "Option::is_none")]
+    pub label_position: Option<PointGeometryType>,
+    #[serde(rename = "StandInfo", skip_serializing_if = "Option::is_none")]
+    pub stand_info: Option<String1000Type>,
+    #[serde(rename = "ForestUseDeclarationStandExtraInfo", skip_serializing_if = "Option::is_none")]
+    pub forest_use_declaration_stand_extra_info: Option<String2000Type>,
+    #[serde(rename = "ForestUseDeclarationStandFellingPurpose", skip_serializing_if = "Option::is_none")]
+    pub forest_use_declaration_stand_felling_purpose: Option<CuttingPurposeType>,
+    #[serde(rename = "StandTreesCuttingVolume", skip_serializing_if = "Option::is_none")]
+    pub stand_trees_cutting_volume: Option<PositiveInteger4digitsType>,
+    #[serde(rename = "GrowingTreeSpecies", skip_serializing_if = "Option::is_none")]
+    pub growing_tree_species: Option<TreeSpeciesType>,
+    #[serde(rename = "TargetDensityGroup", skip_serializing_if = "Option::is_none")]
+    pub target_density_group: Option<TargetDensityGroup>,
+    #[serde(rename = "WorkCodes")]
+    pub work_codes: WorkCodesType,
+    #[serde(rename = "Materials", skip_serializing_if = "Option::is_none")]
+    pub materials: Option<MaterialsType>,
+    #[serde(rename = "StandTreesCutting", skip_serializing_if = "Option::is_none")]
+    pub stand_trees_cutting: Option<StandTreesCuttingType>,
+    #[serde(rename = "StandTreesCurrent", skip_serializing_if = "Option::is_none")]
+    pub stand_trees_current: Option<StandTreesType>,
+    #[serde(rename = "StandTreesStratumLeaving", skip_serializing_if = "Option::is_none")]
+    pub stand_trees_stratum_leaving: Option<StandTreesType>,
+    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
+    pub sample_plots: Option<SamplePlotsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResultOfAccessibilityAnalysisType {
-    #[serde(rename = "Accessibility")]
-    pub accessibility: AccessibilityType,
-    #[serde(rename = "Percentage")]
-    pub percentage: Decimal1FractionDigitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialType {
-    #[serde(rename = "MaterialId")]
-    pub material_id: String20Type,
-    #[serde(rename = "MaterialCode")]
-    pub material_code: MaterialCodeType,
-    #[serde(rename = "CommercialName", skip_serializing_if = "Option::is_none")]
-    pub commercial_name: Option<String100Type>,
-    #[serde(rename = "Amount")]
-    pub amount: Decimal2FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: MaterialUnitType,
-    #[serde(rename = "Supplier", skip_serializing_if = "Option::is_none")]
-    pub supplier: Option<String50Type>,
-    #[serde(rename = "MaterialProducer", skip_serializing_if = "Option::is_none")]
-    pub material_producer: Option<String50Type>,
-    #[serde(rename = "Diameter", skip_serializing_if = "Option::is_none")]
-    pub diameter: Option<PositiveInteger4digitsType>,
-    #[serde(rename = "Length", skip_serializing_if = "Option::is_none")]
-    pub length: Option<PositiveDecimalMax2IntegralPartMax1FractionalPartType>,
-    #[serde(rename = "GrainSize", skip_serializing_if = "Option::is_none")]
-    pub grain_size: Option<PositiveInteger3digitsType>,
-    #[serde(rename = "DeliveryNumber", skip_serializing_if = "Option::is_none")]
-    pub delivery_number: Option<String20Type>,
-    #[serde(rename = "Delivered", skip_serializing_if = "Option::is_none")]
-    pub delivered: Option<YesNoType>,
-    #[serde(rename = "DeliveryDate", skip_serializing_if = "Option::is_none")]
-    pub delivery_date: Option<DateType>,
-    #[serde(rename = "PackagingDate", skip_serializing_if = "Option::is_none")]
-    pub packaging_date: Option<DateType>,
-    #[serde(rename = "FreezingDate", skip_serializing_if = "Option::is_none")]
-    pub freezing_date: Option<DateType>,
-    #[serde(rename = "MeltingDate", skip_serializing_if = "Option::is_none")]
-    pub melting_date: Option<DateType>,
-    #[serde(rename = "Infotext", skip_serializing_if = "Option::is_none")]
-    pub infotext: Option<String100Type>,
-    #[serde(rename = "StorageId", skip_serializing_if = "Option::is_none")]
-    pub storage_id: Option<ERPIdType>,
-    #[serde(rename = "MaterialDeliveryType", skip_serializing_if = "Option::is_none")]
-    pub material_delivery_type: Option<MaterialDeliveryTypeType>,
-    #[serde(rename = "RegionOfOrigin", skip_serializing_if = "Option::is_none")]
-    pub region_of_origin: Option<String10Type>,
-    #[serde(rename = "DegreeDays", skip_serializing_if = "Option::is_none")]
-    pub degree_days: Option<PositiveInteger4digitsType>,
-    #[serde(rename = "Altitude", skip_serializing_if = "Option::is_none")]
-    pub altitude: Option<PositiveInteger4digitsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePriorityType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingSustainableForestryType {
-    #[serde(rename = "BlockIsFSFBlock", skip_serializing_if = "Option::is_none")]
-    pub block_is_f_s_f_block: Option<YesNoType>,
-    #[serde(rename = "FSFInformation", skip_serializing_if = "Option::is_none")]
-    pub f_s_f_information: Option<Vec<FSFInformationType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType {
-    #[serde(rename = "Stand")]
-    pub stand: Vec<StandType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<SpecialFeatureType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestOwnerType {
-    #[serde(rename = "Owner")]
-    pub owner: ContactInformationType,
-    #[serde(rename = "OwnerRepresentativePerson", skip_serializing_if = "Option::is_none")]
-    pub owner_representative_person: Option<ContactInformationType>,
-    #[serde(rename = "RealEstates", skip_serializing_if = "Option::is_none")]
-    pub real_estates: Option<RealEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FSFValidityType {
+pub struct OperationRestrictionType {
+    #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String1000Type>,
     #[serde(rename = "StartDate", skip_serializing_if = "Option::is_none")]
     pub start_date: Option<DateType>,
     #[serde(rename = "EndDate", skip_serializing_if = "Option::is_none")]
@@ -789,27 +1627,41 @@ pub struct FSFValidityType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIdsType {
-    #[serde(rename = "@DeliveryUserId")]
-    pub delivery_user_id: String50Type,
-    #[serde(rename = "ProductUserId")]
-    pub product_user_id: Vec<BdtString50Type>,
-    #[serde(flatten)]
-    pub base: BdtString50Type,
+pub struct FeeBasisListType {
+    #[serde(rename = "FeeBasisListItem")]
+    pub fee_basis_list_item: Vec<FeebasisListItemType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeatureType {
-    #[serde(rename = "SfFeatureDataGroup")]
-    pub sf_feature_data_group: FeatureDataGroup,
-    #[serde(rename = "SfFeatureInfo", skip_serializing_if = "Option::is_none")]
-    pub sf_feature_info: Option<FeatureInfo>,
+pub struct PreClearingInformationType {
+    #[serde(rename = "ResponsibleOfPreClearing", skip_serializing_if = "Option::is_none")]
+    pub responsible_of_pre_clearing: Option<ResponsibleOfPreClearingType>,
+    #[serde(rename = "PreClearingExecutionTime", skip_serializing_if = "Option::is_none")]
+    pub pre_clearing_execution_time: Option<FSFValidityType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StoragesForestHaulageDistancesType {
-    #[serde(rename = "StorageForestHaulageDistance")]
-    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
+pub struct ValueListItemType {
+    #[serde(rename = "ListId")]
+    pub list_id: PositiveIntegerType,
+    #[serde(rename = "ListItem")]
+    pub list_item: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationType {
+    #[serde(rename = "StartDate", skip_serializing_if = "Option::is_none")]
+    pub start_date: Option<DateType>,
+    #[serde(rename = "EndDate", skip_serializing_if = "Option::is_none")]
+    pub end_date: Option<DateType>,
+    #[serde(rename = "ForestUseDeclarationNotNeeded", skip_serializing_if = "Option::is_none")]
+    pub forest_use_declaration_not_needed: Option<YesNoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandsType {
+    #[serde(rename = "Stand")]
+    pub stand: Vec<StandType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -830,11 +1682,5 @@ pub struct FeeBasisDataType {
     pub value_list: Option<ValueListType>,
     #[serde(rename = "FeeBasisList", skip_serializing_if = "Option::is_none")]
     pub fee_basis_list: Option<FeeBasisListType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesAttributesType {
-    #[serde(rename = "TreeSpeciesAttribute", skip_serializing_if = "Option::is_none")]
-    pub tree_species_attribute: Option<Vec<TreeSpeciesAttributeType>>,
 }
 

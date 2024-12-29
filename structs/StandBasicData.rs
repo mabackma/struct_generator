@@ -1,23 +1,25 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestrictionGroup {
-    #[serde(rename = "SilvicultureRestriction")]
-    pub silviculture_restriction: SilvicultureRestriction,
-    #[serde(rename = "SilvicultureRestrictionEnds", skip_serializing_if = "Option::is_none")]
-    pub silviculture_restriction_ends: Option<SilvicultureRestrictionEnds>,
+pub struct SilvicultureRestrictionDetails {
+    #[serde(flatten)]
+    pub silviculture_restriction_details: SilvicultureRestrictionDetailsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BaseSoilDataGroup {
-    #[serde(rename = "SoilType", skip_serializing_if = "Option::is_none")]
-    pub soil_type: Option<SoilType>,
-    #[serde(rename = "MainGroup", skip_serializing_if = "Option::is_none")]
-    pub main_group: Option<MainGroup>,
-    #[serde(rename = "FertilityClass", skip_serializing_if = "Option::is_none")]
-    pub fertility_class: Option<FertilityClass>,
-    #[serde(rename = "DrainageState", skip_serializing_if = "Option::is_none")]
-    pub drainage_state: Option<DrainageState>,
-    #[serde(rename = "SubGroup", skip_serializing_if = "Option::is_none")]
-    pub sub_group: Option<SubGroup>,
+pub struct GrowthPlaceDataSource {
+    #[serde(flatten)]
+    pub growth_place_data_source: CoDataSourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureRestrictions {
+    #[serde(flatten)]
+    pub silviculture_restrictions: SilvicultureRestrictionsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompleteState {
+    #[serde(flatten)]
+    pub complete_state: CoCompleteStateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -51,9 +53,15 @@ pub struct CompactStandBasicDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestrictionsType {
-    #[serde(rename = "SilvicultureRestrictionDetails")]
-    pub silviculture_restriction_details: Vec<SilvicultureRestrictionDetailsType>,
+pub struct IdentifiersType {
+    #[serde(rename = "Identifier")]
+    pub identifier: Vec<CoIdentifierType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureRestrictionDetailsType {
+    #[serde(rename = "SilvicultureRestrictionGroup")]
+    pub silviculture_restriction_group: SilvicultureRestrictionGroup,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -87,9 +95,29 @@ pub struct BaseCompactStandBasicDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestrictionDetailsType {
-    #[serde(rename = "SilvicultureRestrictionGroup")]
-    pub silviculture_restriction_group: SilvicultureRestrictionGroup,
+pub struct SilvicultureRestrictionMainGroup {
+    #[serde(rename = "SilvicultureRestrictions", skip_serializing_if = "Option::is_none")]
+    pub silviculture_restrictions: Option<SilvicultureRestrictions>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeStandBasedDataType {
+    #[serde(rename = "TreeStandBasedDataGroup")]
+    pub tree_stand_based_data_group: TreeStandBasedDataGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BaseSoilDataGroup {
+    #[serde(rename = "DrainageState", skip_serializing_if = "Option::is_none")]
+    pub drainage_state: Option<DrainageState>,
+    #[serde(rename = "MainGroup", skip_serializing_if = "Option::is_none")]
+    pub main_group: Option<MainGroup>,
+    #[serde(rename = "FertilityClass", skip_serializing_if = "Option::is_none")]
+    pub fertility_class: Option<FertilityClass>,
+    #[serde(rename = "SubGroup", skip_serializing_if = "Option::is_none")]
+    pub sub_group: Option<SubGroup>,
+    #[serde(rename = "SoilType", skip_serializing_if = "Option::is_none")]
+    pub soil_type: Option<SoilType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -99,9 +127,51 @@ pub struct SoilDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestrictionMainGroup {
-    #[serde(rename = "SilvicultureRestrictions", skip_serializing_if = "Option::is_none")]
-    pub silviculture_restrictions: Option<SilvicultureRestrictions>,
+pub struct SoilDataGroup {
+    #[serde(rename = "MainGroup")]
+    pub main_group: MainGroup,
+    #[serde(rename = "SubGroup", skip_serializing_if = "Option::is_none")]
+    pub sub_group: Option<SubGroup>,
+    #[serde(rename = "SoilType", skip_serializing_if = "Option::is_none")]
+    pub soil_type: Option<SoilType>,
+    #[serde(rename = "DrainageState", skip_serializing_if = "Option::is_none")]
+    pub drainage_state: Option<DrainageState>,
+    #[serde(rename = "FertilityClass", skip_serializing_if = "Option::is_none")]
+    pub fertility_class: Option<FertilityClass>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BaseSoilDataType {
+    #[serde(rename = "BaseSoilDataGroup", skip_serializing_if = "Option::is_none")]
+    pub base_soil_data_group: Option<BaseSoilDataGroup>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RestrictionDataType {
+    #[serde(rename = "RestrictionsMainGroup")]
+    pub restrictions_main_group: RestrictionsMainGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RestrictionsMainGroup {
+    #[serde(rename = "CuttingRestrictionEnds", skip_serializing_if = "Option::is_none")]
+    pub cutting_restriction_ends: Option<CuttingRestrictionEnds>,
+    #[serde(rename = "CuttingRestriction", skip_serializing_if = "Option::is_none")]
+    pub cutting_restriction: Option<CuttingRestriction>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureRestrictionsType {
+    #[serde(rename = "SilvicultureRestrictionDetails")]
+    pub silviculture_restriction_details: Vec<SilvicultureRestrictionDetailsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureRestrictionGroup {
+    #[serde(rename = "SilvicultureRestriction")]
+    pub silviculture_restriction: SilvicultureRestriction,
+    #[serde(rename = "SilvicultureRestrictionEnds", skip_serializing_if = "Option::is_none")]
+    pub silviculture_restriction_ends: Option<SilvicultureRestrictionEnds>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -141,18 +211,6 @@ pub struct StandBasicDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandBasedDataType {
-    #[serde(rename = "TreeStandBasedDataGroup")]
-    pub tree_stand_based_data_group: TreeStandBasedDataGroup,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionDataType {
-    #[serde(rename = "RestrictionsMainGroup")]
-    pub restrictions_main_group: RestrictionsMainGroup,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeStandBasedDataGroup {
     #[serde(rename = "StandQuality", skip_serializing_if = "Option::is_none")]
     pub stand_quality: Option<StandQuality>,
@@ -160,39 +218,5 @@ pub struct TreeStandBasedDataGroup {
     pub main_tree_species: Option<MainTreeSpecies>,
     #[serde(rename = "DevelopmentClass", skip_serializing_if = "Option::is_none")]
     pub development_class: Option<DevelopmentClass>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilDataGroup {
-    #[serde(rename = "FertilityClass", skip_serializing_if = "Option::is_none")]
-    pub fertility_class: Option<FertilityClass>,
-    #[serde(rename = "MainGroup")]
-    pub main_group: MainGroup,
-    #[serde(rename = "DrainageState", skip_serializing_if = "Option::is_none")]
-    pub drainage_state: Option<DrainageState>,
-    #[serde(rename = "SoilType", skip_serializing_if = "Option::is_none")]
-    pub soil_type: Option<SoilType>,
-    #[serde(rename = "SubGroup", skip_serializing_if = "Option::is_none")]
-    pub sub_group: Option<SubGroup>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionsMainGroup {
-    #[serde(rename = "CuttingRestriction", skip_serializing_if = "Option::is_none")]
-    pub cutting_restriction: Option<CuttingRestriction>,
-    #[serde(rename = "CuttingRestrictionEnds", skip_serializing_if = "Option::is_none")]
-    pub cutting_restriction_ends: Option<CuttingRestrictionEnds>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BaseSoilDataType {
-    #[serde(rename = "BaseSoilDataGroup", skip_serializing_if = "Option::is_none")]
-    pub base_soil_data_group: Option<BaseSoilDataGroup>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifiersType {
-    #[serde(rename = "Identifier")]
-    pub identifier: Vec<CoIdentifierType>,
 }
 

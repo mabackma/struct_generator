@@ -1,4 +1,90 @@
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AmountNotified {
+    #[serde(flatten)]
+    pub amount_notified: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountPlanned {
+    #[serde(flatten)]
+    pub amount_planned: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAccounting {
+    #[serde(flatten)]
+    pub final_accounting: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HarvestedVolume {
+    #[serde(flatten)]
+    pub harvested_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardedVolumeAccounted {
+    #[serde(flatten)]
+    pub forwarded_volume_accounted: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccountingDate {
+    #[serde(flatten)]
+    pub accounting_date: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HarvestedVolumeAccounted {
+    #[serde(flatten)]
+    pub harvested_volume_accounted: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteAccounting {
+    #[serde(flatten)]
+    pub working_site_accounting: WorkingSiteAccountingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedVolume {
+    #[serde(flatten)]
+    pub planned_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardedVolume {
+    #[serde(flatten)]
+    pub forwarded_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountAccounted {
+    #[serde(flatten)]
+    pub amount_accounted: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContarctorId {
+    #[serde(flatten)]
+    pub contarctor_id: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeDataType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "AmountPlanned")]
+    pub amount_planned: Decimal3FractionDigitsType,
+    #[serde(rename = "AmountNotified")]
+    pub amount_notified: Decimal3FractionDigitsType,
+    #[serde(rename = "AmountAccounted")]
+    pub amount_accounted: Decimal3FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: WorkCodeUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodesType {
     #[serde(rename = "WorkCode")]
     pub work_code: Vec<WorkCodeDataType>,
@@ -22,20 +108,6 @@ pub struct WorkingSiteAccountingType {
     pub assortments: Option<AssortmentsType>,
     #[serde(rename = "WorkCodes", skip_serializing_if = "Option::is_none")]
     pub work_codes: Option<WorkCodesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeDataType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "AmountPlanned")]
-    pub amount_planned: Decimal3FractionDigitsType,
-    #[serde(rename = "AmountNotified")]
-    pub amount_notified: Decimal3FractionDigitsType,
-    #[serde(rename = "AmountAccounted")]
-    pub amount_accounted: Decimal3FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: WorkCodeUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

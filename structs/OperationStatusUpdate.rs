@@ -1,13 +1,19 @@
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ActingDateType {
+pub struct ActingDate {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub acting_date: ActingDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MainTypeType {
+pub struct ResponsibleActor {
     #[serde(flatten)]
-    pub base: CoMainTypeType,
+    pub responsible_actor: ResponsibleActorType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationsType {
+    #[serde(rename = "Operation")]
+    pub operation: Vec<OperationDefType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -31,9 +37,15 @@ pub struct OperationDefType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationsType {
-    #[serde(rename = "Operation")]
-    pub operation: Vec<OperationDefType>,
+pub struct MainTypeType {
+    #[serde(flatten)]
+    pub base: CoMainTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ActingDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
