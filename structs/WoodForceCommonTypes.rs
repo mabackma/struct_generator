@@ -2,45 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SpareTreeCategory {
+pub struct AmountOfSpareTrees {
     #[serde(flatten)]
-    pub spare_tree_category: BdtSpareTreeCategoryType,
+    pub amount_of_spare_trees: PositiveInteger5digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DiameterClassOfSpareTrees {
+pub struct TreeSpecies {
     #[serde(flatten)]
-    pub diameter_class_of_spare_trees: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeanDiameterOfSpareTrees {
-    #[serde(flatten)]
-    pub mean_diameter_of_spare_trees: BdtDiameterType,
+    pub tree_species: TreeSpeciesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ContractorId {
     #[serde(flatten)]
-    pub contractor_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct VolumeOfSpareTrees {
-    #[serde(flatten)]
-    pub volume_of_spare_trees: BdtVolumeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RetentionTreeTarget {
-    #[serde(flatten)]
-    pub retention_tree_target: BdtPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeanHeightOfSpareTrees {
-    #[serde(flatten)]
-    pub mean_height_of_spare_trees: BdtHeightType,
+    pub contractor_id: String20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -50,39 +26,39 @@ pub struct SpareTrees {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AmountOfSpareTrees {
+pub struct VolumeOfSpareTrees {
     #[serde(flatten)]
-    pub amount_of_spare_trees: BdtPositiveInteger5digitsType,
+    pub volume_of_spare_trees: VolumeType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QualityOfTreeSpeciesType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ERPIdType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeanDiameterOfSpareTrees {
     #[serde(flatten)]
-    pub base: BdtString50Type,
+    pub mean_diameter_of_spare_trees: DiameterType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CommonMessageType {
-    #[serde(rename = "base")]
-    pub base: i32,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SpareTreeCategory {
+    #[serde(flatten)]
+    pub spare_tree_category: SpareTreeCategoryType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractorsType {
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: Vec<String20Type>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeanHeightOfSpareTrees {
+    #[serde(flatten)]
+    pub mean_height_of_spare_trees: HeightType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MonthType {
-    #[serde(rename = "base")]
-    pub base: i32,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DiameterClassOfSpareTrees {
+    #[serde(flatten)]
+    pub diameter_class_of_spare_trees: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RetentionTreeTarget {
+    #[serde(flatten)]
+    pub retention_tree_target: PositiveInteger5digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -92,9 +68,23 @@ pub struct ShortERPIdType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HopperTypeType {
-    #[serde(rename = "base")]
+pub struct DitchTypeType {
+    #[serde(rename = "ditch_type_type.base")]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MonthType {
+    #[serde(rename = "month_type.base")]
+    pub base: i32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditSpareTreesType {
+    #[serde(flatten)]
+    pub base: SpareTreesType,
+    #[serde(rename = "RetentionTreeTarget", skip_serializing_if = "Option::is_none")]
+    pub retention_tree_target: Option<PositiveInteger5digitsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -104,15 +94,9 @@ pub struct SpareTreesByCategoryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TaxNumberType {
+pub struct ERPIdType {
     #[serde(flatten)]
-    pub base: BdtString20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResponsibleOfPreClearingType {
-    #[serde(rename = "base")]
-    pub base: String,
+    pub base: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -122,15 +106,45 @@ pub struct WorkingSiteNumberType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StanfordTreeSpeciesType {
-    #[serde(rename = "base")]
-    pub base: i32,
+pub struct PricingMethodType {
+    #[serde(rename = "pricing_method_type.base")]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DitchTypeType {
-    #[serde(rename = "base")]
+pub struct ContractorsType {
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: Vec<String20Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HopperTypeType {
+    #[serde(rename = "hopper_type_type.base")]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResponsibleOfPreClearingType {
+    #[serde(rename = "responsible_of_pre_clearing_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TaxNumberType {
+    #[serde(flatten)]
+    pub base: BdtString20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadRatingType {
+    #[serde(rename = "load_rating_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StanfordTreeSpeciesType {
+    #[serde(rename = "stanford_tree_species_type.base")]
+    pub base: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -152,34 +166,26 @@ pub struct SpareTreesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaCodeType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PricingMethodType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoadRatingType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditSpareTreesType {
-    #[serde(flatten)]
-    pub base: SpareTreesType,
-    #[serde(rename = "RetentionTreeTarget", skip_serializing_if = "Option::is_none")]
-    pub retention_tree_target: Option<PositiveInteger5digitsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ScaleFactorTreeSpeciesType {
-    #[serde(rename = "base")]
+    #[serde(rename = "scale_factor_tree_species_type.base")]
+    pub base: i32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QualityOfTreeSpeciesType {
+    #[serde(rename = "quality_of_tree_species_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaCodeType {
+    #[serde(rename = "area_code_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommonMessageType {
+    #[serde(rename = "common_message_type.base")]
     pub base: i32,
 }
 

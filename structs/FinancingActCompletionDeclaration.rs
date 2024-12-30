@@ -2,36 +2,6 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingActProjectCompleted {
-    #[serde(flatten)]
-    pub financing_act_project_completed: CoYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraFinancingApplication {
-    #[serde(flatten)]
-    pub extra_financing_application: CoYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CompletionDataAndSubsidy {
-    #[serde(flatten)]
-    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartOfProject {
-    #[serde(flatten)]
-    pub part_of_project: PartOfProjectType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OtherPublicSubstitute {
-    #[serde(flatten)]
-    pub other_public_substitute: CoOtherPublicSubstituteType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct FinancingActCompletionDeclaration {
     #[serde(flatten)]
     pub financing_act_completion_declaration: FinancingActCompletionDeclarationType,
@@ -43,10 +13,34 @@ pub struct PartsOfProject {
     pub parts_of_project: PartsOfProjectType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompletionDataAndSubsidyType {
-    #[serde(rename = "FacFinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_completion_stands: Option<FinancingActCompletionStands>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CompletionDataAndSubsidy {
+    #[serde(flatten)]
+    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtraFinancingApplication {
+    #[serde(flatten)]
+    pub extra_financing_application: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OtherPublicSubstitute {
+    #[serde(flatten)]
+    pub other_public_substitute: OtherPublicSubstituteType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingActProjectCompleted {
+    #[serde(flatten)]
+    pub financing_act_project_completed: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PartOfProject {
+    #[serde(flatten)]
+    pub part_of_project: PartOfProjectType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -61,6 +55,12 @@ pub struct PartOfProjectType {
     pub fac_payees_and_real_estates: PayeesAndRealEstates,
     #[serde(rename = "CompletionDataAndSubsidy")]
     pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompletionDataAndSubsidyType {
+    #[serde(rename = "FacFinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_completion_stands: Option<FinancingActCompletionStands>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -84,13 +84,13 @@ pub struct FinancingActCompletionDeclarationType {
     #[serde(rename = "FacCustomerReference", skip_serializing_if = "Option::is_none")]
     pub fac_customer_reference: Option<CustomerReference>,
     #[serde(rename = "BankReferenceNumber", skip_serializing_if = "Option::is_none")]
-    pub bank_reference_number: Option<CoBankReferenceNumberType>,
+    pub bank_reference_number: Option<BankReferenceNumberType>,
     #[serde(rename = "FinancingActProjectCompleted")]
-    pub financing_act_project_completed: CoYesNoType,
+    pub financing_act_project_completed: YesNoType,
     #[serde(rename = "ExtraFinancingApplication")]
-    pub extra_financing_application: CoYesNoType,
+    pub extra_financing_application: YesNoType,
     #[serde(rename = "OtherPublicSubstitute")]
-    pub other_public_substitute: CoOtherPublicSubstituteType,
+    pub other_public_substitute: OtherPublicSubstituteType,
     #[serde(rename = "FacFinancingActCompletionDeclarationTextInformation", skip_serializing_if = "Option::is_none")]
     pub fac_financing_act_completion_declaration_text_information: Option<FinancingActCompletionDeclarationTextInformation>,
     #[serde(rename = "FacLanguage")]

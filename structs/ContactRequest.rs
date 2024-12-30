@@ -2,45 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RequestCode {
-    #[serde(flatten)]
-    pub request_code: RequestCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ContactLocationInformation {
     #[serde(flatten)]
-    pub contact_location_information: GdtAlternativeGeometriesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PreferredContactingMethod {
-    #[serde(flatten)]
-    pub preferred_contacting_method: CoPreferredContactingMethodType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RequestInfo {
-    #[serde(flatten)]
-    pub request_info: CoString2000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PreferredContactingMethods {
-    #[serde(flatten)]
-    pub preferred_contacting_methods: PreferredContactingMethodsType,
+    pub contact_location_information: AlternativeGeometriesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct CreateDate {
     #[serde(flatten)]
-    pub create_date: CoDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExpirationDate {
-    #[serde(flatten)]
-    pub expiration_date: CoDateType,
+    pub create_date: DateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -50,9 +20,15 @@ pub struct ContactRequest {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContactMunicipality {
+pub struct PreferredContactingMethod {
     #[serde(flatten)]
-    pub contact_municipality: CoMunicipalityNumberType,
+    pub preferred_contacting_method: PreferredContactingMethodType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RequestCode {
+    #[serde(flatten)]
+    pub request_code: RequestCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -61,9 +37,45 @@ pub struct ForestPropertyDataSet {
     pub forest_property_data_set: ForestPropertyDataSetType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PreferredContactingMethods {
+    #[serde(flatten)]
+    pub preferred_contacting_methods: PreferredContactingMethodsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RequestInfo {
+    #[serde(flatten)]
+    pub request_info: String2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExpirationDate {
+    #[serde(flatten)]
+    pub expiration_date: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContactMunicipality {
+    #[serde(flatten)]
+    pub contact_municipality: MunicipalityNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestPropertyDataSetType {
+    #[serde(rename = "ForestPropertyData")]
+    pub forest_property_data: Vec<ForestPropertyDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreferredContactingMethodsType {
+    #[serde(rename = "PreferredContactingMethod")]
+    pub preferred_contacting_method: Vec<PreferredContactingMethodType>,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestCodeType {
-    #[serde(rename = "base")]
+    #[serde(rename = "request_code_type.base")]
     pub base: String,
 }
 
@@ -74,36 +86,24 @@ pub struct ContactRequestType {
     #[serde(rename = "@source")]
     pub source: String,
     #[serde(rename = "ContactInformation")]
-    pub contact_information: CiContactInformationType,
+    pub contact_information: ContactInformationType,
     #[serde(rename = "ContactMunicipality")]
-    pub contact_municipality: CoMunicipalityNumberType,
+    pub contact_municipality: MunicipalityNumberType,
     #[serde(rename = "ContactLocationInformation")]
-    pub contact_location_information: GdtAlternativeGeometriesType,
+    pub contact_location_information: AlternativeGeometriesType,
     #[serde(rename = "RequestCode")]
     pub request_code: RequestCodeType,
     #[serde(rename = "RequestInfo", skip_serializing_if = "Option::is_none")]
-    pub request_info: Option<CoString2000Type>,
+    pub request_info: Option<String2000Type>,
     #[serde(rename = "PreferredContactingMethods", skip_serializing_if = "Option::is_none")]
     pub preferred_contacting_methods: Option<PreferredContactingMethodsType>,
     #[serde(rename = "CreateDate")]
-    pub create_date: CoDateType,
+    pub create_date: DateType,
     #[serde(rename = "ExpirationDate", skip_serializing_if = "Option::is_none")]
-    pub expiration_date: Option<CoDateType>,
+    pub expiration_date: Option<DateType>,
     #[serde(rename = "ForestPropertyDataSet", skip_serializing_if = "Option::is_none")]
     pub forest_property_data_set: Option<ForestPropertyDataSetType>,
     #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
     pub wtco_documents: Option<Documents>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreferredContactingMethodsType {
-    #[serde(rename = "PreferredContactingMethod")]
-    pub preferred_contacting_method: Vec<CoPreferredContactingMethodType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestPropertyDataSetType {
-    #[serde(rename = "ForestPropertyData")]
-    pub forest_property_data: Vec<FdForestPropertyDataType>,
 }
 

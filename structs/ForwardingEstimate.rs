@@ -2,33 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Loads {
-    #[serde(flatten)]
-    pub loads: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentId {
-    #[serde(flatten)]
-    pub assortment_id: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Day {
-    #[serde(flatten)]
-    pub day: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StorageId {
-    #[serde(flatten)]
-    pub storage_id: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ForwardingEstimate {
     #[serde(flatten)]
     pub forwarding_estimate: ForwardingEstimateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Loads {
+    #[serde(flatten)]
+    pub loads: PositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -48,12 +30,6 @@ pub struct ForwardingEstimateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentDataType {
     #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
     pub assortment_id: Option<ERPIdType>,
@@ -69,5 +45,11 @@ pub struct AssortmentDataType {
     pub loads: PositiveInteger3digitsType,
     #[serde(rename = "Day")]
     pub day: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 

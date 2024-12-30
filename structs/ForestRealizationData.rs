@@ -2,27 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestRealizationData {
-    #[serde(flatten)]
-    pub forest_realization_data: ForestRealizationDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ParentObjectId {
-    #[serde(flatten)]
-    pub parent_object_id: CoIdStringNotEmptyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct GeometryObjects {
     #[serde(flatten)]
     pub geometry_objects: GeometryObjectsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ParentObjects {
-    #[serde(flatten)]
-    pub parent_objects: ParentObjectsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,9 +14,9 @@ pub struct GeometryObject {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ParentObjectType {
+pub struct ForestRealizationData {
     #[serde(flatten)]
-    pub parent_object_type: ObjectTypeType,
+    pub forest_realization_data: ForestRealizationDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -43,23 +25,27 @@ pub struct ParentObject {
     pub parent_object: ParentObjectType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectsType {
-    #[serde(rename = "ParentObject")]
-    pub parent_object: Vec<ParentObjectType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ParentObjectId {
+    #[serde(flatten)]
+    pub parent_object_id: IdStringNotEmptyType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ParentObjectType {
-    #[serde(rename = "ParentObjectType")]
+    #[serde(flatten)]
     pub parent_object_type: ObjectTypeType,
-    #[serde(rename = "ParentObjectId")]
-    pub parent_object_id: CoIdStringNotEmptyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ParentObjects {
+    #[serde(flatten)]
+    pub parent_objects: ParentObjectsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ObjectTypeType {
-    #[serde(rename = "base")]
+    #[serde(rename = "object_type_type.base")]
     pub base: String,
 }
 
@@ -68,13 +54,33 @@ pub struct ForestRealizationDataType {
     #[serde(rename = "@id")]
     pub id: String,
     #[serde(rename = "AdditionalDetails")]
-    pub additional_details: CoString2000Type,
+    pub additional_details: String2000Type,
     #[serde(rename = "Sender")]
-    pub sender: CiContactInformationType,
+    pub sender: ContactInformationType,
     #[serde(rename = "UseCase")]
     pub use_case: String,
     #[serde(rename = "GeometryObjects")]
     pub geometry_objects: GeometryObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectGeometryType {
+    #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
+    pub co_change_state: Option<ChangeState>,
+    #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
+    pub co_change_time: Option<ChangeTime>,
+    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
+    pub area: Option<AreaType>,
+    #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
+    pub area_decrease: Option<AreaType>,
+    #[serde(rename = "GdtAlternativeGeometriesGroup")]
+    pub gdt_alternative_geometries_group: AlternativeGeometriesGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParentObjectsType {
+    #[serde(rename = "ParentObject")]
+    pub parent_object: Vec<ParentObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -94,7 +100,7 @@ pub struct GeometryObjectType {
     #[serde(rename = "ParentObjects", skip_serializing_if = "Option::is_none")]
     pub parent_objects: Option<ParentObjectsType>,
     #[serde(rename = "StandBasicData", skip_serializing_if = "Option::is_none")]
-    pub stand_basic_data: Option<StStandBasicDataType>,
+    pub stand_basic_data: Option<StandBasicDataType>,
     #[serde(rename = "TsTreeStandData", skip_serializing_if = "Option::is_none")]
     pub ts_tree_stand_data: Option<TreeStandData>,
     #[serde(rename = "OpOperations", skip_serializing_if = "Option::is_none")]
@@ -104,16 +110,10 @@ pub struct GeometryObjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectGeometryType {
-    #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
-    pub co_change_state: Option<ChangeState>,
-    #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
-    pub co_change_time: Option<ChangeTime>,
-    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
-    pub area: Option<CoAreaType>,
-    #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
-    pub area_decrease: Option<CoAreaType>,
-    #[serde(rename = "GdtAlternativeGeometriesGroup")]
-    pub gdt_alternative_geometries_group: AlternativeGeometriesGroup,
+pub struct ParentObjectType {
+    #[serde(rename = "ParentObjectType")]
+    pub parent_object_type: ObjectTypeType,
+    #[serde(rename = "ParentObjectId")]
+    pub parent_object_id: IdStringNotEmptyType,
 }
 

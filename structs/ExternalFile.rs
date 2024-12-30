@@ -2,21 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FileFormat {
-    #[serde(flatten)]
-    pub file_format: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ExternalFile {
     #[serde(flatten)]
     pub external_file: ExternalFileType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct FileFormat {
+    #[serde(flatten)]
+    pub file_format: String5Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Label {
     #[serde(flatten)]
-    pub label: BdtString100Type,
+    pub label: String100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

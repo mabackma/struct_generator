@@ -2,27 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalInformationType {
+    #[serde(rename = "additional_information_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceIdType {
+    #[serde(rename = "business_acceptance_id_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct BusinessAcceptanceDateType {
     #[serde(flatten)]
     pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MessageTypeType {
-    #[serde(flatten)]
-    pub base: WtcoMessageTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessMessageTimeStampType {
-    #[serde(flatten)]
-    pub base: CoTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceActorType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -40,7 +34,7 @@ pub struct BusinessAcceptanceType {
     #[serde(rename = "BusinessAcceptanceActor")]
     pub business_acceptance_actor: BusinessAcceptanceActorType,
     #[serde(rename = "BusinessAcceptanceStatus")]
-    pub business_acceptance_status: CoBusinessAcceptanceStatusType,
+    pub business_acceptance_status: BusinessAcceptanceStatusType,
     #[serde(rename = "BusinessAcceptanceId", skip_serializing_if = "Option::is_none")]
     pub business_acceptance_id: Option<BusinessAcceptanceIdType>,
     #[serde(rename = "AdditionalInformation")]
@@ -50,14 +44,20 @@ pub struct BusinessAcceptanceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceIdType {
-    #[serde(rename = "base")]
-    pub base: String,
+pub struct BusinessMessageTimeStampType {
+    #[serde(flatten)]
+    pub base: CoTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalInformationType {
-    #[serde(rename = "base")]
-    pub base: String,
+pub struct BusinessAcceptanceActorType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageTypeType {
+    #[serde(flatten)]
+    pub base: WtcoMessageTypeType,
 }
 

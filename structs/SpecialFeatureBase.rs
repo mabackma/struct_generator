@@ -2,15 +2,33 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct UsingRestrictions {
+pub struct RestrictionDescription {
     #[serde(flatten)]
-    pub using_restrictions: UsingRestrictionsType,
+    pub restriction_description: String1500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MainFeature {
+pub struct FeatureAdditionalInfo {
     #[serde(flatten)]
-    pub main_feature: CoYesNoType,
+    pub feature_additional_info: FeatureAdditionalInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RestrictionStartDate {
+    #[serde(flatten)]
+    pub restriction_start_date: StartDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeatureInfo {
+    #[serde(flatten)]
+    pub feature_info: FeatureInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UsingRestrictions {
+    #[serde(flatten)]
+    pub using_restrictions: UsingRestrictionsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,9 +38,9 @@ pub struct Explanation {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RestrictionEndDate {
+pub struct FeatureAdditionalCode {
     #[serde(flatten)]
-    pub restriction_end_date: EndDateType,
+    pub feature_additional_code: FeatureAdditionalCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,31 +52,13 @@ pub struct BufferDistance {
 #[derive(Serialize, Deserialize, Debug)]
 pub struct RestrictionOutOfObject {
     #[serde(flatten)]
-    pub restriction_out_of_object: CoYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FeatureAdditionalInfo {
-    #[serde(flatten)]
-    pub feature_additional_info: FeatureAdditionalInfoType,
+    pub restriction_out_of_object: YesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct FeatureType {
     #[serde(flatten)]
-    pub feature_type: CoFeatureTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StartDate {
-    #[serde(flatten)]
-    pub start_date: StartDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Validity {
-    #[serde(flatten)]
-    pub validity: ValidityType,
+    pub feature_type: FeatureTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -68,9 +68,33 @@ pub struct EndDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FeatureInfo {
+pub struct Validity {
     #[serde(flatten)]
-    pub feature_info: FeatureInfoType,
+    pub validity: ValidityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RestrictionEndDate {
+    #[serde(flatten)]
+    pub restriction_end_date: EndDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MainFeature {
+    #[serde(flatten)]
+    pub main_feature: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeatureCode {
+    #[serde(flatten)]
+    pub feature_code: FeatureCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StartDate {
+    #[serde(flatten)]
+    pub start_date: StartDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -79,51 +103,21 @@ pub struct UsingRestriction {
     pub using_restriction: UsingRestrictionType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FeatureCode {
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EndDateType {
     #[serde(flatten)]
-    pub feature_code: CoFeatureCodeType,
+    pub base: CoDateYYYY-MMOrYYYY-MM-DDType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FeatureAdditionalCode {
-    #[serde(flatten)]
-    pub feature_additional_code: CoFeatureAdditionalCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RestrictionDescription {
-    #[serde(flatten)]
-    pub restriction_description: CoString1500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RestrictionStartDate {
-    #[serde(flatten)]
-    pub restriction_start_date: StartDateType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IdentifiersType {
+    #[serde(rename = "Identifier")]
+    pub identifier: Vec<IdentifierType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ExplanationType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureInfoType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BufferDistanceType {
-    #[serde(flatten)]
-    pub base: CoDecimal4And2Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureAdditionalInfoType {
-    #[serde(rename = "base")]
+    #[serde(rename = "explanation_type.base")]
     pub base: String,
 }
 
@@ -131,26 +125,6 @@ pub struct FeatureAdditionalInfoType {
 pub struct UsingRestrictionsType {
     #[serde(rename = "UsingRestriction")]
     pub using_restriction: Vec<UsingRestrictionType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifierValueType {
-    #[serde(flatten)]
-    pub base: CoIdentifierValueType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifierType {
-    #[serde(rename = "IdentifierType")]
-    pub identifier_type: IdentifierTypeType,
-    #[serde(rename = "IdentifierValue")]
-    pub identifier_value: IdentifierValueType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifiersType {
-    #[serde(rename = "Identifier")]
-    pub identifier: Vec<IdentifierType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -166,9 +140,41 @@ pub struct UsingRestrictionType {
     #[serde(rename = "BufferDistance", skip_serializing_if = "Option::is_none")]
     pub buffer_distance: Option<BufferDistanceType>,
     #[serde(rename = "RestrictionDescription", skip_serializing_if = "Option::is_none")]
-    pub restriction_description: Option<CoString1500Type>,
+    pub restriction_description: Option<String1500Type>,
     #[serde(rename = "RestrictionOutOfObject", skip_serializing_if = "Option::is_none")]
-    pub restriction_out_of_object: Option<CoYesNoType>,
+    pub restriction_out_of_object: Option<YesNoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureInfoType {
+    #[serde(rename = "feature_info_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IdentifierType {
+    #[serde(rename = "IdentifierType")]
+    pub identifier_type: IdentifierTypeType,
+    #[serde(rename = "IdentifierValue")]
+    pub identifier_value: IdentifierValueType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BufferDistanceType {
+    #[serde(flatten)]
+    pub base: CoDecimal4And2Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureAdditionalInfoType {
+    #[serde(rename = "feature_additional_info_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StartDateType {
+    #[serde(flatten)]
+    pub base: CoDateYYYY-MMOrYYYY-MM-DDType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -182,14 +188,8 @@ pub struct ValidityType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StartDateType {
-    #[serde(rename = "base")]
-    pub base: chrono::NaiveDate,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EndDateType {
-    #[serde(rename = "base")]
-    pub base: chrono::NaiveDate,
+pub struct IdentifierValueType {
+    #[serde(flatten)]
+    pub base: CoIdentifierValueType,
 }
 

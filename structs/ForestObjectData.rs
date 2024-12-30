@@ -7,10 +7,16 @@ pub struct ForestObjectData {
     pub forest_object_data: ForestObjectDataType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Description {
+    #[serde(flatten)]
+    pub description: String2000Type,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestObjectDataObjectsType {
     #[serde(rename = "Object")]
-    pub object: Vec<CodForestObjectDataObjectType>,
+    pub object: Vec<ForestObjectDataObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -18,9 +24,9 @@ pub struct ForestObjectDataType {
     #[serde(rename = "@id")]
     pub id: String,
     #[serde(rename = "Description")]
-    pub description: CoString2000Type,
+    pub description: String2000Type,
     #[serde(rename = "Sender")]
-    pub sender: CiContactInformationType,
+    pub sender: ContactInformationType,
     #[serde(rename = "Objects")]
     pub objects: ForestObjectDataObjectsType,
 }

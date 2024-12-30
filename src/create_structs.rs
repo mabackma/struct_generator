@@ -130,11 +130,15 @@ pub fn add_element_definition(
     let typ = element_type(e);
 
     if let Some(n) = name {
-        if let Some(t) = typ {
+        if let Some(mut t) = typ {
             if element_definitions.contains_key(&n) && element_definitions[&n] != t {
                 //println!("Existing definition {}: {} -> {}", n, element_definitions[&n], t);
             }
 
+            if t.contains(':') {
+                t = t.split(':').collect::<Vec<&str>>()[1].to_string();
+            } 
+            
             element_definitions.insert(n, t);
         } else {
             if let Some(_) = slice_contents(content, "element",&n) {

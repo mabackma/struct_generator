@@ -49,7 +49,7 @@ static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "base64Binary" => "Vec<u8>",
     "hexBinary" => "Vec<u8>",
     "anySimpleType" => "String",
-    "CoDateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
+    "DateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
 };
 
 const RUST_TYPES: &[&str] = &[
@@ -143,8 +143,13 @@ fn generate_structs(structs: &HashMap<String, XMLStruct>) -> String {
                 field.field_type.to_string()
             };
 
-            if field.name == "base" && !RUST_TYPES.contains(&field_type.as_str()) {
-                structs_string.push_str(&format!("    #[serde(flatten)]\n"));
+            if field.name == "base" {
+
+                if !RUST_TYPES.contains(&field_type.as_str()) {
+                    structs_string.push_str(&format!("    #[serde(flatten)]\n"));
+                } else {
+                    structs_string.push_str(&format!("    #[serde(rename = \"{}.{}\")]\n", to_snake_case(&name), field.name));
+                }
             } else if field.field_type.starts_with("Option<") {
                 structs_string.push_str(&format!("    #[serde(rename = \"{}\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
             } else {

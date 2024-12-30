@@ -2,6 +2,36 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Orientation {
+    #[serde(flatten)]
+    pub orientation: OrientationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ControlReferenceMass {
+    #[serde(flatten)]
+    pub control_reference_mass: Decimal1FractionDigitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ScaledMass {
+    #[serde(flatten)]
+    pub scaled_mass: Decimal1FractionDigitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Calibration {
+    #[serde(flatten)]
+    pub calibration: CalibrationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CalibrationDate {
+    #[serde(flatten)]
+    pub calibration_date: TimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ScaleData {
     #[serde(flatten)]
     pub scale_data: ScaleDataType,
@@ -14,69 +44,23 @@ pub struct WorkingSiteForwardingQualityControl {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Calibration {
-    #[serde(flatten)]
-    pub calibration: CalibrationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ScaledMass {
-    #[serde(flatten)]
-    pub scaled_mass: BdtDecimal1FractionDigitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestOwner {
-    #[serde(flatten)]
-    pub forest_owner: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurementDate {
-    #[serde(flatten)]
-    pub measurement_date: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OperatorId {
-    #[serde(flatten)]
-    pub operator_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct CalibrationAdjustment {
     #[serde(flatten)]
-    pub calibration_adjustment: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ControlReferenceMass {
-    #[serde(flatten)]
-    pub control_reference_mass: BdtDecimal1FractionDigitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Orientation {
-    #[serde(flatten)]
-    pub orientation: OrientationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CalibrationDate {
-    #[serde(flatten)]
-    pub calibration_date: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MachineApplicationVersion {
-    #[serde(flatten)]
-    pub machine_application_version: BdtString100Type,
+    pub calibration_adjustment: PositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OrientationType {
-    #[serde(rename = "base")]
+    #[serde(rename = "orientation_type.base")]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleDataType {
+    #[serde(rename = "ScaledMass")]
+    pub scaled_mass: Decimal1FractionDigitType,
+    #[serde(rename = "Orientation")]
+    pub orientation: OrientationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -115,13 +99,5 @@ pub struct CalibrationType {
     pub calibration_date: TimeStampType,
     #[serde(rename = "CalibrationAdjustment")]
     pub calibration_adjustment: PositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleDataType {
-    #[serde(rename = "ScaledMass")]
-    pub scaled_mass: Decimal1FractionDigitType,
-    #[serde(rename = "Orientation")]
-    pub orientation: OrientationType,
 }
 

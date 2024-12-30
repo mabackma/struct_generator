@@ -2,15 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandInfo {
+pub struct SilvicultureRestrictionEnds {
     #[serde(flatten)]
-    pub stand_info: StandInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StandNumber {
-    #[serde(flatten)]
-    pub stand_number: StandNumberType,
+    pub silviculture_restriction_ends: DateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,9 +14,9 @@ pub struct AreaDecrease {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SilvicultureRestrictionEnds {
+pub struct StandInfo {
     #[serde(flatten)]
-    pub silviculture_restriction_ends: CoDateType,
+    pub stand_info: StandInfoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,15 +32,9 @@ pub struct StandNumberExtension {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberExtensionType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifiersType {
-    #[serde(rename = "Identifier")]
-    pub identifier: Vec<CoIdentifierType>,
+pub struct StandBasicDataDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -62,24 +50,30 @@ pub struct AreaDecreaseType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StandNumberExtensionType {
+    #[serde(rename = "stand_number_extension_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StandInfoType {
     #[serde(rename = "@infoProviderRole")]
     pub info_provider_role: InfoProviderRoleType,
     #[serde(rename = "@infoProviderOrganizationName")]
     pub info_provider_organization_name: OrganizationNameType,
-    #[serde(rename = "base")]
+    #[serde(rename = "stand_info_type.base")]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IdentifiersType {
+    #[serde(rename = "Identifier")]
+    pub identifier: Vec<IdentifierType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StandNumberType {
-    #[serde(rename = "base")]
+    #[serde(rename = "stand_number_type.base")]
     pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandBasicDataDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
 }
 

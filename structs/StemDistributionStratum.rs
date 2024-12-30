@@ -20,21 +20,15 @@ pub struct TreeSpeciesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AgeType {
-    #[serde(flatten)]
-    pub base: CoAgeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: CoStoreyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StemDistributionStrataType {
     #[serde(rename = "StemDistributionStratum")]
     pub stem_distribution_stratum: Vec<StemDistributionStratumType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AgeType {
+    #[serde(flatten)]
+    pub base: CoAgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -52,7 +46,7 @@ pub struct StemDistributionStratumType {
     #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
     pub co_change_time: Option<ChangeTime>,
     #[serde(rename = "StratumNumber", skip_serializing_if = "Option::is_none")]
-    pub stratum_number: Option<CoStratumNumberType>,
+    pub stratum_number: Option<StratumNumberType>,
     #[serde(rename = "TreeSpecies")]
     pub tree_species: TreeSpeciesType,
     #[serde(rename = "Storey", skip_serializing_if = "Option::is_none")]
@@ -63,5 +57,11 @@ pub struct StemDistributionStratumType {
     pub basal_area: BasalAreaType,
     #[serde(rename = "CddDistributionModelGroup")]
     pub cdd_distribution_model_group: DistributionModelGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoreyType {
+    #[serde(flatten)]
+    pub base: CoStoreyType,
 }
 

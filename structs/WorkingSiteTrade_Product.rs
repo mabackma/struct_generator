@@ -2,9 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Consumption {
+pub struct ConsumptionUnit {
     #[serde(flatten)]
-    pub consumption: ConsumptionType,
+    pub consumption_unit: ConsumptionUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProductName {
+    #[serde(flatten)]
+    pub product_name: String500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,21 +20,15 @@ pub struct Product {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ConsumptionUnit {
+pub struct Consumption {
     #[serde(flatten)]
-    pub consumption_unit: ConsumptionUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ProductName {
-    #[serde(flatten)]
-    pub product_name: CoString500Type,
+    pub consumption: ConsumptionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
+pub struct ConsumptionType {
     #[serde(flatten)]
-    pub base: CoUnitPerHectareType,
+    pub base: CoDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -38,17 +38,23 @@ pub struct ProductsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionUnitType {
+    #[serde(flatten)]
+    pub base: CoUnitPerHectareType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PlannedResourceType {
     #[serde(rename = "@Id")]
     pub id: String,
     #[serde(rename = "PlannedResource")]
-    pub planned_resource: WtcPlannedResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+    pub planned_resource: PlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -64,30 +70,24 @@ pub struct ProductType {
     #[serde(rename = "ProductKeyGroup")]
     pub product_key_group: ProductKeyGroup,
     #[serde(rename = "ProductName")]
-    pub product_name: CoString500Type,
+    pub product_name: String500Type,
     #[serde(rename = "Quantity")]
-    pub quantity: CoDecimal2FractionDigitsType,
+    pub quantity: Decimal2FractionDigitsType,
     #[serde(rename = "QuantityUnit")]
-    pub quantity_unit: CoWideUnitType,
+    pub quantity_unit: WideUnitType,
     #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
-    pub unit_price: Option<CoDecimal2FractionDigitsType>,
+    pub unit_price: Option<Decimal2FractionDigitsType>,
     #[serde(rename = "TotalPrice", skip_serializing_if = "Option::is_none")]
-    pub total_price: Option<WtcTotalPriceType>,
+    pub total_price: Option<TotalPriceType>,
     #[serde(rename = "Currency", skip_serializing_if = "Option::is_none")]
-    pub currency: Option<CoCurrencyType>,
+    pub currency: Option<CurrencyType>,
     #[serde(rename = "Consumption", skip_serializing_if = "Option::is_none")]
     pub consumption: Option<ConsumptionType>,
     #[serde(rename = "ConsumptionUnit", skip_serializing_if = "Option::is_none")]
     pub consumption_unit: Option<ConsumptionUnitType>,
     #[serde(rename = "PlannedResource", skip_serializing_if = "Option::is_none")]
-    pub planned_resource: Option<WtcPlannedResourceType>,
+    pub planned_resource: Option<PlannedResourceType>,
     #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<CoString1500Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: CoOperationModeType,
+    pub description: Option<String1500Type>,
 }
 

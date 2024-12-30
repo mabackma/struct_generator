@@ -2,63 +2,57 @@ use serde::{Serialize, Deserialize};
 use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Photographer {
+pub struct MapSymbolType {
     #[serde(flatten)]
-    pub photographer: BdtString50Type,
+    pub map_symbol_type: FeatureCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct InsertedMapSymbolId {
+pub struct Photographer {
     #[serde(flatten)]
-    pub inserted_map_symbol_id: BdtString20Type,
+    pub photographer: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Filename {
+    #[serde(flatten)]
+    pub filename: String100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Bytes {
+    #[serde(flatten)]
+    pub bytes: Vec<u8>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Position {
+    #[serde(flatten)]
+    pub position: PointGeometryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ImageDate {
     #[serde(flatten)]
-    pub image_date: BdtTimeStampType,
+    pub image_date: TimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Category {
+    #[serde(flatten)]
+    pub category: ImageCategoryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct SubCategory {
     #[serde(flatten)]
-    pub sub_category: BdtImageSubCategoryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MapSymbolId {
-    #[serde(flatten)]
-    pub map_symbol_id: WctERPIdType,
+    pub sub_category: ImageSubCategoryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Image {
     #[serde(flatten)]
     pub image: ImageType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Category {
-    #[serde(flatten)]
-    pub category: BdtImageCategoryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MapSymbolType {
-    #[serde(flatten)]
-    pub map_symbol_type: BdtFeatureCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Filename {
-    #[serde(flatten)]
-    pub filename: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Position {
-    #[serde(flatten)]
-    pub position: GdtPointGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
