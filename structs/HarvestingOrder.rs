@@ -1,31 +1,22 @@
-#[derive(Serialize, Deserialize)]
-pub struct BeginDate {
-    #[serde(flatten)]
-    pub begin_date: BdtDateType,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct Data {
-    #[serde(flatten)]
-    pub data: Vec<u8>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Attachments {
-    #[serde(flatten)]
-    pub attachments: AttachmentsType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Attachment {
-    #[serde(flatten)]
-    pub attachment: AttachmentDataType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct HarvestingOrder {
     #[serde(flatten)]
     pub harvesting_order: HarvestingOrderType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,9 +38,11 @@ pub struct HarvestingOrderType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "Data")]
+    pub data: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -74,19 +67,5 @@ pub struct AssortmentDataType {
     pub end_date: DateType,
     #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
     pub info_text: Option<String200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "Data")]
-    pub data: Vec<u8>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
 }
 

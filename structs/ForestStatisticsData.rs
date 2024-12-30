@@ -1,95 +1,76 @@
-#[derive(Serialize, Deserialize)]
-pub struct StatisticsOperation {
-    #[serde(flatten)]
-    pub statistics_operation: StatisticsOperationType,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct ReportedStatisticsOperationType {
-    #[serde(flatten)]
-    pub reported_statistics_operation_type: CoReportedStatisticsOperationTypeType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct LoggingsRow {
-    #[serde(flatten)]
-    pub loggings_row: LoggingsRowType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct StatisticsQuantities {
-    #[serde(flatten)]
-    pub statistics_quantities: StatisticsQuantitiesType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ForestStatisticsData {
-    #[serde(flatten)]
-    pub forest_statistics_data: ForestStatisticsDataType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct StatisticsQuantity {
-    #[serde(flatten)]
-    pub statistics_quantity: StatisticsQuantityType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OperationRows {
     #[serde(flatten)]
     pub operation_rows: OperationRowsType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct StatisticsAssortmentCompactClasses {
-    #[serde(flatten)]
-    pub statistics_assortment_compact_classes: AssortmentCompactClassesType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct LoggingsRows {
-    #[serde(flatten)]
-    pub loggings_rows: LoggingsRowsType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ForestOwnerGroup {
-    #[serde(flatten)]
-    pub forest_owner_group: ForestOwnerGroupType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OperationRow {
     #[serde(flatten)]
     pub operation_row: OperationRowType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingsRowType {
-    #[serde(rename = "AreaType")]
-    pub area_type: AreaTypeType,
-    #[serde(rename = "AreaCode")]
-    pub area_code: AreaCodeType,
-    #[serde(rename = "PurchaseModeCode")]
-    pub purchase_mode_code: CoStatisticsPurchaseModeCodeType,
-    #[serde(rename = "ForestOwnerGroup")]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestOwnerGroup {
+    #[serde(flatten)]
     pub forest_owner_group: ForestOwnerGroupType,
-    #[serde(rename = "StatisticsAssortmentCompactClasses")]
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ReportedStatisticsOperationType {
+    #[serde(flatten)]
+    pub reported_statistics_operation_type: CoReportedStatisticsOperationTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatisticsQuantities {
+    #[serde(flatten)]
+    pub statistics_quantities: StatisticsQuantitiesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatisticsOperation {
+    #[serde(flatten)]
+    pub statistics_operation: StatisticsOperationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoggingsRows {
+    #[serde(flatten)]
+    pub loggings_rows: LoggingsRowsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatisticsQuantity {
+    #[serde(flatten)]
+    pub statistics_quantity: StatisticsQuantityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoggingsRow {
+    #[serde(flatten)]
+    pub loggings_row: LoggingsRowType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestStatisticsData {
+    #[serde(flatten)]
+    pub forest_statistics_data: ForestStatisticsDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatisticsAssortmentCompactClasses {
+    #[serde(flatten)]
     pub statistics_assortment_compact_classes: AssortmentCompactClassesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentCompactClassType {
-    #[serde(rename = "AssortmentClassCode")]
-    pub assortment_class_code: AsAssortmentClassCodeType,
-    #[serde(rename = "AssortmentsCompact")]
-    pub assortments_compact: AssortmentsCompactType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuantityType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+pub struct AssortmentInfoType {
+    #[serde(rename = "base")]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -99,23 +80,9 @@ pub struct AssortmentCompactClassesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentCompactType {
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: TreeSpeciesType,
-    #[serde(rename = "StemType")]
-    pub stem_type: StemTypeType,
-    #[serde(rename = "Quantity")]
-    pub quantity: QuantityType,
-    #[serde(rename = "QuantityUnit")]
-    pub quantity_unit: CoExtendedQuantityUnitType,
-    #[serde(rename = "AssortmentInfo")]
-    pub assortment_info: AssortmentInfoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoggingsRowsType {
-    #[serde(rename = "LoggingsRow")]
-    pub loggings_row: Vec<LoggingsRowType>,
+pub struct ForestOwnerGroupType {
+    #[serde(flatten)]
+    pub base: CoForestOwnerGroupType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -125,49 +92,21 @@ pub struct OperationRowsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsCompactType {
-    #[serde(rename = "AssortmentCompact")]
-    pub assortment_compact: Vec<AssortmentCompactType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestOwnerGroupType {
+pub struct CompanyIDType {
     #[serde(flatten)]
-    pub base: CoForestOwnerGroupType,
+    pub base: JhsYritysTunnusTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationRowType {
-    #[serde(rename = "AreaType")]
-    pub area_type: AreaTypeType,
-    #[serde(rename = "AreaCode")]
-    pub area_code: AreaCodeType,
-    #[serde(rename = "StatisticsOperation")]
-    pub statistics_operation: StatisticsOperationType,
-    #[serde(rename = "ForestOwnerGroup")]
-    pub forest_owner_group: ForestOwnerGroupType,
-    #[serde(rename = "ReportedStatisticsOperationType")]
-    pub reported_statistics_operation_type: CoReportedStatisticsOperationTypeType,
-    #[serde(rename = "StatisticsQuantities")]
-    pub statistics_quantities: StatisticsQuantitiesType,
+pub struct StatisticsQuantitiesType {
+    #[serde(rename = "StatisticsQuantity")]
+    pub statistics_quantity: Vec<StatisticsQuantityType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EndDateType {
-    #[serde(flatten)]
-    pub base: JhsLoppuPvmTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsOperationType {
-    #[serde(flatten)]
-    pub base: CoStatisticsOperationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentInfoType {
-    #[serde(rename = "base")]
-    pub base: String,
+pub struct LoggingsRowsType {
+    #[serde(rename = "LoggingsRow")]
+    pub loggings_row: Vec<LoggingsRowType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -193,27 +132,53 @@ pub struct ForestStatisticsDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyIDType {
-    #[serde(flatten)]
-    pub base: JhsYritysTunnusTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsQuantitiesType {
-    #[serde(rename = "StatisticsQuantity")]
-    pub statistics_quantity: Vec<StatisticsQuantityType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StartDateType {
     #[serde(flatten)]
     pub base: JhsAlkuPvmTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaCodeType {
-    #[serde(rename = "base")]
-    pub base: String,
+pub struct AssortmentsCompactType {
+    #[serde(rename = "AssortmentCompact")]
+    pub assortment_compact: Vec<AssortmentCompactType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationRowType {
+    #[serde(rename = "AreaType")]
+    pub area_type: AreaTypeType,
+    #[serde(rename = "AreaCode")]
+    pub area_code: AreaCodeType,
+    #[serde(rename = "StatisticsOperation")]
+    pub statistics_operation: StatisticsOperationType,
+    #[serde(rename = "ForestOwnerGroup")]
+    pub forest_owner_group: ForestOwnerGroupType,
+    #[serde(rename = "ReportedStatisticsOperationType")]
+    pub reported_statistics_operation_type: CoReportedStatisticsOperationTypeType,
+    #[serde(rename = "StatisticsQuantities")]
+    pub statistics_quantities: StatisticsQuantitiesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentCompactType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: TreeSpeciesType,
+    #[serde(rename = "StemType")]
+    pub stem_type: StemTypeType,
+    #[serde(rename = "Quantity")]
+    pub quantity: QuantityType,
+    #[serde(rename = "QuantityUnit")]
+    pub quantity_unit: CoExtendedQuantityUnitType,
+    #[serde(rename = "AssortmentInfo")]
+    pub assortment_info: AssortmentInfoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatisticsQuantityType {
+    #[serde(rename = "Quantity")]
+    pub quantity: QuantityType,
+    #[serde(rename = "QuantityUnit")]
+    pub quantity_unit: CoExtendedQuantityUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -223,10 +188,48 @@ pub struct AreaTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsQuantityType {
-    #[serde(rename = "Quantity")]
-    pub quantity: QuantityType,
-    #[serde(rename = "QuantityUnit")]
-    pub quantity_unit: CoExtendedQuantityUnitType,
+pub struct LoggingsRowType {
+    #[serde(rename = "AreaType")]
+    pub area_type: AreaTypeType,
+    #[serde(rename = "AreaCode")]
+    pub area_code: AreaCodeType,
+    #[serde(rename = "PurchaseModeCode")]
+    pub purchase_mode_code: CoStatisticsPurchaseModeCodeType,
+    #[serde(rename = "ForestOwnerGroup")]
+    pub forest_owner_group: ForestOwnerGroupType,
+    #[serde(rename = "StatisticsAssortmentCompactClasses")]
+    pub statistics_assortment_compact_classes: AssortmentCompactClassesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaCodeType {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EndDateType {
+    #[serde(flatten)]
+    pub base: JhsLoppuPvmTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentCompactClassType {
+    #[serde(rename = "AssortmentClassCode")]
+    pub assortment_class_code: AsAssortmentClassCodeType,
+    #[serde(rename = "AssortmentsCompact")]
+    pub assortments_compact: AssortmentsCompactType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatisticsOperationType {
+    #[serde(flatten)]
+    pub base: CoStatisticsOperationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuantityType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
 }
 

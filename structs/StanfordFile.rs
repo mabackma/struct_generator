@@ -1,7 +1,22 @@
-#[derive(Serialize, Deserialize)]
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Bytes {
+    #[serde(flatten)]
+    pub bytes: Vec<u8>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct StanfordFile {
     #[serde(flatten)]
     pub stanford_file: StanfordFileType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FileName {
+    #[serde(flatten)]
+    pub file_name: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -1,4 +1,7 @@
-#[derive(Serialize, Deserialize)]
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ContactRequestsType {
     #[serde(flatten)]
     pub contact_requests_type: ContactRequests,

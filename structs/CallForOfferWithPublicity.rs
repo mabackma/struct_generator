@@ -1,10 +1,13 @@
-#[derive(Serialize, Deserialize)]
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PublicityOrganizations {
     #[serde(flatten)]
     pub publicity_organizations: OOrganizationsType,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct CallForOfferWithPublicityType {
     #[serde(flatten)]
     pub call_for_offer_with_publicity_type: CallForOfferWithPublicity,

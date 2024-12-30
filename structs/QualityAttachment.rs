@@ -1,13 +1,22 @@
-#[derive(Serialize, Deserialize)]
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Version {
+    #[serde(flatten)]
+    pub version: BdtString10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct QualityAttachment {
     #[serde(flatten)]
     pub quality_attachment: QualityAttachmentType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct Version {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ModificationDate {
     #[serde(flatten)]
-    pub version: BdtString10Type,
+    pub modification_date: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

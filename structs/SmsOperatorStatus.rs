@@ -1,43 +1,58 @@
-#[derive(Serialize, Deserialize)]
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct RecipientType {
     #[serde(flatten)]
     pub recipient_type: RecipientTypeType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct SenderUserId {
-    #[serde(flatten)]
-    pub sender_user_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct OriginalMessage {
-    #[serde(flatten)]
-    pub original_message: BdtString1000Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct StatusTimestamp {
-    #[serde(flatten)]
-    pub status_timestamp: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct SmsOperatorStatus {
-    #[serde(flatten)]
-    pub sms_operator_status: SmsOperatorStatusType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct NotificationType {
     #[serde(flatten)]
     pub notification_type: NotificationTypeType,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SenderUserId {
+    #[serde(flatten)]
+    pub sender_user_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SendTimestamp {
     #[serde(flatten)]
     pub send_timestamp: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusMessage {
+    #[serde(flatten)]
+    pub status_message: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SmsOperatorStatus {
+    #[serde(flatten)]
+    pub sms_operator_status: SmsOperatorStatusType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusTimestamp {
+    #[serde(flatten)]
+    pub status_timestamp: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusCode {
+    #[serde(flatten)]
+    pub status_code: StatusCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OriginalMessage {
+    #[serde(flatten)]
+    pub original_message: BdtString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -75,13 +90,13 @@ pub struct NotificationTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatusCodeType {
+pub struct RecipientTypeType {
     #[serde(rename = "base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RecipientTypeType {
+pub struct StatusCodeType {
     #[serde(rename = "base")]
     pub base: String,
 }

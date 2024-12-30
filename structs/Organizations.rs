@@ -1,41 +1,44 @@
-#[derive(Serialize, Deserialize)]
-pub struct Services {
-    #[serde(flatten)]
-    pub services: ServicesType,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct Role {
-    #[serde(flatten)]
-    pub role: OrganizationRoleType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Roles {
-    #[serde(flatten)]
-    pub roles: RolesType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Service {
-    #[serde(flatten)]
-    pub service: OrganizationServiceType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Organizations {
-    #[serde(flatten)]
-    pub organizations: OrganizationsType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Organization {
     #[serde(flatten)]
     pub organization: OrganizationType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Services {
+    #[serde(flatten)]
+    pub services: ServicesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Service {
+    #[serde(flatten)]
+    pub service: OrganizationServiceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Roles {
+    #[serde(flatten)]
+    pub roles: RolesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Organizations {
+    #[serde(flatten)]
+    pub organizations: OrganizationsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Role {
+    #[serde(flatten)]
+    pub role: OrganizationRoleType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
+pub struct OrganizationRoleType {
     #[serde(rename = "base")]
     pub base: String,
 }
@@ -55,7 +58,7 @@ pub struct OrganizationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationRoleType {
+pub struct OrganizationServiceType {
     #[serde(rename = "base")]
     pub base: String,
 }

@@ -1,10 +1,7 @@
-#[derive(Serialize, Deserialize)]
-pub struct WorkingSiteNumber {
-    #[serde(flatten)]
-    pub working_site_number: WctWorkingSiteNumberType,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteStatus {
     #[serde(flatten)]
     pub working_site_status: WorkingSiteStatusType,

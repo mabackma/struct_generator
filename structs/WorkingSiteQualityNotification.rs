@@ -1,109 +1,64 @@
-#[derive(Serialize, Deserialize)]
-pub struct DisQualificationPercentageTotal {
-    #[serde(flatten)]
-    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct DisQualificationReasons {
-    #[serde(flatten)]
-    pub dis_qualification_reasons: DisQualificationReasonsType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct DisQualificationSign {
-    #[serde(flatten)]
-    pub dis_qualification_sign: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ResourceIdMJ {
-    #[serde(flatten)]
-    pub resource_id_m_j: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct CuttingAccuracySign {
-    #[serde(flatten)]
-    pub cutting_accuracy_sign: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct WorkingSiteQualityNotification {
-    #[serde(flatten)]
-    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct DisQualificationPercentage {
-    #[serde(flatten)]
-    pub dis_qualification_percentage: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ResourceId {
-    #[serde(flatten)]
-    pub resource_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct DisQualificationReason {
     #[serde(flatten)]
     pub dis_qualification_reason: BdtString10Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct ForestOwner {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceIdMJ {
     #[serde(flatten)]
-    pub forest_owner: BdtString100Type,
+    pub resource_id_m_j: BdtString20Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct PurchaseContractNumber {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationSign {
     #[serde(flatten)]
-    pub purchase_contract_number: BdtString20Type,
+    pub dis_qualification_sign: BdtString5Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct ServiceBuyerId {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteQualityNotification {
     #[serde(flatten)]
-    pub service_buyer_id: BdtString20Type,
+    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct DestinationStorage {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingAccuracySign {
     #[serde(flatten)]
-    pub destination_storage: BdtString20Type,
+    pub cutting_accuracy_sign: BdtString5Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct Image {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasons {
     #[serde(flatten)]
-    pub image: Vec<u8>,
+    pub dis_qualification_reasons: DisQualificationReasonsType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct DisQualificationReasonText {
-    #[serde(flatten)]
-    pub dis_qualification_reason_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct CuttingAccuracy {
     #[serde(flatten)]
     pub cutting_accuracy: BdtDecimal2FractionDigitsType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct MeasurementDate {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationPercentage {
     #[serde(flatten)]
-    pub measurement_date: BdtTimeStampType,
+    pub dis_qualification_percentage: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasonText {
+    #[serde(flatten)]
+    pub dis_qualification_reason_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationPercentageTotal {
+    #[serde(flatten)]
+    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

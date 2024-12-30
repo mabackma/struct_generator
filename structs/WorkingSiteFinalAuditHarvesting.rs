@@ -1,133 +1,164 @@
-#[derive(Serialize, Deserialize)]
-pub struct TreeDamagesText {
-    #[serde(flatten)]
-    pub tree_damages_text: BdtString200Type,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct PreClearingText {
-    #[serde(flatten)]
-    pub pre_clearing_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct SaveTreesLeftText {
-    #[serde(flatten)]
-    pub save_trees_left_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct SpareTreesFromMapSymbols {
-    #[serde(flatten)]
-    pub spare_trees_from_map_symbols: WctSpareTreesByCategoryType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct PurchaseContractId {
-    #[serde(flatten)]
-    pub purchase_contract_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditHarvesting {
-    #[serde(flatten)]
-    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Storage {
-    #[serde(flatten)]
-    pub storage: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct StumpTreatment {
-    #[serde(flatten)]
-    pub stump_treatment: BdtYesNoNotNeededType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct RoadDamages {
-    #[serde(flatten)]
-    pub road_damages: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ForwarderId {
-    #[serde(flatten)]
-    pub forwarder_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct SaveTreesLeft {
-    #[serde(flatten)]
-    pub save_trees_left: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct RoadDamagesText {
-    #[serde(flatten)]
-    pub road_damages_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct SeparateSpareTrees {
-    #[serde(flatten)]
-    pub separate_spare_trees: WctSpareTreesByCategoryType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct VehiclePathPressures {
-    #[serde(flatten)]
-    pub vehicle_path_pressures: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct VehiclePathPressuresText {
-    #[serde(flatten)]
-    pub vehicle_path_pressures_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PreClearing {
     #[serde(flatten)]
     pub pre_clearing: BdtYesNoNotNeededType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct HarvesterId {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeDamages {
     #[serde(flatten)]
-    pub harvester_id: BdtString20Type,
+    pub tree_damages: BdtYesNoType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct StumpTreatmentText {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PreClearingText {
     #[serde(flatten)]
-    pub stump_treatment_text: BdtString200Type,
+    pub pre_clearing_text: BdtString200Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct HighStumps {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RoadDamagesText {
     #[serde(flatten)]
-    pub high_stumps: BdtYesNoType,
+    pub road_damages_text: BdtString200Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct StorageText {
-    #[serde(flatten)]
-    pub storage_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct HighStumpsText {
     #[serde(flatten)]
     pub high_stumps_text: BdtString200Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct TreeDamages {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HighStumps {
     #[serde(flatten)]
-    pub tree_damages: BdtYesNoType,
+    pub high_stumps: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct VehiclePathPressures {
+    #[serde(flatten)]
+    pub vehicle_path_pressures: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForwarderId {
+    #[serde(flatten)]
+    pub forwarder_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpTreatment {
+    #[serde(flatten)]
+    pub stump_treatment: BdtYesNoNotNeededType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RoadDamages {
+    #[serde(flatten)]
+    pub road_damages: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PurchaseContractId {
+    #[serde(flatten)]
+    pub purchase_contract_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HarvesterId {
+    #[serde(flatten)]
+    pub harvester_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpTreatmentText {
+    #[serde(flatten)]
+    pub stump_treatment_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SeparateSpareTrees {
+    #[serde(flatten)]
+    pub separate_spare_trees: WctSpareTreesByCategoryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SaveTreesLeft {
+    #[serde(flatten)]
+    pub save_trees_left: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SpareTreesFromMapSymbols {
+    #[serde(flatten)]
+    pub spare_trees_from_map_symbols: WctSpareTreesByCategoryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeDamagesText {
+    #[serde(flatten)]
+    pub tree_damages_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SaveTreesLeftText {
+    #[serde(flatten)]
+    pub save_trees_left_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Storage {
+    #[serde(flatten)]
+    pub storage: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageText {
+    #[serde(flatten)]
+    pub storage_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteFinalAuditHarvesting {
+    #[serde(flatten)]
+    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct VehiclePathPressuresText {
+    #[serde(flatten)]
+    pub vehicle_path_pressures_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditHarvestingType {
+    #[serde(flatten)]
+    pub base: WorkingSiteFinalAuditBaseHarvestingType,
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: BdtString20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: WctERPIdType,
+    #[serde(rename = "HarvesterId", skip_serializing_if = "Option::is_none")]
+    pub harvester_id: Option<BdtString20Type>,
+    #[serde(rename = "ForwarderId", skip_serializing_if = "Option::is_none")]
+    pub forwarder_id: Option<BdtString20Type>,
+    #[serde(rename = "PurchaseContractId")]
+    pub purchase_contract_id: BdtString20Type,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: BdtWorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: BdtWorkCodeType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<BdtString1000Type>,
+    #[serde(rename = "Images")]
+    pub images: BdtPositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -172,34 +203,6 @@ pub struct WorkingSiteFinalAuditBaseHarvestingType {
     pub images: Option<BdtPositiveInteger2digitsType>,
     #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
     pub audits: Option<AuditsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditHarvestingType {
-    #[serde(flatten)]
-    pub base: WorkingSiteFinalAuditBaseHarvestingType,
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: WctERPIdType,
-    #[serde(rename = "HarvesterId", skip_serializing_if = "Option::is_none")]
-    pub harvester_id: Option<BdtString20Type>,
-    #[serde(rename = "ForwarderId", skip_serializing_if = "Option::is_none")]
-    pub forwarder_id: Option<BdtString20Type>,
-    #[serde(rename = "PurchaseContractId")]
-    pub purchase_contract_id: BdtString20Type,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: BdtWorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: BdtWorkCodeType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<BdtString1000Type>,
-    #[serde(rename = "Images")]
-    pub images: BdtPositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

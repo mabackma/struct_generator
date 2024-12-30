@@ -1,217 +1,196 @@
-#[derive(Serialize, Deserialize)]
-pub struct ProductivityUnit {
-    #[serde(flatten)]
-    pub productivity_unit: BdtWorkCodeUnitType,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct WorkCodeGroups {
-    #[serde(flatten)]
-    pub work_code_groups: WorkCodeGroupsType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct RemoveDate {
-    #[serde(flatten)]
-    pub remove_date: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct WorkingWeight {
-    #[serde(flatten)]
-    pub working_weight: BdtWorkingWeightType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct SubContractorVerified {
-    #[serde(flatten)]
-    pub sub_contractor_verified: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct OwnWeight {
-    #[serde(flatten)]
-    pub own_weight: BdtPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct MeasuringDeviceVersion {
-    #[serde(flatten)]
-    pub measuring_device_version: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct HarvesterModel {
-    #[serde(flatten)]
-    pub harvester_model: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Removed {
-    #[serde(flatten)]
-    pub removed: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct OrdererResponsibilityDocumentsChecked {
-    #[serde(flatten)]
-    pub orderer_responsibility_documents_checked: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ElevatorCertificate {
-    #[serde(flatten)]
-    pub elevator_certificate: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Contractors {
-    #[serde(flatten)]
-    pub contractors: WctContractorsType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct DeploymentMonth {
-    #[serde(flatten)]
-    pub deployment_month: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ModelYear {
-    #[serde(flatten)]
-    pub model_year: BdtYearType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Model {
     #[serde(flatten)]
     pub model: BdtString50Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct SubContractorResource {
-    #[serde(flatten)]
-    pub sub_contractor_resource: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Productivity {
-    #[serde(flatten)]
-    pub productivity: BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct DeploymentYear {
-    #[serde(flatten)]
-    pub deployment_year: BdtYearType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct MeasuringDeviceLastControl {
-    #[serde(flatten)]
-    pub measuring_device_last_control: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ServiceStartDate {
-    #[serde(flatten)]
-    pub service_start_date: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PeripheralCode {
     #[serde(flatten)]
     pub peripheral_code: BdtPeripheralCodeType,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasuringDeviceLastControl {
+    #[serde(flatten)]
+    pub measuring_device_last_control: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Productivity {
+    #[serde(flatten)]
+    pub productivity: BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SubContractorVerified {
+    #[serde(flatten)]
+    pub sub_contractor_verified: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceStartDate {
+    #[serde(flatten)]
+    pub service_start_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Peripherals {
     #[serde(flatten)]
     pub peripherals: PeripheralsType,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ExternalSystemName {
     #[serde(flatten)]
     pub external_system_name: BdtString50Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct ExtinguisherVerificationDate {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OwnWeight {
     #[serde(flatten)]
-    pub extinguisher_verification_date: BdtDateType,
+    pub own_weight: BdtPositiveInteger6digitsType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct HavesterModelYear {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeploymentMonth {
     #[serde(flatten)]
-    pub havester_model_year: BdtYearType,
+    pub deployment_month: BdtString5Type,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct Telephone {
-    #[serde(flatten)]
-    pub telephone: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct LoaderScaleModelYear {
-    #[serde(flatten)]
-    pub loader_scale_model_year: BdtYearType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ExternalSystemInUse {
-    #[serde(flatten)]
-    pub external_system_in_use: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct LoaderScaleModel {
-    #[serde(flatten)]
-    pub loader_scale_model: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct CommunicationType {
-    #[serde(flatten)]
-    pub communication_type: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Email {
-    #[serde(flatten)]
-    pub email: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct LoadRating {
     #[serde(flatten)]
     pub load_rating: WctLoadRatingType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct OutOfServiceEndDate {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ElevatorCertificate {
     #[serde(flatten)]
-    pub out_of_service_end_date: BdtDateType,
+    pub elevator_certificate: BdtYesNoType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct OwnerContractorId {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OrdererResponsibilityDocumentsChecked {
     #[serde(flatten)]
-    pub owner_contractor_id: BdtString20Type,
+    pub orderer_responsibility_documents_checked: BdtYesNoType,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtinguisherVerificationDate {
+    #[serde(flatten)]
+    pub extinguisher_verification_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HavesterModelYear {
+    #[serde(flatten)]
+    pub havester_model_year: BdtYearType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProductivityUnit {
+    #[serde(flatten)]
+    pub productivity_unit: BdtWorkCodeUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Manufacturer {
     #[serde(flatten)]
     pub manufacturer: BdtMachineManufacturerType,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RemoveDate {
+    #[serde(flatten)]
+    pub remove_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeploymentYear {
+    #[serde(flatten)]
+    pub deployment_year: BdtYearType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HarvesterModel {
+    #[serde(flatten)]
+    pub harvester_model: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CommunicationType {
+    #[serde(flatten)]
+    pub communication_type: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExternalSystemInUse {
+    #[serde(flatten)]
+    pub external_system_in_use: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoaderScaleModel {
+    #[serde(flatten)]
+    pub loader_scale_model: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SubContractorResource {
+    #[serde(flatten)]
+    pub sub_contractor_resource: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoaderScaleModelYear {
+    #[serde(flatten)]
+    pub loader_scale_model_year: BdtYearType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OutOfServiceStartDate {
     #[serde(flatten)]
     pub out_of_service_start_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasuringDeviceVersion {
+    #[serde(flatten)]
+    pub measuring_device_version: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ModelYear {
+    #[serde(flatten)]
+    pub model_year: BdtYearType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OutOfServiceEndDate {
+    #[serde(flatten)]
+    pub out_of_service_end_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Removed {
+    #[serde(flatten)]
+    pub removed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingWeight {
+    #[serde(flatten)]
+    pub working_weight: BdtWorkingWeightType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypesType {
+    #[serde(rename = "ServiceType")]
+    pub service_type: Vec<ServiceTypeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -221,9 +200,9 @@ pub struct WorkCodesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypesType {
-    #[serde(rename = "ServiceType")]
-    pub service_type: Vec<ServiceTypeType>,
+pub struct PeripheralsType {
+    #[serde(rename = "PeripheralCode", skip_serializing_if = "Option::is_none")]
+    pub peripheral_code: Option<Vec<PeripheralCodeType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -328,11 +307,5 @@ pub struct WorkCodeInfoType {
     pub productivity: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
     #[serde(rename = "ProductivityUnit")]
     pub productivity_unit: WorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PeripheralsType {
-    #[serde(rename = "PeripheralCode", skip_serializing_if = "Option::is_none")]
-    pub peripheral_code: Option<Vec<PeripheralCodeType>>,
 }
 

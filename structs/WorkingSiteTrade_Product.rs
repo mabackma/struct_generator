@@ -1,43 +1,34 @@
-#[derive(Serialize, Deserialize)]
-pub struct ProductName {
-    #[serde(flatten)]
-    pub product_name: CoString500Type,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct Unit {
-    #[serde(flatten)]
-    pub unit: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Description {
-    #[serde(flatten)]
-    pub description: CoString1500Type,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Consumption {
     #[serde(flatten)]
     pub consumption: ConsumptionType,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Product {
     #[serde(flatten)]
     pub product: ProductType,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ConsumptionUnit {
     #[serde(flatten)]
     pub consumption_unit: ConsumptionUnitType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct Code {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProductName {
     #[serde(flatten)]
-    pub code: String,
+    pub product_name: CoString500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionUnitType {
+    #[serde(flatten)]
+    pub base: CoUnitPerHectareType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,15 +38,17 @@ pub struct ProductsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: WtcPlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
+pub struct ConsumptionType {
     #[serde(flatten)]
-    pub base: CoOperationModeType,
+    pub base: CoDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -93,16 +86,8 @@ pub struct ProductType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
+pub struct OperationModeType {
     #[serde(flatten)]
-    pub base: CoUnitPerHectareType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: WtcPlannedResourceType,
+    pub base: CoOperationModeType,
 }
 

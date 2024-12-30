@@ -1,37 +1,34 @@
-#[derive(Serialize, Deserialize)]
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct DeadTreeType {
     #[serde(flatten)]
     pub dead_tree_type: DeadTreeTypeType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct DeadTreeStrata {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeSpecies {
     #[serde(flatten)]
-    pub dead_tree_strata: DeadTreeStrataType,
+    pub tree_species: TreeSpeciesType,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct DeadTreeStratum {
     #[serde(flatten)]
     pub dead_tree_stratum: DeadTreeStratumType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeadTreeStrata {
     #[serde(flatten)]
-    pub base: CoDiameterType,
+    pub dead_tree_strata: DeadTreeStrataType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeanDiameter {
     #[serde(flatten)]
-    pub base: CoVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
-    #[serde(flatten)]
-    pub base: CoTreeSpeciesType,
+    pub mean_diameter: MeanDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -64,6 +61,24 @@ pub struct StemCountType {
 pub struct DeadTreeTypeType {
     #[serde(flatten)]
     pub base: CoDeadTreeTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+    #[serde(flatten)]
+    pub base: CoTreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanDiameterType {
+    #[serde(flatten)]
+    pub base: CoDiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeType {
+    #[serde(flatten)]
+    pub base: CoVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

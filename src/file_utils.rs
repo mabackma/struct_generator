@@ -82,6 +82,9 @@ pub fn structs_and_definitions_to_file(
 ) -> io::Result<()> {
     let mut structs_string = String::new();
 
+    structs_string.push_str("use serde::{Serialize, Deserialize};\n");
+    structs_string.push_str("use chrono::{NaiveDate, NaiveTime, NaiveDateTime};\n\n");
+
     // Add element definitions to the string
     structs_string.push_str(&generate_element_definitions(element_definitions, prefixes));
 
@@ -105,7 +108,7 @@ fn generate_element_definitions(
     let mut definitions_string = String::new();
 
     for (name, typ) in element_definitions.iter() {
-        definitions_string.push_str("#[derive(Serialize, Deserialize)]\n");
+        definitions_string.push_str("#[derive(Serialize, Deserialize, Debug)]\n");
         definitions_string.push_str(&format!("pub struct {} {{\n", name));
         definitions_string.push_str("    #[serde(flatten)]\n");
 

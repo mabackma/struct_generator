@@ -1,29 +1,10 @@
-#[derive(Serialize, Deserialize)]
-pub struct PolygonGeometry {
-    #[serde(flatten)]
-    pub polygon_geometry: PolygonGeometryType,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct PointGeometry {
-    #[serde(flatten)]
-    pub point_geometry: PointGeometryType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct MultiPolygonGeometry {
     #[serde(flatten)]
     pub multi_polygon_geometry: ExtendedMultiPolygonGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PointGeometryType {
-    #[serde(rename = "@dimension")]
-    pub dimension: f64,
-    #[serde(rename = "@location")]
-    pub location: PointLocationType,
-    #[serde(rename = "GmlpointProperty")]
-    pub gmlpoint_property: pointProperty,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -51,9 +32,45 @@ pub struct PointAndLineOrPolygonType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PolygonGeometryType {
-    #[serde(rename = "PolygonGeometryGroup")]
-    pub polygon_geometry_group: PolygonGeometryGroup,
+pub struct AlternativeGeometries2Group {
+    #[serde(rename = "PolygonGeometry")]
+    pub polygon_geometry: PolygonGeometry,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MultiPolygonGeometryType {
+    #[serde(rename = "GmlMultiPolygon")]
+    pub gml_multi_polygon: MultiPolygon,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PointGeometryType {
+    #[serde(rename = "@dimension")]
+    pub dimension: f64,
+    #[serde(rename = "@location")]
+    pub location: PointLocationType,
+    #[serde(rename = "GmlpointProperty")]
+    pub gmlpoint_property: pointProperty,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SimpleAlternativeGeometriesGroup {
+    #[serde(rename = "MultiPolygonGeometry")]
+    pub multi_polygon_geometry: MultiPolygonGeometry,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlternativeGeometriesGroup {
+    #[serde(rename = "PolygonGeometry")]
+    pub polygon_geometry: PolygonGeometry,
+    #[serde(rename = "MultiPolygonGeometry")]
+    pub multi_polygon_geometry: MultiPolygonGeometry,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlternativeGeometries2Type {
+    #[serde(rename = "AlternativeGeometries2Group")]
+    pub alternative_geometries2_group: AlternativeGeometries2Group,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -73,35 +90,11 @@ pub struct AlternativeGeometriesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AlternativeGeometries2Group {
-    #[serde(rename = "PolygonGeometry")]
-    pub polygon_geometry: PolygonGeometry,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ExtendedMultiPolygonGeometryType {
     #[serde(rename = "GmlMultiPolygon")]
     pub gml_multi_polygon: MultiPolygon,
     #[serde(rename = "GmlMultiSurface")]
     pub gml_multi_surface: MultiSurface,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AlternativeGeometries2Type {
-    #[serde(rename = "AlternativeGeometries2Group")]
-    pub alternative_geometries2_group: AlternativeGeometries2Group,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SimpleAlternativeGeometriesGroup {
-    #[serde(rename = "MultiPolygonGeometry")]
-    pub multi_polygon_geometry: MultiPolygonGeometry,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MultiPolygonGeometryType {
-    #[serde(rename = "GmlMultiPolygon")]
-    pub gml_multi_polygon: MultiPolygon,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -111,10 +104,8 @@ pub struct SimpleAlternativeGeometriesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AlternativeGeometriesGroup {
-    #[serde(rename = "MultiPolygonGeometry")]
-    pub multi_polygon_geometry: MultiPolygonGeometry,
-    #[serde(rename = "PolygonGeometry")]
-    pub polygon_geometry: PolygonGeometry,
+pub struct PolygonGeometryType {
+    #[serde(rename = "PolygonGeometryGroup")]
+    pub polygon_geometry_group: PolygonGeometryGroup,
 }
 

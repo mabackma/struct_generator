@@ -1,3 +1,6 @@
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct BusinessAcceptanceDateType {
     #[serde(flatten)]
@@ -14,18 +17,6 @@ pub struct MessageTypeType {
 pub struct BusinessMessageTimeStampType {
     #[serde(flatten)]
     pub base: CoTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceIdType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalInformationType {
-    #[serde(rename = "base")]
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -56,5 +47,17 @@ pub struct BusinessAcceptanceType {
     pub additional_information: AdditionalInformationType,
     #[serde(rename = "BusinessAcceptanceDate")]
     pub business_acceptance_date: BusinessAcceptanceDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceIdType {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalInformationType {
+    #[serde(rename = "base")]
+    pub base: String,
 }
 

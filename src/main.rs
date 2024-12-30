@@ -1,14 +1,21 @@
 use struct_generator::create_structs::{create_structs, XMLStruct};
 use struct_generator::file_utils::{read_xsd_file,structs_and_definitions_to_file};
 use struct_generator::string_utils::capitalize_first;
+//use struct_generator::__structs_and_definitions::ForestPropertyData;
 
 use std::collections::{HashMap, HashSet};
 use std::fs;
+use std::fs::File;
+use std::io::Read;
 use quick_xml::Reader;
 use quick_xml::events::Event::{Start, Empty, Eof};
 use quick_xml::name::QName;
+use quick_xml::de::from_str;
 
 fn main() {
+    // Convert the file XML content to structs according to the schema
+    //let file_property = file_content_to_structs("forestpropertydata.xml");
+
     let folder_path = "./MetsatietostandardiskeematV33.03"; // Path to your folder containing XSD files
     
     let mut file_dependencies: HashMap<String, HashSet<String>> = HashMap::new();
@@ -37,7 +44,7 @@ fn main() {
 
     change_circular_field_types(&mut structs);
 
-    structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "structs/__structs_and_definitions.rs").unwrap();
+    structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "src/__structs_and_definitions.rs").unwrap();
 
 
     println!("Total number of structs: {}", total_struct_count);
@@ -46,6 +53,7 @@ fn main() {
     println!("Actual number of element definitions: {}", element_definitions.len());
 
     println!("Prefix count: {}", prefixes.len());
+
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -268,3 +276,29 @@ fn change_circular_field_types(structs: &mut HashMap<String, XMLStruct>) {
         }
     }
 }
+
+// Reads an XML file and returns its contents as a string
+fn read_xml_file(file_name: &str) -> String {
+    let mut file = File::open(file_name).unwrap();
+    let mut xml_string = String::new();
+    file.read_to_string(&mut xml_string).unwrap();
+
+    // Remove Byte Order Mark (BOM) if it exists
+    if xml_string.starts_with("\u{feff}") {
+        xml_string = xml_string.trim_start_matches("\u{feff}").to_string();
+    }
+
+    xml_string
+}
+
+/* // Reads XML content from a file and converts it to structs according to the schema
+fn file_content_to_structs(path: &str) -> ForestPropertyData {
+    let mut xml = fs::read_to_string(path).expect("Could not read the XML file");
+
+    // Remove BOM if it exists
+    if xml.starts_with("\u{feff}") {
+        xml = xml.trim_start_matches("\u{feff}").to_string();
+    }
+
+    from_str(&xml).expect("Could not parse the XML")
+} */

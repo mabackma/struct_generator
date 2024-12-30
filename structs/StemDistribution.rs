@@ -1,61 +1,22 @@
-#[derive(Serialize, Deserialize)]
-pub struct Count {
-    #[serde(flatten)]
-    pub count: CountType,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct StemDistribution {
-    #[serde(flatten)]
-    pub stem_distribution: StemDistributionType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Tree {
     #[serde(flatten)]
     pub tree: TreeType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StemDistribution {
     #[serde(flatten)]
-    pub base: CoDiameterType,
+    pub stem_distribution: StemDistributionType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Count {
     #[serde(flatten)]
-    pub base: CoVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeNumberType {
-    #[serde(rename = "base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClassType {
-    #[serde(flatten)]
-    pub base: CoTreeClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogVolumeType {
-    #[serde(flatten)]
-    pub base: CoSawLogVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolumeType {
-    #[serde(flatten)]
-    pub base: CoPulpWoodVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogPercentType {
-    #[serde(flatten)]
-    pub base: CoSawLogPercentType,
+    pub count: CountType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,9 +32,39 @@ pub struct CountType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemDistributionType {
-    #[serde(rename = "Tree")]
-    pub tree: Vec<TreeType>,
+pub struct AgeType {
+    #[serde(flatten)]
+    pub base: CoAgeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeType {
+    #[serde(flatten)]
+    pub base: CoVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeClassType {
+    #[serde(flatten)]
+    pub base: CoTreeClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogVolumeType {
+    #[serde(flatten)]
+    pub base: CoSawLogVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterType {
+    #[serde(flatten)]
+    pub base: CoDiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PulpWoodVolumeType {
+    #[serde(flatten)]
+    pub base: CoPulpWoodVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,8 +104,20 @@ pub struct TreeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AgeType {
+pub struct StemDistributionType {
+    #[serde(rename = "Tree")]
+    pub tree: Vec<TreeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeNumberType {
+    #[serde(rename = "base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogPercentType {
     #[serde(flatten)]
-    pub base: CoAgeType,
+    pub base: CoSawLogPercentType,
 }
 

@@ -1,59 +1,40 @@
-#[derive(Serialize, Deserialize)]
-pub struct StandNumberExtension {
-    #[serde(flatten)]
-    pub stand_number_extension: StandNumberExtensionType,
-}
+use serde::{Serialize, Deserialize};
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
-#[derive(Serialize, Deserialize)]
-pub struct StandBasicDataDate {
-    #[serde(flatten)]
-    pub stand_basic_data_date: StandBasicDataDateType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct AreaDecrease {
-    #[serde(flatten)]
-    pub area_decrease: AreaDecreaseType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct StandInfo {
     #[serde(flatten)]
     pub stand_info: StandInfoType,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct SilvicultureRestrictionEnds {
-    #[serde(flatten)]
-    pub silviculture_restriction_ends: CoDateType,
-}
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct StandNumber {
     #[serde(flatten)]
     pub stand_number: StandNumberType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandInfoType {
-    #[serde(rename = "@infoProviderRole")]
-    pub info_provider_role: InfoProviderRoleType,
-    #[serde(rename = "@infoProviderOrganizationName")]
-    pub info_provider_organization_name: OrganizationNameType,
-    #[serde(rename = "base")]
-    pub base: String,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AreaDecrease {
+    #[serde(flatten)]
+    pub area_decrease: AreaDecreaseType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SilvicultureRestrictionEnds {
     #[serde(flatten)]
-    pub base: CoAreaType,
+    pub silviculture_restriction_ends: CoDateType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaDecreaseType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StandBasicDataDate {
     #[serde(flatten)]
-    pub base: CoAreaType,
+    pub stand_basic_data_date: StandBasicDataDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StandNumberExtension {
+    #[serde(flatten)]
+    pub stand_number_extension: StandNumberExtensionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -69,14 +50,36 @@ pub struct IdentifiersType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandBasicDataDateType {
+pub struct AreaType {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub base: CoAreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaDecreaseType {
+    #[serde(flatten)]
+    pub base: CoAreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandInfoType {
+    #[serde(rename = "@infoProviderRole")]
+    pub info_provider_role: InfoProviderRoleType,
+    #[serde(rename = "@infoProviderOrganizationName")]
+    pub info_provider_organization_name: OrganizationNameType,
+    #[serde(rename = "base")]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StandNumberType {
     #[serde(rename = "base")]
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandBasicDataDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
