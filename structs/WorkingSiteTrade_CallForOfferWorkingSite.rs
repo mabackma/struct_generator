@@ -1,66 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferWorkingSiteSilvicultureInfo {
-    #[serde(flatten)]
-    pub call_for_offer_working_site_silviculture_info: CallForOfferWorkingSiteSilvicultureInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct VATInfo {
-    #[serde(flatten)]
-    pub v_a_t_info: VATInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SceneryWorkPermissionAcceptance {
-    #[serde(flatten)]
-    pub scenery_work_permission_acceptance: DateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RoadUsingRight {
-    #[serde(flatten)]
-    pub road_using_right: RoadUsingRightType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteText {
-    #[serde(flatten)]
-    pub working_site_text: WorkingSiteTextType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Sellers {
-    #[serde(flatten)]
-    pub sellers: SellersType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SellerRepresentativePerson {
-    #[serde(flatten)]
-    pub seller_representative_person: SellerRepresentativePersonType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSitePlan {
-    #[serde(flatten)]
-    pub working_site_plan: WorkingSitePlanType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferWorkingSiteWoodTradeInfo {
-    #[serde(flatten)]
-    pub call_for_offer_working_site_wood_trade_info: CallForOfferWorkingSiteWoodTradeInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SceneryWorkPermissionNeeded {
-    #[serde(flatten)]
-    pub scenery_work_permission_needed: SceneryWorkPermissionNeededType,
-}
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct CFOWorkingSite {
@@ -69,21 +10,9 @@ pub struct CFOWorkingSite {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SilviculturalOperations {
+pub struct VATInfo {
     #[serde(flatten)]
-    pub silvicultural_operations: SilviculturalOperationsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SilviculturalOperation {
-    #[serde(flatten)]
-    pub silvicultural_operation: SilviculturalOperationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct IncludeInOffer {
-    #[serde(flatten)]
-    pub include_in_offer: IncludeInOfferType,
+    pub v_a_t_info: VATInfoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -99,23 +28,81 @@ pub struct Products {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SilviculturalOperations {
+    #[serde(flatten)]
+    pub silvicultural_operations: SilviculturalOperationsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct IncludeInOffer {
+    #[serde(flatten)]
+    pub include_in_offer: IncludeInOfferType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RoadUsingRight {
+    #[serde(flatten)]
+    pub road_using_right: RoadUsingRightType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWorkingSiteSilvicultureInfo {
+    #[serde(flatten)]
+    pub call_for_offer_working_site_silviculture_info: CallForOfferWorkingSiteSilvicultureInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWorkingSiteWoodTradeInfo {
+    #[serde(flatten)]
+    pub call_for_offer_working_site_wood_trade_info: CallForOfferWorkingSiteWoodTradeInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSitePlan {
+    #[serde(flatten)]
+    pub working_site_plan: WorkingSitePlanType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SceneryWorkPermissionAcceptance {
+    #[serde(flatten)]
+    pub scenery_work_permission_acceptance: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct InformedActor {
     #[serde(flatten)]
     pub informed_actor: ContactInformationType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSiteSilvicultureInfoType {
-    #[serde(rename = "SilviculturalOperations", skip_serializing_if = "Option::is_none")]
-    pub silvicultural_operations: Option<SilviculturalOperationsType>,
-    #[serde(rename = "Products", skip_serializing_if = "Option::is_none")]
-    pub products: Option<ProductsType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SellerRepresentativePerson {
+    #[serde(flatten)]
+    pub seller_representative_person: SellerRepresentativePersonType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SceneryWorkPermissionNeeded {
+    #[serde(flatten)]
+    pub scenery_work_permission_needed: SceneryWorkPermissionNeededType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SilviculturalOperation {
+    #[serde(flatten)]
+    pub silvicultural_operation: SilviculturalOperationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Sellers {
+    #[serde(flatten)]
+    pub sellers: SellersType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstatesType {
-    #[serde(rename = "RealEstate")]
-    pub real_estate: Vec<RealEstateType>,
+pub struct InformedActorsType {
+    #[serde(rename = "InformedActor")]
+    pub informed_actor: Vec<ContactInformationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -125,11 +112,15 @@ pub struct SilviculturalOperationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SceneryWorkPermissionType {
-    #[serde(rename = "SceneryWorkPermissionNeeded")]
-    pub scenery_work_permission_needed: SceneryWorkPermissionNeededType,
-    #[serde(rename = "SceneryWorkPermissionAcceptance", skip_serializing_if = "Option::is_none")]
-    pub scenery_work_permission_acceptance: Option<DateType>,
+pub struct WorkingSiteTextType {
+    #[serde(rename = "working_site_text_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IncludeInOfferType {
+    #[serde(flatten)]
+    pub base: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -173,15 +164,17 @@ pub struct WorkingSiteType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct IncludeInOfferType {
-    #[serde(flatten)]
-    pub base: YesNoType,
+pub struct RealEstatesType {
+    #[serde(rename = "RealEstate")]
+    pub real_estate: Vec<RealEstateType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteTextType {
-    #[serde(rename = "working_site_text_type.base")]
-    pub base: String,
+pub struct CallForOfferWorkingSiteSilvicultureInfoType {
+    #[serde(rename = "SilviculturalOperations", skip_serializing_if = "Option::is_none")]
+    pub silvicultural_operations: Option<SilviculturalOperationsType>,
+    #[serde(rename = "Products", skip_serializing_if = "Option::is_none")]
+    pub products: Option<ProductsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -191,8 +184,10 @@ pub struct SilviculturalOperationsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InformedActorsType {
-    #[serde(rename = "InformedActor")]
-    pub informed_actor: Vec<ContactInformationType>,
+pub struct SceneryWorkPermissionType {
+    #[serde(rename = "SceneryWorkPermissionNeeded")]
+    pub scenery_work_permission_needed: SceneryWorkPermissionNeededType,
+    #[serde(rename = "SceneryWorkPermissionAcceptance", skip_serializing_if = "Option::is_none")]
+    pub scenery_work_permission_acceptance: Option<DateType>,
 }
 

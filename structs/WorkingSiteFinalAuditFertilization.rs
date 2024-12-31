@@ -1,6 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct AirdromeAsInstructedText {
@@ -15,75 +16,9 @@ pub struct EnvironmentCleanlinessNoticed {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FertilizerVolumeMeasured {
-    #[serde(flatten)]
-    pub fertilizer_volume_measured: PositiveIntegerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditFertilization {
-    #[serde(flatten)]
-    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FertilizationTotalAuditText {
-    #[serde(flatten)]
-    pub fertilization_total_audit_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AirdromeAsInstructed {
-    #[serde(flatten)]
-    pub airdrome_as_instructed: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FertilizerVolumeMeasuredText {
-    #[serde(flatten)]
-    pub fertilizer_volume_measured_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct DrainStorageAsInstructed {
     #[serde(flatten)]
     pub drain_storage_as_instructed: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DrainStorageAsInstructedText {
-    #[serde(flatten)]
-    pub drain_storage_as_instructed_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FertilizationTotalAudit {
-    #[serde(flatten)]
-    pub fertilization_total_audit: WorkingQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct EnvironmentCleanlinessNoticedText {
-    #[serde(flatten)]
-    pub environment_cleanliness_noticed_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeOrGroundDamagesText {
-    #[serde(flatten)]
-    pub tree_or_ground_damages_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FertilizerVolumeOrdered {
-    #[serde(flatten)]
-    pub fertilizer_volume_ordered: PositiveIntegerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WaterEconomySystemNoticedText {
-    #[serde(flatten)]
-    pub water_economy_system_noticed_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -93,25 +28,75 @@ pub struct TreeOrGroundDamages {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct FertilizerVolumeMeasured {
+    #[serde(flatten)]
+    pub fertilizer_volume_measured: PositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FertilizationTotalAudit {
+    #[serde(flatten)]
+    pub fertilization_total_audit: WorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FertilizationTotalAuditText {
+    #[serde(flatten)]
+    pub fertilization_total_audit_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeOrGroundDamagesText {
+    #[serde(flatten)]
+    pub tree_or_ground_damages_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteFinalAuditFertilization {
+    #[serde(flatten)]
+    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FertilizerVolumeOrdered {
+    #[serde(flatten)]
+    pub fertilizer_volume_ordered: PositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DrainStorageAsInstructedText {
+    #[serde(flatten)]
+    pub drain_storage_as_instructed_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AirdromeAsInstructed {
+    #[serde(flatten)]
+    pub airdrome_as_instructed: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EnvironmentCleanlinessNoticedText {
+    #[serde(flatten)]
+    pub environment_cleanliness_noticed_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FertilizerVolumeMeasuredText {
+    #[serde(flatten)]
+    pub fertilizer_volume_measured_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WaterEconomySystemNoticedText {
+    #[serde(flatten)]
+    pub water_economy_system_noticed_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct WaterEconomySystemNoticed {
     #[serde(flatten)]
     pub water_economy_system_noticed: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<FinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: FinalAuditerTypeType,
-    #[serde(rename = "FinalAuditerId")]
-    pub final_auditer_id: String20Type,
-    #[serde(rename = "FinalAuditerName")]
-    pub final_auditer_name: String50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: TimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -150,6 +135,22 @@ pub struct WorkingSiteFinalAuditFertilizationType {
     pub images: PositiveInteger2digitsType,
     #[serde(rename = "Audits")]
     pub audits: AuditsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<FinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: FinalAuditerTypeType,
+    #[serde(rename = "FinalAuditerId")]
+    pub final_auditer_id: String20Type,
+    #[serde(rename = "FinalAuditerName")]
+    pub final_auditer_name: String50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: TimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

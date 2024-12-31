@@ -1,35 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Temperature {
-    #[serde(flatten)]
-    pub temperature: i32,
-}
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Measurement {
     #[serde(flatten)]
     pub measurement: MeasurementDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Measurements {
-    #[serde(flatten)]
-    pub measurements: MeasurementsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteHarvestingQualityControlManual {
-    #[serde(flatten)]
-    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurementId {
-    #[serde(flatten)]
-    pub measurement_id: PositiveIntegerType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,9 +16,69 @@ pub struct LogCount {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SelectionType {
+    #[serde(flatten)]
+    pub selection_type: String10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ControlLogVolume {
+    #[serde(flatten)]
+    pub control_log_volume: Decimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Temperature {
+    #[serde(flatten)]
+    pub temperature: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ControlLogLength {
+    #[serde(flatten)]
+    pub control_log_length: PositiveInteger5digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ControlLogCount {
     #[serde(flatten)]
     pub control_log_count: PositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LogLength {
+    #[serde(flatten)]
+    pub log_length: PositiveInteger5digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasurementId {
+    #[serde(flatten)]
+    pub measurement_id: PositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProductKey {
+    #[serde(flatten)]
+    pub product_key: ERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Measurements {
+    #[serde(flatten)]
+    pub measurements: MeasurementsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LogVolume {
+    #[serde(flatten)]
+    pub log_volume: Decimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteHarvestingQualityControlManual {
+    #[serde(flatten)]
+    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

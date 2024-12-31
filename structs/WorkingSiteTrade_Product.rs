@@ -1,11 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Product {
+pub struct Consumption {
     #[serde(flatten)]
-    pub product: ProductType,
+    pub consumption: ConsumptionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -15,9 +16,9 @@ pub struct ConsumptionUnit {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Consumption {
+pub struct Product {
     #[serde(flatten)]
-    pub consumption: ConsumptionType,
+    pub product: ProductType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -27,15 +28,23 @@ pub struct ProductName {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationModeType {
     #[serde(flatten)]
     pub base: OperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: PlannedResourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionUnitType {
+    #[serde(flatten)]
+    pub base: UnitPerHectareType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,16 +88,8 @@ pub struct ProductType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: PlannedResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
-    #[serde(flatten)]
-    pub base: UnitPerHectareType,
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
 }
 

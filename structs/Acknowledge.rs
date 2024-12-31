@@ -1,11 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ReplyTo {
+pub struct StatusCode {
     #[serde(flatten)]
-    pub reply_to: String50Type,
+    pub status_code: PositiveInteger3digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -21,9 +22,21 @@ pub struct StatusMessages {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct StatusMessage {
+    #[serde(flatten)]
+    pub status_message: String1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OriginalMessageType {
     #[serde(flatten)]
     pub original_message_type: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ReplyTo {
+    #[serde(flatten)]
+    pub reply_to: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

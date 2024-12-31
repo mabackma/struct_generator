@@ -1,6 +1,19 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferText {
+    #[serde(flatten)]
+    pub offer_text: OfferTextType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Offer {
+    #[serde(flatten)]
+    pub offer: OfferType,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct OfferDate {
@@ -14,16 +27,34 @@ pub struct OfferBusinessSender {
     pub offer_business_sender: OfferBusinessSenderType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OfferText {
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TechnicalContactPersonType {
     #[serde(flatten)]
-    pub offer_text: OfferTextType,
+    pub base: ContactInformationType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Offer {
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferDateType {
     #[serde(flatten)]
-    pub offer: OfferType,
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferTextType {
+    #[serde(flatten)]
+    pub base: String1500Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferBusinessSenderType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -56,35 +87,5 @@ pub struct OfferType {
     pub wtco_documents: Option<Documents>,
     #[serde(rename = "CallForOfferWoodTradeInfo", skip_serializing_if = "Option::is_none")]
     pub call_for_offer_wood_trade_info: Option<CallForOfferWoodTradeInfoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferBusinessSenderType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferTextType {
-    #[serde(flatten)]
-    pub base: String1500Type,
 }
 

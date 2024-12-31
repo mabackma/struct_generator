@@ -1,11 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OrderId {
+pub struct ServiceBuyerArea {
     #[serde(flatten)]
-    pub order_id: String20Type,
+    pub service_buyer_area: String20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -15,21 +16,27 @@ pub struct OperationalRegion {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct OrderConfirmation {
+    #[serde(flatten)]
+    pub order_confirmation: OrderConfirmationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Infotext {
+    #[serde(flatten)]
+    pub infotext: String1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OrderStatus {
     #[serde(flatten)]
     pub order_status: OrderStatusType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerArea {
+pub struct OrderId {
     #[serde(flatten)]
-    pub service_buyer_area: String20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OrderConfirmation {
-    #[serde(flatten)]
-    pub order_confirmation: OrderConfirmationType,
+    pub order_id: String20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

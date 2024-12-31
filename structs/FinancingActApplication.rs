@@ -1,11 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PlanAndSubsidy {
+pub struct PartOfProject {
     #[serde(flatten)]
-    pub plan_and_subsidy: PlanAndSubsidyType,
+    pub part_of_project: PartOfProjectType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -15,15 +16,45 @@ pub struct FinancingType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct PartsOfProject {
+    #[serde(flatten)]
+    pub parts_of_project: PartsOfProjectType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PlanAndSubsidy {
+    #[serde(flatten)]
+    pub plan_and_subsidy: PlanAndSubsidyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct FinancingActApplication {
     #[serde(flatten)]
     pub financing_act_application: FinancingActApplicationType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OtherPublicSubstitute {
+    #[serde(flatten)]
+    pub other_public_substitute: OtherPublicSubstituteType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlanAndSubsidyType {
-    #[serde(rename = "FacFinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_application_stands: Option<FinancingActApplicationStands>,
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartOfProjectType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "FacAreaNo")]
+    pub fac_area_no: AreaNo,
+    #[serde(rename = "FacFinancingActWorkCode")]
+    pub fac_financing_act_work_code: FinancingActWorkCode,
+    #[serde(rename = "PlanAndSubsidy")]
+    pub plan_and_subsidy: PlanAndSubsidyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,20 +108,8 @@ pub struct FinancingActApplicationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartOfProjectType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "FacAreaNo")]
-    pub fac_area_no: AreaNo,
-    #[serde(rename = "FacFinancingActWorkCode")]
-    pub fac_financing_act_work_code: FinancingActWorkCode,
-    #[serde(rename = "PlanAndSubsidy")]
-    pub plan_and_subsidy: PlanAndSubsidyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
+pub struct PlanAndSubsidyType {
+    #[serde(rename = "FacFinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_application_stands: Option<FinancingActApplicationStands>,
 }
 

@@ -1,47 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RelatedCallForOfferDescription {
+pub struct RelatedCallForOfferId {
     #[serde(flatten)]
-    pub related_call_for_offer_description: String1500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OfferExpirationDate {
-    #[serde(flatten)]
-    pub offer_expiration_date: OfferExpirationDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TechnicalContactPerson {
-    #[serde(flatten)]
-    pub technical_contact_person: TechnicalContactPersonType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Publicity {
-    #[serde(flatten)]
-    pub publicity: PublicityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferWoodTradeInfo {
-    #[serde(flatten)]
-    pub call_for_offer_wood_trade_info: CallForOfferWoodTradeInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOffer {
-    #[serde(flatten)]
-    pub call_for_offer: CallForOfferType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AdditionalCode {
-    #[serde(flatten)]
-    pub additional_code: AdditionalCodeType,
+    pub related_call_for_offer_id: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -51,39 +16,21 @@ pub struct CallForOfferBusinessSender {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferDate {
+pub struct OfferExpirationDate {
     #[serde(flatten)]
-    pub call_for_offer_date: CallForOfferDateType,
+    pub offer_expiration_date: OfferExpirationDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OperationMode {
+pub struct CallForOffer {
     #[serde(flatten)]
-    pub operation_mode: OperationModeType,
+    pub call_for_offer: CallForOfferType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferText {
+pub struct Publicity {
     #[serde(flatten)]
-    pub call_for_offer_text: CallForOfferTextType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferSilvicultureInfo {
-    #[serde(flatten)]
-    pub call_for_offer_silviculture_info: CallForOfferSilvicultureInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RelatedCallForOffer {
-    #[serde(flatten)]
-    pub related_call_for_offer: RelatedCallForOfferType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RelatedCallForOfferId {
-    #[serde(flatten)]
-    pub related_call_for_offer_id: String,
+    pub publicity: PublicityType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -93,77 +40,69 @@ pub struct RelatedCallForOffers {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct OperationMode {
+    #[serde(flatten)]
+    pub operation_mode: OperationModeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TechnicalContactPerson {
+    #[serde(flatten)]
+    pub technical_contact_person: TechnicalContactPersonType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RelatedCallForOfferDescription {
+    #[serde(flatten)]
+    pub related_call_for_offer_description: String1500Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferSilvicultureInfo {
+    #[serde(flatten)]
+    pub call_for_offer_silviculture_info: CallForOfferSilvicultureInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWoodTradeInfo {
+    #[serde(flatten)]
+    pub call_for_offer_wood_trade_info: CallForOfferWoodTradeInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferText {
+    #[serde(flatten)]
+    pub call_for_offer_text: CallForOfferTextType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferDate {
+    #[serde(flatten)]
+    pub call_for_offer_date: CallForOfferDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct UsedPricingMethodType {
     #[serde(flatten)]
     pub used_pricing_method_type: UsedPricingMethodTypeType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalCodeType {
-    #[serde(rename = "additional_code_type.base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RelatedCallForOffersType {
-    #[serde(rename = "RelatedCallForOffer")]
-    pub related_call_for_offer: Vec<RelatedCallForOfferType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseModeType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AdditionalCode {
     #[serde(flatten)]
-    pub base: PurchaseModeType,
+    pub additional_code: AdditionalCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RelatedCallForOffer {
+    #[serde(flatten)]
+    pub related_call_for_offer: RelatedCallForOfferType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PublicityType {
     #[serde(flatten)]
     pub base: PublicityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: OperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RelatedCallForOfferType {
-    #[serde(rename = "RelatedCallForOfferId")]
-    pub related_call_for_offer_id: String,
-    #[serde(rename = "RelatedCallForOfferDescription", skip_serializing_if = "Option::is_none")]
-    pub related_call_for_offer_description: Option<String1500Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethodTypeType {
-    #[serde(flatten)]
-    pub base: UsedPricingMethodTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferSilvicultureInfoType {
-    #[serde(rename = "IncludePaymentPlan", skip_serializing_if = "Option::is_none")]
-    pub include_payment_plan: Option<IncludePaymentPlanType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferDateType {
-    #[serde(flatten)]
-    pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -196,5 +135,67 @@ pub struct CallForOfferType {
     pub ws_call_for_offer_working_sites: CallForOfferWorkingSites,
     #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
     pub wtco_documents: Option<Documents>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalCodeType {
+    #[serde(rename = "additional_code_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RelatedCallForOfferType {
+    #[serde(rename = "RelatedCallForOfferId")]
+    pub related_call_for_offer_id: String,
+    #[serde(rename = "RelatedCallForOfferDescription", skip_serializing_if = "Option::is_none")]
+    pub related_call_for_offer_description: Option<String1500Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsedPricingMethodTypeType {
+    #[serde(flatten)]
+    pub base: UsedPricingMethodTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: OperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RelatedCallForOffersType {
+    #[serde(rename = "RelatedCallForOffer")]
+    pub related_call_for_offer: Vec<RelatedCallForOfferType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PurchaseModeType {
+    #[serde(flatten)]
+    pub base: PurchaseModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferSilvicultureInfoType {
+    #[serde(rename = "IncludePaymentPlan", skip_serializing_if = "Option::is_none")]
+    pub include_payment_plan: Option<IncludePaymentPlanType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TechnicalContactPersonType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
 }
 

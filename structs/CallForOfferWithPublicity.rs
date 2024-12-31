@@ -1,17 +1,18 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PublicityOrganizations {
-    #[serde(flatten)]
-    pub publicity_organizations: OrganizationsType,
-}
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct CallForOfferWithPublicityType {
     #[serde(flatten)]
     pub call_for_offer_with_publicity_type: CallForOfferWithPublicity,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PublicityOrganizations {
+    #[serde(flatten)]
+    pub publicity_organizations: OrganizationsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

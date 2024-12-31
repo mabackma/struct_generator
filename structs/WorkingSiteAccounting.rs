@@ -1,23 +1,18 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AccountingDate {
+pub struct ForwardedVolumeAccounted {
     #[serde(flatten)]
-    pub accounting_date: TimeStampType,
+    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAccounting {
+pub struct AmountNotified {
     #[serde(flatten)]
-    pub final_accounting: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContarctorId {
-    #[serde(flatten)]
-    pub contarctor_id: String20Type,
+    pub amount_notified: Decimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -33,21 +28,9 @@ pub struct HarvestedVolume {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AmountAccounted {
+pub struct ContarctorId {
     #[serde(flatten)]
-    pub amount_accounted: Decimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AmountNotified {
-    #[serde(flatten)]
-    pub amount_notified: Decimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AmountPlanned {
-    #[serde(flatten)]
-    pub amount_planned: Decimal3FractionDigitsType,
+    pub contarctor_id: String20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -57,21 +40,57 @@ pub struct WorkingSiteAccounting {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct HarvestedVolumeAccounted {
+    #[serde(flatten)]
+    pub harvested_volume_accounted: Decimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AmountAccounted {
+    #[serde(flatten)]
+    pub amount_accounted: Decimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAccounting {
+    #[serde(flatten)]
+    pub final_accounting: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AccountingDate {
+    #[serde(flatten)]
+    pub accounting_date: TimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PlannedVolume {
     #[serde(flatten)]
     pub planned_volume: Decimal3FractionDigitsType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardedVolumeAccounted {
-    #[serde(flatten)]
-    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestedVolumeAccounted {
-    #[serde(flatten)]
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentDataType {
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: String20Type,
+    #[serde(rename = "Code")]
+    pub code: String50Type,
+    #[serde(rename = "Name")]
+    pub name: String50Type,
+    #[serde(rename = "PlannedVolume")]
+    pub planned_volume: Decimal3FractionDigitsType,
+    #[serde(rename = "HarvestedVolume")]
+    pub harvested_volume: Decimal3FractionDigitsType,
+    #[serde(rename = "HarvestedVolumeAccounted")]
     pub harvested_volume_accounted: Decimal3FractionDigitsType,
+    #[serde(rename = "ForwardedVolume")]
+    pub forwarded_volume: Decimal3FractionDigitsType,
+    #[serde(rename = "ForwardedVolumeAccounted")]
+    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
+    #[serde(rename = "ForestHaulageDistance")]
+    pub forest_haulage_distance: PositiveInteger4digitsType,
+    #[serde(rename = "ForestHaulageDistanceContinued", skip_serializing_if = "Option::is_none")]
+    pub forest_haulage_distance_continued: Option<PositiveInteger4digitsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -104,30 +123,6 @@ pub struct WorkCodesType {
 pub struct AssortmentsType {
     #[serde(rename = "Assortment")]
     pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentDataType {
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: String20Type,
-    #[serde(rename = "Code")]
-    pub code: String50Type,
-    #[serde(rename = "Name")]
-    pub name: String50Type,
-    #[serde(rename = "PlannedVolume")]
-    pub planned_volume: Decimal3FractionDigitsType,
-    #[serde(rename = "HarvestedVolume")]
-    pub harvested_volume: Decimal3FractionDigitsType,
-    #[serde(rename = "HarvestedVolumeAccounted")]
-    pub harvested_volume_accounted: Decimal3FractionDigitsType,
-    #[serde(rename = "ForwardedVolume")]
-    pub forwarded_volume: Decimal3FractionDigitsType,
-    #[serde(rename = "ForwardedVolumeAccounted")]
-    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
-    #[serde(rename = "ForestHaulageDistance")]
-    pub forest_haulage_distance: PositiveInteger4digitsType,
-    #[serde(rename = "ForestHaulageDistanceContinued", skip_serializing_if = "Option::is_none")]
-    pub forest_haulage_distance_continued: Option<PositiveInteger4digitsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -1,6 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct DeadTreeStrata {
@@ -9,21 +10,39 @@ pub struct DeadTreeStrata {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct DeadTreeType {
+    #[serde(flatten)]
+    pub dead_tree_type: DeadTreeTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct DeadTreeStratum {
     #[serde(flatten)]
     pub dead_tree_stratum: DeadTreeStratumType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeadTreeType {
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
     #[serde(flatten)]
-    pub dead_tree_type: DeadTreeTypeType,
+    pub base: TreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeadTreeTypeType {
+    #[serde(flatten)]
+    pub base: DeadTreeTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VolumeType {
     #[serde(flatten)]
     pub base: VolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeadTreeStrataType {
+    #[serde(rename = "DeadTreeStratum")]
+    pub dead_tree_stratum: Vec<DeadTreeStratumType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -56,23 +75,5 @@ pub struct DeadTreeStratumType {
     pub mean_diameter: Option<MeanDiameterType>,
     #[serde(rename = "Volume", skip_serializing_if = "Option::is_none")]
     pub volume: Option<VolumeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeTypeType {
-    #[serde(flatten)]
-    pub base: DeadTreeTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeStrataType {
-    #[serde(rename = "DeadTreeStratum")]
-    pub dead_tree_stratum: Vec<DeadTreeStratumType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
-    #[serde(flatten)]
-    pub base: TreeSpeciesType,
 }
 

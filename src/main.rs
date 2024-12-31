@@ -1,7 +1,7 @@
 use struct_generator::create_structs::{create_structs, XMLStruct};
 use struct_generator::file_utils::{read_xsd_file,structs_and_definitions_to_file};
 use struct_generator::string_utils::capitalize_first;
-use struct_generator::__structs_and_definitions::ForestPropertyData;
+//use struct_generator::__structs_and_definitions::ForestPropertyData;
 
 use std::collections::{HashMap, HashSet};
 use std::fs;

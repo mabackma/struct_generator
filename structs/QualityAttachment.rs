@@ -1,23 +1,24 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ModificationDate {
+pub struct QualityAttachment {
     #[serde(flatten)]
-    pub modification_date: DateType,
+    pub quality_attachment: QualityAttachmentType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Filename {
+    #[serde(flatten)]
+    pub filename: String100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Version {
     #[serde(flatten)]
     pub version: String10Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct QualityAttachment {
-    #[serde(flatten)]
-    pub quality_attachment: QualityAttachmentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

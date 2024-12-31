@@ -1,18 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Sawinghours {
-    #[serde(flatten)]
-    pub sawinghours: SawinghoursDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StartTime {
-    #[serde(flatten)]
-    pub start_time: TimeStampType,
-}
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteWorkTime {
@@ -21,33 +10,15 @@ pub struct WorkingSiteWorkTime {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Hours {
+pub struct Sawinghours {
     #[serde(flatten)]
-    pub hours: PositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SavingTime {
-    #[serde(flatten)]
-    pub saving_time: TimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct EndTime {
-    #[serde(flatten)]
-    pub end_time: TimeStampType,
+    pub sawinghours: SawinghoursDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Minutes {
     #[serde(flatten)]
     pub minutes: PositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct InfoText {
-    #[serde(flatten)]
-    pub info_text: String200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

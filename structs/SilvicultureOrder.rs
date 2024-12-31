@@ -1,36 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkCodeGroup {
-    #[serde(flatten)]
-    pub work_code_group: WorkCodeGroupType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Attachment {
-    #[serde(flatten)]
-    pub attachment: AttachmentDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Amount {
-    #[serde(flatten)]
-    pub amount: Decimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Data {
-    #[serde(flatten)]
-    pub data: Vec<u8>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Attachments {
-    #[serde(flatten)]
-    pub attachments: AttachmentsType,
-}
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct SilvicultureOrder {
@@ -38,16 +9,16 @@ pub struct SilvicultureOrder {
     pub silviculture_order: SilvicultureOrderType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BeginDate {
-    #[serde(flatten)]
-    pub begin_date: DateType,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
+pub struct WorkCodeInfoType {
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: WorkCodeGroupType,
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<WorkCodeType>,
+    #[serde(rename = "Amount")]
+    pub amount: Decimal2FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: WorkCodeUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,14 +60,8 @@ pub struct WorkCodesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeInfoType {
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: WorkCodeGroupType,
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<WorkCodeType>,
-    #[serde(rename = "Amount")]
-    pub amount: Decimal2FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: WorkCodeUnitType,
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 

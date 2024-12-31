@@ -1,72 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationPercentage {
-    #[serde(flatten)]
-    pub dis_qualification_percentage: Decimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteQualityNotification {
-    #[serde(flatten)]
-    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReason {
-    #[serde(flatten)]
-    pub dis_qualification_reason: String10Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestOwner {
-    #[serde(flatten)]
-    pub forest_owner: String100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReasonText {
-    #[serde(flatten)]
-    pub dis_qualification_reason_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationPercentageTotal {
-    #[serde(flatten)]
-    pub dis_qualification_percentage_total: Decimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracySign {
-    #[serde(flatten)]
-    pub cutting_accuracy_sign: String5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurementDate {
-    #[serde(flatten)]
-    pub measurement_date: TimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationSign {
-    #[serde(flatten)]
-    pub dis_qualification_sign: String5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Image {
-    #[serde(flatten)]
-    pub image: Vec<u8>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceIdMJ {
-    #[serde(flatten)]
-    pub resource_id_m_j: String20Type,
-}
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct CuttingAccuracy {
@@ -78,6 +13,60 @@ pub struct CuttingAccuracy {
 pub struct DisQualificationReasons {
     #[serde(flatten)]
     pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingAccuracySign {
+    #[serde(flatten)]
+    pub cutting_accuracy_sign: String5Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationPercentageTotal {
+    #[serde(flatten)]
+    pub dis_qualification_percentage_total: Decimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Image {
+    #[serde(flatten)]
+    pub image: Vec<u8>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReason {
+    #[serde(flatten)]
+    pub dis_qualification_reason: String10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceIdMJ {
+    #[serde(flatten)]
+    pub resource_id_m_j: String20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteQualityNotification {
+    #[serde(flatten)]
+    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasonText {
+    #[serde(flatten)]
+    pub dis_qualification_reason_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationPercentage {
+    #[serde(flatten)]
+    pub dis_qualification_percentage: Decimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationSign {
+    #[serde(flatten)]
+    pub dis_qualification_sign: String5Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

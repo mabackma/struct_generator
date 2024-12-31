@@ -1,12 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Label {
-    #[serde(flatten)]
-    pub label: String100Type,
-}
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ExternalFile {
@@ -21,9 +16,9 @@ pub struct FileFormat {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ProductUserId {
+pub struct Label {
     #[serde(flatten)]
-    pub product_user_id: String50Type,
+    pub label: String100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

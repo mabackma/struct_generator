@@ -1,6 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct HelpGeometryType {
@@ -12,6 +13,18 @@ pub struct HelpGeometryType {
 pub struct LineGeometry {
     #[serde(flatten)]
     pub line_geometry: LineGeometryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PointGeometryType {
+    #[serde(rename = "Id")]
+    pub id: String,
+    #[serde(rename = "Status", skip_serializing_if = "Option::is_none")]
+    pub status: Option<ChangeStateType>,
+    #[serde(rename = "HelpGeometryType", skip_serializing_if = "Option::is_none")]
+    pub help_geometry_type: Option<String>,
+    #[serde(rename = "GmlPoint", deserialize_with = "deserialize_point")]
+    pub gml_point: Point<f64>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -27,18 +40,6 @@ pub struct LineGeometryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PointGeometryType {
-    #[serde(rename = "Id")]
-    pub id: String,
-    #[serde(rename = "Status", skip_serializing_if = "Option::is_none")]
-    pub status: Option<ChangeStateType>,
-    #[serde(rename = "HelpGeometryType", skip_serializing_if = "Option::is_none")]
-    pub help_geometry_type: Option<String>,
-    #[serde(rename = "GmlPoint")]
-    pub gml_point: Point<f64>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PolygonGeometryType {
     #[serde(rename = "Id")]
     pub id: String,
@@ -46,7 +47,7 @@ pub struct PolygonGeometryType {
     pub status: Option<ChangeStateType>,
     #[serde(rename = "HelpGeometryType", skip_serializing_if = "Option::is_none")]
     pub help_geometry_type: Option<String>,
-    #[serde(rename = "GmlPolygon")]
+    #[serde(rename = "GmlPolygon", deserialize_with = "deserialize_polygon")]
     pub gml_polygon: Polygon<f64>,
 }
 

@@ -1,23 +1,18 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractText {
-    #[serde(flatten)]
-    pub contract_text: String1500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractBeginningDate {
-    #[serde(flatten)]
-    pub contract_beginning_date: ContractBeginningDateType,
-}
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ContractEndingDate {
     #[serde(flatten)]
     pub contract_ending_date: ContractEndingDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteText {
+    #[serde(flatten)]
+    pub working_site_text: String1500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -30,6 +25,18 @@ pub struct ContractWorkingSiteDetails {
 pub struct ContractWorkingSites {
     #[serde(flatten)]
     pub contract_working_sites: ContractWorkingSitesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContractText {
+    #[serde(flatten)]
+    pub contract_text: String1500Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContractBeginningDate {
+    #[serde(flatten)]
+    pub contract_beginning_date: ContractBeginningDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -57,15 +64,21 @@ pub struct ContractType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSitesType {
-    #[serde(rename = "ContractWorkingSiteDetails")]
-    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractBeginningDateType {
     #[serde(flatten)]
     pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractIdType {
+    #[serde(rename = "contract_id_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractWorkingSitesType {
+    #[serde(rename = "ContractWorkingSiteDetails")]
+    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -80,12 +93,6 @@ pub struct ContractWorkingSiteDetailsType {
     pub working_site_text: Option<String1500Type>,
     #[serde(rename = "AsAssortmentClasses")]
     pub as_assortment_classes: AssortmentClasses,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractIdType {
-    #[serde(rename = "contract_id_type.base")]
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

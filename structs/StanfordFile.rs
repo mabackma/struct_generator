@@ -1,11 +1,24 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FileName {
+    #[serde(flatten)]
+    pub file_name: String100Type,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct StanfordFile {
     #[serde(flatten)]
     pub stanford_file: StanfordFileType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Bytes {
+    #[serde(flatten)]
+    pub bytes: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

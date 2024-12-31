@@ -1,18 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessMessageTimeStampType {
-    #[serde(flatten)]
-    pub base: TimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceActorType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
+use chrono;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct BusinessAcceptanceDateType {
@@ -21,21 +10,9 @@ pub struct BusinessAcceptanceDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceIdType {
-    #[serde(rename = "business_acceptance_id_type.base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MessageTypeType {
+pub struct BusinessAcceptanceActorType {
     #[serde(flatten)]
-    pub base: MessageTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalInformationType {
-    #[serde(rename = "additional_information_type.base")]
-    pub base: String,
+    pub base: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -60,5 +37,29 @@ pub struct BusinessAcceptanceType {
     pub additional_information: AdditionalInformationType,
     #[serde(rename = "BusinessAcceptanceDate")]
     pub business_acceptance_date: BusinessAcceptanceDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessMessageTimeStampType {
+    #[serde(flatten)]
+    pub base: TimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceIdType {
+    #[serde(rename = "business_acceptance_id_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalInformationType {
+    #[serde(rename = "additional_information_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageTypeType {
+    #[serde(flatten)]
+    pub base: MessageTypeType,
 }
 

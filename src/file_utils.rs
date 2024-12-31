@@ -38,8 +38,9 @@ pub fn structs_and_definitions_to_file(
     let mut structs_string = String::new();
 
     structs_string.push_str("use serde::{Serialize, Deserialize};\n");
-    structs_string.push_str("use chrono;\n");
-    structs_string.push_str("use geo::{Point, Polygon, MultiPolygon};\n\n");
+    structs_string.push_str("use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};\n");
+    structs_string.push_str("use geo::{Point, Polygon, MultiPolygon};\n");
+    structs_string.push_str("use chrono;\n\n");
 
     // Add element definitions to the string
     structs_string.push_str(&generate_element_definitions(element_definitions, prefixes));
@@ -106,9 +107,27 @@ fn generate_structs(structs: &HashMap<String, XMLStruct>) -> String {
                 }
 
             } else if field.field_type.starts_with("Option<") {
-                structs_string.push_str(&format!("    #[serde(rename = \"{}\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
+
+                if field.field_type.contains("Point<f64>") {
+                    structs_string.push_str(&format!("    #[serde(rename = \"{}\", deserialize_with = \"deserialize_optional_point\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
+                } else if field.field_type.contains("Polygon<f64>") && !field.field_type.contains("MultiPolygon<f64>") {
+                    structs_string.push_str(&format!("    #[serde(rename = \"{}\", deserialize_with = \"deserialize_optional_polygon\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
+                } else {
+                    structs_string.push_str(&format!("    #[serde(rename = \"{}\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
+                }
+                
             } else {
-                structs_string.push_str(&format!("    #[serde(rename = \"{}\")]\n", field.name));
+
+                if field.field_type.contains("Point<f64>") {
+                    structs_string.push_str(&format!("    #[serde(rename = \"{}\", deserialize_with = \"deserialize_point\")]\n", field.name));
+                } else if field.field_type.contains("Polygon<f64>") && !field.field_type.contains("MultiPolygon<f64>") {
+                    structs_string.push_str(&format!("    #[serde(rename = \"{}\", deserialize_with = \"deserialize_polygon\")]\n", field.name));
+                } else if field.field_type.contains("MultiPolygon<f64>") {
+                    structs_string.push_str(&format!("    #[serde(rename = \"{}\", deserialize_with = \"deserialize_multipolygon\")]\n", field.name));
+                } else {
+                    structs_string.push_str(&format!("    #[serde(rename = \"{}\")]\n", field.name));
+                }
+
             }
             
             structs_string.push_str(&format!("    pub {}: {},\n", to_snake_case(&field.name), field_type));

@@ -1,11 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono;
+use crate::custom_deserializers::{deserialize_point, deserialize_polygon, deserialize_optional_point, deserialize_optional_polygon, deserialize_multipolygon};
 use geo::{Point, Polygon, MultiPolygon};
+use chrono;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreMessage {
+pub struct SenderEmail {
     #[serde(flatten)]
-    pub forest_centre_message: ForestCentreMessageType,
+    pub sender_email: EmailAddressType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -21,9 +22,9 @@ pub struct ForestDataUpdate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SenderEmail {
+pub struct ForestCentreMessage {
     #[serde(flatten)]
-    pub sender_email: EmailAddressType,
+    pub forest_centre_message: ForestCentreMessageType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
