@@ -3,15 +3,15 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferWithPublicityType {
-    #[serde(flatten)]
-    pub call_for_offer_with_publicity_type: CallForOfferWithPublicity,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PublicityOrganizations {
     #[serde(flatten)]
     pub publicity_organizations: OrganizationsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWithPublicityType {
+    #[serde(flatten)]
+    pub call_for_offer_with_publicity_type: CallForOfferWithPublicity,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

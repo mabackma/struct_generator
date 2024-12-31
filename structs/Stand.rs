@@ -2,42 +2,6 @@ use serde::{Serialize, Deserialize};
 use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SpecialFeature {
-    #[serde(flatten)]
-    pub special_feature: BasicFeature1Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StandBasicData {
-    #[serde(flatten)]
-    pub stand_basic_data: StandBasicDataWithGeometryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Stands {
-    #[serde(flatten)]
-    pub stands: StandsType1,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SpecialFeatures {
-    #[serde(flatten)]
-    pub special_features: SpecialFeaturesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Stand {
-    #[serde(flatten)]
-    pub stand: StandType1,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType1 {
-    #[serde(rename = "Stand")]
-    pub stand: Vec<StandType1>,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SpecialFeaturesType {
     #[serde(rename = "SpecialFeature")]
@@ -65,11 +29,17 @@ pub struct StandType1 {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StandsType1 {
+    #[serde(rename = "Stand")]
+    pub stand: Vec<StandType1>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StandBasicDataWithGeometryType {
     #[serde(flatten)]
     pub base: StandBasicDataType,
     #[serde(rename = "Area")]
-    pub area: Decimal2FractionDigitsType,
+    pub area: AreaType,
     #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
     pub area_decrease: Option<AreaDecreaseType>,
     #[serde(rename = "GdtPolygonGeometry")]

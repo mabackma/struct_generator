@@ -3,14 +3,14 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureCodeExtensionsType {
-    #[serde(rename = "feature_code_extensions_type.base")]
+pub struct FeatureTypeType {
+    #[serde(rename = "feature_type_type.base")]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureAdditionalCodeType {
-    #[serde(rename = "feature_additional_code_type.base")]
+pub struct FeatureCodeExtensionsType {
+    #[serde(rename = "feature_code_extensions_type.base")]
     pub base: String,
 }
 
@@ -21,8 +21,8 @@ pub struct OriginalFeatureCodeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureTypeType {
-    #[serde(rename = "feature_type_type.base")]
+pub struct FeatureAdditionalCodeType {
+    #[serde(rename = "feature_additional_code_type.base")]
     pub base: String,
 }
 

@@ -9,12 +9,6 @@ pub struct ForestObjectData {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestObjectDataObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<ForestObjectDataObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ForestObjectDataType {
     #[serde(rename = "@id")]
     pub id: String,
@@ -24,5 +18,11 @@ pub struct ForestObjectDataType {
     pub sender: ContactInformationType,
     #[serde(rename = "Objects")]
     pub objects: ForestObjectDataObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestObjectDataObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<ForestObjectDataObjectType>,
 }
 

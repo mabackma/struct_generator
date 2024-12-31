@@ -3,27 +3,9 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditBioMassForwarding {
+pub struct VehiclePathPressures {
     #[serde(flatten)]
-    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BioMassQualityText {
-    #[serde(flatten)]
-    pub bio_mass_quality_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BioMassQuality {
-    #[serde(flatten)]
-    pub bio_mass_quality: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RemainingBiomass {
-    #[serde(flatten)]
-    pub remaining_biomass: YesNoType,
+    pub vehicle_path_pressures: YesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -33,9 +15,75 @@ pub struct ForestEnergySuitable {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestEnergySuitableText {
+pub struct WaterSystemProtectionText {
     #[serde(flatten)]
-    pub forest_energy_suitable_text: String200Type,
+    pub water_system_protection_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RoadDamagesText {
+    #[serde(flatten)]
+    pub road_damages_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PurchaseContractId {
+    #[serde(flatten)]
+    pub purchase_contract_id: String20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct hasEnvironmentalObjectsText {
+    #[serde(flatten)]
+    pub has_environmental_objects_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditerType {
+    #[serde(flatten)]
+    pub final_auditer_type: FinalAuditerTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeDamagesText {
+    #[serde(flatten)]
+    pub tree_damages_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditer {
+    #[serde(flatten)]
+    pub final_auditer: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LimitsToWaterSystemText {
+    #[serde(flatten)]
+    pub limits_to_water_system_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BioMassQuality {
+    #[serde(flatten)]
+    pub bio_mass_quality: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteFinalAuditBioMassForwarding {
+    #[serde(flatten)]
+    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingInstructionsSufficientText {
+    #[serde(flatten)]
+    pub working_instructions_sufficient_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WaterSystemProtection {
+    #[serde(flatten)]
+    pub water_system_protection: YesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,28 +92,150 @@ pub struct RemainingBiomassText {
     pub remaining_biomass_text: String200Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditBioMassForwardingType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
-    #[serde(rename = "PurchaseContractId")]
-    pub purchase_contract_id: String20Type,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: WorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<String1000Type>,
-    #[serde(rename = "Images")]
-    pub images: PositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditType {
+    #[serde(flatten)]
+    pub final_audit_type: FinalAuditTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Audits {
+    #[serde(flatten)]
     pub audits: AuditsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EnvironmentalObjectsNoticedText {
+    #[serde(flatten)]
+    pub environmental_objects_noticed_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditDate {
+    #[serde(flatten)]
+    pub final_audit_date: TimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct VehiclePathPressuresText {
+    #[serde(flatten)]
+    pub vehicle_path_pressures_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct hasEnvironmentalObjects {
+    #[serde(flatten)]
+    pub has_environmental_objects: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSafetyNoticedText {
+    #[serde(flatten)]
+    pub working_safety_noticed_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BioMassQualityText {
+    #[serde(flatten)]
+    pub bio_mass_quality_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct NewEnvironmentalObjectsText {
+    #[serde(flatten)]
+    pub new_environmental_objects_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageText {
+    #[serde(flatten)]
+    pub storage_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestEnergySuitableText {
+    #[serde(flatten)]
+    pub forest_energy_suitable_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RoadDamages {
+    #[serde(flatten)]
+    pub road_damages: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Storage {
+    #[serde(flatten)]
+    pub storage: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeDamages {
+    #[serde(flatten)]
+    pub tree_damages: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingInstructionsSufficient {
+    #[serde(flatten)]
+    pub working_instructions_sufficient: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RemainingBiomass {
+    #[serde(flatten)]
+    pub remaining_biomass: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSafetyNoticed {
+    #[serde(flatten)]
+    pub working_safety_noticed: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditRequired {
+    #[serde(flatten)]
+    pub final_audit_required: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EnvironmentalObjectsNoticed {
+    #[serde(flatten)]
+    pub environmental_objects_noticed: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LimitsToWaterSystem {
+    #[serde(flatten)]
+    pub limits_to_water_system: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct hasFoundNewEnvironmentalObjects {
+    #[serde(flatten)]
+    pub has_found_new_environmental_objects: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Audit {
+    #[serde(flatten)]
+    pub audit: AuditionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<FinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: FinalAuditerTypeType,
+    #[serde(rename = "FinalAuditer")]
+    pub final_auditer: String50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: TimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -129,16 +299,26 @@ pub struct AuditsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<FinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: FinalAuditerTypeType,
-    #[serde(rename = "FinalAuditer")]
-    pub final_auditer: String50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: TimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: YesNoType,
+pub struct WorkingSiteFinalAuditBioMassForwardingType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+    #[serde(rename = "PurchaseContractId")]
+    pub purchase_contract_id: String20Type,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: WorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<String1000Type>,
+    #[serde(rename = "Images")]
+    pub images: PositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
 }
 

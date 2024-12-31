@@ -3,21 +3,15 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkQuality {
+pub struct TreeCount {
     #[serde(flatten)]
-    pub work_quality: VirtaWorkQualityType,
+    pub tree_count: StemCountType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Status5 {
+pub struct DamageClass {
     #[serde(flatten)]
-    pub status5: ChangeStateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeDiameter {
-    #[serde(flatten)]
-    pub tree_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub damage_class: VirtaDamageClassType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -27,21 +21,27 @@ pub struct StubDiameter {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeCount {
+pub struct Status5 {
     #[serde(flatten)]
-    pub tree_count: StemCountType,
+    pub status5: ChangeStateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkQuality {
+    #[serde(flatten)]
+    pub work_quality: VirtaWorkQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeDiameter {
+    #[serde(flatten)]
+    pub tree_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct TreeHeight {
     #[serde(flatten)]
     pub tree_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DamageClass {
-    #[serde(flatten)]
-    pub damage_class: VirtaDamageClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

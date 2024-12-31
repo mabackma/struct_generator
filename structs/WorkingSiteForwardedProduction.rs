@@ -3,9 +3,15 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteForwardedProduction {
+pub struct PartitialLoadId {
     #[serde(flatten)]
-    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
+    pub partitial_load_id: u32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadGreenMass {
+    #[serde(flatten)]
+    pub load_green_mass: Decimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -15,21 +21,9 @@ pub struct Load {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardingDistance {
-    #[serde(flatten)]
-    pub forwarding_distance: u32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct SendDate {
     #[serde(flatten)]
     pub send_date: TimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LoadGreenMass {
-    #[serde(flatten)]
-    pub load_green_mass: Decimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -45,9 +39,15 @@ pub struct LoadVolume {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PartitialLoadId {
+pub struct WorkingSiteForwardedProduction {
     #[serde(flatten)]
-    pub partitial_load_id: u32,
+    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForwardingDistance {
+    #[serde(flatten)]
+    pub forwarding_distance: u32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

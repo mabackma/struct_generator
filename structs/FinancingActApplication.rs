@@ -3,27 +3,21 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingType {
-    #[serde(flatten)]
-    pub financing_type: FinancingActFinancingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PlanAndSubsidy {
     #[serde(flatten)]
     pub plan_and_subsidy: PlanAndSubsidyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingType {
+    #[serde(flatten)]
+    pub financing_type: FinancingActFinancingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct FinancingActApplication {
     #[serde(flatten)]
     pub financing_act_application: FinancingActApplicationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -92,5 +86,11 @@ pub struct PartOfProjectType {
     pub fac_financing_act_work_code: FinancingActWorkCode,
     #[serde(rename = "PlanAndSubsidy")]
     pub plan_and_subsidy: PlanAndSubsidyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
 }
 

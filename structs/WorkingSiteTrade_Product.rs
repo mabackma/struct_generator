@@ -3,6 +3,12 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Product {
+    #[serde(flatten)]
+    pub product: ProductType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ConsumptionUnit {
     #[serde(flatten)]
     pub consumption_unit: ConsumptionUnitType,
@@ -20,22 +26,16 @@ pub struct ProductName {
     pub product_name: String500Type,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Product {
-    #[serde(flatten)]
-    pub product: ProductType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OperationModeType {
     #[serde(flatten)]
     pub base: OperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

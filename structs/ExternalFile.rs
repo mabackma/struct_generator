@@ -3,18 +3,6 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FileFormat {
-    #[serde(flatten)]
-    pub file_format: String5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ProductUserId {
-    #[serde(flatten)]
-    pub product_user_id: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Label {
     #[serde(flatten)]
     pub label: String100Type,
@@ -24,6 +12,18 @@ pub struct Label {
 pub struct ExternalFile {
     #[serde(flatten)]
     pub external_file: ExternalFileType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FileFormat {
+    #[serde(flatten)]
+    pub file_format: String5Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProductUserId {
+    #[serde(flatten)]
+    pub product_user_id: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -3,6 +3,12 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Message {
+    #[serde(flatten)]
+    pub message: PayloadType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Envelope {
     #[serde(flatten)]
     pub envelope: EnvelopeType,

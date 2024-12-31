@@ -3,33 +3,15 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessageData {
-    #[serde(flatten)]
-    pub error_message_data: ErrorMessageDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct RegistrationId {
     #[serde(flatten)]
     pub registration_id: ReferenceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyInfoAsText {
+pub struct ReplyCode {
     #[serde(flatten)]
-    pub key_info_as_text: String2000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Acceptance {
-    #[serde(flatten)]
-    pub acceptance: AcceptanceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementName {
-    #[serde(flatten)]
-    pub key_element_name: String200Type,
+    pub reply_code: ReplyCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,9 +21,27 @@ pub struct ErrorMessages {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreReply {
+pub struct KeyInfoAsText {
     #[serde(flatten)]
-    pub forest_centre_reply: ForestCentreReplyType,
+    pub key_info_as_text: String2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ReferenceType {
+    #[serde(flatten)]
+    pub reference_type: ForestCentreMessageReferenceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KeyElementName {
+    #[serde(flatten)]
+    pub key_element_name: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ErrorMessage {
+    #[serde(flatten)]
+    pub error_message: String1000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -51,9 +51,21 @@ pub struct KeyElementNS {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ReferenceType {
+pub struct ErrorMessageData {
     #[serde(flatten)]
-    pub reference_type: ForestCentreMessageReferenceType,
+    pub error_message_data: ErrorMessageDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestCentreReply {
+    #[serde(flatten)]
+    pub forest_centre_reply: ForestCentreReplyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ErrorCode {
+    #[serde(flatten)]
+    pub error_code: String25Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -68,28 +80,36 @@ pub struct MessageType {
     pub message_type: MessageType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorCode {
-    #[serde(flatten)]
-    pub error_code: String25Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessage {
-    #[serde(flatten)]
-    pub error_message: String1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReplyCode {
-    #[serde(flatten)]
-    pub reply_code: ReplyCodeType,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct EstateOwnerType {
     #[serde(rename = "CiNameAndOrganizationGroup")]
     pub ci_name_and_organization_group: Vec<NameAndOrganizationGroup>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorMessageDataType {
+    #[serde(rename = "ReferenceType", skip_serializing_if = "Option::is_none")]
+    pub reference_type: Option<ForestCentreMessageReferenceType>,
+    #[serde(rename = "Reference", skip_serializing_if = "Option::is_none")]
+    pub reference: Option<ReferenceType>,
+    #[serde(rename = "KeyElementNS", skip_serializing_if = "Option::is_none")]
+    pub key_element_n_s: Option<String500Type>,
+    #[serde(rename = "KeyElementName", skip_serializing_if = "Option::is_none")]
+    pub key_element_name: Option<String200Type>,
+    #[serde(rename = "KeyElementId", skip_serializing_if = "Option::is_none")]
+    pub key_element_id: Option<IdStringNotEmptyType>,
+    #[serde(rename = "KeyInfoAsText", skip_serializing_if = "Option::is_none")]
+    pub key_info_as_text: Option<String2000Type>,
+    #[serde(rename = "ErrorCode")]
+    pub error_code: String25Type,
+    #[serde(rename = "ErrorMessage")]
+    pub error_message: String1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorMessagesType {
+    #[serde(rename = "ErrorMessageData")]
+    pub error_message_data: Vec<ErrorMessageDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -118,31 +138,5 @@ pub struct ForestCentreReplyType {
     pub error_messages: Option<ErrorMessagesType>,
     #[serde(rename = "AdditionalInfo", skip_serializing_if = "Option::is_none")]
     pub additional_info: Option<String1000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessageDataType {
-    #[serde(rename = "ReferenceType", skip_serializing_if = "Option::is_none")]
-    pub reference_type: Option<ForestCentreMessageReferenceType>,
-    #[serde(rename = "Reference", skip_serializing_if = "Option::is_none")]
-    pub reference: Option<ReferenceType>,
-    #[serde(rename = "KeyElementNS", skip_serializing_if = "Option::is_none")]
-    pub key_element_n_s: Option<String500Type>,
-    #[serde(rename = "KeyElementName", skip_serializing_if = "Option::is_none")]
-    pub key_element_name: Option<String200Type>,
-    #[serde(rename = "KeyElementId", skip_serializing_if = "Option::is_none")]
-    pub key_element_id: Option<IdStringNotEmptyType>,
-    #[serde(rename = "KeyInfoAsText", skip_serializing_if = "Option::is_none")]
-    pub key_info_as_text: Option<String2000Type>,
-    #[serde(rename = "ErrorCode")]
-    pub error_code: String25Type,
-    #[serde(rename = "ErrorMessage")]
-    pub error_message: String1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessagesType {
-    #[serde(rename = "ErrorMessageData")]
-    pub error_message_data: Vec<ErrorMessageDataType>,
 }
 

@@ -3,21 +3,9 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraFinancingApplication {
-    #[serde(flatten)]
-    pub extra_financing_application: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct FinancingActProjectCompleted {
     #[serde(flatten)]
     pub financing_act_project_completed: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartsOfProject {
-    #[serde(flatten)]
-    pub parts_of_project: PartsOfProjectType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -27,9 +15,15 @@ pub struct FinancingActCompletionDeclaration {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OtherPublicSubstitute {
+pub struct PartsOfProject {
     #[serde(flatten)]
-    pub other_public_substitute: OtherPublicSubstituteType,
+    pub parts_of_project: PartsOfProjectType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtraFinancingApplication {
+    #[serde(flatten)]
+    pub extra_financing_application: YesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,22 +33,14 @@ pub struct PartOfProject {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CompletionDataAndSubsidy {
+pub struct OtherPublicSubstitute {
     #[serde(flatten)]
-    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+    pub other_public_substitute: OtherPublicSubstituteType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartOfProjectType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "FacAreaNo")]
-    pub fac_area_no: AreaNo,
-    #[serde(rename = "FacFinancingActWorkCode")]
-    pub fac_financing_act_work_code: FinancingActWorkCode,
-    #[serde(rename = "FacPayeesAndRealEstates")]
-    pub fac_payees_and_real_estates: PayeesAndRealEstates,
-    #[serde(rename = "CompletionDataAndSubsidy")]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CompletionDataAndSubsidy {
+    #[serde(flatten)]
     pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
 }
 
@@ -118,5 +104,19 @@ pub struct FinancingActCompletionDeclarationType {
     pub parts_of_project: PartsOfProjectType,
     #[serde(rename = "FacDocuments", skip_serializing_if = "Option::is_none")]
     pub fac_documents: Option<Documents>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartOfProjectType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "FacAreaNo")]
+    pub fac_area_no: AreaNo,
+    #[serde(rename = "FacFinancingActWorkCode")]
+    pub fac_financing_act_work_code: FinancingActWorkCode,
+    #[serde(rename = "FacPayeesAndRealEstates")]
+    pub fac_payees_and_real_estates: PayeesAndRealEstates,
+    #[serde(rename = "CompletionDataAndSubsidy")]
+    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
 }
 

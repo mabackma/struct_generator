@@ -3,9 +3,9 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ImageDate {
+pub struct InsertedMapSymbolId {
     #[serde(flatten)]
-    pub image_date: TimeStampType,
+    pub inserted_map_symbol_id: String20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -15,33 +15,9 @@ pub struct Position {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Image {
-    #[serde(flatten)]
-    pub image: ImageType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SubCategory {
-    #[serde(flatten)]
-    pub sub_category: ImageSubCategoryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Filename {
-    #[serde(flatten)]
-    pub filename: String100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Photographer {
     #[serde(flatten)]
     pub photographer: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Bytes {
-    #[serde(flatten)]
-    pub bytes: Vec<u8>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -51,9 +27,39 @@ pub struct MapSymbolType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct MapSymbolId {
+    #[serde(flatten)]
+    pub map_symbol_id: ERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Filename {
+    #[serde(flatten)]
+    pub filename: String100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StandId {
+    #[serde(flatten)]
+    pub stand_id: String20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Category {
     #[serde(flatten)]
     pub category: ImageCategoryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ImageDate {
+    #[serde(flatten)]
+    pub image_date: TimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SubCategory {
+    #[serde(flatten)]
+    pub sub_category: ImageSubCategoryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -3,45 +3,9 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPersonText {
+pub struct KilometersWithBreakHouse {
     #[serde(flatten)]
-    pub extra_person_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TravelStartTime {
-    #[serde(flatten)]
-    pub travel_start_time: TimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Vehicle {
-    #[serde(flatten)]
-    pub vehicle: VehicleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TravelEndTime {
-    #[serde(flatten)]
-    pub travel_end_time: TimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson3 {
-    #[serde(flatten)]
-    pub extra_person3: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Kilometers {
-    #[serde(flatten)]
-    pub kilometers: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KilometersWithTrailer {
-    #[serde(flatten)]
-    pub kilometers_with_trailer: PositiveInteger4digitsType,
+    pub kilometers_with_break_house: PositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -51,9 +15,33 @@ pub struct ExtraPerson4 {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteTravelNotification {
+pub struct ExtraPerson2 {
     #[serde(flatten)]
-    pub working_site_travel_notification: WorkingSiteTravelNotificationType,
+    pub extra_person2: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KilometersWithCaravan {
+    #[serde(flatten)]
+    pub kilometers_with_caravan: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtraPersonText {
+    #[serde(flatten)]
+    pub extra_person_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Vehicle {
+    #[serde(flatten)]
+    pub vehicle: VehicleType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KilometersWithTrailer {
+    #[serde(flatten)]
+    pub kilometers_with_trailer: PositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -63,21 +51,9 @@ pub struct Route {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson1 {
+pub struct TravelStartTime {
     #[serde(flatten)]
-    pub extra_person1: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson2 {
-    #[serde(flatten)]
-    pub extra_person2: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KilometersWithBreakHouse {
-    #[serde(flatten)]
-    pub kilometers_with_break_house: PositiveInteger4digitsType,
+    pub travel_start_time: TimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -87,9 +63,33 @@ pub struct SittingMoneyKilometers {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KilometersWithCaravan {
+pub struct ExtraPerson1 {
     #[serde(flatten)]
-    pub kilometers_with_caravan: PositiveInteger4digitsType,
+    pub extra_person1: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteTravelNotification {
+    #[serde(flatten)]
+    pub working_site_travel_notification: WorkingSiteTravelNotificationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TravelEndTime {
+    #[serde(flatten)]
+    pub travel_end_time: TimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Kilometers {
+    #[serde(flatten)]
+    pub kilometers: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtraPerson3 {
+    #[serde(flatten)]
+    pub extra_person3: PositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

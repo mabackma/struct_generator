@@ -3,6 +3,12 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ModificationDate {
+    #[serde(flatten)]
+    pub modification_date: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Version {
     #[serde(flatten)]
     pub version: String10Type,

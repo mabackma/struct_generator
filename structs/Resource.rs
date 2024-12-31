@@ -3,21 +3,9 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExtinguisherVerificationDate {
+pub struct Manufacturer {
     #[serde(flatten)]
-    pub extinguisher_verification_date: DateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceStartDate {
-    #[serde(flatten)]
-    pub service_start_date: DateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExternalSystemName {
-    #[serde(flatten)]
-    pub external_system_name: String50Type,
+    pub manufacturer: MachineManufacturerType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -27,219 +15,9 @@ pub struct Model {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ProductivityUnit {
-    #[serde(flatten)]
-    pub productivity_unit: WorkCodeUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OutOfServiceEndDate {
-    #[serde(flatten)]
-    pub out_of_service_end_date: DateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ModelYear {
-    #[serde(flatten)]
-    pub model_year: YearType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LoadRating {
-    #[serde(flatten)]
-    pub load_rating: LoadRatingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LoaderScaleModelYear {
-    #[serde(flatten)]
-    pub loader_scale_model_year: YearType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Telephone {
-    #[serde(flatten)]
-    pub telephone: String20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HavesterModelYear {
-    #[serde(flatten)]
-    pub havester_model_year: YearType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExternalSystemInUse {
-    #[serde(flatten)]
-    pub external_system_in_use: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvesterModel {
-    #[serde(flatten)]
-    pub harvester_model: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OrdererResponsibilityDocumentsChecked {
-    #[serde(flatten)]
-    pub orderer_responsibility_documents_checked: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RemoveDate {
-    #[serde(flatten)]
-    pub remove_date: DateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasuringDeviceLastControl {
-    #[serde(flatten)]
-    pub measuring_device_last_control: DateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingWeight {
-    #[serde(flatten)]
-    pub working_weight: WorkingWeightType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LoaderScaleModel {
-    #[serde(flatten)]
-    pub loader_scale_model: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ElevatorCertificate {
-    #[serde(flatten)]
-    pub elevator_certificate: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerResourceId {
-    #[serde(flatten)]
-    pub service_buyer_resource_id: String20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Productivity {
-    #[serde(flatten)]
-    pub productivity: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CommunicationType {
-    #[serde(flatten)]
-    pub communication_type: String100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OwnerContractorId {
-    #[serde(flatten)]
-    pub owner_contractor_id: String20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Email {
-    #[serde(flatten)]
-    pub email: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceName {
-    #[serde(flatten)]
-    pub resource_name: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceTypes {
-    #[serde(flatten)]
-    pub service_types: ServiceTypesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Peripherals {
-    #[serde(flatten)]
-    pub peripherals: PeripheralsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct DeploymentMonth {
     #[serde(flatten)]
     pub deployment_month: String5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Resource {
-    #[serde(flatten)]
-    pub resource: ResourceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SubContractorResource {
-    #[serde(flatten)]
-    pub sub_contractor_resource: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Removed {
-    #[serde(flatten)]
-    pub removed: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OutOfServiceStartDate {
-    #[serde(flatten)]
-    pub out_of_service_start_date: DateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeploymentYear {
-    #[serde(flatten)]
-    pub deployment_year: YearType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasuringDeviceVersion {
-    #[serde(flatten)]
-    pub measuring_device_version: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkCodeGroups {
-    #[serde(flatten)]
-    pub work_code_groups: WorkCodeGroupsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PeripheralCode {
-    #[serde(flatten)]
-    pub peripheral_code: PeripheralCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SubContractorVerified {
-    #[serde(flatten)]
-    pub sub_contractor_verified: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceType {
-    #[serde(flatten)]
-    pub resource_type: ResourceTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Manufacturer {
-    #[serde(flatten)]
-    pub manufacturer: MachineManufacturerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StanfordResourceId {
-    #[serde(flatten)]
-    pub stanford_resource_id: String100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -249,25 +27,189 @@ pub struct OwnWeight {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct DeploymentYear {
+    #[serde(flatten)]
+    pub deployment_year: YearType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Email {
+    #[serde(flatten)]
+    pub email: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Telephone {
+    #[serde(flatten)]
+    pub telephone: String20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExternalSystemInUse {
+    #[serde(flatten)]
+    pub external_system_in_use: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RemoveDate {
+    #[serde(flatten)]
+    pub remove_date: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OutOfServiceEndDate {
+    #[serde(flatten)]
+    pub out_of_service_end_date: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Peripherals {
+    #[serde(flatten)]
+    pub peripherals: PeripheralsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Removed {
+    #[serde(flatten)]
+    pub removed: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ModelYear {
+    #[serde(flatten)]
+    pub model_year: YearType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SubContractorResource {
+    #[serde(flatten)]
+    pub sub_contractor_resource: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HarvesterModel {
+    #[serde(flatten)]
+    pub harvester_model: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OwnerContractorId {
+    #[serde(flatten)]
+    pub owner_contractor_id: String20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SubContractorVerified {
+    #[serde(flatten)]
+    pub sub_contractor_verified: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ElevatorCertificate {
+    #[serde(flatten)]
+    pub elevator_certificate: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoaderScaleModelYear {
+    #[serde(flatten)]
+    pub loader_scale_model_year: YearType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HavesterModelYear {
+    #[serde(flatten)]
+    pub havester_model_year: YearType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasuringDeviceLastControl {
+    #[serde(flatten)]
+    pub measuring_device_last_control: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PeripheralCode {
+    #[serde(flatten)]
+    pub peripheral_code: PeripheralCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProductivityUnit {
+    #[serde(flatten)]
+    pub productivity_unit: WorkCodeUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoaderScaleModel {
+    #[serde(flatten)]
+    pub loader_scale_model: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExternalSystemName {
+    #[serde(flatten)]
+    pub external_system_name: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadRating {
+    #[serde(flatten)]
+    pub load_rating: LoadRatingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasuringDeviceVersion {
+    #[serde(flatten)]
+    pub measuring_device_version: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtinguisherVerificationDate {
+    #[serde(flatten)]
+    pub extinguisher_verification_date: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OutOfServiceStartDate {
+    #[serde(flatten)]
+    pub out_of_service_start_date: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CommunicationType {
+    #[serde(flatten)]
+    pub communication_type: String100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Productivity {
+    #[serde(flatten)]
+    pub productivity: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceStartDate {
+    #[serde(flatten)]
+    pub service_start_date: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OrdererResponsibilityDocumentsChecked {
+    #[serde(flatten)]
+    pub orderer_responsibility_documents_checked: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingWeight {
+    #[serde(flatten)]
+    pub working_weight: WorkingWeightType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Contractors {
     #[serde(flatten)]
     pub contractors: ContractorsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypesType {
-    #[serde(rename = "ServiceType")]
-    pub service_type: Vec<ServiceTypeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeInfoType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "Productivity")]
-    pub productivity: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
-    #[serde(rename = "ProductivityUnit")]
-    pub productivity_unit: WorkCodeUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -365,9 +307,25 @@ pub struct ResourceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypesType {
+    #[serde(rename = "ServiceType")]
+    pub service_type: Vec<ServiceTypeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodeGroupsType {
     #[serde(rename = "WorkCodeGroup")]
     pub work_code_group: Vec<WorkCodeGroupType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeInfoType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "Productivity")]
+    pub productivity: PositiveDecimalMax4IntegralPartMax2FractionalPartType,
+    #[serde(rename = "ProductivityUnit")]
+    pub productivity_unit: WorkCodeUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

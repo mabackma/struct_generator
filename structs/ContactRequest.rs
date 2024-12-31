@@ -3,51 +3,15 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PreferredContactingMethod {
-    #[serde(flatten)]
-    pub preferred_contacting_method: PreferredContactingMethodType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RequestInfo {
-    #[serde(flatten)]
-    pub request_info: String2000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContactRequest {
-    #[serde(flatten)]
-    pub contact_request: ContactRequestType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RequestCode {
-    #[serde(flatten)]
-    pub request_code: RequestCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExpirationDate {
-    #[serde(flatten)]
-    pub expiration_date: DateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PreferredContactingMethods {
-    #[serde(flatten)]
-    pub preferred_contacting_methods: PreferredContactingMethodsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ContactMunicipality {
     #[serde(flatten)]
     pub contact_municipality: MunicipalityNumberType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestPropertyDataSet {
+pub struct PreferredContactingMethod {
     #[serde(flatten)]
-    pub forest_property_data_set: ForestPropertyDataSetType,
+    pub preferred_contacting_method: PreferredContactingMethodType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -57,9 +21,45 @@ pub struct CreateDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct RequestInfo {
+    #[serde(flatten)]
+    pub request_info: String2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ContactLocationInformation {
     #[serde(flatten)]
     pub contact_location_information: AlternativeGeometriesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RequestCode {
+    #[serde(flatten)]
+    pub request_code: RequestCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PreferredContactingMethods {
+    #[serde(flatten)]
+    pub preferred_contacting_methods: PreferredContactingMethodsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExpirationDate {
+    #[serde(flatten)]
+    pub expiration_date: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContactRequest {
+    #[serde(flatten)]
+    pub contact_request: ContactRequestType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestPropertyDataSet {
+    #[serde(flatten)]
+    pub forest_property_data_set: ForestPropertyDataSetType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -97,14 +97,14 @@ pub struct ContactRequestType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestPropertyDataSetType {
-    #[serde(rename = "ForestPropertyData")]
-    pub forest_property_data: Vec<ForestPropertyDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct PreferredContactingMethodsType {
     #[serde(rename = "PreferredContactingMethod")]
     pub preferred_contacting_method: Vec<PreferredContactingMethodType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestPropertyDataSetType {
+    #[serde(rename = "ForestPropertyData")]
+    pub forest_property_data: Vec<ForestPropertyDataType>,
 }
 

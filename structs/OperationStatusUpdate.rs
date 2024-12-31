@@ -3,15 +3,15 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ActingDate {
-    #[serde(flatten)]
-    pub acting_date: ActingDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ResponsibleActor {
     #[serde(flatten)]
     pub responsible_actor: ResponsibleActorType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ActingDate {
+    #[serde(flatten)]
+    pub acting_date: ActingDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -21,9 +21,21 @@ pub struct ResponsibleActorType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MainTypeType {
+    #[serde(flatten)]
+    pub base: MainTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationsType {
     #[serde(rename = "Operation")]
     pub operation: Vec<OperationDefType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ActingDateType {
+    #[serde(flatten)]
+    pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -44,17 +56,5 @@ pub struct OperationDefType {
     pub acting_date: ActingDateType,
     #[serde(rename = "ResponsibleActor", skip_serializing_if = "Option::is_none")]
     pub responsible_actor: Option<ResponsibleActorType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainTypeType {
-    #[serde(flatten)]
-    pub base: MainTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ActingDateType {
-    #[serde(flatten)]
-    pub base: DateType,
 }
 

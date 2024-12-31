@@ -46,6 +46,8 @@ pub static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "Point" => "Point<f64>",
     "Polygon" => "Polygon<f64>",
     "MultiPolygon" => "MultiPolygon<f64>",
+    "pointProperty" => "Point<f64>",
+    "polygonProperty" => "Polygon<f64>",
 };
 
 pub fn handle_prefix(

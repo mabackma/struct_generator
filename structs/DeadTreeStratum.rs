@@ -3,9 +3,9 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DeadTreeType {
+pub struct DeadTreeStrata {
     #[serde(flatten)]
-    pub dead_tree_type: DeadTreeTypeType,
+    pub dead_tree_strata: DeadTreeStrataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -15,15 +15,27 @@ pub struct DeadTreeStratum {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DeadTreeStrata {
+pub struct DeadTreeType {
     #[serde(flatten)]
-    pub dead_tree_strata: DeadTreeStrataType,
+    pub dead_tree_type: DeadTreeTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeType {
+    #[serde(flatten)]
+    pub base: VolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MeanDiameterType {
     #[serde(flatten)]
     pub base: DiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemCountType {
+    #[serde(flatten)]
+    pub base: StemCountType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,12 +59,6 @@ pub struct DeadTreeStratumType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
-    #[serde(flatten)]
-    pub base: TreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct DeadTreeTypeType {
     #[serde(flatten)]
     pub base: DeadTreeTypeType,
@@ -65,14 +71,8 @@ pub struct DeadTreeStrataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
+pub struct TreeSpeciesType {
     #[serde(flatten)]
-    pub base: VolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemCountType {
-    #[serde(flatten)]
-    pub base: StemCountType,
+    pub base: TreeSpeciesType,
 }
 

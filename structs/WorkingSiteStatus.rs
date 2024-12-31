@@ -2,6 +2,12 @@ use serde::{Serialize, Deserialize};
 use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Status {
+    #[serde(flatten)]
+    pub status: WorkingSiteStatusType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteStatusType {
     #[serde(rename = "ServiceBuyerId")]

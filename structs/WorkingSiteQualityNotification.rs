@@ -3,30 +3,6 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationPercentageTotal {
-    #[serde(flatten)]
-    pub dis_qualification_percentage_total: Decimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationSign {
-    #[serde(flatten)]
-    pub dis_qualification_sign: String5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracy {
-    #[serde(flatten)]
-    pub cutting_accuracy: Decimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReasons {
-    #[serde(flatten)]
-    pub dis_qualification_reasons: DisQualificationReasonsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct DisQualificationPercentage {
     #[serde(flatten)]
     pub dis_qualification_percentage: Decimal2FractionDigitsType,
@@ -39,15 +15,15 @@ pub struct WorkingSiteQualityNotification {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracySign {
+pub struct DisQualificationReason {
     #[serde(flatten)]
-    pub cutting_accuracy_sign: String5Type,
+    pub dis_qualification_reason: String10Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceIdMJ {
+pub struct ForestOwner {
     #[serde(flatten)]
-    pub resource_id_m_j: String20Type,
+    pub forest_owner: String100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -57,25 +33,51 @@ pub struct DisQualificationReasonText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReason {
+pub struct DisQualificationPercentageTotal {
     #[serde(flatten)]
-    pub dis_qualification_reason: String10Type,
+    pub dis_qualification_percentage_total: Decimal2FractionDigitsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonsType {
-    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
-    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingAccuracySign {
+    #[serde(flatten)]
+    pub cutting_accuracy_sign: String5Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonDataType {
-    #[serde(rename = "DisQualificationReason")]
-    pub dis_qualification_reason: String10Type,
-    #[serde(rename = "DisQualificationReasonText")]
-    pub dis_qualification_reason_text: String200Type,
-    #[serde(rename = "DisQualificationPercentage")]
-    pub dis_qualification_percentage: Decimal2FractionDigitsType,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasurementDate {
+    #[serde(flatten)]
+    pub measurement_date: TimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationSign {
+    #[serde(flatten)]
+    pub dis_qualification_sign: String5Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Image {
+    #[serde(flatten)]
+    pub image: Vec<u8>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceIdMJ {
+    #[serde(flatten)]
+    pub resource_id_m_j: String20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingAccuracy {
+    #[serde(flatten)]
+    pub cutting_accuracy: Decimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasons {
+    #[serde(flatten)]
+    pub dis_qualification_reasons: DisQualificationReasonsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -116,5 +118,21 @@ pub struct WorkingSiteQualityNotificationType {
     pub image: Option<Vec<u8>>,
     #[serde(rename = "DisQualificationReasons")]
     pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DisQualificationReasonsType {
+    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
+    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DisQualificationReasonDataType {
+    #[serde(rename = "DisQualificationReason")]
+    pub dis_qualification_reason: String10Type,
+    #[serde(rename = "DisQualificationReasonText")]
+    pub dis_qualification_reason_text: String200Type,
+    #[serde(rename = "DisQualificationPercentage")]
+    pub dis_qualification_percentage: Decimal2FractionDigitsType,
 }
 

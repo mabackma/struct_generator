@@ -3,18 +3,6 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractWorkingSites {
-    #[serde(flatten)]
-    pub contract_working_sites: ContractWorkingSitesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractWorkingSiteDetails {
-    #[serde(flatten)]
-    pub contract_working_site_details: ContractWorkingSiteDetailsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ContractText {
     #[serde(flatten)]
     pub contract_text: String1500Type,
@@ -33,9 +21,15 @@ pub struct ContractEndingDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Contract {
+pub struct ContractWorkingSiteDetails {
     #[serde(flatten)]
-    pub contract: ContractType,
+    pub contract_working_site_details: ContractWorkingSiteDetailsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContractWorkingSites {
+    #[serde(flatten)]
+    pub contract_working_sites: ContractWorkingSitesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -63,21 +57,9 @@ pub struct ContractType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractEndingDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractWorkingSitesType {
     #[serde(rename = "ContractWorkingSiteDetails")]
     pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractIdType {
-    #[serde(rename = "contract_id_type.base")]
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -98,5 +80,17 @@ pub struct ContractWorkingSiteDetailsType {
     pub working_site_text: Option<String1500Type>,
     #[serde(rename = "AsAssortmentClasses")]
     pub as_assortment_classes: AssortmentClasses,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractIdType {
+    #[serde(rename = "contract_id_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractEndingDateType {
+    #[serde(flatten)]
+    pub base: DateType,
 }
 

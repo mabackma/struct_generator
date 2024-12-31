@@ -3,9 +3,51 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFeeBasis {
+pub struct Id {
     #[serde(flatten)]
-    pub working_site_fee_basis: WorkingSiteFeeBasisType,
+    pub id: PositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Infotext {
+    #[serde(flatten)]
+    pub infotext: String1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceBuyerId {
+    #[serde(flatten)]
+    pub service_buyer_id: String20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct NeedToCheck {
+    #[serde(flatten)]
+    pub need_to_check: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeId {
+    #[serde(flatten)]
+    pub fee_id: String10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Stands {
+    #[serde(flatten)]
+    pub stands: StandsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StandNumber {
+    #[serde(flatten)]
+    pub stand_number: String20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeBase {
+    #[serde(flatten)]
+    pub fee_base: FeeBasisDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -21,9 +63,33 @@ pub struct FeeYesNo {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FeeBase {
+pub struct WorkingSiteFeeBasis {
     #[serde(flatten)]
-    pub fee_base: FeeBasisDataType,
+    pub working_site_fee_basis: WorkingSiteFeeBasisType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkCodes {
+    #[serde(flatten)]
+    pub work_codes: WorkCodesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: ERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeBasis {
+    #[serde(flatten)]
+    pub fee_basis: FeeBasisType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkCode {
+    #[serde(flatten)]
+    pub work_code: WorkCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -33,15 +99,15 @@ pub struct FeeBaseList {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct NeedToCheck {
+pub struct FeeValue {
     #[serde(flatten)]
-    pub need_to_check: YesNoType,
+    pub fee_value: String10Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FeeAssortment {
+pub struct ResourceId {
     #[serde(flatten)]
-    pub fee_assortment: String50Type,
+    pub resource_id: String20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -51,8 +117,22 @@ pub struct FeeListId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FeeValue {
+pub struct FeeAssortment {
     #[serde(flatten)]
+    pub fee_assortment: String50Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeebaseListItemType {
+    #[serde(rename = "Id")]
+    pub id: PositiveIntegerType,
+    #[serde(rename = "FeeValue")]
     pub fee_value: String10Type,
 }
 
@@ -66,12 +146,6 @@ pub struct WorkingSiteFeeBasisType {
     pub resource_id: String20Type,
     #[serde(rename = "FeeBasis")]
     pub fee_basis: FeeBasisType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -105,22 +179,14 @@ pub struct FeeBasisDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisType {
-    #[serde(rename = "FeeBase")]
-    pub fee_base: Vec<FeeBasisDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StandsType {
     #[serde(rename = "StandNumber")]
     pub stand_number: Vec<String20Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeebaseListItemType {
-    #[serde(rename = "Id")]
-    pub id: PositiveIntegerType,
-    #[serde(rename = "FeeValue")]
-    pub fee_value: String10Type,
+pub struct FeeBasisType {
+    #[serde(rename = "FeeBase")]
+    pub fee_base: Vec<FeeBasisDataType>,
 }
 

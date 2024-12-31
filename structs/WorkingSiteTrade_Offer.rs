@@ -3,6 +3,12 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct OfferDate {
+    #[serde(flatten)]
+    pub offer_date: OfferDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OfferBusinessSender {
     #[serde(flatten)]
     pub offer_business_sender: OfferBusinessSenderType,
@@ -15,33 +21,9 @@ pub struct OfferText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OfferDate {
-    #[serde(flatten)]
-    pub offer_date: OfferDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Offer {
     #[serde(flatten)]
     pub offer: OfferType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
-    #[serde(flatten)]
-    pub base: ContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferTextType {
-    #[serde(flatten)]
-    pub base: String1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,14 +59,32 @@ pub struct OfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDateType {
+pub struct OfferExpirationDateType {
     #[serde(flatten)]
     pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TechnicalContactPersonType {
+    #[serde(flatten)]
+    pub base: ContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OfferBusinessSenderType {
     #[serde(flatten)]
     pub base: ContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferTextType {
+    #[serde(flatten)]
+    pub base: String1500Type,
 }
 

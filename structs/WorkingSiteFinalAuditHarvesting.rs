@@ -3,27 +3,9 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RoadDamagesText {
+pub struct SeparateSpareTrees {
     #[serde(flatten)]
-    pub road_damages_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Storage {
-    #[serde(flatten)]
-    pub storage: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PurchaseContractId {
-    #[serde(flatten)]
-    pub purchase_contract_id: String20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForwarderId {
-    #[serde(flatten)]
-    pub forwarder_id: String20Type,
+    pub separate_spare_trees: SpareTreesByCategoryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,45 +21,15 @@ pub struct StumpTreatmentText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SaveTreesLeftText {
+    #[serde(flatten)]
+    pub save_trees_left_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SaveTreesLeft {
     #[serde(flatten)]
     pub save_trees_left: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RoadDamages {
-    #[serde(flatten)]
-    pub road_damages: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StorageText {
-    #[serde(flatten)]
-    pub storage_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PreClearingText {
-    #[serde(flatten)]
-    pub pre_clearing_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct VehiclePathPressuresText {
-    #[serde(flatten)]
-    pub vehicle_path_pressures_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct VehiclePathPressures {
-    #[serde(flatten)]
-    pub vehicle_path_pressures: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvesterId {
-    #[serde(flatten)]
-    pub harvester_id: String20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -87,27 +39,15 @@ pub struct HighStumpsText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditHarvesting {
+pub struct PreClearingText {
     #[serde(flatten)]
-    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
+    pub pre_clearing_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeDamagesText {
+pub struct HarvesterId {
     #[serde(flatten)]
-    pub tree_damages_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SeparateSpareTrees {
-    #[serde(flatten)]
-    pub separate_spare_trees: SpareTreesByCategoryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpTreatment {
-    #[serde(flatten)]
-    pub stump_treatment: YesNoNotNeededType,
+    pub harvester_id: String20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -117,53 +57,21 @@ pub struct SpareTreesFromMapSymbols {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SaveTreesLeftText {
+pub struct WorkingSiteFinalAuditHarvesting {
     #[serde(flatten)]
-    pub save_trees_left_text: String200Type,
+    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForwarderId {
+    #[serde(flatten)]
+    pub forwarder_id: String20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct HighStumps {
     #[serde(flatten)]
     pub high_stumps: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeDamages {
-    #[serde(flatten)]
-    pub tree_damages: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<FinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: FinalAuditerTypeType,
-    #[serde(rename = "FinalAuditer")]
-    pub final_auditer: String50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: TimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringFinalAuditHarvestingType {
-    #[serde(flatten)]
-    pub base: WorkingSiteFinalAuditBaseHarvestingType,
-    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
-    pub work_code_group: Option<WorkCodeGroupType>,
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<WorkCodeType>,
-    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
-    pub audit: Option<AuditionType>,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<String1000Type>,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<PositiveInteger2digitsType>,
-    #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
-    pub audits: Option<AuditsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -190,6 +98,48 @@ pub struct WorkingSiteFinalAuditBaseHarvestingType {
     pub images: Option<PositiveInteger2digitsType>,
     #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
     pub audits: Option<AuditsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditHarvestingType {
+    #[serde(flatten)]
+    pub base: WorkingSiteFinalAuditBaseHarvestingType,
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "HarvesterId", skip_serializing_if = "Option::is_none")]
+    pub harvester_id: Option<String20Type>,
+    #[serde(rename = "ForwarderId", skip_serializing_if = "Option::is_none")]
+    pub forwarder_id: Option<String20Type>,
+    #[serde(rename = "PurchaseContractId")]
+    pub purchase_contract_id: String20Type,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: WorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<String1000Type>,
+    #[serde(rename = "Images")]
+    pub images: PositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<FinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: FinalAuditerTypeType,
+    #[serde(rename = "FinalAuditer")]
+    pub final_auditer: String50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: TimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -261,30 +211,20 @@ pub struct AuditsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditHarvestingType {
+pub struct SelfMonitoringFinalAuditHarvestingType {
     #[serde(flatten)]
     pub base: WorkingSiteFinalAuditBaseHarvestingType,
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "HarvesterId", skip_serializing_if = "Option::is_none")]
-    pub harvester_id: Option<String20Type>,
-    #[serde(rename = "ForwarderId", skip_serializing_if = "Option::is_none")]
-    pub forwarder_id: Option<String20Type>,
-    #[serde(rename = "PurchaseContractId")]
-    pub purchase_contract_id: String20Type,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: WorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
+    #[serde(rename = "WorkCodeGroup", skip_serializing_if = "Option::is_none")]
+    pub work_code_group: Option<WorkCodeGroupType>,
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<WorkCodeType>,
+    #[serde(rename = "Audit", skip_serializing_if = "Option::is_none")]
+    pub audit: Option<AuditionType>,
     #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
     pub info_text: Option<String1000Type>,
-    #[serde(rename = "Images")]
-    pub images: PositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<PositiveInteger2digitsType>,
+    #[serde(rename = "Audits", skip_serializing_if = "Option::is_none")]
+    pub audits: Option<AuditsType>,
 }
 

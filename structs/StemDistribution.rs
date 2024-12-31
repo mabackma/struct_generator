@@ -3,9 +3,9 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StemDistribution {
+pub struct Count {
     #[serde(flatten)]
-    pub stem_distribution: StemDistributionType,
+    pub count: CountType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -15,9 +15,9 @@ pub struct Tree {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Count {
+pub struct StemDistribution {
     #[serde(flatten)]
-    pub count: CountType,
+    pub stem_distribution: StemDistributionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -27,9 +27,27 @@ pub struct PulpWoodVolumeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreeClassType {
+    #[serde(flatten)]
+    pub base: TreeClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct DiameterType {
     #[serde(flatten)]
     pub base: DiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AgeType {
+    #[serde(flatten)]
+    pub base: AgeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogPercentType {
+    #[serde(flatten)]
+    pub base: SawLogPercentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -39,9 +57,9 @@ pub struct StemDistributionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AgeType {
+pub struct StoreyType {
     #[serde(flatten)]
-    pub base: AgeType,
+    pub base: StoreyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -54,6 +72,12 @@ pub struct TreeNumberType {
 pub struct VolumeType {
     #[serde(flatten)]
     pub base: VolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CountType {
+    #[serde(rename = "count_type.base")]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -93,32 +117,8 @@ pub struct TreeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogPercentType {
-    #[serde(flatten)]
-    pub base: SawLogPercentType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CountType {
-    #[serde(rename = "count_type.base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SawLogVolumeType {
     #[serde(flatten)]
     pub base: SawLogVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: StoreyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClassType {
-    #[serde(flatten)]
-    pub base: TreeClassType,
 }
 

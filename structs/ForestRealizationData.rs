@@ -3,9 +3,9 @@ use chrono;
 use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestRealizationData {
+pub struct ParentObject {
     #[serde(flatten)]
-    pub forest_realization_data: ForestRealizationDataType,
+    pub parent_object: ParentObjectType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -15,15 +15,21 @@ pub struct GeometryObject {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ParentObjectId {
+pub struct ParentObjects {
     #[serde(flatten)]
-    pub parent_object_id: IdStringNotEmptyType,
+    pub parent_objects: ParentObjectsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ParentObject {
+pub struct ForestRealizationData {
     #[serde(flatten)]
-    pub parent_object: ParentObjectType,
+    pub forest_realization_data: ForestRealizationDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ParentObjectId {
+    #[serde(flatten)]
+    pub parent_object_id: IdStringNotEmptyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -36,44 +42,6 @@ pub struct GeometryObjects {
 pub struct ParentObjectType {
     #[serde(flatten)]
     pub parent_object_type: ObjectTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ParentObjects {
-    #[serde(flatten)]
-    pub parent_objects: ParentObjectsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryObjectsType {
-    #[serde(rename = "GeometryObject")]
-    pub geometry_object: Vec<GeometryObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectsType {
-    #[serde(rename = "ParentObject")]
-    pub parent_object: Vec<ParentObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectTypeType {
-    #[serde(rename = "object_type_type.base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectGeometryType {
-    #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
-    pub co_change_state: Option<ChangeState>,
-    #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
-    pub co_change_time: Option<ChangeTime>,
-    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
-    pub area: Option<AreaType>,
-    #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
-    pub area_decrease: Option<AreaType>,
-    #[serde(rename = "GdtAlternativeGeometriesGroup")]
-    pub gdt_alternative_geometries_group: AlternativeGeometriesGroup,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -99,6 +67,18 @@ pub struct ForestRealizationDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ParentObjectsType {
+    #[serde(rename = "ParentObject")]
+    pub parent_object: Vec<ParentObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectTypeType {
+    #[serde(rename = "object_type_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct GeometryObjectType {
     #[serde(rename = "@id")]
     pub id: IdStringNotEmptyType,
@@ -116,5 +96,25 @@ pub struct GeometryObjectType {
     pub op_operations: Option<Operations>,
     #[serde(rename = "StSpecialFeatures", skip_serializing_if = "Option::is_none")]
     pub st_special_features: Option<SpecialFeatures>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectGeometryType {
+    #[serde(rename = "CoChangeState", skip_serializing_if = "Option::is_none")]
+    pub co_change_state: Option<ChangeState>,
+    #[serde(rename = "CoChangeTime", skip_serializing_if = "Option::is_none")]
+    pub co_change_time: Option<ChangeTime>,
+    #[serde(rename = "Area", skip_serializing_if = "Option::is_none")]
+    pub area: Option<AreaType>,
+    #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
+    pub area_decrease: Option<AreaType>,
+    #[serde(rename = "GdtAlternativeGeometriesGroup")]
+    pub gdt_alternative_geometries_group: AlternativeGeometriesGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GeometryObjectsType {
+    #[serde(rename = "GeometryObject")]
+    pub geometry_object: Vec<GeometryObjectType>,
 }
 
