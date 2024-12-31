@@ -1,28 +1,17 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeanStumpDiameter {
-    #[serde(flatten)]
-    pub mean_stump_diameter: DiameterType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MainTreeSpecies {
-    #[serde(flatten)]
-    pub main_tree_species: TreeSpeciesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DominantHeight {
-    #[serde(flatten)]
-    pub dominant_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct MeanAge {
     #[serde(flatten)]
     pub mean_age: MeanAgeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeanStumpDiameter {
+    #[serde(flatten)]
+    pub mean_stump_diameter: DiameterType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,57 +21,51 @@ pub struct TreeStandSummary {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DevelopmentClass {
+pub struct DominantHeight {
     #[serde(flatten)]
-    pub development_class: DevelopmentClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogVolumeType {
-    #[serde(flatten)]
-    pub base: CoSawLogVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LeafBiomassType {
-    #[serde(flatten)]
-    pub base: CoLeafBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeGrowthType {
-    #[serde(flatten)]
-    pub base: CoVolumeGrowthType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemBiomassType {
-    #[serde(flatten)]
-    pub base: CoStemBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
-    #[serde(flatten)]
-    pub base: CoDiameterType,
+    pub dominant_height: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MeanAgeType {
     #[serde(flatten)]
-    pub base: CoAgeType,
+    pub base: AgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BranchBiomassType {
+pub struct StumpBiomassType {
     #[serde(flatten)]
-    pub base: CoBranchBiomassType,
+    pub base: StumpBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VolumeType {
+pub struct MeanDiameterType {
     #[serde(flatten)]
-    pub base: CoVolumeType,
+    pub base: DiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VolumeGrowthType {
+    #[serde(flatten)]
+    pub base: VolumeGrowthType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemBiomassType {
+    #[serde(flatten)]
+    pub base: StemBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PulpWoodVolumeType {
+    #[serde(flatten)]
+    pub base: PulpWoodVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LeafBiomassType {
+    #[serde(flatten)]
+    pub base: LeafBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -136,21 +119,21 @@ pub struct TreeStandSummaryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemCountType {
+pub struct BranchBiomassType {
     #[serde(flatten)]
-    pub base: CoStemCountType,
+    pub base: BranchBiomassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolumeType {
+pub struct SawLogVolumeType {
     #[serde(flatten)]
-    pub base: CoPulpWoodVolumeType,
+    pub base: SawLogVolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StumpBiomassType {
+pub struct VolumeType {
     #[serde(flatten)]
-    pub base: CoStumpBiomassType,
+    pub base: VolumeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -201,5 +184,11 @@ pub struct TreeStandSummary2Type {
     pub development_class: Option<DevelopmentClassType>,
     #[serde(rename = "MainTreeSpecies", skip_serializing_if = "Option::is_none")]
     pub main_tree_species: Option<TreeSpeciesType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemCountType {
+    #[serde(flatten)]
+    pub base: StemCountType,
 }
 

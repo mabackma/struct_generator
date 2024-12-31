@@ -1,16 +1,17 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct QualityAttachment {
-    #[serde(flatten)]
-    pub quality_attachment: QualityAttachmentType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Version {
     #[serde(flatten)]
     pub version: String10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QualityAttachment {
+    #[serde(flatten)]
+    pub quality_attachment: QualityAttachmentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

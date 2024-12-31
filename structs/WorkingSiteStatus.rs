@@ -1,17 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteStatus {
-    #[serde(flatten)]
-    pub working_site_status: WorkingSiteStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteNumber {
-    #[serde(flatten)]
-    pub working_site_number: WorkingSiteNumberType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteStatusType {

@@ -42,6 +42,8 @@ fn main() {
 
     fix_fields_with_colons(&mut structs);
 
+    remove_definitions_with_struct_names(&mut element_definitions, &structs);
+
     change_circular_field_types(&mut structs);
 
     structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "src/__structs_and_definitions.rs").unwrap();
@@ -275,6 +277,22 @@ fn change_circular_field_types(structs: &mut HashMap<String, XMLStruct>) {
             }
         }
     }
+}
+
+// Remove element definitions that have the same name as a struct
+fn remove_definitions_with_struct_names(
+    element_definitions: &mut HashMap<String, String>, 
+    structs: &HashMap<String, XMLStruct>
+) {
+    let mut new_definitions = element_definitions.clone();
+
+    for (key, value) in element_definitions.iter() {
+        if structs.contains_key(key) {
+            new_definitions.remove(key);
+        }
+    }
+
+    *element_definitions = new_definitions;
 }
 
 // Reads an XML file and returns its contents as a string

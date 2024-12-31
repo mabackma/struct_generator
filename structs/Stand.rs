@@ -1,11 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Stands {
-    #[serde(flatten)]
-    pub stands: StandsType1,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct SpecialFeature {
@@ -14,9 +9,15 @@ pub struct SpecialFeature {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Stand {
+pub struct StandBasicData {
     #[serde(flatten)]
-    pub stand: StandType1,
+    pub stand_basic_data: StandBasicDataWithGeometryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Stands {
+    #[serde(flatten)]
+    pub stands: StandsType1,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,21 +27,21 @@ pub struct SpecialFeatures {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandBasicData {
+pub struct Stand {
     #[serde(flatten)]
-    pub stand_basic_data: StandBasicDataWithGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<BasicFeature1Type>,
+    pub stand: StandType1,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StandsType1 {
     #[serde(rename = "Stand")]
     pub stand: Vec<StandType1>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<BasicFeature1Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

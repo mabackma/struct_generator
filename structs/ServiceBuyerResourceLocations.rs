@@ -1,11 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LocationTimestamp {
-    #[serde(flatten)]
-    pub location_timestamp: TimeStampType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ResourceLocation {
@@ -14,9 +9,9 @@ pub struct ResourceLocation {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceLocations {
+pub struct LocationTimestamp {
     #[serde(flatten)]
-    pub resource_locations: ResourceLocationsType,
+    pub location_timestamp: TimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -25,12 +20,10 @@ pub struct ServiceBuyerResourceLocations {
     pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerResourceLocationsType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "ResourceLocations", skip_serializing_if = "Option::is_none")]
-    pub resource_locations: Option<ResourceLocationsType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceLocations {
+    #[serde(flatten)]
+    pub resource_locations: ResourceLocationsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -51,5 +44,13 @@ pub struct ResourceLocationType {
     pub location: PointGeometryType,
     #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
     pub working_site_id: Option<ERPIdType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerResourceLocationsType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "ResourceLocations", skip_serializing_if = "Option::is_none")]
+    pub resource_locations: Option<ResourceLocationsType>,
 }
 

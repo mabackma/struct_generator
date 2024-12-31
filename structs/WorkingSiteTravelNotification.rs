@@ -1,41 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson1 {
-    #[serde(flatten)]
-    pub extra_person1: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Kilometers {
-    #[serde(flatten)]
-    pub kilometers: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson4 {
-    #[serde(flatten)]
-    pub extra_person4: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Route {
-    #[serde(flatten)]
-    pub route: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SittingMoneyKilometers {
-    #[serde(flatten)]
-    pub sitting_money_kilometers: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KilometersWithBreakHouse {
-    #[serde(flatten)]
-    pub kilometers_with_break_house: PositiveInteger4digitsType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ExtraPersonText {
@@ -50,27 +15,9 @@ pub struct TravelStartTime {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson3 {
+pub struct Vehicle {
     #[serde(flatten)]
-    pub extra_person3: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KilometersWithTrailer {
-    #[serde(flatten)]
-    pub kilometers_with_trailer: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson2 {
-    #[serde(flatten)]
-    pub extra_person2: PositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KilometersWithCaravan {
-    #[serde(flatten)]
-    pub kilometers_with_caravan: PositiveInteger4digitsType,
+    pub vehicle: VehicleType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -80,15 +27,69 @@ pub struct TravelEndTime {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Vehicle {
+pub struct ExtraPerson3 {
     #[serde(flatten)]
-    pub vehicle: VehicleType,
+    pub extra_person3: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Kilometers {
+    #[serde(flatten)]
+    pub kilometers: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KilometersWithTrailer {
+    #[serde(flatten)]
+    pub kilometers_with_trailer: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtraPerson4 {
+    #[serde(flatten)]
+    pub extra_person4: PositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteTravelNotification {
     #[serde(flatten)]
     pub working_site_travel_notification: WorkingSiteTravelNotificationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Route {
+    #[serde(flatten)]
+    pub route: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtraPerson1 {
+    #[serde(flatten)]
+    pub extra_person1: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtraPerson2 {
+    #[serde(flatten)]
+    pub extra_person2: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KilometersWithBreakHouse {
+    #[serde(flatten)]
+    pub kilometers_with_break_house: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SittingMoneyKilometers {
+    #[serde(flatten)]
+    pub sitting_money_kilometers: PositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KilometersWithCaravan {
+    #[serde(flatten)]
+    pub kilometers_with_caravan: PositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

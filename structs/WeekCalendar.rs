@@ -1,34 +1,11 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Day {
     #[serde(flatten)]
     pub day: DayType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Resources {
-    #[serde(flatten)]
-    pub resources: ResourcesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingHoursSunday {
-    #[serde(flatten)]
-    pub working_hours_sunday: PositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Days {
-    #[serde(flatten)]
-    pub days: DaysType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingHoursSaturday {
-    #[serde(flatten)]
-    pub working_hours_saturday: PositiveInteger2digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,15 +15,39 @@ pub struct WorkingHoursBusinessDay {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WeekCalendar {
+pub struct Days {
     #[serde(flatten)]
-    pub week_calendar: WeekCalendarType,
+    pub days: DaysType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct CalendarDay {
     #[serde(flatten)]
     pub calendar_day: DateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WeekCalendar {
+    #[serde(flatten)]
+    pub week_calendar: WeekCalendarType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Resources {
+    #[serde(flatten)]
+    pub resources: ResourcesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingHoursSaturday {
+    #[serde(flatten)]
+    pub working_hours_saturday: PositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingHoursSunday {
+    #[serde(flatten)]
+    pub working_hours_sunday: PositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -72,17 +73,9 @@ pub struct ResourceDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResourcesType {
-    #[serde(rename = "Resource")]
-    pub resource: Vec<ResourceDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DayType {
-    #[serde(rename = "CalendarDay")]
-    pub calendar_day: DateType,
-    #[serde(rename = "Hours")]
-    pub hours: PositiveInteger2digitsType,
+pub struct DaysType {
+    #[serde(rename = "Day", skip_serializing_if = "Option::is_none")]
+    pub day: Option<Vec<DayType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -94,8 +87,16 @@ pub struct WeekCalendarType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DaysType {
-    #[serde(rename = "Day", skip_serializing_if = "Option::is_none")]
-    pub day: Option<Vec<DayType>>,
+pub struct ResourcesType {
+    #[serde(rename = "Resource")]
+    pub resource: Vec<ResourceDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DayType {
+    #[serde(rename = "CalendarDay")]
+    pub calendar_day: DateType,
+    #[serde(rename = "Hours")]
+    pub hours: PositiveInteger2digitsType,
 }
 

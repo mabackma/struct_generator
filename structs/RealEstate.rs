@@ -1,17 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RealEstates {
-    #[serde(flatten)]
-    pub real_estates: BaseRealEstatesType2,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RealEstate {
-    #[serde(flatten)]
-    pub real_estate: RealEstateType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct RealEstateOwners {
@@ -29,6 +18,18 @@ pub struct BaseRealEstates {
 pub struct RealEstateOwner {
     #[serde(flatten)]
     pub real_estate_owner: ContactInformationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RealEstate {
+    #[serde(flatten)]
+    pub real_estate: RealEstateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RealEstates {
+    #[serde(flatten)]
+    pub real_estates: BaseRealEstatesType2,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

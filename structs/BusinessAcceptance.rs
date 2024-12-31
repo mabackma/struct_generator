@@ -1,5 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AdditionalInformationType {
@@ -8,15 +9,27 @@ pub struct AdditionalInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceIdType {
-    #[serde(rename = "business_acceptance_id_type.base")]
-    pub base: String,
+pub struct BusinessAcceptanceDateType {
+    #[serde(flatten)]
+    pub base: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceDateType {
+pub struct BusinessAcceptanceActorType {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub base: ContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessMessageTimeStampType {
+    #[serde(flatten)]
+    pub base: TimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageTypeType {
+    #[serde(flatten)]
+    pub base: MessageTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -44,20 +57,8 @@ pub struct BusinessAcceptanceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessMessageTimeStampType {
-    #[serde(flatten)]
-    pub base: CoTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceActorType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MessageTypeType {
-    #[serde(flatten)]
-    pub base: WtcoMessageTypeType,
+pub struct BusinessAcceptanceIdType {
+    #[serde(rename = "business_acceptance_id_type.base")]
+    pub base: String,
 }
 

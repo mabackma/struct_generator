@@ -1,5 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct FinancingType {
@@ -8,15 +9,27 @@ pub struct FinancingType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct PlanAndSubsidy {
+    #[serde(flatten)]
+    pub plan_and_subsidy: PlanAndSubsidyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct FinancingActApplication {
     #[serde(flatten)]
     pub financing_act_application: FinancingActApplicationType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PlanAndSubsidy {
-    #[serde(flatten)]
-    pub plan_and_subsidy: PlanAndSubsidyType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlanAndSubsidyType {
+    #[serde(rename = "FacFinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_application_stands: Option<FinancingActApplicationStands>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,17 +92,5 @@ pub struct PartOfProjectType {
     pub fac_financing_act_work_code: FinancingActWorkCode,
     #[serde(rename = "PlanAndSubsidy")]
     pub plan_and_subsidy: PlanAndSubsidyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlanAndSubsidyType {
-    #[serde(rename = "FacFinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_application_stands: Option<FinancingActApplicationStands>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
 }
 

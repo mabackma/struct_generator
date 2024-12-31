@@ -1,10 +1,17 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct StatusMessages {
     #[serde(flatten)]
     pub status_messages: StatusMessageLanguageType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusMessage {
+    #[serde(flatten)]
+    pub status_message: String1000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,15 +21,21 @@ pub struct Acknowledge {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OriginalMessageType {
-    #[serde(flatten)]
-    pub original_message_type: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ReplyTo {
     #[serde(flatten)]
     pub reply_to: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusCode {
+    #[serde(flatten)]
+    pub status_code: PositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OriginalMessageType {
+    #[serde(flatten)]
+    pub original_message_type: String50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,6 +59,6 @@ pub struct StatusMessageLanguageType {
     #[serde(rename = "StatusMessage")]
     pub status_message: String1000Type,
     #[serde(flatten)]
-    pub base: BdtString1000Type,
+    pub base: String1000Type,
 }
 

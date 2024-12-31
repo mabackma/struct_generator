@@ -1,5 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ForwardingEstimate {
@@ -11,22 +12,6 @@ pub struct ForwardingEstimate {
 pub struct Loads {
     #[serde(flatten)]
     pub loads: PositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardingEstimateType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
-    #[serde(rename = "StorageId")]
-    pub storage_id: ERPIdType,
-    #[serde(rename = "StartTime")]
-    pub start_time: TimeStampType,
-    #[serde(rename = "Assortments")]
-    pub assortments: AssortmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -45,6 +30,22 @@ pub struct AssortmentDataType {
     pub loads: PositiveInteger3digitsType,
     #[serde(rename = "Day")]
     pub day: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardingEstimateType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+    #[serde(rename = "StorageId")]
+    pub storage_id: ERPIdType,
+    #[serde(rename = "StartTime")]
+    pub start_time: TimeStampType,
+    #[serde(rename = "Assortments")]
+    pub assortments: AssortmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

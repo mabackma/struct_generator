@@ -1,5 +1,18 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Role {
+    #[serde(flatten)]
+    pub role: OrganizationRoleType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Organizations {
+    #[serde(flatten)]
+    pub organizations: OrganizationsType,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Organization {
@@ -20,27 +33,15 @@ pub struct Services {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Organizations {
-    #[serde(flatten)]
-    pub organizations: OrganizationsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Service {
     #[serde(flatten)]
     pub service: OrganizationServiceType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Role {
-    #[serde(flatten)]
-    pub role: OrganizationRoleType,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
-    #[serde(rename = "organization_service_type.base")]
-    pub base: String,
+pub struct ServicesType {
+    #[serde(rename = "Service")]
+    pub service: Vec<OrganizationServiceType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -50,9 +51,9 @@ pub struct OrganizationRoleType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServicesType {
-    #[serde(rename = "Service")]
-    pub service: Vec<OrganizationServiceType>,
+pub struct OrganizationServiceType {
+    #[serde(rename = "organization_service_type.base")]
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

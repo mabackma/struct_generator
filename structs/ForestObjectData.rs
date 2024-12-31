@@ -1,16 +1,11 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ForestObjectData {
     #[serde(flatten)]
     pub forest_object_data: ForestObjectDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Description {
-    #[serde(flatten)]
-    pub description: String2000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -1,28 +1,11 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SpecialPermission {
+pub struct DeclarationReference {
     #[serde(flatten)]
-    pub special_permission: SpecialPermissionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestUseDeclarationReference {
-    #[serde(flatten)]
-    pub forest_use_declaration_reference: ForestUseDeclarationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AdditionalText {
-    #[serde(flatten)]
-    pub additional_text: AdditionalTextType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestUseDeclarationReferences {
-    #[serde(flatten)]
-    pub forest_use_declaration_references: ForestUseDeclarationsType,
+    pub declaration_reference: DeclarationReferenceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,9 +21,51 @@ pub struct OriginalXmlFile {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationReference {
+pub struct SpecialPermission {
     #[serde(flatten)]
-    pub declaration_reference: DeclarationReferenceType,
+    pub special_permission: SpecialPermissionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestUseDeclarationReferences {
+    #[serde(flatten)]
+    pub forest_use_declaration_references: ForestUseDeclarationsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AdditionalText {
+    #[serde(flatten)]
+    pub additional_text: AdditionalTextType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalTextType {
+    #[serde(rename = "additional_text_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialPermissionType {
+    #[serde(flatten)]
+    pub base: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AcceptanceDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationReferenceType {
+    #[serde(rename = "declaration_reference_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationsType {
+    #[serde(rename = "ForestUseDeclarationReference")]
+    pub forest_use_declaration_reference: Vec<ForestUseDeclarationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -60,36 +85,6 @@ pub struct ForestUseDeclarationType {
     #[serde(rename = "AdditionalText", skip_serializing_if = "Option::is_none")]
     pub additional_text: Option<AdditionalTextType>,
     #[serde(rename = "OriginalXmlFile", skip_serializing_if = "Option::is_none")]
-    pub original_xml_file: Option<base64Binary>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialPermissionType {
-    #[serde(flatten)]
-    pub base: CoYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationReferenceType {
-    #[serde(rename = "declaration_reference_type.base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationsType {
-    #[serde(rename = "ForestUseDeclarationReference")]
-    pub forest_use_declaration_reference: Vec<ForestUseDeclarationType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AcceptanceDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalTextType {
-    #[serde(rename = "additional_text_type.base")]
-    pub base: String,
+    pub original_xml_file: Option<Vec<u8>>,
 }
 

@@ -1,56 +1,11 @@
 use crate::create_structs::XMLStruct;
-use crate::string_utils::{handle_prefix, to_snake_case};
+use crate::string_utils::{handle_prefix, to_snake_case, XSD_TO_RUST};
 
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, Read, Write};
-use phf::{Map, phf_map};
 use std::path::Path;
 use std::fs;
-
-static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
-    "boolean" => "bool",
-    "decimal" => "f64",
-    "float" => "f32",
-    "double" => "f64",
-    "integer" => "i32",
-    "positiveInteger" => "u32",
-    "nonPositiveInteger" => "i32",
-    "negativeInteger" => "i32",
-    "nonNegativeInteger" => "u32",
-    "byte" => "i8",
-    "short" => "i16",
-    "int" => "i32",
-    "long" => "i64",
-    "unsignedByte" => "u8",
-    "unsignedShort" => "u16",
-    "unsignedInt" => "u32",
-    "unsignedLong" => "u64",
-    "string" => "String",
-    "normalizedString" => "String",
-    "token" => "String",
-    "language" => "String",
-    "Name" => "String",
-    "NCName" => "String",
-    "ID" => "String",
-    "IDREF" => "String",
-    "ENTITY" => "String",
-    "anyURI" => "String",
-    "date" => "chrono::NaiveDate",
-    "time" => "chrono::NaiveTime",
-    "dateTime" => "chrono::NaiveDateTime",
-    "duration" => "std::time::Duration",
-    "gYear" => "chrono::NaiveDate",
-    "gMonth" => "chrono::NaiveDate",
-    "gDay" => "chrono::NaiveDate",
-    "gYearMonth" => "chrono::NaiveDate",
-    "gMonthDay" => "chrono::NaiveDate",
-    "dateTimeStamp" => "chrono::NaiveDateTime",
-    "base64Binary" => "Vec<u8>",
-    "hexBinary" => "Vec<u8>",
-    "anySimpleType" => "String",
-    "DateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
-};
 
 const RUST_TYPES: &[&str] = &[
     "bool", "f64", "f32", "i32", "u32", "i8", "i16", "i64", 
@@ -83,7 +38,8 @@ pub fn structs_and_definitions_to_file(
     let mut structs_string = String::new();
 
     structs_string.push_str("use serde::{Serialize, Deserialize};\n");
-    structs_string.push_str("use chrono::{NaiveDate, NaiveTime, NaiveDateTime};\n\n");
+    structs_string.push_str("use chrono;\n");
+    structs_string.push_str("use geo::{Point, Polygon, MultiPolygon};\n\n");
 
     // Add element definitions to the string
     structs_string.push_str(&generate_element_definitions(element_definitions, prefixes));
@@ -114,13 +70,10 @@ fn generate_element_definitions(
 
         let field_type = handle_prefix(typ, prefixes);
 
-        let typ = if let Some(ft) = XSD_TO_RUST.get(&field_type.replace("Xs", "")) {
-            ft.to_string()
-        } else {
-            field_type.to_string()
-        };
+        let typ = field_type.to_string();
 
         definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), typ));
+
         definitions_string.push_str("}\n\n");
     }
 
@@ -136,12 +89,13 @@ fn generate_structs(structs: &HashMap<String, XMLStruct>) -> String {
         structs_string.push_str(&format!("\npub struct {} {{\n", name));
 
         for field in xml_struct.fields.iter() {
-            // Get Rust primitive type from XSD type
-            let field_type = if let Some(field_type) = XSD_TO_RUST.get(&field.field_type.replace("Xs", "")) {
-                field_type.to_string()
+            let mut field_type = field.field_type.to_string();
+
+            field_type = if let Some(ft) = XSD_TO_RUST.get(&field_type.replace("Xs", "")) {
+                ft.to_string()
             } else {
-                field.field_type.to_string()
-            };
+                field_type.to_string()
+            }; 
 
             if field.name == "base" {
 
@@ -150,6 +104,7 @@ fn generate_structs(structs: &HashMap<String, XMLStruct>) -> String {
                 } else {
                     structs_string.push_str(&format!("    #[serde(rename = \"{}.{}\")]\n", to_snake_case(&name), field.name));
                 }
+
             } else if field.field_type.starts_with("Option<") {
                 structs_string.push_str(&format!("    #[serde(rename = \"{}\", skip_serializing_if = \"Option::is_none\")]\n", field.name));
             } else {

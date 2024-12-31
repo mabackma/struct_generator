@@ -1,17 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StubDiameter {
-    #[serde(flatten)]
-    pub stub_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeCount {
-    #[serde(flatten)]
-    pub tree_count: StemCountType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct WorkQuality {
@@ -26,9 +15,21 @@ pub struct Status5 {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DamageClass {
+pub struct TreeDiameter {
     #[serde(flatten)]
-    pub damage_class: VirtaDamageClassType,
+    pub tree_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StubDiameter {
+    #[serde(flatten)]
+    pub stub_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeCount {
+    #[serde(flatten)]
+    pub tree_count: StemCountType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,9 +39,15 @@ pub struct TreeHeight {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeDiameter {
+pub struct DamageClass {
     #[serde(flatten)]
-    pub tree_diameter: PositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub damage_class: VirtaDamageClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaDamageClassType {
+    #[serde(flatten)]
+    pub base: VirtaDamageClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -70,12 +77,6 @@ pub struct TreeType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaWorkQualityType {
     #[serde(flatten)]
-    pub base: CoVirtaWorkQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaDamageClassType {
-    #[serde(flatten)]
-    pub base: CoVirtaDamageClassType,
+    pub base: VirtaWorkQualityType,
 }
 

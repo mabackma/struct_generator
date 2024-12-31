@@ -1,11 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ObjectsRealizationData {
-    #[serde(flatten)]
-    pub objects_realization_data: ObjectsRealizationDataType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ObjectRealization {
@@ -13,10 +8,10 @@ pub struct ObjectRealization {
     pub object_realization: ObjectRealizationType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectsRealizationDataType {
-    #[serde(rename = "ObjectRealization")]
-    pub object_realization: Vec<ObjectRealizationType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ObjectsRealizationData {
+    #[serde(flatten)]
+    pub objects_realization_data: ObjectsRealizationDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -27,5 +22,11 @@ pub struct ObjectRealizationType {
     pub parent_id: String,
     #[serde(rename = "TsTreeStandDataDate")]
     pub ts_tree_stand_data_date: Vec<TreeStandDataDate>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectsRealizationDataType {
+    #[serde(rename = "ObjectRealization")]
+    pub object_realization: Vec<ObjectRealizationType>,
 }
 

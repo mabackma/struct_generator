@@ -1,52 +1,11 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErosionBlockingAction {
+pub struct TurningPlaceText {
     #[serde(flatten)]
-    pub erosion_blocking_action: WorkingQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WaterProtectionActionText {
-    #[serde(flatten)]
-    pub water_protection_action_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RoadStructureDrainageText {
-    #[serde(flatten)]
-    pub road_structure_drainage_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WaterProtectionAction {
-    #[serde(flatten)]
-    pub water_protection_action: WorkingQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LandScaping {
-    #[serde(flatten)]
-    pub land_scaping: WorkingQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RoadStructureShapeText {
-    #[serde(flatten)]
-    pub road_structure_shape_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PipeInstallationText {
-    #[serde(flatten)]
-    pub pipe_installation_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RoadStructureText {
-    #[serde(flatten)]
-    pub road_structure_text: String200Type,
+    pub turning_place_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -56,9 +15,9 @@ pub struct LandScapingText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PassingPlace {
+pub struct PassingPlaceText {
     #[serde(flatten)]
-    pub passing_place: WorkingQualityType,
+    pub passing_place_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -68,15 +27,39 @@ pub struct WorkingSiteFinalAuditRoadMaking {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FeedbackForPlanner {
+pub struct TurningPlace {
     #[serde(flatten)]
-    pub feedback_for_planner: WorkingQualityType,
+    pub turning_place: WorkingQualityType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FeedbackForPlannerText {
+pub struct PassingPlace {
     #[serde(flatten)]
-    pub feedback_for_planner_text: String200Type,
+    pub passing_place: WorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LandScaping {
+    #[serde(flatten)]
+    pub land_scaping: WorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ErosionBlockingAction {
+    #[serde(flatten)]
+    pub erosion_blocking_action: WorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RoadStructure {
+    #[serde(flatten)]
+    pub road_structure: WorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PipeInstallationText {
+    #[serde(flatten)]
+    pub pipe_installation_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -92,27 +75,45 @@ pub struct ErosionBlockingActionText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PassingPlaceText {
+pub struct RoadStructureDrainageText {
     #[serde(flatten)]
-    pub passing_place_text: String200Type,
+    pub road_structure_drainage_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RoadStructureShape {
+pub struct RoadStructureText {
     #[serde(flatten)]
-    pub road_structure_shape: WorkingQualityType,
+    pub road_structure_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TurningPlaceText {
+pub struct RoadStructureShapeText {
     #[serde(flatten)]
-    pub turning_place_text: String200Type,
+    pub road_structure_shape_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TurningPlace {
+pub struct WaterProtectionAction {
     #[serde(flatten)]
-    pub turning_place: WorkingQualityType,
+    pub water_protection_action: WorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeedbackForPlannerText {
+    #[serde(flatten)]
+    pub feedback_for_planner_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeedbackForPlanner {
+    #[serde(flatten)]
+    pub feedback_for_planner: WorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WaterProtectionActionText {
+    #[serde(flatten)]
+    pub water_protection_action_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -122,25 +123,9 @@ pub struct RoadStructureDrainage {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RoadStructure {
+pub struct RoadStructureShape {
     #[serde(flatten)]
-    pub road_structure: WorkingQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<FinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: FinalAuditerTypeType,
-    #[serde(rename = "FinalAuditerId")]
-    pub final_auditer_id: String20Type,
-    #[serde(rename = "FinalAuditerName")]
-    pub final_auditer_name: String50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: TimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: YesNoType,
+    pub road_structure_shape: WorkingQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -169,6 +154,22 @@ pub struct WorkingSiteFinalAuditRoadMakingType {
     pub images: PositiveInteger2digitsType,
     #[serde(rename = "Audits")]
     pub audits: AuditsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<FinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: FinalAuditerTypeType,
+    #[serde(rename = "FinalAuditerId")]
+    pub final_auditer_id: String20Type,
+    #[serde(rename = "FinalAuditerName")]
+    pub final_auditer_name: String50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: TimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

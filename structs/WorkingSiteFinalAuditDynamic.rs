@@ -1,5 +1,54 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditIdentifier {
+    #[serde(flatten)]
+    pub final_audit_identifier: String50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QuestionAnswerAdditionalText {
+    #[serde(flatten)]
+    pub question_answer_additional_text: String200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Attributes {
+    #[serde(flatten)]
+    pub attributes: AttributesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditName {
+    #[serde(flatten)]
+    pub final_audit_name: String100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AttributeValue {
+    #[serde(flatten)]
+    pub attribute_value: String100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditSpareTrees {
+    #[serde(flatten)]
+    pub final_audit_spare_trees: FinalAuditSpareTreesByCategoryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Question {
+    #[serde(flatten)]
+    pub question: AuditQuestionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Questions {
+    #[serde(flatten)]
+    pub questions: AuditsListType,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Attribute {
@@ -8,27 +57,15 @@ pub struct Attribute {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct QuestionAnswerAsText {
+pub struct QuestionAnswerText {
     #[serde(flatten)]
-    pub question_answer_as_text: String50Type,
+    pub question_answer_text: String50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Audition {
+pub struct QuestionAsText {
     #[serde(flatten)]
-    pub audition: AuditionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAuditIdentifierVersion {
-    #[serde(flatten)]
-    pub final_audit_identifier_version: String10Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAuditSpareTrees {
-    #[serde(flatten)]
-    pub final_audit_spare_trees: FinalAuditSpareTreesByCategoryType,
+    pub question_as_text: String200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -50,63 +87,67 @@ pub struct WorkingSiteFinalAuditDynamic {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Attributes {
-    #[serde(flatten)]
-    pub attributes: AttributesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct QuestionAnswerAdditionalText {
-    #[serde(flatten)]
-    pub question_answer_additional_text: String200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AttributeValue {
-    #[serde(flatten)]
-    pub attribute_value: String100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAuditName {
-    #[serde(flatten)]
-    pub final_audit_name: String100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAuditIdentifier {
-    #[serde(flatten)]
-    pub final_audit_identifier: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct QuestionAnswerText {
-    #[serde(flatten)]
-    pub question_answer_text: String50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct AttributeName {
     #[serde(flatten)]
     pub attribute_name: String100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct QuestionAsText {
+pub struct QuestionAnswerAsText {
     #[serde(flatten)]
-    pub question_as_text: String200Type,
+    pub question_answer_as_text: String50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Question {
+pub struct Audition {
     #[serde(flatten)]
+    pub audition: AuditionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditIdentifierVersion {
+    #[serde(flatten)]
+    pub final_audit_identifier_version: String10Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditsListType {
+    #[serde(rename = "Question")]
     pub question: AuditQuestionType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Questions {
-    #[serde(flatten)]
-    pub questions: AuditsListType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionResourcesType {
+    #[serde(rename = "AuditionResource", skip_serializing_if = "Option::is_none")]
+    pub audition_resource: Option<AuditionResourceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttributesType {
+    #[serde(rename = "Attribute")]
+    pub attribute: AttributeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionResourceType {
+    #[serde(rename = "ResourceType")]
+    pub resource_type: ResourceTypeType,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditSpareTreesByCategoryType {
+    #[serde(rename = "SpareTrees")]
+    pub spare_trees: Vec<FinalAuditSpareTreesType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttributeType {
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "Value")]
+    pub value: String100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -132,20 +173,6 @@ pub struct AuditionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionResourcesType {
-    #[serde(rename = "AuditionResource", skip_serializing_if = "Option::is_none")]
-    pub audition_resource: Option<AuditionResourceType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionResourceType {
-    #[serde(rename = "ResourceType")]
-    pub resource_type: ResourceTypeType,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AuditQuestionType {
     #[serde(rename = "QuestionId")]
     pub question_id: ERPIdType,
@@ -160,6 +187,14 @@ pub struct AuditQuestionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditDynamicType {
+    #[serde(flatten)]
+    pub base: WorkingSiteFinalAuditBaseDynamicType,
+    #[serde(rename = "FinalAuditSpareTrees", skip_serializing_if = "Option::is_none")]
+    pub final_audit_spare_trees: Option<FinalAuditSpareTreesByCategoryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteFinalAuditBaseDynamicType {
     #[serde(rename = "Attributes")]
     pub attributes: AttributesType,
@@ -169,39 +204,5 @@ pub struct WorkingSiteFinalAuditBaseDynamicType {
     pub audition_resources: Option<AuditionResourcesType>,
     #[serde(rename = "Questions")]
     pub questions: AuditsListType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttributeType {
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "Value")]
-    pub value: String100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditDynamicType {
-    #[serde(flatten)]
-    pub base: WorkingSiteFinalAuditBaseDynamicType,
-    #[serde(rename = "FinalAuditSpareTrees", skip_serializing_if = "Option::is_none")]
-    pub final_audit_spare_trees: Option<FinalAuditSpareTreesByCategoryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditSpareTreesByCategoryType {
-    #[serde(rename = "SpareTrees")]
-    pub spare_trees: Vec<FinalAuditSpareTreesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttributesType {
-    #[serde(rename = "Attribute")]
-    pub attribute: AttributeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditsListType {
-    #[serde(rename = "Question")]
-    pub question: AuditQuestionType,
 }
 

@@ -1,11 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ValidityDateBegin {
-    #[serde(flatten)]
-    pub validity_date_begin: DateType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ValidityDateEnd {
@@ -20,21 +15,9 @@ pub struct SubContractorsAllowed {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingAreas {
+pub struct CompanyMode {
     #[serde(flatten)]
-    pub working_areas: WorkingAreasType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasureDeviceCheckRequired {
-    #[serde(flatten)]
-    pub measure_device_check_required: YesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractInfo {
-    #[serde(flatten)]
-    pub contract_info: String1000Type,
+    pub company_mode: CompanyModeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,25 +27,33 @@ pub struct ContractCode {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ContractInfo {
+    #[serde(flatten)]
+    pub contract_info: String1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasureDeviceCheckRequired {
+    #[serde(flatten)]
+    pub measure_device_check_required: YesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingArea {
     #[serde(flatten)]
     pub working_area: WorkingAreaType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CompanyMode {
+pub struct WorkingAreas {
     #[serde(flatten)]
-    pub company_mode: CompanyModeType,
+    pub working_areas: WorkingAreasType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingAreaType {
-    #[serde(rename = "OperationalRegion")]
-    pub operational_region: String50Type,
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "Geometry")]
-    pub geometry: PolygonOrMultiPolygon2Type,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ValidityDateBegin {
+    #[serde(flatten)]
+    pub validity_date_begin: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -98,9 +89,19 @@ pub struct ContractType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingAreasType {
-    #[serde(rename = "WorkingArea", skip_serializing_if = "Option::is_none")]
-    pub working_area: Option<Vec<WorkingAreaType>>,
+pub struct WorkingAreaType {
+    #[serde(rename = "OperationalRegion")]
+    pub operational_region: String50Type,
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "Geometry")]
+    pub geometry: PolygonOrMultiPolygon2Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypesType {
+    #[serde(rename = "ServiceType")]
+    pub service_type: Vec<ServiceTypeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -110,14 +111,14 @@ pub struct WorkCodeGroupsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<Vec<WorkCodeType>>,
+pub struct WorkingAreasType {
+    #[serde(rename = "WorkingArea", skip_serializing_if = "Option::is_none")]
+    pub working_area: Option<Vec<WorkingAreaType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypesType {
-    #[serde(rename = "ServiceType")]
-    pub service_type: Vec<ServiceTypeType>,
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<Vec<WorkCodeType>>,
 }
 

@@ -1,10 +1,17 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ConsumptionUnit {
     #[serde(flatten)]
     pub consumption_unit: ConsumptionUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Consumption {
+    #[serde(flatten)]
+    pub consumption: ConsumptionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -19,16 +26,10 @@ pub struct Product {
     pub product: ProductType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Consumption {
-    #[serde(flatten)]
-    pub consumption: ConsumptionType,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
+pub struct OperationModeType {
     #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+    pub base: OperationModeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -38,23 +39,9 @@ pub struct ProductsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
+pub struct ConsumptionType {
     #[serde(flatten)]
-    pub base: CoOperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
-    #[serde(flatten)]
-    pub base: CoUnitPerHectareType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: PlannedResourceType,
+    pub base: Decimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,5 +76,19 @@ pub struct ProductType {
     pub planned_resource: Option<PlannedResourceType>,
     #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String1500Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: PlannedResourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionUnitType {
+    #[serde(flatten)]
+    pub base: UnitPerHectareType,
 }
 

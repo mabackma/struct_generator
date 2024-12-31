@@ -1,11 +1,6 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ResponsibleActor {
-    #[serde(flatten)]
-    pub responsible_actor: ResponsibleActorType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ActingDate {
@@ -13,16 +8,22 @@ pub struct ActingDate {
     pub acting_date: ActingDateType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationsType {
-    #[serde(rename = "Operation")]
-    pub operation: Vec<OperationDefType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResponsibleActor {
+    #[serde(flatten)]
+    pub responsible_actor: ResponsibleActorType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ResponsibleActorType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
+    pub base: ContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationsType {
+    #[serde(rename = "Operation")]
+    pub operation: Vec<OperationDefType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,14 +47,14 @@ pub struct OperationDefType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ActingDateType {
+pub struct MainTypeType {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub base: MainTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MainTypeType {
+pub struct ActingDateType {
     #[serde(flatten)]
-    pub base: CoMainTypeType,
+    pub base: DateType,
 }
 

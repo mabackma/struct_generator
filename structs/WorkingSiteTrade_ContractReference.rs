@@ -1,22 +1,11 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteText {
+pub struct ContractWorkingSites {
     #[serde(flatten)]
-    pub working_site_text: String1500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractText {
-    #[serde(flatten)]
-    pub contract_text: String1500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Contract {
-    #[serde(flatten)]
-    pub contract: ContractType,
+    pub contract_working_sites: ContractWorkingSitesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,15 +15,15 @@ pub struct ContractWorkingSiteDetails {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractId {
+pub struct ContractText {
     #[serde(flatten)]
-    pub contract_id: ContractIdType,
+    pub contract_text: String1500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractWorkingSites {
+pub struct ContractBeginningDate {
     #[serde(flatten)]
-    pub contract_working_sites: ContractWorkingSitesType,
+    pub contract_beginning_date: ContractBeginningDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,21 +33,9 @@ pub struct ContractEndingDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractBeginningDate {
+pub struct Contract {
     #[serde(flatten)]
-    pub contract_beginning_date: ContractBeginningDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractIdType {
-    #[serde(rename = "contract_id_type.base")]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractBeginningDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
+    pub contract: ContractType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -86,6 +63,30 @@ pub struct ContractType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ContractEndingDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractWorkingSitesType {
+    #[serde(rename = "ContractWorkingSiteDetails")]
+    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractIdType {
+    #[serde(rename = "contract_id_type.base")]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractBeginningDateType {
+    #[serde(flatten)]
+    pub base: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ContractWorkingSiteDetailsType {
     #[serde(rename = "@parentId")]
     pub parent_id: String,
@@ -97,17 +98,5 @@ pub struct ContractWorkingSiteDetailsType {
     pub working_site_text: Option<String1500Type>,
     #[serde(rename = "AsAssortmentClasses")]
     pub as_assortment_classes: AssortmentClasses,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractEndingDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSitesType {
-    #[serde(rename = "ContractWorkingSiteDetails")]
-    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
 }
 

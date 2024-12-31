@@ -1,5 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Type {
+    #[serde(flatten)]
+    pub r#type: i32,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct TreeIdentifiers {
@@ -8,9 +15,9 @@ pub struct TreeIdentifiers {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeIdentifier {
+pub struct TreeNumber {
     #[serde(flatten)]
-    pub tree_identifier: TreeIdentifierType,
+    pub tree_number: i32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,9 +27,15 @@ pub struct TreeListItem {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeNumber {
+pub struct TreeSpecies {
     #[serde(flatten)]
-    pub tree_number: i32,
+    pub tree_species: TreeSpeciesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeIdentifier {
+    #[serde(flatten)]
+    pub tree_identifier: TreeIdentifierType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -37,18 +50,12 @@ pub struct Value {
     pub value: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Type {
-    #[serde(flatten)]
-    pub r#type: i32,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TreeListItemType {
     #[serde(rename = "@id")]
     pub id: String,
     #[serde(rename = "TreeNumber", skip_serializing_if = "Option::is_none")]
-    pub tree_number: Option<integer>,
+    pub tree_number: Option<i32>,
     #[serde(rename = "TreeSpecies", skip_serializing_if = "Option::is_none")]
     pub tree_species: Option<TreeSpeciesType>,
     #[serde(rename = "TreeClass", skip_serializing_if = "Option::is_none")]
@@ -76,16 +83,16 @@ pub struct TreeListItemType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifiersType {
-    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
-    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeIdentifierType {
     #[serde(rename = "Type")]
     pub r#type: i32,
     #[serde(rename = "Value")]
     pub value: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifiersType {
+    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
+    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
 }
 

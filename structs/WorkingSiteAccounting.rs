@@ -1,16 +1,11 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardedVolumeAccounted {
+pub struct ForwardedVolume {
     #[serde(flatten)]
-    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestedVolumeAccounted {
-    #[serde(flatten)]
-    pub harvested_volume_accounted: Decimal3FractionDigitsType,
+    pub forwarded_volume: Decimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,27 +15,15 @@ pub struct PlannedVolume {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AmountNotified {
-    #[serde(flatten)]
-    pub amount_notified: Decimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct AccountingDate {
     #[serde(flatten)]
     pub accounting_date: TimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardedVolume {
+pub struct AmountNotified {
     #[serde(flatten)]
-    pub forwarded_volume: Decimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestedVolume {
-    #[serde(flatten)]
-    pub harvested_volume: Decimal3FractionDigitsType,
+    pub amount_notified: Decimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -62,6 +45,18 @@ pub struct FinalAccounting {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct HarvestedVolume {
+    #[serde(flatten)]
+    pub harvested_volume: Decimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForwardedVolumeAccounted {
+    #[serde(flatten)]
+    pub forwarded_volume_accounted: Decimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteAccounting {
     #[serde(flatten)]
     pub working_site_accounting: WorkingSiteAccountingType,
@@ -73,16 +68,10 @@ pub struct ContarctorId {
     pub contarctor_id: String20Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeDataType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HarvestedVolumeAccounted {
+    #[serde(flatten)]
+    pub harvested_volume_accounted: Decimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -110,6 +99,12 @@ pub struct AssortmentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteAccountingType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -127,6 +122,12 @@ pub struct WorkingSiteAccountingType {
     pub assortments: Option<AssortmentsType>,
     #[serde(rename = "WorkCodes", skip_serializing_if = "Option::is_none")]
     pub work_codes: Option<WorkCodesType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

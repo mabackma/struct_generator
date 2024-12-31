@@ -1,5 +1,5 @@
 use crate::element_utils::{element_name, element_reference, element_type, extension_type, parse_type, reference_type};
-use crate::string_utils::{handle_prefix, slice_contents};
+use crate::string_utils::{handle_prefix, slice_contents, XSD_TO_RUST};
 
 use std::collections::HashMap;
 use quick_xml::events::BytesStart;
@@ -139,6 +139,12 @@ pub fn add_element_definition(
                 t = t.split(':').collect::<Vec<&str>>()[1].to_string();
             } 
             
+            t = if let Some(ft) = XSD_TO_RUST.get(&t.replace("Xs", "")) {
+                ft.to_string()
+            } else {
+                t.to_string()
+            }; 
+            
             element_definitions.insert(n, t);
         } else {
             if let Some(_) = slice_contents(content, "element",&n) {
@@ -156,8 +162,20 @@ pub fn add_element_definition(
 
                 stack.push(new_struct.clone());
 
+                let mut t = n.clone();
+
+                if t.contains(':') {
+                    t = t.split(':').collect::<Vec<&str>>()[1].to_string();
+                } 
+
+                t = if let Some(ft) = XSD_TO_RUST.get(&t.replace("Xs", "")) {
+                    ft.to_string()
+                } else {
+                    t.to_string()
+                }; 
+
                 // Create element definition using the name of the element and "Type"
-                element_definitions.insert(n.clone() + "Type", n);
+                element_definitions.insert(n.clone() + "Type", t);
             } else {
                 //println!("No type for element: {}", n);
             }
@@ -300,7 +318,12 @@ fn add_extension_fields(
         let mut field_type = "".to_string();
 
         if let Some(typ) = extension_type(e) {
-            field_type = handle_prefix(&typ, prefixes);
+            if typ.contains(':') {
+                field_type = typ.split(':').collect::<Vec<&str>>()[1].to_string();
+            } else {
+                field_type = typ;
+            }
+            //field_type = handle_prefix(&typ, prefixes);
         }
 
         // Add the field to the parent struct

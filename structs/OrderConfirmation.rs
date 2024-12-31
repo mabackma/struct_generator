@@ -1,16 +1,17 @@
 use serde::{Serialize, Deserialize};
-use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OrderStatus {
-    #[serde(flatten)]
-    pub order_status: OrderStatusType,
-}
+use chrono;
+use geo::{Point, Polygon, MultiPolygon};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct OrderConfirmation {
     #[serde(flatten)]
     pub order_confirmation: OrderConfirmationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OrderStatus {
+    #[serde(flatten)]
+    pub order_status: OrderStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
