@@ -1,3 +1,12 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContactRequestsType {
+    #[serde(flatten)]
+    pub contact_requests_type: ContactRequests,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ContactRequests {
     #[serde(rename = "@schemaPackageVersion")]
@@ -6,7 +15,7 @@ pub struct ContactRequests {
     pub schema_package_subversion: ForestDataStandardSchemaPackageSubversionType,
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: DateType,
-    #[serde(rename = "CrContactRequest")]
+    #[serde(rename = "ContactRequest")]
     pub cr_contact_request: Vec<ContactRequest>,
 }
 

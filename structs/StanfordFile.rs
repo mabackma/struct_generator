@@ -1,6 +1,14 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StanfordFile {
+    #[serde(flatten)]
+    pub stanford_file: StanfordFileType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FileTypeType {
-    #[serde(flatten)]
     pub base: String,
 }
 

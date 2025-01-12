@@ -1,6 +1,55 @@
 use std::collections::HashMap;
+use phf::{Map, phf_map};
 
-pub fn handle_prefix(name: &str, prefixes: &mut HashMap<String, String>) -> String {
+pub static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
+    "boolean" => "bool",
+    "decimal" => "f64",
+    "float" => "f32",
+    "double" => "f64",
+    "integer" => "i32",
+    "positiveInteger" => "u32",
+    "nonPositiveInteger" => "i32",
+    "negativeInteger" => "i32",
+    "nonNegativeInteger" => "u32",
+    "byte" => "i8",
+    "short" => "i16",
+    "int" => "i32",
+    "long" => "i64",
+    "unsignedByte" => "u8",
+    "unsignedShort" => "u16",
+    "unsignedInt" => "u32",
+    "unsignedLong" => "u64",
+    "string" => "String",
+    "normalizedString" => "String",
+    "token" => "String",
+    "language" => "String",
+    "Name" => "String",
+    "NCName" => "String",
+    "ID" => "String",
+    "IDREF" => "String",
+    "ENTITY" => "String",
+    "anyURI" => "String",
+    "date" => "chrono::NaiveDate",
+    "time" => "chrono::NaiveTime",
+    "dateTime" => "chrono::NaiveDateTime",
+    "duration" => "std::time::Duration",
+    "gYear" => "chrono::NaiveDate",
+    "gMonth" => "chrono::NaiveDate",
+    "gDay" => "chrono::NaiveDate",
+    "gYearMonth" => "chrono::NaiveDate",
+    "gMonthDay" => "chrono::NaiveDate",
+    "dateTimeStamp" => "chrono::NaiveDateTime",
+    "base64Binary" => "Vec<u8>",
+    "hexBinary" => "Vec<u8>",
+    "anySimpleType" => "String",
+    "DateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
+};
+
+pub fn handle_prefix(
+    name: &str, 
+    prefixes: &mut HashMap<String, String>
+) -> String {
+
     let parts = name.split(':').collect::<Vec<&str>>();
     let prefix = parts[0];
 
@@ -16,6 +65,18 @@ pub fn handle_prefix(name: &str, prefixes: &mut HashMap<String, String>) -> Stri
     name.to_string()
 }
 
+pub fn remove_prefix(
+    name: &str,
+    prefixes: &mut HashMap<String, String>
+) -> String {
+
+    if let Some(prefix) = prefixes.get(name) {
+        return name[prefix.len()..].to_string();
+    }
+
+    name.to_string()
+}
+
 pub fn capitalize_first(name: &str) -> String {
     let mut chars = name.chars();
     match chars.next() {
@@ -25,6 +86,7 @@ pub fn capitalize_first(name: &str) -> String {
 }
 
 pub fn to_snake_case(name: &str) -> String {
+
     // Handle the case where the name is "type"
     if name == "Type" || name == "@type" {
         return "r#type".to_string();
@@ -60,7 +122,11 @@ pub fn to_snake_case(name: &str) -> String {
     snake_case
 }
 
-pub fn slice_contents(content: &str, tag: &str, name: &str) -> Option<String> {
+pub fn slice_contents(
+    content: &str, 
+    tag: &str, 
+    name: &str
+) -> Option<String> {
     
     // Find the start and end positions of the element
     let start_tag = format!("<xs:{} name=\"{}\">", tag, name);

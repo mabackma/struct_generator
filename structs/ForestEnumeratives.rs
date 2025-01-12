@@ -1,1494 +1,1248 @@
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaAdvertisementDatingType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MachineManufacturerType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionGeometryObjectType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementPlaceType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ExtraTreeSpeciesType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaMastoInspectionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InventoryMethodType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatLocationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaGroundManipulationMethodType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActFinancingType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ImageSubCategoryType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompactSoilTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaYesNoType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HarvestingAccessibilityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PriorityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActWorkCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingRealizationPracticeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AcceptanceType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NotDefinedType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsingRightResponsibleType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementCertificateAssortmentRowType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureRestrictionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NotKnownType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DrainageStateType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectProtectionOperationCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingRestrictionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeUnitType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DistanceUnitType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSuggestionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaInspectionTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AmountUnitType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ClientApplicationIdType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestUseDeclarationResponsibleType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreUnitType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HarvestAccessibilityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeQualifierType2 {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DegreeDaysAreaType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ChangeStateType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreviousBlockStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ThinningDistrictType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDataStandardSchemaPackageSubversionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CostTypeNumberType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SmallWoodRemovalClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferBusinessSenderRoleType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DevelopmentClassExtensionsType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSumTableAreaType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EvaluationCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreWorkCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingExtraQualifierType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PersonResourceType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaAdvertiserType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CollectingMethodType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ActionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyModeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDamageQualifierType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageLandOwnerType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPhaseType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuantityUnitType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlUseCaseType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClassCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TransportAccessibilityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SeedlingOriginType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpareTreeCategoryType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DevelopmentClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UnitPerHectareType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PeripheralCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinancingActWorkGroupType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OtherPublicSubstituteType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ElectronicNotificationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProposalTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubGroupType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationDevelopmentClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatOperationsType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlReferenceTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditAnswerType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaInspectionMethodType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementMethodType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ExtraStemTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeDensityClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialUnitType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EmptyStringType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationOtherOperationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPlantEvaluationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsQuantityUnitType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MachineCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CleanlinessClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandDataMomentType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaProjectStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationNatureManagementSpecifierType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisValueType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleAssortmentType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreclearingEvaluationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementCertificateTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroupType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OwnerShipTypeCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WideUnitType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentGroupType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VATStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CurrencyType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BearingCapacityClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsPurchaseModeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingPurposeType {
-    #[serde(flatten)]
-    pub base: String,
-}
+use serde::{Serialize, Deserialize};
+use chrono::*;
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
+pub struct MoneyTransactionTypeType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ImageCategoryType {
-    #[serde(flatten)]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AccessibilityType {
-    #[serde(flatten)]
+pub struct AcceptanceType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceNameofAPIType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaLawType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RegenerationCommitmentType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TurningPointClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaStandQualityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethodType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RestrictionBasedOnStoninessType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaCultivationMaterialType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeatureIdentifierExtensionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InspectionMethodType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FSCCertificationSystemSubTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesConciseType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GradeCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreferredContactingMethodType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentMainGroupType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QualitySystemType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaEvaluationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingDirectingType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VehicleType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeQualifierType4 {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaReviewType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestOwnerGroupType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TypeOfForestObjectType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DatePrecipionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationRegenerationOperationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDepotAccessibilityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeQualifierType5 {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaRegenerationType {
-    #[serde(flatten)]
+pub struct ObjectProtectionOperationCodeType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ISO3166char2CountryType {
-    #[serde(flatten)]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatTypeType {
-    #[serde(flatten)]
+pub struct DiameterClassType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlanningOperationStatusType {
-    #[serde(flatten)]
+pub struct VirtaEvaluationType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaExceptionalPermitForHandlingType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InfoProviderRoleType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTargetSelectionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditerTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LanguageCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotInformationTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FinalAuditQuestionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CommonOperationExtraQualifierType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationSystemType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlacementType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FertilityClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSaveIncompleteType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SellerResponsible {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HarvestingStemTypeType {
-    #[serde(flatten)]
+pub struct ControlUseCaseType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SellerGroupType {
-    #[serde(flatten)]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeQualifierType3 {
-    #[serde(flatten)]
+pub struct OwnerShipTypeCodeType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaRootRotControlEvaluationType {
-    #[serde(flatten)]
+pub struct VATStatusType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StorageDryingClassType {
-    #[serde(flatten)]
+pub struct VirtaRegenerationType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OtherHabitatCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PublicityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethodTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTargetPartStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreMessageReferenceType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DifficultyClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EvaluationSubjectType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MoneyTransactionCategoryType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifierTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandQualityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingQualityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaDamageClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatisticsOperationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LanguageType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UserRoleType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SceneryWorkPermissionNeededType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaApprovalType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeQualifierType1 {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ISO639char2LanguageType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ReportedStatisticsOperationTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaCuttingByMachineType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDataStandardSchemaPackageVersionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringUseCaseType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatSurvivingType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PEFCCertificationSystemSubTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationSoilPreparationOperationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreDataMessageType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct YesNoType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingWeightType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RemovalClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTotalEstimationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MachineAccessoryCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PointLocationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainGroupType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaReasonType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ReplyCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrderStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHarvestingClassificationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct YesNoNotNeededType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlanningStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaWorkQualityType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DryingClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialCodeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ActorTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationUrgencyType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHarvestingSeasonType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaseModeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TargetSelectionType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TerrainClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureExtraQualifierType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OtherRestrictionsType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreWorkCodeGroupType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurerTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestDataUpdateUseCaseType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroupType2 {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HeightClassType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatAdvertisementType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlDataOperationStatusType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreventionSubstanceType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MoneyTransactionTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MachineTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypeType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MessageTypeType {
-    #[serde(flatten)]
+pub struct CuttingExtraQualifierType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodeType {
-    #[serde(flatten)]
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ExtraMainGroupType {
-    #[serde(flatten)]
+pub struct VirtaGroundManipulationMethodType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MessageType {
-    #[serde(flatten)]
+pub struct DeclarationRegenerationOperationType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationStateType {
-    #[serde(flatten)]
+pub struct ChangeStateType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditerTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTargetPartStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaInspectionMethodType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingQualityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsingRightResponsibleType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreDataMessageType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferBusinessSenderRoleType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeQualifierType3 {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HarvestingAccessibilityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WideUnitType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UnitPerHectareType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeStandDataMomentType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationUrgencyType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ActionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OtherRestrictionsType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaSuggestionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PublicityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BearingCapacityClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReportedStatisticsOperationTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaCultivationMaterialType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureExtraQualifierType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDamageQualifierType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatisticsOperationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CleanlinessClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreWorkCodeGroupType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActWorkCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeQualifierType4 {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaYesNoType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TerrainClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaMastoInspectionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActWorkGroupType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatisticsQuantityUnitType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingWeightType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesConciseType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingDirectingType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MachineAccessoryCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaApprovalType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestActAreaType {
-    #[serde(flatten)]
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementMethodType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MachineCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoreyType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestUseDeclarationResponsibleType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaLawType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandQualityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeUnitType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MachineTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PurchaseModeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuantityUnitType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ElectronicNotificationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringUseCaseType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatAdvertisementType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompanyTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTotalEstimationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MachineManufacturerType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreMessageReferenceType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeadTreeTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaCuttingByMachineType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpareTreeCategoryType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MoneyTransactionCategoryType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ExtraStemTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DrainageStateType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RestrictionBasedOnStoninessType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDataUpdateUseCaseType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RegenerationCommitmentType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompanyModeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CostTypeNumberType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EvaluationCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeGroupType2 {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DocumentClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ExtraMainGroupType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingRealizationPracticeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NotDefinedType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CommonOperationExtraQualifierType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InventoryMethodType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InspectionMethodType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HeightClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceNameofAPIType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitePlanningOperationStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeeBasisValueType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurerTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaSaveIncompleteType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreUnitType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlReferenceTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HarvestingStemTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DifficultyClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SeedlingOriginType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaProjectStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaRootRotControlEvaluationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OtherHabitatCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DistanceUnitType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementPlaceType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DegreeDaysAreaType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeQualifierType5 {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PointLocationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationDevelopmentClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OtherPublicSubstituteType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatisticsPurchaseModeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatLocationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DecisionTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentMainGroupType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatOperationsType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationSoilPreparationOperationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainGroupType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ActorTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlacementType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SoilTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SellerResponsible {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationNatureManagementSpecifierType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HarvestAccessibilityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TypeOfForestObjectType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaSumTableAreaType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaWorkQualityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FSCCertificationSystemSubTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EmptyStringType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ISO639char2LanguageType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AmountUnitType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetSelectionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditQuestionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PersonResourceType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHarvestingClassificationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CollectingMethodType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeDensityClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProposalTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaReviewType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DecisionGeometryObjectType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingRestrictionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DryingClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GradeCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PeripheralCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageLandOwnerType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationOtherOperationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationStateType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaReasonType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WoodLotInformationTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeGroupType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VehicleType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreWorkCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaDamageClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementCertificateTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct YesNoType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialUnitType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RemovalClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaAdvertiserType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UserRoleType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinancingActFinancingType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitePlanningStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeQualifierType2 {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ClientApplicationIdType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LanguageCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureRestrictionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentClassCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestOwnerGroupType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementCertificateAssortmentRowType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreferredContactingMethodType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RestrictionTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTargetSelectionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LanguageType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDepotAccessibilityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatSurvivingType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaExceptionalPermitForHandlingType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaStandQualityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaInspectionTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompactSoilTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CertificationSystemType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageDryingClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPlantEvaluationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SmallWoodRemovalClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DevelopmentClassExtensionsType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsedPricingMethodType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeatureIdentifierExtensionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrderStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InfoProviderRoleType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHarvestingSeasonType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaAdvertisementDatingType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ThinningDistrictType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FertilityClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ImageSubCategoryType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IdentifierTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QualitySystemType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccessibilityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CurrencyType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EvaluationSubjectType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ExtraTreeSpeciesType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreclearingEvaluationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DevelopmentClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ScaleAssortmentType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlDataOperationStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPhaseType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PEFCCertificationSystemSubTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UsedPricingMethodTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TransportAccessibilityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentGroupType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SceneryWorkPermissionNeededType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct YesNoNotNeededType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingPurposeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FinalAuditAnswerType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NotKnownType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeQualifierType1 {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDataStandardSchemaPackageVersionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestDataStandardSchemaPackageSubversionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreventionSubstanceType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubGroupType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreviousBlockStatusType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DatePrecipionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TurningPointClassType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PriorityType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReplyCodeType {
     pub base: String,
 }
 

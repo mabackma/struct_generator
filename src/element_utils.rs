@@ -1,8 +1,8 @@
+use crate::string_utils::{handle_prefix, XSD_TO_RUST};
+
 use std::collections::HashMap;
 use quick_xml::events::BytesStart;
 use quick_xml::name::QName;
-
-use crate::string_utils::handle_prefix;
 
 // Retrieve the element reference
 pub fn element_reference(e: &BytesStart<'_>) -> Option<String> {
@@ -18,7 +18,7 @@ pub fn element_name(e: &BytesStart<'_>) -> Option<String> {
     let e_name = e.attributes().filter_map(|a| a.ok())
         .find(|a| a.key == QName(b"name")) 
         .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the name attribute value as a string
-    
+
     e_name
 }
 
@@ -41,7 +41,11 @@ pub fn extension_type(e: &BytesStart<'_>) -> Option<String> {
 }
 
 // Retrieve the type of the reference
-pub fn reference_type(ref_name: &str, element_definitions: &HashMap<String, String>, prefixes: &mut HashMap<String, String>) -> Option<String> {
+pub fn reference_type(
+    ref_name: &str, element_definitions: &HashMap<String, String>, 
+    prefixes: &mut HashMap<String, String>
+) -> Option<String> {
+
     let complete_name = handle_prefix(ref_name, prefixes);
 
     // Search for the reference type in the element definitions
@@ -60,7 +64,16 @@ pub fn reference_type(ref_name: &str, element_definitions: &HashMap<String, Stri
 
 
 // Check if the type is a vector or optional
-pub fn parse_type(e: &BytesStart<'_>, field_type: &mut String) {
+pub fn parse_type(
+    e: &BytesStart<'_>, 
+    field_type: &mut String
+) {
+    *field_type = if let Some(ft) = XSD_TO_RUST.get(&field_type.replace("Xs", "")) {
+        ft.to_string()
+    } else {
+        field_type.to_string()
+    }; 
+
     if is_element_vec(e) {
         if is_element_optional(e) {
             *field_type = format!("Option<Vec<{}>>", field_type);

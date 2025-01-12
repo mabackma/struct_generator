@@ -1,31 +1,10 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct BusinessMessageTimeStampType {
     #[serde(flatten)]
     pub base: CoTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceIdType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalInformationType {
-    #[serde(flatten)]
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MessageTypeType {
-    #[serde(flatten)]
-    pub base: WtcoMessageTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -36,7 +15,7 @@ pub struct BusinessAcceptanceType {
     pub parent_id: String,
     #[serde(rename = "@parentVersionNo")]
     pub parent_version_no: String,
-    #[serde(rename = "CoTimeStamp")]
+    #[serde(rename = "TimeStamp")]
     pub co_time_stamp: TimeStamp,
     #[serde(rename = "BusinessMessageTimeStamp")]
     pub business_message_time_stamp: BusinessMessageTimeStampType,
@@ -53,8 +32,30 @@ pub struct BusinessAcceptanceType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct MessageTypeType {
+    #[serde(flatten)]
+    pub base: WtcoMessageTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalInformationType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct BusinessAcceptanceActorType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceIdType {
+    pub base: String,
 }
 

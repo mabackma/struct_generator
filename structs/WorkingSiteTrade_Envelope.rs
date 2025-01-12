@@ -1,3 +1,12 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteTradeEnvelope {
+    #[serde(flatten)]
+    pub working_site_trade_envelope: WorkingSiteTradeEnvelopeType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteTradeEnvelopeType {
     #[serde(flatten)]
@@ -8,31 +17,31 @@ pub struct WorkingSiteTradeEnvelopeType {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteTradeMessageType {
-    #[serde(rename = "CfoCallForOffer")]
+    #[serde(rename = "CallForOffer")]
     pub cfo_call_for_offer: CallForOffer,
-    #[serde(rename = "CfowsCFOWorkingSite")]
+    #[serde(rename = "CFOWorkingSite")]
     pub cfows_c_f_o_working_site: CFOWorkingSite,
-    #[serde(rename = "BaBusinessAcceptance")]
+    #[serde(rename = "BusinessAcceptance")]
     pub ba_business_acceptance: BusinessAcceptance,
-    #[serde(rename = "WppPayment")]
+    #[serde(rename = "Payment")]
     pub wpp_payment: Payment,
-    #[serde(rename = "WpmcMeasurementCertificate")]
+    #[serde(rename = "MeasurementCertificate")]
     pub wpmc_measurement_certificate: MeasurementCertificate,
-    #[serde(rename = "FudrForestUseDeclarationReferences")]
+    #[serde(rename = "ForestUseDeclarationReferences")]
     pub fudr_forest_use_declaration_references: ForestUseDeclarationReferences,
-    #[serde(rename = "WstcrContract")]
+    #[serde(rename = "Contract")]
     pub wstcr_contract: Contract,
-    #[serde(rename = "WstoOffer")]
+    #[serde(rename = "Offer")]
     pub wsto_offer: Offer,
-    #[serde(rename = "OwsOWorkingSite")]
+    #[serde(rename = "OWorkingSite")]
     pub ows_o_working_site: OWorkingSite,
-    #[serde(rename = "OsuOperations")]
+    #[serde(rename = "Operations")]
     pub osu_operations: Operations,
-    #[serde(rename = "CrContactRequest")]
+    #[serde(rename = "ContactRequest")]
     pub cr_contact_request: ContactRequest,
-    #[serde(rename = "MsMapSymbol")]
+    #[serde(rename = "MapSymbol")]
     pub ms_map_symbol: MapSymbol,
-    #[serde(rename = "AckAcknowledge")]
+    #[serde(rename = "Acknowledge")]
     pub ack_acknowledge: Acknowledge,
 }
 

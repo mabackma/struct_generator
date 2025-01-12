@@ -1,13 +1,16 @@
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ActingDateType {
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ActingDate {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub acting_date: ActingDateType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResponsibleActorType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResponsibleActor {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
+    pub responsible_actor: ResponsibleActorType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -23,6 +26,12 @@ pub struct MainTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ActingDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationDefType {
     #[serde(rename = "@parentId")]
     pub parent_id: String,
@@ -30,7 +39,7 @@ pub struct OperationDefType {
     pub id: String,
     #[serde(rename = "@mainType")]
     pub main_type: MainTypeType,
-    #[serde(rename = "CoTimeStamp")]
+    #[serde(rename = "TimeStamp")]
     pub co_time_stamp: TimeStamp,
     #[serde(rename = "OperationType")]
     pub operation_type: OperationTypeType,
@@ -40,5 +49,11 @@ pub struct OperationDefType {
     pub acting_date: ActingDateType,
     #[serde(rename = "ResponsibleActor", skip_serializing_if = "Option::is_none")]
     pub responsible_actor: Option<ResponsibleActorType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResponsibleActorType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
 }
 
