@@ -2,39 +2,27 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerArea {
-    #[serde(flatten)]
-    pub service_buyer_area: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CodeGroup {
-    #[serde(flatten)]
-    pub code_group: BdtAssortmentGroupType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OperationalRegion {
-    #[serde(flatten)]
-    pub operational_region: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BeginDate {
-    #[serde(flatten)]
-    pub begin_date: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct HarvestingOrder {
     #[serde(flatten)]
     pub harvesting_order: HarvestingOrderType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Data {
+pub struct Attachment {
     #[serde(flatten)]
-    pub data: XshexBinary,
+    pub attachment: AttachmentDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentId {
+    #[serde(flatten)]
+    pub assortment_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Unit {
+    #[serde(flatten)]
+    pub unit: BdtWorkCodeUnitType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,15 +32,63 @@ pub struct Attachments {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Attachment {
+pub struct Code {
     #[serde(flatten)]
-    pub attachment: AttachmentDataType,
+    pub code: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceBuyerArea {
+    #[serde(flatten)]
+    pub service_buyer_area: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BeginDate {
+    #[serde(flatten)]
+    pub begin_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OrderId {
+    #[serde(flatten)]
+    pub order_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OperationalRegion {
+    #[serde(flatten)]
+    pub operational_region: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Data {
+    #[serde(flatten)]
+    pub data: XshexBinary,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CodeGroup {
+    #[serde(flatten)]
+    pub code_group: BdtAssortmentGroupType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
+pub struct HarvestingOrderType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "ServiceBuyerArea")]
+    pub service_buyer_area: String20Type,
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: String20Type,
+    #[serde(rename = "OperationalRegion", skip_serializing_if = "Option::is_none")]
+    pub operational_region: Option<String50Type>,
+    #[serde(rename = "OrderId")]
+    pub order_id: String20Type,
+    #[serde(rename = "Assortments")]
+    pub assortments: AssortmentsType,
+    #[serde(rename = "Attachments", skip_serializing_if = "Option::is_none")]
+    pub attachments: Option<AttachmentsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -86,28 +122,16 @@ pub struct AssortmentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AttachmentDataType {
     #[serde(rename = "Name")]
     pub name: String100Type,
     #[serde(rename = "Data")]
     pub data: Vec<u8>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HarvestingOrderType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "ServiceBuyerArea")]
-    pub service_buyer_area: String20Type,
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: String20Type,
-    #[serde(rename = "OperationalRegion", skip_serializing_if = "Option::is_none")]
-    pub operational_region: Option<String50Type>,
-    #[serde(rename = "OrderId")]
-    pub order_id: String20Type,
-    #[serde(rename = "Assortments")]
-    pub assortments: AssortmentsType,
-    #[serde(rename = "Attachments", skip_serializing_if = "Option::is_none")]
-    pub attachments: Option<AttachmentsType>,
 }
 

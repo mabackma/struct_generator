@@ -2,12 +2,6 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingActApplication {
-    #[serde(flatten)]
-    pub financing_act_application: FinancingActApplicationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PlanAndSubsidy {
     #[serde(flatten)]
     pub plan_and_subsidy: PlanAndSubsidyType,
@@ -19,22 +13,10 @@ pub struct FinancingType {
     pub financing_type: CoFinancingActFinancingType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartOfProjectType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "AreaNo")]
-    pub fac_area_no: AreaNo,
-    #[serde(rename = "FinancingActWorkCode")]
-    pub fac_financing_act_work_code: FinancingActWorkCode,
-    #[serde(rename = "PlanAndSubsidy")]
-    pub plan_and_subsidy: PlanAndSubsidyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlanAndSubsidyType {
-    #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_application_stands: Option<FinancingActApplicationStands>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingActApplication {
+    #[serde(flatten)]
+    pub financing_act_application: FinancingActApplicationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -91,5 +73,23 @@ pub struct FinancingActApplicationType {
     pub parts_of_project: PartsOfProjectType,
     #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
     pub fac_documents: Option<Documents>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlanAndSubsidyType {
+    #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_application_stands: Option<FinancingActApplicationStands>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartOfProjectType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "AreaNo")]
+    pub fac_area_no: AreaNo,
+    #[serde(rename = "FinancingActWorkCode")]
+    pub fac_financing_act_work_code: FinancingActWorkCode,
+    #[serde(rename = "PlanAndSubsidy")]
+    pub plan_and_subsidy: PlanAndSubsidyType,
 }
 

@@ -2,15 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessages {
+pub struct KeyElementId {
     #[serde(flatten)]
-    pub error_messages: ErrorMessagesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreReply {
-    #[serde(flatten)]
-    pub forest_centre_reply: ForestCentreReplyType,
+    pub key_element_id: CoIdStringNotEmptyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,21 +14,9 @@ pub struct ErrorMessage {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementNS {
+pub struct ErrorMessages {
     #[serde(flatten)]
-    pub key_element_n_s: CoString500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReplyCode {
-    #[serde(flatten)]
-    pub reply_code: CoReplyCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementName {
-    #[serde(flatten)]
-    pub key_element_name: CoString200Type,
+    pub error_messages: ErrorMessagesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -50,21 +32,21 @@ pub struct ErrorCode {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RegistrationId {
+pub struct ReplyCode {
     #[serde(flatten)]
-    pub registration_id: CoReferenceType,
+    pub reply_code: CoReplyCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementId {
+pub struct ForestCentreReply {
     #[serde(flatten)]
-    pub key_element_id: CoIdStringNotEmptyType,
+    pub forest_centre_reply: ForestCentreReplyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyInfoAsText {
+pub struct ReferenceType {
     #[serde(flatten)]
-    pub key_info_as_text: CoString2000Type,
+    pub reference_type: CoForestCentreMessageReferenceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -74,27 +56,33 @@ pub struct MessageType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Acceptance {
+pub struct KeyInfoAsText {
     #[serde(flatten)]
-    pub acceptance: CoAcceptanceType,
+    pub key_info_as_text: CoString2000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ReferenceType {
+pub struct RegistrationId {
     #[serde(flatten)]
-    pub reference_type: CoForestCentreMessageReferenceType,
+    pub registration_id: CoReferenceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KeyElementName {
+    #[serde(flatten)]
+    pub key_element_name: CoString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KeyElementNS {
+    #[serde(flatten)]
+    pub key_element_n_s: CoString500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ErrorMessagesType {
     #[serde(rename = "ErrorMessageData")]
     pub error_message_data: Vec<ErrorMessageDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EstateOwnerType {
-    #[serde(rename = "NameAndOrganizationGroup")]
-    pub ci_name_and_organization_group: Vec<NameAndOrganizationGroup>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -123,6 +111,12 @@ pub struct ForestCentreReplyType {
     pub error_messages: Option<ErrorMessagesType>,
     #[serde(rename = "AdditionalInfo", skip_serializing_if = "Option::is_none")]
     pub additional_info: Option<CoString1000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EstateOwnerType {
+    #[serde(rename = "NameAndOrganizationGroup")]
+    pub ci_name_and_organization_group: Vec<NameAndOrganizationGroup>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

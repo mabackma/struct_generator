@@ -2,15 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestRealizationData {
+pub struct GeometryObject {
     #[serde(flatten)]
-    pub forest_realization_data: ForestRealizationDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ParentObjectId {
-    #[serde(flatten)]
-    pub parent_object_id: CoIdStringNotEmptyType,
+    pub geometry_object: GeometryObjectType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,15 +14,15 @@ pub struct ParentObjectType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct GeometryObject {
-    #[serde(flatten)]
-    pub geometry_object: GeometryObjectType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct GeometryObjects {
     #[serde(flatten)]
     pub geometry_objects: GeometryObjectsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ParentObjectId {
+    #[serde(flatten)]
+    pub parent_object_id: CoIdStringNotEmptyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,20 +32,21 @@ pub struct ParentObject {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ForestRealizationData {
+    #[serde(flatten)]
+    pub forest_realization_data: ForestRealizationDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ParentObjects {
     #[serde(flatten)]
     pub parent_objects: ParentObjectsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectTypeType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectsType {
-    #[serde(rename = "ParentObject")]
-    pub parent_object: Vec<ParentObjectType>,
+pub struct GeometryObjectsType {
+    #[serde(rename = "GeometryObject")]
+    pub geometry_object: Vec<GeometryObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,9 +84,9 @@ pub struct ObjectGeometryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryObjectsType {
-    #[serde(rename = "GeometryObject")]
-    pub geometry_object: Vec<GeometryObjectType>,
+pub struct ParentObjectsType {
+    #[serde(rename = "ParentObject")]
+    pub parent_object: Vec<ParentObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -114,5 +109,10 @@ pub struct ParentObjectType {
     pub parent_object_type: ObjectTypeType,
     #[serde(rename = "ParentObjectId")]
     pub parent_object_id: CoIdStringNotEmptyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectTypeType {
+    pub base: String,
 }
 

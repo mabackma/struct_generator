@@ -146,3 +146,13 @@ pub fn slice_contents(
 
     None
 }
+
+pub fn remove_colon_from_string(s: &str) -> String {
+    let parts = s.split(':').collect::<Vec<&str>>();
+    
+    if &capitalize_first(parts[0]) == parts[1] {
+        parts[1].to_string()
+    } else {
+        s.replace(":", "")
+    }
+}

@@ -1,6 +1,6 @@
 use struct_generator::create_structs::{create_structs, XMLStruct};
 use struct_generator::file_utils::{read_xsd_file, structs_and_definitions_to_file};
-use struct_generator::string_utils::capitalize_first;
+use struct_generator::string_utils::{capitalize_first, remove_colon_from_string};
 
 use std::collections::{HashMap, HashSet};
 use std::fs;
@@ -31,7 +31,7 @@ fn main() {
         total_element_count += counts.1;
     }
     
-    modify_struct_keys(&mut structs, prefixes);
+    prefixes_to_struct_keys(&mut structs, prefixes);
 
     fix_fields_with_colons(&mut structs);
 
@@ -48,6 +48,7 @@ fn main() {
     println!("Actual number of element definitions: {}", element_definitions.len());
 
     println!("Prefix count: {}", prefixes.len());
+    
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -63,7 +64,7 @@ fn main() {
 }
 
 // Modify the keys of the structs to include the prefixes
-fn modify_struct_keys(
+fn prefixes_to_struct_keys(
     structs: &mut HashMap<String, XMLStruct>, 
     prefixes: &mut HashMap<String, String>
 ) {
@@ -86,19 +87,42 @@ fn modify_struct_keys(
     *structs = new_structs;
 }
 
+// Remove colons from field names and field types
 fn fix_fields_with_colons(structs: &mut HashMap<String, XMLStruct>) {
     for (_, value) in structs.iter_mut() {
         for field in value.fields.iter_mut() {
             if field.name.contains(':') {
-                field.name = field.name.replace(":", "_");
+                field.name = capitalize_first(&remove_colon_from_string(&field.name));
             }
+
             if field.field_type.contains(":") {
-                field.field_type = field.field_type.replace(":", "_");
+                if field.field_type.contains("Option<Vec<") {
+                    field.field_type = field.field_type.replace("Option<Vec<", "");
+                    field.field_type = field.field_type.replace(">>", "");
+
+                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
+                    field.field_type = format!("Option<Vec<{}>>", field.field_type);
+
+                } else if field.field_type.contains("Vec<") {
+                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
+                    field.field_type = field.field_type.replace(">", "");
+
+                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
+                    field.field_type = format!("Vec<{}>", field.field_type);
+
+                } else if field.field_type.contains("Option<") {
+                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
+                    field.field_type = field.field_type.replace(">", "");
+
+                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
+                    field.field_type = format!("Option<{}>", field.field_type);
+                }
             }
         }
     }
 }
 
+// Create a map of file dependencies
 fn create_file_dependencies(
     folder_path: &str, 
     file_dependencies: &mut HashMap<String, HashSet<String>>

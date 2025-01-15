@@ -2,15 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractWorkingSiteDetails {
+pub struct ContractWorkingSites {
     #[serde(flatten)]
-    pub contract_working_site_details: ContractWorkingSiteDetailsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractBeginningDate {
-    #[serde(flatten)]
-    pub contract_beginning_date: ContractBeginningDateType,
+    pub contract_working_sites: ContractWorkingSitesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,9 +14,9 @@ pub struct Contract {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractId {
+pub struct ContractBeginningDate {
     #[serde(flatten)]
-    pub contract_id: ContractIdType,
+    pub contract_beginning_date: ContractBeginningDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,9 +26,9 @@ pub struct ContractText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractWorkingSites {
+pub struct ContractWorkingSiteDetails {
     #[serde(flatten)]
-    pub contract_working_sites: ContractWorkingSitesType,
+    pub contract_working_site_details: ContractWorkingSiteDetailsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,12 +38,7 @@ pub struct ContractEndingDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractIdType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractBeginningDateType {
+pub struct ContractEndingDateType {
     #[serde(flatten)]
     pub base: CoDateType,
 }
@@ -79,9 +68,14 @@ pub struct ContractType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ContractEndingDateType {
+pub struct ContractBeginningDateType {
     #[serde(flatten)]
     pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractIdType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -7,12 +7,6 @@ pub struct ForestObjectData {
     pub forest_object_data: ForestObjectDataType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Description {
-    #[serde(flatten)]
-    pub description: CoString2000Type,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestObjectDataType {
     #[serde(rename = "@id")]

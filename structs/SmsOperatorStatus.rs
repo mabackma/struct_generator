@@ -2,27 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SmsOperatorStatus {
+    #[serde(flatten)]
+    pub sms_operator_status: SmsOperatorStatusType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OriginalMessage {
     #[serde(flatten)]
     pub original_message: BdtString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StatusTimestamp {
-    #[serde(flatten)]
-    pub status_timestamp: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct NotificationType {
-    #[serde(flatten)]
-    pub notification_type: NotificationTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RecipientType {
-    #[serde(flatten)]
-    pub recipient_type: RecipientTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,19 +20,31 @@ pub struct SenderUserId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct RecipientType {
+    #[serde(flatten)]
+    pub recipient_type: RecipientTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusTimestamp {
+    #[serde(flatten)]
+    pub status_timestamp: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SendTimestamp {
     #[serde(flatten)]
     pub send_timestamp: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SmsOperatorStatus {
+pub struct NotificationType {
     #[serde(flatten)]
-    pub sms_operator_status: SmsOperatorStatusType,
+    pub notification_type: NotificationTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatusCodeType {
+pub struct RecipientTypeType {
     pub base: String,
 }
 
@@ -82,7 +82,7 @@ pub struct NotificationTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RecipientTypeType {
+pub struct StatusCodeType {
     pub base: String,
 }
 

@@ -2,75 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SubCategory {
-    #[serde(flatten)]
-    pub sub_category: BdtImageSubCategoryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MapSymbolId {
-    #[serde(flatten)]
-    pub map_symbol_id: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Image {
-    #[serde(flatten)]
-    pub image: ImageType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Filename {
-    #[serde(flatten)]
-    pub filename: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Bytes {
     #[serde(flatten)]
     pub bytes: Xsbase64Binary,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SamplePlotNumber {
+pub struct SubCategory {
     #[serde(flatten)]
-    pub sample_plot_number: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct InsertedMapSymbolId {
-    #[serde(flatten)]
-    pub inserted_map_symbol_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MapSymbolType {
-    #[serde(flatten)]
-    pub map_symbol_type: BdtFeatureCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerId {
-    #[serde(flatten)]
-    pub service_buyer_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Photographer {
-    #[serde(flatten)]
-    pub photographer: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Category {
-    #[serde(flatten)]
-    pub category: BdtImageCategoryType,
+    pub sub_category: BdtImageSubCategoryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -80,9 +20,27 @@ pub struct Position {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandId {
+pub struct Category {
     #[serde(flatten)]
-    pub stand_id: BdtString20Type,
+    pub category: BdtImageCategoryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Filename {
+    #[serde(flatten)]
+    pub filename: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Photographer {
+    #[serde(flatten)]
+    pub photographer: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MapSymbolType {
+    #[serde(flatten)]
+    pub map_symbol_type: BdtFeatureCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -92,35 +50,23 @@ pub struct ImageDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ImageType {
+pub struct SelfMonitoringImageType {
     #[serde(flatten)]
     pub base: ImageBaseType,
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "StandId", skip_serializing_if = "Option::is_none")]
-    pub stand_id: Option<String20Type>,
-    #[serde(rename = "ServiceType")]
-    pub service_type: ServiceTypeType,
-    #[serde(rename = "Category")]
-    pub category: ImageCategoryType,
+    #[serde(rename = "ServiceType", skip_serializing_if = "Option::is_none")]
+    pub service_type: Option<ServiceTypeType>,
+    #[serde(rename = "Category", skip_serializing_if = "Option::is_none")]
+    pub category: Option<ImageCategoryType>,
     #[serde(rename = "SubCategory", skip_serializing_if = "Option::is_none")]
     pub sub_category: Option<ImageSubCategoryType>,
     #[serde(rename = "MapSymbolType", skip_serializing_if = "Option::is_none")]
     pub map_symbol_type: Option<FeatureCodeType>,
-    #[serde(rename = "MapSymbolId", skip_serializing_if = "Option::is_none")]
-    pub map_symbol_id: Option<ERPIdType>,
-    #[serde(rename = "InsertedMapSymbolId", skip_serializing_if = "Option::is_none")]
-    pub inserted_map_symbol_id: Option<String20Type>,
-    #[serde(rename = "Position")]
-    pub position: PointGeometryType,
-    #[serde(rename = "InfoText")]
-    pub info_text: String200Type,
-    #[serde(rename = "Photographer")]
-    pub photographer: String50Type,
-    #[serde(rename = "SamplePlotNumber", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_number: Option<PositiveInteger3digitsType>,
+    #[serde(rename = "Position", skip_serializing_if = "Option::is_none")]
+    pub position: Option<PointGeometryType>,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<String200Type>,
+    #[serde(rename = "Photographer", skip_serializing_if = "Option::is_none")]
+    pub photographer: Option<String50Type>,
     #[serde(rename = "ImageDate")]
     pub image_date: TimeStampType,
     #[serde(rename = "Filename")]
@@ -166,23 +112,35 @@ pub struct ImageBaseType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringImageType {
+pub struct ImageType {
     #[serde(flatten)]
     pub base: ImageBaseType,
-    #[serde(rename = "ServiceType", skip_serializing_if = "Option::is_none")]
-    pub service_type: Option<ServiceTypeType>,
-    #[serde(rename = "Category", skip_serializing_if = "Option::is_none")]
-    pub category: Option<ImageCategoryType>,
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "StandId", skip_serializing_if = "Option::is_none")]
+    pub stand_id: Option<String20Type>,
+    #[serde(rename = "ServiceType")]
+    pub service_type: ServiceTypeType,
+    #[serde(rename = "Category")]
+    pub category: ImageCategoryType,
     #[serde(rename = "SubCategory", skip_serializing_if = "Option::is_none")]
     pub sub_category: Option<ImageSubCategoryType>,
     #[serde(rename = "MapSymbolType", skip_serializing_if = "Option::is_none")]
     pub map_symbol_type: Option<FeatureCodeType>,
-    #[serde(rename = "Position", skip_serializing_if = "Option::is_none")]
-    pub position: Option<PointGeometryType>,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<String200Type>,
-    #[serde(rename = "Photographer", skip_serializing_if = "Option::is_none")]
-    pub photographer: Option<String50Type>,
+    #[serde(rename = "MapSymbolId", skip_serializing_if = "Option::is_none")]
+    pub map_symbol_id: Option<ERPIdType>,
+    #[serde(rename = "InsertedMapSymbolId", skip_serializing_if = "Option::is_none")]
+    pub inserted_map_symbol_id: Option<String20Type>,
+    #[serde(rename = "Position")]
+    pub position: PointGeometryType,
+    #[serde(rename = "InfoText")]
+    pub info_text: String200Type,
+    #[serde(rename = "Photographer")]
+    pub photographer: String50Type,
+    #[serde(rename = "SamplePlotNumber", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_number: Option<PositiveInteger3digitsType>,
     #[serde(rename = "ImageDate")]
     pub image_date: TimeStampType,
     #[serde(rename = "Filename")]
