@@ -1,3 +1,24 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Version {
+    #[serde(flatten)]
+    pub version: BdtString10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ModificationDate {
+    #[serde(flatten)]
+    pub modification_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QualityAttachment {
+    #[serde(flatten)]
+    pub quality_attachment: QualityAttachmentType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct QualityAttachmentType {
     #[serde(rename = "ServiceBuyerId")]

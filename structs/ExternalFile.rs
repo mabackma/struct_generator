@@ -1,3 +1,24 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExternalFile {
+    #[serde(flatten)]
+    pub external_file: ExternalFileType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Label {
+    #[serde(flatten)]
+    pub label: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FileFormat {
+    #[serde(flatten)]
+    pub file_format: BdtString5Type,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ExternalFileType {
     #[serde(rename = "ServiceBuyerId")]

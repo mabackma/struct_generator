@@ -1,3 +1,60 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferExpirationDate {
+    #[serde(flatten)]
+    pub offer_expiration_date: OfferExpirationDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferDate {
+    #[serde(flatten)]
+    pub offer_date: OfferDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TechnicalContactPerson {
+    #[serde(flatten)]
+    pub technical_contact_person: TechnicalContactPersonType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferText {
+    #[serde(flatten)]
+    pub offer_text: OfferTextType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferBusinessSender {
+    #[serde(flatten)]
+    pub offer_business_sender: OfferBusinessSenderType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWoodTradeInfo {
+    #[serde(flatten)]
+    pub call_for_offer_wood_trade_info: WtcoCallForOfferWoodTradeInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Offer {
+    #[serde(flatten)]
+    pub offer: OfferType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferBusinessSender {
+    #[serde(flatten)]
+    pub call_for_offer_business_sender: WtcoCallForOfferBusinessSenderType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferText {
+    #[serde(flatten)]
+    pub call_for_offer_text: WtcoCallForOfferTextType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OfferTextType {
     #[serde(flatten)]
@@ -5,7 +62,19 @@ pub struct OfferTextType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OfferBusinessSenderType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TechnicalContactPersonType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
 }
@@ -17,12 +86,6 @@ pub struct OfferDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OfferType {
     #[serde(rename = "@callForOfferId")]
     pub call_for_offer_id: String,
@@ -30,7 +93,7 @@ pub struct OfferType {
     pub id: String,
     #[serde(rename = "@versionNo")]
     pub version_no: i32,
-    #[serde(rename = "CoTimeStamp")]
+    #[serde(rename = "TimeStamp")]
     pub co_time_stamp: TimeStamp,
     #[serde(rename = "OfferBusinessSender")]
     pub offer_business_sender: OfferBusinessSenderType,
@@ -46,17 +109,11 @@ pub struct OfferType {
     pub offer_text: Option<OfferTextType>,
     #[serde(rename = "CallForOfferText", skip_serializing_if = "Option::is_none")]
     pub call_for_offer_text: Option<WtcoCallForOfferTextType>,
-    #[serde(rename = "WsOfferWorkingSites")]
+    #[serde(rename = "OfferWorkingSites")]
     pub ws_offer_working_sites: OfferWorkingSites,
-    #[serde(rename = "WtcoDocuments", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
     pub wtco_documents: Option<Documents>,
     #[serde(rename = "CallForOfferWoodTradeInfo", skip_serializing_if = "Option::is_none")]
     pub call_for_offer_wood_trade_info: Option<WtcoCallForOfferWoodTradeInfoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
 }
 

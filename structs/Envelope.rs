@@ -1,9 +1,10 @@
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvelopeType {
-    #[serde(rename = "Header")]
-    pub header: HeaderType,
-    #[serde(rename = "Message")]
-    pub message: PayloadType,
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Envelope {
+    #[serde(flatten)]
+    pub envelope: EnvelopeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -28,7 +29,7 @@ pub struct PayloadType {
     pub map_symbol: MapSymbolType,
     #[serde(rename = "OrderConfirmation")]
     pub order_confirmation: OrderConfirmationType,
-    #[serde(rename = "ProductInstructionProductInstruction")]
+    #[serde(rename = "ProductInstruction")]
     pub product_instruction_product_instruction: ProductInstruction,
     #[serde(rename = "QualityAttachment")]
     pub quality_attachment: QualityAttachmentType,
@@ -110,5 +111,13 @@ pub struct PayloadType {
     pub working_site_work_load: WorkingSiteWorkLoadType,
     #[serde(rename = "WorkingSiteWorkTime")]
     pub working_site_work_time: WorkingSiteWorkTimeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EnvelopeType {
+    #[serde(rename = "Header")]
+    pub header: HeaderType,
+    #[serde(rename = "Message")]
+    pub message: PayloadType,
 }
 

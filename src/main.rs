@@ -1,6 +1,6 @@
 use struct_generator::create_structs::{create_structs, XMLStruct};
-use struct_generator::file_utils::{element_definitions_to_file, read_xsd_file, structs_to_file};
-use struct_generator::string_utils::capitalize_first;
+use struct_generator::file_utils::{read_xsd_file, structs_and_definitions_to_file};
+use struct_generator::string_utils::{capitalize_first, remove_colon_from_string};
 
 use std::collections::{HashMap, HashSet};
 use std::fs;
@@ -31,14 +31,15 @@ fn main() {
         total_element_count += counts.1;
     }
     
-    modify_struct_keys(&mut structs, prefixes);
+    prefixes_to_struct_keys(&mut structs, prefixes);
 
     fix_fields_with_colons(&mut structs);
 
     change_circular_field_types(&mut structs);
 
-    structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
-    element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
+    //structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
+    //element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
+    structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "src/__structs_and_definitions.rs").unwrap();
 
 
     println!("Total number of structs: {}", total_struct_count);
@@ -47,6 +48,7 @@ fn main() {
     println!("Actual number of element definitions: {}", element_definitions.len());
 
     println!("Prefix count: {}", prefixes.len());
+    
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -62,7 +64,10 @@ fn main() {
 }
 
 // Modify the keys of the structs to include the prefixes
-fn modify_struct_keys(structs: &mut HashMap<String, XMLStruct>, prefixes: &mut HashMap<String, String>) {
+fn prefixes_to_struct_keys(
+    structs: &mut HashMap<String, XMLStruct>, 
+    prefixes: &mut HashMap<String, String>
+) {
     let mut new_structs = HashMap::new();
 
     for prefix in prefixes.iter() {
@@ -82,20 +87,46 @@ fn modify_struct_keys(structs: &mut HashMap<String, XMLStruct>, prefixes: &mut H
     *structs = new_structs;
 }
 
+// Remove colons from field names and field types
 fn fix_fields_with_colons(structs: &mut HashMap<String, XMLStruct>) {
     for (_, value) in structs.iter_mut() {
         for field in value.fields.iter_mut() {
             if field.name.contains(':') {
-                field.name = field.name.replace(":", "_");
+                field.name = capitalize_first(&remove_colon_from_string(&field.name));
             }
+
             if field.field_type.contains(":") {
-                field.field_type = field.field_type.replace(":", "_");
+                if field.field_type.contains("Option<Vec<") {
+                    field.field_type = field.field_type.replace("Option<Vec<", "");
+                    field.field_type = field.field_type.replace(">>", "");
+
+                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
+                    field.field_type = format!("Option<Vec<{}>>", field.field_type);
+
+                } else if field.field_type.contains("Vec<") {
+                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
+                    field.field_type = field.field_type.replace(">", "");
+
+                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
+                    field.field_type = format!("Vec<{}>", field.field_type);
+
+                } else if field.field_type.contains("Option<") {
+                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
+                    field.field_type = field.field_type.replace(">", "");
+
+                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
+                    field.field_type = format!("Option<{}>", field.field_type);
+                }
             }
         }
     }
 }
 
-fn create_file_dependencies(folder_path: &str, file_dependencies: &mut HashMap<String, HashSet<String>>) {
+// Create a map of file dependencies
+fn create_file_dependencies(
+    folder_path: &str, 
+    file_dependencies: &mut HashMap<String, HashSet<String>>
+) {
 
     // Iterate over the files in the folder
     for entry in fs::read_dir(folder_path).unwrap() {
@@ -170,6 +201,7 @@ fn topological_sort(
     visited: &mut HashSet<String>,
     temp_stack: &mut HashSet<String>,
 ) {
+
     if temp_stack.contains(file_name) {
         panic!("Cycle detected! Files cannot be processed due to circular imports: {}", file_name);
     }
@@ -190,14 +222,18 @@ fn topological_sort(
 }
 
 // Creates the structs and element definitions and writes them to files in the `structs` folder
-fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>, element_definitions: &mut HashMap<String, String>, prefixes: &mut HashMap<String, String>) -> (usize, usize) {
+fn process_xsd_file(
+    current_file: &str, 
+    structs: &mut HashMap<String, XMLStruct>, 
+    element_definitions: &mut HashMap<String, String>, 
+    prefixes: &mut HashMap<String, String>
+) -> (usize, usize) {
+
     let mut new_structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut new_element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
     let mut file_name = current_file.split("/").collect::<Vec<&str>>().last().unwrap().to_string();
     file_name = "./structs/".to_string() + &file_name.replace(".xsd", ".rs");
-    
-    let elements_file_name = "./structs/_ed_".to_string() + &file_name.replace("./structs/", "");
 
     let content = read_xsd_file(current_file).unwrap();
     let mut reader = Reader::from_str(&content);
@@ -225,16 +261,11 @@ fn process_xsd_file(current_file: &str, structs: &mut HashMap<String, XMLStruct>
     }
 
     // Write the new structs to a file
-    if new_structs.len() > 0 {
-        structs_to_file(&new_structs, &file_name).unwrap();
+    if new_structs.len() > 0 || new_element_definitions.len() > 0 {
+        structs_and_definitions_to_file(&new_structs, &new_element_definitions, prefixes, &file_name).unwrap();
     }
 
     structs.extend(new_structs.clone());
-
-    // Write the new element definitions to a file
-    if new_element_definitions.len() > 0 {
-        element_definitions_to_file(&new_element_definitions, &elements_file_name, prefixes).unwrap();
-    }
 
     (new_structs.len(), new_element_definitions.len())
 }

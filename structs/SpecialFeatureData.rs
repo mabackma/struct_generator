@@ -1,3 +1,12 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SpecialFeatureData {
+    #[serde(flatten)]
+    pub special_feature_data: SpecialFeatureDataType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SpecialFeaturesType {
     #[serde(rename = "SpecialFeature")]

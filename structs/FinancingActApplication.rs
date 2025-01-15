@@ -1,3 +1,24 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PlanAndSubsidy {
+    #[serde(flatten)]
+    pub plan_and_subsidy: PlanAndSubsidyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingType {
+    #[serde(flatten)]
+    pub financing_type: CoFinancingActFinancingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingActApplication {
+    #[serde(flatten)]
+    pub financing_act_application: FinancingActApplicationType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PartsOfProjectType {
     #[serde(rename = "PartOfProject")]
@@ -8,55 +29,55 @@ pub struct PartsOfProjectType {
 pub struct FinancingActApplicationType {
     #[serde(rename = "@id")]
     pub id: String,
-    #[serde(rename = "FacUpdatePreviousMessage")]
+    #[serde(rename = "UpdatePreviousMessage")]
     pub fac_update_previous_message: UpdatePreviousMessage,
-    #[serde(rename = "FacFinancingActApplicationReference")]
+    #[serde(rename = "FinancingActApplicationReference")]
     pub fac_financing_act_application_reference: FinancingActApplicationReference,
-    #[serde(rename = "FacFinancingActNumber", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "FinancingActNumber", skip_serializing_if = "Option::is_none")]
     pub fac_financing_act_number: Option<FinancingActNumber>,
-    #[serde(rename = "FacCustomerReference", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "CustomerReference", skip_serializing_if = "Option::is_none")]
     pub fac_customer_reference: Option<CustomerReference>,
     #[serde(rename = "OtherPublicSubstitute")]
     pub other_public_substitute: CoOtherPublicSubstituteType,
-    #[serde(rename = "FacFinancingActApplicationTextInformation", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "FinancingActApplicationTextInformation", skip_serializing_if = "Option::is_none")]
     pub fac_financing_act_application_text_information: Option<FinancingActApplicationTextInformation>,
-    #[serde(rename = "FacLanguage")]
+    #[serde(rename = "Language")]
     pub fac_language: Language,
-    #[serde(rename = "FacSender")]
+    #[serde(rename = "Sender")]
     pub fac_sender: Sender,
-    #[serde(rename = "FacAttorney", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Attorney", skip_serializing_if = "Option::is_none")]
     pub fac_attorney: Option<Attorney>,
-    #[serde(rename = "FacSentDate")]
+    #[serde(rename = "SentDate")]
     pub fac_sent_date: SentDate,
-    #[serde(rename = "FacElectronicNotification")]
+    #[serde(rename = "ElectronicNotification")]
     pub fac_electronic_notification: ElectronicNotification,
     #[serde(rename = "FinancingType")]
     pub financing_type: CoFinancingActFinancingType,
     #[serde(rename = "MunicipalityNumber")]
     pub municipality_number: CoMunicipalityNumberType,
-    #[serde(rename = "FacEstimatedStartDate")]
+    #[serde(rename = "EstimatedStartDate")]
     pub fac_estimated_start_date: EstimatedStartDate,
-    #[serde(rename = "FacEstimatedEndDate")]
+    #[serde(rename = "EstimatedEndDate")]
     pub fac_estimated_end_date: EstimatedEndDate,
-    #[serde(rename = "FacSubsidyAmount")]
+    #[serde(rename = "SubsidyAmount")]
     pub fac_subsidy_amount: SubsidyAmount,
-    #[serde(rename = "FacFinancingActWorkGroup")]
+    #[serde(rename = "FinancingActWorkGroup")]
     pub fac_financing_act_work_group: FinancingActWorkGroup,
-    #[serde(rename = "FacCopOperationProject")]
+    #[serde(rename = "CopOperationProject")]
     pub fac_cop_operation_project: CopOperationProject,
-    #[serde(rename = "FacFinancingActRealEstates")]
+    #[serde(rename = "FinancingActRealEstates")]
     pub fac_financing_act_real_estates: FinancingActRealEstates,
-    #[serde(rename = "FacApplicationActors")]
+    #[serde(rename = "ApplicationActors")]
     pub fac_application_actors: ApplicationActors,
     #[serde(rename = "PartsOfProject")]
     pub parts_of_project: PartsOfProjectType,
-    #[serde(rename = "FacDocuments", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
     pub fac_documents: Option<Documents>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PlanAndSubsidyType {
-    #[serde(rename = "FacFinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
     pub fac_financing_act_application_stands: Option<FinancingActApplicationStands>,
 }
 
@@ -64,9 +85,9 @@ pub struct PlanAndSubsidyType {
 pub struct PartOfProjectType {
     #[serde(rename = "@id")]
     pub id: IdStringType,
-    #[serde(rename = "FacAreaNo")]
+    #[serde(rename = "AreaNo")]
     pub fac_area_no: AreaNo,
-    #[serde(rename = "FacFinancingActWorkCode")]
+    #[serde(rename = "FinancingActWorkCode")]
     pub fac_financing_act_work_code: FinancingActWorkCode,
     #[serde(rename = "PlanAndSubsidy")]
     pub plan_and_subsidy: PlanAndSubsidyType,

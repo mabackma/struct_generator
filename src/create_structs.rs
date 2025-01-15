@@ -119,7 +119,14 @@ pub fn create_structs(
 }
 
 // Add element definitions to the hashmap
-pub fn add_element_definition(e: &BytesStart<'_>, element_definitions: &mut HashMap<String, String>, content: &str, stack: &mut Vec<XMLStruct>, current_name: &mut String, anonymous_complex_types: &mut Vec<String>) {
+pub fn add_element_definition(
+    e: &BytesStart<'_>, 
+    element_definitions: &mut HashMap<String, String>, 
+    content: &str, stack: &mut Vec<XMLStruct>, 
+    current_name: &mut String, 
+    anonymous_complex_types: &mut Vec<String>
+) {
+
     let name = element_name(e);
     let typ = element_type(e);
 
@@ -156,7 +163,13 @@ pub fn add_element_definition(e: &BytesStart<'_>, element_definitions: &mut Hash
 }
 
 // Add group definitions directly to the final structs
-fn add_group_definition(e: &BytesStart<'_>, content: &str, structs: &mut HashMap<String, XMLStruct>,  current_name: &mut String, anonymous_complex_types: &mut Vec<String>) {
+fn add_group_definition(
+    e: &BytesStart<'_>, 
+    content: &str, 
+    structs: &mut HashMap<String, XMLStruct>,  
+    current_name: &mut String, 
+    anonymous_complex_types: &mut Vec<String>
+) {
 
     if let Some(group_slice) = slice_contents(content, "group", &element_name(e).unwrap_or("".to_string())) {
         let mut group_reader = Reader::from_str(&group_slice);
@@ -214,7 +227,13 @@ fn add_group_definition(e: &BytesStart<'_>, content: &str, structs: &mut HashMap
 }
 
 // Add elements, groups, and attributes as fields to the struct
-fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_definitions: &HashMap<String, String>, anonymous_complex_types: &mut Vec<String>, prefixes: &mut HashMap<String, String>) {
+fn elements_and_groups(
+    stack: &mut Vec<XMLStruct>, 
+    e: &BytesStart<'_>, 
+    element_definitions: &HashMap<String, String>, 
+    anonymous_complex_types: &mut Vec<String>, 
+    prefixes: &mut HashMap<String, String>
+) {
 
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
@@ -267,7 +286,11 @@ fn elements_and_groups(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, element_d
 }
 
 // Add extension fields to the struct
-fn add_extension_fields(stack: &mut Vec<XMLStruct>, e: &BytesStart<'_>, prefixes: &mut HashMap<String, String>) {
+fn add_extension_fields(
+    stack: &mut Vec<XMLStruct>, 
+    e: &BytesStart<'_>, 
+    prefixes: &mut HashMap<String, String>
+) {
 
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {

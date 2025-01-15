@@ -1,3 +1,18 @@
+use serde::{Serialize, Deserialize};
+use chrono::*;
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PublicityOrganizations {
+    #[serde(flatten)]
+    pub publicity_organizations: OOrganizationsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWithPublicityType {
+    #[serde(flatten)]
+    pub call_for_offer_with_publicity_type: CallForOfferWithPublicity,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CallForOfferWithPublicity {
     #[serde(rename = "@schemaPackageVersion")]
@@ -6,7 +21,7 @@ pub struct CallForOfferWithPublicity {
     pub schema_package_subversion: ForestDataStandardSchemaPackageSubversionType,
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: DateType,
-    #[serde(rename = "CfoCallForOffer")]
+    #[serde(rename = "CallForOffer")]
     pub cfo_call_for_offer: Vec<CallForOffer>,
     #[serde(rename = "Publicity")]
     pub publicity: PublicityType,
