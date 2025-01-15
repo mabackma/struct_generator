@@ -2,9 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ValueGrowthPercent {
+pub struct TreeStandSummary {
     #[serde(flatten)]
-    pub value_growth_percent: CoDecimal2FractionDigitsType,
+    pub tree_stand_summary: TreeStandSummaryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,21 +14,9 @@ pub struct DevelopmentClass {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DominantHeight {
+pub struct MeanStumpDiameter {
     #[serde(flatten)]
-    pub dominant_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MainTreeSpecies {
-    #[serde(flatten)]
-    pub main_tree_species: CoTreeSpeciesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Value {
-    #[serde(flatten)]
-    pub value: CoDecimal2FractionDigitsType,
+    pub mean_stump_diameter: CoDiameterType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,27 +26,27 @@ pub struct MeanAge {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeStandSummary {
-    #[serde(flatten)]
-    pub tree_stand_summary: TreeStandSummaryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeanDiameter {
-    #[serde(flatten)]
-    pub mean_diameter: MeanDiameterType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct MeanHeight {
     #[serde(flatten)]
     pub mean_height: CoMeanHeightType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MeanStumpDiameter {
+pub struct DominantHeight {
     #[serde(flatten)]
-    pub mean_stump_diameter: CoDiameterType,
+    pub dominant_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Value {
+    #[serde(flatten)]
+    pub value: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MainTreeSpecies {
+    #[serde(flatten)]
+    pub main_tree_species: CoTreeSpeciesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -67,54 +55,16 @@ pub struct Currency {
     pub currency: CoCurrencyType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandSummaryType {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "ChangeState", skip_serializing_if = "Option::is_none")]
-    pub co_change_state: Option<ChangeState>,
-    #[serde(rename = "ChangeTime", skip_serializing_if = "Option::is_none")]
-    pub co_change_time: Option<ChangeTime>,
-    #[serde(rename = "MeanAge")]
-    pub mean_age: MeanAgeType,
-    #[serde(rename = "BasalArea")]
-    pub basal_area: CoBasalAreaType,
-    #[serde(rename = "StemCount")]
-    pub stem_count: StemCountType,
-    #[serde(rename = "MeanDiameter", skip_serializing_if = "Option::is_none")]
-    pub mean_diameter: Option<MeanDiameterType>,
-    #[serde(rename = "MeanStumpDiameter", skip_serializing_if = "Option::is_none")]
-    pub mean_stump_diameter: Option<CoDiameterType>,
-    #[serde(rename = "MeanHeight")]
-    pub mean_height: CoMeanHeightType,
-    #[serde(rename = "DominantHeight", skip_serializing_if = "Option::is_none")]
-    pub dominant_height: Option<CoPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
-    #[serde(rename = "Volume")]
-    pub volume: VolumeType,
-    #[serde(rename = "SawLogVolume", skip_serializing_if = "Option::is_none")]
-    pub saw_log_volume: Option<SawLogVolumeType>,
-    #[serde(rename = "PulpWoodVolume", skip_serializing_if = "Option::is_none")]
-    pub pulp_wood_volume: Option<PulpWoodVolumeType>,
-    #[serde(rename = "VolumeGrowth")]
-    pub volume_growth: VolumeGrowthType,
-    #[serde(rename = "LeafBiomass", skip_serializing_if = "Option::is_none")]
-    pub leaf_biomass: Option<LeafBiomassType>,
-    #[serde(rename = "BranchBiomass", skip_serializing_if = "Option::is_none")]
-    pub branch_biomass: Option<BranchBiomassType>,
-    #[serde(rename = "StemBiomass", skip_serializing_if = "Option::is_none")]
-    pub stem_biomass: Option<StemBiomassType>,
-    #[serde(rename = "StumpBiomass", skip_serializing_if = "Option::is_none")]
-    pub stump_biomass: Option<StumpBiomassType>,
-    #[serde(rename = "Value", skip_serializing_if = "Option::is_none")]
-    pub value: Option<CoDecimal2FractionDigitsType>,
-    #[serde(rename = "Currency", skip_serializing_if = "Option::is_none")]
-    pub currency: Option<CoCurrencyType>,
-    #[serde(rename = "ValueGrowthPercent", skip_serializing_if = "Option::is_none")]
-    pub value_growth_percent: Option<CoDecimal2FractionDigitsType>,
-    #[serde(rename = "DevelopmentClass", skip_serializing_if = "Option::is_none")]
-    pub development_class: Option<CoDevelopmentClassType>,
-    #[serde(rename = "MainTreeSpecies", skip_serializing_if = "Option::is_none")]
-    pub main_tree_species: Option<CoTreeSpeciesType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ValueGrowthPercent {
+    #[serde(flatten)]
+    pub value_growth_percent: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeanDiameter {
+    #[serde(flatten)]
+    pub mean_diameter: MeanDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -168,6 +118,92 @@ pub struct TreeStandSummary2Type {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StumpBiomassType {
+    #[serde(flatten)]
+    pub base: CoStumpBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemBiomassType {
+    #[serde(flatten)]
+    pub base: CoStemBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeStandSummaryType {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "ChangeState", skip_serializing_if = "Option::is_none")]
+    pub co_change_state: Option<ChangeState>,
+    #[serde(rename = "ChangeTime", skip_serializing_if = "Option::is_none")]
+    pub co_change_time: Option<ChangeTime>,
+    #[serde(rename = "MeanAge")]
+    pub mean_age: MeanAgeType,
+    #[serde(rename = "BasalArea")]
+    pub basal_area: CoBasalAreaType,
+    #[serde(rename = "StemCount")]
+    pub stem_count: StemCountType,
+    #[serde(rename = "MeanDiameter", skip_serializing_if = "Option::is_none")]
+    pub mean_diameter: Option<MeanDiameterType>,
+    #[serde(rename = "MeanStumpDiameter", skip_serializing_if = "Option::is_none")]
+    pub mean_stump_diameter: Option<CoDiameterType>,
+    #[serde(rename = "MeanHeight")]
+    pub mean_height: CoMeanHeightType,
+    #[serde(rename = "DominantHeight", skip_serializing_if = "Option::is_none")]
+    pub dominant_height: Option<CoPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
+    #[serde(rename = "Volume")]
+    pub volume: VolumeType,
+    #[serde(rename = "SawLogVolume", skip_serializing_if = "Option::is_none")]
+    pub saw_log_volume: Option<SawLogVolumeType>,
+    #[serde(rename = "PulpWoodVolume", skip_serializing_if = "Option::is_none")]
+    pub pulp_wood_volume: Option<PulpWoodVolumeType>,
+    #[serde(rename = "VolumeGrowth")]
+    pub volume_growth: VolumeGrowthType,
+    #[serde(rename = "LeafBiomass", skip_serializing_if = "Option::is_none")]
+    pub leaf_biomass: Option<LeafBiomassType>,
+    #[serde(rename = "BranchBiomass", skip_serializing_if = "Option::is_none")]
+    pub branch_biomass: Option<BranchBiomassType>,
+    #[serde(rename = "StemBiomass", skip_serializing_if = "Option::is_none")]
+    pub stem_biomass: Option<StemBiomassType>,
+    #[serde(rename = "StumpBiomass", skip_serializing_if = "Option::is_none")]
+    pub stump_biomass: Option<StumpBiomassType>,
+    #[serde(rename = "Value", skip_serializing_if = "Option::is_none")]
+    pub value: Option<CoDecimal2FractionDigitsType>,
+    #[serde(rename = "Currency", skip_serializing_if = "Option::is_none")]
+    pub currency: Option<CoCurrencyType>,
+    #[serde(rename = "ValueGrowthPercent", skip_serializing_if = "Option::is_none")]
+    pub value_growth_percent: Option<CoDecimal2FractionDigitsType>,
+    #[serde(rename = "DevelopmentClass", skip_serializing_if = "Option::is_none")]
+    pub development_class: Option<CoDevelopmentClassType>,
+    #[serde(rename = "MainTreeSpecies", skip_serializing_if = "Option::is_none")]
+    pub main_tree_species: Option<CoTreeSpeciesType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanDiameterType {
+    #[serde(flatten)]
+    pub base: CoDiameterType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BranchBiomassType {
+    #[serde(flatten)]
+    pub base: CoBranchBiomassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StemCountType {
+    #[serde(flatten)]
+    pub base: CoStemCountType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawLogVolumeType {
+    #[serde(flatten)]
+    pub base: CoSawLogVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct VolumeGrowthType {
     #[serde(flatten)]
     pub base: CoVolumeGrowthType,
@@ -180,21 +216,9 @@ pub struct LeafBiomassType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StemCountType {
+pub struct MeanAgeType {
     #[serde(flatten)]
-    pub base: CoStemCountType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PulpWoodVolumeType {
-    #[serde(flatten)]
-    pub base: CoPulpWoodVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
-    #[serde(flatten)]
-    pub base: CoDiameterType,
+    pub base: CoAgeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -204,32 +228,8 @@ pub struct VolumeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanAgeType {
+pub struct PulpWoodVolumeType {
     #[serde(flatten)]
-    pub base: CoAgeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemBiomassType {
-    #[serde(flatten)]
-    pub base: CoStemBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StumpBiomassType {
-    #[serde(flatten)]
-    pub base: CoStumpBiomassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawLogVolumeType {
-    #[serde(flatten)]
-    pub base: CoSawLogVolumeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BranchBiomassType {
-    #[serde(flatten)]
-    pub base: CoBranchBiomassType,
+    pub base: CoPulpWoodVolumeType,
 }
 

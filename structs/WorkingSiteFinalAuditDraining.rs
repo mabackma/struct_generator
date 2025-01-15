@@ -2,51 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CleaningBreaksDoneText {
+pub struct SuspensionHoleDensitySizeAndLocation {
     #[serde(flatten)]
-    pub cleaning_breaks_done_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExcavationSoilLocation {
-    #[serde(flatten)]
-    pub excavation_soil_location: BdtWorkingQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SuspensionHoleDensitySizeAndLocationText {
-    #[serde(flatten)]
-    pub suspension_hole_density_size_and_location_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DitchDepthWidthAndDrainageEffectText {
-    #[serde(flatten)]
-    pub ditch_depth_width_and_drainage_effect_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SurfaceRunoffFieldGroundIsUnbroken {
-    #[serde(flatten)]
-    pub surface_runoff_field_ground_is_unbroken: BdtYesNoNotKnownType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExcavatorMovingAndTreeDamagesText {
-    #[serde(flatten)]
-    pub excavator_moving_and_tree_damages_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DitchDepthWidthAndDrainageEffect {
-    #[serde(flatten)]
-    pub ditch_depth_width_and_drainage_effect: BdtWorkingQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SomeDitchesNotDiggedAsMentionedInOrderText {
-    #[serde(flatten)]
-    pub some_ditches_not_digged_as_mentioned_in_order_text: BdtString200Type,
+    pub suspension_hole_density_size_and_location: BdtWorkingQualityType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -56,33 +14,39 @@ pub struct SedimentationBasinSizeShapeAndFunctionalityText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SuspensionHoleDensitySizeAndLocation {
-    #[serde(flatten)]
-    pub suspension_hole_density_size_and_location: BdtWorkingQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DitchCleaningBreakLocationText {
-    #[serde(flatten)]
-    pub ditch_cleaning_break_location_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SurfaceRunoffFieldGroundIsUnbrokenText {
-    #[serde(flatten)]
-    pub surface_runoff_field_ground_is_unbroken_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditDraining {
-    #[serde(flatten)]
-    pub working_site_final_audit_draining: WorkingSiteFinalAuditDrainingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ExcavationSoilLocationText {
     #[serde(flatten)]
     pub excavation_soil_location_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DitchDepthWidthAndDrainageEffect {
+    #[serde(flatten)]
+    pub ditch_depth_width_and_drainage_effect: BdtWorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SomeDitchesNotDiggedAsMentionedInOrder {
+    #[serde(flatten)]
+    pub some_ditches_not_digged_as_mentioned_in_order: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SuspensionHoleDensitySizeAndLocationText {
+    #[serde(flatten)]
+    pub suspension_hole_density_size_and_location_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CleaningBreaksDoneText {
+    #[serde(flatten)]
+    pub cleaning_breaks_done_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DitchDepthWidthAndDrainageEffectText {
+    #[serde(flatten)]
+    pub ditch_depth_width_and_drainage_effect_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -98,15 +62,39 @@ pub struct ExcavatorMovingAndTreeDamages {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SedimentationBasinSizeShapeAndFunctionality {
+    #[serde(flatten)]
+    pub sedimentation_basin_size_shape_and_functionality: BdtWorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAuditerName {
+    #[serde(flatten)]
+    pub final_auditer_name: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExcavationSoilLocation {
+    #[serde(flatten)]
+    pub excavation_soil_location: BdtWorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SurfaceRunoffFieldGroundIsUnbrokenText {
+    #[serde(flatten)]
+    pub surface_runoff_field_ground_is_unbroken_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SedimentationBasinAndDamDimensioningIsFollowedText {
     #[serde(flatten)]
     pub sedimentation_basin_and_dam_dimensioning_is_followed_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CleaningBreaksDone {
+pub struct SurfaceRunoffFieldGroundIsUnbroken {
     #[serde(flatten)]
-    pub cleaning_breaks_done: BdtYesNoType,
+    pub surface_runoff_field_ground_is_unbroken: BdtYesNoNotKnownType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -116,15 +104,45 @@ pub struct SedimentationBasinAndDamDimensioningIsFollowed {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SomeDitchesNotDiggedAsMentionedInOrder {
+pub struct FinalAuditerId {
     #[serde(flatten)]
-    pub some_ditches_not_digged_as_mentioned_in_order: BdtYesNoType,
+    pub final_auditer_id: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SedimentationBasinSizeShapeAndFunctionality {
+pub struct CleaningBreaksDone {
     #[serde(flatten)]
-    pub sedimentation_basin_size_shape_and_functionality: BdtWorkingQualityType,
+    pub cleaning_breaks_done: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SomeDitchesNotDiggedAsMentionedInOrderText {
+    #[serde(flatten)]
+    pub some_ditches_not_digged_as_mentioned_in_order_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteFinalAuditDraining {
+    #[serde(flatten)]
+    pub working_site_final_audit_draining: WorkingSiteFinalAuditDrainingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DitchCleaningBreakLocationText {
+    #[serde(flatten)]
+    pub ditch_cleaning_break_location_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExcavatorMovingAndTreeDamagesText {
+    #[serde(flatten)]
+    pub excavator_moving_and_tree_damages_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditsListType {
+    #[serde(rename = "AuditQuestion")]
+    pub audit_question: AuditQuestionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -233,12 +251,6 @@ pub struct WorkingSiteFinalAuditDrainingType {
     pub audits: AuditsType,
     #[serde(rename = "AuditsList")]
     pub audits_list: AuditsListType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditsListType {
-    #[serde(rename = "AuditQuestion")]
-    pub audit_question: AuditQuestionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -2,21 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StorageClass {
-    #[serde(flatten)]
-    pub storage_class: BdtStorageDryingClassType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct AssortmentID {
     #[serde(flatten)]
     pub assortment_i_d: WctERPIdType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteOperationalUpdate {
+pub struct ImageCount {
     #[serde(flatten)]
-    pub working_site_operational_update: WorkingSiteOperationalUpdateType,
+    pub image_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,15 +26,21 @@ pub struct StorageProposals {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteOperationalUpdate {
+    #[serde(flatten)]
+    pub working_site_operational_update: WorkingSiteOperationalUpdateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct DelinationObjectOrderId {
     #[serde(flatten)]
     pub delination_object_order_id: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ImageCount {
+pub struct StorageClass {
     #[serde(flatten)]
-    pub image_count: BdtPositiveInteger2digitsType,
+    pub storage_class: BdtStorageDryingClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -92,81 +92,31 @@ pub struct AssortmentsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ProductUserIdsType {
+    #[serde(rename = "@Status")]
+    pub status: AssortmentStatusType,
+    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
+    pub product_user_id: Option<Vec<BdtString100Type>>,
+    #[serde(flatten)]
+    pub base: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StorageForestHaulageDistanceType {
     #[serde(rename = "StorageForestHaulageDistanceGroup")]
     pub storage_forest_haulage_distance_group: StorageForestHaulageDistanceGroup,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteOperationalUpdateType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: String20Type,
-    #[serde(rename = "ImageCount")]
-    pub image_count: PositiveInteger2digitsType,
-    #[serde(rename = "LoadNumber", skip_serializing_if = "Option::is_none")]
-    pub load_number: Option<String20Type>,
-    #[serde(rename = "LoadPaymentReference", skip_serializing_if = "Option::is_none")]
-    pub load_payment_reference: Option<String50Type>,
-    #[serde(rename = "WorkingSitePlanningStatus", skip_serializing_if = "Option::is_none")]
-    pub working_site_planning_status: Option<WorkingSitePlanningStatusType>,
-    #[serde(rename = "WorkingSitePlanningOperation", skip_serializing_if = "Option::is_none")]
-    pub working_site_planning_operation: Option<WorkingSitePlanningOperationStatusType>,
-    #[serde(rename = "WorkingSitePlanningInfo", skip_serializing_if = "Option::is_none")]
-    pub working_site_planning_info: Option<String3000Type>,
-    #[serde(rename = "Accessibility", skip_serializing_if = "Option::is_none")]
-    pub accessibility: Option<AccessibilityType>,
-    #[serde(rename = "Assortments", skip_serializing_if = "Option::is_none")]
-    pub assortments: Option<AssortmentsType>,
-    #[serde(rename = "Storages", skip_serializing_if = "Option::is_none")]
-    pub storages: Option<StoragesType>,
-    #[serde(rename = "StoragesForestHaulageDistances", skip_serializing_if = "Option::is_none")]
-    pub storages_forest_haulage_distances: Option<StoragesForestHaulageDistancesType>,
-    #[serde(rename = "StorageProposals", skip_serializing_if = "Option::is_none")]
-    pub storage_proposals: Option<StoragesType>,
-    #[serde(rename = "StoragesProposalForestHaulageDistances", skip_serializing_if = "Option::is_none")]
-    pub storages_proposal_forest_haulage_distances: Option<StoragesForestHaulageDistancesType>,
-    #[serde(rename = "ProductUserIds", skip_serializing_if = "Option::is_none")]
-    pub product_user_ids: Option<ProductUserIdsType>,
-    #[serde(rename = "CanCultivateInAutumn", skip_serializing_if = "Option::is_none")]
-    pub can_cultivate_in_autumn: Option<YesNoType>,
-    #[serde(rename = "DelinationObjectOrderId", skip_serializing_if = "Option::is_none")]
-    pub delination_object_order_id: Option<String200Type>,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<String1000Type>,
-    #[serde(rename = "WorkingsiteInfo", skip_serializing_if = "Option::is_none")]
-    pub workingsite_info: Option<String3000Type>,
-    #[serde(rename = "PurchaseContractExtraInfo", skip_serializing_if = "Option::is_none")]
-    pub purchase_contract_extra_info: Option<String3000Type>,
-    #[serde(rename = "EnvironmentalObjectInfo", skip_serializing_if = "Option::is_none")]
-    pub environmental_object_info: Option<String3000Type>,
-    #[serde(rename = "WorkingSafetyInfo", skip_serializing_if = "Option::is_none")]
-    pub working_safety_info: Option<String3000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIdsType {
-    #[serde(rename = "@Status")]
-    pub status: AssortmentStatusType,
-    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
-    pub product_user_id: Option<Vec<BdtString50Type>>,
-    #[serde(flatten)]
-    pub base: BdtString100Type,
+pub struct StoragesForestHaulageDistancesType {
+    #[serde(rename = "StorageForestHaulageDistance")]
+    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StoragesType {
     #[serde(rename = "Storage", skip_serializing_if = "Option::is_none")]
     pub storage: Option<Vec<StorageType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoragesForestHaulageDistancesType {
-    #[serde(rename = "StorageForestHaulageDistance")]
-    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -217,5 +167,55 @@ pub struct StorageType {
     pub storage_additional_remarks: Option<String3000Type>,
     #[serde(rename = "StorageLinkedToWorkingSite", skip_serializing_if = "Option::is_none")]
     pub storage_linked_to_working_site: Option<YesNoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteOperationalUpdateType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: String20Type,
+    #[serde(rename = "ImageCount")]
+    pub image_count: PositiveInteger2digitsType,
+    #[serde(rename = "LoadNumber", skip_serializing_if = "Option::is_none")]
+    pub load_number: Option<String20Type>,
+    #[serde(rename = "LoadPaymentReference", skip_serializing_if = "Option::is_none")]
+    pub load_payment_reference: Option<String50Type>,
+    #[serde(rename = "WorkingSitePlanningStatus", skip_serializing_if = "Option::is_none")]
+    pub working_site_planning_status: Option<WorkingSitePlanningStatusType>,
+    #[serde(rename = "WorkingSitePlanningOperation", skip_serializing_if = "Option::is_none")]
+    pub working_site_planning_operation: Option<WorkingSitePlanningOperationStatusType>,
+    #[serde(rename = "WorkingSitePlanningInfo", skip_serializing_if = "Option::is_none")]
+    pub working_site_planning_info: Option<String3000Type>,
+    #[serde(rename = "Accessibility", skip_serializing_if = "Option::is_none")]
+    pub accessibility: Option<AccessibilityType>,
+    #[serde(rename = "Assortments", skip_serializing_if = "Option::is_none")]
+    pub assortments: Option<AssortmentsType>,
+    #[serde(rename = "Storages", skip_serializing_if = "Option::is_none")]
+    pub storages: Option<StoragesType>,
+    #[serde(rename = "StoragesForestHaulageDistances", skip_serializing_if = "Option::is_none")]
+    pub storages_forest_haulage_distances: Option<StoragesForestHaulageDistancesType>,
+    #[serde(rename = "StorageProposals", skip_serializing_if = "Option::is_none")]
+    pub storage_proposals: Option<StoragesType>,
+    #[serde(rename = "StoragesProposalForestHaulageDistances", skip_serializing_if = "Option::is_none")]
+    pub storages_proposal_forest_haulage_distances: Option<StoragesForestHaulageDistancesType>,
+    #[serde(rename = "ProductUserIds", skip_serializing_if = "Option::is_none")]
+    pub product_user_ids: Option<ProductUserIdsType>,
+    #[serde(rename = "CanCultivateInAutumn", skip_serializing_if = "Option::is_none")]
+    pub can_cultivate_in_autumn: Option<YesNoType>,
+    #[serde(rename = "DelinationObjectOrderId", skip_serializing_if = "Option::is_none")]
+    pub delination_object_order_id: Option<String200Type>,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<String1000Type>,
+    #[serde(rename = "WorkingsiteInfo", skip_serializing_if = "Option::is_none")]
+    pub workingsite_info: Option<String3000Type>,
+    #[serde(rename = "PurchaseContractExtraInfo", skip_serializing_if = "Option::is_none")]
+    pub purchase_contract_extra_info: Option<String3000Type>,
+    #[serde(rename = "EnvironmentalObjectInfo", skip_serializing_if = "Option::is_none")]
+    pub environmental_object_info: Option<String3000Type>,
+    #[serde(rename = "WorkingSafetyInfo", skip_serializing_if = "Option::is_none")]
+    pub working_safety_info: Option<String3000Type>,
 }
 

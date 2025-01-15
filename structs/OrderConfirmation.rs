@@ -2,15 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OrderStatus {
-    #[serde(flatten)]
-    pub order_status: BdtOrderStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct OrderConfirmation {
     #[serde(flatten)]
     pub order_confirmation: OrderConfirmationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OrderStatus {
+    #[serde(flatten)]
+    pub order_status: BdtOrderStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

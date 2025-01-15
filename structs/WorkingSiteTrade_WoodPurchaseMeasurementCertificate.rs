@@ -2,27 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct VAT {
-    #[serde(flatten)]
-    pub vat: VATType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct MeasurementCertificate {
     #[serde(flatten)]
     pub measurement_certificate: MeasurementCertificateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SequenceNumber {
+pub struct Text {
     #[serde(flatten)]
-    pub sequence_number: SequenceNumberType,
+    pub text: TextType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct InsertDate {
+pub struct MeasurementDate {
     #[serde(flatten)]
-    pub insert_date: InsertDateType,
+    pub measurement_date: MeasurementDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,9 +26,57 @@ pub struct PaidValue {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct VAT {
+    #[serde(flatten)]
+    pub vat: VATType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct InsertDate {
+    #[serde(flatten)]
+    pub insert_date: InsertDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SequenceNumber {
+    #[serde(flatten)]
+    pub sequence_number: SequenceNumberType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct MeasurementCertificateType {
     #[serde(flatten)]
     pub measurement_certificate_type: MeasurementCertificateTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValueType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementCertificateTypeType {
+    #[serde(flatten)]
+    pub base: CoMeasurementCertificateTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaidValueType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CurrencyType {
+    #[serde(flatten)]
+    pub base: CoCurrencyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InsertDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -76,27 +118,9 @@ pub struct MeasurementCertificateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ValueType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct TotalValueType {
     #[serde(flatten)]
     pub base: CoDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SequenceNumberType {
-    #[serde(flatten)]
-    pub base: CoPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InsertDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -111,9 +135,9 @@ pub struct VATType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaidValueType {
+pub struct VersionNoType {
     #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+    pub base: CoPositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -123,19 +147,7 @@ pub struct MeasurementDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CurrencyType {
-    #[serde(flatten)]
-    pub base: CoCurrencyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementCertificateTypeType {
-    #[serde(flatten)]
-    pub base: CoMeasurementCertificateTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VersionNoType {
+pub struct SequenceNumberType {
     #[serde(flatten)]
     pub base: CoPositiveIntegerType,
 }

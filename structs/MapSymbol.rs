@@ -2,15 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Width {
+pub struct MapSymbols {
     #[serde(flatten)]
-    pub width: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub map_symbols: MapSymbolsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CanModify {
+pub struct DitchOrRoadPlanName {
     #[serde(flatten)]
-    pub can_modify: BdtYesNoType,
+    pub ditch_or_road_plan_name: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MaterialCode {
+    #[serde(flatten)]
+    pub material_code: BdtMaterialCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,9 +38,21 @@ pub struct Depth {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SpareGroupOfTrees {
+    #[serde(flatten)]
+    pub spare_group_of_trees: WctSpareTreesByCategoryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct MapSymbol {
     #[serde(flatten)]
     pub map_symbol: MapSymbolType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CanModify {
+    #[serde(flatten)]
+    pub can_modify: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -56,33 +74,15 @@ pub struct Geometry {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DitchOrRoadPlanName {
-    #[serde(flatten)]
-    pub ditch_or_road_plan_name: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SpareGroupOfTrees {
-    #[serde(flatten)]
-    pub spare_group_of_trees: WctSpareTreesByCategoryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct MaterialInfoText {
     #[serde(flatten)]
     pub material_info_text: BdtString1000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MaterialCode {
+pub struct Width {
     #[serde(flatten)]
-    pub material_code: BdtMaterialCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MapSymbols {
-    #[serde(flatten)]
-    pub map_symbols: MapSymbolsType,
+    pub width: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

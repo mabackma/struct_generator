@@ -2,33 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StemDistributionStratum {
-    #[serde(flatten)]
-    pub stem_distribution_stratum: StemDistributionStratumType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct StemDistributionStrata {
     #[serde(flatten)]
     pub stem_distribution_strata: StemDistributionStrataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeSpecies {
+pub struct StemDistributionStratum {
     #[serde(flatten)]
-    pub tree_species: TreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BasalAreaType {
-    #[serde(flatten)]
-    pub base: CoBasalAreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemDistributionStrataType {
-    #[serde(rename = "StemDistributionStratum")]
-    pub stem_distribution_stratum: Vec<StemDistributionStratumType>,
+    pub stem_distribution_stratum: StemDistributionStratumType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -54,9 +36,21 @@ pub struct StemDistributionStratumType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+    #[serde(flatten)]
+    pub base: CoTreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AgeType {
     #[serde(flatten)]
     pub base: CoAgeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BasalAreaType {
+    #[serde(flatten)]
+    pub base: CoBasalAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -66,8 +60,8 @@ pub struct StoreyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
-    #[serde(flatten)]
-    pub base: CoTreeSpeciesType,
+pub struct StemDistributionStrataType {
+    #[serde(rename = "StemDistributionStratum")]
+    pub stem_distribution_stratum: Vec<StemDistributionStratumType>,
 }
 

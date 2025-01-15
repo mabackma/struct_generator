@@ -2,6 +2,36 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct AmountLeft {
+    #[serde(flatten)]
+    pub amount_left: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UnfulfilledArea {
+    #[serde(flatten)]
+    pub unfulfilled_area: GdtPolygonOrMultiPolygon2Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AmountPlanned {
+    #[serde(flatten)]
+    pub amount_planned: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Interrupted {
+    #[serde(flatten)]
+    pub interrupted: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContactorId {
+    #[serde(flatten)]
+    pub contactor_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct VolumeLeft {
     #[serde(flatten)]
     pub volume_left: BdtDecimal6TotalDigitsType,
@@ -14,51 +44,47 @@ pub struct WorkingSiteEndNotification {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Interrupted {
-    #[serde(flatten)]
-    pub interrupted: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CodeGroup {
-    #[serde(flatten)]
-    pub code_group: BdtAssortmentGroupType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UnfulfilledArea {
-    #[serde(flatten)]
-    pub unfulfilled_area: GdtPolygonOrMultiPolygon2Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Infotext {
-    #[serde(flatten)]
-    pub infotext: BdtString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContactorId {
-    #[serde(flatten)]
-    pub contactor_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct FulfilledArea {
     #[serde(flatten)]
     pub fulfilled_area: FulfilledAreaType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AmountLeft {
-    #[serde(flatten)]
-    pub amount_left: BdtDecimal3FractionDigitsType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Supported {
-    #[serde(flatten)]
-    pub supported: BdtYesNoType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FulfilledAreaType {
+    #[serde(rename = "Geometry")]
+    pub geometry: PolygonOrMultiPolygon2Type,
+    #[serde(rename = "Supported", skip_serializing_if = "Option::is_none")]
+    pub supported: Option<YesNoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeDataType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "AmountPlanned")]
+    pub amount_planned: Decimal3FractionDigitsType,
+    #[serde(rename = "AmountLeft")]
+    pub amount_left: Decimal3FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: WorkCodeUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FulfilledAreasType {
+    #[serde(rename = "FulfilledArea")]
+    pub fulfilled_area: Vec<FulfilledAreaType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -75,26 +101,6 @@ pub struct AssortmentDataType {
     pub volume: Decimal6TotalDigitsType,
     #[serde(rename = "VolumeLeft")]
     pub volume_left: Decimal6TotalDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeDataType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "AmountPlanned")]
-    pub amount_planned: Decimal3FractionDigitsType,
-    #[serde(rename = "AmountLeft")]
-    pub amount_left: Decimal3FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: WorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FulfilledAreaType {
-    #[serde(rename = "Geometry")]
-    pub geometry: PolygonOrMultiPolygon2Type,
-    #[serde(rename = "Supported", skip_serializing_if = "Option::is_none")]
-    pub supported: Option<YesNoType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -121,23 +127,5 @@ pub struct WorkingSiteEndNotificationType {
     pub assortments: Option<AssortmentsType>,
     #[serde(rename = "WorkCodes", skip_serializing_if = "Option::is_none")]
     pub work_codes: Option<WorkCodesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FulfilledAreasType {
-    #[serde(rename = "FulfilledArea")]
-    pub fulfilled_area: Vec<FulfilledAreaType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeDataType>,
 }
 

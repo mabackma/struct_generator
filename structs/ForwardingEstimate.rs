@@ -2,15 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StartTime {
+pub struct Loads {
     #[serde(flatten)]
-    pub start_time: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StorageId {
-    #[serde(flatten)]
-    pub storage_id: WctERPIdType,
+    pub loads: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,39 +14,9 @@ pub struct ForwardingEstimate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Loads {
-    #[serde(flatten)]
-    pub loads: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Day {
     #[serde(flatten)]
     pub day: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentId {
-    #[serde(flatten)]
-    pub assortment_id: WctERPIdType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentDataType {
-    #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
-    pub assortment_id: Option<ERPIdType>,
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: String20Type,
-    #[serde(rename = "Code")]
-    pub code: String50Type,
-    #[serde(rename = "Volume")]
-    pub volume: PositiveInteger4digitsType,
-    #[serde(rename = "Unit", skip_serializing_if = "Option::is_none")]
-    pub unit: Option<WorkCodeUnitType>,
-    #[serde(rename = "Loads")]
-    pub loads: PositiveInteger3digitsType,
-    #[serde(rename = "Day")]
-    pub day: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -75,5 +39,23 @@ pub struct ForwardingEstimateType {
 pub struct AssortmentsType {
     #[serde(rename = "Assortment")]
     pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentDataType {
+    #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
+    pub assortment_id: Option<ERPIdType>,
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: String20Type,
+    #[serde(rename = "Code")]
+    pub code: String50Type,
+    #[serde(rename = "Volume")]
+    pub volume: PositiveInteger4digitsType,
+    #[serde(rename = "Unit", skip_serializing_if = "Option::is_none")]
+    pub unit: Option<WorkCodeUnitType>,
+    #[serde(rename = "Loads")]
+    pub loads: PositiveInteger3digitsType,
+    #[serde(rename = "Day")]
+    pub day: DateType,
 }
 

@@ -48,14 +48,6 @@ fn main() {
     println!("Actual number of element definitions: {}", element_definitions.len());
 
     println!("Prefix count: {}", prefixes.len());
-
-    for s in structs.keys() {
-        for f in structs.get(s).unwrap().fields.iter() {
-            if f.name.contains("_") && !f.name.contains("xlink") {
-                println!("{} has field with _ : {}", s, f.name);
-            }
-        }
-    }
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 

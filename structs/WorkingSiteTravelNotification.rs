@@ -2,45 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson2 {
-    #[serde(flatten)]
-    pub extra_person2: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Vehicle {
-    #[serde(flatten)]
-    pub vehicle: BdtVehicleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson4 {
-    #[serde(flatten)]
-    pub extra_person4: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ExtraPersonText {
     #[serde(flatten)]
     pub extra_person_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SittingMoneyKilometers {
-    #[serde(flatten)]
-    pub sitting_money_kilometers: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KilometersWithTrailer {
-    #[serde(flatten)]
-    pub kilometers_with_trailer: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExtraPerson3 {
-    #[serde(flatten)]
-    pub extra_person3: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -50,9 +14,9 @@ pub struct ExtraPerson1 {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KilometersWithBreakHouse {
+pub struct ExtraPerson4 {
     #[serde(flatten)]
-    pub kilometers_with_break_house: BdtPositiveInteger4digitsType,
+    pub extra_person4: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -62,15 +26,39 @@ pub struct WorkingSiteTravelNotification {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ExtraPerson2 {
+    #[serde(flatten)]
+    pub extra_person2: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KilometersWithBreakHouse {
+    #[serde(flatten)]
+    pub kilometers_with_break_house: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtraPerson3 {
+    #[serde(flatten)]
+    pub extra_person3: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KilometersWithTrailer {
+    #[serde(flatten)]
+    pub kilometers_with_trailer: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Kilometers {
     #[serde(flatten)]
     pub kilometers: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TravelEndTime {
+pub struct Vehicle {
     #[serde(flatten)]
-    pub travel_end_time: BdtTimeStampType,
+    pub vehicle: BdtVehicleType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -80,15 +68,27 @@ pub struct KilometersWithCaravan {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Route {
+    #[serde(flatten)]
+    pub route: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct TravelStartTime {
     #[serde(flatten)]
     pub travel_start_time: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Route {
+pub struct TravelEndTime {
     #[serde(flatten)]
-    pub route: BdtString200Type,
+    pub travel_end_time: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SittingMoneyKilometers {
+    #[serde(flatten)]
+    pub sitting_money_kilometers: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -2,18 +2,6 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OfferWorkingSites {
-    #[serde(flatten)]
-    pub offer_working_sites: OfferWorkingSitesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteKey {
-    #[serde(flatten)]
-    pub working_site_key: WorkingSiteKeyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct CallForOfferWorkingSiteDetails {
     #[serde(flatten)]
     pub call_for_offer_working_site_details: CallForOfferWorkingSiteDetailsType,
@@ -26,15 +14,21 @@ pub struct CallForOfferWorkingSites {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteKey {
+    #[serde(flatten)]
+    pub working_site_key: WorkingSiteKeyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferWorkingSites {
+    #[serde(flatten)]
+    pub offer_working_sites: OfferWorkingSitesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OfferWorkingSiteDetails {
     #[serde(flatten)]
     pub offer_working_site_details: OfferWorkingSiteDetailsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteKeyType {
-    #[serde(rename = "@id")]
-    pub id: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -44,11 +38,17 @@ pub struct OfferWorkingSiteDetailsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSitesType {
+pub struct OfferWorkingSitesType {
     #[serde(rename = "WorkingSiteKey")]
     pub working_site_key: Vec<WorkingSiteKeyType>,
-    #[serde(rename = "CallForOfferWorkingSiteDetails")]
-    pub call_for_offer_working_site_details: Vec<CallForOfferWorkingSiteDetailsType>,
+    #[serde(rename = "OfferWorkingSiteDetails")]
+    pub offer_working_site_details: Vec<OfferWorkingSiteDetailsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteKeyType {
+    #[serde(rename = "@id")]
+    pub id: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -58,10 +58,10 @@ pub struct CallForOfferWorkingSiteDetailsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferWorkingSitesType {
+pub struct CallForOfferWorkingSitesType {
     #[serde(rename = "WorkingSiteKey")]
     pub working_site_key: Vec<WorkingSiteKeyType>,
-    #[serde(rename = "OfferWorkingSiteDetails")]
-    pub offer_working_site_details: Vec<OfferWorkingSiteDetailsType>,
+    #[serde(rename = "CallForOfferWorkingSiteDetails")]
+    pub call_for_offer_working_site_details: Vec<CallForOfferWorkingSiteDetailsType>,
 }
 

@@ -8,15 +8,21 @@ pub struct Label {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExternalFile {
+pub struct ProductUserId {
     #[serde(flatten)]
-    pub external_file: ExternalFileType,
+    pub product_user_id: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct FileFormat {
     #[serde(flatten)]
     pub file_format: BdtString5Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExternalFile {
+    #[serde(flatten)]
+    pub external_file: ExternalFileType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

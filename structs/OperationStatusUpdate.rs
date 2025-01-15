@@ -2,15 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ResponsibleActor {
+    #[serde(flatten)]
+    pub responsible_actor: ResponsibleActorType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ActingDate {
     #[serde(flatten)]
     pub acting_date: ActingDateType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ResponsibleActor {
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MainTypeType {
     #[serde(flatten)]
-    pub responsible_actor: ResponsibleActorType,
+    pub base: CoMainTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -20,9 +26,9 @@ pub struct OperationsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MainTypeType {
+pub struct ResponsibleActorType {
     #[serde(flatten)]
-    pub base: CoMainTypeType,
+    pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,11 +55,5 @@ pub struct OperationDefType {
     pub acting_date: ActingDateType,
     #[serde(rename = "ResponsibleActor", skip_serializing_if = "Option::is_none")]
     pub responsible_actor: Option<ResponsibleActorType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResponsibleActorType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
 }
 
