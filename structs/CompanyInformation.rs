@@ -2,21 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Registered {
+pub struct EmployeeWrittenAgreement {
     #[serde(flatten)]
-    pub registered: BdtYesNoType,
+    pub employee_written_agreement: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct EmployeeHealthCare {
+pub struct RepresentativePerson {
     #[serde(flatten)]
-    pub employee_health_care: BdtYesNoType,
+    pub representative_person: BdtContactInformationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct QualitySystems {
+pub struct BankCode {
     #[serde(flatten)]
-    pub quality_systems: QualitySystemsType,
+    pub bank_code: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,15 +26,33 @@ pub struct ContactPersonInFinland {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LiabilityInsurance {
+pub struct TradeRegistration {
     #[serde(flatten)]
-    pub liability_insurance: BdtDateType,
+    pub trade_registration: BdtDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SubContractorWrittenAgreement {
+pub struct EmployeeHealthCare {
     #[serde(flatten)]
-    pub sub_contractor_written_agreement: BdtYesNoType,
+    pub employee_health_care: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TaxDebt {
+    #[serde(flatten)]
+    pub tax_debt: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QualitySystems {
+    #[serde(flatten)]
+    pub quality_systems: QualitySystemsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EmployerRegister {
+    #[serde(flatten)]
+    pub employer_register: EmployerRegisterType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,9 +62,45 @@ pub struct CompanyType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct CollectiveAgreements {
+    #[serde(flatten)]
+    pub collective_agreements: CollectiveAgreementsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LiabilityInsurance {
+    #[serde(flatten)]
+    pub liability_insurance: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LegalAccidentInsurance {
+    #[serde(flatten)]
+    pub legal_accident_insurance: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QualitySystem {
+    #[serde(flatten)]
+    pub quality_system: BdtQualitySystemType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PreDebtCollectionRegister {
     #[serde(flatten)]
     pub pre_debt_collection_register: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct IsActive {
+    #[serde(flatten)]
+    pub is_active: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CollectiveAgreement {
+    #[serde(flatten)]
+    pub collective_agreement: BdtString100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -62,75 +116,9 @@ pub struct SubContractor {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CollectiveAgreement {
+pub struct Registered {
     #[serde(flatten)]
-    pub collective_agreement: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct EmployeeWrittenAgreement {
-    #[serde(flatten)]
-    pub employee_written_agreement: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct EmployeePensionCertificate {
-    #[serde(flatten)]
-    pub employee_pension_certificate: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TradeRegistration {
-    #[serde(flatten)]
-    pub trade_registration: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CollectiveAgreements {
-    #[serde(flatten)]
-    pub collective_agreements: CollectiveAgreementsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct QualitySystem {
-    #[serde(flatten)]
-    pub quality_system: BdtQualitySystemType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CompanyInformation {
-    #[serde(flatten)]
-    pub company_information: CompanyInformationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LegalAccidentInsurance {
-    #[serde(flatten)]
-    pub legal_accident_insurance: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RepresentativePerson {
-    #[serde(flatten)]
-    pub representative_person: BdtContactInformationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct IsActive {
-    #[serde(flatten)]
-    pub is_active: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceTypes {
-    #[serde(flatten)]
-    pub service_types: BdtServiceTypesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct EmployerRegister {
-    #[serde(flatten)]
-    pub employer_register: EmployerRegisterType,
+    pub registered: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -140,33 +128,21 @@ pub struct SubContractors {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BankCode {
+pub struct EmployeePensionCertificate {
     #[serde(flatten)]
-    pub bank_code: BdtString20Type,
+    pub employee_pension_certificate: BdtDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TaxDebt {
+pub struct SubContractorWrittenAgreement {
     #[serde(flatten)]
-    pub tax_debt: BdtDateType,
+    pub sub_contractor_written_agreement: BdtYesNoType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationSystemsType {
-    #[serde(rename = "CertificationSystem", skip_serializing_if = "Option::is_none")]
-    pub certification_system: Option<Vec<WtcoCertificationSystemType>>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CompanyInformation {
     #[serde(flatten)]
-    pub base: BdtCertificationSystemType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EmployerRegisterType {
-    #[serde(rename = "Registered")]
-    pub registered: YesNoType,
-    #[serde(rename = "StartDate", skip_serializing_if = "Option::is_none")]
-    pub start_date: Option<DateType>,
-    #[serde(rename = "EndDate", skip_serializing_if = "Option::is_none")]
-    pub end_date: Option<DateType>,
+    pub company_information: CompanyInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -230,14 +206,32 @@ pub struct QualitySystemsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct CollectiveAgreementsType {
+    #[serde(rename = "CollectiveAgreement")]
+    pub collective_agreement: Vec<String100Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EmployerRegisterType {
+    #[serde(rename = "Registered")]
+    pub registered: YesNoType,
+    #[serde(rename = "StartDate", skip_serializing_if = "Option::is_none")]
+    pub start_date: Option<DateType>,
+    #[serde(rename = "EndDate", skip_serializing_if = "Option::is_none")]
+    pub end_date: Option<DateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SubContractorsType {
     #[serde(rename = "SubContractor", skip_serializing_if = "Option::is_none")]
     pub sub_contractor: Option<Vec<String20Type>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CollectiveAgreementsType {
-    #[serde(rename = "CollectiveAgreement")]
-    pub collective_agreement: Vec<String100Type>,
+pub struct CertificationSystemsType {
+    #[serde(rename = "CertificationSystem", skip_serializing_if = "Option::is_none")]
+    pub certification_system: Option<Vec<WtcoCertificationSystemType>>,
+    #[serde(flatten)]
+    pub base: BdtCertificationSystemType,
 }
 

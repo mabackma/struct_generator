@@ -2,9 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SendTimestamp {
+    #[serde(flatten)]
+    pub send_timestamp: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SmsOperatorStatus {
     #[serde(flatten)]
     pub sms_operator_status: SmsOperatorStatusType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct NotificationType {
+    #[serde(flatten)]
+    pub notification_type: NotificationTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,9 +26,9 @@ pub struct OriginalMessage {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SenderUserId {
+pub struct StatusTimestamp {
     #[serde(flatten)]
-    pub sender_user_id: BdtString20Type,
+    pub status_timestamp: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,25 +38,23 @@ pub struct RecipientType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StatusTimestamp {
+pub struct SenderUserId {
     #[serde(flatten)]
-    pub status_timestamp: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SendTimestamp {
-    #[serde(flatten)]
-    pub send_timestamp: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct NotificationType {
-    #[serde(flatten)]
-    pub notification_type: NotificationTypeType,
+    pub sender_user_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RecipientTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatusCodeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NotificationTypeType {
     pub base: String,
 }
 
@@ -74,15 +84,5 @@ pub struct SmsOperatorStatusType {
     pub original_message: String1000Type,
     #[serde(rename = "StatusMessage", skip_serializing_if = "Option::is_none")]
     pub status_message: Option<String100Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NotificationTypeType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StatusCodeType {
-    pub base: String,
 }
 

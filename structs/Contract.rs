@@ -2,45 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CompanyMode {
-    #[serde(flatten)]
-    pub company_mode: BdtCompanyModeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingAreas {
     #[serde(flatten)]
     pub working_areas: WorkingAreasType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasureDeviceCheckRequired {
-    #[serde(flatten)]
-    pub measure_device_check_required: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractInfo {
-    #[serde(flatten)]
-    pub contract_info: BdtString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ValidityDateEnd {
-    #[serde(flatten)]
-    pub validity_date_end: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractCode {
-    #[serde(flatten)]
-    pub contract_code: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SubContractorsAllowed {
-    #[serde(flatten)]
-    pub sub_contractors_allowed: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -55,10 +19,46 @@ pub struct ValidityDateBegin {
     pub validity_date_begin: BdtDateType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SubContractorsAllowed {
+    #[serde(flatten)]
+    pub sub_contractors_allowed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasureDeviceCheckRequired {
+    #[serde(flatten)]
+    pub measure_device_check_required: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContractCode {
+    #[serde(flatten)]
+    pub contract_code: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ValidityDateEnd {
+    #[serde(flatten)]
+    pub validity_date_end: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContractInfo {
+    #[serde(flatten)]
+    pub contract_info: BdtString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CompanyMode {
+    #[serde(flatten)]
+    pub company_mode: BdtCompanyModeType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingAreasType {
-    #[serde(rename = "WorkingArea", skip_serializing_if = "Option::is_none")]
-    pub working_area: Option<Vec<WorkingAreaType>>,
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<Vec<WorkCodeType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -68,9 +68,9 @@ pub struct WorkCodeGroupsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypesType {
-    #[serde(rename = "ServiceType")]
-    pub service_type: Vec<ServiceTypeType>,
+pub struct WorkingAreasType {
+    #[serde(rename = "WorkingArea", skip_serializing_if = "Option::is_none")]
+    pub working_area: Option<Vec<WorkingAreaType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -106,9 +106,9 @@ pub struct ContractType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<Vec<WorkCodeType>>,
+pub struct ServiceTypesType {
+    #[serde(rename = "ServiceType")]
+    pub service_type: Vec<ServiceTypeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

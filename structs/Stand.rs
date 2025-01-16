@@ -8,6 +8,12 @@ pub struct SpecialFeatures {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Stands {
+    #[serde(flatten)]
+    pub stands: StandsType1,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SpecialFeature {
     #[serde(flatten)]
     pub special_feature: SfBasicFeature1Type,
@@ -17,12 +23,6 @@ pub struct SpecialFeature {
 pub struct Stand {
     #[serde(flatten)]
     pub stand: StandType1,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Stands {
-    #[serde(flatten)]
-    pub stands: StandsType1,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -52,9 +52,9 @@ pub struct StandType1 {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<SfBasicFeature1Type>,
+pub struct StandsType1 {
+    #[serde(rename = "Stand")]
+    pub stand: Vec<StandType1>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -64,7 +64,7 @@ pub struct StandBasicDataWithGeometryType {
     #[serde(rename = "Area")]
     pub area: AreaType,
     #[serde(rename = "AreaDecrease", skip_serializing_if = "Option::is_none")]
-    pub area_decrease: Option<AreaDecreaseType>,
+    pub area_decrease: Option<AreaDecrease>,
     #[serde(rename = "PolygonGeometry")]
     pub gdt_polygon_geometry: PolygonGeometry,
     #[serde(rename = "MultiPolygonGeometry")]
@@ -72,8 +72,8 @@ pub struct StandBasicDataWithGeometryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType1 {
-    #[serde(rename = "Stand")]
-    pub stand: Vec<StandType1>,
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<SfBasicFeature1Type>,
 }
 

@@ -2,45 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PurchaseContractId {
-    #[serde(flatten)]
-    pub purchase_contract_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SeparateSpareTrees {
-    #[serde(flatten)]
-    pub separate_spare_trees: WctSpareTreesByCategoryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Storage {
-    #[serde(flatten)]
-    pub storage: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct SaveTreesLeft {
     #[serde(flatten)]
     pub save_trees_left: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HighStumpsText {
-    #[serde(flatten)]
-    pub high_stumps_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeDamagesText {
-    #[serde(flatten)]
-    pub tree_damages_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeDamages {
-    #[serde(flatten)]
-    pub tree_damages: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -50,21 +14,15 @@ pub struct SpareTreesFromMapSymbols {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PreClearing {
+pub struct StumpTreatment {
     #[serde(flatten)]
-    pub pre_clearing: BdtYesNoNotNeededType,
+    pub stump_treatment: BdtYesNoNotNeededType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpTreatmentText {
+pub struct HarvesterId {
     #[serde(flatten)]
-    pub stump_treatment_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditHarvesting {
-    #[serde(flatten)]
-    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
+    pub harvester_id: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -74,9 +32,51 @@ pub struct StorageText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RoadDamagesText {
+pub struct TreeDamages {
     #[serde(flatten)]
-    pub road_damages_text: BdtString200Type,
+    pub tree_damages: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpTreatmentText {
+    #[serde(flatten)]
+    pub stump_treatment_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HighStumps {
+    #[serde(flatten)]
+    pub high_stumps: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeDamagesText {
+    #[serde(flatten)]
+    pub tree_damages_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SeparateSpareTrees {
+    #[serde(flatten)]
+    pub separate_spare_trees: WctSpareTreesByCategoryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PreClearing {
+    #[serde(flatten)]
+    pub pre_clearing: BdtYesNoNotNeededType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteFinalAuditHarvesting {
+    #[serde(flatten)]
+    pub working_site_final_audit_harvesting: WorkingSiteFinalAuditHarvestingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PurchaseContractId {
+    #[serde(flatten)]
+    pub purchase_contract_id: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -92,33 +92,27 @@ pub struct SaveTreesLeftText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RoadDamages {
-    #[serde(flatten)]
-    pub road_damages: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HighStumps {
-    #[serde(flatten)]
-    pub high_stumps: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForwarderId {
-    #[serde(flatten)]
-    pub forwarder_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpTreatment {
-    #[serde(flatten)]
-    pub stump_treatment: BdtYesNoNotNeededType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct VehiclePathPressures {
     #[serde(flatten)]
     pub vehicle_path_pressures: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HighStumpsText {
+    #[serde(flatten)]
+    pub high_stumps_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Storage {
+    #[serde(flatten)]
+    pub storage: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RoadDamagesText {
+    #[serde(flatten)]
+    pub road_damages_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -128,9 +122,15 @@ pub struct VehiclePathPressuresText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct HarvesterId {
+pub struct ForwarderId {
     #[serde(flatten)]
-    pub harvester_id: BdtString20Type,
+    pub forwarder_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RoadDamages {
+    #[serde(flatten)]
+    pub road_damages: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

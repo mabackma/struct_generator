@@ -8,27 +8,45 @@ pub struct HarvestingOrder {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Attachment {
+pub struct DestinationStorage {
     #[serde(flatten)]
-    pub attachment: AttachmentDataType,
+    pub destination_storage: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentId {
+pub struct ServiceBuyerId {
     #[serde(flatten)]
-    pub assortment_id: WctERPIdType,
+    pub service_buyer_id: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Unit {
+pub struct InfoText {
     #[serde(flatten)]
-    pub unit: BdtWorkCodeUnitType,
+    pub info_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Attachments {
+pub struct OperationalRegion {
     #[serde(flatten)]
-    pub attachments: AttachmentsType,
+    pub operational_region: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OrderId {
+    #[serde(flatten)]
+    pub order_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Assortment {
+    #[serde(flatten)]
+    pub assortment: AssortmentDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Assortments {
+    #[serde(flatten)]
+    pub assortments: AssortmentsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,33 +62,57 @@ pub struct ServiceBuyerArea {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BeginDate {
-    #[serde(flatten)]
-    pub begin_date: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OrderId {
-    #[serde(flatten)]
-    pub order_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OperationalRegion {
-    #[serde(flatten)]
-    pub operational_region: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Data {
     #[serde(flatten)]
     pub data: XshexBinary,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct EndDate {
+    #[serde(flatten)]
+    pub end_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BeginDate {
+    #[serde(flatten)]
+    pub begin_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Attachment {
+    #[serde(flatten)]
+    pub attachment: AttachmentDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Unit {
+    #[serde(flatten)]
+    pub unit: BdtWorkCodeUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentId {
+    #[serde(flatten)]
+    pub assortment_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Attachments {
+    #[serde(flatten)]
+    pub attachments: AttachmentsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct CodeGroup {
     #[serde(flatten)]
     pub code_group: BdtAssortmentGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,6 +131,14 @@ pub struct HarvestingOrderType {
     pub assortments: AssortmentsType,
     #[serde(rename = "Attachments", skip_serializing_if = "Option::is_none")]
     pub attachments: Option<AttachmentsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "Data")]
+    pub data: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,19 +169,5 @@ pub struct AssortmentDataType {
     pub end_date: DateType,
     #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
     pub info_text: Option<String200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "Data")]
-    pub data: Vec<u8>,
 }
 

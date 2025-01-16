@@ -2,15 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerResourceLocations {
+pub struct ResourceLocations {
     #[serde(flatten)]
-    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
+    pub resource_locations: ResourceLocationsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceLocation {
+pub struct ServiceBuyerResourceLocations {
     #[serde(flatten)]
-    pub resource_location: ResourceLocationType,
+    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,23 +20,9 @@ pub struct LocationTimestamp {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceLocations {
+pub struct ResourceLocation {
     #[serde(flatten)]
-    pub resource_locations: ResourceLocationsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerResourceLocationsType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "ResourceLocations", skip_serializing_if = "Option::is_none")]
-    pub resource_locations: Option<ResourceLocationsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceLocationsType {
-    #[serde(rename = "ResourceLocation")]
-    pub resource_location: Vec<ResourceLocationType>,
+    pub resource_location: ResourceLocationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -51,5 +37,19 @@ pub struct ResourceLocationType {
     pub location: PointGeometryType,
     #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
     pub working_site_id: Option<ERPIdType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerResourceLocationsType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "ResourceLocations", skip_serializing_if = "Option::is_none")]
+    pub resource_locations: Option<ResourceLocationsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceLocationsType {
+    #[serde(rename = "ResourceLocation")]
+    pub resource_location: Vec<ResourceLocationType>,
 }
 

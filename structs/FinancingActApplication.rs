@@ -2,9 +2,27 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingActApplication {
+    #[serde(flatten)]
+    pub financing_act_application: FinancingActApplicationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PlanAndSubsidy {
     #[serde(flatten)]
     pub plan_and_subsidy: PlanAndSubsidyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PartOfProject {
+    #[serde(flatten)]
+    pub part_of_project: PartOfProjectType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OtherPublicSubstitute {
+    #[serde(flatten)]
+    pub other_public_substitute: CoOtherPublicSubstituteType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,15 +32,15 @@ pub struct FinancingType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingActApplication {
+pub struct PartsOfProject {
     #[serde(flatten)]
-    pub financing_act_application: FinancingActApplicationType,
+    pub parts_of_project: PartsOfProjectType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
+pub struct PlanAndSubsidyType {
+    #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_application_stands: Option<FinancingActApplicationStands>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -76,9 +94,9 @@ pub struct FinancingActApplicationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlanAndSubsidyType {
-    #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_application_stands: Option<FinancingActApplicationStands>,
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

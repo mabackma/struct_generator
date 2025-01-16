@@ -2,33 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingQuality {
-    #[serde(flatten)]
-    pub stump_lifting_quality: BdtWorkingQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RemainingStumpCountText {
-    #[serde(flatten)]
-    pub remaining_stump_count_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpTidiness {
-    #[serde(flatten)]
-    pub stump_tidiness: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct RemainingStumpCount {
     #[serde(flatten)]
     pub remaining_stump_count: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditStumpLifting {
+pub struct StumpLiftingQuality {
     #[serde(flatten)]
-    pub working_site_final_audit_stump_lifting: WorkingSiteFinalAuditStumpLiftingType,
+    pub stump_lifting_quality: BdtWorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpLiftingSuitable {
+    #[serde(flatten)]
+    pub stump_lifting_suitable: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,21 +26,9 @@ pub struct StumpLiftingQualityText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpTidinessText {
+pub struct WorkingSiteFinalAuditStumpLifting {
     #[serde(flatten)]
-    pub stump_tidiness_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpCuttingAsInstructedText {
-    #[serde(flatten)]
-    pub stump_cutting_as_instructed_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpCuttingAsInstructed {
-    #[serde(flatten)]
-    pub stump_cutting_as_instructed: BdtYesNoType,
+    pub working_site_final_audit_stump_lifting: WorkingSiteFinalAuditStumpLiftingType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -62,9 +38,9 @@ pub struct StumpLiftingSuitableText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingSuitable {
+pub struct RemainingStumpCountText {
     #[serde(flatten)]
-    pub stump_lifting_suitable: BdtYesNoType,
+    pub remaining_stump_count_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
