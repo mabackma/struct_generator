@@ -2,9 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StorageProposals {
+pub struct ImageCount {
     #[serde(flatten)]
-    pub storage_proposals: StoragesType,
+    pub image_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadPaymentReference {
+    #[serde(flatten)]
+    pub load_payment_reference: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,21 +20,21 @@ pub struct DelinationObjectOrderId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentID {
+    #[serde(flatten)]
+    pub assortment_i_d: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct StorageClass {
     #[serde(flatten)]
     pub storage_class: BdtStorageDryingClassType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StoragesProposalForestHaulageDistances {
+pub struct StorageProposals {
     #[serde(flatten)]
-    pub storages_proposal_forest_haulage_distances: StoragesForestHaulageDistancesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ImageCount {
-    #[serde(flatten)]
-    pub image_count: BdtPositiveInteger2digitsType,
+    pub storage_proposals: StoragesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,31 +44,15 @@ pub struct WorkingSiteOperationalUpdate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentID {
+pub struct StoragesProposalForestHaulageDistances {
     #[serde(flatten)]
-    pub assortment_i_d: WctERPIdType,
+    pub storages_proposal_forest_haulage_distances: StoragesForestHaulageDistancesType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoragesForestHaulageDistancesType {
-    #[serde(rename = "StorageForestHaulageDistance")]
-    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
-    pub assortment: Option<Vec<AssortmentType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIdsType {
-    #[serde(rename = "@Status")]
-    pub status: AssortmentStatusType,
-    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
-    pub product_user_id: Option<Vec<BdtString100Type>>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadNumber {
     #[serde(flatten)]
-    pub base: BdtString100Type,
+    pub load_number: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,20 +103,6 @@ pub struct WorkingSiteOperationalUpdateType {
     pub environmental_object_info: Option<String3000Type>,
     #[serde(rename = "WorkingSafetyInfo", skip_serializing_if = "Option::is_none")]
     pub working_safety_info: Option<String3000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageForestHaulageDistanceType {
-    #[serde(rename = "StorageForestHaulageDistanceGroup")]
-    pub storage_forest_haulage_distance_group: StorageForestHaulageDistanceGroup,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StorageForestHaulageDistanceGroup {
-    #[serde(rename = "ForestHaulageDistance")]
-    pub forest_haulage_distance: ForestHaulageDistance,
-    #[serde(rename = "StorageId")]
-    pub storage_id: StorageId,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -214,8 +190,44 @@ pub struct StorageType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StorageForestHaulageDistanceType {
+    #[serde(rename = "StorageForestHaulageDistanceGroup")]
+    pub storage_forest_haulage_distance_group: StorageForestHaulageDistanceGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StoragesType {
     #[serde(rename = "Storage", skip_serializing_if = "Option::is_none")]
     pub storage: Option<Vec<StorageType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductUserIdsType {
+    #[serde(rename = "@Status")]
+    pub status: AssortmentStatusType,
+    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
+    pub product_user_id: Option<Vec<ProductUserId>>,
+    #[serde(flatten)]
+    pub base: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StorageForestHaulageDistanceGroup {
+    #[serde(rename = "ForestHaulageDistance")]
+    pub forest_haulage_distance: ForestHaulageDistance,
+    #[serde(rename = "StorageId")]
+    pub storage_id: StorageId,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoragesForestHaulageDistancesType {
+    #[serde(rename = "StorageForestHaulageDistance")]
+    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
+    pub assortment: Option<Vec<AssortmentType>>,
 }
 

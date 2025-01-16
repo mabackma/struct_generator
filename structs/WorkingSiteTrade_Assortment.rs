@@ -2,15 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentMainGroup {
+pub struct WoodLotInformationTypeDescription {
     #[serde(flatten)]
-    pub assortment_main_group: CoAssortmentMainGroupType,
+    pub wood_lot_information_type_description: CoString500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct QuantityUnit {
+pub struct DiameterMax {
     #[serde(flatten)]
-    pub quantity_unit: WtcoQuantityUnitType,
+    pub diameter_max: DiameterMaxType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,21 +20,15 @@ pub struct PricingMethod {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PriceItem {
+pub struct AssortmentCompact {
     #[serde(flatten)]
-    pub price_item: PriceItemType,
+    pub assortment_compact: AssortmentCompactType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PriceMatrix {
+pub struct LengthMin {
     #[serde(flatten)]
-    pub price_matrix: PriceMatrixType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentInfo {
-    #[serde(flatten)]
-    pub assortment_info: AssortmentInfoType,
+    pub length_min: LengthMinType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,9 +38,81 @@ pub struct LengthMax {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct QuantityUnit {
+    #[serde(flatten)]
+    pub quantity_unit: WtcoQuantityUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WoodLots {
+    #[serde(flatten)]
+    pub wood_lots: WoodLotsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentInfo {
+    #[serde(flatten)]
+    pub assortment_info: AssortmentInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentClass {
+    #[serde(flatten)]
+    pub assortment_class: AssortmentClassType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentClassCode {
+    #[serde(flatten)]
+    pub assortment_class_code: AssortmentClassCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PriceMatrix {
+    #[serde(flatten)]
+    pub price_matrix: PriceMatrixType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct GradeCode {
     #[serde(flatten)]
     pub grade_code: CoGradeCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentsCompact {
+    #[serde(flatten)]
+    pub assortments_compact: AssortmentsCompactType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TotalPrice {
+    #[serde(flatten)]
+    pub total_price: WtcoTotalPriceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Woodlot {
+    #[serde(flatten)]
+    pub woodlot: WoodLotType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DiameterMin {
+    #[serde(flatten)]
+    pub diameter_min: DiameterMinType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PriceItem {
+    #[serde(flatten)]
+    pub price_item: PriceItemType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Quantity {
+    #[serde(flatten)]
+    pub quantity: WtcoQuantityType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -62,9 +128,21 @@ pub struct AssortmentCompactClass {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Woodlot {
+pub struct MeasurementMethod {
     #[serde(flatten)]
-    pub woodlot: WoodLotType,
+    pub measurement_method: CoMeasurementMethodType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentMainGroup {
+    #[serde(flatten)]
+    pub assortment_main_group: CoAssortmentMainGroupType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WoodLotInformationValue {
+    #[serde(flatten)]
+    pub wood_lot_information_value: WoodLotInformationValueType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -79,107 +157,40 @@ pub struct WoodLotInformationType {
     pub wood_lot_information_type: WoodLotInformationTypeType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LengthMin {
-    #[serde(flatten)]
-    pub length_min: LengthMinType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DiameterMax {
-    #[serde(flatten)]
-    pub diameter_max: DiameterMaxType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WoodLotInformationValue {
-    #[serde(flatten)]
-    pub wood_lot_information_value: WoodLotInformationValueType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Quantity {
-    #[serde(flatten)]
-    pub quantity: WtcoQuantityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentsCompact {
-    #[serde(flatten)]
-    pub assortments_compact: AssortmentsCompactType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WoodLotInformationTypeDescription {
-    #[serde(flatten)]
-    pub wood_lot_information_type_description: CoString500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WoodLots {
-    #[serde(flatten)]
-    pub wood_lots: WoodLotsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DiameterMin {
-    #[serde(flatten)]
-    pub diameter_min: DiameterMinType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentCompact {
-    #[serde(flatten)]
-    pub assortment_compact: AssortmentCompactType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TotalPrice {
-    #[serde(flatten)]
-    pub total_price: WtcoTotalPriceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentClassCode {
-    #[serde(flatten)]
-    pub assortment_class_code: AssortmentClassCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurementMethod {
-    #[serde(flatten)]
-    pub measurement_method: CoMeasurementMethodType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentClass {
-    #[serde(flatten)]
-    pub assortment_class: AssortmentClassType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuantityGroup {
+    #[serde(rename = "QuantityUnit")]
+    pub quantity_unit: QuantityUnit,
+    #[serde(rename = "Quantity")]
+    pub quantity: Quantity,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentIdentifierGroup {
-    #[serde(rename = "AssortmentCode", skip_serializing_if = "Option::is_none")]
-    pub assortment_code: Option<AssortmentCode>,
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: TreeSpecies,
-    #[serde(rename = "StemType")]
-    pub stem_type: StemType,
-    #[serde(rename = "AssortmentName", skip_serializing_if = "Option::is_none")]
-    pub assortment_name: Option<AssortmentName>,
-    #[serde(rename = "AssortmentMainGroup", skip_serializing_if = "Option::is_none")]
-    pub assortment_main_group: Option<AssortmentMainGroup>,
+pub struct MeasurementMethodType {
+    #[serde(flatten)]
+    pub base: CoMeasurementMethodType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotInformationValueType {
-    pub base: String,
+pub struct AssortmentCompactType {
+    #[serde(flatten)]
+    pub base: AssortmentCompactElementsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClassesType {
-    #[serde(rename = "AssortmentClass")]
-    pub assortment_class: Vec<AssortmentClassType>,
+pub struct WoodLotsType {
+    #[serde(rename = "Woodlot")]
+    pub woodlot: Vec<WoodLotType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PricesAndCurrencyGroup {
+    #[serde(rename = "Currency")]
+    pub currency: Currency,
+    #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
+    pub unit_price: Option<UnitPrice>,
+    #[serde(rename = "TotalPrice")]
+    pub total_price: TotalPrice,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -191,100 +202,9 @@ pub struct PriceItemType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LengthMinType {
-    #[serde(flatten)]
-    pub base: CoPositiveDecimalMax5IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentCompactElementsType {
-    #[serde(rename = "AssortmentIdentifierGroup")]
-    pub assortment_identifier_group: AssortmentIdentifierGroup,
-    #[serde(rename = "QuantityGroup")]
-    pub quantity_group: QuantityGroup,
-    #[serde(rename = "PricesAndCurrencyGroup", skip_serializing_if = "Option::is_none")]
-    pub prices_and_currency_group: Option<PricesAndCurrencyGroup>,
-    #[serde(rename = "AssortmentInfo", skip_serializing_if = "Option::is_none")]
-    pub assortment_info: Option<AssortmentInfoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentCompactClassType {
-    #[serde(rename = "AssortmentClassCode")]
-    pub assortment_class_code: AssortmentClassCodeType,
-    #[serde(rename = "AssortmentsCompact")]
-    pub assortments_compact: AssortmentsCompactType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentInfoType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentCompactType {
-    #[serde(flatten)]
-    pub base: AssortmentCompactElementsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentsType {
     #[serde(rename = "Assortment")]
     pub assortment: Vec<AssortmentType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterMaxType {
-    #[serde(flatten)]
-    pub base: CoDecimal1FractionDigitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DimensionRequirementsGroup {
-    #[serde(rename = "DiameterMin")]
-    pub diameter_min: DiameterMin,
-    #[serde(rename = "DiameterMax")]
-    pub diameter_max: DiameterMax,
-    #[serde(rename = "LengthMax")]
-    pub length_max: LengthMax,
-    #[serde(rename = "LengthMin")]
-    pub length_min: LengthMin,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentClassType {
-    #[serde(rename = "AssortmentClassCode")]
-    pub assortment_class_code: AssortmentClassCodeType,
-    #[serde(rename = "Assortments")]
-    pub assortments: AssortmentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PricesAndCurrencyGroup {
-    #[serde(rename = "Currency")]
-    pub currency: Currency,
-    #[serde(rename = "TotalPrice")]
-    pub total_price: TotalPrice,
-    #[serde(rename = "UnitPrice", skip_serializing_if = "Option::is_none")]
-    pub unit_price: Option<UnitPrice>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementMethodType {
-    #[serde(flatten)]
-    pub base: CoMeasurementMethodType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotType {
-    #[serde(rename = "WoodLotInformationGroup")]
-    pub wood_lot_information_group: WoodLotInformationGroup,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotInformationTypeType {
-    #[serde(flatten)]
-    pub base: CoWoodLotInformationTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -300,13 +220,29 @@ pub struct AssortmentType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotInformationGroup {
-    #[serde(rename = "WoodLotInformationValue")]
-    pub wood_lot_information_value: WoodLotInformationValue,
-    #[serde(rename = "WoodLotInformationTypeDescription", skip_serializing_if = "Option::is_none")]
-    pub wood_lot_information_type_description: Option<WoodLotInformationTypeDescription>,
-    #[serde(rename = "WoodLotInformationType")]
-    pub wood_lot_information_type: WoodLotInformationType,
+pub struct AssortmentClassesType {
+    #[serde(rename = "AssortmentClass")]
+    pub assortment_class: Vec<AssortmentClassType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentIdentifierGroup {
+    #[serde(rename = "AssortmentMainGroup", skip_serializing_if = "Option::is_none")]
+    pub assortment_main_group: Option<AssortmentMainGroup>,
+    #[serde(rename = "AssortmentName", skip_serializing_if = "Option::is_none")]
+    pub assortment_name: Option<AssortmentName>,
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: TreeSpecies,
+    #[serde(rename = "StemType")]
+    pub stem_type: StemType,
+    #[serde(rename = "AssortmentCode", skip_serializing_if = "Option::is_none")]
+    pub assortment_code: Option<AssortmentCode>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WoodLotInformationTypeType {
+    #[serde(flatten)]
+    pub base: CoWoodLotInformationTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -316,11 +252,23 @@ pub struct AssortmentCompactClassesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QuantityGroup {
-    #[serde(rename = "Quantity")]
-    pub quantity: Quantity,
-    #[serde(rename = "QuantityUnit")]
-    pub quantity_unit: QuantityUnit,
+pub struct LengthMinType {
+    #[serde(flatten)]
+    pub base: CoPositiveDecimalMax5IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterMinType {
+    #[serde(flatten)]
+    pub base: CoDecimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentCompactClassType {
+    #[serde(rename = "AssortmentClassCode")]
+    pub assortment_class_code: AssortmentClassCodeType,
+    #[serde(rename = "AssortmentsCompact")]
+    pub assortments_compact: AssortmentsCompactType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -330,15 +278,74 @@ pub struct AssortmentClassCodeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct DimensionRequirementsGroup {
+    #[serde(rename = "LengthMin")]
+    pub length_min: LengthMin,
+    #[serde(rename = "LengthMax")]
+    pub length_max: LengthMax,
+    #[serde(rename = "DiameterMin")]
+    pub diameter_min: DiameterMin,
+    #[serde(rename = "DiameterMax")]
+    pub diameter_max: DiameterMax,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsCompactType {
+    #[serde(rename = "AssortmentCompact")]
+    pub assortment_compact: Vec<AssortmentCompactType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WoodLotInformationGroup {
+    #[serde(rename = "WoodLotInformationType")]
+    pub wood_lot_information_type: WoodLotInformationType,
+    #[serde(rename = "WoodLotInformationTypeDescription", skip_serializing_if = "Option::is_none")]
+    pub wood_lot_information_type_description: Option<WoodLotInformationTypeDescription>,
+    #[serde(rename = "WoodLotInformationValue")]
+    pub wood_lot_information_value: WoodLotInformationValue,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DiameterMaxType {
+    #[serde(flatten)]
+    pub base: CoDecimal1FractionDigitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentInfoType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentCompactElementsType {
+    #[serde(rename = "AssortmentIdentifierGroup")]
+    pub assortment_identifier_group: AssortmentIdentifierGroup,
+    #[serde(rename = "QuantityGroup")]
+    pub quantity_group: QuantityGroup,
+    #[serde(rename = "PricesAndCurrencyGroup", skip_serializing_if = "Option::is_none")]
+    pub prices_and_currency_group: Option<PricesAndCurrencyGroup>,
+    #[serde(rename = "AssortmentInfo", skip_serializing_if = "Option::is_none")]
+    pub assortment_info: Option<AssortmentInfoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WoodLotType {
+    #[serde(rename = "WoodLotInformationGroup")]
+    pub wood_lot_information_group: WoodLotInformationGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PriceMatrixType {
     #[serde(rename = "PriceItem")]
     pub price_item: Vec<PriceItemType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WoodLotsType {
-    #[serde(rename = "Woodlot")]
-    pub woodlot: Vec<WoodLotType>,
+pub struct AssortmentClassType {
+    #[serde(rename = "AssortmentClassCode")]
+    pub assortment_class_code: AssortmentClassCodeType,
+    #[serde(rename = "Assortments")]
+    pub assortments: AssortmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -368,14 +375,7 @@ pub struct AssortmentAllElementsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsCompactType {
-    #[serde(rename = "AssortmentCompact")]
-    pub assortment_compact: Vec<AssortmentCompactType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterMinType {
-    #[serde(flatten)]
-    pub base: CoDecimal1FractionDigitType,
+pub struct WoodLotInformationValueType {
+    pub base: String,
 }
 

@@ -2,15 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ReductionStumpHeight {
+pub struct Damages {
     #[serde(flatten)]
-    pub reduction_stump_height: BdtFinalAuditAnswerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReductionCount {
-    #[serde(flatten)]
-    pub reduction_count: BdtPositiveInteger2digitsType,
+    pub damages: BdtFinalAuditAnswerType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,15 +14,9 @@ pub struct ReductionAvgDiameter {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ReductionCountSummary {
+pub struct ReductionCount {
     #[serde(flatten)]
-    pub reduction_count_summary: BdtPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReductionAvgDiameterSummary {
-    #[serde(flatten)]
-    pub reduction_avg_diameter_summary: BdtDecimal2FractionDigitsType,
+    pub reduction_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,15 +26,21 @@ pub struct WorkingSiteQualityControlPlantManagement {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Damages {
+pub struct ReductionAvgDiameterSummary {
     #[serde(flatten)]
-    pub damages: BdtFinalAuditAnswerType,
+    pub reduction_avg_diameter_summary: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RadiusReduction {
+pub struct ReductionStumpHeight {
     #[serde(flatten)]
-    pub radius_reduction: BdtDecimal2FractionDigitsType,
+    pub reduction_stump_height: BdtFinalAuditAnswerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HarvestedTrees {
+    #[serde(flatten)]
+    pub harvested_trees: BdtFinalAuditAnswerType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -56,9 +50,29 @@ pub struct RemainingTrees {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestedTrees {
+pub struct ReductionCountSummary {
     #[serde(flatten)]
-    pub harvested_trees: BdtFinalAuditAnswerType,
+    pub reduction_count_summary: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RadiusReduction {
+    #[serde(flatten)]
+    pub radius_reduction: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotSummaryType {
+    #[serde(rename = "StandNumber")]
+    pub stand_number: String20Type,
+    #[serde(rename = "SamplePlotMeasurementSummary")]
+    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotTreesType {
+    #[serde(rename = "Trees")]
+    pub trees: Vec<TreeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,80 +93,6 @@ pub struct SamplePlotMeasurementSummaryType {
     pub stand_avg_stem_count_summary: Option<PositiveInteger5digitsType>,
     #[serde(rename = "TreeSummaries", skip_serializing_if = "Option::is_none")]
     pub tree_summaries: Option<SamplePlotTreesSummaryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSummaryType {
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: TreeSpeciesType,
-    #[serde(rename = "AgeSummary", skip_serializing_if = "Option::is_none")]
-    pub age_summary: Option<PositiveInteger3digitsType>,
-    #[serde(rename = "StemCountSummary")]
-    pub stem_count_summary: PositiveInteger5digitsType,
-    #[serde(rename = "MeanHeightSummary")]
-    pub mean_height_summary: Decimal1FractionDigitType,
-    #[serde(rename = "MeanDiameterSummary")]
-    pub mean_diameter_summary: PositiveInteger3digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteQualityControlPlantManagementBaseType {
-    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
-    pub service_buyer_id: Option<BdtString20Type>,
-    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
-    pub working_site_id: Option<WctERPIdType>,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
-    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
-    pub sample_plots: Option<SamplePlotsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotTreesType {
-    #[serde(rename = "Trees")]
-    pub trees: Vec<TreeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotsType {
-    #[serde(rename = "SamplePlot")]
-    pub sample_plot: Vec<SamplePlotType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteQualityControlPlantManagementType {
-    #[serde(flatten)]
-    pub base: WorkingSiteQualityControlPlantManagementBaseType,
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: BdtString20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: WctERPIdType,
-    #[serde(rename = "Images")]
-    pub images: BdtPositiveInteger2digitsType,
-    #[serde(rename = "SamplePlotSummaries")]
-    pub sample_plot_summaries: SamplePlotSummariesType,
-    #[serde(rename = "SamplePlots")]
-    pub sample_plots: SamplePlotsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringWorkingSiteQualityControlPlantManagementType {
-    #[serde(flatten)]
-    pub base: WorkingSiteQualityControlPlantManagementBaseType,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
-    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
-    pub sample_plots: Option<SamplePlotsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotTreesSummaryType {
-    #[serde(rename = "TreeSummary")]
-    pub tree_summary: Vec<TreeSummaryType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -208,11 +148,61 @@ pub struct SamplePlotType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummaryType {
-    #[serde(rename = "StandNumber")]
-    pub stand_number: String20Type,
-    #[serde(rename = "SamplePlotMeasurementSummary")]
-    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
+pub struct WorkingSiteQualityControlPlantManagementBaseType {
+    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
+    pub service_buyer_id: Option<BdtString20Type>,
+    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
+    pub working_site_id: Option<WctERPIdType>,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
+    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
+    pub sample_plots: Option<SamplePlotsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotsType {
+    #[serde(rename = "SamplePlot")]
+    pub sample_plot: Vec<SamplePlotType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotTreesSummaryType {
+    #[serde(rename = "TreeSummary")]
+    pub tree_summary: Vec<TreeSummaryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SelfMonitoringWorkingSiteQualityControlPlantManagementType {
+    #[serde(flatten)]
+    pub base: WorkingSiteQualityControlPlantManagementBaseType,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
+    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
+    pub sample_plots: Option<SamplePlotsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotSummariesType {
+    #[serde(rename = "SamplePlotSummary")]
+    pub sample_plot_summary: Vec<SamplePlotSummaryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSummaryType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: TreeSpeciesType,
+    #[serde(rename = "AgeSummary", skip_serializing_if = "Option::is_none")]
+    pub age_summary: Option<PositiveInteger3digitsType>,
+    #[serde(rename = "StemCountSummary")]
+    pub stem_count_summary: PositiveInteger5digitsType,
+    #[serde(rename = "MeanHeightSummary")]
+    pub mean_height_summary: Decimal1FractionDigitType,
+    #[serde(rename = "MeanDiameterSummary")]
+    pub mean_diameter_summary: PositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -230,8 +220,18 @@ pub struct TreeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummariesType {
-    #[serde(rename = "SamplePlotSummary")]
-    pub sample_plot_summary: Vec<SamplePlotSummaryType>,
+pub struct WorkingSiteQualityControlPlantManagementType {
+    #[serde(flatten)]
+    pub base: WorkingSiteQualityControlPlantManagementBaseType,
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: BdtString20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: WctERPIdType,
+    #[serde(rename = "Images")]
+    pub images: BdtPositiveInteger2digitsType,
+    #[serde(rename = "SamplePlotSummaries")]
+    pub sample_plot_summaries: SamplePlotSummariesType,
+    #[serde(rename = "SamplePlots")]
+    pub sample_plots: SamplePlotsType,
 }
 

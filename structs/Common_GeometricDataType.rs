@@ -2,9 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PointGeometry {
+pub struct PolygonGeometry {
     #[serde(flatten)]
-    pub point_geometry: PointGeometryType,
+    pub polygon_geometry: PolygonGeometryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,9 +14,21 @@ pub struct MultiPolygonGeometry {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PolygonGeometry {
+pub struct PointGeometry {
     #[serde(flatten)]
-    pub polygon_geometry: PolygonGeometryType,
+    pub point_geometry: PointGeometryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MultiPolygonGeometryType {
+    #[serde(rename = "MultiPolygon")]
+    pub gml_multi_polygon: MultiPolygon,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlternativeGeometriesType {
+    #[serde(rename = "AlternativeGeometriesGroup")]
+    pub alternative_geometries_group: AlternativeGeometriesGroup,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -26,9 +38,47 @@ pub struct PolygonGeometryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SimpleAlternativeGeometriesGroup {
+pub struct PolygonOrMultiPolygonType {
+    #[serde(rename = "pointProperty", skip_serializing_if = "Option::is_none")]
+    pub gmlpoint_property: Option<pointProperty>,
+    #[serde(rename = "polygonProperty")]
+    pub gmlpolygon_property: polygonProperty,
     #[serde(rename = "MultiPolygonGeometry")]
-    pub multi_polygon_geometry: MultiPolygonGeometry,
+    pub multi_polygon_geometry: ExtendedMultiPolygonGeometryType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlternativeGeometries2Group {
+    #[serde(rename = "PolygonGeometry")]
+    pub polygon_geometry: PolygonGeometry,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ExtendedMultiPolygonGeometryType {
+    #[serde(rename = "MultiPolygon")]
+    pub gml_multi_polygon: MultiPolygon,
+    #[serde(rename = "MultiSurface")]
+    pub gml_multi_surface: MultiSurface,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PointGeometryType {
+    #[serde(rename = "@dimension")]
+    pub dimension: f64,
+    #[serde(rename = "@location")]
+    pub location: PointLocationType,
+    #[serde(rename = "pointProperty")]
+    pub gmlpoint_property: pointProperty,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PolygonOrMultiPolygon2Type {
+    #[serde(rename = "pointProperty", skip_serializing_if = "Option::is_none")]
+    pub gmlpoint_property: Option<pointProperty>,
+    #[serde(rename = "polygonProperty")]
+    pub gmlpolygon_property: polygonProperty,
+    #[serde(rename = "MultiPolygonGeometry")]
+    pub multi_polygon_geometry: ExtendedMultiPolygonGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,65 +109,15 @@ pub struct PointAndLineOrPolygonType {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AlternativeGeometriesGroup {
-    #[serde(rename = "PolygonGeometry")]
-    pub polygon_geometry: PolygonGeometry,
     #[serde(rename = "MultiPolygonGeometry")]
     pub multi_polygon_geometry: MultiPolygonGeometry,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AlternativeGeometries2Group {
     #[serde(rename = "PolygonGeometry")]
     pub polygon_geometry: PolygonGeometry,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ExtendedMultiPolygonGeometryType {
-    #[serde(rename = "MultiPolygon")]
-    pub gml_multi_polygon: MultiPolygon,
-    #[serde(rename = "MultiSurface")]
-    pub gml_multi_surface: MultiSurface,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AlternativeGeometriesType {
-    #[serde(rename = "AlternativeGeometriesGroup")]
-    pub alternative_geometries_group: AlternativeGeometriesGroup,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PolygonOrMultiPolygon2Type {
-    #[serde(rename = "pointProperty", skip_serializing_if = "Option::is_none")]
-    pub gmlpoint_property: Option<pointProperty>,
-    #[serde(rename = "polygonProperty")]
-    pub gmlpolygon_property: polygonProperty,
+pub struct SimpleAlternativeGeometriesGroup {
     #[serde(rename = "MultiPolygonGeometry")]
-    pub multi_polygon_geometry: ExtendedMultiPolygonGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PolygonOrMultiPolygonType {
-    #[serde(rename = "pointProperty", skip_serializing_if = "Option::is_none")]
-    pub gmlpoint_property: Option<pointProperty>,
-    #[serde(rename = "polygonProperty")]
-    pub gmlpolygon_property: polygonProperty,
-    #[serde(rename = "MultiPolygonGeometry")]
-    pub multi_polygon_geometry: ExtendedMultiPolygonGeometryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PointGeometryType {
-    #[serde(rename = "@dimension")]
-    pub dimension: f64,
-    #[serde(rename = "@location")]
-    pub location: PointLocationType,
-    #[serde(rename = "pointProperty")]
-    pub gmlpoint_property: pointProperty,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MultiPolygonGeometryType {
-    #[serde(rename = "MultiPolygon")]
-    pub gml_multi_polygon: MultiPolygon,
+    pub multi_polygon_geometry: MultiPolygonGeometry,
 }
 
