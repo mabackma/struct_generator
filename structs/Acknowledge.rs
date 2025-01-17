@@ -2,15 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct ReplyTo {
+--pub struct OriginalMessageType {
     #[serde(flatten)]
-    pub reply_to: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StatusMessage {
-    #[serde(flatten)]
-    pub status_message: BdtString1000Type,
+    pub original_message_type: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,15 +20,9 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct OriginalMessageType {
+--pub struct ReplyTo {
     #[serde(flatten)]
-    pub original_message_type: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StatusCode {
-    #[serde(flatten)]
-    pub status_code: BdtPositiveInteger3digitsType,
+    pub reply_to: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

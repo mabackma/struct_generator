@@ -226,17 +226,16 @@ fn missing_definitions(
 
             if !structs.contains_key(&f_type) && !new_definitions.contains_key(&f_type) {
 
-                if !new_definitions.contains_key(&f_type) {
-                    if !f_type.starts_with("Xs") && !f_type.starts_with("Xlink") && !RUST_TYPES.contains(&f_type.as_str()) {
+                if !new_definitions.contains_key(&f_type) && !RUST_TYPES.contains(&f_type.as_str()) {
+                  
+                    if prefixes.contains_key(&f_type) {
+                        let p = prefixes.get(&f_type).unwrap();
+                        let skip = p.len();
+                        let new_type = f_type[skip..].to_string();
                         
-                        if prefixes.contains_key(&f_type) {
-                            let p = prefixes.get(&f_type).unwrap();
-                            let skip = p.len();
-                            let new_type = f_type[skip..].to_string();
-                            
-                            new_definitions.insert(f_type.clone(), new_type);
-                        }
+                        new_definitions.insert(f_type.clone(), new_type);
                     }
+                    
                 }
             }
         }

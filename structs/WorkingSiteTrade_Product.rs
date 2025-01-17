@@ -2,9 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct ProductName {
+--pub struct Product {
     #[serde(flatten)]
-    pub product_name: CoString500Type,
+    pub product: ProductType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,41 +14,15 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Code {
+--pub struct ProductName {
     #[serde(flatten)]
-    pub code: Xsstring,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Product {
-    #[serde(flatten)]
-    pub product: ProductType,
+    pub product_name: CoString500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 --pub struct Consumption {
     #[serde(flatten)]
     pub consumption: ConsumptionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Unit {
-    #[serde(flatten)]
-    pub unit: Xsstring,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: CoOperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: WtcPlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -92,14 +66,28 @@ pub struct ProductsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ConsumptionUnitType {
     #[serde(flatten)]
     pub base: CoUnitPerHectareType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: WtcPlannedResourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
 }
 

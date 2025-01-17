@@ -2,33 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Tree {
-    #[serde(flatten)]
-    pub tree: TreeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 --pub struct TreeCount {
     #[serde(flatten)]
     pub tree_count: CoStemCountType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct TreeDiameter {
-    #[serde(flatten)]
-    pub tree_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct WorkQuality {
-    #[serde(flatten)]
-    pub work_quality: VirtaWorkQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Status5 {
-    #[serde(flatten)]
-    pub status5: CoChangeStateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,27 +14,39 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+--pub struct DamageClass {
+    #[serde(flatten)]
+    pub damage_class: VirtaDamageClassType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct WorkQuality {
+    #[serde(flatten)]
+    pub work_quality: VirtaWorkQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 --pub struct TreeHeight {
     #[serde(flatten)]
     pub tree_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct DamageClass {
+--pub struct TreeDiameter {
     #[serde(flatten)]
-    pub damage_class: VirtaDamageClassType,
+    pub tree_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Status5 {
+    #[serde(flatten)]
+    pub status5: CoChangeStateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaWorkQualityType {
     #[serde(flatten)]
     pub base: CoVirtaWorkQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaDamageClassType {
-    #[serde(flatten)]
-    pub base: CoVirtaDamageClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,5 +71,11 @@ pub struct TreeType {
     pub work_quality: Option<VirtaWorkQualityType>,
     #[serde(rename = "DamageClass", skip_serializing_if = "Option::is_none")]
     pub damage_class: Option<VirtaDamageClassType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaDamageClassType {
+    #[serde(flatten)]
+    pub base: CoVirtaDamageClassType,
 }
 

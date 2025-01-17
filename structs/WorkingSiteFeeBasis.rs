@@ -2,9 +2,51 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct FeeBaseList {
+--pub struct FeeYesNo {
     #[serde(flatten)]
-    pub fee_base_list: FeeBaseListType,
+    pub fee_yes_no: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct FeeBasis {
+    #[serde(flatten)]
+    pub fee_basis: FeeBasisType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Id {
+    #[serde(flatten)]
+    pub id: BdtPositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct WorkingSiteFeeBasis {
+    #[serde(flatten)]
+    pub working_site_fee_basis: WorkingSiteFeeBasisType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct FeeListId {
+    #[serde(flatten)]
+    pub fee_list_id: BdtPositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct FeeAssortment {
+    #[serde(flatten)]
+    pub fee_assortment: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct FeeId {
+    #[serde(flatten)]
+    pub fee_id: BdtString10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct FeeBase {
+    #[serde(flatten)]
+    pub fee_base: FeeBasisDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,15 +56,33 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSiteFeeBasis {
+--pub struct Infotext {
     #[serde(flatten)]
-    pub working_site_fee_basis: WorkingSiteFeeBasisType,
+    pub infotext: BdtString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct NeedToCheck {
+    #[serde(flatten)]
+    pub need_to_check: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct FeeBaseList {
+    #[serde(flatten)]
+    pub fee_base_list: FeeBaseListType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct FeeValue {
+    #[serde(flatten)]
+    pub fee_value: BdtString10Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBaseListType {
-    #[serde(rename = "FeeBaseListItem")]
-    pub fee_base_list_item: Vec<FeebaseListItemType>,
+pub struct StandsType {
+    #[serde(rename = "StandNumber")]
+    pub stand_number: Vec<String20Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -70,15 +130,15 @@ pub struct WorkingSiteFeeBasisType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisType {
-    #[serde(rename = "FeeBase")]
-    pub fee_base: Vec<FeeBasisDataType>,
+pub struct FeeBaseListType {
+    #[serde(rename = "FeeBaseListItem")]
+    pub fee_base_list_item: Vec<FeebaseListItemType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType {
-    #[serde(rename = "StandNumber")]
-    pub stand_number: Vec<String20Type>,
+pub struct FeeBasisType {
+    #[serde(rename = "FeeBase")]
+    pub fee_base: Vec<FeeBasisDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

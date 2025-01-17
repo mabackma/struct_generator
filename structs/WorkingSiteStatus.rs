@@ -1,18 +1,6 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSiteStatus {
-    #[serde(flatten)]
-    pub working_site_status: WorkingSiteStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSiteNumber {
-    #[serde(flatten)]
-    pub working_site_number: WctWorkingSiteNumberType,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteStatusType {
     #[serde(rename = "ServiceBuyerId")]

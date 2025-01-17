@@ -2,18 +2,6 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Offer {
-    #[serde(flatten)]
-    pub offer: OfferType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct OfferDate {
-    #[serde(flatten)]
-    pub offer_date: OfferDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 --pub struct OfferText {
     #[serde(flatten)]
     pub offer_text: OfferTextType,
@@ -25,22 +13,22 @@ use chrono::*;
     pub offer_business_sender: OfferBusinessSenderType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferTextType {
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct OfferDate {
     #[serde(flatten)]
-    pub base: CoString1500Type,
+    pub offer_date: OfferDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Offer {
+    #[serde(flatten)]
+    pub offer: OfferType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OfferBusinessSenderType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -76,14 +64,26 @@ pub struct OfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OfferExpirationDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TechnicalContactPersonType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferExpirationDateType {
+pub struct OfferDateType {
     #[serde(flatten)]
     pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferTextType {
+    #[serde(flatten)]
+    pub base: CoString1500Type,
 }
 

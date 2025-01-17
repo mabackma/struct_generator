@@ -2,15 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
+--pub struct QualityAttachment {
+    #[serde(flatten)]
+    pub quality_attachment: QualityAttachmentType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 --pub struct Version {
     #[serde(flatten)]
     pub version: BdtString10Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct QualityAttachment {
+--pub struct Filename {
     #[serde(flatten)]
-    pub quality_attachment: QualityAttachmentType,
+    pub filename: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

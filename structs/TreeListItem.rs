@@ -8,15 +8,9 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct TreeClass {
+--pub struct TreeListItem {
     #[serde(flatten)]
-    pub tree_class: CoTreeClassType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct TreeSpecies {
-    #[serde(flatten)]
-    pub tree_species: CoTreeSpeciesType,
+    pub tree_list_item: TreeListItemType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,9 +20,21 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+--pub struct TreeSpecies {
+    #[serde(flatten)]
+    pub tree_species: CoTreeSpeciesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 --pub struct TreeIdentifier {
     #[serde(flatten)]
     pub tree_identifier: TreeIdentifierType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct TreeNumber {
+    #[serde(flatten)]
+    pub tree_number: Xsinteger,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,15 +44,17 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct TreeListItem {
+--pub struct TreeClass {
     #[serde(flatten)]
-    pub tree_list_item: TreeListItemType,
+    pub tree_class: CoTreeClassType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
---pub struct TreeNumber {
-    #[serde(flatten)]
-    pub tree_number: Xsinteger,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifierType {
+    #[serde(rename = "Type")]
+    pub r#type: i32,
+    #[serde(rename = "Value")]
+    pub value: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,14 +87,6 @@ pub struct TreeListItemType {
     pub pulp_wood_volume: Option<CoPulpWoodVolumeType>,
     #[serde(rename = "TreeIdentifiers", skip_serializing_if = "Option::is_none")]
     pub tree_identifiers: Option<TreeIdentifiersType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifierType {
-    #[serde(rename = "Type")]
-    pub r#type: i32,
-    #[serde(rename = "Value")]
-    pub value: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

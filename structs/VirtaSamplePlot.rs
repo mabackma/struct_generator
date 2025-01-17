@@ -2,39 +2,27 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct SoilModificationEstimate {
+--pub struct SamplePlotNorthingCoordinate {
     #[serde(flatten)]
-    pub soil_modification_estimate: VirtaEvaluationType,
+    pub sample_plot_northing_coordinate: Xsstring,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct SamplePlotMeanDiameter {
+--pub struct SamplePlotEastingCoordinate {
     #[serde(flatten)]
-    pub sample_plot_mean_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub sample_plot_easting_coordinate: Xsstring,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Status4 {
+--pub struct SamplePlotTrackWidth {
     #[serde(flatten)]
-    pub status4: CoChangeStateType,
+    pub sample_plot_track_width: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct SamplePlot {
+--pub struct SamplePlotStubDiameter {
     #[serde(flatten)]
-    pub sample_plot: SamplePlotType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Trees {
-    #[serde(flatten)]
-    pub trees: TreesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct SecondStoreyTrees {
-    #[serde(flatten)]
-    pub second_storey_trees: Xsinteger,
+    pub sample_plot_stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,9 +32,9 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct SamplePlotBasalArea {
+--pub struct SamplePlotMeanDiameter {
     #[serde(flatten)]
-    pub sample_plot_basal_area: Xsinteger,
+    pub sample_plot_mean_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -68,39 +56,21 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct SamplePlotNorthingCoordinate {
+--pub struct SamplePlotBasalArea {
     #[serde(flatten)]
-    pub sample_plot_northing_coordinate: Xsstring,
+    pub sample_plot_basal_area: Xsinteger,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct SamplePlotStubDiameter {
+--pub struct Status4 {
     #[serde(flatten)]
-    pub sample_plot_stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub status4: CoChangeStateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct SamplePlotSize {
+--pub struct SecondStoreyTrees {
     #[serde(flatten)]
-    pub sample_plot_size: Xsinteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct SamplePlotNumber {
-    #[serde(flatten)]
-    pub sample_plot_number: Xsstring,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct SamplePlotEastingCoordinate {
-    #[serde(flatten)]
-    pub sample_plot_easting_coordinate: Xsstring,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct SamplePlotTrackWidth {
-    #[serde(flatten)]
-    pub sample_plot_track_width: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub second_storey_trees: Xsinteger,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

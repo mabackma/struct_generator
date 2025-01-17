@@ -2,12 +2,6 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Minutes {
-    #[serde(flatten)]
-    pub minutes: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 --pub struct WorkingSiteWorkTime {
     #[serde(flatten)]
     pub working_site_work_time: WorkingSiteWorkTimeType,
@@ -17,6 +11,12 @@ use chrono::*;
 --pub struct Sawinghours {
     #[serde(flatten)]
     pub sawinghours: SawinghoursDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Minutes {
+    #[serde(flatten)]
+    pub minutes: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

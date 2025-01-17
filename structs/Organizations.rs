@@ -2,6 +2,24 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
+--pub struct Services {
+    #[serde(flatten)]
+    pub services: ServicesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Roles {
+    #[serde(flatten)]
+    pub roles: RolesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Service {
+    #[serde(flatten)]
+    pub service: OrganizationServiceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 --pub struct Role {
     #[serde(flatten)]
     pub role: OrganizationRoleType,
@@ -14,27 +32,9 @@ use chrono::*;
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Service {
-    #[serde(flatten)]
-    pub service: OrganizationServiceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 --pub struct Organization {
     #[serde(flatten)]
     pub organization: OrganizationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Roles {
-    #[serde(flatten)]
-    pub roles: RolesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Services {
-    #[serde(flatten)]
-    pub services: ServicesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,9 +49,8 @@ pub struct OrganizationRoleType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RolesType {
-    #[serde(rename = "Role")]
-    pub role: Vec<OrganizationRoleType>,
+pub struct OrganizationServiceType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -75,7 +74,8 @@ pub struct OrganizationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
-    pub base: String,
+pub struct RolesType {
+    #[serde(rename = "Role")]
+    pub role: Vec<OrganizationRoleType>,
 }
 

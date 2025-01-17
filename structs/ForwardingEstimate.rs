@@ -2,6 +2,12 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
+--pub struct AssortmentId {
+    #[serde(flatten)]
+    pub assortment_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 --pub struct ForwardingEstimate {
     #[serde(flatten)]
     pub forwarding_estimate: ForwardingEstimateType,
@@ -11,6 +17,34 @@ use chrono::*;
 --pub struct Loads {
     #[serde(flatten)]
     pub loads: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Day {
+    #[serde(flatten)]
+    pub day: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct StartTime {
+    #[serde(flatten)]
+    pub start_time: BdtTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardingEstimateType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+    #[serde(rename = "StorageId")]
+    pub storage_id: ERPIdType,
+    #[serde(rename = "StartTime")]
+    pub start_time: TimeStampType,
+    #[serde(rename = "Assortments")]
+    pub assortments: AssortmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,22 +63,6 @@ pub struct AssortmentDataType {
     pub loads: PositiveInteger3digitsType,
     #[serde(rename = "Day")]
     pub day: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardingEstimateType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
-    #[serde(rename = "StorageId")]
-    pub storage_id: ERPIdType,
-    #[serde(rename = "StartTime")]
-    pub start_time: TimeStampType,
-    #[serde(rename = "Assortments")]
-    pub assortments: AssortmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
