@@ -2,15 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StubDiameter {
+pub struct WorkQuality {
     #[serde(flatten)]
-    pub stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub work_quality: VirtaWorkQualityType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeHeight {
+pub struct Status5 {
     #[serde(flatten)]
-    pub tree_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub status5: CoChangeStateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StubDiameter {
+    #[serde(flatten)]
+    pub stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,21 +26,15 @@ pub struct TreeCount {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkQuality {
-    #[serde(flatten)]
-    pub work_quality: VirtaWorkQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct TreeDiameter {
     #[serde(flatten)]
     pub tree_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Status5 {
+pub struct TreeHeight {
     #[serde(flatten)]
-    pub status5: CoChangeStateType,
+    pub tree_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -68,14 +68,14 @@ pub struct TreeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaDamageClassType {
-    #[serde(flatten)]
-    pub base: CoVirtaDamageClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaWorkQualityType {
     #[serde(flatten)]
     pub base: CoVirtaWorkQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaDamageClassType {
+    #[serde(flatten)]
+    pub base: CoVirtaDamageClassType,
 }
 

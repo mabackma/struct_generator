@@ -10,6 +10,6 @@ pub struct Envelopes {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct EnvelopesType {
     #[serde(rename = "Envelope")]
-    pub envl_envelope: Vec<Envelope>,
+    pub envl_envelope: Vec<EnvlEnvelope>,
 }
 

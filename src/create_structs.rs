@@ -139,13 +139,13 @@ pub fn add_element_definition(
             element_definitions.insert(n, t);
         } else {
             if let Some(_) = slice_contents(content, "element",&n) {
+
                 // Update the current name when creating a new struct
                 *current_name = n.clone();
 
                 anonymous_complex_types.push(n.clone());
 
                 // Create a struct for the anonymous complex type
-                //println!("Creating struct for anonymous complex type: {}", n);
                 let new_struct = XMLStruct {
                     name: n.clone(),
                     fields: Vec::new(),
@@ -153,8 +153,8 @@ pub fn add_element_definition(
 
                 stack.push(new_struct.clone());
 
-                // Create element definition using the name of the element and "Type"
-                element_definitions.insert(n.clone() + "Type", n);
+                // Create element definition with the type containing "Type"
+                element_definitions.insert(n.clone(), n + "Type");
             } else {
                 //println!("No type for element: {}", n);
             }

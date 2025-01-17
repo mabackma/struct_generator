@@ -2,33 +2,27 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Normal {
+pub struct CumulativePoint {
     #[serde(flatten)]
-    pub normal: NormalType,
+    pub cumulative_point: CumulativePointType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Gamma {
+pub struct ShapeGamma {
     #[serde(flatten)]
-    pub gamma: GammaType,
+    pub shape_gamma: ShapeGammaType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ShapeDelta {
+pub struct Weibull {
     #[serde(flatten)]
-    pub shape_delta: ShapeDeltaType,
+    pub weibull: WeibullType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Scale {
+pub struct ShapeAlfa {
     #[serde(flatten)]
-    pub scale: ScaleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Location {
-    #[serde(flatten)]
-    pub location: LocationType,
+    pub shape_alfa: ShapeAlfaType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,9 +32,15 @@ pub struct Maximum {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CumulativePointDistribution {
+pub struct Normal {
     #[serde(flatten)]
-    pub cumulative_point_distribution: CumulativePointDistributionType,
+    pub normal: NormalType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Variance {
+    #[serde(flatten)]
+    pub variance: VarianceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -50,15 +50,21 @@ pub struct Beta {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct CumulativeMass {
+    #[serde(flatten)]
+    pub cumulative_mass: CumulativeMassType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Mean {
     #[serde(flatten)]
     pub mean: MeanType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Weibull {
+pub struct Scale {
     #[serde(flatten)]
-    pub weibull: WeibullType,
+    pub scale: ScaleType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -74,15 +80,21 @@ pub struct JohnsonSB {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ShapeGamma {
+pub struct ShapeBeta {
     #[serde(flatten)]
-    pub shape_gamma: ShapeGammaType,
+    pub shape_beta: ShapeBetaType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CumulativeMass {
+pub struct Gamma {
     #[serde(flatten)]
-    pub cumulative_mass: CumulativeMassType,
+    pub gamma: GammaType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CumulativePointDistribution {
+    #[serde(flatten)]
+    pub cumulative_point_distribution: CumulativePointDistributionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -92,46 +104,25 @@ pub struct Shape {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Variance {
+pub struct ShapeDelta {
     #[serde(flatten)]
-    pub variance: VarianceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ShapeBeta {
-    #[serde(flatten)]
-    pub shape_beta: ShapeBetaType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CumulativePoint {
-    #[serde(flatten)]
-    pub cumulative_point: CumulativePointType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ShapeAlfa {
-    #[serde(flatten)]
-    pub shape_alfa: ShapeAlfaType,
+    pub shape_delta: ShapeDeltaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleType {
+pub struct ShapeGammaType {
     pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DistributionType {
-    #[serde(rename = "DistributionModelGroup")]
-    pub distribution_model_group: DistributionModelGroup,
+pub struct CumulativePointDistributionType {
+    #[serde(rename = "CumulativePoint")]
+    pub cumulative_point: Vec<CumulativePointType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CumulativePointType {
-    #[serde(rename = "Diameter")]
-    pub diameter: DiameterType,
-    #[serde(rename = "CumulativeMass")]
-    pub cumulative_mass: CumulativeMassType,
+pub struct DiameterType {
+    pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -147,14 +138,43 @@ pub struct JohnsonSBType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ShapeAlfaType {
+pub struct CumulativePointType {
+    #[serde(rename = "Diameter")]
+    pub diameter: DiameterType,
+    #[serde(rename = "CumulativeMass")]
+    pub cumulative_mass: CumulativeMassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DistributionModelGroup {
+    #[serde(rename = "Weibull")]
+    pub weibull: Weibull,
+    #[serde(rename = "Normal")]
+    pub normal: Normal,
+    #[serde(rename = "JohnsonSB")]
+    pub johnson_s_b: JohnsonSB,
+    #[serde(rename = "Beta")]
+    pub beta: Beta,
+    #[serde(rename = "CumulativePointDistribution")]
+    pub cumulative_point_distribution: CumulativePointDistribution,
+    #[serde(rename = "Gamma")]
+    pub gamma: Gamma,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DistributionType {
+    #[serde(rename = "DistributionModelGroup")]
+    pub distribution_model_group: DistributionModelGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaximumType {
     pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CumulativePointDistributionType {
-    #[serde(rename = "CumulativePoint")]
-    pub cumulative_point: Vec<CumulativePointType>,
+pub struct ShapeBetaType {
+    pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -168,32 +188,27 @@ pub struct WeibullType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ShapeGammaType {
-    pub base: f32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CumulativeMassType {
     pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MinimumType {
+pub struct LocationType {
     pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ShapeDeltaType {
+pub struct ShapeAlfaType {
     pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ShapeBetaType {
+pub struct ScaleType {
     pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ShapeType {
+pub struct VarianceType {
     pub base: f32,
 }
 
@@ -206,22 +221,22 @@ pub struct NormalType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterType {
+pub struct ShapeDeltaType {
     pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MaximumType {
-    pub base: f32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LocationType {
+pub struct MinimumType {
     pub base: f32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MeanType {
+    pub base: f32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ShapeType {
     pub base: f32,
 }
 
@@ -243,26 +258,5 @@ pub struct GammaType {
     pub shape: ShapeType,
     #[serde(rename = "Scale")]
     pub scale: ScaleType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DistributionModelGroup {
-    #[serde(rename = "CumulativePointDistribution")]
-    pub cumulative_point_distribution: CumulativePointDistribution,
-    #[serde(rename = "JohnsonSB")]
-    pub johnson_s_b: JohnsonSB,
-    #[serde(rename = "Weibull")]
-    pub weibull: Weibull,
-    #[serde(rename = "Normal")]
-    pub normal: Normal,
-    #[serde(rename = "Beta")]
-    pub beta: Beta,
-    #[serde(rename = "Gamma")]
-    pub gamma: Gamma,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VarianceType {
-    pub base: f32,
 }
 

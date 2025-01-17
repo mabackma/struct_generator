@@ -7,7 +7,7 @@ use std::io::{self, Read, Write};
 use std::path::Path;
 use std::fs;
 
-const RUST_TYPES: &[&str] = &[
+pub const RUST_TYPES: &[&str] = &[
     "bool", "f64", "f32", "i32", "u32", "i8", "i16", "i64", 
     "u8", "u16", "u64", "String", "chrono::NaiveDate", 
     "chrono::NaiveTime", "chrono::NaiveDateTime", 
@@ -72,9 +72,7 @@ fn generate_element_definitions(
 
         let field_type = handle_prefix(typ, prefixes);
 
-        let typ = field_type.to_string();
-
-        definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), typ));
+        definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), field_type));
 
         definitions_string.push_str("}\n\n");
     }

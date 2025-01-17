@@ -45,6 +45,8 @@ pub static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "DateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
 };
 
+// Adds prefixes to the HashMap (e.g. "xs:string" -> "Xs")
+// Returns the name of the element (e.g. "xs:string" -> "XsString")
 pub fn handle_prefix(
     name: &str, 
     prefixes: &mut HashMap<String, String>
@@ -58,7 +60,6 @@ pub fn handle_prefix(
         let complete_name = capitalize_first(&complete_name).to_string();
 
         prefixes.insert(complete_name.clone(), prefix.to_string());
-
         return complete_name;
     }
 

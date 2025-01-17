@@ -13,6 +13,18 @@ pub struct ForwardingEstimate {
     pub forwarding_estimate: ForwardingEstimateType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StartTime {
+    #[serde(flatten)]
+    pub start_time: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Day {
+    #[serde(flatten)]
+    pub day: BdtDateType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentsType {
     #[serde(rename = "Assortment")]

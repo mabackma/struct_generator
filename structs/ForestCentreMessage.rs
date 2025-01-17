@@ -2,6 +2,12 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SenderEmail {
+    #[serde(flatten)]
+    pub sender_email: CiEmailAddressType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SelfMonitoringData {
     #[serde(flatten)]
     pub self_monitoring_data: CodForestCentreSelfMonitoringDataType,
@@ -17,12 +23,6 @@ pub struct ForestCentreMessage {
 pub struct ForestDataUpdate {
     #[serde(flatten)]
     pub forest_data_update: CodForestDataUpdateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SenderEmail {
-    #[serde(flatten)]
-    pub sender_email: CiEmailAddressType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

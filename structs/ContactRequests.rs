@@ -2,9 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContactRequestsType {
+pub struct ContactRequests {
     #[serde(flatten)]
-    pub contact_requests_type: ContactRequests,
+    pub contact_requests: ContactRequestsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -16,6 +16,6 @@ pub struct ContactRequests {
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: DateType,
     #[serde(rename = "ContactRequest")]
-    pub cr_contact_request: Vec<ContactRequest>,
+    pub cr_contact_request: Vec<CrContactRequest>,
 }
 

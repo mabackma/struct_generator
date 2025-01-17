@@ -2,18 +2,6 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeNumber {
-    #[serde(flatten)]
-    pub tree_number: Xsinteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Type {
-    #[serde(flatten)]
-    pub r#type: Xsinteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct TreeIdentifier {
     #[serde(flatten)]
     pub tree_identifier: TreeIdentifierType,
@@ -26,15 +14,21 @@ pub struct TreeIdentifiers {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Type {
+    #[serde(flatten)]
+    pub r#type: Xsinteger,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct TreeListItem {
     #[serde(flatten)]
     pub tree_list_item: TreeListItemType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeClass {
+pub struct Value {
     #[serde(flatten)]
-    pub tree_class: CoTreeClassType,
+    pub value: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

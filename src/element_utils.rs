@@ -49,17 +49,20 @@ pub fn reference_type(
     let complete_name = handle_prefix(ref_name, prefixes);
 
     // Search for the reference type in the element definitions
-    if let Some(typ) = element_definitions.get(&complete_name) {     
+    // If found, return the type (e.g. "xs:string")
+    if let Some(typ) = element_definitions.get(&complete_name) {
         return Some(typ.clone());
     } 
 
     // Extract the reference type from the reference name
-    if ref_name.contains(':') {
+/*     if ref_name.contains(':') {
         let ref_type = ref_name.split(':').collect::<Vec<&str>>()[1];
+        println!("ref_name: {}, ref_type: {}", ref_name, ref_type);
         return Some(ref_type.to_string());
-    }
+    } */
 
-    Some(ref_name.to_string())
+    Some(complete_name.to_string())
+    //Some(ref_name.to_string())
 }
 
 
