@@ -2,33 +2,53 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ProductName {
+--pub struct ProductName {
     #[serde(flatten)]
     pub product_name: CoString500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Description {
+--pub struct ConsumptionUnit {
     #[serde(flatten)]
-    pub description: CoString1500Type,
+    pub consumption_unit: ConsumptionUnitType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Consumption {
+--pub struct Code {
     #[serde(flatten)]
-    pub consumption: ConsumptionType,
+    pub code: Xsstring,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Product {
+--pub struct Product {
     #[serde(flatten)]
     pub product: ProductType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ConsumptionUnit {
+--pub struct Consumption {
     #[serde(flatten)]
-    pub consumption_unit: ConsumptionUnitType,
+    pub consumption: ConsumptionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Unit {
+    #[serde(flatten)]
+    pub unit: Xsstring,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: WtcPlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -66,17 +86,9 @@ pub struct ProductType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: WtcPlannedResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: CoOperationModeType,
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,11 +101,5 @@ pub struct ConsumptionType {
 pub struct ConsumptionUnitType {
     #[serde(flatten)]
     pub base: CoUnitPerHectareType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
 }
 

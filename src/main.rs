@@ -1,5 +1,5 @@
-use struct_generator::create_structs::{create_structs, XMLStruct};
-use struct_generator::file_utils::{read_xsd_file, structs_and_definitions_to_file};
+use struct_generator::create_structs::{create_structs, XMLField, XMLStruct};
+use struct_generator::file_utils::{read_xsd_file, structs_and_definitions_to_file, RUST_TYPES};
 use struct_generator::sorting_algorithm::{create_file_dependencies, sort_files};
 use struct_generator::string_utils::{capitalize_first, remove_colon_from_string};
 
@@ -35,6 +35,10 @@ fn main() {
 
     change_circular_field_types(&mut structs);
 
+    missing_definitions(&mut element_definitions, &structs, prefixes);
+
+    remove_duplicates_from_element_definitions(&mut element_definitions, &structs);
+
     //structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
     //element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
     structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "src/__structs_and_definitions.rs").unwrap();
@@ -44,8 +48,20 @@ fn main() {
     println!("Total number of element definitions: {}", total_element_count);
     println!("Actual number of element definitions: {}", element_definitions.len());
 
-    println!("Prefix count: {}", prefixes.len());
-    
+    println!("Prefix count: {}\n", prefixes.len());
+
+    for s in structs.iter() {
+        for f in s.1.fields.iter() {
+            let f_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "").replace(">", "");
+
+            if !structs.contains_key(&f_type) && !element_definitions.contains_key(&f_type) {
+                
+                if !f_type.starts_with("Xs") && !f_type.starts_with("Xlink") && !f_type.starts_with("xlink") && !RUST_TYPES.contains(&f_type.as_str()) {
+                    println!("{} -> {}: {}", s.0, f.name, f_type);
+                }
+            }
+        }
+    }
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -60,66 +76,8 @@ fn main() {
     element_definitions_to_file(&element_definitions, &elements_file_name).unwrap(); */
 }
 
-// Modify the keys of the structs to include the prefixes
-fn prefixes_to_struct_keys(
-    structs: &mut HashMap<String, XMLStruct>, 
-    prefixes: &mut HashMap<String, String>
-) {
-    let mut new_structs = HashMap::new();
-
-    for prefix in prefixes.iter() {
-        structs.iter().for_each(|(key, value)| {
-            let p_value = capitalize_first(prefix.1);
-
-            if prefix.0.replace(&p_value, "") == *key {
-                let new_key = format!("{}{}", p_value, key);
-                new_structs.insert(new_key.clone(), value.clone());
-                //println!("{} -> {}", key, new_key);
-            } else {
-                new_structs.insert(key.clone(), value.clone());
-            }
-        });
-    }
-    
-    *structs = new_structs;
-}
-
-// Remove colons from field names and field types
-fn fix_fields_with_colons(structs: &mut HashMap<String, XMLStruct>) {
-    for (_, value) in structs.iter_mut() {
-        for field in value.fields.iter_mut() {
-            if field.name.contains(':') {
-                field.name = capitalize_first(&remove_colon_from_string(&field.name));
-            }
-
-            if field.field_type.contains(":") {
-                if field.field_type.contains("Option<Vec<") {
-                    field.field_type = field.field_type.replace("Option<Vec<", "");
-                    field.field_type = field.field_type.replace(">>", "");
-
-                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
-                    field.field_type = format!("Option<Vec<{}>>", field.field_type);
-
-                } else if field.field_type.contains("Vec<") {
-                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
-                    field.field_type = field.field_type.replace(">", "");
-
-                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
-                    field.field_type = format!("Vec<{}>", field.field_type);
-
-                } else if field.field_type.contains("Option<") {
-                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
-                    field.field_type = field.field_type.replace(">", "");
-
-                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
-                    field.field_type = format!("Option<{}>", field.field_type);
-                }
-            }
-        }
-    }
-}
-
 // Creates the structs and element definitions and writes them to files in the `structs` folder
+// Returns the number of structs and element definitions created
 fn process_xsd_file(
     current_file: &str, 
     structs: &mut HashMap<String, XMLStruct>, 
@@ -168,6 +126,66 @@ fn process_xsd_file(
     (new_structs.len(), new_element_definitions.len())
 }
 
+// Modify the keys of the structs to include the prefixes
+fn prefixes_to_struct_keys(
+    structs: &mut HashMap<String, XMLStruct>, 
+    prefixes: &mut HashMap<String, String>
+) {
+    let mut new_structs = HashMap::new();
+
+    for prefix in prefixes.iter() {
+        structs.iter().for_each(|(key, value)| {
+
+            // Capitalized prefix (e.g. "Co", "Gml")
+            let p_value = capitalize_first(prefix.1);
+
+            if prefix.0.replace(&p_value, "") == *key {
+                let new_key = format!("{}{}", p_value, key);
+                new_structs.insert(new_key.clone(), value.clone());
+            } else {
+                new_structs.insert(key.clone(), value.clone());
+            }
+        });
+    }
+    
+    *structs = new_structs;
+}
+
+// Remove colons from field names and field types
+fn fix_fields_with_colons(structs: &mut HashMap<String, XMLStruct>) {
+    for (_, value) in structs.iter_mut() {
+        for field in value.fields.iter_mut() {
+            if field.name.contains(':') {
+                field.name = capitalize_first(&remove_colon_from_string(&field.name));
+            }
+
+            if field.field_type.contains(":") {
+                if field.field_type.contains("Option<Vec<") {
+                    field.field_type = field.field_type.replace("Option<Vec<", "");
+                    field.field_type = field.field_type.replace(">>", "");
+
+                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
+                    field.field_type = format!("Option<Vec<{}>>", field.field_type);
+
+                } else if field.field_type.contains("Vec<") {
+                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
+                    field.field_type = field.field_type.replace(">", "");
+
+                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
+                    field.field_type = format!("Vec<{}>", field.field_type);
+
+                } else if field.field_type.contains("Option<") {
+                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
+                    field.field_type = field.field_type.replace(">", "");
+
+                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
+                    field.field_type = format!("Option<{}>", field.field_type);
+                }
+            }
+        }
+    }
+}
+
 // If a struct has a field that is a reference to itself, change the field type to something else
 fn change_circular_field_types(structs: &mut HashMap<String, XMLStruct>) {
     for (key, value) in structs.iter_mut() {
@@ -191,4 +209,57 @@ fn change_circular_field_types(structs: &mut HashMap<String, XMLStruct>) {
             }
         }
     }
+}
+
+// Generate missing definitions in element_definitions
+fn missing_definitions(
+    element_definitions: &mut HashMap<String, String>,
+    structs: &HashMap<String, XMLStruct>,
+    prefixes: &HashMap<String, String>
+) {
+
+    let mut new_definitions = element_definitions.clone();
+
+    for s in structs.iter() {
+        for f in s.1.fields.iter() {
+            let f_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "").replace(">", "");
+
+            if !structs.contains_key(&f_type) && !new_definitions.contains_key(&f_type) {
+
+                if !new_definitions.contains_key(&f_type) {
+                    if !f_type.starts_with("Xs") && !f_type.starts_with("Xlink") && !RUST_TYPES.contains(&f_type.as_str()) {
+                        
+                        if prefixes.contains_key(&f_type) {
+                            let p = prefixes.get(&f_type).unwrap();
+                            let skip = p.len();
+                            let new_type = f_type[skip..].to_string();
+                            
+                            new_definitions.insert(f_type.clone(), new_type);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    *element_definitions = new_definitions;
+}
+
+// Remove duplicate structs from element_definitions
+fn remove_duplicates_from_element_definitions(
+    element_definitions: &mut HashMap<String, String>, 
+    structs: &HashMap<String, XMLStruct>
+) {
+
+    let mut new_definitions = element_definitions.clone();
+
+    for s_key in structs.keys() {
+        for el_key in element_definitions.keys() {
+            if s_key == el_key {
+                new_definitions.remove(el_key);
+            }
+        }
+    }
+
+    *element_definitions = new_definitions;
 }

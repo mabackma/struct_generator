@@ -2,31 +2,31 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSites {
-    #[serde(flatten)]
-    pub working_sites: WorkingSitesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSite {
+--pub struct WorkingSite {
     #[serde(flatten)]
     pub working_site: WorkingSiteType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TeamName {
+--pub struct WorkingSites {
     #[serde(flatten)]
-    pub team_name: BdtString50Type,
+    pub working_sites: WorkingSitesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForwarderDelay {
+--pub struct ForwarderDelay {
     #[serde(flatten)]
     pub forwarder_delay: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceSchedule {
+--pub struct TeamName {
+    #[serde(flatten)]
+    pub team_name: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct ResourceSchedule {
     #[serde(flatten)]
     pub resource_schedule: ResourceScheduleType,
 }
@@ -54,15 +54,15 @@ pub struct ResourceDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitesType {
-    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
-    pub working_site: Option<Vec<WorkingSiteType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct ResourcesType {
     #[serde(rename = "Resource")]
     pub resource: Vec<ResourceDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitesType {
+    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
+    pub working_site: Option<Vec<WorkingSiteType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

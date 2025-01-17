@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Envelope {
+--pub struct Envelope {
     #[serde(flatten)]
     pub envelope: EnvelopeType,
 }
@@ -38,7 +38,7 @@ pub struct PayloadType {
     #[serde(rename = "OrderConfirmation")]
     pub order_confirmation: OrderConfirmationType,
     #[serde(rename = "ProductInstruction")]
-    pub product_instruction_product_instruction: ProductInstruction,
+    pub product_instruction_product_instruction: ProductInstructionProductInstruction,
     #[serde(rename = "QualityAttachment")]
     pub quality_attachment: QualityAttachmentType,
     #[serde(rename = "Resource")]

@@ -2,87 +2,81 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementName {
-    #[serde(flatten)]
-    pub key_element_name: CoString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KeyInfoAsText {
-    #[serde(flatten)]
-    pub key_info_as_text: CoString2000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MessageType {
+--pub struct MessageType {
     #[serde(flatten)]
     pub message_type: CoMessageType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessages {
-    #[serde(flatten)]
-    pub error_messages: ErrorMessagesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReplyCode {
+--pub struct ReplyCode {
     #[serde(flatten)]
     pub reply_code: CoReplyCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RegistrationId {
+--pub struct KeyInfoAsText {
     #[serde(flatten)]
-    pub registration_id: CoReferenceType,
+    pub key_info_as_text: CoString2000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessage {
-    #[serde(flatten)]
-    pub error_message: CoString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementNS {
-    #[serde(flatten)]
-    pub key_element_n_s: CoString500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementId {
+--pub struct KeyElementId {
     #[serde(flatten)]
     pub key_element_id: CoIdStringNotEmptyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorCode {
-    #[serde(flatten)]
-    pub error_code: CoString25Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReferenceType {
-    #[serde(flatten)]
-    pub reference_type: CoForestCentreMessageReferenceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreReply {
+--pub struct ForestCentreReply {
     #[serde(flatten)]
     pub forest_centre_reply: ForestCentreReplyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessageData {
+--pub struct ErrorMessages {
+    #[serde(flatten)]
+    pub error_messages: ErrorMessagesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct ErrorMessage {
+    #[serde(flatten)]
+    pub error_message: CoString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct KeyElementNS {
+    #[serde(flatten)]
+    pub key_element_n_s: CoString500Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct ErrorMessageData {
     #[serde(flatten)]
     pub error_message_data: ErrorMessageDataType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessagesType {
-    #[serde(rename = "ErrorMessageData")]
-    pub error_message_data: Vec<ErrorMessageDataType>,
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct ErrorCode {
+    #[serde(flatten)]
+    pub error_code: CoString25Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct ReferenceType {
+    #[serde(flatten)]
+    pub reference_type: CoForestCentreMessageReferenceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct RegistrationId {
+    #[serde(flatten)]
+    pub registration_id: CoReferenceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct KeyElementName {
+    #[serde(flatten)]
+    pub key_element_name: CoString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -114,6 +108,12 @@ pub struct ForestCentreReplyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct EstateOwnerType {
+    #[serde(rename = "NameAndOrganizationGroup")]
+    pub ci_name_and_organization_group: Vec<CiNameAndOrganizationGroup>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ErrorMessageDataType {
     #[serde(rename = "ReferenceType", skip_serializing_if = "Option::is_none")]
     pub reference_type: Option<CoForestCentreMessageReferenceType>,
@@ -134,8 +134,8 @@ pub struct ErrorMessageDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EstateOwnerType {
-    #[serde(rename = "NameAndOrganizationGroup")]
-    pub ci_name_and_organization_group: Vec<NameAndOrganizationGroup>,
+pub struct ErrorMessagesType {
+    #[serde(rename = "ErrorMessageData")]
+    pub error_message_data: Vec<ErrorMessageDataType>,
 }
 

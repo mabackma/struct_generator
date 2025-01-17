@@ -2,27 +2,21 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Label {
+--pub struct Label {
     #[serde(flatten)]
     pub label: BdtString100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExternalFile {
-    #[serde(flatten)]
-    pub external_file: ExternalFileType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FileFormat {
+--pub struct FileFormat {
     #[serde(flatten)]
     pub file_format: BdtString5Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ProductUserId {
+--pub struct ExternalFile {
     #[serde(flatten)]
-    pub product_user_id: BdtString50Type,
+    pub external_file: ExternalFileType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

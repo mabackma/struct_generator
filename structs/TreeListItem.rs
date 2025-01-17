@@ -2,39 +2,51 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeNumber {
-    #[serde(flatten)]
-    pub tree_number: Xsinteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Type {
-    #[serde(flatten)]
-    pub r#type: Xsinteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeIdentifier {
-    #[serde(flatten)]
-    pub tree_identifier: TreeIdentifierType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeIdentifiers {
+--pub struct TreeIdentifiers {
     #[serde(flatten)]
     pub tree_identifiers: TreeIdentifiersType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeListItem {
+--pub struct TreeClass {
+    #[serde(flatten)]
+    pub tree_class: CoTreeClassType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct TreeSpecies {
+    #[serde(flatten)]
+    pub tree_species: CoTreeSpeciesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Type {
+    #[serde(flatten)]
+    pub r#type: Xsinteger,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct TreeIdentifier {
+    #[serde(flatten)]
+    pub tree_identifier: TreeIdentifierType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Value {
+    #[serde(flatten)]
+    pub value: Xsstring,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct TreeListItem {
     #[serde(flatten)]
     pub tree_list_item: TreeListItemType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeClass {
+--pub struct TreeNumber {
     #[serde(flatten)]
-    pub tree_class: CoTreeClassType,
+    pub tree_number: Xsinteger,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

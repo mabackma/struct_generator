@@ -2,15 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PublicityOrganizations {
+--pub struct PublicityOrganizations {
     #[serde(flatten)]
     pub publicity_organizations: OOrganizationsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferWithPublicityType {
+--pub struct CallForOfferWithPublicity {
     #[serde(flatten)]
-    pub call_for_offer_with_publicity_type: CallForOfferWithPublicity,
+    pub call_for_offer_with_publicity: CallForOfferWithPublicityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -22,7 +22,7 @@ pub struct CallForOfferWithPublicity {
     #[serde(rename = "@schemaPackageVersionDate")]
     pub schema_package_version_date: DateType,
     #[serde(rename = "CallForOffer")]
-    pub cfo_call_for_offer: Vec<CallForOffer>,
+    pub cfo_call_for_offer: Vec<CfoCallForOffer>,
     #[serde(rename = "Publicity")]
     pub publicity: PublicityType,
     #[serde(rename = "PublicityOrganizations", skip_serializing_if = "Option::is_none")]

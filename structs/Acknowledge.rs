@@ -2,37 +2,37 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ReplyTo {
+--pub struct ReplyTo {
     #[serde(flatten)]
     pub reply_to: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StatusMessages {
-    #[serde(flatten)]
-    pub status_messages: StatusMessageLanguageType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Acknowledge {
-    #[serde(flatten)]
-    pub acknowledge: AcknowledgeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OriginalMessageType {
-    #[serde(flatten)]
-    pub original_message_type: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StatusMessage {
+--pub struct StatusMessage {
     #[serde(flatten)]
     pub status_message: BdtString1000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StatusCode {
+--pub struct StatusMessages {
+    #[serde(flatten)]
+    pub status_messages: StatusMessageLanguageType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct Acknowledge {
+    #[serde(flatten)]
+    pub acknowledge: AcknowledgeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct OriginalMessageType {
+    #[serde(flatten)]
+    pub original_message_type: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+--pub struct StatusCode {
     #[serde(flatten)]
     pub status_code: BdtPositiveInteger3digitsType,
 }
