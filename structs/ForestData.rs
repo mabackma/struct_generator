@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct ForestPropertyData {
+pub struct ForestPropertyData {
     #[serde(flatten)]
     pub forest_property_data: ForestPropertyDataType,
 }

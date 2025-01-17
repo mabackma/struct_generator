@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct StanfordFile {
+pub struct StanfordFile {
     #[serde(flatten)]
     pub stanford_file: StanfordFileType,
 }

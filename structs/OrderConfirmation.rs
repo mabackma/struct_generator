@@ -2,15 +2,33 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct OrderStatus {
+pub struct OrderStatus {
     #[serde(flatten)]
     pub order_status: BdtOrderStatusType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct OrderConfirmation {
+pub struct OrderId {
+    #[serde(flatten)]
+    pub order_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OrderConfirmation {
     #[serde(flatten)]
     pub order_confirmation: OrderConfirmationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceBuyerArea {
+    #[serde(flatten)]
+    pub service_buyer_area: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Infotext {
+    #[serde(flatten)]
+    pub infotext: BdtString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

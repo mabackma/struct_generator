@@ -2,49 +2,37 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct SubCategory {
-    #[serde(flatten)]
-    pub sub_category: BdtImageSubCategoryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct MapSymbolType {
-    #[serde(flatten)]
-    pub map_symbol_type: BdtFeatureCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Photographer {
-    #[serde(flatten)]
-    pub photographer: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct MapSymbolId {
-    #[serde(flatten)]
-    pub map_symbol_id: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Position {
-    #[serde(flatten)]
-    pub position: GdtPointGeometryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct ImageDate {
+pub struct ImageDate {
     #[serde(flatten)]
     pub image_date: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct InsertedMapSymbolId {
+pub struct SubCategory {
     #[serde(flatten)]
-    pub inserted_map_symbol_id: BdtString20Type,
+    pub sub_category: BdtImageSubCategoryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Category {
+pub struct Position {
+    #[serde(flatten)]
+    pub position: GdtPointGeometryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Photographer {
+    #[serde(flatten)]
+    pub photographer: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MapSymbolType {
+    #[serde(flatten)]
+    pub map_symbol_type: BdtFeatureCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Category {
     #[serde(flatten)]
     pub category: BdtImageCategoryType,
 }

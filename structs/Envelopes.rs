@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Envelopes {
+pub struct Envelopes {
     #[serde(flatten)]
     pub envelopes: EnvelopesType,
 }

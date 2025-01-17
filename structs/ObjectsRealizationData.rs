@@ -2,15 +2,15 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct ObjectsRealizationData {
+pub struct ObjectRealization {
     #[serde(flatten)]
-    pub objects_realization_data: ObjectsRealizationDataType,
+    pub object_realization: ObjectRealizationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct ObjectRealization {
+pub struct ObjectsRealizationData {
     #[serde(flatten)]
-    pub object_realization: ObjectRealizationType,
+    pub objects_realization_data: ObjectsRealizationDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

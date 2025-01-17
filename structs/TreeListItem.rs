@@ -2,59 +2,33 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct TreeIdentifiers {
-    #[serde(flatten)]
-    pub tree_identifiers: TreeIdentifiersType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct TreeListItem {
-    #[serde(flatten)]
-    pub tree_list_item: TreeListItemType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Type {
-    #[serde(flatten)]
-    pub r#type: Xsinteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct TreeSpecies {
-    #[serde(flatten)]
-    pub tree_species: CoTreeSpeciesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct TreeIdentifier {
+pub struct TreeIdentifier {
     #[serde(flatten)]
     pub tree_identifier: TreeIdentifierType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct TreeNumber {
+pub struct TreeIdentifiers {
     #[serde(flatten)]
-    pub tree_number: Xsinteger,
+    pub tree_identifiers: TreeIdentifiersType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Value {
+pub struct Type {
+    #[serde(flatten)]
+    pub r#type: Xsinteger,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeListItem {
+    #[serde(flatten)]
+    pub tree_list_item: TreeListItemType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Value {
     #[serde(flatten)]
     pub value: Xsstring,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct TreeClass {
-    #[serde(flatten)]
-    pub tree_class: CoTreeClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifierType {
-    #[serde(rename = "Type")]
-    pub r#type: i32,
-    #[serde(rename = "Value")]
-    pub value: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -87,6 +61,14 @@ pub struct TreeListItemType {
     pub pulp_wood_volume: Option<CoPulpWoodVolumeType>,
     #[serde(rename = "TreeIdentifiers", skip_serializing_if = "Option::is_none")]
     pub tree_identifiers: Option<TreeIdentifiersType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifierType {
+    #[serde(rename = "Type")]
+    pub r#type: i32,
+    #[serde(rename = "Value")]
+    pub value: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

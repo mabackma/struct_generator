@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSiteTradeEnvelope {
+pub struct WorkingSiteTradeEnvelope {
     #[serde(flatten)]
     pub working_site_trade_envelope: WorkingSiteTradeEnvelopeType,
 }

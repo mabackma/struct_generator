@@ -2,75 +2,87 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct DisQualificationReasonText {
-    #[serde(flatten)]
-    pub dis_qualification_reason_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct CuttingAccuracy {
-    #[serde(flatten)]
-    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct DisQualificationReasons {
-    #[serde(flatten)]
-    pub dis_qualification_reasons: DisQualificationReasonsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct ResourceIdMJ {
-    #[serde(flatten)]
-    pub resource_id_m_j: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct DisQualificationSign {
-    #[serde(flatten)]
-    pub dis_qualification_sign: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Image {
+pub struct Image {
     #[serde(flatten)]
     pub image: Xsbase64Binary,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct DisQualificationReason {
+pub struct DisQualificationSign {
+    #[serde(flatten)]
+    pub dis_qualification_sign: BdtString5Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PurchaseContractNumber {
+    #[serde(flatten)]
+    pub purchase_contract_number: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestOwner {
+    #[serde(flatten)]
+    pub forest_owner: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasurementDate {
+    #[serde(flatten)]
+    pub measurement_date: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasons {
+    #[serde(flatten)]
+    pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceIdMJ {
+    #[serde(flatten)]
+    pub resource_id_m_j: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReason {
     #[serde(flatten)]
     pub dis_qualification_reason: BdtString10Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct CuttingAccuracySign {
+pub struct CuttingAccuracySign {
     #[serde(flatten)]
     pub cutting_accuracy_sign: BdtString5Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSiteQualityNotification {
+pub struct DisQualificationReasonText {
     #[serde(flatten)]
-    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
+    pub dis_qualification_reason_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct DisQualificationPercentage {
+pub struct DisQualificationPercentage {
     #[serde(flatten)]
     pub dis_qualification_percentage: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct DisQualificationPercentageTotal {
+pub struct WorkingSiteQualityNotification {
+    #[serde(flatten)]
+    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationPercentageTotal {
     #[serde(flatten)]
     pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonsType {
-    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
-    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingAccuracy {
+    #[serde(flatten)]
+    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -111,6 +123,12 @@ pub struct WorkingSiteQualityNotificationType {
     pub image: Option<Vec<u8>>,
     #[serde(rename = "DisQualificationReasons")]
     pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DisQualificationReasonsType {
+    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
+    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -2,27 +2,27 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct OfferText {
+pub struct Offer {
     #[serde(flatten)]
-    pub offer_text: OfferTextType,
+    pub offer: OfferType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct OfferBusinessSender {
+pub struct OfferBusinessSender {
     #[serde(flatten)]
     pub offer_business_sender: OfferBusinessSenderType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct OfferDate {
+pub struct OfferText {
     #[serde(flatten)]
-    pub offer_date: OfferDateType,
+    pub offer_text: OfferTextType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Offer {
+pub struct OfferDate {
     #[serde(flatten)]
-    pub offer: OfferType,
+    pub offer_date: OfferDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -70,9 +70,9 @@ pub struct OfferExpirationDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
+pub struct OfferTextType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
+    pub base: CoString1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -82,8 +82,8 @@ pub struct OfferDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferTextType {
+pub struct TechnicalContactPersonType {
     #[serde(flatten)]
-    pub base: CoString1500Type,
+    pub base: CiContactInformationType,
 }
 

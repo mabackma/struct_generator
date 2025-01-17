@@ -2,135 +2,33 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Subsidies {
-    #[serde(flatten)]
-    pub subsidies: SubsidiesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Payees {
-    #[serde(flatten)]
-    pub payees: PayeesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Payments {
-    #[serde(flatten)]
-    pub payments: PaymentsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Payment {
-    #[serde(flatten)]
-    pub payment: ForestCentrePaymentDetailsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Payee {
-    #[serde(flatten)]
-    pub payee: PayeeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct DecidedAmountUnit {
-    #[serde(flatten)]
-    pub decided_amount_unit: FccDecidedAmountUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct PaymentTexts {
-    #[serde(flatten)]
-    pub payment_texts: PaymentTextsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Subsidy {
-    #[serde(flatten)]
-    pub subsidy: SubsidyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct DecidedAmount {
-    #[serde(flatten)]
-    pub decided_amount: FccDecidedAmountType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct CostTypeDescription {
-    #[serde(flatten)]
-    pub cost_type_description: FccCostTypeDescriptionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct ForestCentreData {
-    #[serde(flatten)]
-    pub forest_centre_data: ForestCentrePaymentsDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct PaymentText {
+pub struct PaymentText {
     #[serde(flatten)]
     pub payment_text: CoString5000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct DecidedTotalSubsidy {
+pub struct Payments {
     #[serde(flatten)]
-    pub decided_total_subsidy: FccDecidedTotalSubsidyType,
+    pub payments: PaymentsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct CaseNumber {
-    #[serde(flatten)]
-    pub case_number: FccFinancingActNumberType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct ForestCentrePayments {
+pub struct ForestCentrePayments {
     #[serde(flatten)]
     pub forest_centre_payments: ForestCentrePaymentsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentsType {
-    #[serde(rename = "Payment")]
-    pub payment: Vec<ForestCentrePaymentDetailsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentsRealEstatesType {
-    #[serde(rename = "RealEstate")]
-    pub real_estate: Vec<PaymentsRealEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PayeesType {
-    #[serde(rename = "Payee")]
-    pub payee: Vec<PayeeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentsRealEstateType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Payees {
     #[serde(flatten)]
-    pub base: ReBaseRealEstateType2,
-    #[serde(rename = "Subsidies")]
-    pub subsidies: SubsidiesType,
+    pub payees: PayeesType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidyApplierBaseContactAndEstateInfoType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PaymentTexts {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
-    #[serde(rename = "RealEstates", skip_serializing_if = "Option::is_none")]
-    pub real_estates: Option<PaymentsRealEstatesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentrePaymentsDataType {
-    #[serde(flatten)]
-    pub base: FccForestCentreDataType,
-    #[serde(rename = "ForestCentrePayments")]
-    pub forest_centre_payments: ForestCentrePaymentsType,
+    pub payment_texts: PaymentTextsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -170,25 +68,15 @@ pub struct ForestCentrePaymentDetailsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTextsType {
-    #[serde(rename = "PaymentText")]
-    pub payment_text: Vec<CoString5000Type>,
+pub struct PayeesType {
+    #[serde(rename = "Payee")]
+    pub payee: Vec<PayeeType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PayeeType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
-    #[serde(rename = "Payments")]
-    pub payments: PaymentsType,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub fcc_documents: Option<FccDocuments>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidiesType {
-    #[serde(rename = "Subsidy")]
-    pub subsidy: Vec<SubsidyType>,
+pub struct PaymentsType {
+    #[serde(rename = "Payment")]
+    pub payment: Vec<ForestCentrePaymentDetailsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -203,6 +91,58 @@ pub struct ForestCentrePaymentsType {
 pub struct SubsidyAppliersType {
     #[serde(rename = "SubsidyApplier")]
     pub subsidy_applier: Vec<SubsidyApplierBaseContactAndEstateInfoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentrePaymentsDataType {
+    #[serde(flatten)]
+    pub base: FccForestCentreDataType,
+    #[serde(rename = "ForestCentrePayments")]
+    pub forest_centre_payments: ForestCentrePaymentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PayeeType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+    #[serde(rename = "Payments")]
+    pub payments: PaymentsType,
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
+    pub fcc_documents: Option<FccDocuments>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentsRealEstatesType {
+    #[serde(rename = "RealEstate")]
+    pub real_estate: Vec<PaymentsRealEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentsRealEstateType {
+    #[serde(flatten)]
+    pub base: ReBaseRealEstateType2,
+    #[serde(rename = "Subsidies")]
+    pub subsidies: SubsidiesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentTextsType {
+    #[serde(rename = "PaymentText")]
+    pub payment_text: Vec<CoString5000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubsidiesType {
+    #[serde(rename = "Subsidy")]
+    pub subsidy: Vec<SubsidyType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubsidyApplierBaseContactAndEstateInfoType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+    #[serde(rename = "RealEstates", skip_serializing_if = "Option::is_none")]
+    pub real_estates: Option<PaymentsRealEstatesType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

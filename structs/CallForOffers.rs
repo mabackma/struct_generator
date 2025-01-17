@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct CallForOffers {
+pub struct CallForOffers {
     #[serde(flatten)]
     pub call_for_offers: CallForOffersType,
 }

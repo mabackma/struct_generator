@@ -2,19 +2,37 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct QualityAttachment {
+pub struct Bytes {
     #[serde(flatten)]
-    pub quality_attachment: QualityAttachmentType,
+    pub bytes: Xsbase64Binary,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Version {
+pub struct Version {
     #[serde(flatten)]
     pub version: BdtString10Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct Filename {
+pub struct ModificationDate {
+    #[serde(flatten)]
+    pub modification_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QualityAttachment {
+    #[serde(flatten)]
+    pub quality_attachment: QualityAttachmentType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DestinationStorage {
+    #[serde(flatten)]
+    pub destination_storage: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Filename {
     #[serde(flatten)]
     pub filename: BdtString100Type,
 }

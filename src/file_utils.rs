@@ -67,7 +67,7 @@ fn generate_element_definitions(
 
     for (name, typ) in element_definitions.iter() {
         definitions_string.push_str("#[derive(Serialize, Deserialize, Debug)]\n");
-        definitions_string.push_str(&format!("--pub struct {} {{\n", name));
+        definitions_string.push_str(&format!("pub struct {} {{\n", name));
         definitions_string.push_str("    #[serde(flatten)]\n");
 
         let field_type = handle_prefix(typ, prefixes);

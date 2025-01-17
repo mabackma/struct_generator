@@ -2,315 +2,319 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct PlowingDate {
+pub struct ProductUserIds {
     #[serde(flatten)]
-    pub plowing_date: BdtDateType,
+    pub product_user_ids: ProductUserIdsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct ForestHaulageDistance {
+pub struct Quality {
     #[serde(flatten)]
-    pub forest_haulage_distance: BdtPositiveInteger5digitsType,
+    pub quality: BdtString5Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct DeliveryUserId {
-    #[serde(flatten)]
-    pub delivery_user_id: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct CodeGroup {
-    #[serde(flatten)]
-    pub code_group: BdtAssortmentGroupType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageForestHaulageDistance {
-    #[serde(flatten)]
-    pub storage_forest_haulage_distance: StorageForestHaulageDistanceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct CanModify {
-    #[serde(flatten)]
-    pub can_modify: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSafetyInfo {
-    #[serde(flatten)]
-    pub working_safety_info: BdtString3000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct CanCultivateInAutumn {
-    #[serde(flatten)]
-    pub can_cultivate_in_autumn: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct LoadPaymentReference {
-    #[serde(flatten)]
-    pub load_payment_reference: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct PlowingName {
-    #[serde(flatten)]
-    pub plowing_name: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct HeightMin {
-    #[serde(flatten)]
-    pub height_min: BdtDecimal1FractionDigitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct PlowingArranged {
-    #[serde(flatten)]
-    pub plowing_arranged: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct AssortmentInfo {
-    #[serde(flatten)]
-    pub assortment_info: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct AssortmentID {
-    #[serde(flatten)]
-    pub assortment_i_d: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Accessibility {
-    #[serde(flatten)]
-    pub accessibility: BdtTransportAccessibilityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct DelinationObjectOrderId {
-    #[serde(flatten)]
-    pub delination_object_order_id: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageName {
-    #[serde(flatten)]
-    pub storage_name: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct DiameterMax {
-    #[serde(flatten)]
-    pub diameter_max: BdtPositiveIntegerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Storage {
-    #[serde(flatten)]
-    pub storage: StorageType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageLinkedToWorkingSite {
-    #[serde(flatten)]
-    pub storage_linked_to_working_site: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct MeasurementMethod {
-    #[serde(flatten)]
-    pub measurement_method: BdtMeasurementMethodType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct MeasurementPlace {
-    #[serde(flatten)]
-    pub measurement_place: BdtMeasurementPlaceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingsiteInfo {
-    #[serde(flatten)]
-    pub workingsite_info: BdtString3000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct DiameterMin {
-    #[serde(flatten)]
-    pub diameter_min: BdtPositiveIntegerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct HeightMax {
-    #[serde(flatten)]
-    pub height_max: BdtDecimal1FractionDigitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Unit {
-    #[serde(flatten)]
-    pub unit: BdtWorkCodeUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSitePlanningInfo {
-    #[serde(flatten)]
-    pub working_site_planning_info: BdtString3000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct GeometryModificationAllowed {
-    #[serde(flatten)]
-    pub geometry_modification_allowed: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Storages {
-    #[serde(flatten)]
-    pub storages: StoragesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageAddress {
-    #[serde(flatten)]
-    pub storage_address: BdtString500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct ImageCount {
-    #[serde(flatten)]
-    pub image_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageInfo {
-    #[serde(flatten)]
-    pub storage_info: BdtString500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageLandOwnerInformation {
-    #[serde(flatten)]
-    pub storage_land_owner_information: BdtContactInformationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct PlowingTelephone {
+pub struct PlowingTelephone {
     #[serde(flatten)]
     pub plowing_telephone: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSiteOperationalUpdate {
-    #[serde(flatten)]
-    pub working_site_operational_update: WorkingSiteOperationalUpdateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSitePlanningOperation {
-    #[serde(flatten)]
-    pub working_site_planning_operation: BdtWorkingSitePlanningOperationStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Code {
-    #[serde(flatten)]
-    pub code: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageProposals {
-    #[serde(flatten)]
-    pub storage_proposals: StoragesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct Geometry {
-    #[serde(flatten)]
-    pub geometry: GdtPointAndLineOrPolygonType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct TurningPointClass {
-    #[serde(flatten)]
-    pub turning_point_class: BdtTurningPointClassType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct LoadNumber {
-    #[serde(flatten)]
-    pub load_number: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageLandOwner {
-    #[serde(flatten)]
-    pub storage_land_owner: BdtStorageLandOwnerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct WorkingSitePlanningStatus {
-    #[serde(flatten)]
-    pub working_site_planning_status: BdtWorkingSitePlanningStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct EnvironmentalObjectInfo {
-    #[serde(flatten)]
-    pub environmental_object_info: BdtString3000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StoragesProposalForestHaulageDistances {
-    #[serde(flatten)]
-    pub storages_proposal_forest_haulage_distances: StoragesForestHaulageDistancesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageAdditionalRemarks {
-    #[serde(flatten)]
-    pub storage_additional_remarks: BdtString3000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct DeliveryRestriction {
-    #[serde(flatten)]
-    pub delivery_restriction: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
---pub struct StorageClass {
+pub struct StorageClass {
     #[serde(flatten)]
     pub storage_class: BdtStorageDryingClassType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct StoragesForestHaulageDistances {
+pub struct DeliveryRestriction {
     #[serde(flatten)]
-    pub storages_forest_haulage_distances: StoragesForestHaulageDistancesType,
+    pub delivery_restriction: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct PurchaseContractExtraInfo {
+pub struct EnvironmentalObjectInfo {
+    #[serde(flatten)]
+    pub environmental_object_info: BdtString3000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Storages {
+    #[serde(flatten)]
+    pub storages: StoragesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSitePlanningStatus {
+    #[serde(flatten)]
+    pub working_site_planning_status: BdtWorkingSitePlanningStatusType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageLandOwner {
+    #[serde(flatten)]
+    pub storage_land_owner: BdtStorageLandOwnerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct GeometryModificationAllowed {
+    #[serde(flatten)]
+    pub geometry_modification_allowed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PurchaseContractExtraInfo {
     #[serde(flatten)]
     pub purchase_contract_extra_info: BdtString3000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct PlowingEmail {
+pub struct CanCultivateInAutumn {
+    #[serde(flatten)]
+    pub can_cultivate_in_autumn: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingsiteInfo {
+    #[serde(flatten)]
+    pub workingsite_info: BdtString3000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageForestHaulageDistance {
+    #[serde(flatten)]
+    pub storage_forest_haulage_distance: StorageForestHaulageDistanceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DelinationObjectOrderId {
+    #[serde(flatten)]
+    pub delination_object_order_id: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HeightMin {
+    #[serde(flatten)]
+    pub height_min: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSitePlanningInfo {
+    #[serde(flatten)]
+    pub working_site_planning_info: BdtString3000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageInfo {
+    #[serde(flatten)]
+    pub storage_info: BdtString500Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageProposals {
+    #[serde(flatten)]
+    pub storage_proposals: StoragesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadNumber {
+    #[serde(flatten)]
+    pub load_number: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageLinkedToWorkingSite {
+    #[serde(flatten)]
+    pub storage_linked_to_working_site: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ImageCount {
+    #[serde(flatten)]
+    pub image_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PlowingEmail {
     #[serde(flatten)]
     pub plowing_email: BdtString50Type,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageName {
+    #[serde(flatten)]
+    pub storage_name: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StoragesForestHaulageDistances {
+    #[serde(flatten)]
+    pub storages_forest_haulage_distances: StoragesForestHaulageDistancesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HeightMax {
+    #[serde(flatten)]
+    pub height_max: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteOperationalUpdate {
+    #[serde(flatten)]
+    pub working_site_operational_update: WorkingSiteOperationalUpdateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageLandOwnerInformation {
+    #[serde(flatten)]
+    pub storage_land_owner_information: BdtContactInformationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSitePlanningOperation {
+    #[serde(flatten)]
+    pub working_site_planning_operation: BdtWorkingSitePlanningOperationStatusType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageAddress {
+    #[serde(flatten)]
+    pub storage_address: BdtString500Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StoragesProposalForestHaulageDistances {
+    #[serde(flatten)]
+    pub storages_proposal_forest_haulage_distances: StoragesForestHaulageDistancesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PlowingArranged {
+    #[serde(flatten)]
+    pub plowing_arranged: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TurningPointClass {
+    #[serde(flatten)]
+    pub turning_point_class: BdtTurningPointClassType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentID {
+    #[serde(flatten)]
+    pub assortment_i_d: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasurementPlace {
+    #[serde(flatten)]
+    pub measurement_place: BdtMeasurementPlaceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageAdditionalRemarks {
+    #[serde(flatten)]
+    pub storage_additional_remarks: BdtString3000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PlowingDate {
+    #[serde(flatten)]
+    pub plowing_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeliveryUserId {
+    #[serde(flatten)]
+    pub delivery_user_id: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CodeGroup {
+    #[serde(flatten)]
+    pub code_group: BdtAssortmentGroupType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PlowingName {
+    #[serde(flatten)]
+    pub plowing_name: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSafetyInfo {
+    #[serde(flatten)]
+    pub working_safety_info: BdtString3000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageId {
+    #[serde(flatten)]
+    pub storage_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadPaymentReference {
+    #[serde(flatten)]
+    pub load_payment_reference: BdtString50Type,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StorageForestHaulageDistanceType {
-    #[serde(rename = "StorageForestHaulageDistanceGroup")]
-    pub storage_forest_haulage_distance_group: StorageForestHaulageDistanceGroup,
+pub struct StorageType {
+    #[serde(rename = "StorageId")]
+    pub storage_id: ERPIdType,
+    #[serde(rename = "Geometry")]
+    pub geometry: PointAndLineOrPolygonType,
+    #[serde(rename = "GeometryModificationAllowed")]
+    pub geometry_modification_allowed: YesNoType,
+    #[serde(rename = "PlowingName", skip_serializing_if = "Option::is_none")]
+    pub plowing_name: Option<String50Type>,
+    #[serde(rename = "PlowingTelephone", skip_serializing_if = "Option::is_none")]
+    pub plowing_telephone: Option<String20Type>,
+    #[serde(rename = "PlowingEmail", skip_serializing_if = "Option::is_none")]
+    pub plowing_email: Option<String50Type>,
+    #[serde(rename = "PlowingArranged", skip_serializing_if = "Option::is_none")]
+    pub plowing_arranged: Option<YesNoType>,
+    #[serde(rename = "PlowingDate", skip_serializing_if = "Option::is_none")]
+    pub plowing_date: Option<DateType>,
+    #[serde(rename = "Accessibility")]
+    pub accessibility: TransportAccessibilityType,
+    #[serde(rename = "TurningPointClass", skip_serializing_if = "Option::is_none")]
+    pub turning_point_class: Option<TurningPointClassType>,
+    #[serde(rename = "StorageInfo", skip_serializing_if = "Option::is_none")]
+    pub storage_info: Option<String500Type>,
+    #[serde(rename = "DeliveryRestriction", skip_serializing_if = "Option::is_none")]
+    pub delivery_restriction: Option<YesNoType>,
+    #[serde(rename = "StorageName", skip_serializing_if = "Option::is_none")]
+    pub storage_name: Option<String50Type>,
+    #[serde(rename = "StorageAddress", skip_serializing_if = "Option::is_none")]
+    pub storage_address: Option<String500Type>,
+    #[serde(rename = "StorageClass", skip_serializing_if = "Option::is_none")]
+    pub storage_class: Option<StorageDryingClassType>,
+    #[serde(rename = "StorageLandOwner", skip_serializing_if = "Option::is_none")]
+    pub storage_land_owner: Option<StorageLandOwnerType>,
+    #[serde(rename = "StorageLandOwnerInformation", skip_serializing_if = "Option::is_none")]
+    pub storage_land_owner_information: Option<ContactInformationType>,
+    #[serde(rename = "StorageAdditionalRemarks", skip_serializing_if = "Option::is_none")]
+    pub storage_additional_remarks: Option<String3000Type>,
+    #[serde(rename = "StorageLinkedToWorkingSite", skip_serializing_if = "Option::is_none")]
+    pub storage_linked_to_working_site: Option<YesNoType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductUserIdsType {
+    #[serde(rename = "@Status")]
+    pub status: AssortmentStatusType,
+    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
+    pub product_user_id: Option<Vec<ProductUserId>>,
+    #[serde(flatten)]
+    pub base: BdtString100Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoragesType {
+    #[serde(rename = "Storage", skip_serializing_if = "Option::is_none")]
+    pub storage: Option<Vec<StorageType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -364,28 +368,6 @@ pub struct WorkingSiteOperationalUpdateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductUserIdsType {
-    #[serde(rename = "@Status")]
-    pub status: AssortmentStatusType,
-    #[serde(rename = "ProductUserId", skip_serializing_if = "Option::is_none")]
-    pub product_user_id: Option<Vec<BdtString100Type>>,
-    #[serde(flatten)]
-    pub base: BdtString100Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoragesType {
-    #[serde(rename = "Storage", skip_serializing_if = "Option::is_none")]
-    pub storage: Option<Vec<StorageType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StoragesForestHaulageDistancesType {
-    #[serde(rename = "StorageForestHaulageDistance")]
-    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentType {
     #[serde(rename = "AssortmentID", skip_serializing_if = "Option::is_none")]
     pub assortment_i_d: Option<ERPIdType>,
@@ -428,58 +410,28 @@ pub struct AssortmentType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StorageForestHaulageDistanceType {
+    #[serde(rename = "StorageForestHaulageDistanceGroup")]
+    pub storage_forest_haulage_distance_group: StorageForestHaulageDistanceGroup,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoragesForestHaulageDistancesType {
+    #[serde(rename = "StorageForestHaulageDistance")]
+    pub storage_forest_haulage_distance: Vec<StorageForestHaulageDistanceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentsType {
     #[serde(rename = "Assortment", skip_serializing_if = "Option::is_none")]
     pub assortment: Option<Vec<AssortmentType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StorageType {
-    #[serde(rename = "StorageId")]
-    pub storage_id: ERPIdType,
-    #[serde(rename = "Geometry")]
-    pub geometry: PointAndLineOrPolygonType,
-    #[serde(rename = "GeometryModificationAllowed")]
-    pub geometry_modification_allowed: YesNoType,
-    #[serde(rename = "PlowingName", skip_serializing_if = "Option::is_none")]
-    pub plowing_name: Option<String50Type>,
-    #[serde(rename = "PlowingTelephone", skip_serializing_if = "Option::is_none")]
-    pub plowing_telephone: Option<String20Type>,
-    #[serde(rename = "PlowingEmail", skip_serializing_if = "Option::is_none")]
-    pub plowing_email: Option<String50Type>,
-    #[serde(rename = "PlowingArranged", skip_serializing_if = "Option::is_none")]
-    pub plowing_arranged: Option<YesNoType>,
-    #[serde(rename = "PlowingDate", skip_serializing_if = "Option::is_none")]
-    pub plowing_date: Option<DateType>,
-    #[serde(rename = "Accessibility")]
-    pub accessibility: TransportAccessibilityType,
-    #[serde(rename = "TurningPointClass", skip_serializing_if = "Option::is_none")]
-    pub turning_point_class: Option<TurningPointClassType>,
-    #[serde(rename = "StorageInfo", skip_serializing_if = "Option::is_none")]
-    pub storage_info: Option<String500Type>,
-    #[serde(rename = "DeliveryRestriction", skip_serializing_if = "Option::is_none")]
-    pub delivery_restriction: Option<YesNoType>,
-    #[serde(rename = "StorageName", skip_serializing_if = "Option::is_none")]
-    pub storage_name: Option<String50Type>,
-    #[serde(rename = "StorageAddress", skip_serializing_if = "Option::is_none")]
-    pub storage_address: Option<String500Type>,
-    #[serde(rename = "StorageClass", skip_serializing_if = "Option::is_none")]
-    pub storage_class: Option<StorageDryingClassType>,
-    #[serde(rename = "StorageLandOwner", skip_serializing_if = "Option::is_none")]
-    pub storage_land_owner: Option<StorageLandOwnerType>,
-    #[serde(rename = "StorageLandOwnerInformation", skip_serializing_if = "Option::is_none")]
-    pub storage_land_owner_information: Option<ContactInformationType>,
-    #[serde(rename = "StorageAdditionalRemarks", skip_serializing_if = "Option::is_none")]
-    pub storage_additional_remarks: Option<String3000Type>,
-    #[serde(rename = "StorageLinkedToWorkingSite", skip_serializing_if = "Option::is_none")]
-    pub storage_linked_to_working_site: Option<YesNoType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StorageForestHaulageDistanceGroup {
-    #[serde(rename = "ForestHaulageDistance")]
-    pub forest_haulage_distance: ForestHaulageDistance,
     #[serde(rename = "StorageId")]
     pub storage_id: StorageId,
+    #[serde(rename = "ForestHaulageDistance")]
+    pub forest_haulage_distance: ForestHaulageDistance,
 }
 

@@ -2,15 +2,9 @@ use serde::{Serialize, Deserialize};
 use chrono::*;
 
 #[derive(Serialize, Deserialize, Debug)]
---pub struct ControlObjectData {
+pub struct ControlObjectData {
     #[serde(flatten)]
     pub control_object_data: ControlObjectDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ControlObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<ForestCentreControlObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,5 +23,11 @@ pub struct ControlObjectDataType {
     pub cod_additional_details: Option<CodAdditionalDetails>,
     #[serde(rename = "Objects")]
     pub objects: ControlObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<ForestCentreControlObjectType>,
 }
 
