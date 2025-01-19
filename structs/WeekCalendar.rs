@@ -1,10 +1,42 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WeekCalendar {
+    #[serde(flatten)]
+    pub week_calendar: WeekCalendarType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceName {
+    #[serde(flatten)]
+    pub resource_name: BdtString50Type,
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingHoursSaturday {
     #[serde(flatten)]
     pub working_hours_saturday: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Hours {
+    #[serde(flatten)]
+    pub hours: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Resources {
+    #[serde(flatten)]
+    pub resources: ResourcesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StanfordResourceId {
+    #[serde(flatten)]
+    pub stanford_resource_id: BdtString100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,15 +46,21 @@ pub struct WorkingHoursSunday {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WeekCalendar {
+pub struct Resource {
     #[serde(flatten)]
-    pub week_calendar: WeekCalendarType,
+    pub resource: ResourceDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CalendarDay {
+pub struct ServiceBuyerResourceId {
     #[serde(flatten)]
-    pub calendar_day: BdtDateType,
+    pub service_buyer_resource_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceType {
+    #[serde(flatten)]
+    pub resource_type: BdtResourceTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,9 +76,9 @@ pub struct WorkingHoursBusinessDay {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceName {
+pub struct CalendarDay {
     #[serde(flatten)]
-    pub resource_name: BdtString50Type,
+    pub calendar_day: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -50,11 +88,25 @@ pub struct DaysType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ResourcesType {
+    #[serde(rename = "Resource")]
+    pub resource: Vec<ResourceDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct DayType {
     #[serde(rename = "CalendarDay")]
     pub calendar_day: DateType,
     #[serde(rename = "Hours")]
     pub hours: PositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WeekCalendarType {
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: String20Type,
+    #[serde(rename = "Resources")]
+    pub resources: ResourcesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -77,19 +129,5 @@ pub struct ResourceDataType {
     pub working_hours_sunday: PositiveInteger2digitsType,
     #[serde(rename = "Days")]
     pub days: DaysType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WeekCalendarType {
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: String20Type,
-    #[serde(rename = "Resources")]
-    pub resources: ResourcesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourcesType {
-    #[serde(rename = "Resource")]
-    pub resource: Vec<ResourceDataType>,
 }
 

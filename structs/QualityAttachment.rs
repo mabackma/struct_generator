@@ -1,23 +1,7 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Bytes {
-    #[serde(flatten)]
-    pub bytes: Xsbase64Binary,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Version {
-    #[serde(flatten)]
-    pub version: BdtString10Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ModificationDate {
-    #[serde(flatten)]
-    pub modification_date: BdtDateType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct QualityAttachment {
@@ -26,15 +10,9 @@ pub struct QualityAttachment {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DestinationStorage {
+pub struct Version {
     #[serde(flatten)]
-    pub destination_storage: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Filename {
-    #[serde(flatten)]
-    pub filename: BdtString100Type,
+    pub version: BdtString10Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

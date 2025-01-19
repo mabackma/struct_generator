@@ -1,17 +1,11 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ControlObjectData {
     #[serde(flatten)]
-    pub control_object_data: ControlObjectDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreControlDataType {
-    #[serde(flatten)]
-    pub base: FccForestCentreDataType,
-    #[serde(rename = "ControlObjectData")]
     pub control_object_data: ControlObjectDataType,
 }
 
@@ -23,6 +17,14 @@ pub struct ControlObjectDataType {
     pub cod_additional_details: Option<CodAdditionalDetails>,
     #[serde(rename = "Objects")]
     pub objects: ControlObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreControlDataType {
+    #[serde(flatten)]
+    pub base: FccForestCentreDataType,
+    #[serde(rename = "ControlObjectData")]
+    pub control_object_data: ControlObjectDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

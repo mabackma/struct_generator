@@ -1,7 +1,7 @@
 use struct_generator::create_structs::{create_structs, XMLField, XMLStruct};
 use struct_generator::file_utils::{read_xsd_file, structs_and_definitions_to_file, RUST_TYPES};
 use struct_generator::sorting_algorithm::{create_file_dependencies, sort_files};
-use struct_generator::string_utils::{capitalize_first, remove_colon_from_string};
+use struct_generator::string_utils::{capitalize_first, handle_prefix, remove_colon_from_string, remove_prefix, XSD_TO_RUST};
 
 use std::collections::{HashMap, HashSet};
 use quick_xml::Reader;
@@ -39,6 +39,10 @@ fn main() {
 
     remove_duplicates_from_element_definitions(&mut element_definitions, &structs);
 
+    get_field_types_from_definitions(&mut structs, &element_definitions);
+
+    remove_prefixes_from_missing_types(&structs, &mut element_definitions, prefixes);
+
     //structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
     //element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
     structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "src/__structs_and_definitions.rs").unwrap();
@@ -50,18 +54,8 @@ fn main() {
 
     println!("Prefix count: {}\n", prefixes.len());
 
-    for s in structs.iter() {
-        for f in s.1.fields.iter() {
-            let f_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "").replace(">", "");
+    print_missing_fields(&structs, &element_definitions, prefixes);
 
-            if !structs.contains_key(&f_type) && !element_definitions.contains_key(&f_type) {
-                
-                if !f_type.starts_with("Xs") && !f_type.starts_with("Xlink") && !f_type.starts_with("xlink") && !RUST_TYPES.contains(&f_type.as_str()) {
-                    println!("{} -> {}: {}", s.0, f.name, f_type);
-                }
-            }
-        }
-    }
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 
@@ -261,4 +255,81 @@ fn remove_duplicates_from_element_definitions(
     }
 
     *element_definitions = new_definitions;
+}
+
+// If a type is missing, it might be because it has a prefix that is not in the struct keys
+fn remove_prefixes_from_missing_types(
+    structs: &HashMap<String, XMLStruct>, 
+    element_definitions: &mut HashMap<String, String>, 
+    prefixes: &mut HashMap<String, String>
+) {
+
+    let mut new_definitions = element_definitions.clone();
+
+    for (_, typ) in new_definitions.iter_mut() {
+        let el_type = handle_prefix(typ, prefixes);
+
+        if !structs.contains_key(&el_type) && !element_definitions.contains_key(&el_type) {
+
+            if !el_type.starts_with("Xs") && !el_type.starts_with("Xlink") && !el_type.starts_with("xlink") && !XSD_TO_RUST.contains_key(&el_type.as_str()) {
+                let new_type = remove_prefix(&el_type, prefixes);
+                *typ = new_type;
+            }
+        }
+    }
+
+    *element_definitions = new_definitions;
+}
+
+fn print_missing_fields(
+    structs: &HashMap<String, XMLStruct>,
+    element_definitions: &HashMap<String, String>,
+    prefixes: &mut HashMap<String, String>
+) {
+    for s in structs.iter() {
+        for f in s.1.fields.iter() {
+            let f_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "").replace(">", "");
+
+            if !structs.contains_key(&f_type) && !element_definitions.contains_key(&f_type) {
+                
+                if !f_type.starts_with("Xs") && !f_type.starts_with("Xlink") && !f_type.starts_with("xlink") && !RUST_TYPES.contains(&f_type.as_str()) {
+                    println!("{} -> {}: {}", s.0, f.name, f_type);
+                }
+            }
+        }
+    }
+
+    let gis_types = vec!["Point", "Polygon", "LineString", "MultiPolygon", "MultiLineString"];
+
+    for (el_key, typ) in element_definitions.iter() {
+        let el_type = handle_prefix(typ, prefixes);
+
+        if !structs.contains_key(&el_type) && !element_definitions.contains_key(&el_type) {
+
+            if !el_type.starts_with("Xs") && !el_type.starts_with("Xlink") && !el_type.starts_with("xlink") && !XSD_TO_RUST.contains_key(&el_type.as_str()) && !gis_types.contains(&el_type.as_str()) {
+                println!("  {}: {}", el_key, el_type);
+            }
+        }
+    }
+}
+
+fn get_field_types_from_definitions(
+    structs: &mut HashMap<String, XMLStruct>,
+    element_definitions: &HashMap<String, String>
+) {
+    let mut new_structs = structs.clone();
+
+    for (_, s) in new_structs.iter_mut() {
+        for f in s.fields.iter_mut() {
+            if f.field_type.contains("Option<Vec<") {
+                let field_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "");
+
+                if element_definitions.contains_key(&field_type) {                    
+                    f.field_type = f.field_type.replace(&field_type, element_definitions.get(&field_type).unwrap());
+                }
+            }
+        }
+    }
+
+    *structs = new_structs;
 }

@@ -1,6 +1,8 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Status4 {
     #[serde(flatten)]
@@ -8,15 +10,15 @@ pub struct Status4 {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SamplePlotTrackDepth {
+pub struct SamplePlot {
     #[serde(flatten)]
-    pub sample_plot_track_depth: Xsinteger,
+    pub sample_plot: SamplePlotType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SecondStoreyTrees {
+pub struct SamplePlotTrackDistance {
     #[serde(flatten)]
-    pub second_storey_trees: Xsinteger,
+    pub sample_plot_track_distance: Xsinteger,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,21 +34,9 @@ pub struct SamplePlotStubDiameter {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SamplePlotTrackDistance {
+pub struct SamplePlotSize {
     #[serde(flatten)]
-    pub sample_plot_track_distance: Xsinteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SamplePlotTrackWidth {
-    #[serde(flatten)]
-    pub sample_plot_track_width: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SamplePlotDominantHeight {
-    #[serde(flatten)]
-    pub sample_plot_dominant_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub sample_plot_size: Xsinteger,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -56,15 +46,27 @@ pub struct SamplePlotBasalArea {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SamplePlotNumber {
+    #[serde(flatten)]
+    pub sample_plot_number: Xsstring,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SecondStoreyTrees {
+    #[serde(flatten)]
+    pub second_storey_trees: Xsinteger,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SamplePlotEastingCoordinate {
     #[serde(flatten)]
     pub sample_plot_easting_coordinate: Xsstring,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SamplePlotNorthingCoordinate {
+pub struct SamplePlotTrackWidth {
     #[serde(flatten)]
-    pub sample_plot_northing_coordinate: Xsstring,
+    pub sample_plot_track_width: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -73,10 +75,28 @@ pub struct SamplePlotMeanDiameter {
     pub sample_plot_mean_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaEvaluationType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SoilModificationEstimate {
     #[serde(flatten)]
-    pub base: CoVirtaEvaluationType,
+    pub soil_modification_estimate: VirtaEvaluationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SamplePlotTrackDepth {
+    #[serde(flatten)]
+    pub sample_plot_track_depth: Xsinteger,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SamplePlotDominantHeight {
+    #[serde(flatten)]
+    pub sample_plot_dominant_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SamplePlotNorthingCoordinate {
+    #[serde(flatten)]
+    pub sample_plot_northing_coordinate: Xsstring,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,6 +133,12 @@ pub struct SamplePlotType {
     pub second_storey_trees: Option<i32>,
     #[serde(rename = "Trees", skip_serializing_if = "Option::is_none")]
     pub trees: Option<TreesType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaEvaluationType {
+    #[serde(flatten)]
+    pub base: CoVirtaEvaluationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

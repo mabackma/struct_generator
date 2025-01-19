@@ -1,34 +1,18 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestHaulageDistanceContinued {
+pub struct ForwardedVolumeAccounted {
     #[serde(flatten)]
-    pub forest_haulage_distance_continued: BdtPositiveInteger4digitsType,
+    pub forwarded_volume_accounted: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PlannedVolume {
+pub struct AmountAccounted {
     #[serde(flatten)]
-    pub planned_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestedVolumeAccounted {
-    #[serde(flatten)]
-    pub harvested_volume_accounted: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardedVolume {
-    #[serde(flatten)]
-    pub forwarded_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAccounting {
-    #[serde(flatten)]
-    pub final_accounting: BdtYesNoType,
+    pub amount_accounted: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,21 +22,21 @@ pub struct HarvestedVolume {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardedVolumeAccounted {
-    #[serde(flatten)]
-    pub forwarded_volume_accounted: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct AmountNotified {
     #[serde(flatten)]
     pub amount_notified: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AmountPlanned {
+pub struct FinalAccounting {
     #[serde(flatten)]
-    pub amount_planned: BdtDecimal3FractionDigitsType,
+    pub final_accounting: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForwardedVolume {
+    #[serde(flatten)]
+    pub forwarded_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -74,9 +58,41 @@ pub struct WorkingSiteAccounting {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AmountAccounted {
+pub struct PlannedVolume {
     #[serde(flatten)]
-    pub amount_accounted: BdtDecimal3FractionDigitsType,
+    pub planned_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HarvestedVolumeAccounted {
+    #[serde(flatten)]
+    pub harvested_volume_accounted: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteAccountingType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "ContarctorId")]
+    pub contarctor_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ServiceType")]
+    pub service_type: ServiceTypeType,
+    #[serde(rename = "AccountingDate")]
+    pub accounting_date: TimeStampType,
+    #[serde(rename = "FinalAccounting")]
+    pub final_accounting: YesNoType,
+    #[serde(rename = "Assortments", skip_serializing_if = "Option::is_none")]
+    pub assortments: Option<AssortmentsType>,
+    #[serde(rename = "WorkCodes", skip_serializing_if = "Option::is_none")]
+    pub work_codes: Option<WorkCodesType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -104,12 +120,6 @@ pub struct AssortmentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodeDataType {
     #[serde(rename = "WorkCode")]
     pub work_code: WorkCodeType,
@@ -121,26 +131,6 @@ pub struct WorkCodeDataType {
     pub amount_accounted: Decimal3FractionDigitsType,
     #[serde(rename = "Unit")]
     pub unit: WorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteAccountingType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "ContarctorId")]
-    pub contarctor_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ServiceType")]
-    pub service_type: ServiceTypeType,
-    #[serde(rename = "AccountingDate")]
-    pub accounting_date: TimeStampType,
-    #[serde(rename = "FinalAccounting")]
-    pub final_accounting: YesNoType,
-    #[serde(rename = "Assortments", skip_serializing_if = "Option::is_none")]
-    pub assortments: Option<AssortmentsType>,
-    #[serde(rename = "WorkCodes", skip_serializing_if = "Option::is_none")]
-    pub work_codes: Option<WorkCodesType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

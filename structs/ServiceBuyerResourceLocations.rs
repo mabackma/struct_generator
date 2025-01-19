@@ -1,28 +1,18 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerResourceLocations {
-    #[serde(flatten)]
-    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerId {
-    #[serde(flatten)]
-    pub service_buyer_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteId {
-    #[serde(flatten)]
-    pub working_site_id: WctERPIdType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ResourceLocation {
     #[serde(flatten)]
     pub resource_location: ResourceLocationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceBuyerResourceLocations {
+    #[serde(flatten)]
+    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -35,18 +25,6 @@ pub struct ResourceLocations {
 pub struct LocationTimestamp {
     #[serde(flatten)]
     pub location_timestamp: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceId {
-    #[serde(flatten)]
-    pub resource_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Location {
-    #[serde(flatten)]
-    pub location: GdtPointGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -40,6 +40,8 @@ pub fn structs_and_definitions_to_file(
 
     structs_string.push_str("use serde::{Serialize, Deserialize};\n");
     structs_string.push_str("use chrono::*;\n\n");
+    structs_string.push_str("use geo::{Point, Polygon, MultiPolygon, LineString};\n\n");
+
 
     // Add element definitions to the string
     let definitions_string = generate_element_definitions(element_definitions, prefixes);

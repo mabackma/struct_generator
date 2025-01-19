@@ -1,16 +1,12 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Acknowledge {
-    #[serde(flatten)]
-    pub acknowledge: AcknowledgeType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StatusMessage {
+pub struct StatusMessages {
     #[serde(flatten)]
-    pub status_message: BdtString1000Type,
+    pub status_messages: StatusMessageLanguageType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -20,21 +16,27 @@ pub struct OriginalMessageType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StatusCode {
+pub struct Acknowledge {
     #[serde(flatten)]
-    pub status_code: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StatusMessages {
-    #[serde(flatten)]
-    pub status_messages: StatusMessageLanguageType,
+    pub acknowledge: AcknowledgeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ReplyTo {
     #[serde(flatten)]
     pub reply_to: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusCode {
+    #[serde(flatten)]
+    pub status_code: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusMessage {
+    #[serde(flatten)]
+    pub status_message: BdtString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

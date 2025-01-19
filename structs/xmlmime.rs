@@ -1,6 +1,8 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct base64Binary {
     #[serde(rename = "@XmimecontentType")]

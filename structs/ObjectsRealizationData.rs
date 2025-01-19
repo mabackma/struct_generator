@@ -1,16 +1,18 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ObjectRealization {
-    #[serde(flatten)]
-    pub object_realization: ObjectRealizationType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ObjectsRealizationData {
     #[serde(flatten)]
     pub objects_realization_data: ObjectsRealizationDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ObjectRealization {
+    #[serde(flatten)]
+    pub object_realization: ObjectRealizationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

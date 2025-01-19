@@ -1,10 +1,12 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AreaDecrease {
+pub struct StandNumber {
     #[serde(flatten)]
-    pub area_decrease: AreaDecreaseType,
+    pub stand_number: StandNumberType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,9 +16,9 @@ pub struct SilvicultureRestrictionEnds {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandBasicDataDate {
+pub struct AreaDecrease {
     #[serde(flatten)]
-    pub stand_basic_data_date: StandBasicDataDateType,
+    pub area_decrease: AreaDecreaseType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,19 +28,21 @@ pub struct StandNumberExtension {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct StandBasicDataDate {
+    #[serde(flatten)]
+    pub stand_basic_data_date: StandBasicDataDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct StandInfo {
     #[serde(flatten)]
     pub stand_info: StandInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberExtensionType {
-    pub base: String,
+pub struct IdentifiersType {
+    #[serde(rename = "Identifier")]
+    pub identifier: Vec<CoIdentifierType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -51,26 +55,30 @@ pub struct StandInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifiersType {
-    #[serde(rename = "Identifier")]
-    pub identifier: Vec<CoIdentifierType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AreaType {
     #[serde(flatten)]
     pub base: CoAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaDecreaseType {
-    #[serde(flatten)]
-    pub base: CoAreaType,
+pub struct StandNumberExtensionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandNumberType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StandBasicDataDateType {
     #[serde(flatten)]
     pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaDecreaseType {
+    #[serde(flatten)]
+    pub base: CoAreaType,
 }
 

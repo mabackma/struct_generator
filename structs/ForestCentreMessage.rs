@@ -1,11 +1,7 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SenderEmail {
-    #[serde(flatten)]
-    pub sender_email: CiEmailAddressType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct SelfMonitoringData {
@@ -14,15 +10,21 @@ pub struct SelfMonitoringData {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreMessage {
-    #[serde(flatten)]
-    pub forest_centre_message: ForestCentreMessageType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ForestDataUpdate {
     #[serde(flatten)]
     pub forest_data_update: CodForestDataUpdateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SenderEmail {
+    #[serde(flatten)]
+    pub sender_email: CiEmailAddressType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestCentreMessage {
+    #[serde(flatten)]
+    pub forest_centre_message: ForestCentreMessageType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

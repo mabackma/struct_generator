@@ -1,118 +1,12 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Reasons {
-    #[serde(flatten)]
-    pub reasons: ReasonsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkDescription {
-    #[serde(flatten)]
-    pub work_description: CoString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SubsidyArgumentText {
-    #[serde(flatten)]
-    pub subsidy_argument_text: CoString5000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreData {
-    #[serde(flatten)]
-    pub forest_centre_data: ForestCentreDecisionDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ObjectType {
-    #[serde(flatten)]
-    pub object_type: CoDecisionGeometryObjectType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecidedUnitPrice {
-    #[serde(flatten)]
-    pub decided_unit_price: FccDecidedUnitPriceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RectificationDemand {
-    #[serde(flatten)]
-    pub rectification_demand: CoString5000Type,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ApplicationAmount {
     #[serde(flatten)]
     pub application_amount: CoDecimal7And2Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecisionNumber {
-    #[serde(flatten)]
-    pub decision_number: CoString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecisionReceivers {
-    #[serde(flatten)]
-    pub decision_receivers: DecisionReceiversType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CaseDate {
-    #[serde(flatten)]
-    pub case_date: CoDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Subsidies {
-    #[serde(flatten)]
-    pub subsidies: SubsidiesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorksDueDate {
-    #[serde(flatten)]
-    pub works_due_date: CoDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecisionHandlers {
-    #[serde(flatten)]
-    pub decision_handlers: DecisionHandlersType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CompletionDeclarationDeliveryDueDate {
-    #[serde(flatten)]
-    pub completion_declaration_delivery_due_date: CoDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OriginalSender {
-    #[serde(flatten)]
-    pub original_sender: CiContactInformationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ApplicationUnitPrice {
-    #[serde(flatten)]
-    pub application_unit_price: CoMoneyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecisionType {
-    #[serde(flatten)]
-    pub decision_type: CoDecisionTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Justification {
-    #[serde(flatten)]
-    pub justification: CoString5000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -122,57 +16,9 @@ pub struct Justifications {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CaseActions {
-    #[serde(flatten)]
-    pub case_actions: CaseActionsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ActionDescription {
-    #[serde(flatten)]
-    pub action_description: CoString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct DecisionGeometries {
     #[serde(flatten)]
     pub decision_geometries: DecisionGeometriesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecidedAmount {
-    #[serde(flatten)]
-    pub decided_amount: FccDecidedAmountType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecisionGeometry {
-    #[serde(flatten)]
-    pub decision_geometry: DecisionGeometryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecidedTotalSubsidy {
-    #[serde(flatten)]
-    pub decided_total_subsidy: FccDecidedTotalSubsidyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecisionDate {
-    #[serde(flatten)]
-    pub decision_date: CoDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreDecision {
-    #[serde(flatten)]
-    pub forest_centre_decision: ForestCentreDecisionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ActionDate {
-    #[serde(flatten)]
-    pub action_date: CoDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -182,39 +28,9 @@ pub struct SubsidyZone {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CaseAction {
+pub struct DecisionDate {
     #[serde(flatten)]
-    pub case_action: CaseActionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ApplicationTotalSubsidy {
-    #[serde(flatten)]
-    pub application_total_subsidy: CoMoneyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CaseNumber {
-    #[serde(flatten)]
-    pub case_number: FccFinancingActNumberType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SubsidyPercent {
-    #[serde(flatten)]
-    pub subsidy_percent: CoPercentType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingActData {
-    #[serde(flatten)]
-    pub financing_act_data: FinancingActDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DecidedAmountUnit {
-    #[serde(flatten)]
-    pub decided_amount_unit: FccDecidedAmountUnitType,
+    pub decision_date: CoDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -224,27 +40,141 @@ pub struct DecisionHandler {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SubsidyArgument {
+pub struct RectificationDemand {
     #[serde(flatten)]
-    pub subsidy_argument: SubsidyArgumentType,
+    pub rectification_demand: CoString5000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Subsidy {
+pub struct SubsidyArgumentText {
     #[serde(flatten)]
-    pub subsidy: SubsidyType,
+    pub subsidy_argument_text: CoString5000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CostTypeDescription {
+pub struct DecisionReceivers {
     #[serde(flatten)]
-    pub cost_type_description: FccCostTypeDescriptionType,
+    pub decision_receivers: DecisionReceiversType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OriginalSender {
+    #[serde(flatten)]
+    pub original_sender: CiContactInformationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Reasons {
+    #[serde(flatten)]
+    pub reasons: ReasonsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ApplicationAmountUnit {
     #[serde(flatten)]
     pub application_amount_unit: CoForestCentreUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CaseAction {
+    #[serde(flatten)]
+    pub case_action: CaseActionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DecisionNumber {
+    #[serde(flatten)]
+    pub decision_number: CoString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkDescription {
+    #[serde(flatten)]
+    pub work_description: CoString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CompletionDeclarationDeliveryDueDate {
+    #[serde(flatten)]
+    pub completion_declaration_delivery_due_date: CoDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ApplicationUnitPrice {
+    #[serde(flatten)]
+    pub application_unit_price: CoMoneyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorksDueDate {
+    #[serde(flatten)]
+    pub works_due_date: CoDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingActData {
+    #[serde(flatten)]
+    pub financing_act_data: FinancingActDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DecisionGeometry {
+    #[serde(flatten)]
+    pub decision_geometry: DecisionGeometryType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SubsidyArgument {
+    #[serde(flatten)]
+    pub subsidy_argument: SubsidyArgumentType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Justification {
+    #[serde(flatten)]
+    pub justification: CoString5000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ActionDate {
+    #[serde(flatten)]
+    pub action_date: CoDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SubsidyPercent {
+    #[serde(flatten)]
+    pub subsidy_percent: CoPercentType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DecisionType {
+    #[serde(flatten)]
+    pub decision_type: CoDecisionTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ApplicationTotalSubsidy {
+    #[serde(flatten)]
+    pub application_total_subsidy: CoMoneyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DecidedUnitPrice {
+    #[serde(flatten)]
+    pub decided_unit_price: FccDecidedUnitPriceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ActionDescription {
+    #[serde(flatten)]
+    pub action_description: CoString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ObjectType {
+    #[serde(flatten)]
+    pub object_type: CoDecisionGeometryObjectType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -259,6 +189,30 @@ pub struct DecisionReceiver {
     pub decision_receiver: CiContactInformationType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CaseDate {
+    #[serde(flatten)]
+    pub case_date: CoDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DecisionHandlers {
+    #[serde(flatten)]
+    pub decision_handlers: DecisionHandlersType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestCentreDecision {
+    #[serde(flatten)]
+    pub forest_centre_decision: ForestCentreDecisionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CaseActions {
+    #[serde(flatten)]
+    pub case_actions: CaseActionsType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FinancingActDataType {
     #[serde(rename = "WorksDueDate")]
@@ -268,71 +222,17 @@ pub struct FinancingActDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstatesType {
-    #[serde(rename = "RealEstate")]
-    pub real_estate: Vec<RealEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct JustificationsType {
-    #[serde(rename = "Justification")]
-    pub justification: Vec<CoString5000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CaseActionsType {
-    #[serde(rename = "CaseAction")]
-    pub case_action: Vec<CaseActionType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreDecisionDataType {
+pub struct DecisionHandlerType {
+    #[serde(rename = "@role")]
+    pub role: String100Type,
     #[serde(flatten)]
-    pub base: FccForestCentreDataType,
-    #[serde(rename = "ForestCentreDecision")]
-    pub forest_centre_decision: ForestCentreDecisionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorksType {
-    #[serde(rename = "Work")]
-    pub work: Vec<WorkType>,
+    pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StandsType {
     #[serde(rename = "Stand")]
     pub stand: Vec<StandType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidiesType {
-    #[serde(rename = "Subsidy")]
-    pub subsidy: Vec<SubsidyType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionGeometriesType {
-    #[serde(rename = "DecisionGeometry")]
-    pub decision_geometry: Vec<DecisionGeometryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ReasonsType {
-    #[serde(rename = "Reason")]
-    pub reason: Vec<ReasonType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidyArgumentType {
-    #[serde(rename = "SubsidyArgumentText")]
-    pub subsidy_argument_text: Vec<CoString5000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionReceiversType {
-    #[serde(rename = "DecisionReceiver")]
-    pub decision_receiver: Vec<CiContactInformationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -348,57 +248,43 @@ pub struct StandType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateType {
+pub struct WorksType {
+    #[serde(rename = "Work")]
+    pub work: Vec<WorkType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DecisionContactInformationType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "FirstName")]
+    pub first_name: CiFirstNameType,
+    #[serde(rename = "LastName")]
+    pub last_name: CiLastNameType,
+    #[serde(rename = "PersonOrganizationName")]
+    pub person_organization_name: CiPersonOrganizationNameType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DecisionHandlersType {
+    #[serde(rename = "DecisionHandler")]
+    pub decision_handler: Vec<DecisionHandlerType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ReasonType {
+    #[serde(rename = "ReasonCode")]
+    pub reason_code: CoString10Type,
+    #[serde(rename = "ReasonDescription")]
+    pub reason_description: CoString1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreDecisionDataType {
     #[serde(flatten)]
-    pub base: ReBaseRealEstateType2,
-    #[serde(rename = "SubsidyZone")]
-    pub subsidy_zone: CoForestActAreaType,
-    #[serde(rename = "Stands", skip_serializing_if = "Option::is_none")]
-    pub stands: Option<StandsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkType {
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: CoForestCentreWorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: CoForestCentreWorkCodeType,
-    #[serde(rename = "Subsidies")]
-    pub subsidies: SubsidiesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SubsidyType {
-    #[serde(rename = "RealEstateId")]
-    pub real_estate_id: CoIdStringType,
-    #[serde(rename = "StandReference", skip_serializing_if = "Option::is_none")]
-    pub stand_reference: Option<CoReferenceType>,
-    #[serde(rename = "StandId", skip_serializing_if = "Option::is_none")]
-    pub stand_id: Option<CoIdStringNotEmptyType>,
-    #[serde(rename = "CostType")]
-    pub cost_type: FccCostTypeType2,
-    #[serde(rename = "CostTypeDescription")]
-    pub cost_type_description: FccCostTypeDescriptionType,
-    #[serde(rename = "SubsidyPercent", skip_serializing_if = "Option::is_none")]
-    pub subsidy_percent: Option<CoPercentType>,
-    #[serde(rename = "ApplicationAmount", skip_serializing_if = "Option::is_none")]
-    pub application_amount: Option<CoDecimal7And2Type>,
-    #[serde(rename = "ApplicationAmountUnit", skip_serializing_if = "Option::is_none")]
-    pub application_amount_unit: Option<CoForestCentreUnitType>,
-    #[serde(rename = "ApplicationUnitPrice", skip_serializing_if = "Option::is_none")]
-    pub application_unit_price: Option<CoMoneyType>,
-    #[serde(rename = "ApplicationTotalSubsidy", skip_serializing_if = "Option::is_none")]
-    pub application_total_subsidy: Option<CoMoneyType>,
-    #[serde(rename = "DecidedAmount", skip_serializing_if = "Option::is_none")]
-    pub decided_amount: Option<FccDecidedAmountType>,
-    #[serde(rename = "DecidedAmountUnit", skip_serializing_if = "Option::is_none")]
-    pub decided_amount_unit: Option<FccDecidedAmountUnitType>,
-    #[serde(rename = "DecidedUnitPrice", skip_serializing_if = "Option::is_none")]
-    pub decided_unit_price: Option<FccDecidedUnitPriceType>,
-    #[serde(rename = "DecidedTotalSubsidy")]
-    pub decided_total_subsidy: FccDecidedTotalSubsidyType,
-    #[serde(rename = "Reasons", skip_serializing_if = "Option::is_none")]
-    pub reasons: Option<ReasonsType>,
+    pub base: FccForestCentreDataType,
+    #[serde(rename = "ForestCentreDecision")]
+    pub forest_centre_decision: ForestCentreDecisionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -416,6 +302,62 @@ pub struct DecisionGeometryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SubsidyArgumentType {
+    #[serde(rename = "SubsidyArgumentText")]
+    pub subsidy_argument_text: Vec<CoString5000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkType {
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: CoForestCentreWorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: CoForestCentreWorkCodeType,
+    #[serde(rename = "Subsidies")]
+    pub subsidies: SubsidiesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubsidiesType {
+    #[serde(rename = "Subsidy")]
+    pub subsidy: Vec<SubsidyType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstatesType {
+    #[serde(rename = "RealEstate")]
+    pub real_estate: Vec<RealEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct JustificationsType {
+    #[serde(rename = "Justification")]
+    pub justification: Vec<CoString5000Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DecisionReceiversType {
+    #[serde(rename = "DecisionReceiver")]
+    pub decision_receiver: Vec<CiContactInformationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstateType {
+    #[serde(flatten)]
+    pub base: ReBaseRealEstateType2,
+    #[serde(rename = "SubsidyZone")]
+    pub subsidy_zone: CoForestActAreaType,
+    #[serde(rename = "Stands", skip_serializing_if = "Option::is_none")]
+    pub stands: Option<StandsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CaseActionsType {
+    #[serde(rename = "CaseAction")]
+    pub case_action: Vec<CaseActionType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CaseActionType {
     #[serde(rename = "ActionType")]
     pub action_type: String,
@@ -426,23 +368,9 @@ pub struct CaseActionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ReasonType {
-    #[serde(rename = "ReasonCode")]
-    pub reason_code: CoString10Type,
-    #[serde(rename = "ReasonDescription")]
-    pub reason_description: CoString1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionContactInformationType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "FirstName")]
-    pub first_name: CiFirstNameType,
-    #[serde(rename = "LastName")]
-    pub last_name: CiLastNameType,
-    #[serde(rename = "PersonOrganizationName")]
-    pub person_organization_name: CiPersonOrganizationNameType,
+pub struct DecisionGeometriesType {
+    #[serde(rename = "DecisionGeometry")]
+    pub decision_geometry: Vec<DecisionGeometryType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -496,16 +424,42 @@ pub struct ForestCentreDecisionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionHandlersType {
-    #[serde(rename = "DecisionHandler")]
-    pub decision_handler: Vec<DecisionHandlerType>,
+pub struct SubsidyType {
+    #[serde(rename = "RealEstateId")]
+    pub real_estate_id: CoIdStringType,
+    #[serde(rename = "StandReference", skip_serializing_if = "Option::is_none")]
+    pub stand_reference: Option<CoReferenceType>,
+    #[serde(rename = "StandId", skip_serializing_if = "Option::is_none")]
+    pub stand_id: Option<CoIdStringNotEmptyType>,
+    #[serde(rename = "CostType")]
+    pub cost_type: FccCostTypeType2,
+    #[serde(rename = "CostTypeDescription")]
+    pub cost_type_description: FccCostTypeDescriptionType,
+    #[serde(rename = "SubsidyPercent", skip_serializing_if = "Option::is_none")]
+    pub subsidy_percent: Option<CoPercentType>,
+    #[serde(rename = "ApplicationAmount", skip_serializing_if = "Option::is_none")]
+    pub application_amount: Option<CoDecimal7And2Type>,
+    #[serde(rename = "ApplicationAmountUnit", skip_serializing_if = "Option::is_none")]
+    pub application_amount_unit: Option<CoForestCentreUnitType>,
+    #[serde(rename = "ApplicationUnitPrice", skip_serializing_if = "Option::is_none")]
+    pub application_unit_price: Option<CoMoneyType>,
+    #[serde(rename = "ApplicationTotalSubsidy", skip_serializing_if = "Option::is_none")]
+    pub application_total_subsidy: Option<CoMoneyType>,
+    #[serde(rename = "DecidedAmount", skip_serializing_if = "Option::is_none")]
+    pub decided_amount: Option<FccDecidedAmountType>,
+    #[serde(rename = "DecidedAmountUnit", skip_serializing_if = "Option::is_none")]
+    pub decided_amount_unit: Option<FccDecidedAmountUnitType>,
+    #[serde(rename = "DecidedUnitPrice", skip_serializing_if = "Option::is_none")]
+    pub decided_unit_price: Option<FccDecidedUnitPriceType>,
+    #[serde(rename = "DecidedTotalSubsidy")]
+    pub decided_total_subsidy: FccDecidedTotalSubsidyType,
+    #[serde(rename = "Reasons", skip_serializing_if = "Option::is_none")]
+    pub reasons: Option<ReasonsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DecisionHandlerType {
-    #[serde(rename = "@role")]
-    pub role: String100Type,
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
+pub struct ReasonsType {
+    #[serde(rename = "Reason")]
+    pub reason: Vec<ReasonType>,
 }
 

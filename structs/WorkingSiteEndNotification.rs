@@ -1,23 +1,7 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContactorId {
-    #[serde(flatten)]
-    pub contactor_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UnfulfilledArea {
-    #[serde(flatten)]
-    pub unfulfilled_area: GdtPolygonOrMultiPolygon2Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Supported {
-    #[serde(flatten)]
-    pub supported: BdtYesNoType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Interrupted {
@@ -32,9 +16,27 @@ pub struct AmountLeft {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct AmountPlanned {
+    #[serde(flatten)]
+    pub amount_planned: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct FulfilledArea {
     #[serde(flatten)]
     pub fulfilled_area: FulfilledAreaType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContactorId {
+    #[serde(flatten)]
+    pub contactor_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct VolumeLeft {
+    #[serde(flatten)]
+    pub volume_left: BdtDecimal6TotalDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -44,9 +46,15 @@ pub struct WorkingSiteEndNotification {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct VolumeLeft {
+pub struct UnfulfilledArea {
     #[serde(flatten)]
-    pub volume_left: BdtDecimal6TotalDigitsType,
+    pub unfulfilled_area: GdtPolygonOrMultiPolygon2Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Supported {
+    #[serde(flatten)]
+    pub supported: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -92,6 +100,12 @@ pub struct WorkingSiteEndNotificationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FulfilledAreasType {
     #[serde(rename = "FulfilledArea")]
     pub fulfilled_area: Vec<FulfilledAreaType>,
@@ -121,11 +135,5 @@ pub struct WorkCodeDataType {
     pub amount_left: Decimal3FractionDigitsType,
     #[serde(rename = "Unit")]
     pub unit: WorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeDataType>,
 }
 

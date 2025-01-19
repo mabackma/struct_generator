@@ -1,10 +1,30 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StartTime {
+    #[serde(flatten)]
+    pub start_time: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Unit {
+    #[serde(flatten)]
+    pub unit: BdtWorkCodeUnitType,
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Loads {
     #[serde(flatten)]
     pub loads: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DestinationStorage {
+    #[serde(flatten)]
+    pub destination_storage: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,15 +34,37 @@ pub struct ForwardingEstimate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StartTime {
+pub struct Code {
     #[serde(flatten)]
-    pub start_time: BdtTimeStampType,
+    pub code: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentId {
+    #[serde(flatten)]
+    pub assortment_id: WctERPIdType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Day {
     #[serde(flatten)]
     pub day: BdtDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardingEstimateType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+    #[serde(rename = "StorageId")]
+    pub storage_id: ERPIdType,
+    #[serde(rename = "StartTime")]
+    pub start_time: TimeStampType,
+    #[serde(rename = "Assortments")]
+    pub assortments: AssortmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,21 +89,5 @@ pub struct AssortmentDataType {
     pub loads: PositiveInteger3digitsType,
     #[serde(rename = "Day")]
     pub day: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardingEstimateType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
-    #[serde(rename = "StorageId")]
-    pub storage_id: ERPIdType,
-    #[serde(rename = "StartTime")]
-    pub start_time: TimeStampType,
-    #[serde(rename = "Assortments")]
-    pub assortments: AssortmentsType,
 }
 
