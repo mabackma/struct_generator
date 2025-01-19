@@ -4,6 +4,12 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Description {
+    #[serde(flatten)]
+    pub description: CoString2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ForestObjectData {
     #[serde(flatten)]
     pub forest_object_data: ForestObjectDataType,

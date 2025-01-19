@@ -16,30 +16,6 @@ pub struct ScaledMass {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ScaleData {
-    #[serde(flatten)]
-    pub scale_data: ScaleDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Orientation {
-    #[serde(flatten)]
-    pub orientation: OrientationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CalibrationAdjustment {
-    #[serde(flatten)]
-    pub calibration_adjustment: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteForwardingQualityControl {
-    #[serde(flatten)]
-    pub working_site_forwarding_quality_control: WorkingSiteForwardingQualityControlType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Calibration {
     #[serde(flatten)]
     pub calibration: CalibrationType,
@@ -52,14 +28,33 @@ pub struct OperatorId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Orientation {
+    #[serde(flatten)]
+    pub orientation: OrientationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteForwardingQualityControl {
+    #[serde(flatten)]
+    pub working_site_forwarding_quality_control: WorkingSiteForwardingQualityControlType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct CalibrationDate {
     #[serde(flatten)]
     pub calibration_date: BdtTimeStampType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrientationType {
-    pub base: String,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CalibrationAdjustment {
+    #[serde(flatten)]
+    pub calibration_adjustment: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ScaleData {
+    #[serde(flatten)]
+    pub scale_data: ScaleDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -106,5 +101,10 @@ pub struct CalibrationType {
     pub calibration_date: TimeStampType,
     #[serde(rename = "CalibrationAdjustment")]
     pub calibration_adjustment: PositiveInteger3digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrientationType {
+    pub base: String,
 }
 

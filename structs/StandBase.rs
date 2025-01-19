@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandNumberExtension {
+pub struct StandNumber {
     #[serde(flatten)]
-    pub stand_number_extension: StandNumberExtensionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AreaDecrease {
-    #[serde(flatten)]
-    pub area_decrease: AreaDecreaseType,
+    pub stand_number: StandNumberType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,15 +16,15 @@ pub struct SilvicultureRestrictionEnds {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandNumber {
+pub struct AreaDecrease {
     #[serde(flatten)]
-    pub stand_number: StandNumberType,
+    pub area_decrease: AreaDecreaseType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandInfo {
+pub struct StandNumberExtension {
     #[serde(flatten)]
-    pub stand_info: StandInfoType,
+    pub stand_number_extension: StandNumberExtensionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,16 +33,10 @@ pub struct StandBasicDataDate {
     pub stand_basic_data_date: StandBasicDataDateType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandBasicDataDateType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StandInfo {
     #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaType {
-    #[serde(flatten)]
-    pub base: CoAreaType,
+    pub stand_info: StandInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -67,7 +55,7 @@ pub struct StandInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaDecreaseType {
+pub struct AreaType {
     #[serde(flatten)]
     pub base: CoAreaType,
 }
@@ -80,5 +68,17 @@ pub struct StandNumberExtensionType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StandNumberType {
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandBasicDataDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaDecreaseType {
+    #[serde(flatten)]
+    pub base: CoAreaType,
 }
 

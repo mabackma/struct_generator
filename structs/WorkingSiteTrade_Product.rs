@@ -4,15 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Consumption {
+pub struct ProductName {
     #[serde(flatten)]
-    pub consumption: ConsumptionType,
+    pub product_name: CoString500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ConsumptionUnit {
+pub struct Consumption {
     #[serde(flatten)]
-    pub consumption_unit: ConsumptionUnitType,
+    pub consumption: ConsumptionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +22,17 @@ pub struct Product {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ProductName {
+pub struct ConsumptionUnit {
     #[serde(flatten)]
-    pub product_name: CoString500Type,
+    pub consumption_unit: ConsumptionUnitType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: WtcPlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -62,6 +70,18 @@ pub struct ProductType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ConsumptionType {
     #[serde(flatten)]
     pub base: CoDecimal2FractionDigitsType,
@@ -73,26 +93,6 @@ pub struct OperationTypeType {
     pub op_cutting_type_type: OpCuttingTypeType,
     #[serde(rename = "SilvicultureTypeType")]
     pub op_silviculture_type_type: OpSilvicultureTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: WtcPlannedResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: CoOperationModeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

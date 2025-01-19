@@ -10,9 +10,9 @@ pub struct ExpirationDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RequestInfo {
+pub struct RequestCode {
     #[serde(flatten)]
-    pub request_info: CoString2000Type,
+    pub request_code: RequestCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +22,15 @@ pub struct ContactLocationInformation {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PreferredContactingMethod {
+pub struct ForestPropertyDataSet {
     #[serde(flatten)]
-    pub preferred_contacting_method: CoPreferredContactingMethodType,
+    pub forest_property_data_set: ForestPropertyDataSetType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContactMunicipality {
+    #[serde(flatten)]
+    pub contact_municipality: CoMunicipalityNumberType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +40,9 @@ pub struct CreateDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestPropertyDataSet {
+pub struct PreferredContactingMethod {
     #[serde(flatten)]
-    pub forest_property_data_set: ForestPropertyDataSetType,
+    pub preferred_contacting_method: CoPreferredContactingMethodType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -52,21 +58,9 @@ pub struct PreferredContactingMethods {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContactMunicipality {
+pub struct RequestInfo {
     #[serde(flatten)]
-    pub contact_municipality: CoMunicipalityNumberType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RequestCode {
-    #[serde(flatten)]
-    pub request_code: RequestCodeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestPropertyDataSetType {
-    #[serde(rename = "ForestPropertyData")]
-    pub forest_property_data: Vec<FdForestPropertyDataType>,
+    pub request_info: CoString2000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -100,6 +94,12 @@ pub struct ContactRequestType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestCodeType {
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestPropertyDataSetType {
+    #[serde(rename = "ForestPropertyData")]
+    pub forest_property_data: Vec<FdForestPropertyDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

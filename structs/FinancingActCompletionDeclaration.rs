@@ -10,6 +10,12 @@ pub struct FinancingActProjectCompleted {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct CompletionDataAndSubsidy {
+    #[serde(flatten)]
+    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct FinancingActCompletionDeclaration {
     #[serde(flatten)]
     pub financing_act_completion_declaration: FinancingActCompletionDeclarationType,
@@ -21,24 +27,16 @@ pub struct ExtraFinancingApplication {
     pub extra_financing_application: CoYesNoType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CompletionDataAndSubsidy {
-    #[serde(flatten)]
-    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompletionDataAndSubsidyType {
+    #[serde(rename = "FinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_completion_stands: Option<FacFinancingActCompletionStands>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartOfProjectType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "AreaNo")]
-    pub fac_area_no: FacAreaNo,
-    #[serde(rename = "FinancingActWorkCode")]
-    pub fac_financing_act_work_code: FacFinancingActWorkCode,
-    #[serde(rename = "PayeesAndRealEstates")]
-    pub fac_payees_and_real_estates: FacPayeesAndRealEstates,
-    #[serde(rename = "CompletionDataAndSubsidy")]
-    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -92,14 +90,16 @@ pub struct FinancingActCompletionDeclarationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompletionDataAndSubsidyType {
-    #[serde(rename = "FinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_completion_stands: Option<FacFinancingActCompletionStands>,
+pub struct PartOfProjectType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "AreaNo")]
+    pub fac_area_no: FacAreaNo,
+    #[serde(rename = "FinancingActWorkCode")]
+    pub fac_financing_act_work_code: FacFinancingActWorkCode,
+    #[serde(rename = "PayeesAndRealEstates")]
+    pub fac_payees_and_real_estates: FacPayeesAndRealEstates,
+    #[serde(rename = "CompletionDataAndSubsidy")]
+    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
 }
 

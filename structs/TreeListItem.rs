@@ -10,12 +10,6 @@ pub struct TreeIdentifier {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Type {
-    #[serde(flatten)]
-    pub r#type: Xsinteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct TreeListItem {
     #[serde(flatten)]
     pub tree_list_item: TreeListItemType,
@@ -25,6 +19,26 @@ pub struct TreeListItem {
 pub struct TreeIdentifiers {
     #[serde(flatten)]
     pub tree_identifiers: TreeIdentifiersType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Type {
+    #[serde(flatten)]
+    pub r#type: Xsinteger,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifiersType {
+    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
+    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifierType {
+    #[serde(rename = "Type")]
+    pub r#type: i32,
+    #[serde(rename = "Value")]
+    pub value: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -57,19 +71,5 @@ pub struct TreeListItemType {
     pub pulp_wood_volume: Option<CoPulpWoodVolumeType>,
     #[serde(rename = "TreeIdentifiers", skip_serializing_if = "Option::is_none")]
     pub tree_identifiers: Option<TreeIdentifiersType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifierType {
-    #[serde(rename = "Type")]
-    pub r#type: i32,
-    #[serde(rename = "Value")]
-    pub value: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifiersType {
-    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
-    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
 }
 

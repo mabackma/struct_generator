@@ -4,9 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Minutes {
+pub struct SavingTime {
     #[serde(flatten)]
-    pub minutes: BdtPositiveInteger2digitsType,
+    pub saving_time: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,9 +16,21 @@ pub struct Sawinghours {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Minutes {
+    #[serde(flatten)]
+    pub minutes: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteWorkTime {
     #[serde(flatten)]
     pub working_site_work_time: WorkingSiteWorkTimeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EndTime {
+    #[serde(flatten)]
+    pub end_time: BdtTimeStampType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
