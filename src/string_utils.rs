@@ -123,6 +123,7 @@ pub fn to_snake_case(name: &str) -> String {
     snake_case
 }
 
+// Returns the content of the element as a string
 pub fn slice_contents(
     content: &str, 
     tag: &str, 
@@ -135,6 +136,7 @@ pub fn slice_contents(
 
     // Find the start position of the element
     if let Some(start_pos) = content.find(&start_tag) {
+
         // Find the first occurrence of the end tag after the start position
         if let Some(relative_end_pos) = content[start_pos..].find(&end_tag) {
             let end_pos = start_pos + relative_end_pos + end_tag.len();

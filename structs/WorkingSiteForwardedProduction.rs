@@ -1,34 +1,12 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LoadVolume {
-    #[serde(flatten)]
-    pub load_volume: BdtDecimal3FractionDigitsType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardingDistance {
+pub struct PartitialLoad {
     #[serde(flatten)]
-    pub forwarding_distance: XsnonNegativeInteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartitialLoadId {
-    #[serde(flatten)]
-    pub partitial_load_id: XsnonNegativeInteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteForwardedProduction {
-    #[serde(flatten)]
-    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LoadGreenMass {
-    #[serde(flatten)]
-    pub load_green_mass: BdtDecimal3FractionDigitsType,
+    pub partitial_load: PartitialLoadType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -38,9 +16,39 @@ pub struct Load {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PartitialLoad {
+pub struct PartitialLoadId {
     #[serde(flatten)]
-    pub partitial_load: PartitialLoadType,
+    pub partitial_load_id: XsnonNegativeInteger,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadGreenMass {
+    #[serde(flatten)]
+    pub load_green_mass: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadCount {
+    #[serde(flatten)]
+    pub load_count: XsnonNegativeInteger,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteForwardedProduction {
+    #[serde(flatten)]
+    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForwardingDistance {
+    #[serde(flatten)]
+    pub forwarding_distance: XsnonNegativeInteger,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadVolume {
+    #[serde(flatten)]
+    pub load_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

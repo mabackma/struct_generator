@@ -1,10 +1,12 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Service {
+pub struct Services {
     #[serde(flatten)]
-    pub service: OrganizationServiceType,
+    pub services: ServicesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,9 +16,9 @@ pub struct Roles {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Services {
+pub struct Role {
     #[serde(flatten)]
-    pub services: ServicesType,
+    pub role: OrganizationRoleType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,21 +34,9 @@ pub struct Organizations {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Role {
+pub struct Service {
     #[serde(flatten)]
-    pub role: OrganizationRoleType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationsType {
-    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
-    pub organization: Option<Vec<OrganizationType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServicesType {
-    #[serde(rename = "Service")]
-    pub service: Vec<OrganizationServiceType>,
+    pub service: OrganizationServiceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -61,8 +51,20 @@ pub struct RolesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ServicesType {
+    #[serde(rename = "Service")]
+    pub service: Vec<OrganizationServiceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OrganizationServiceType {
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationsType {
+    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
+    pub organization: Option<Vec<OrganizationType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

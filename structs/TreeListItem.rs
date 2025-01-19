@@ -1,16 +1,12 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct TreeIdentifier {
     #[serde(flatten)]
     pub tree_identifier: TreeIdentifierType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeIdentifiers {
-    #[serde(flatten)]
-    pub tree_identifiers: TreeIdentifiersType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,9 +22,9 @@ pub struct TreeListItem {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Value {
+pub struct TreeIdentifiers {
     #[serde(flatten)]
-    pub value: Xsstring,
+    pub tree_identifiers: TreeIdentifiersType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

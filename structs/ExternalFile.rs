@@ -1,11 +1,7 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FileFormat {
-    #[serde(flatten)]
-    pub file_format: BdtString5Type,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ProductUserId {
@@ -14,15 +10,27 @@ pub struct ProductUserId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Label {
+pub struct FileName {
     #[serde(flatten)]
-    pub label: BdtString100Type,
+    pub file_name: BdtString100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ExternalFile {
     #[serde(flatten)]
     pub external_file: ExternalFileType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FileFormat {
+    #[serde(flatten)]
+    pub file_format: BdtString5Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Label {
+    #[serde(flatten)]
+    pub label: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

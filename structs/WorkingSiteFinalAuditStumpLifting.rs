@@ -1,22 +1,18 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingQuality {
+pub struct StumpCuttingAsInstructedText {
     #[serde(flatten)]
-    pub stump_lifting_quality: BdtWorkingQualityType,
+    pub stump_cutting_as_instructed_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpCuttingAsInstructed {
+pub struct WorkingSiteFinalAuditStumpLifting {
     #[serde(flatten)]
-    pub stump_cutting_as_instructed: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpTidiness {
-    #[serde(flatten)]
-    pub stump_tidiness: BdtYesNoType,
+    pub working_site_final_audit_stump_lifting: WorkingSiteFinalAuditStumpLiftingType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,27 +28,9 @@ pub struct RemainingStumpCountText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingQualityText {
+pub struct StumpTidiness {
     #[serde(flatten)]
-    pub stump_lifting_quality_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpTidinessText {
-    #[serde(flatten)]
-    pub stump_tidiness_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditStumpLifting {
-    #[serde(flatten)]
-    pub working_site_final_audit_stump_lifting: WorkingSiteFinalAuditStumpLiftingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpCuttingAsInstructedText {
-    #[serde(flatten)]
-    pub stump_cutting_as_instructed_text: BdtString200Type,
+    pub stump_tidiness: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -65,6 +43,44 @@ pub struct RemainingStumpCount {
 pub struct StumpLiftingSuitable {
     #[serde(flatten)]
     pub stump_lifting_suitable: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpTidinessText {
+    #[serde(flatten)]
+    pub stump_tidiness_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpLiftingQualityText {
+    #[serde(flatten)]
+    pub stump_lifting_quality_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpLiftingQuality {
+    #[serde(flatten)]
+    pub stump_lifting_quality: BdtWorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpCuttingAsInstructed {
+    #[serde(flatten)]
+    pub stump_cutting_as_instructed: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<FinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: FinalAuditerTypeType,
+    #[serde(rename = "FinalAuditer")]
+    pub final_auditer: String50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: TimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -89,20 +105,6 @@ pub struct WorkingSiteFinalAuditStumpLiftingType {
     pub images: PositiveInteger2digitsType,
     #[serde(rename = "Audits")]
     pub audits: AuditsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<FinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: FinalAuditerTypeType,
-    #[serde(rename = "FinalAuditer")]
-    pub final_auditer: String50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: TimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

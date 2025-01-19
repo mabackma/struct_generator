@@ -1,4 +1,4 @@
-use crate::element_utils::{element_name, element_reference, element_type, extension_type, parse_type, reference_type};
+use crate::element_utils::{element_name, element_reference, element_type, extension_type, parse_type, reference_type, union_members};
 use crate::string_utils::{handle_prefix, slice_contents};
 
 use std::collections::HashMap;
@@ -70,6 +70,10 @@ pub fn create_structs(
                     add_extension_fields(&mut stack, e, prefixes);
                 }
 
+                if e.name() == QName(b"xs:union") {
+                    add_union(&mut stack, e, &element_definitions, &mut anonymous_complex_types, prefixes);
+                }
+
                 if e.name() == QName(b"xs:element") {
                     add_element_definition(e, element_definitions, content, &mut stack, &mut current_name, &mut anonymous_complex_types);
                 }
@@ -85,6 +89,10 @@ pub fn create_structs(
             Ok(Empty(ref e)) => {
                 if e.name() == QName(b"xs:extension") || e.name() == QName(b"xs:restriction") {
                     add_extension_fields(&mut stack, e, prefixes);
+                }
+
+                if e.name() == QName(b"xs:union") {
+                    add_union(&mut stack, e, &element_definitions, &mut anonymous_complex_types, prefixes);
                 }
 
                 if e.name() == QName(b"xs:element") {
@@ -305,6 +313,46 @@ fn add_extension_fields(
             name: "base".to_string(),
             field_type,
         });
+    }
+}
+
+fn add_union(
+    stack: &mut Vec<XMLStruct>, 
+    e: &BytesStart<'_>, 
+    element_definitions: &HashMap<String, String>, 
+    anonymous_complex_types: &mut Vec<String>, 
+    prefixes: &mut HashMap<String, String>
+) {
+
+    let mut union_types: Vec<String> = Vec::new();
+
+    let union_string = union_members(e);
+
+    if let Some(union_string) = union_string {
+        for union_member in union_string.split_whitespace() {
+            let mut field_type = union_member.to_string();
+
+            if let Some(typ) = reference_type(&field_type, element_definitions, prefixes) {
+                field_type = typ;
+            }
+
+            union_types.push(field_type);
+        }
+    }
+
+    // If there's a parent struct, add this struct as a field to it
+    if let Some(parent_struct) = stack.last_mut() {
+        let mut field_type = "".to_string();
+
+        for u_type in union_types {
+            field_type = handle_prefix(&u_type, prefixes);
+
+            // Add the field to the parent struct
+            parent_struct.fields.push(XMLField {
+                name: field_type.clone(),
+                field_type,
+            });
+        }
     }
 }
 

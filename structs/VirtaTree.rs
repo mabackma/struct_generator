@@ -1,22 +1,12 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkQuality {
-    #[serde(flatten)]
-    pub work_quality: VirtaWorkQualityType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Status5 {
+pub struct TreeHeight {
     #[serde(flatten)]
-    pub status5: CoChangeStateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StubDiameter {
-    #[serde(flatten)]
-    pub stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub tree_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -26,21 +16,57 @@ pub struct TreeCount {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeDiameter {
+pub struct Tree {
     #[serde(flatten)]
-    pub tree_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub tree: TreeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeHeight {
+pub struct TreeSpecies {
     #[serde(flatten)]
-    pub tree_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub tree_species: CoTreeSpeciesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Status5 {
+    #[serde(flatten)]
+    pub status5: CoChangeStateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeNumber {
+    #[serde(flatten)]
+    pub tree_number: Xsstring,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct DamageClass {
     #[serde(flatten)]
     pub damage_class: VirtaDamageClassType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StubDiameter {
+    #[serde(flatten)]
+    pub stub_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkQuality {
+    #[serde(flatten)]
+    pub work_quality: VirtaWorkQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeClass {
+    #[serde(flatten)]
+    pub tree_class: CoTreeClassType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeDiameter {
+    #[serde(flatten)]
+    pub tree_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

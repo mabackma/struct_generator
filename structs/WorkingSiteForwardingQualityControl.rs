@@ -1,11 +1,7 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ScaledMass {
-    #[serde(flatten)]
-    pub scaled_mass: BdtDecimal1FractionDigitType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ControlReferenceMass {
@@ -14,15 +10,9 @@ pub struct ControlReferenceMass {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CalibrationAdjustment {
+pub struct ScaledMass {
     #[serde(flatten)]
-    pub calibration_adjustment: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Calibration {
-    #[serde(flatten)]
-    pub calibration: CalibrationType,
+    pub scaled_mass: BdtDecimal1FractionDigitType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,15 +22,33 @@ pub struct ScaleData {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Orientation {
+    #[serde(flatten)]
+    pub orientation: OrientationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CalibrationAdjustment {
+    #[serde(flatten)]
+    pub calibration_adjustment: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteForwardingQualityControl {
     #[serde(flatten)]
     pub working_site_forwarding_quality_control: WorkingSiteForwardingQualityControlType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Orientation {
+pub struct Calibration {
     #[serde(flatten)]
-    pub orientation: OrientationType,
+    pub calibration: CalibrationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OperatorId {
+    #[serde(flatten)]
+    pub operator_id: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -50,11 +58,8 @@ pub struct CalibrationDate {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleDataType {
-    #[serde(rename = "ScaledMass")]
-    pub scaled_mass: Decimal1FractionDigitType,
-    #[serde(rename = "Orientation")]
-    pub orientation: OrientationType,
+pub struct OrientationType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -88,8 +93,11 @@ pub struct WorkingSiteForwardingQualityControlType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrientationType {
-    pub base: String,
+pub struct ScaleDataType {
+    #[serde(rename = "ScaledMass")]
+    pub scaled_mass: Decimal1FractionDigitType,
+    #[serde(rename = "Orientation")]
+    pub orientation: OrientationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

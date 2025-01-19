@@ -40,6 +40,15 @@ pub fn extension_type(e: &BytesStart<'_>) -> Option<String> {
     e_base
 }
 
+// Return the types in the union
+pub fn union_members(e: &BytesStart<'_>) -> Option<String> {
+    let e_base = e.attributes().filter_map(|a| a.ok())
+        .find(|a| a.key == QName(b"memberTypes")) 
+        .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the base attribute value as a string
+
+    e_base
+}
+
 // Retrieve the type of the reference
 pub fn reference_type(
     ref_name: &str, element_definitions: &HashMap<String, String>, 
@@ -64,7 +73,6 @@ pub fn reference_type(
     Some(complete_name.to_string())
     //Some(ref_name.to_string())
 }
-
 
 // Check if the type is a vector or optional
 pub fn parse_type(

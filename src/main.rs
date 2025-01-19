@@ -1,7 +1,7 @@
 use struct_generator::create_structs::{create_structs, XMLField, XMLStruct};
 use struct_generator::file_utils::{read_xsd_file, structs_and_definitions_to_file, RUST_TYPES};
 use struct_generator::sorting_algorithm::{create_file_dependencies, sort_files};
-use struct_generator::string_utils::{capitalize_first, remove_colon_from_string};
+use struct_generator::string_utils::{capitalize_first, handle_prefix, remove_colon_from_string, remove_prefix, XSD_TO_RUST};
 
 use std::collections::{HashMap, HashSet};
 use quick_xml::Reader;
@@ -39,6 +39,28 @@ fn main() {
 
     remove_duplicates_from_element_definitions(&mut element_definitions, &structs);
 
+    let mut new_structs = structs.clone();
+    let mut new_definitions = element_definitions.clone();
+
+    for (_, s) in new_structs.iter_mut() {
+        for f in s.fields.iter_mut() {
+            if f.field_type.contains("Option<Vec<") {
+                let field_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "");
+
+                if element_definitions.contains_key(&field_type) {
+                    println!("*{}: {}", f.name, field_type);
+                    
+                    f.field_type = f.field_type.replace(&field_type, element_definitions.get(&field_type).unwrap());
+                    
+                    structs.remove(&field_type);
+                }
+            }
+        }
+    }
+
+    structs = new_structs;
+    element_definitions = new_definitions;
+
     //structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
     //element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
     structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "src/__structs_and_definitions.rs").unwrap();
@@ -62,6 +84,36 @@ fn main() {
             }
         }
     }
+
+    let mut new_definitions = element_definitions.clone();
+
+    for (_, typ) in new_definitions.iter_mut() {
+        let el_type = handle_prefix(typ, prefixes);
+
+        if !structs.contains_key(&el_type) && !element_definitions.contains_key(&el_type) {
+
+            if !el_type.starts_with("Xs") && !el_type.starts_with("Xlink") && !el_type.starts_with("xlink") && !XSD_TO_RUST.contains_key(&el_type.as_str()) {
+                let new_type = remove_prefix(&el_type, prefixes);
+                *typ = new_type;
+            }
+        }
+    }
+
+    element_definitions = new_definitions;
+
+    let gis_types = vec!["Point", "Polygon", "LineString", "MultiPolygon", "MultiLineString"];
+
+    for (el_key, typ) in element_definitions.iter() {
+        let el_type = handle_prefix(typ, prefixes);
+
+        if !structs.contains_key(&el_type) && !element_definitions.contains_key(&el_type) {
+
+            if !el_type.starts_with("Xs") && !el_type.starts_with("Xlink") && !el_type.starts_with("xlink") && !XSD_TO_RUST.contains_key(&el_type.as_str()) && !gis_types.contains(&el_type.as_str()) {
+                println!("  {}: {}", el_key, el_type);
+            }
+        }
+    }
+
 /*     let mut structs: HashMap<String, XMLStruct> = HashMap::new(); // Finalized structs
     let mut element_definitions: HashMap<String, String> = HashMap::new(); // Definitions for elements
 

@@ -1,8 +1,10 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureCodeExtensionsType {
+pub struct FeatureTypeType {
     pub base: String,
 }
 
@@ -12,7 +14,7 @@ pub struct OriginalFeatureCodeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureTypeType {
+pub struct FeatureCodeExtensionsType {
     pub base: String,
 }
 

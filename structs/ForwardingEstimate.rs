@@ -1,11 +1,7 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Loads {
-    #[serde(flatten)]
-    pub loads: BdtPositiveInteger3digitsType,
-}
+use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ForwardingEstimate {
@@ -14,21 +10,15 @@ pub struct ForwardingEstimate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StartTime {
+pub struct Loads {
     #[serde(flatten)]
-    pub start_time: BdtTimeStampType,
+    pub loads: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Day {
     #[serde(flatten)]
     pub day: BdtDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,6 +37,12 @@ pub struct AssortmentDataType {
     pub loads: PositiveInteger3digitsType,
     #[serde(rename = "Day")]
     pub day: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

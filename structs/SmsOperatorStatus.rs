@@ -1,6 +1,14 @@
 use serde::{Serialize, Deserialize};
 use chrono::*;
 
+use geo::{Point, Polygon, MultiPolygon, LineString};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RecipientType {
+    #[serde(flatten)]
+    pub recipient_type: RecipientTypeType,
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct SenderUserId {
     #[serde(flatten)]
@@ -20,9 +28,9 @@ pub struct SendTimestamp {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StatusTimestamp {
+pub struct SmsOperatorStatus {
     #[serde(flatten)]
-    pub status_timestamp: BdtTimeStampType,
+    pub sms_operator_status: SmsOperatorStatusType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -32,15 +40,14 @@ pub struct NotificationType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RecipientType {
+pub struct StatusTimestamp {
     #[serde(flatten)]
-    pub recipient_type: RecipientTypeType,
+    pub status_timestamp: BdtTimeStampType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SmsOperatorStatus {
-    #[serde(flatten)]
-    pub sms_operator_status: SmsOperatorStatusType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RecipientTypeType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -72,17 +79,12 @@ pub struct SmsOperatorStatusType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatusCodeType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RecipientTypeType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct NotificationTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StatusCodeType {
     pub base: String,
 }
 
