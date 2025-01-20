@@ -28,6 +28,13 @@ pub fn element_type(e: &BytesStart<'_>) -> Option<String> {
         .find(|a| a.key == QName(b"type")) 
         .and_then(|a| String::from_utf8(a.value.to_vec()).ok()); // Extract the type attribute value as a string
 
+    if e_type.clone().unwrap_or("".to_string()).starts_with("xs:") {
+        let new_type = e_type.clone().unwrap_or("".to_string()).replace("xs:", "");
+        let new_type = XSD_TO_RUST.get(&new_type);
+
+        return Some(new_type.unwrap().to_string());
+    }
+
     e_type
 }
 
@@ -58,20 +65,12 @@ pub fn reference_type(
     let complete_name = handle_prefix(ref_name, prefixes);
 
     // Search for the reference type in the element definitions
-    // If found, return the type (e.g. "xs:string")
+    // If found, return the type
     if let Some(typ) = element_definitions.get(&complete_name) {
         return Some(typ.clone());
     } 
 
-    // Extract the reference type from the reference name
-/*     if ref_name.contains(':') {
-        let ref_type = ref_name.split(':').collect::<Vec<&str>>()[1];
-        println!("ref_name: {}, ref_type: {}", ref_name, ref_type);
-        return Some(ref_type.to_string());
-    } */
-
     Some(complete_name.to_string())
-    //Some(ref_name.to_string())
 }
 
 // Check if the type is a vector or optional
@@ -79,11 +78,19 @@ pub fn parse_type(
     e: &BytesStart<'_>, 
     field_type: &mut String
 ) {
-    *field_type = if let Some(ft) = XSD_TO_RUST.get(&field_type.replace("Xs", "")) {
+    *field_type = if let Some(ft) = XSD_TO_RUST.get(&field_type) {
         ft.to_string()
     } else {
         field_type.to_string()
     }; 
+
+    if field_type.starts_with("xlink") || field_type.starts_with("Xlink") {
+        *field_type = "String".to_string();
+    }
+
+    if field_type.contains("-") {
+        *field_type = field_type.replace("-", "");
+    }
 
     if is_element_vec(e) {
         if is_element_optional(e) {

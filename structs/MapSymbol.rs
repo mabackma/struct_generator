@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SpareGroupOfTrees {
+pub struct Width {
     #[serde(flatten)]
-    pub spare_group_of_trees: WctSpareTreesByCategoryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MaterialCode {
-    #[serde(flatten)]
-    pub material_code: BdtMaterialCodeType,
+    pub width: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +16,9 @@ pub struct MapSymbols {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Width {
+pub struct Symbol {
     #[serde(flatten)]
-    pub width: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub symbol: MapSymbolDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,27 +34,15 @@ pub struct MapSymbolName {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MapSymbol {
-    #[serde(flatten)]
-    pub map_symbol: MapSymbolType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct DitchType {
     #[serde(flatten)]
     pub ditch_type: WctDitchTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Length {
+pub struct SpareGroupOfTrees {
     #[serde(flatten)]
-    pub length: BdtPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DitchOrRoadPlanName {
-    #[serde(flatten)]
-    pub ditch_or_road_plan_name: BdtString100Type,
+    pub spare_group_of_trees: WctSpareTreesByCategoryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -70,9 +52,37 @@ pub struct Depth {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Symbol {
+pub struct CanModify {
     #[serde(flatten)]
-    pub symbol: MapSymbolDataType,
+    pub can_modify: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DitchOrRoadPlanName {
+    #[serde(flatten)]
+    pub ditch_or_road_plan_name: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MapSymbol {
+    #[serde(flatten)]
+    pub map_symbol: MapSymbolType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbolsType {
+    #[serde(rename = "Symbol")]
+    pub symbol: Vec<MapSymbolDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbolType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "MapSymbols")]
+    pub map_symbols: MapSymbolsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -121,21 +131,5 @@ pub struct MapSymbolDataType {
     pub spare_group_of_trees: Option<SpareTreesByCategoryType>,
     #[serde(rename = "UsingRestrictions", skip_serializing_if = "Option::is_none")]
     pub sf_using_restrictions: Option<SfUsingRestrictions>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolsType {
-    #[serde(rename = "Symbol")]
-    pub symbol: Vec<MapSymbolDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "MapSymbols")]
-    pub map_symbols: MapSymbolsType,
 }
 

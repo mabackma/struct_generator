@@ -4,24 +4,6 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferWorkingSiteDetails {
-    #[serde(flatten)]
-    pub call_for_offer_working_site_details: CallForOfferWorkingSiteDetailsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferWorkingSites {
-    #[serde(flatten)]
-    pub call_for_offer_working_sites: CallForOfferWorkingSitesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OfferWorkingSites {
-    #[serde(flatten)]
-    pub offer_working_sites: OfferWorkingSitesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct OfferWorkingSiteDetails {
     #[serde(flatten)]
     pub offer_working_site_details: OfferWorkingSiteDetailsType,
@@ -31,6 +13,30 @@ pub struct OfferWorkingSiteDetails {
 pub struct WorkingSiteKey {
     #[serde(flatten)]
     pub working_site_key: WorkingSiteKeyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferWorkingSites {
+    #[serde(flatten)]
+    pub offer_working_sites: OfferWorkingSitesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWorkingSites {
+    #[serde(flatten)]
+    pub call_for_offer_working_sites: CallForOfferWorkingSitesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWorkingSiteDetails {
+    #[serde(flatten)]
+    pub call_for_offer_working_site_details: CallForOfferWorkingSiteDetailsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferWorkingSiteDetailsType {
+    #[serde(flatten)]
+    pub base: CfowsWorkingSiteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,12 +59,6 @@ pub struct OfferWorkingSitesType {
 pub struct WorkingSiteKeyType {
     #[serde(rename = "@id")]
     pub id: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSiteDetailsType {
-    #[serde(flatten)]
-    pub base: CfowsWorkingSiteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

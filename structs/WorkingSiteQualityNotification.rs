@@ -4,6 +4,18 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasonText {
+    #[serde(flatten)]
+    pub dis_qualification_reason_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteQualityNotification {
+    #[serde(flatten)]
+    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct DisQualificationPercentage {
     #[serde(flatten)]
     pub dis_qualification_percentage: BdtDecimal2FractionDigitsType,
@@ -16,9 +28,9 @@ pub struct CuttingAccuracySign {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracy {
+pub struct DisQualificationPercentageTotal {
     #[serde(flatten)]
-    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
+    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,33 +40,21 @@ pub struct DisQualificationReasons {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReason {
-    #[serde(flatten)]
-    pub dis_qualification_reason: BdtString10Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteQualityNotification {
-    #[serde(flatten)]
-    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReasonText {
-    #[serde(flatten)]
-    pub dis_qualification_reason_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationPercentageTotal {
-    #[serde(flatten)]
-    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct DisQualificationSign {
     #[serde(flatten)]
     pub dis_qualification_sign: BdtString5Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingAccuracy {
+    #[serde(flatten)]
+    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReason {
+    #[serde(flatten)]
+    pub dis_qualification_reason: BdtString10Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

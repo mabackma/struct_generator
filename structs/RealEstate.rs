@@ -4,9 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RealEstateOwners {
+pub struct RealEstateOwner {
     #[serde(flatten)]
-    pub real_estate_owners: RealEstateOwnersType,
+    pub real_estate_owner: CiContactInformationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,15 +16,21 @@ pub struct BaseRealEstates {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RealEstateOwner {
+pub struct RealEstateOwners {
     #[serde(flatten)]
-    pub real_estate_owner: CiContactInformationType,
+    pub real_estate_owners: RealEstateOwnersType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateOwnersType {
-    #[serde(rename = "RealEstateOwner")]
-    pub real_estate_owner: Vec<CiContactInformationType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RealEstate {
+    #[serde(flatten)]
+    pub real_estate: RealEstateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RealEstates {
+    #[serde(flatten)]
+    pub real_estates: BaseRealEstatesType2,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -42,11 +48,9 @@ pub struct RealEstatesWithOwnersInformationType2 {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstatesWithOwnersInformationType {
-    #[serde(rename = "RealEstateOwners")]
-    pub real_estate_owners: RealEstateOwnersType,
-    #[serde(rename = "RealEstates")]
-    pub real_estates: BaseRealEstatesType,
+pub struct RealEstateOwnersType {
+    #[serde(rename = "RealEstateOwner")]
+    pub real_estate_owner: Vec<CiContactInformationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -56,6 +60,14 @@ pub struct RealEstateType {
     #[serde(rename = "RealEstateOwners", skip_serializing_if = "Option::is_none")]
     pub real_estate_owners: Option<RealEstateOwnersType>,
     #[serde(rename = "Parcels", skip_serializing_if = "Option::is_none")]
-    pub parcels: Option<ParcelsType>,
+    pub parcels: Option<Parcels>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstatesWithOwnersInformationType {
+    #[serde(rename = "RealEstateOwners")]
+    pub real_estate_owners: RealEstateOwnersType,
+    #[serde(rename = "RealEstates")]
+    pub real_estates: BaseRealEstatesType,
 }
 

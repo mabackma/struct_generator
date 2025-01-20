@@ -4,18 +4,6 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceLocation {
-    #[serde(flatten)]
-    pub resource_location: ResourceLocationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerResourceLocations {
-    #[serde(flatten)]
-    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ResourceLocations {
     #[serde(flatten)]
     pub resource_locations: ResourceLocationsType,
@@ -25,6 +13,18 @@ pub struct ResourceLocations {
 pub struct LocationTimestamp {
     #[serde(flatten)]
     pub location_timestamp: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceLocation {
+    #[serde(flatten)]
+    pub resource_location: ResourceLocationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceBuyerResourceLocations {
+    #[serde(flatten)]
+    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
