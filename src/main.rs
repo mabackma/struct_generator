@@ -43,6 +43,8 @@ fn main() {
 
     remove_prefixes_from_missing_types(&structs, &mut element_definitions, prefixes);
 
+    fix_lowercase_types(&mut element_definitions, prefixes);
+
     //structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
     //element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
     structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "src/__structs_and_definitions.rs").unwrap();
@@ -184,11 +186,6 @@ fn fix_fields_with_colons(structs: &mut HashMap<String, XMLStruct>) {
 fn change_circular_field_types(structs: &mut HashMap<String, XMLStruct>) {
     for (key, value) in structs.iter_mut() {
 
-        // Skip structs that start with "Xs"
-        if key.starts_with("Xs") {
-            continue;
-        }
-
         for field in value.fields.iter_mut() {
             if field.field_type == *key {
                 if key.ends_with("PlannedResourceType") {
@@ -281,38 +278,6 @@ fn remove_prefixes_from_missing_types(
     *element_definitions = new_definitions;
 }
 
-fn print_missing_fields(
-    structs: &HashMap<String, XMLStruct>,
-    element_definitions: &HashMap<String, String>,
-    prefixes: &mut HashMap<String, String>
-) {
-    for s in structs.iter() {
-        for f in s.1.fields.iter() {
-            let f_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "").replace(">", "");
-
-            if !structs.contains_key(&f_type) && !element_definitions.contains_key(&f_type) {
-                
-                if !f_type.starts_with("Xs") && !f_type.starts_with("Xlink") && !f_type.starts_with("xlink") && !RUST_TYPES.contains(&f_type.as_str()) {
-                    println!("{} -> {}: {}", s.0, f.name, f_type);
-                }
-            }
-        }
-    }
-
-    let gis_types = vec!["Point", "Polygon", "LineString", "MultiPolygon", "MultiLineString"];
-
-    for (el_key, typ) in element_definitions.iter() {
-        let el_type = handle_prefix(typ, prefixes);
-
-        if !structs.contains_key(&el_type) && !element_definitions.contains_key(&el_type) {
-
-            if !el_type.starts_with("Xs") && !el_type.starts_with("Xlink") && !el_type.starts_with("xlink") && !XSD_TO_RUST.contains_key(&el_type.as_str()) && !gis_types.contains(&el_type.as_str()) {
-                println!("  {}: {}", el_key, el_type);
-            }
-        }
-    }
-}
-
 fn get_field_types_from_definitions(
     structs: &mut HashMap<String, XMLStruct>,
     element_definitions: &HashMap<String, String>
@@ -332,4 +297,61 @@ fn get_field_types_from_definitions(
     }
 
     *structs = new_structs;
+}
+
+fn fix_lowercase_types(
+    element_definitions: &mut HashMap<String, String>,
+    prefixes: &mut HashMap<String, String>
+) {
+    let mut new_definitions = element_definitions.clone();
+
+    for (el_key, typ) in element_definitions.iter() {
+        let mut el_type = handle_prefix(typ, prefixes);
+
+        if el_type.chars().next().map_or(false, char::is_lowercase) && !RUST_TYPES.contains(&el_type.as_str()){
+
+            if let Some(rust_type) = XSD_TO_RUST.get(&el_type.as_str()) {
+                el_type = rust_type.to_string();
+            } else {
+                el_type = capitalize_first(&el_type);
+            }
+
+            new_definitions.remove(el_key);
+            new_definitions.insert(el_key.to_string(), el_type);
+        }
+    }
+
+    *element_definitions = new_definitions;
+}
+
+fn print_missing_fields(
+    structs: &HashMap<String, XMLStruct>,
+    element_definitions: &HashMap<String, String>,
+    prefixes: &mut HashMap<String, String>
+) {
+    for s in structs.iter() {
+        for f in s.1.fields.iter() {
+            let f_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "").replace(">", "");
+
+            if !structs.contains_key(&f_type) && !element_definitions.contains_key(&f_type) {
+                
+                if !RUST_TYPES.contains(&f_type.as_str()) {
+                    println!("STRUCT {} -> {}: {}", s.0, f.name, f_type);
+                }
+            }
+        }
+    }
+
+    let gis_types = vec!["Point", "Polygon", "LineString", "MultiPolygon", "MultiLineString"];
+
+    for (el_key, typ) in element_definitions.iter() {
+        let el_type = handle_prefix(typ, prefixes);
+
+        if !structs.contains_key(&el_type) && !element_definitions.contains_key(&el_type) {
+
+            if !XSD_TO_RUST.contains_key(&el_type.as_str()) && !gis_types.contains(&el_type.as_str()) && !RUST_TYPES.contains(&typ.as_str()) {
+                println!("  {}: {}", el_key, el_type);
+            }
+        }
+    }
 }

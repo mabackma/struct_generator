@@ -54,8 +54,13 @@ pub fn create_structs(
             Ok(Start(ref e)) => {
                 if e.name() == QName(b"xs:complexType") || e.name() == QName(b"xs:simpleType") {
                     if let Some(name) = element_name(e) {
-                        current_name = name.clone();
-                        //println!("Creating struct: {}", name);
+
+                        if name.contains("-") {
+                            current_name = name.replace("-", "");
+                        } else {
+                            current_name = name.clone();
+                        }
+
                         // Create a new struct for this element
                         let new_struct = XMLStruct {
                             name: current_name.clone(),
@@ -71,7 +76,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:union") {
-                    add_union(&mut stack, e, &element_definitions, &mut anonymous_complex_types, prefixes);
+                    add_union(&mut stack, e, &element_definitions, prefixes);
                 }
 
                 if e.name() == QName(b"xs:element") {
@@ -79,7 +84,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:group") {
-                    add_group_definition(e, content, structs, &mut current_name, &mut anonymous_complex_types);
+                    add_group_definition(e, content, structs);
                 }
 
                 if e.name() == QName(b"xs:element") || e.name() == QName(b"xs:group") || e.name() == QName(b"xs:attribute") {
@@ -92,7 +97,7 @@ pub fn create_structs(
                 }
 
                 if e.name() == QName(b"xs:union") {
-                    add_union(&mut stack, e, &element_definitions, &mut anonymous_complex_types, prefixes);
+                    add_union(&mut stack, e, &element_definitions, prefixes);
                 }
 
                 if e.name() == QName(b"xs:element") {
@@ -174,9 +179,7 @@ pub fn add_element_definition(
 fn add_group_definition(
     e: &BytesStart<'_>, 
     content: &str, 
-    structs: &mut HashMap<String, XMLStruct>,  
-    current_name: &mut String, 
-    anonymous_complex_types: &mut Vec<String>
+    structs: &mut HashMap<String, XMLStruct>
 ) {
 
     if let Some(group_slice) = slice_contents(content, "group", &element_name(e).unwrap_or("".to_string())) {
@@ -319,8 +322,7 @@ fn add_extension_fields(
 fn add_union(
     stack: &mut Vec<XMLStruct>, 
     e: &BytesStart<'_>, 
-    element_definitions: &HashMap<String, String>, 
-    anonymous_complex_types: &mut Vec<String>, 
+    element_definitions: &HashMap<String, String>,
     prefixes: &mut HashMap<String, String>
 ) {
 

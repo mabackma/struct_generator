@@ -4,15 +4,27 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct QualityAttachment {
+pub struct ModificationDate {
     #[serde(flatten)]
-    pub quality_attachment: QualityAttachmentType,
+    pub modification_date: BdtDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Version {
     #[serde(flatten)]
     pub version: BdtString10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QualityAttachment {
+    #[serde(flatten)]
+    pub quality_attachment: QualityAttachmentType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DestinationStorage {
+    #[serde(flatten)]
+    pub destination_storage: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -4,12 +4,6 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SelfMonitoringData {
-    #[serde(flatten)]
-    pub self_monitoring_data: CodForestCentreSelfMonitoringDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ForestDataUpdate {
     #[serde(flatten)]
     pub forest_data_update: CodForestDataUpdateType,
@@ -25,6 +19,12 @@ pub struct SenderEmail {
 pub struct ForestCentreMessage {
     #[serde(flatten)]
     pub forest_centre_message: ForestCentreMessageType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SelfMonitoringData {
+    #[serde(flatten)]
+    pub self_monitoring_data: CodForestCentreSelfMonitoringDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -4,7 +4,7 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OriginalFeatureCodeType {
+pub struct FeatureCodeExtensionsType {
     pub base: String,
 }
 
@@ -14,7 +14,7 @@ pub struct FeatureAdditionalCodeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureCodeExtensionsType {
+pub struct OriginalFeatureCodeType {
     pub base: String,
 }
 

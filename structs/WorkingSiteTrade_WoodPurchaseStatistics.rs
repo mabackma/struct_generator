@@ -4,21 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AreaCode {
-    #[serde(flatten)]
-    pub area_code: AreaCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct AreaType {
     #[serde(flatten)]
     pub area_type: AreaTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RoundWoodSalesRows {
-    #[serde(flatten)]
-    pub round_wood_sales_rows: RoundWoodSalesRowsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +22,21 @@ pub struct CompanyID {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct RoundWoodSalesRows {
+    #[serde(flatten)]
+    pub round_wood_sales_rows: RoundWoodSalesRowsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PurchaseModeCode {
     #[serde(flatten)]
     pub purchase_mode_code: WtcoPurchaseModeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AreaCode {
+    #[serde(flatten)]
+    pub area_code: AreaCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,9 +46,9 @@ pub struct RoundWoodSalesRow {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RoundWoodSalesRowsType {
-    #[serde(rename = "RoundWoodSalesRow")]
-    pub round_wood_sales_row: Vec<RoundWoodSalesRowType>,
+pub struct StartDateType {
+    #[serde(flatten)]
+    pub base: JhsAlkuPvmTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -64,14 +64,21 @@ pub struct RoundWoodSalesDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CompanyIDType {
-    #[serde(flatten)]
-    pub base: JhsYritysTunnusTyyppi,
+pub struct RoundWoodSalesRowsType {
+    #[serde(rename = "RoundWoodSalesRow")]
+    pub round_wood_sales_row: Vec<RoundWoodSalesRowType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaCodeType {
-    pub base: String,
+pub struct EndDateType {
+    #[serde(flatten)]
+    pub base: JhsLoppuPvmTyyppi,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaTypeType {
+    #[serde(flatten)]
+    pub base: CoAreaTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -87,20 +94,13 @@ pub struct RoundWoodSalesRowType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaTypeType {
+pub struct CompanyIDType {
     #[serde(flatten)]
-    pub base: CoAreaTypeType,
+    pub base: JhsYritysTunnusTyyppi,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StartDateType {
-    #[serde(flatten)]
-    pub base: JhsAlkuPvmTyyppi,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EndDateType {
-    #[serde(flatten)]
-    pub base: JhsLoppuPvmTyyppi,
+pub struct AreaCodeType {
+    pub base: String,
 }
 

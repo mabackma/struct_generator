@@ -4,9 +4,21 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct StorageId {
+    #[serde(flatten)]
+    pub storage_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ExternalFile {
     #[serde(flatten)]
     pub external_file: ExternalFileType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProductUserId {
+    #[serde(flatten)]
+    pub product_user_id: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -19,12 +31,6 @@ pub struct Label {
 pub struct FileFormat {
     #[serde(flatten)]
     pub file_format: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ProductUserId {
-    #[serde(flatten)]
-    pub product_user_id: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

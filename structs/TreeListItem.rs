@@ -4,15 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeIdentifier {
+pub struct Type {
     #[serde(flatten)]
-    pub tree_identifier: TreeIdentifierType,
+    pub r#type: i32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeListItem {
+pub struct TreeIdentifier {
     #[serde(flatten)]
-    pub tree_list_item: TreeListItemType,
+    pub tree_identifier: TreeIdentifierType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,23 +22,9 @@ pub struct TreeIdentifiers {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Type {
+pub struct TreeListItem {
     #[serde(flatten)]
-    pub r#type: Xsinteger,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifiersType {
-    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
-    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifierType {
-    #[serde(rename = "Type")]
-    pub r#type: i32,
-    #[serde(rename = "Value")]
-    pub value: String,
+    pub tree_list_item: TreeListItemType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,5 +57,19 @@ pub struct TreeListItemType {
     pub pulp_wood_volume: Option<CoPulpWoodVolumeType>,
     #[serde(rename = "TreeIdentifiers", skip_serializing_if = "Option::is_none")]
     pub tree_identifiers: Option<TreeIdentifiersType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifiersType {
+    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
+    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifierType {
+    #[serde(rename = "Type")]
+    pub r#type: i32,
+    #[serde(rename = "Value")]
+    pub value: String,
 }
 

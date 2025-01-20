@@ -4,21 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestEnergySuitable {
+pub struct BioMassQualityText {
     #[serde(flatten)]
-    pub forest_energy_suitable: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestEnergySuitableText {
-    #[serde(flatten)]
-    pub forest_energy_suitable_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditBioMassForwarding {
-    #[serde(flatten)]
-    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
+    pub bio_mass_quality_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,15 +22,41 @@ pub struct RemainingBiomassText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BioMassQualityText {
+pub struct WorkingSiteFinalAuditBioMassForwarding {
     #[serde(flatten)]
-    pub bio_mass_quality_text: BdtString200Type,
+    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestEnergySuitableText {
+    #[serde(flatten)]
+    pub forest_energy_suitable_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct BioMassQuality {
     #[serde(flatten)]
     pub bio_mass_quality: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestEnergySuitable {
+    #[serde(flatten)]
+    pub forest_energy_suitable: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<FinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: FinalAuditerTypeType,
+    #[serde(rename = "FinalAuditer")]
+    pub final_auditer: String50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: TimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -67,20 +81,6 @@ pub struct WorkingSiteFinalAuditBioMassForwardingType {
     pub images: PositiveInteger2digitsType,
     #[serde(rename = "Audits")]
     pub audits: AuditsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<FinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: FinalAuditerTypeType,
-    #[serde(rename = "FinalAuditer")]
-    pub final_auditer: String50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: TimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

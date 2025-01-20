@@ -10,15 +10,15 @@ pub struct ProductName {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Consumption {
-    #[serde(flatten)]
-    pub consumption: ConsumptionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Product {
     #[serde(flatten)]
     pub product: ProductType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Consumption {
+    #[serde(flatten)]
+    pub consumption: ConsumptionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -27,12 +27,22 @@ pub struct ConsumptionUnit {
     pub consumption_unit: ConsumptionUnitType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Code {
+    #[serde(flatten)]
+    pub code: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Unit {
+    #[serde(flatten)]
+    pub unit: String,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: WtcPlannedResourceType,
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -70,21 +80,11 @@ pub struct ProductType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: CoOperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: WtcPlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -99,5 +99,17 @@ pub struct OperationTypeType {
 pub struct ConsumptionUnitType {
     #[serde(flatten)]
     pub base: CoUnitPerHectareType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
 }
 

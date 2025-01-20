@@ -4,93 +4,45 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct VehiclePathWidth {
-    #[serde(flatten)]
-    pub vehicle_path_width: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CompletingNaturalCropStemCount {
-    #[serde(flatten)]
-    pub completing_natural_crop_stem_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct NaturalCropStemCount {
-    #[serde(flatten)]
-    pub natural_crop_stem_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SamplePlots {
-    #[serde(flatten)]
-    pub sample_plots: SamplePlotsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SmallPeelDamage {
-    #[serde(flatten)]
-    pub small_peel_damage: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct GroundManipulationMethod {
-    #[serde(flatten)]
-    pub ground_manipulation_method: VirtaGroundManipulationMethodType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RegenerationEnsuring {
-    #[serde(flatten)]
-    pub regeneration_ensuring: OpSilvicultureTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingValue {
-    #[serde(flatten)]
-    pub cutting_value: CoPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Class4damageCount {
-    #[serde(flatten)]
-    pub class4damage_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct NeedForTreatment {
-    #[serde(flatten)]
-    pub need_for_treatment: CoVirtaYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TargetPartStatus {
-    #[serde(flatten)]
-    pub target_part_status: VirtaTargetPartStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Class3damageCount {
-    #[serde(flatten)]
-    pub class3damage_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestingSeason {
-    #[serde(flatten)]
-    pub harvesting_season: VirtaHarvestingSeasonType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Review {
     #[serde(flatten)]
     pub review: VirtaReviewType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OperationDate {
+pub struct Class2damageCount {
     #[serde(flatten)]
-    pub operation_date: CoDateMmDdYyyyType,
+    pub class2damage_count: CoPositiveInteger6digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BirchPulp {
+    #[serde(flatten)]
+    pub birch_pulp: CoPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RootDamageCount {
+    #[serde(flatten)]
+    pub root_damage_count: CoPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Phase2youngCropCount {
+    #[serde(flatten)]
+    pub phase2young_crop_count: CoPositiveInteger5digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ClearingEstimation {
+    #[serde(flatten)]
+    pub clearing_estimation: SpVirtaEvaluationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EnergyTimberValue {
+    #[serde(flatten)]
+    pub energy_timber_value: CoPositiveInteger5digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -100,9 +52,129 @@ pub struct Suggestion {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TargetPart {
+pub struct Class4damageCount {
     #[serde(flatten)]
-    pub target_part: TargetPartType,
+    pub class4damage_count: CoPositiveInteger6digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct NotDamagedCount {
+    #[serde(flatten)]
+    pub not_damaged_count: CoPositiveInteger6digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Status3 {
+    #[serde(flatten)]
+    pub status3: CoChangeStateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PartsDetectedArea {
+    #[serde(flatten)]
+    pub parts_detected_area: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TotalEstimation {
+    #[serde(flatten)]
+    pub total_estimation: VirtaTotalEstimationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BirchLog {
+    #[serde(flatten)]
+    pub birch_log: CoPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Class3damageCount {
+    #[serde(flatten)]
+    pub class3damage_count: CoPositiveInteger6digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OperationDate {
+    #[serde(flatten)]
+    pub operation_date: CoDateMmDdYyyyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SeedPlantEvaluation {
+    #[serde(flatten)]
+    pub seed_plant_evaluation: SpVirtaEvaluationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SproutForestControlEvaluation {
+    #[serde(flatten)]
+    pub sprout_forest_control_evaluation: SpVirtaEvaluationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RootRotControlEvaluation {
+    #[serde(flatten)]
+    pub root_rot_control_evaluation: VirtaRootRotControlEvaluationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PineLog {
+    #[serde(flatten)]
+    pub pine_log: CoPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeadStemCount {
+    #[serde(flatten)]
+    pub dead_stem_count: CoPositiveInteger6digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PlantEvaluation {
+    #[serde(flatten)]
+    pub plant_evaluation: VirtaPlantEvaluationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExpectedValueCoefficient {
+    #[serde(flatten)]
+    pub expected_value_coefficient: CoPositiveDecimalMax1IntegralPartMax2FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingValue {
+    #[serde(flatten)]
+    pub cutting_value: CoPositiveInteger5digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StemDamageCount {
+    #[serde(flatten)]
+    pub stem_damage_count: CoPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Reason {
+    #[serde(flatten)]
+    pub reason: VirtaReasonType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HarvestingClassifiation {
+    #[serde(flatten)]
+    pub harvesting_classifiation: VirtaHarvestingClassificationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Classification {
+    #[serde(flatten)]
+    pub classification: CoPositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OtherTimberValue {
+    #[serde(flatten)]
+    pub other_timber_value: CoPositiveInteger5digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -118,33 +190,9 @@ pub struct StubMeanDiameter {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExpectedValueCoefficient {
+pub struct GeometryId {
     #[serde(flatten)]
-    pub expected_value_coefficient: CoPositiveDecimalMax1IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BirchLog {
-    #[serde(flatten)]
-    pub birch_log: CoPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PulpM3sum {
-    #[serde(flatten)]
-    pub pulp_m3sum: CoPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ClearingEstimation {
-    #[serde(flatten)]
-    pub clearing_estimation: SpVirtaEvaluationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SeedPlantEvaluation {
-    #[serde(flatten)]
-    pub seed_plant_evaluation: SpVirtaEvaluationType,
+    pub geometry_id: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -154,249 +202,9 @@ pub struct DestroyedCuttingValue {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct VehiclePathSubsidencePercentage {
-    #[serde(flatten)]
-    pub vehicle_path_subsidence_percentage: CoPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartNumber {
-    #[serde(flatten)]
-    pub part_number: Xsstring,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LargePeelDamage {
-    #[serde(flatten)]
-    pub large_peel_damage: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BirchPulp {
-    #[serde(flatten)]
-    pub birch_pulp: CoPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartNorthingCoordinate {
-    #[serde(flatten)]
-    pub part_northing_coordinate: Xsstring,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HabitatSurviving {
-    #[serde(flatten)]
-    pub habitat_surviving: VirtaHabitatSurvivingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RootDamageCount {
-    #[serde(flatten)]
-    pub root_damage_count: CoPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct GeometryStatus {
-    #[serde(flatten)]
-    pub geometry_status: Xsstring,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct GeometryId {
-    #[serde(flatten)]
-    pub geometry_id: Xsstring,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PlantEvaluation {
-    #[serde(flatten)]
-    pub plant_evaluation: VirtaPlantEvaluationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RecommendedDensity {
-    #[serde(flatten)]
-    pub recommended_density: CoPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AlreadyPaidCompensation {
-    #[serde(flatten)]
-    pub already_paid_compensation: CoPositiveDecimalMax5IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct EnergyTimberValue {
-    #[serde(flatten)]
-    pub energy_timber_value: CoPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PineLog {
-    #[serde(flatten)]
-    pub pine_log: CoPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestingClassifiation {
-    #[serde(flatten)]
-    pub harvesting_classifiation: VirtaHarvestingClassificationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Review2 {
-    #[serde(flatten)]
-    pub review2: VirtaReviewType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DamageSource {
-    #[serde(flatten)]
-    pub damage_source: CoFeatureTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StemDamageCount {
-    #[serde(flatten)]
-    pub stem_damage_count: CoPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExpectedValueSurplus {
-    #[serde(flatten)]
-    pub expected_value_surplus: CoPositiveDecimalMax5IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeadStemCount {
-    #[serde(flatten)]
-    pub dead_stem_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Reason2 {
-    #[serde(flatten)]
-    pub reason2: VirtaReasonType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StubStemCount {
-    #[serde(flatten)]
-    pub stub_stem_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RegenerationType {
-    #[serde(flatten)]
-    pub regeneration_type: VirtaRegenerationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Classification {
-    #[serde(flatten)]
-    pub classification: CoPositiveIntegerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TotalEstimation {
-    #[serde(flatten)]
-    pub total_estimation: VirtaTotalEstimationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct NotDamagedCount {
-    #[serde(flatten)]
-    pub not_damaged_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Class2damageCount {
-    #[serde(flatten)]
-    pub class2damage_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExceptionalPermitForHandling {
-    #[serde(flatten)]
-    pub exceptional_permit_for_handling: VirtaExceptionalPermitForHandlingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingMethod {
-    #[serde(flatten)]
-    pub cutting_method: OpCuttingTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StockingWithSeedlings {
-    #[serde(flatten)]
-    pub stocking_with_seedlings: CoVirtaYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RootRotControlEvaluation {
-    #[serde(flatten)]
-    pub root_rot_control_evaluation: VirtaRootRotControlEvaluationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CultivationMaterial {
-    #[serde(flatten)]
-    pub cultivation_material: VirtaCultivationMaterialType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HabitatType {
-    #[serde(flatten)]
-    pub habitat_type: VirtaHabitatTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct InspectionMethod {
-    #[serde(flatten)]
-    pub inspection_method: VirtaInspectionMethodType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TotalCompensation {
-    #[serde(flatten)]
-    pub total_compensation: CoPositiveDecimalMax5IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PinePulp {
     #[serde(flatten)]
     pub pine_pulp: CoPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct VehiclePathDistance {
-    #[serde(flatten)]
-    pub vehicle_path_distance: CoPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartsDetectedArea {
-    #[serde(flatten)]
-    pub parts_detected_area: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DrainageState {
-    #[serde(flatten)]
-    pub drainage_state: CoDrainageStateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OperationYear {
-    #[serde(flatten)]
-    pub operation_year: CoYearType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SpruceLog {
-    #[serde(flatten)]
-    pub spruce_log: CoPositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -406,9 +214,57 @@ pub struct GrassControlEvaluation {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Status3 {
+pub struct StockingWithSeedlings {
     #[serde(flatten)]
-    pub status3: CoChangeStateType,
+    pub stocking_with_seedlings: CoVirtaYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PulpM3sum {
+    #[serde(flatten)]
+    pub pulp_m3sum: CoPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TargetPart {
+    #[serde(flatten)]
+    pub target_part: TargetPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TargetPartStatus {
+    #[serde(flatten)]
+    pub target_part_status: VirtaTargetPartStatusType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StubStemCount {
+    #[serde(flatten)]
+    pub stub_stem_count: CoPositiveInteger6digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct GeometryStatus {
+    #[serde(flatten)]
+    pub geometry_status: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Review2 {
+    #[serde(flatten)]
+    pub review2: VirtaReviewType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Reason2 {
+    #[serde(flatten)]
+    pub reason2: VirtaReasonType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DamageSource {
+    #[serde(flatten)]
+    pub damage_source: CoFeatureTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -418,15 +274,27 @@ pub struct SprucePulp {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandQuality {
+pub struct LogM3sum {
     #[serde(flatten)]
-    pub stand_quality: VirtaStandQualityType,
+    pub log_m3sum: CoPositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DamagedSeedlingCount {
+pub struct ExpectedValueSurplus {
     #[serde(flatten)]
-    pub damaged_seedling_count: CoPositiveInteger6digitsType,
+    pub expected_value_surplus: CoPositiveDecimalMax5IntegralPartMax2FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SpruceLog {
+    #[serde(flatten)]
+    pub spruce_log: CoPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RecommendedDensity {
+    #[serde(flatten)]
+    pub recommended_density: CoPositiveInteger5digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -436,33 +304,15 @@ pub struct SoilImprovementEvaluation {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LogM3sum {
+pub struct CuttingMethod {
     #[serde(flatten)]
-    pub log_m3sum: CoPositiveInteger4digitsType,
+    pub cutting_method: OpCuttingTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PartEastingCoordinate {
+pub struct OperationYear {
     #[serde(flatten)]
-    pub part_easting_coordinate: Xsstring,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SproutForestControlEvaluation {
-    #[serde(flatten)]
-    pub sprout_forest_control_evaluation: SpVirtaEvaluationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HabitatCode {
-    #[serde(flatten)]
-    pub habitat_code: VirtaHabitatCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Compensation {
-    #[serde(flatten)]
-    pub compensation: CoPositiveDecimalMax5IntegralPartMax2FractionalPartType,
+    pub operation_year: CoYearType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -472,51 +322,15 @@ pub struct Class1damageCount {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OtherTimberValue {
+pub struct PartNumber {
     #[serde(flatten)]
-    pub other_timber_value: CoPositiveInteger5digitsType,
+    pub part_number: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CultivatedCropStemCount {
+pub struct RegenerationType {
     #[serde(flatten)]
-    pub cultivated_crop_stem_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Phase2youngCropCount {
-    #[serde(flatten)]
-    pub phase2young_crop_count: CoPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RepairPlantingCosts {
-    #[serde(flatten)]
-    pub repair_planting_costs: CoPositiveDecimalMax5IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Reason {
-    #[serde(flatten)]
-    pub reason: VirtaReasonType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatSurvivingType {
-    #[serde(flatten)]
-    pub base: CoVirtaHabitatSurvivingType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaRootRotControlEvaluationType {
-    #[serde(flatten)]
-    pub base: CoVirtaRootRotControlEvaluationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHarvestingClassificationType {
-    #[serde(flatten)]
-    pub base: CoVirtaHarvestingClassificationType,
+    pub regeneration_type: VirtaRegenerationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -526,57 +340,9 @@ pub struct VirtaExceptionalPermitForHandlingType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTargetPartStatusType {
+pub struct VirtaReasonType {
     #[serde(flatten)]
-    pub base: CoVirtaTargetPartStatusType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaRegenerationType {
-    #[serde(flatten)]
-    pub base: CoVirtaRegenerationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPlantEvaluationType {
-    #[serde(flatten)]
-    pub base: CoVirtaPlantEvaluationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaTotalEstimationType {
-    #[serde(flatten)]
-    pub base: CoVirtaTotalEstimationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaCuttingByMachineType {
-    #[serde(flatten)]
-    pub base: CoVirtaCuttingByMachineType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaReviewType {
-    #[serde(flatten)]
-    pub base: CoVirtaReviewType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaStandQualityType {
-    #[serde(flatten)]
-    pub base: CoVirtaStandQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHarvestingSeasonType {
-    #[serde(flatten)]
-    pub base: CoVirtaHarvestingSeasonType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotsType {
-    #[serde(rename = "SamplePlot")]
-    pub sp_sample_plot: Vec<SpSamplePlot>,
+    pub base: CoVirtaReasonType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -591,27 +357,15 @@ pub struct VirtaTreeDecimalType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSuggestionType {
+pub struct VirtaCuttingByMachineType {
     #[serde(flatten)]
-    pub base: CoVirtaSuggestionType,
+    pub base: CoVirtaCuttingByMachineType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaReasonType {
+pub struct VirtaHarvestingSeasonType {
     #[serde(flatten)]
-    pub base: CoVirtaReasonType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaGroundManipulationMethodType {
-    #[serde(flatten)]
-    pub base: CoVirtaGroundManipulationMethodType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatTypeType {
-    #[serde(flatten)]
-    pub base: CoVirtaHabitatTypeType,
+    pub base: CoVirtaHarvestingSeasonType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -621,9 +375,75 @@ pub struct VirtaCultivationMaterialType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotsType {
+    #[serde(rename = "SamplePlot")]
+    pub sp_sample_plot: Vec<SpSamplePlot>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaInspectionMethodType {
     #[serde(flatten)]
     pub base: CoVirtaInspectionMethodType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatSurvivingType {
+    #[serde(flatten)]
+    pub base: CoVirtaHabitatSurvivingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaSuggestionType {
+    #[serde(flatten)]
+    pub base: CoVirtaSuggestionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHarvestingClassificationType {
+    #[serde(flatten)]
+    pub base: CoVirtaHarvestingClassificationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaHabitatTypeType {
+    #[serde(flatten)]
+    pub base: CoVirtaHabitatTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPlantEvaluationType {
+    #[serde(flatten)]
+    pub base: CoVirtaPlantEvaluationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTargetPartStatusType {
+    #[serde(flatten)]
+    pub base: CoVirtaTargetPartStatusType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaStandQualityType {
+    #[serde(flatten)]
+    pub base: CoVirtaStandQualityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaGroundManipulationMethodType {
+    #[serde(flatten)]
+    pub base: CoVirtaGroundManipulationMethodType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaRegenerationType {
+    #[serde(flatten)]
+    pub base: CoVirtaRegenerationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaRootRotControlEvaluationType {
+    #[serde(flatten)]
+    pub base: CoVirtaRootRotControlEvaluationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -826,5 +646,17 @@ pub struct TargetPartType {
     pub geometry_id: Option<String>,
     #[serde(rename = "Polygon", skip_serializing_if = "Option::is_none")]
     pub gml_polygon: Option<GmlPolygon>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaReviewType {
+    #[serde(flatten)]
+    pub base: CoVirtaReviewType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaTotalEstimationType {
+    #[serde(flatten)]
+    pub base: CoVirtaTotalEstimationType,
 }
 

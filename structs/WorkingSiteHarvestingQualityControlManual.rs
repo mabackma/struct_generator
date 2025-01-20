@@ -4,69 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ProductKey {
+pub struct Measurement {
     #[serde(flatten)]
-    pub product_key: WctERPIdType,
+    pub measurement: MeasurementDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Temperature {
     #[serde(flatten)]
-    pub temperature: Xsinteger,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurerType {
-    #[serde(flatten)]
-    pub measurer_type: BdtMeasurerTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LogLength {
-    #[serde(flatten)]
-    pub log_length: BdtPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ControlLogLength {
-    #[serde(flatten)]
-    pub control_log_length: BdtPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LogVolume {
-    #[serde(flatten)]
-    pub log_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Measurements {
-    #[serde(flatten)]
-    pub measurements: MeasurementsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ControlLogVolume {
-    #[serde(flatten)]
-    pub control_log_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct InfoText {
-    #[serde(flatten)]
-    pub info_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ControlLogCount {
-    #[serde(flatten)]
-    pub control_log_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Measurement {
-    #[serde(flatten)]
-    pub measurement: MeasurementDataType,
+    pub temperature: i32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -76,21 +22,9 @@ pub struct MeasurementId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SelectionType {
+pub struct ControlLogCount {
     #[serde(flatten)]
-    pub selection_type: BdtString10Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Measurer {
-    #[serde(flatten)]
-    pub measurer: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LogCount {
-    #[serde(flatten)]
-    pub log_count: BdtPositiveInteger2digitsType,
+    pub control_log_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -99,26 +33,16 @@ pub struct WorkingSiteHarvestingQualityControlManual {
     pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteHarvestingQualityControlManualType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: String20Type,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
-    #[serde(rename = "InfoText")]
-    pub info_text: String200Type,
-    #[serde(rename = "Measurements")]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Measurements {
+    #[serde(flatten)]
     pub measurements: MeasurementsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MeasurementsType {
-    #[serde(rename = "Measurement")]
-    pub measurement: Vec<MeasurementDataType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LogCount {
+    #[serde(flatten)]
+    pub log_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -149,5 +73,27 @@ pub struct MeasurementDataType {
     pub log_count: PositiveInteger2digitsType,
     #[serde(rename = "ControlLogCount")]
     pub control_log_count: PositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteHarvestingQualityControlManualType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: String20Type,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+    #[serde(rename = "InfoText")]
+    pub info_text: String200Type,
+    #[serde(rename = "Measurements")]
+    pub measurements: MeasurementsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeasurementsType {
+    #[serde(rename = "Measurement")]
+    pub measurement: Vec<MeasurementDataType>,
 }
 

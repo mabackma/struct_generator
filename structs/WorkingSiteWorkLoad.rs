@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MaterialUnit {
+pub struct ResourceId {
     #[serde(flatten)]
-    pub material_unit: BdtMaterialUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UnfreezingDate {
-    #[serde(flatten)]
-    pub unfreezing_date: BdtDateType,
+    pub resource_id: WctShortERPIdType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,153 +16,15 @@ pub struct WorkPointCount {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestSystemPaymentReference {
-    #[serde(flatten)]
-    pub forest_system_payment_reference: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FreezingDate {
-    #[serde(flatten)]
-    pub freezing_date: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StandFinished {
-    #[serde(flatten)]
-    pub stand_finished: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkLoad2 {
-    #[serde(flatten)]
-    pub work_load2: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PackagingDate {
-    #[serde(flatten)]
-    pub packaging_date: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MaterialProducer {
-    #[serde(flatten)]
-    pub material_producer: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkLoad2Unit {
-    #[serde(flatten)]
-    pub work_load2_unit: BdtWorkCodeUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkLoadId {
-    #[serde(flatten)]
-    pub work_load_id: XsunsignedLong,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MaterialVolume {
-    #[serde(flatten)]
-    pub material_volume: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkCodeQualifier5 {
-    #[serde(flatten)]
-    pub work_code_qualifier5: BdtWorkCodeQualifierType5,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkGrouMembers {
-    #[serde(flatten)]
-    pub work_grou_members: WorkGrouMembersType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkCodeQualifier2 {
-    #[serde(flatten)]
-    pub work_code_qualifier2: BdtWorkCodeQualifierType2,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct GrainSize {
-    #[serde(flatten)]
-    pub grain_size: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkCodeQualifier4 {
-    #[serde(flatten)]
-    pub work_code_qualifier4: BdtWorkCodeQualifierType4,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkGrouMember {
-    #[serde(flatten)]
-    pub work_grou_member: WorkGrouMemberType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MaterialShipment {
-    #[serde(flatten)]
-    pub material_shipment: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TransportDistanceUnit {
-    #[serde(flatten)]
-    pub transport_distance_unit: BdtDistanceUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Accepted {
     #[serde(flatten)]
     pub accepted: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkLoad1Unit {
+pub struct WorkLoadId {
     #[serde(flatten)]
-    pub work_load1_unit: BdtWorkCodeUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteWorkLoad {
-    #[serde(flatten)]
-    pub working_site_work_load: WorkingSiteWorkLoadType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkLoadInvoiced {
-    #[serde(flatten)]
-    pub work_load_invoiced: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkLoad1 {
-    #[serde(flatten)]
-    pub work_load1: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MaterialSupplier {
-    #[serde(flatten)]
-    pub material_supplier: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkLoadUnitInvoiced {
-    #[serde(flatten)]
-    pub work_load_unit_invoiced: BdtWorkCodeUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Material {
-    #[serde(flatten)]
-    pub material: MaterialType,
+    pub work_load_id: u64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -178,15 +34,15 @@ pub struct WorkCodeQualifier3 {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TransportDistance {
+pub struct WorkLoad2Unit {
     #[serde(flatten)]
-    pub transport_distance: BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType,
+    pub work_load2_unit: BdtWorkCodeUnitType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Materials {
+pub struct MaterialShipment {
     #[serde(flatten)]
-    pub materials: MaterialsType,
+    pub material_shipment: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -196,15 +52,291 @@ pub struct WorkCodeQualifier1 {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceBuyerId {
+    #[serde(flatten)]
+    pub service_buyer_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TransportDistanceUnit {
+    #[serde(flatten)]
+    pub transport_distance_unit: BdtDistanceUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkCode {
+    #[serde(flatten)]
+    pub work_code: BdtWorkCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct NeedToCheck {
+    #[serde(flatten)]
+    pub need_to_check: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MaterialUnit {
+    #[serde(flatten)]
+    pub material_unit: BdtMaterialUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Materials {
+    #[serde(flatten)]
+    pub materials: MaterialsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkCodeQualifier4 {
+    #[serde(flatten)]
+    pub work_code_qualifier4: BdtWorkCodeQualifierType4,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkCodeQualifier5 {
+    #[serde(flatten)]
+    pub work_code_qualifier5: BdtWorkCodeQualifierType5,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MaterialVolume {
+    #[serde(flatten)]
+    pub material_volume: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkLoad2 {
+    #[serde(flatten)]
+    pub work_load2: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MaterialSupplier {
+    #[serde(flatten)]
+    pub material_supplier: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeListId {
+    #[serde(flatten)]
+    pub fee_list_id: BdtPositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkGrouMembers {
+    #[serde(flatten)]
+    pub work_grou_members: WorkGrouMembersType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Infotext {
+    #[serde(flatten)]
+    pub infotext: BdtString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeId {
+    #[serde(flatten)]
+    pub fee_id: BdtString10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadNumber {
+    #[serde(flatten)]
+    pub load_number: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkGrouMember {
+    #[serde(flatten)]
+    pub work_grou_member: WorkGrouMemberType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkLoad1Unit {
+    #[serde(flatten)]
+    pub work_load1_unit: BdtWorkCodeUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MaterialProducer {
+    #[serde(flatten)]
+    pub material_producer: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UserId {
+    #[serde(flatten)]
+    pub user_id: WctShortERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TaxNumber {
+    #[serde(flatten)]
+    pub tax_number: WctTaxNumberType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteWorkLoad {
+    #[serde(flatten)]
+    pub working_site_work_load: WorkingSiteWorkLoadType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Length {
+    #[serde(flatten)]
+    pub length: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeYesNo {
+    #[serde(flatten)]
+    pub fee_yes_no: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Material {
+    #[serde(flatten)]
+    pub material: MaterialType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StandFinished {
+    #[serde(flatten)]
+    pub stand_finished: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkLoad1 {
+    #[serde(flatten)]
+    pub work_load1: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeBase {
+    #[serde(flatten)]
+    pub fee_base: FeeBasisDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TransportDistance {
+    #[serde(flatten)]
+    pub transport_distance: BdtPositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StartTime {
+    #[serde(flatten)]
+    pub start_time: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UnfreezingDate {
+    #[serde(flatten)]
+    pub unfreezing_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct InfoText {
+    #[serde(flatten)]
+    pub info_text: BdtString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkLoadInvoiced {
+    #[serde(flatten)]
+    pub work_load_invoiced: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadPaymentReference {
+    #[serde(flatten)]
+    pub load_payment_reference: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SavingTime {
+    #[serde(flatten)]
+    pub saving_time: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeValue {
+    #[serde(flatten)]
+    pub fee_value: BdtString10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeBasis {
+    #[serde(flatten)]
+    pub fee_basis: FeeBasisType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestSystemPaymentReference {
+    #[serde(flatten)]
+    pub forest_system_payment_reference: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EndTime {
+    #[serde(flatten)]
+    pub end_time: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkCodeQualifier2 {
+    #[serde(flatten)]
+    pub work_code_qualifier2: BdtWorkCodeQualifierType2,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct MaterialId {
     #[serde(flatten)]
     pub material_id: BdtString20Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MaterialsType {
-    #[serde(rename = "Material")]
-    pub material: Vec<MaterialType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FreezingDate {
+    #[serde(flatten)]
+    pub freezing_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MaterialCode {
+    #[serde(flatten)]
+    pub material_code: BdtMaterialCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PackagingDate {
+    #[serde(flatten)]
+    pub packaging_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct GrainSize {
+    #[serde(flatten)]
+    pub grain_size: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkLoadUnitInvoiced {
+    #[serde(flatten)]
+    pub work_load_unit_invoiced: BdtWorkCodeUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FeeAssortment {
+    #[serde(flatten)]
+    pub fee_assortment: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -296,13 +428,9 @@ pub struct WorkingSiteWorkLoadType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkGrouMemberType {
-    #[serde(rename = "ResourceId")]
-    pub resource_id: ShortERPIdType,
-    #[serde(rename = "UserId")]
-    pub user_id: ShortERPIdType,
-    #[serde(rename = "TaxNumber", skip_serializing_if = "Option::is_none")]
-    pub tax_number: Option<TaxNumberType>,
+pub struct FeeBasisType {
+    #[serde(rename = "FeeBase")]
+    pub fee_base: Vec<FeeBasisDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -312,9 +440,13 @@ pub struct WorkGrouMembersType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeeBasisType {
-    #[serde(rename = "FeeBase")]
-    pub fee_base: Vec<FeeBasisDataType>,
+pub struct WorkGrouMemberType {
+    #[serde(rename = "ResourceId")]
+    pub resource_id: ShortERPIdType,
+    #[serde(rename = "UserId")]
+    pub user_id: ShortERPIdType,
+    #[serde(rename = "TaxNumber", skip_serializing_if = "Option::is_none")]
+    pub tax_number: Option<TaxNumberType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -345,5 +477,11 @@ pub struct MaterialType {
     pub length: Option<PositiveDecimalMax2IntegralPartMax1FractionalPartType>,
     #[serde(rename = "GrainSize", skip_serializing_if = "Option::is_none")]
     pub grain_size: Option<PositiveInteger3digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MaterialsType {
+    #[serde(rename = "Material")]
+    pub material: Vec<MaterialType>,
 }
 
