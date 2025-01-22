@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
@@ -7,14 +7,6 @@ use geo::{Point, Polygon, MultiPolygon, LineString};
 pub struct WorkingSiteTradeEnvelope {
     #[serde(flatten)]
     pub working_site_trade_envelope: WorkingSiteTradeEnvelopeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteTradeEnvelopeType {
-    #[serde(flatten)]
-    pub base: EbEnvelopeBaseType,
-    #[serde(rename = "Message")]
-    pub message: WorkingSiteTradeMessageType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -45,5 +37,13 @@ pub struct WorkingSiteTradeMessageType {
     pub ms_map_symbol: MsMapSymbol,
     #[serde(rename = "Acknowledge")]
     pub ack_acknowledge: AckAcknowledge,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteTradeEnvelopeType {
+    #[serde(flatten)]
+    pub base: EbEnvelopeBaseType,
+    #[serde(rename = "Message")]
+    pub message: WorkingSiteTradeMessageType,
 }
 

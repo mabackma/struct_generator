@@ -1,12 +1,26 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Message {
+    #[serde(flatten)]
+    pub message: PayloadType,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Envelope {
     #[serde(flatten)]
     pub envelope: EnvelopeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EnvelopeType {
+    #[serde(rename = "Header")]
+    pub header: HeaderType,
+    #[serde(rename = "Message")]
+    pub message: PayloadType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -113,13 +127,5 @@ pub struct PayloadType {
     pub working_site_work_load: WorkingSiteWorkLoadType,
     #[serde(rename = "WorkingSiteWorkTime")]
     pub working_site_work_time: WorkingSiteWorkTimeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvelopeType {
-    #[serde(rename = "Header")]
-    pub header: HeaderType,
-    #[serde(rename = "Message")]
-    pub message: PayloadType,
 }
 

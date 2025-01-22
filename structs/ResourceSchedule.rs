@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
@@ -10,15 +10,15 @@ pub struct WorkingSite {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceSchedule {
-    #[serde(flatten)]
-    pub resource_schedule: ResourceScheduleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ForwarderDelay {
     #[serde(flatten)]
     pub forwarder_delay: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TeamName {
+    #[serde(flatten)]
+    pub team_name: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,9 +28,9 @@ pub struct WorkingSites {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TeamName {
+pub struct ResourceSchedule {
     #[serde(flatten)]
-    pub team_name: BdtString50Type,
+    pub resource_schedule: ResourceScheduleType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -51,14 +51,6 @@ pub struct ResourceDataType {
 pub struct WorkingSitesType {
     #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
     pub working_site: Option<Vec<WorkingSiteType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceScheduleType {
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: String20Type,
-    #[serde(rename = "Resources")]
-    pub resources: ResourcesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,5 +75,13 @@ pub struct WorkingSiteType {
 pub struct ResourcesType {
     #[serde(rename = "Resource")]
     pub resource: Vec<ResourceDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceScheduleType {
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: String20Type,
+    #[serde(rename = "Resources")]
+    pub resources: ResourcesType,
 }
 

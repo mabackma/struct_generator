@@ -1,15 +1,10 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureCodeExtensionsType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureTypeType {
+pub struct OriginalFeatureCodeType {
     pub base: String,
 }
 
@@ -19,7 +14,12 @@ pub struct FeatureAdditionalCodeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OriginalFeatureCodeType {
+pub struct FeatureTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FeatureCodeExtensionsType {
     pub base: String,
 }
 

@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
@@ -7,11 +7,6 @@ use geo::{Point, Polygon, MultiPolygon, LineString};
 pub struct StanfordFile {
     #[serde(flatten)]
     pub stanford_file: StanfordFileType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FileTypeType {
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -28,5 +23,10 @@ pub struct StanfordFileType {
     pub file_type: FileTypeType,
     #[serde(rename = "Bytes")]
     pub bytes: Vec<u8>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FileTypeType {
+    pub base: String,
 }
 

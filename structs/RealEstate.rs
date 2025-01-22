@@ -1,13 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BaseRealEstates {
-    #[serde(flatten)]
-    pub base_real_estates: BaseRealEstatesType,
-}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct RealEstateOwners {
@@ -22,15 +16,25 @@ pub struct RealEstateOwner {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RealEstate {
+pub struct BaseRealEstates {
     #[serde(flatten)]
-    pub real_estate: RealEstateType,
+    pub base_real_estates: BaseRealEstatesType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RealEstates {
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstateOwnersType {
+    #[serde(rename = "RealEstateOwner")]
+    pub real_estate_owner: Vec<CiContactInformationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RealEstateType {
     #[serde(flatten)]
-    pub real_estates: BaseRealEstatesType2,
+    pub base: BaseRealEstateType,
+    #[serde(rename = "RealEstateOwners", skip_serializing_if = "Option::is_none")]
+    pub real_estate_owners: Option<RealEstateOwnersType>,
+    #[serde(rename = "Parcels", skip_serializing_if = "Option::is_none")]
+    pub parcels: Option<ParcelsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,21 +57,5 @@ pub struct RealEstatesWithOwnersInformationType {
     pub real_estate_owners: RealEstateOwnersType,
     #[serde(rename = "RealEstates")]
     pub real_estates: BaseRealEstatesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateType {
-    #[serde(flatten)]
-    pub base: BaseRealEstateType,
-    #[serde(rename = "RealEstateOwners", skip_serializing_if = "Option::is_none")]
-    pub real_estate_owners: Option<RealEstateOwnersType>,
-    #[serde(rename = "Parcels", skip_serializing_if = "Option::is_none")]
-    pub parcels: Option<Parcels>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateOwnersType {
-    #[serde(rename = "RealEstateOwner")]
-    pub real_estate_owner: Vec<CiContactInformationType>,
 }
 

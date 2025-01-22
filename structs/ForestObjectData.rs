@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
@@ -7,12 +7,6 @@ use geo::{Point, Polygon, MultiPolygon, LineString};
 pub struct ForestObjectData {
     #[serde(flatten)]
     pub forest_object_data: ForestObjectDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestObjectDataObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<CodForestObjectDataObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -25,5 +19,11 @@ pub struct ForestObjectDataType {
     pub sender: CiContactInformationType,
     #[serde(rename = "Objects")]
     pub objects: ForestObjectDataObjectsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestObjectDataObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<CodForestObjectDataObjectType>,
 }
 

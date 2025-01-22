@@ -1,12 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RecipientType {
+pub struct SmsOperatorStatus {
     #[serde(flatten)]
-    pub recipient_type: RecipientTypeType,
+    pub sms_operator_status: SmsOperatorStatusType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,27 +16,15 @@ pub struct StatusTimestamp {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OriginalMessage {
-    #[serde(flatten)]
-    pub original_message: BdtString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SenderUserId {
-    #[serde(flatten)]
-    pub sender_user_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SmsOperatorStatus {
-    #[serde(flatten)]
-    pub sms_operator_status: SmsOperatorStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct NotificationType {
     #[serde(flatten)]
     pub notification_type: NotificationTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusMessage {
+    #[serde(flatten)]
+    pub status_message: BdtString100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -45,13 +33,37 @@ pub struct SendTimestamp {
     pub send_timestamp: BdtTimeStampType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusCode {
+    #[serde(flatten)]
+    pub status_code: StatusCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OriginalMessage {
+    #[serde(flatten)]
+    pub original_message: BdtString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RecipientType {
+    #[serde(flatten)]
+    pub recipient_type: RecipientTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SenderUserId {
+    #[serde(flatten)]
+    pub sender_user_id: BdtString20Type,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct StatusCodeType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NotificationTypeType {
+pub struct RecipientTypeType {
     pub base: String,
 }
 
@@ -84,7 +96,7 @@ pub struct SmsOperatorStatusType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RecipientTypeType {
+pub struct NotificationTypeType {
     pub base: String,
 }
 

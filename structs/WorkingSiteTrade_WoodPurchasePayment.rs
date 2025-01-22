@@ -1,12 +1,18 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Percent {
+pub struct AbsoluteQuantity {
     #[serde(flatten)]
-    pub percent: PercentType,
+    pub absolute_quantity: AbsoluteQuantityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SequenceNumber {
+    #[serde(flatten)]
+    pub sequence_number: SequenceNumberType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,21 +22,9 @@ pub struct Payment {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AbsoluteQuantity {
+pub struct Percent {
     #[serde(flatten)]
-    pub absolute_quantity: AbsoluteQuantityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestFundPayment {
-    #[serde(flatten)]
-    pub forest_fund_payment: ForestFundPaymentType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Payee {
-    #[serde(flatten)]
-    pub payee: PayeeType,
+    pub percent: PercentType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -51,14 +45,56 @@ pub struct PaymentType {
     pub payment_type: PaymentTypeType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Payee {
+    #[serde(flatten)]
+    pub payee: PayeeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestFundPayment {
+    #[serde(flatten)]
+    pub forest_fund_payment: ForestFundPaymentType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct VAT {
+    #[serde(flatten)]
+    pub vat: VATType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AdvanceTaxType {
+pub struct ForestFundPaymentType {
     #[serde(flatten)]
     pub base: MoneyAndPercentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DueDateType {
+pub struct PayeeType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentTypeType {
+    #[serde(flatten)]
+    pub base: CoPaymentTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PercentType {
+    #[serde(flatten)]
+    pub base: CoPercentWithFraction2Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentPermissionDateType {
     #[serde(flatten)]
     pub base: CoDateType,
 }
@@ -70,47 +106,9 @@ pub struct TotalValueType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTypeType {
-    #[serde(flatten)]
-    pub base: CoPaymentTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MoneyAndPercentType {
-    #[serde(rename = "AbsoluteQuantity")]
-    pub absolute_quantity: AbsoluteQuantityType,
-    #[serde(rename = "Percent")]
-    pub percent: PercentType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestFundPaymentType {
-    #[serde(flatten)]
-    pub base: MoneyAndPercentType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct CurrencyType {
     #[serde(flatten)]
     pub base: CoCurrencyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentPermissionDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SequenceNumberType {
-    #[serde(flatten)]
-    pub base: CoPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ValueType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -120,9 +118,9 @@ pub struct AbsoluteQuantityType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PercentType {
+pub struct VATType {
     #[serde(flatten)]
-    pub base: CoPercentWithFraction2Type,
+    pub base: MoneyAndPercentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -160,20 +158,34 @@ pub struct PaymentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VATType {
-    #[serde(flatten)]
-    pub base: MoneyAndPercentType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentDateType {
+pub struct DueDateType {
     #[serde(flatten)]
     pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PayeeType {
+pub struct AdvanceTaxType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
+    pub base: MoneyAndPercentType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ValueType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SequenceNumberType {
+    #[serde(flatten)]
+    pub base: CoPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MoneyAndPercentType {
+    #[serde(rename = "AbsoluteQuantity")]
+    pub absolute_quantity: AbsoluteQuantityType,
+    #[serde(rename = "Percent")]
+    pub percent: PercentType,
 }
 

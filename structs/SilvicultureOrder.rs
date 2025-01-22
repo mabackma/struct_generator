@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
@@ -7,6 +7,66 @@ use geo::{Point, Polygon, MultiPolygon, LineString};
 pub struct SilvicultureOrder {
     #[serde(flatten)]
     pub silviculture_order: SilvicultureOrderType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OrderId {
+    #[serde(flatten)]
+    pub order_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Attachment {
+    #[serde(flatten)]
+    pub attachment: AttachmentDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Attachments {
+    #[serde(flatten)]
+    pub attachments: AttachmentsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Data {
+    #[serde(flatten)]
+    pub data: Vec<u8>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OperationalRegion {
+    #[serde(flatten)]
+    pub operational_region: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceBuyerArea {
+    #[serde(flatten)]
+    pub service_buyer_area: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BeginDate {
+    #[serde(flatten)]
+    pub begin_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EndDate {
+    #[serde(flatten)]
+    pub end_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Amount {
+    #[serde(flatten)]
+    pub amount: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeInfoType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -42,6 +102,12 @@ pub struct SilvicultureOrderType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkCodeInfoType {
     #[serde(rename = "WorkCodeGroup")]
     pub work_code_group: WorkCodeGroupType,
@@ -51,17 +117,5 @@ pub struct WorkCodeInfoType {
     pub amount: Decimal2FractionDigitsType,
     #[serde(rename = "Unit")]
     pub unit: WorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeInfoType>,
 }
 

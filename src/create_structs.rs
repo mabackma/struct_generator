@@ -169,7 +169,7 @@ pub fn add_element_definition(
                 // Create element definition with the type containing "Type"
                 element_definitions.insert(n.clone(), n + "Type");
             } else {
-                //println!("No type for element: {}", n);
+                element_definitions.insert(n.clone(), "String".to_string());
             }
         }
     }

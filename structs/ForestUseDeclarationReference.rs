@@ -1,12 +1,18 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestUseDeclarationReference {
+pub struct AdditionalText {
     #[serde(flatten)]
-    pub forest_use_declaration_reference: ForestUseDeclarationType,
+    pub additional_text: AdditionalTextType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AcceptanceDate {
+    #[serde(flatten)]
+    pub acceptance_date: AcceptanceDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +28,9 @@ pub struct SpecialPermission {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AcceptanceDate {
+pub struct ForestUseDeclarationReferences {
     #[serde(flatten)]
-    pub acceptance_date: AcceptanceDateType,
+    pub forest_use_declaration_references: ForestUseDeclarationsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -33,16 +39,14 @@ pub struct DeclarationReference {
     pub declaration_reference: DeclarationReferenceType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestUseDeclarationReferences {
-    #[serde(flatten)]
-    pub forest_use_declaration_references: ForestUseDeclarationsType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationReferenceType {
+    pub base: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AdditionalText {
-    #[serde(flatten)]
-    pub additional_text: AdditionalTextType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalTextType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -66,13 +70,9 @@ pub struct ForestUseDeclarationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalTextType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationReferenceType {
-    pub base: String,
+pub struct SpecialPermissionType {
+    #[serde(flatten)]
+    pub base: CoYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -85,11 +85,5 @@ pub struct ForestUseDeclarationsType {
 pub struct AcceptanceDateType {
     #[serde(flatten)]
     pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialPermissionType {
-    #[serde(flatten)]
-    pub base: CoYesNoType,
 }
 

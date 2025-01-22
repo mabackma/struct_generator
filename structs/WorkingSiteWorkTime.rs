@@ -1,13 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteWorkTime {
-    #[serde(flatten)]
-    pub working_site_work_time: WorkingSiteWorkTimeType,
-}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Sawinghours {
@@ -19,6 +13,12 @@ pub struct Sawinghours {
 pub struct Minutes {
     #[serde(flatten)]
     pub minutes: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteWorkTime {
+    #[serde(flatten)]
+    pub working_site_work_time: WorkingSiteWorkTimeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -1,18 +1,18 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceLocation {
+    #[serde(flatten)]
+    pub resource_location: ResourceLocationType,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ResourceLocations {
     #[serde(flatten)]
     pub resource_locations: ResourceLocationsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerResourceLocations {
-    #[serde(flatten)]
-    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,15 +22,9 @@ pub struct LocationTimestamp {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceLocation {
+pub struct ServiceBuyerResourceLocations {
     #[serde(flatten)]
-    pub resource_location: ResourceLocationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceLocationsType {
-    #[serde(rename = "ResourceLocation")]
-    pub resource_location: Vec<ResourceLocationType>,
+    pub service_buyer_resource_locations: ServiceBuyerResourceLocationsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -39,6 +33,12 @@ pub struct ServiceBuyerResourceLocationsType {
     pub service_buyer_id: String20Type,
     #[serde(rename = "ResourceLocations", skip_serializing_if = "Option::is_none")]
     pub resource_locations: Option<ResourceLocationsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceLocationsType {
+    #[serde(rename = "ResourceLocation")]
+    pub resource_location: Vec<ResourceLocationType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

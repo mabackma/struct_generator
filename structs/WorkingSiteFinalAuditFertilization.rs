@@ -1,24 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditFertilization {
+pub struct DrainStorageAsInstructedText {
     #[serde(flatten)]
-    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WaterEconomySystemNoticed {
-    #[serde(flatten)]
-    pub water_economy_system_noticed: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FertilizationTotalAudit {
-    #[serde(flatten)]
-    pub fertilization_total_audit: BdtWorkingQualityType,
+    pub drain_storage_as_instructed_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,27 +16,15 @@ pub struct TreeOrGroundDamages {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AirdromeAsInstructed {
+pub struct FertilizerVolumeOrdered {
     #[serde(flatten)]
-    pub airdrome_as_instructed: BdtYesNoType,
+    pub fertilizer_volume_ordered: BdtPositiveIntegerType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DrainStorageAsInstructed {
+pub struct WorkingSiteFinalAuditFertilization {
     #[serde(flatten)]
-    pub drain_storage_as_instructed: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FertilizerVolumeMeasured {
-    #[serde(flatten)]
-    pub fertilizer_volume_measured: BdtPositiveIntegerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct EnvironmentCleanlinessNoticedText {
-    #[serde(flatten)]
-    pub environment_cleanliness_noticed_text: BdtString200Type,
+    pub working_site_final_audit_fertilization: WorkingSiteFinalAuditFertilizationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,15 +34,21 @@ pub struct AirdromeAsInstructedText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FertilizationTotalAuditText {
+pub struct SamplePlotCount {
     #[serde(flatten)]
-    pub fertilization_total_audit_text: BdtString200Type,
+    pub sample_plot_count: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct EnvironmentCleanlinessNoticed {
+pub struct SamplePlotCountRequired {
     #[serde(flatten)]
-    pub environment_cleanliness_noticed: BdtYesNoType,
+    pub sample_plot_count_required: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FertilizationTotalAuditText {
+    #[serde(flatten)]
+    pub fertilization_total_audit_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -76,15 +58,9 @@ pub struct FertilizerVolumeMeasuredText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WaterEconomySystemNoticedText {
+pub struct DrainStorageAsInstructed {
     #[serde(flatten)]
-    pub water_economy_system_noticed_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DrainStorageAsInstructedText {
-    #[serde(flatten)]
-    pub drain_storage_as_instructed_text: BdtString200Type,
+    pub drain_storage_as_instructed: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -94,25 +70,45 @@ pub struct TreeOrGroundDamagesText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FertilizerVolumeOrdered {
+pub struct FertilizationTotalAudit {
     #[serde(flatten)]
-    pub fertilizer_volume_ordered: BdtPositiveIntegerType,
+    pub fertilization_total_audit: BdtWorkingQualityType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<FinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: FinalAuditerTypeType,
-    #[serde(rename = "FinalAuditerId")]
-    pub final_auditer_id: String20Type,
-    #[serde(rename = "FinalAuditerName")]
-    pub final_auditer_name: String50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: TimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: YesNoType,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EnvironmentCleanlinessNoticedText {
+    #[serde(flatten)]
+    pub environment_cleanliness_noticed_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WaterEconomySystemNoticed {
+    #[serde(flatten)]
+    pub water_economy_system_noticed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EnvironmentCleanlinessNoticed {
+    #[serde(flatten)]
+    pub environment_cleanliness_noticed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FertilizerVolumeMeasured {
+    #[serde(flatten)]
+    pub fertilizer_volume_measured: BdtPositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AirdromeAsInstructed {
+    #[serde(flatten)]
+    pub airdrome_as_instructed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WaterEconomySystemNoticedText {
+    #[serde(flatten)]
+    pub water_economy_system_noticed_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -203,5 +199,21 @@ pub struct WorkingSiteFinalAuditFertilizationType {
     pub images: PositiveInteger2digitsType,
     #[serde(rename = "Audits")]
     pub audits: AuditsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<FinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: FinalAuditerTypeType,
+    #[serde(rename = "FinalAuditerId")]
+    pub final_auditer_id: String20Type,
+    #[serde(rename = "FinalAuditerName")]
+    pub final_auditer_name: String50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: TimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: YesNoType,
 }
 

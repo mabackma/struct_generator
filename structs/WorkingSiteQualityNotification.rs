@@ -1,18 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracy {
+pub struct ResourceIdMJ {
     #[serde(flatten)]
-    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteQualityNotification {
-    #[serde(flatten)]
-    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
+    pub resource_id_m_j: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,15 +16,33 @@ pub struct DisQualificationSign {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReason {
+pub struct CuttingAccuracy {
     #[serde(flatten)]
-    pub dis_qualification_reason: BdtString10Type,
+    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracySign {
+pub struct Image {
     #[serde(flatten)]
-    pub cutting_accuracy_sign: BdtString5Type,
+    pub image: Vec<u8>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteQualityNotification {
+    #[serde(flatten)]
+    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasons {
+    #[serde(flatten)]
+    pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReason {
+    #[serde(flatten)]
+    pub dis_qualification_reason: BdtString10Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,15 +52,9 @@ pub struct DisQualificationPercentage {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceIdMJ {
+pub struct CuttingAccuracySign {
     #[serde(flatten)]
-    pub resource_id_m_j: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationPercentageTotal {
-    #[serde(flatten)]
-    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
+    pub cutting_accuracy_sign: BdtString5Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,9 +64,15 @@ pub struct DisQualificationReasonText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReasons {
+pub struct DisQualificationPercentageTotal {
     #[serde(flatten)]
-    pub dis_qualification_reasons: DisQualificationReasonsType,
+    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DisQualificationReasonsType {
+    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
+    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -101,12 +113,6 @@ pub struct WorkingSiteQualityNotificationType {
     pub image: Option<Vec<u8>>,
     #[serde(rename = "DisQualificationReasons")]
     pub dis_qualification_reasons: DisQualificationReasonsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonsType {
-    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
-    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

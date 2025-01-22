@@ -1,30 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestUseDeclarationResponsible {
+pub struct WorkingSitePlanDate {
     #[serde(flatten)]
-    pub forest_use_declaration_responsible: CoForestUseDeclarationResponsibleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PlannedResource {
-    #[serde(flatten)]
-    pub planned_resource: PlannedResourceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSitePlanner {
-    #[serde(flatten)]
-    pub working_site_planner: WorkingSitePlannerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingPlannerLiability {
-    #[serde(flatten)]
-    pub cutting_planner_liability: CuttingPlannerLiabilityType,
+    pub working_site_plan_date: WorkingSitePlanDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,93 +16,9 @@ pub struct FellingRightValidityDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Cuttings {
-    #[serde(flatten)]
-    pub cuttings: CuttingsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PaymentTransaction {
-    #[serde(flatten)]
-    pub payment_transaction: PaymentTransactionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PurchaseMode {
     #[serde(flatten)]
     pub purchase_mode: PurchaseModeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct IncludeForestFundPayment {
-    #[serde(flatten)]
-    pub include_forest_fund_payment: IncludeForestFundPaymentType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct IncludePaymentPlan {
-    #[serde(flatten)]
-    pub include_payment_plan: IncludePaymentPlanType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSitePaymentTransactions {
-    #[serde(flatten)]
-    pub working_site_payment_transactions: OfferWorkingSitePaymentTransactionsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Cutting {
-    #[serde(flatten)]
-    pub cutting: CuttingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct VATStatus {
-    #[serde(flatten)]
-    pub v_a_t_status: VATStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SupplyPoint {
-    #[serde(flatten)]
-    pub supply_point: SupplyPointType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PaymentTransactionType {
-    #[serde(flatten)]
-    pub payment_transaction_type: CoMoneyTransactionTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Seller {
-    #[serde(flatten)]
-    pub seller: SellerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct VATRegistrationDate {
-    #[serde(flatten)]
-    pub v_a_t_registration_date: VATRegistrationDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSitePlanDate {
-    #[serde(flatten)]
-    pub working_site_plan_date: WorkingSitePlanDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UsedPricingMethod {
-    #[serde(flatten)]
-    pub used_pricing_method: UsedPricingMethodType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CertificationSystem {
-    #[serde(flatten)]
-    pub certification_system: CertificationSystemType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -130,9 +28,15 @@ pub struct PaymentTransactionDescription {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct UnitValue {
+pub struct WorkingSitePaymentTransactions {
     #[serde(flatten)]
-    pub unit_value: UnitPriceType,
+    pub working_site_payment_transactions: OfferWorkingSitePaymentTransactionsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PaymentTransactionCategory {
+    #[serde(flatten)]
+    pub payment_transaction_category: CoMoneyTransactionCategoryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -148,15 +52,93 @@ pub struct UsedPricingMethods {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct PlannedResource {
+    #[serde(flatten)]
+    pub planned_resource: PlannedResourceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UnitValue {
+    #[serde(flatten)]
+    pub unit_value: UnitPriceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingPlannerLiability {
+    #[serde(flatten)]
+    pub cutting_planner_liability: CuttingPlannerLiabilityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSitePlanner {
+    #[serde(flatten)]
+    pub working_site_planner: WorkingSitePlannerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SupplyPoint {
+    #[serde(flatten)]
+    pub supply_point: SupplyPointType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct VATRegistrationDate {
+    #[serde(flatten)]
+    pub v_a_t_registration_date: VATRegistrationDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PaymentTransaction {
+    #[serde(flatten)]
+    pub payment_transaction: PaymentTransactionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestUseDeclarationResponsible {
+    #[serde(flatten)]
+    pub forest_use_declaration_responsible: CoForestUseDeclarationResponsibleType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct TotalValue {
     #[serde(flatten)]
     pub total_value: TotalPriceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Documents {
+pub struct IncludeForestFundPayment {
     #[serde(flatten)]
-    pub documents: DocumentsType,
+    pub include_forest_fund_payment: IncludeForestFundPaymentType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Seller {
+    #[serde(flatten)]
+    pub seller: SellerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct IncludePaymentPlan {
+    #[serde(flatten)]
+    pub include_payment_plan: IncludePaymentPlanType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PaymentTransactionType {
+    #[serde(flatten)]
+    pub payment_transaction_type: CoMoneyTransactionTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Cuttings {
+    #[serde(flatten)]
+    pub cuttings: CuttingsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UsedPricingMethod {
+    #[serde(flatten)]
+    pub used_pricing_method: UsedPricingMethodType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -165,34 +147,60 @@ pub struct PaymentTransactions {
     pub payment_transactions: PaymentTransactionsType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CertificationSystems {
-    #[serde(flatten)]
-    pub certification_systems: CertificationSystemsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PaymentTransactionCategory {
-    #[serde(flatten)]
-    pub payment_transaction_category: CoMoneyTransactionCategoryType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactionsType {
-    #[serde(rename = "PaymentTransaction")]
-    pub payment_transaction: PaymentTransactionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct RoadUsingRightType {
-    #[serde(flatten)]
-    pub base: CoYesNoNotKnownType,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct UsedPricingMethodsType {
     #[serde(rename = "UsedPricingMethod")]
     pub used_pricing_method: Vec<UsedPricingMethodType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DocumentsType {
+    #[serde(rename = "Document")]
+    pub document: Vec<CoDocumentType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteGeometriesType {
+    #[serde(rename = "WorkingSiteGeometry")]
+    pub working_site_geometry: Vec<SfLocatedSpecialFeature2Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferBusinessSenderType {
+    #[serde(rename = "@role")]
+    pub role: CallForOfferBusinessSenderRoleType,
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitePlanType {
+    #[serde(rename = "WorkingSitePlanDate")]
+    pub working_site_plan_date: WorkingSitePlanDateType,
+    #[serde(rename = "WorkingSitePlanner")]
+    pub working_site_planner: WorkingSitePlannerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SellerRepresentativePersonType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentTransactionType {
+    #[serde(rename = "PaymentTransactionCategory")]
+    pub payment_transaction_category: CoMoneyTransactionCategoryType,
+    #[serde(rename = "PaymentTransactionType")]
+    pub payment_transaction_type: CoMoneyTransactionTypeType,
+    #[serde(rename = "Value")]
+    pub value: MoneyType,
+    #[serde(rename = "PaymentTransactionAsUnitGroup")]
+    pub payment_transaction_as_unit_group: PaymentTransactionAsUnitGroup,
+    #[serde(rename = "Currency")]
+    pub currency: CurrencyType,
+    #[serde(rename = "PaymentTransactionDescription", skip_serializing_if = "Option::is_none")]
+    pub payment_transaction_description: Option<PaymentTransactionDescriptionType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -214,63 +222,15 @@ pub struct CallForOfferWorkingSiteWoodTradeInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
+pub struct UsedPricingMethodType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
+    pub base: CoUsedPricingMethodType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RealEstateType {
+pub struct RoadUsingRightType {
     #[serde(flatten)]
-    pub base: ReBaseRealEstateType,
-    #[serde(rename = "CertificationSystems", skip_serializing_if = "Option::is_none")]
-    pub certification_systems: Option<CertificationSystemsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentsType {
-    #[serde(rename = "Document")]
-    pub document: Vec<CoDocumentType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentDescriptionType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CertificationSystemsType {
-    #[serde(rename = "CertificationSystem")]
-    pub certification_system: Vec<CertificationSystemType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SellerRepresentativePersonType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactionAsUnitGroup {
-    #[serde(rename = "UnitValue", skip_serializing_if = "Option::is_none")]
-    pub unit_value: Option<UnitValue>,
-    #[serde(rename = "TotalValue", skip_serializing_if = "Option::is_none")]
-    pub total_value: Option<TotalValue>,
-    #[serde(rename = "QuantityUnit", skip_serializing_if = "Option::is_none")]
-    pub quantity_unit: Option<QuantityUnit>,
-    #[serde(rename = "Quantity", skip_serializing_if = "Option::is_none")]
-    pub quantity: Option<Quantity>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MessageTypeType {
-    #[serde(flatten)]
-    pub base: CoMessageTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferTextType {
-    pub base: String,
+    pub base: CoYesNoNotKnownType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -280,44 +240,39 @@ pub struct CertificationSystemType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TotalPriceType {
+pub struct FellingRightValidityDateType {
     #[serde(flatten)]
-    pub base: CoMoneyType,
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactionType {
-    #[serde(rename = "PaymentTransactionCategory")]
-    pub payment_transaction_category: CoMoneyTransactionCategoryType,
-    #[serde(rename = "PaymentTransactionType")]
-    pub payment_transaction_type: CoMoneyTransactionTypeType,
-    #[serde(rename = "Value")]
-    pub value: MoneyType,
-    #[serde(rename = "PaymentTransactionAsUnitGroup")]
-    pub payment_transaction_as_unit_group: PaymentTransactionAsUnitGroup,
-    #[serde(rename = "Currency")]
-    pub currency: CurrencyType,
-    #[serde(rename = "PaymentTransactionDescription", skip_serializing_if = "Option::is_none")]
-    pub payment_transaction_description: Option<PaymentTransactionDescriptionType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteGeometriesType {
-    #[serde(rename = "WorkingSiteGeometry")]
-    pub working_site_geometry: Vec<SfLocatedSpecialFeature2Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteNameType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlannerType {
+pub struct SupplyPointType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
-    #[serde(rename = "CuttingPlannerLiability", skip_serializing_if = "Option::is_none")]
-    pub cutting_planner_liability: Option<CuttingPlannerLiabilityType>,
+    pub base: CoYesNoNotKnownType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentTransactionAsUnitGroup {
+    #[serde(rename = "TotalValue", skip_serializing_if = "Option::is_none")]
+    pub total_value: Option<TotalValue>,
+    #[serde(rename = "UnitValue", skip_serializing_if = "Option::is_none")]
+    pub unit_value: Option<UnitValue>,
+    #[serde(rename = "Quantity", skip_serializing_if = "Option::is_none")]
+    pub quantity: Option<Quantity>,
+    #[serde(rename = "QuantityUnit", skip_serializing_if = "Option::is_none")]
+    pub quantity_unit: Option<QuantityUnit>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaymentTransactionsType {
+    #[serde(rename = "PaymentTransaction")]
+    pub payment_transaction: PaymentTransactionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingsType {
+    #[serde(rename = "Cutting")]
+    pub cutting: Vec<CuttingType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -327,9 +282,21 @@ pub struct PurchaseModeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FellingRightValidityDateType {
+pub struct SellerGroupType {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub base: CoSellerGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageTypeType {
+    #[serde(flatten)]
+    pub base: CoMessageTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TotalPriceType {
+    #[serde(flatten)]
+    pub base: CoMoneyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -343,23 +310,35 @@ pub struct SellersType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct IncludePaymentPlanType {
+pub struct CuttingPlannerLiabilityType {
     #[serde(flatten)]
-    pub base: CoYesNoType,
+    pub base: CoYesNoNotKnownType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitePlanType {
-    #[serde(rename = "WorkingSitePlanDate")]
-    pub working_site_plan_date: WorkingSitePlanDateType,
-    #[serde(rename = "WorkingSitePlanner")]
-    pub working_site_planner: WorkingSitePlannerType,
+pub struct VATInfoType {
+    #[serde(rename = "VATStatus")]
+    pub v_a_t_status: VATStatusType,
+    #[serde(rename = "VATRegistrationDate", skip_serializing_if = "Option::is_none")]
+    pub v_a_t_registration_date: Option<VATRegistrationDateType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VATRegistrationDateType {
+pub struct PlannedResourceType {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IncludeForestFundPaymentType {
+    #[serde(flatten)]
+    pub base: CoYesNoNotKnownType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CallForOfferBusinessSenderRoleType {
+    #[serde(flatten)]
+    pub base: CoCallForOfferBusinessSenderRoleType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -371,15 +350,41 @@ pub struct SellerType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferWorkingSitePaymentTransactionsType {
-    #[serde(rename = "PaymentTransactions")]
-    pub payment_transactions: Vec<PaymentTransactionsType>,
+pub struct WorkingSitePlannerType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+    #[serde(rename = "CuttingPlannerLiability", skip_serializing_if = "Option::is_none")]
+    pub cutting_planner_liability: Option<CuttingPlannerLiabilityType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SellerGroupType {
+pub struct CertificationSystemsType {
+    #[serde(rename = "CertificationSystem")]
+    pub certification_system: Vec<CertificationSystemType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuantityType {
     #[serde(flatten)]
-    pub base: CoSellerGroupType,
+    pub base: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IncludePaymentPlanType {
+    #[serde(flatten)]
+    pub base: CoYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UnitPriceType {
+    #[serde(flatten)]
+    pub base: CoMoneyType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct QuantityUnitType {
+    #[serde(flatten)]
+    pub base: CoQuantityUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -395,45 +400,25 @@ pub struct CallForOfferWoodTradeInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PaymentTransactionDescriptionType {
-    #[serde(flatten)]
-    pub base: CoString1000Type,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSitePlanDateType {
     #[serde(flatten)]
     pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct IncludeForestFundPaymentType {
-    #[serde(flatten)]
-    pub base: CoYesNoNotKnownType,
+pub struct OfferWorkingSitePaymentTransactionsType {
+    #[serde(rename = "PaymentTransactions")]
+    pub payment_transactions: Vec<PaymentTransactionsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingPlannerLiabilityType {
-    #[serde(flatten)]
-    pub base: CoYesNoNotKnownType,
+pub struct WorkingSiteNameType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DocumentClassType {
-    #[serde(flatten)]
-    pub base: CoDocumentClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferBusinessSenderRoleType {
-    #[serde(flatten)]
-    pub base: CoCallForOfferBusinessSenderRoleType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingsType {
-    #[serde(rename = "Cutting")]
-    pub cutting: Vec<CuttingType>,
+pub struct CallForOfferTextType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -443,54 +428,39 @@ pub struct CuttingType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VATInfoType {
-    #[serde(rename = "VATStatus")]
-    pub v_a_t_status: VATStatusType,
-    #[serde(rename = "VATRegistrationDate", skip_serializing_if = "Option::is_none")]
-    pub v_a_t_registration_date: Option<VATRegistrationDateType>,
+pub struct RealEstateType {
+    #[serde(flatten)]
+    pub base: ReBaseRealEstateType,
+    #[serde(rename = "CertificationSystems", skip_serializing_if = "Option::is_none")]
+    pub certification_systems: Option<CertificationSystemsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct QuantityType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+pub struct DocumentDescriptionType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferBusinessSenderType {
-    #[serde(rename = "@role")]
-    pub role: CallForOfferBusinessSenderRoleType,
+pub struct PaymentTransactionDescriptionType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SupplyPointType {
-    #[serde(flatten)]
-    pub base: CoYesNoNotKnownType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct QuantityUnitType {
-    #[serde(flatten)]
-    pub base: CoQuantityUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UnitPriceType {
-    #[serde(flatten)]
-    pub base: CoMoneyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UsedPricingMethodType {
-    #[serde(flatten)]
-    pub base: CoUsedPricingMethodType,
+    pub base: CoString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VATStatusType {
     #[serde(flatten)]
     pub base: CoVATStatusType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DocumentClassType {
+    #[serde(flatten)]
+    pub base: CoDocumentClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VATRegistrationDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
