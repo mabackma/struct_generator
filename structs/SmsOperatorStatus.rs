@@ -4,6 +4,12 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct OriginalMessage {
+    #[serde(flatten)]
+    pub original_message: BdtString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct RecipientType {
     #[serde(flatten)]
     pub recipient_type: RecipientTypeType,
@@ -16,9 +22,15 @@ pub struct StatusTimestamp {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OriginalMessage {
+pub struct NotificationType {
     #[serde(flatten)]
-    pub original_message: BdtString1000Type,
+    pub notification_type: NotificationTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusCode {
+    #[serde(flatten)]
+    pub status_code: StatusCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,15 +46,21 @@ pub struct SmsOperatorStatus {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct NotificationType {
-    #[serde(flatten)]
-    pub notification_type: NotificationTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct SendTimestamp {
     #[serde(flatten)]
     pub send_timestamp: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusMessage {
+    #[serde(flatten)]
+    pub status_message: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StandId {
+    #[serde(flatten)]
+    pub stand_id: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

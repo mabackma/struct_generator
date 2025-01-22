@@ -4,9 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracy {
+pub struct DisQualificationPercentageTotal {
     #[serde(flatten)]
-    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
+    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasons {
+    #[serde(flatten)]
+    pub dis_qualification_reasons: DisQualificationReasonsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,9 +22,15 @@ pub struct WorkingSiteQualityNotification {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationSign {
+pub struct DisQualificationReasonText {
     #[serde(flatten)]
-    pub dis_qualification_sign: BdtString5Type,
+    pub dis_qualification_reason_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingAccuracy {
+    #[serde(flatten)]
+    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,9 +40,9 @@ pub struct DisQualificationReason {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracySign {
+pub struct DisQualificationSign {
     #[serde(flatten)]
-    pub cutting_accuracy_sign: BdtString5Type,
+    pub dis_qualification_sign: BdtString5Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,21 +58,9 @@ pub struct ResourceIdMJ {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationPercentageTotal {
+pub struct CuttingAccuracySign {
     #[serde(flatten)]
-    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReasonText {
-    #[serde(flatten)]
-    pub dis_qualification_reason_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReasons {
-    #[serde(flatten)]
-    pub dis_qualification_reasons: DisQualificationReasonsType,
+    pub cutting_accuracy_sign: BdtString5Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

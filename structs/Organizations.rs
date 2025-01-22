@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Services {
+pub struct Organization {
     #[serde(flatten)]
-    pub services: ServicesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Roles {
-    #[serde(flatten)]
-    pub roles: RolesType,
+    pub organization: OrganizationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,15 +16,9 @@ pub struct Organizations {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Service {
+pub struct Roles {
     #[serde(flatten)]
-    pub service: OrganizationServiceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Organization {
-    #[serde(flatten)]
-    pub organization: OrganizationType,
+    pub roles: RolesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,10 +27,16 @@ pub struct Role {
     pub role: OrganizationRoleType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationsType {
-    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
-    pub organization: Option<Vec<OrganizationType>>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Services {
+    #[serde(flatten)]
+    pub services: ServicesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Service {
+    #[serde(flatten)]
+    pub service: OrganizationServiceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -52,9 +46,25 @@ pub struct RolesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationsType {
+    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
+    pub organization: Option<Vec<OrganizationType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ServicesType {
     #[serde(rename = "Service")]
     pub service: Vec<OrganizationServiceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationRoleType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationServiceType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -69,15 +79,5 @@ pub struct OrganizationType {
     pub roles: Option<Vec<RolesType>>,
     #[serde(rename = "Services", skip_serializing_if = "Option::is_none")]
     pub services: Option<Vec<ServicesType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationRoleType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
-    pub base: String,
 }
 

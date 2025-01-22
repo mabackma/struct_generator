@@ -4,8 +4,22 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ForestCentreData {
+    #[serde(flatten)]
+    pub forest_centre_data: ForestCentreControlDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ControlObjectData {
     #[serde(flatten)]
+    pub control_object_data: ControlObjectDataType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestCentreControlDataType {
+    #[serde(flatten)]
+    pub base: FccForestCentreDataType,
+    #[serde(rename = "ControlObjectData")]
     pub control_object_data: ControlObjectDataType,
 }
 
@@ -23,13 +37,5 @@ pub struct ControlObjectDataType {
 pub struct ControlObjectsType {
     #[serde(rename = "Object")]
     pub object: Vec<ForestCentreControlObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreControlDataType {
-    #[serde(flatten)]
-    pub base: FccForestCentreDataType,
-    #[serde(rename = "ControlObjectData")]
-    pub control_object_data: ControlObjectDataType,
 }
 

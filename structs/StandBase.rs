@@ -4,9 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandBasicDataDate {
+pub struct StandNumberExtension {
     #[serde(flatten)]
-    pub stand_basic_data_date: StandBasicDataDateType,
+    pub stand_number_extension: StandNumberExtensionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,15 +28,35 @@ pub struct StandInfo {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandNumberExtension {
-    #[serde(flatten)]
-    pub stand_number_extension: StandNumberExtensionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct AreaDecrease {
     #[serde(flatten)]
     pub area_decrease: AreaDecreaseType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StandBasicDataDate {
+    #[serde(flatten)]
+    pub stand_basic_data_date: StandBasicDataDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandNumberType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaType {
+    #[serde(flatten)]
+    pub base: CoAreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandInfoType {
+    #[serde(rename = "@infoProviderRole")]
+    pub info_provider_role: InfoProviderRoleType,
+    #[serde(rename = "@infoProviderOrganizationName")]
+    pub info_provider_organization_name: OrganizationNameType,
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,26 +69,6 @@ pub struct AreaDecreaseType {
 pub struct IdentifiersType {
     #[serde(rename = "Identifier")]
     pub identifier: Vec<CoIdentifierType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaType {
-    #[serde(flatten)]
-    pub base: CoAreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandInfoType {
-    #[serde(rename = "@infoProviderRole")]
-    pub info_provider_role: InfoProviderRoleType,
-    #[serde(rename = "@infoProviderOrganizationName")]
-    pub info_provider_organization_name: OrganizationNameType,
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

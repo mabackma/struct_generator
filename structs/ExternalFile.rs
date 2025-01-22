@@ -16,6 +16,12 @@ pub struct Label {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ProductUserId {
+    #[serde(flatten)]
+    pub product_user_id: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ExternalFile {
     #[serde(flatten)]
     pub external_file: ExternalFileType,

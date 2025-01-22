@@ -4,9 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceLocations {
+pub struct LocationTimestamp {
     #[serde(flatten)]
-    pub resource_locations: ResourceLocationsType,
+    pub location_timestamp: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,29 +16,15 @@ pub struct ServiceBuyerResourceLocations {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LocationTimestamp {
+pub struct ResourceLocations {
     #[serde(flatten)]
-    pub location_timestamp: BdtTimeStampType,
+    pub resource_locations: ResourceLocationsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ResourceLocation {
     #[serde(flatten)]
     pub resource_location: ResourceLocationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceLocationsType {
-    #[serde(rename = "ResourceLocation")]
-    pub resource_location: Vec<ResourceLocationType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceBuyerResourceLocationsType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "ResourceLocations", skip_serializing_if = "Option::is_none")]
-    pub resource_locations: Option<ResourceLocationsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,5 +39,19 @@ pub struct ResourceLocationType {
     pub location: PointGeometryType,
     #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
     pub working_site_id: Option<ERPIdType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceLocationsType {
+    #[serde(rename = "ResourceLocation")]
+    pub resource_location: Vec<ResourceLocationType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceBuyerResourceLocationsType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "ResourceLocations", skip_serializing_if = "Option::is_none")]
+    pub resource_locations: Option<ResourceLocationsType>,
 }
 

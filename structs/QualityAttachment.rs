@@ -15,6 +15,24 @@ pub struct Version {
     pub version: BdtString10Type,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ModificationDate {
+    #[serde(flatten)]
+    pub modification_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Infotext {
+    #[serde(flatten)]
+    pub infotext: BdtString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Filename {
+    #[serde(flatten)]
+    pub filename: BdtString100Type,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct QualityAttachmentType {
     #[serde(rename = "ServiceBuyerId")]

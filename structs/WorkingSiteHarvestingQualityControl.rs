@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CaliperApplication {
+pub struct LengthCalibrationReason {
     #[serde(flatten)]
-    pub caliper_application: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RandomControlStemRejectedReason {
-    #[serde(flatten)]
-    pub random_control_stem_rejected_reason: BdtString100Type,
+    pub length_calibration_reason: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,33 +16,9 @@ pub struct LengthCalibrationDescription {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StemId {
+pub struct LogLengthClass {
     #[serde(flatten)]
-    pub stem_id: BdtPositiveIntegerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LogMeasurements {
-    #[serde(flatten)]
-    pub log_measurements: LogMeasurementsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LogDiameterClass {
-    #[serde(flatten)]
-    pub log_diameter_class: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CaliperId {
-    #[serde(flatten)]
-    pub caliper_id: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LogKey {
-    #[serde(flatten)]
-    pub log_key: BdtString10Type,
+    pub log_length_class: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,57 +28,21 @@ pub struct DiameterCalibrationReason {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteHarvestingQualityControl {
+pub struct DiameterCalibrationDate {
     #[serde(flatten)]
-    pub working_site_harvesting_quality_control: WorkingSiteHarvestingQualityControlType,
+    pub diameter_calibration_date: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DiameterCalibrationAdjustmentButtLog {
+pub struct ControlLogDiameter {
     #[serde(flatten)]
-    pub diameter_calibration_adjustment_butt_log: BdtInteger3digitsType,
+    pub control_log_diameter: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DiameterCalibrationAdjustment {
+pub struct LogLength {
     #[serde(flatten)]
-    pub diameter_calibration_adjustment: BdtInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LogDiameter {
-    #[serde(flatten)]
-    pub log_diameter: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LengthCalibration {
-    #[serde(flatten)]
-    pub length_calibration: LengthCalibrationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OperatorId {
-    #[serde(flatten)]
-    pub operator_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LogLengthClass {
-    #[serde(flatten)]
-    pub log_length_class: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LengthCalibrationReason {
-    #[serde(flatten)]
-    pub length_calibration_reason: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DiameterCalibration {
-    #[serde(flatten)]
-    pub diameter_calibration: DiameterCalibrationType,
+    pub log_length: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -124,21 +58,15 @@ pub struct DiameterCalibrationDescription {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LengthCalibrationAdjustment {
+pub struct CalibrationUseLog {
     #[serde(flatten)]
-    pub length_calibration_adjustment: BdtInteger3digitsType,
+    pub calibration_use_log: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ControlLogDiameter {
+pub struct Stem {
     #[serde(flatten)]
-    pub control_log_diameter: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StemCoordinates {
-    #[serde(flatten)]
-    pub stem_coordinates: GdtPointGeometryType,
+    pub stem: StemDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -148,15 +76,33 @@ pub struct Caliper {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CalibrationUseLog {
+pub struct StemCoordinates {
     #[serde(flatten)]
-    pub calibration_use_log: BdtYesNoType,
+    pub stem_coordinates: GdtPointGeometryType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DiameterCalibrationDate {
+pub struct LengthCalibration {
     #[serde(flatten)]
-    pub diameter_calibration_date: BdtTimeStampType,
+    pub length_calibration: LengthCalibrationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteHarvestingQualityControl {
+    #[serde(flatten)]
+    pub working_site_harvesting_quality_control: WorkingSiteHarvestingQualityControlType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CaliperId {
+    #[serde(flatten)]
+    pub caliper_id: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LengthCalibrationAdjustment {
+    #[serde(flatten)]
+    pub length_calibration_adjustment: BdtInteger3digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -166,41 +112,93 @@ pub struct Log {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Stem {
+pub struct DiameterCalibration {
     #[serde(flatten)]
-    pub stem: StemDataType,
+    pub diameter_calibration: DiameterCalibrationType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LengthCalibrationType {
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: StanfordTreeSpeciesType,
-    #[serde(rename = "LengthCalibrationDate")]
-    pub length_calibration_date: TimeStampType,
-    #[serde(rename = "LengthCalibrationReason")]
-    pub length_calibration_reason: String200Type,
-    #[serde(rename = "LengthCalibrationDescription")]
-    pub length_calibration_description: String200Type,
-    #[serde(rename = "LengthCalibrationAdjustment")]
-    pub length_calibration_adjustment: Integer3digitsType,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ControlLogVolume {
+    #[serde(flatten)]
+    pub control_log_volume: BdtDecimal3FractionDigitsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemDataType {
-    #[serde(rename = "StemId")]
-    pub stem_id: PositiveIntegerType,
-    #[serde(rename = "TreeSpecies")]
-    pub tree_species: StanfordTreeSpeciesType,
-    #[serde(rename = "StemType", skip_serializing_if = "Option::is_none")]
-    pub stem_type: Option<HarvestingStemTypeType>,
-    #[serde(rename = "SelectionType")]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProductKey {
+    #[serde(flatten)]
+    pub product_key: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LogDiameter {
+    #[serde(flatten)]
+    pub log_diameter: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DiameterCalibrationAdjustment {
+    #[serde(flatten)]
+    pub diameter_calibration_adjustment: BdtInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CaliperApplication {
+    #[serde(flatten)]
+    pub caliper_application: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SelectionType {
+    #[serde(flatten)]
     pub selection_type: ControlStemSelectionType,
-    #[serde(rename = "RandomControlStemRejectedReason", skip_serializing_if = "Option::is_none")]
-    pub random_control_stem_rejected_reason: Option<String100Type>,
-    #[serde(rename = "StemCoordinates", skip_serializing_if = "Option::is_none")]
-    pub stem_coordinates: Option<PointGeometryType>,
-    #[serde(rename = "Log", skip_serializing_if = "Option::is_none")]
-    pub log: Option<Vec<LogDataType>>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LogVolume {
+    #[serde(flatten)]
+    pub log_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LogMeasurements {
+    #[serde(flatten)]
+    pub log_measurements: LogMeasurementsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LogKey {
+    #[serde(flatten)]
+    pub log_key: BdtString10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DiameterCalibrationAdjustmentButtLog {
+    #[serde(flatten)]
+    pub diameter_calibration_adjustment_butt_log: BdtInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RandomControlStemRejectedReason {
+    #[serde(flatten)]
+    pub random_control_stem_rejected_reason: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ControlLogLength {
+    #[serde(flatten)]
+    pub control_log_length: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StemId {
+    #[serde(flatten)]
+    pub stem_id: BdtPositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LogDiameterClass {
+    #[serde(flatten)]
+    pub log_diameter_class: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -214,6 +212,30 @@ pub struct LogMeasurementsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct LogDataType {
+    #[serde(rename = "LogKey")]
+    pub log_key: String10Type,
+    #[serde(rename = "ProductKey")]
+    pub product_key: ERPIdType,
+    #[serde(rename = "LogVolume")]
+    pub log_volume: Decimal3FractionDigitsType,
+    #[serde(rename = "ControlLogVolume")]
+    pub control_log_volume: Decimal3FractionDigitsType,
+    #[serde(rename = "LogLength")]
+    pub log_length: PositiveInteger4digitsType,
+    #[serde(rename = "ControlLogLength")]
+    pub control_log_length: PositiveInteger4digitsType,
+    #[serde(rename = "CalibrationUseLog", skip_serializing_if = "Option::is_none")]
+    pub calibration_use_log: Option<YesNoType>,
+    #[serde(rename = "LogDiameterClass", skip_serializing_if = "Option::is_none")]
+    pub log_diameter_class: Option<PositiveInteger3digitsType>,
+    #[serde(rename = "LogLengthClass", skip_serializing_if = "Option::is_none")]
+    pub log_length_class: Option<PositiveInteger4digitsType>,
+    #[serde(rename = "LogMeasurements")]
+    pub log_measurements: Vec<LogMeasurementsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CaliperType {
     #[serde(rename = "CaliperId", skip_serializing_if = "Option::is_none")]
     pub caliper_id: Option<String200Type>,
@@ -222,8 +244,19 @@ pub struct CaliperType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlStemSelectionType {
-    pub base: String,
+pub struct DiameterCalibrationType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: StanfordTreeSpeciesType,
+    #[serde(rename = "DiameterCalibrationDate")]
+    pub diameter_calibration_date: TimeStampType,
+    #[serde(rename = "DiameterCalibrationReason")]
+    pub diameter_calibration_reason: String200Type,
+    #[serde(rename = "DiameterCalibrationDescription")]
+    pub diameter_calibration_description: String200Type,
+    #[serde(rename = "DiameterCalibrationAdjustment")]
+    pub diameter_calibration_adjustment: Integer3digitsType,
+    #[serde(rename = "DiameterCalibrationAdjustmentButtLog", skip_serializing_if = "Option::is_none")]
+    pub diameter_calibration_adjustment_butt_log: Option<Integer3digitsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -261,42 +294,39 @@ pub struct WorkingSiteHarvestingQualityControlType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LogDataType {
-    #[serde(rename = "LogKey")]
-    pub log_key: String10Type,
-    #[serde(rename = "ProductKey")]
-    pub product_key: ERPIdType,
-    #[serde(rename = "LogVolume")]
-    pub log_volume: Decimal3FractionDigitsType,
-    #[serde(rename = "ControlLogVolume")]
-    pub control_log_volume: Decimal3FractionDigitsType,
-    #[serde(rename = "LogLength")]
-    pub log_length: PositiveInteger4digitsType,
-    #[serde(rename = "ControlLogLength")]
-    pub control_log_length: PositiveInteger4digitsType,
-    #[serde(rename = "CalibrationUseLog", skip_serializing_if = "Option::is_none")]
-    pub calibration_use_log: Option<YesNoType>,
-    #[serde(rename = "LogDiameterClass", skip_serializing_if = "Option::is_none")]
-    pub log_diameter_class: Option<PositiveInteger3digitsType>,
-    #[serde(rename = "LogLengthClass", skip_serializing_if = "Option::is_none")]
-    pub log_length_class: Option<PositiveInteger4digitsType>,
-    #[serde(rename = "LogMeasurements")]
-    pub log_measurements: Vec<LogMeasurementsType>,
+pub struct LengthCalibrationType {
+    #[serde(rename = "TreeSpecies")]
+    pub tree_species: StanfordTreeSpeciesType,
+    #[serde(rename = "LengthCalibrationDate")]
+    pub length_calibration_date: TimeStampType,
+    #[serde(rename = "LengthCalibrationReason")]
+    pub length_calibration_reason: String200Type,
+    #[serde(rename = "LengthCalibrationDescription")]
+    pub length_calibration_description: String200Type,
+    #[serde(rename = "LengthCalibrationAdjustment")]
+    pub length_calibration_adjustment: Integer3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DiameterCalibrationType {
+pub struct StemDataType {
+    #[serde(rename = "StemId")]
+    pub stem_id: PositiveIntegerType,
     #[serde(rename = "TreeSpecies")]
     pub tree_species: StanfordTreeSpeciesType,
-    #[serde(rename = "DiameterCalibrationDate")]
-    pub diameter_calibration_date: TimeStampType,
-    #[serde(rename = "DiameterCalibrationReason")]
-    pub diameter_calibration_reason: String200Type,
-    #[serde(rename = "DiameterCalibrationDescription")]
-    pub diameter_calibration_description: String200Type,
-    #[serde(rename = "DiameterCalibrationAdjustment")]
-    pub diameter_calibration_adjustment: Integer3digitsType,
-    #[serde(rename = "DiameterCalibrationAdjustmentButtLog", skip_serializing_if = "Option::is_none")]
-    pub diameter_calibration_adjustment_butt_log: Option<Integer3digitsType>,
+    #[serde(rename = "StemType", skip_serializing_if = "Option::is_none")]
+    pub stem_type: Option<HarvestingStemTypeType>,
+    #[serde(rename = "SelectionType")]
+    pub selection_type: ControlStemSelectionType,
+    #[serde(rename = "RandomControlStemRejectedReason", skip_serializing_if = "Option::is_none")]
+    pub random_control_stem_rejected_reason: Option<String100Type>,
+    #[serde(rename = "StemCoordinates", skip_serializing_if = "Option::is_none")]
+    pub stem_coordinates: Option<PointGeometryType>,
+    #[serde(rename = "Log", skip_serializing_if = "Option::is_none")]
+    pub log: Option<Vec<LogDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ControlStemSelectionType {
+    pub base: String,
 }
 
