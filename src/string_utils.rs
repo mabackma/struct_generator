@@ -39,10 +39,14 @@ pub static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "gYearMonth" => "chrono::NaiveDate",
     "gMonthDay" => "chrono::NaiveDate",
     "dateTimeStamp" => "chrono::NaiveDateTime",
+    "NaiveDateTime" => "chrono::NaiveDateTime",
     "base64Binary" => "Vec<u8>",
     "hexBinary" => "Vec<u8>",
     "anySimpleType" => "String",
     "DateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
+    "DateYYYYMMOrYYYYMMDDType" => "chrono::NaiveDate",
+    "NaiveDate" => "chrono::NaiveDate",
+    "contentType" => "String",
 };
 
 // Adds prefixes to the HashMap (e.g. "xs:string" -> "Xs")
@@ -75,7 +79,11 @@ pub fn remove_prefix(
         return name[prefix.len()..].to_string();
     }
 
-    name.to_string()
+    if name.contains('-') {
+        name.replace("-", "")
+    } else {
+        name.to_string()
+    }
 }
 
 pub fn capitalize_first(name: &str) -> String {

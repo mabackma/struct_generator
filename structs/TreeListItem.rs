@@ -10,9 +10,27 @@ pub struct Type {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct TreeNumber {
+    #[serde(flatten)]
+    pub tree_number: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct TreeIdentifier {
     #[serde(flatten)]
     pub tree_identifier: TreeIdentifierType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeListItem {
+    #[serde(flatten)]
+    pub tree_list_item: TreeListItemType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Value {
+    #[serde(flatten)]
+    pub value: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +40,9 @@ pub struct TreeIdentifiers {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeListItem {
+pub struct TreeClass {
     #[serde(flatten)]
-    pub tree_list_item: TreeListItemType,
+    pub tree_class: CoTreeClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

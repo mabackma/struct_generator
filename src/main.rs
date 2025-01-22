@@ -1,4 +1,4 @@
-use struct_generator::create_structs::{create_structs, XMLField, XMLStruct};
+use struct_generator::create_structs::{create_structs, XMLStruct};
 use struct_generator::file_utils::{read_xsd_file, structs_and_definitions_to_file, RUST_TYPES};
 use struct_generator::sorting_algorithm::{create_file_dependencies, sort_files};
 use struct_generator::string_utils::{capitalize_first, handle_prefix, remove_colon_from_string, remove_prefix, XSD_TO_RUST};
@@ -39,9 +39,9 @@ fn main() {
 
     remove_duplicates_from_element_definitions(&mut element_definitions, &structs);
 
-    get_field_types_from_definitions(&mut structs, &element_definitions);
+    replace_field_types_from_definitions(&element_definitions, &mut structs, prefixes);
 
-    remove_prefixes_from_missing_types(&structs, &mut element_definitions, prefixes);
+    remove_prefixes_from_missing_types(&mut element_definitions, &structs, prefixes);
 
     fix_lowercase_types(&mut element_definitions, prefixes);
 
@@ -156,27 +156,18 @@ fn fix_fields_with_colons(structs: &mut HashMap<String, XMLStruct>) {
             }
 
             if field.field_type.contains(":") {
-                if field.field_type.contains("Option<Vec<") {
-                    field.field_type = field.field_type.replace("Option<Vec<", "");
-                    field.field_type = field.field_type.replace(">>", "");
+                let mut f_type = field.field_type.replace("Option<", "").replace("Vec<","").replace(">", "");
+                f_type = capitalize_first(&remove_colon_from_string(&f_type));
 
-                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
-                    field.field_type = format!("Option<Vec<{}>>", field.field_type);
-
+                field.field_type = if field.field_type.contains("Option<Vec<") {
+                    format!("Option<Vec<{}>>", f_type)
                 } else if field.field_type.contains("Vec<") {
-                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
-                    field.field_type = field.field_type.replace(">", "");
-
-                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
-                    field.field_type = format!("Vec<{}>", field.field_type);
-
+                    format!("Vec<{}>", f_type)
                 } else if field.field_type.contains("Option<") {
-                    field.field_type = field.field_type.split('<').collect::<Vec<&str>>()[1].to_string();
-                    field.field_type = field.field_type.replace(">", "");
-
-                    field.field_type = capitalize_first(&remove_colon_from_string(&field.field_type));
-                    field.field_type = format!("Option<{}>", field.field_type);
-                }
+                    format!("Option<{}>", f_type)
+                } else {
+                    f_type
+                };
             }
         }
     }
@@ -256,8 +247,8 @@ fn remove_duplicates_from_element_definitions(
 
 // If a type is missing, it might be because it has a prefix that is not in the struct keys
 fn remove_prefixes_from_missing_types(
-    structs: &HashMap<String, XMLStruct>, 
     element_definitions: &mut HashMap<String, String>, 
+    structs: &HashMap<String, XMLStruct>, 
     prefixes: &mut HashMap<String, String>
 ) {
 
@@ -278,20 +269,50 @@ fn remove_prefixes_from_missing_types(
     *element_definitions = new_definitions;
 }
 
-fn get_field_types_from_definitions(
+
+fn replace_field_types_from_definitions(
+    element_definitions: &HashMap<String, String>,
     structs: &mut HashMap<String, XMLStruct>,
-    element_definitions: &HashMap<String, String>
+    prefixes: &mut HashMap<String, String>
 ) {
+
     let mut new_structs = structs.clone();
 
     for (_, s) in new_structs.iter_mut() {
         for f in s.fields.iter_mut() {
-            if f.field_type.contains("Option<Vec<") {
-                let field_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "");
+            let f_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "");
 
-                if element_definitions.contains_key(&field_type) {                    
-                    f.field_type = f.field_type.replace(&field_type, element_definitions.get(&field_type).unwrap());
+            if !structs.contains_key(&f_type) && !element_definitions.contains_key(&f_type) {
+                //f.field_type = f.field_type.replace(&f_type, &remove_prefix(&f_type, prefixes));
+                let mut new_field_type = f.field_type.replace(&f_type, &remove_prefix(&f_type, prefixes));
+
+                if new_field_type.contains(&f_type) {
+                    let mut index = 0;
+
+                    for c in f_type[1..].chars() {
+                        index += 1;
+
+                        if c.is_uppercase() {
+                            new_field_type = f.field_type.replace(&f_type, &f_type[index..].to_string());
+                            break;
+                        }
+                    }
                 }
+
+                f.field_type = new_field_type;
+            }
+
+            if element_definitions.contains_key(&f_type) {   
+                let name = element_definitions.get(&f_type).unwrap();  
+
+                let ft = if name.contains(":") {
+                    let parts = name.split(':').collect::<Vec<&str>>();
+                    parts[1]
+                } else {
+                    name
+                };
+
+                f.field_type = f.field_type.replace(&f_type, ft);
             }
         }
     }
@@ -329,20 +350,24 @@ fn print_missing_fields(
     element_definitions: &HashMap<String, String>,
     prefixes: &mut HashMap<String, String>
 ) {
+    let gis_types = vec![
+        "PointAndLineGeometriesGroup", "PointLineAndPolygonGeometriesGroup", 
+        "Point", "Polygon", "MultiPolygon", "LineString", "MultiLineString", "PointProperty", "PolygonProperty", "LineStringProperty", "MultiSurface", 
+        "point", "Ppolygon", "multiPolygon", "lineString", "multiLineString", "pointProperty", "polygonProperty", "lineStringProperty", "multiSurface"
+    ];
+
     for s in structs.iter() {
         for f in s.1.fields.iter() {
             let f_type = f.field_type.replace("Option<", "").replace("Vec<", "").replace(">", "").replace(">", "");
 
             if !structs.contains_key(&f_type) && !element_definitions.contains_key(&f_type) {
                 
-                if !RUST_TYPES.contains(&f_type.as_str()) {
-                    println!("STRUCT {} -> {}: {}", s.0, f.name, f_type);
+                if !RUST_TYPES.contains(&f_type.as_str()) && !XSD_TO_RUST.contains_key(&f_type.as_str()) && !gis_types.contains(&f_type.as_str()) {
+                    println!("STRUCT {} HAS MISSING TYPE FOR FIELD: {} -> {}", s.0, f.name, f_type);
                 }
             }
         }
     }
-
-    let gis_types = vec!["Point", "Polygon", "LineString", "MultiPolygon", "MultiLineString"];
 
     for (el_key, typ) in element_definitions.iter() {
         let el_type = handle_prefix(typ, prefixes);

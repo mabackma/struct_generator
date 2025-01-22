@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AmountAccounted {
+pub struct ForwardedVolumeAccounted {
     #[serde(flatten)]
-    pub amount_accounted: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AmountNotified {
-    #[serde(flatten)]
-    pub amount_notified: BdtDecimal3FractionDigitsType,
+    pub forwarded_volume_accounted: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,33 +16,9 @@ pub struct HarvestedVolume {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAccounting {
-    #[serde(flatten)]
-    pub final_accounting: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestedVolumeAccounted {
-    #[serde(flatten)]
-    pub harvested_volume_accounted: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteAccounting {
-    #[serde(flatten)]
-    pub working_site_accounting: WorkingSiteAccountingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PlannedVolume {
     #[serde(flatten)]
     pub planned_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContarctorId {
-    #[serde(flatten)]
-    pub contarctor_id: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,21 +28,59 @@ pub struct ForwardedVolume {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct AmountNotified {
+    #[serde(flatten)]
+    pub amount_notified: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteAccounting {
+    #[serde(flatten)]
+    pub working_site_accounting: WorkingSiteAccountingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContarctorId {
+    #[serde(flatten)]
+    pub contarctor_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct AccountingDate {
     #[serde(flatten)]
     pub accounting_date: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestHaulageDistanceContinued {
+pub struct AmountAccounted {
     #[serde(flatten)]
-    pub forest_haulage_distance_continued: BdtPositiveInteger4digitsType,
+    pub amount_accounted: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardedVolumeAccounted {
+pub struct HarvestedVolumeAccounted {
     #[serde(flatten)]
-    pub forwarded_volume_accounted: BdtDecimal3FractionDigitsType,
+    pub harvested_volume_accounted: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinalAccounting {
+    #[serde(flatten)]
+    pub final_accounting: BdtYesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeDataType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "AmountPlanned")]
+    pub amount_planned: Decimal3FractionDigitsType,
+    #[serde(rename = "AmountNotified")]
+    pub amount_notified: Decimal3FractionDigitsType,
+    #[serde(rename = "AmountAccounted")]
+    pub amount_accounted: Decimal3FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: WorkCodeUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -109,20 +117,6 @@ pub struct AssortmentDataType {
 pub struct WorkCodesType {
     #[serde(rename = "WorkCode")]
     pub work_code: Vec<WorkCodeDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeDataType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "AmountPlanned")]
-    pub amount_planned: Decimal3FractionDigitsType,
-    #[serde(rename = "AmountNotified")]
-    pub amount_notified: Decimal3FractionDigitsType,
-    #[serde(rename = "AmountAccounted")]
-    pub amount_accounted: Decimal3FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: WorkCodeUnitType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -4,15 +4,21 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RequestCode {
+pub struct ForestPropertyDataSet {
     #[serde(flatten)]
-    pub request_code: RequestCodeType,
+    pub forest_property_data_set: ForestPropertyDataSetType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CreateDate {
+pub struct RequestInfo {
     #[serde(flatten)]
-    pub create_date: CoDateType,
+    pub request_info: CoString2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExpirationDate {
+    #[serde(flatten)]
+    pub expiration_date: CoDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,15 +28,21 @@ pub struct PreferredContactingMethods {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ContactLocationInformation {
+    #[serde(flatten)]
+    pub contact_location_information: GdtAlternativeGeometriesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PreferredContactingMethod {
     #[serde(flatten)]
     pub preferred_contacting_method: CoPreferredContactingMethodType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestPropertyDataSet {
+pub struct RequestCode {
     #[serde(flatten)]
-    pub forest_property_data_set: ForestPropertyDataSetType,
+    pub request_code: RequestCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,21 +58,21 @@ pub struct ContactRequest {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContactLocationInformation {
+pub struct CreateDate {
     #[serde(flatten)]
-    pub contact_location_information: GdtAlternativeGeometriesType,
+    pub create_date: CoDateType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ExpirationDate {
-    #[serde(flatten)]
-    pub expiration_date: CoDateType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreferredContactingMethodsType {
+    #[serde(rename = "PreferredContactingMethod")]
+    pub preferred_contacting_method: Vec<CoPreferredContactingMethodType>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RequestInfo {
-    #[serde(flatten)]
-    pub request_info: CoString2000Type,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestPropertyDataSetType {
+    #[serde(rename = "ForestPropertyData")]
+    pub forest_property_data: Vec<FdForestPropertyDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -94,17 +106,5 @@ pub struct ContactRequestType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestCodeType {
     pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PreferredContactingMethodsType {
-    #[serde(rename = "PreferredContactingMethod")]
-    pub preferred_contacting_method: Vec<CoPreferredContactingMethodType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestPropertyDataSetType {
-    #[serde(rename = "ForestPropertyData")]
-    pub forest_property_data: Vec<FdForestPropertyDataType>,
 }
 

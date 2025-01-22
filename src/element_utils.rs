@@ -58,7 +58,8 @@ pub fn union_members(e: &BytesStart<'_>) -> Option<String> {
 
 // Retrieve the type of the reference
 pub fn reference_type(
-    ref_name: &str, element_definitions: &HashMap<String, String>, 
+    ref_name: &str, 
+    element_definitions: &HashMap<String, String>, 
     prefixes: &mut HashMap<String, String>
 ) -> Option<String> {
 

@@ -4,21 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Organization {
-    #[serde(flatten)]
-    pub organization: OrganizationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Role {
-    #[serde(flatten)]
-    pub role: OrganizationRoleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Services {
     #[serde(flatten)]
     pub services: ServicesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Roles {
+    #[serde(flatten)]
+    pub roles: RolesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +28,21 @@ pub struct Service {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Roles {
+pub struct Organization {
     #[serde(flatten)]
-    pub roles: RolesType,
+    pub organization: OrganizationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Role {
+    #[serde(flatten)]
+    pub role: OrganizationRoleType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationsType {
+    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
+    pub organization: Option<Vec<OrganizationType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,8 +52,9 @@ pub struct RolesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
-    pub base: String,
+pub struct ServicesType {
+    #[serde(rename = "Service")]
+    pub service: Vec<OrganizationServiceType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -65,19 +72,12 @@ pub struct OrganizationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServicesType {
-    #[serde(rename = "Service")]
-    pub service: Vec<OrganizationServiceType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OrganizationRoleType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationsType {
-    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
-    pub organization: Option<Vec<OrganizationType>>,
+pub struct OrganizationServiceType {
+    pub base: String,
 }
 

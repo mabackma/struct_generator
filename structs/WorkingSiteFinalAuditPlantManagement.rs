@@ -4,9 +4,21 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OrderId {
+pub struct PlantManagementQualityText {
     #[serde(flatten)]
-    pub order_id: WctERPIdType,
+    pub plant_management_quality_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct EnvironmentalObjectNoticedText {
+    #[serde(flatten)]
+    pub environmental_object_noticed_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QuestionAnswer {
+    #[serde(flatten)]
+    pub question_answer: BdtFinalAuditAnswerType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,21 +28,21 @@ pub struct WorkingSiteFinalAuditPlantManagement {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SamplePlotCount {
+pub struct EnvironmentalObjectNoticed {
     #[serde(flatten)]
-    pub sample_plot_count: BdtPositiveInteger2digitsType,
+    pub environmental_object_noticed: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PlantManagementQualityText {
+pub struct hasEnvironmentalObjectsText {
     #[serde(flatten)]
-    pub plant_management_quality_text: BdtString200Type,
+    pub has_environmental_objects_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkCodeQualifier {
+pub struct AuditsList {
     #[serde(flatten)]
-    pub work_code_qualifier: BdtWorkCodeQualifierType1,
+    pub audits_list: AuditsListType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,15 +52,49 @@ pub struct PlantManagementQuality {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAuditer {
+pub struct AuditQuestion {
     #[serde(flatten)]
-    pub final_auditer: BdtString50Type,
+    pub audit_question: AuditQuestionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SamplePlotCountRequired {
+pub struct hasEnvironmentalObjects {
     #[serde(flatten)]
-    pub sample_plot_count_required: BdtPositiveInteger2digitsType,
+    pub has_environmental_objects: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct NewEnvironmentalObjects {
+    #[serde(flatten)]
+    pub new_environmental_objects: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QuestionId {
+    #[serde(flatten)]
+    pub question_id: BdtFinalAuditQuestionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditQuestionType {
+    #[serde(rename = "QuestionId")]
+    pub question_id: BdtFinalAuditQuestionType,
+    #[serde(rename = "QuestionAnswer")]
+    pub question_answer: BdtFinalAuditAnswerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionType {
+    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
+    pub final_audit_type: Option<FinalAuditTypeType>,
+    #[serde(rename = "FinalAuditerType")]
+    pub final_auditer_type: FinalAuditerTypeType,
+    #[serde(rename = "FinalAuditer")]
+    pub final_auditer: String50Type,
+    #[serde(rename = "FinalAuditDate")]
+    pub final_audit_date: TimeStampType,
+    #[serde(rename = "FinalAuditRequired")]
+    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,14 +125,6 @@ pub struct SelfMonitoringWorkingSiteFinalAuditPlantManagementType {
     pub audits: AuditsType,
     #[serde(rename = "AuditsList")]
     pub audits_list: AuditsListType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditQuestionType {
-    #[serde(rename = "QuestionId")]
-    pub question_id: BdtFinalAuditQuestionType,
-    #[serde(rename = "QuestionAnswer")]
-    pub question_answer: BdtFinalAuditAnswerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -173,20 +211,6 @@ pub struct WorkingSiteFinalAuditPlantManagementType {
     pub audits: AuditsType,
     #[serde(rename = "AuditsList")]
     pub audits_list: AuditsListType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionType {
-    #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]
-    pub final_audit_type: Option<FinalAuditTypeType>,
-    #[serde(rename = "FinalAuditerType")]
-    pub final_auditer_type: FinalAuditerTypeType,
-    #[serde(rename = "FinalAuditer")]
-    pub final_auditer: String50Type,
-    #[serde(rename = "FinalAuditDate")]
-    pub final_audit_date: TimeStampType,
-    #[serde(rename = "FinalAuditRequired")]
-    pub final_audit_required: YesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

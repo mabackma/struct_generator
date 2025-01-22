@@ -4,9 +4,21 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PlanAndSubsidy {
+pub struct PartsOfProject {
     #[serde(flatten)]
-    pub plan_and_subsidy: PlanAndSubsidyType,
+    pub parts_of_project: PartsOfProjectType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OtherPublicSubstitute {
+    #[serde(flatten)]
+    pub other_public_substitute: CoOtherPublicSubstituteType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingType {
+    #[serde(flatten)]
+    pub financing_type: CoFinancingActFinancingType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,9 +28,15 @@ pub struct FinancingActApplication {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingType {
+pub struct PlanAndSubsidy {
     #[serde(flatten)]
-    pub financing_type: CoFinancingActFinancingType,
+    pub plan_and_subsidy: PlanAndSubsidyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PartOfProject {
+    #[serde(flatten)]
+    pub part_of_project: PartOfProjectType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
