@@ -4,14 +4,14 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct hexBinary {
+pub struct base64Binary {
     #[serde(rename = "@XmimecontentType")]
     pub xmimecontent_type: XmimecontentType,
     pub base: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct base64Binary {
+pub struct hexBinary {
     #[serde(rename = "@XmimecontentType")]
     pub xmimecontent_type: XmimecontentType,
     pub base: Vec<u8>,

@@ -4,21 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerArea {
+pub struct BeginDate {
     #[serde(flatten)]
-    pub service_buyer_area: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CodeGroup {
-    #[serde(flatten)]
-    pub code_group: BdtAssortmentGroupType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Data {
-    #[serde(flatten)]
-    pub data: Vec<u8>,
+    pub begin_date: BdtDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,15 +16,9 @@ pub struct HarvestingOrder {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BeginDate {
+pub struct Attachments {
     #[serde(flatten)]
-    pub begin_date: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OperationalRegion {
-    #[serde(flatten)]
-    pub operational_region: BdtString50Type,
+    pub attachments: AttachmentsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,9 +28,15 @@ pub struct Attachment {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Attachments {
+pub struct Data {
     #[serde(flatten)]
-    pub attachments: AttachmentsType,
+    pub data: Vec<u8>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -58,9 +46,11 @@ pub struct AssortmentsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "Data")]
+    pub data: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,14 +69,6 @@ pub struct HarvestingOrderType {
     pub assortments: AssortmentsType,
     #[serde(rename = "Attachments", skip_serializing_if = "Option::is_none")]
     pub attachments: Option<AttachmentsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "Data")]
-    pub data: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -200,8 +200,6 @@ fn add_group_definition(
 
                         if let Some(n) = element_name(ge) {
                             let mut field_type = n.clone();
-
-                            // Check if the field is a vector or optional
                             parse_type(ge, &mut field_type);
 
                             group_types.insert(n,field_type);
@@ -210,19 +208,16 @@ fn add_group_definition(
                 },
                 Ok(Empty(ref ge)) => {
                     if ge.name() == QName(b"xs:element") {
-                        if let Some(r) = element_reference(ge) {
-                            
+                        
+                        if let Some(r) = element_reference(ge) {                            
                             let mut field_type = r.clone();
-
-                            // Check if the field is a vector or optional
                             parse_type(ge, &mut field_type);
 
                             group_types.insert(r,field_type);
                         }
+
                         if let Some(n) = element_name(ge) {
                             let mut field_type = element_type(ge).unwrap_or("String".to_string());
-
-                            // Check if the field is a vector or optional
                             parse_type(ge, &mut field_type);
 
                             group_types.insert(n,field_type);

@@ -10,15 +10,15 @@ pub struct TreeListItem {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Type {
-    #[serde(flatten)]
-    pub r#type: i32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct TreeIdentifier {
     #[serde(flatten)]
     pub tree_identifier: TreeIdentifierType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Type {
+    #[serde(flatten)]
+    pub r#type: i32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

@@ -4,21 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Organizations {
+pub struct Role {
     #[serde(flatten)]
-    pub organizations: OrganizationsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Roles {
-    #[serde(flatten)]
-    pub roles: RolesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Services {
-    #[serde(flatten)]
-    pub services: ServicesType,
+    pub role: OrganizationRoleType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,20 +16,27 @@ pub struct Organization {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Services {
+    #[serde(flatten)]
+    pub services: ServicesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Service {
     #[serde(flatten)]
     pub service: OrganizationServiceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Role {
+pub struct Organizations {
     #[serde(flatten)]
-    pub role: OrganizationRoleType,
+    pub organizations: OrganizationsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
-    pub base: String,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Roles {
+    #[serde(flatten)]
+    pub roles: RolesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -54,11 +49,6 @@ pub struct OrganizationsType {
 pub struct RolesType {
     #[serde(rename = "Role")]
     pub role: Vec<OrganizationRoleType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationRoleType {
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,5 +69,15 @@ pub struct OrganizationType {
 pub struct ServicesType {
     #[serde(rename = "Service")]
     pub service: Vec<OrganizationServiceType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationServiceType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationRoleType {
+    pub base: String,
 }
 

@@ -4,33 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MastoInspection {
+pub struct InspectionType {
     #[serde(flatten)]
-    pub masto_inspection: VirtaMastoInspectionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KemeraId {
-    #[serde(flatten)]
-    pub kemera_id: VirtaIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestExtraInfo {
-    #[serde(flatten)]
-    pub harvest_extra_info: TgtVirtaExtraInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AnnouncementId {
-    #[serde(flatten)]
-    pub announcement_id: AnnouncementIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AnnouncedArea {
-    #[serde(flatten)]
-    pub announced_area: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
+    pub inspection_type: VirtaInspectionTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,93 +16,9 @@ pub struct DetectedGroundWood {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StubPriceArea {
-    #[serde(flatten)]
-    pub stub_price_area: VirtaSumTableAreaType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Password {
-    #[serde(flatten)]
-    pub password: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KemeraMunicipalityId {
-    #[serde(flatten)]
-    pub kemera_municipality_id: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct AnnouncedEnergyWood {
     #[serde(flatten)]
     pub announced_energy_wood: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkType {
-    #[serde(flatten)]
-    pub work_type: CoPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct EarliestInspectionDate {
-    #[serde(flatten)]
-    pub earliest_inspection_date: CoDateMmDdYyyyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DataId {
-    #[serde(flatten)]
-    pub data_id: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct InternalInspectionId {
-    #[serde(flatten)]
-    pub internal_inspection_id: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UnseparatedParcelNumber {
-    #[serde(flatten)]
-    pub unseparated_parcel_number: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Inspection {
-    #[serde(flatten)]
-    pub inspection: InspectionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DataInformation {
-    #[serde(flatten)]
-    pub data_information: DataInformationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Status1 {
-    #[serde(flatten)]
-    pub status1: CoChangeStateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UnitCostArea {
-    #[serde(flatten)]
-    pub unit_cost_area: VirtaSumTableAreaType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DetectedEnergyWood {
-    #[serde(flatten)]
-    pub detected_energy_wood: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct InspectionType {
-    #[serde(flatten)]
-    pub inspection_type: VirtaInspectionTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -136,27 +28,39 @@ pub struct Law {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct VirtaId {
-    #[serde(flatten)]
-    pub virta_id: VirtaIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeDamageOutsideStand {
-    #[serde(flatten)]
-    pub tree_damage_outside_stand: SpVirtaEvaluationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct DataName {
     #[serde(flatten)]
     pub data_name: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AssociationEvaluationApproval {
+pub struct WorkType {
     #[serde(flatten)]
-    pub association_evaluation_approval: VirtaApprovalType,
+    pub work_type: CoPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Population {
+    #[serde(flatten)]
+    pub population: CoPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Inspection {
+    #[serde(flatten)]
+    pub inspection: InspectionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AnnouncedLength {
+    #[serde(flatten)]
+    pub announced_length: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct InspectorName {
+    #[serde(flatten)]
+    pub inspector_name: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -166,15 +70,63 @@ pub struct HelpGeometries {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ProjectStatus {
+pub struct Password {
     #[serde(flatten)]
-    pub project_status: VirtaProjectStatusType,
+    pub password: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Targets {
+    #[serde(flatten)]
+    pub targets: TargetsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AnnouncedArea {
+    #[serde(flatten)]
+    pub announced_area: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Operator {
     #[serde(flatten)]
     pub operator: VirtaAdvertiserType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OwnerActionApproval {
+    #[serde(flatten)]
+    pub owner_action_approval: VirtaApprovalType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HarvestExtraInfo {
+    #[serde(flatten)]
+    pub harvest_extra_info: TgtVirtaExtraInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Phase {
+    #[serde(flatten)]
+    pub phase: VirtaPhaseType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DataInformation {
+    #[serde(flatten)]
+    pub data_information: DataInformationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProjectStatus {
+    #[serde(flatten)]
+    pub project_status: VirtaProjectStatusType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SaveIncomplete {
+    #[serde(flatten)]
+    pub save_incomplete: VirtaSaveIncompleteType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -190,69 +142,9 @@ pub struct EstateOwner {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OwnerActionApproval {
+pub struct EarliestInspectionDate {
     #[serde(flatten)]
-    pub owner_action_approval: VirtaApprovalType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct InspectorName {
-    #[serde(flatten)]
-    pub inspector_name: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UnseparatedParcel {
-    #[serde(flatten)]
-    pub unseparated_parcel: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Population {
-    #[serde(flatten)]
-    pub population: CoPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AnnouncedLength {
-    #[serde(flatten)]
-    pub announced_length: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SaveIncomplete {
-    #[serde(flatten)]
-    pub save_incomplete: VirtaSaveIncompleteType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LevelCount {
-    #[serde(flatten)]
-    pub level_count: CoPositiveInteger1digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OwnerSampleAreaApproval {
-    #[serde(flatten)]
-    pub owner_sample_area_approval: VirtaApprovalType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TerrainDamageOutsideStand {
-    #[serde(flatten)]
-    pub terrain_damage_outside_stand: SpVirtaEvaluationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Targets {
-    #[serde(flatten)]
-    pub targets: TargetsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Phase {
-    #[serde(flatten)]
-    pub phase: VirtaPhaseType,
+    pub earliest_inspection_date: CoDateMmDdYyyyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -262,9 +154,21 @@ pub struct AdvertisementDating {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct InspectionData {
+pub struct SumTableArea {
     #[serde(flatten)]
-    pub inspection_data: InspectionDataType,
+    pub sum_table_area: VirtaSumTableAreaType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UnitCostArea {
+    #[serde(flatten)]
+    pub unit_cost_area: VirtaSumTableAreaType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StubPriceArea {
+    #[serde(flatten)]
+    pub stub_price_area: VirtaSumTableAreaType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -274,97 +178,105 @@ pub struct InspectionDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SumTableArea {
+pub struct Status1 {
     #[serde(flatten)]
-    pub sum_table_area: VirtaSumTableAreaType,
+    pub status1: CoChangeStateType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AnnouncementIdType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaAdvertisementDatingType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UnseparatedParcel {
     #[serde(flatten)]
-    pub base: CoVirtaAdvertisementDatingType,
+    pub unseparated_parcel: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DataInformationType {
-    #[serde(rename = "DataName")]
-    pub data_name: String,
-    #[serde(rename = "DataId")]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MastoInspection {
+    #[serde(flatten)]
+    pub masto_inspection: VirtaMastoInspectionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AnnouncementId {
+    #[serde(flatten)]
+    pub announcement_id: AnnouncementIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OwnerSampleAreaApproval {
+    #[serde(flatten)]
+    pub owner_sample_area_approval: VirtaApprovalType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssociationEvaluationApproval {
+    #[serde(flatten)]
+    pub association_evaluation_approval: VirtaApprovalType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct InternalInspectionId {
+    #[serde(flatten)]
+    pub internal_inspection_id: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KemeraId {
+    #[serde(flatten)]
+    pub kemera_id: VirtaIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DetectedEnergyWood {
+    #[serde(flatten)]
+    pub detected_energy_wood: CoPositiveInteger6digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TerrainDamageOutsideStand {
+    #[serde(flatten)]
+    pub terrain_damage_outside_stand: SpVirtaEvaluationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct VirtaId {
+    #[serde(flatten)]
+    pub virta_id: VirtaIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DataId {
+    #[serde(flatten)]
     pub data_id: String,
-    #[serde(rename = "InspectorName")]
-    pub inspector_name: String,
-    #[serde(rename = "Password")]
-    pub password: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaSaveIncompleteType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LevelCount {
     #[serde(flatten)]
-    pub base: CoVirtaSaveIncompleteType,
+    pub level_count: CoPositiveInteger1digitsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaAdvertiserType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UnseparatedParcelNumber {
     #[serde(flatten)]
-    pub base: CoVirtaAdvertiserType,
+    pub unseparated_parcel_number: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaIdType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaLawType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeDamageOutsideStand {
     #[serde(flatten)]
-    pub base: CoVirtaLawType,
+    pub tree_damage_outside_stand: SpVirtaEvaluationType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InspectionDataType {
-    #[serde(rename = "DataInformation")]
-    pub data_information: DataInformationType,
-    #[serde(rename = "Inspection")]
-    pub inspection: Vec<InspectionType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaProjectStatusType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KemeraMunicipalityId {
     #[serde(flatten)]
-    pub base: CoVirtaProjectStatusType,
+    pub kemera_municipality_id: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaApprovalType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct InspectionData {
     #[serde(flatten)]
-    pub base: CoVirtaApprovalType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPhaseType {
-    #[serde(flatten)]
-    pub base: CoVirtaPhaseType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaInspectionTypeType {
-    #[serde(flatten)]
-    pub base: CoVirtaInspectionTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HelpGeometriesType {
-    #[serde(rename = "PolygonGeometry", skip_serializing_if = "Option::is_none")]
-    pub hg_polygon_geometry: Option<Vec<HgPolygonGeometry>>,
-    #[serde(rename = "LineGeometry", skip_serializing_if = "Option::is_none")]
-    pub hg_line_geometry: Option<Vec<HgLineGeometry>>,
-    #[serde(rename = "PointGeometry", skip_serializing_if = "Option::is_none")]
-    pub hg_point_geometry: Option<Vec<HgPointGeometry>>,
+    pub inspection_data: InspectionDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -470,9 +382,9 @@ pub struct InspectionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TargetsType {
-    #[serde(rename = "Target")]
-    pub tgt_target: Vec<TgtTarget>,
+pub struct VirtaAdvertiserType {
+    #[serde(flatten)]
+    pub base: CoVirtaAdvertiserType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -482,9 +394,97 @@ pub struct VirtaTargetSelectionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPhaseType {
+    #[serde(flatten)]
+    pub base: CoVirtaPhaseType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaSaveIncompleteType {
+    #[serde(flatten)]
+    pub base: CoVirtaSaveIncompleteType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaLawType {
+    #[serde(flatten)]
+    pub base: CoVirtaLawType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InspectionDataType {
+    #[serde(rename = "DataInformation")]
+    pub data_information: DataInformationType,
+    #[serde(rename = "Inspection")]
+    pub inspection: Vec<InspectionType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DataInformationType {
+    #[serde(rename = "DataName")]
+    pub data_name: String,
+    #[serde(rename = "DataId")]
+    pub data_id: String,
+    #[serde(rename = "InspectorName")]
+    pub inspector_name: String,
+    #[serde(rename = "Password")]
+    pub password: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaInspectionTypeType {
+    #[serde(flatten)]
+    pub base: CoVirtaInspectionTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaProjectStatusType {
+    #[serde(flatten)]
+    pub base: CoVirtaProjectStatusType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AnnouncementIdType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct VirtaMastoInspectionType {
     #[serde(flatten)]
     pub base: CoVirtaMastoInspectionType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaAdvertisementDatingType {
+    #[serde(flatten)]
+    pub base: CoVirtaAdvertisementDatingType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaIdType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HelpGeometriesType {
+    #[serde(rename = "PolygonGeometry", skip_serializing_if = "Option::is_none")]
+    pub hg_polygon_geometry: Option<Vec<HgPolygonGeometry>>,
+    #[serde(rename = "LineGeometry", skip_serializing_if = "Option::is_none")]
+    pub hg_line_geometry: Option<Vec<HgLineGeometry>>,
+    #[serde(rename = "PointGeometry", skip_serializing_if = "Option::is_none")]
+    pub hg_point_geometry: Option<Vec<HgPointGeometry>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaApprovalType {
+    #[serde(flatten)]
+    pub base: CoVirtaApprovalType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TargetsType {
+    #[serde(rename = "Target")]
+    pub tgt_target: Vec<TgtTarget>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

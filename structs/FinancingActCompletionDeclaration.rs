@@ -10,6 +10,12 @@ pub struct FinancingActProjectCompleted {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingActCompletionDeclaration {
+    #[serde(flatten)]
+    pub financing_act_completion_declaration: FinancingActCompletionDeclarationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ExtraFinancingApplication {
     #[serde(flatten)]
     pub extra_financing_application: CoYesNoType,
@@ -21,10 +27,10 @@ pub struct CompletionDataAndSubsidy {
     pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingActCompletionDeclaration {
-    #[serde(flatten)]
-    pub financing_act_completion_declaration: FinancingActCompletionDeclarationType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompletionDataAndSubsidyType {
+    #[serde(rename = "FinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_completion_stands: Option<FacFinancingActCompletionStands>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -95,11 +101,5 @@ pub struct PartOfProjectType {
 pub struct PartsOfProjectType {
     #[serde(rename = "PartOfProject")]
     pub part_of_project: Vec<PartOfProjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompletionDataAndSubsidyType {
-    #[serde(rename = "FinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_completion_stands: Option<FacFinancingActCompletionStands>,
 }
 

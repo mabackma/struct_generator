@@ -4,27 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementNS {
+pub struct MessageType {
     #[serde(flatten)]
-    pub key_element_n_s: CoString500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AdditionalInfo {
-    #[serde(flatten)]
-    pub additional_info: CoString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessageData {
-    #[serde(flatten)]
-    pub error_message_data: ErrorMessageDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReplyCode {
-    #[serde(flatten)]
-    pub reply_code: CoReplyCodeType,
+    pub message_type: CoMessageType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +16,39 @@ pub struct ErrorMessages {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct KeyElementNS {
+    #[serde(flatten)]
+    pub key_element_n_s: CoString500Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ErrorMessage {
+    #[serde(flatten)]
+    pub error_message: CoString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ErrorCode {
+    #[serde(flatten)]
+    pub error_code: CoString25Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Acceptance {
     #[serde(flatten)]
     pub acceptance: CoAcceptanceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KeyInfoAsText {
+    #[serde(flatten)]
+    pub key_info_as_text: CoString2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ReplyCode {
+    #[serde(flatten)]
+    pub reply_code: CoReplyCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -52,27 +64,15 @@ pub struct RegistrationId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorCode {
+pub struct ErrorMessageData {
     #[serde(flatten)]
-    pub error_code: CoString25Type,
+    pub error_message_data: ErrorMessageDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyInfoAsText {
+pub struct KeyElementName {
     #[serde(flatten)]
-    pub key_info_as_text: CoString2000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MessageType {
-    #[serde(flatten)]
-    pub message_type: CoMessageType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreMessageReference {
-    #[serde(flatten)]
-    pub forest_centre_message_reference: CoReferenceType,
+    pub key_element_name: CoString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -82,55 +82,15 @@ pub struct ReferenceType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ArrivalDate {
-    #[serde(flatten)]
-    pub arrival_date: CoDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ForestCentreReply {
     #[serde(flatten)]
     pub forest_centre_reply: ForestCentreReplyType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessage {
-    #[serde(flatten)]
-    pub error_message: CoString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementName {
-    #[serde(flatten)]
-    pub key_element_name: CoString200Type,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreReplyType {
-    #[serde(rename = "@schemaPackageVersion")]
-    pub schema_package_version: ForestDataStandardSchemaPackageVersionType,
-    #[serde(rename = "@schemaPackageSubversion")]
-    pub schema_package_subversion: ForestDataStandardSchemaPackageSubversionType,
-    #[serde(rename = "@schemaPackageVersionDate")]
-    pub schema_package_version_date: DateType,
-    #[serde(rename = "TimeStamp")]
-    pub time_stamp: CoTimeStampType,
-    #[serde(rename = "Acceptance")]
-    pub acceptance: CoAcceptanceType,
-    #[serde(rename = "ReplyCode")]
-    pub reply_code: CoReplyCodeType,
-    #[serde(rename = "MessageType")]
-    pub message_type: CoMessageType,
-    #[serde(rename = "ForestCentreMessageReference", skip_serializing_if = "Option::is_none")]
-    pub forest_centre_message_reference: Option<CoReferenceType>,
-    #[serde(rename = "ArrivalDate", skip_serializing_if = "Option::is_none")]
-    pub arrival_date: Option<CoDateType>,
-    #[serde(rename = "RegistrationId", skip_serializing_if = "Option::is_none")]
-    pub registration_id: Option<CoReferenceType>,
-    #[serde(rename = "ErrorMessages", skip_serializing_if = "Option::is_none")]
-    pub error_messages: Option<ErrorMessagesType>,
-    #[serde(rename = "AdditionalInfo", skip_serializing_if = "Option::is_none")]
-    pub additional_info: Option<CoString1000Type>,
+pub struct ErrorMessagesType {
+    #[serde(rename = "ErrorMessageData")]
+    pub error_message_data: Vec<ErrorMessageDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -160,8 +120,30 @@ pub struct EstateOwnerType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessagesType {
-    #[serde(rename = "ErrorMessageData")]
-    pub error_message_data: Vec<ErrorMessageDataType>,
+pub struct ForestCentreReplyType {
+    #[serde(rename = "@schemaPackageVersion")]
+    pub schema_package_version: ForestDataStandardSchemaPackageVersionType,
+    #[serde(rename = "@schemaPackageSubversion")]
+    pub schema_package_subversion: ForestDataStandardSchemaPackageSubversionType,
+    #[serde(rename = "@schemaPackageVersionDate")]
+    pub schema_package_version_date: DateType,
+    #[serde(rename = "TimeStamp")]
+    pub time_stamp: CoTimeStampType,
+    #[serde(rename = "Acceptance")]
+    pub acceptance: CoAcceptanceType,
+    #[serde(rename = "ReplyCode")]
+    pub reply_code: CoReplyCodeType,
+    #[serde(rename = "MessageType")]
+    pub message_type: CoMessageType,
+    #[serde(rename = "ForestCentreMessageReference", skip_serializing_if = "Option::is_none")]
+    pub forest_centre_message_reference: Option<CoReferenceType>,
+    #[serde(rename = "ArrivalDate", skip_serializing_if = "Option::is_none")]
+    pub arrival_date: Option<CoDateType>,
+    #[serde(rename = "RegistrationId", skip_serializing_if = "Option::is_none")]
+    pub registration_id: Option<CoReferenceType>,
+    #[serde(rename = "ErrorMessages", skip_serializing_if = "Option::is_none")]
+    pub error_messages: Option<ErrorMessagesType>,
+    #[serde(rename = "AdditionalInfo", skip_serializing_if = "Option::is_none")]
+    pub additional_info: Option<CoString1000Type>,
 }
 

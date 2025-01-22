@@ -4,6 +4,18 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteHarvestingQualityControlManual {
+    #[serde(flatten)]
+    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasurementId {
+    #[serde(flatten)]
+    pub measurement_id: BdtPositiveIntegerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Temperature {
     #[serde(flatten)]
     pub temperature: i32,
@@ -16,27 +28,15 @@ pub struct Measurement {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Measurements {
-    #[serde(flatten)]
-    pub measurements: MeasurementsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurementId {
-    #[serde(flatten)]
-    pub measurement_id: BdtPositiveIntegerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ControlLogCount {
     #[serde(flatten)]
     pub control_log_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteHarvestingQualityControlManual {
+pub struct Measurements {
     #[serde(flatten)]
-    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
+    pub measurements: MeasurementsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

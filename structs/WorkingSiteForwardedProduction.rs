@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LoadCount {
+pub struct Load {
     #[serde(flatten)]
-    pub load_count: u32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SendDate {
-    #[serde(flatten)]
-    pub send_date: BdtTimeStampType,
+    pub load: LoadType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,15 +16,9 @@ pub struct PartitialLoadId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteForwardedProduction {
+pub struct MachineApplicationVersion {
     #[serde(flatten)]
-    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Load {
-    #[serde(flatten)]
-    pub load: LoadType,
+    pub machine_application_version: BdtString100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,9 +28,45 @@ pub struct PartitialLoad {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct MeasurementDate {
+    #[serde(flatten)]
+    pub measurement_date: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SendDate {
+    #[serde(flatten)]
+    pub send_date: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ForwardingDistance {
     #[serde(flatten)]
     pub forwarding_distance: u32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadCount {
+    #[serde(flatten)]
+    pub load_count: u32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadGreenMass {
+    #[serde(flatten)]
+    pub load_green_mass: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FileName {
+    #[serde(flatten)]
+    pub file_name: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteForwardedProduction {
+    #[serde(flatten)]
+    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -52,9 +76,9 @@ pub struct LoadVolume {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LoadGreenMass {
+pub struct ForestOwner {
     #[serde(flatten)]
-    pub load_green_mass: BdtDecimal3FractionDigitsType,
+    pub forest_owner: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -16,9 +16,19 @@ pub struct MessageTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceIdType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct BusinessAcceptanceActorType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AdditionalInformationType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -49,15 +59,5 @@ pub struct BusinessAcceptanceType {
 pub struct BusinessMessageTimeStampType {
     #[serde(flatten)]
     pub base: CoTimeStampType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalInformationType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceIdType {
-    pub base: String,
 }
 

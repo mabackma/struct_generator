@@ -10,21 +10,9 @@ pub struct QualityAttachment {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DestinationStorage {
-    #[serde(flatten)]
-    pub destination_storage: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Version {
     #[serde(flatten)]
     pub version: BdtString10Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ModificationDate {
-    #[serde(flatten)]
-    pub modification_date: BdtDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

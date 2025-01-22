@@ -4,15 +4,33 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct TechnicalContactPerson {
+    #[serde(flatten)]
+    pub technical_contact_person: TechnicalContactPersonType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferExpirationDate {
+    #[serde(flatten)]
+    pub offer_expiration_date: OfferExpirationDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OfferBusinessSender {
     #[serde(flatten)]
     pub offer_business_sender: OfferBusinessSenderType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OfferText {
+pub struct OfferDate {
     #[serde(flatten)]
-    pub offer_text: OfferTextType,
+    pub offer_date: OfferDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferText {
+    #[serde(flatten)]
+    pub call_for_offer_text: WtcoCallForOfferTextType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +40,21 @@ pub struct Offer {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OfferDate {
+pub struct CallForOfferBusinessSender {
     #[serde(flatten)]
-    pub offer_date: OfferDateType,
+    pub call_for_offer_business_sender: WtcoCallForOfferBusinessSenderType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWoodTradeInfo {
+    #[serde(flatten)]
+    pub call_for_offer_wood_trade_info: WtcoCallForOfferWoodTradeInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferText {
+    #[serde(flatten)]
+    pub offer_text: OfferTextType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -60,7 +90,7 @@ pub struct OfferType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferBusinessSenderType {
+pub struct TechnicalContactPersonType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
 }
@@ -72,15 +102,15 @@ pub struct OfferExpirationDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OfferTextType {
+pub struct OfferBusinessSenderType {
     #[serde(flatten)]
-    pub base: CoString1500Type,
+    pub base: CiContactInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TechnicalContactPersonType {
+pub struct OfferTextType {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
+    pub base: CoString1500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

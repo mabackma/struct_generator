@@ -39,7 +39,7 @@ fn main() {
 
     remove_duplicates_from_element_definitions(&mut element_definitions, &structs);
 
-    get_field_types_from_definitions(&element_definitions, &mut structs);
+    replace_field_types_from_definitions(&element_definitions, &mut structs);
 
     remove_prefixes_from_missing_types(&mut element_definitions, &structs, prefixes);
 
@@ -278,7 +278,8 @@ fn remove_prefixes_from_missing_types(
     *element_definitions = new_definitions;
 }
 
-fn get_field_types_from_definitions(
+
+fn replace_field_types_from_definitions(
     element_definitions: &HashMap<String, String>,
     structs: &mut HashMap<String, XMLStruct>
 ) {
@@ -336,7 +337,7 @@ fn print_missing_fields(
             if !structs.contains_key(&f_type) && !element_definitions.contains_key(&f_type) {
                 
                 if !RUST_TYPES.contains(&f_type.as_str()) {
-                    println!("STRUCT {} -> {}: {}", s.0, f.name, f_type);
+                    println!("STRUCT {} HAS MISSING TYPE FOR FIELD: {} -> {}", s.0, f.name, f_type);
                 }
             }
         }
