@@ -10,18 +10,6 @@ pub struct WorkingSite {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSites {
-    #[serde(flatten)]
-    pub working_sites: WorkingSitesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TeamName {
-    #[serde(flatten)]
-    pub team_name: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ResourceSchedule {
     #[serde(flatten)]
     pub resource_schedule: ResourceScheduleType,
@@ -33,18 +21,16 @@ pub struct ForwarderDelay {
     pub forwarder_delay: BdtPositiveInteger2digitsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourcesType {
-    #[serde(rename = "Resource")]
-    pub resource: Vec<ResourceDataType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSites {
+    #[serde(flatten)]
+    pub working_sites: WorkingSitesType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceScheduleType {
-    #[serde(rename = "ContractorId")]
-    pub contractor_id: String20Type,
-    #[serde(rename = "Resources")]
-    pub resources: ResourcesType,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TeamName {
+    #[serde(flatten)]
+    pub team_name: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -68,6 +54,14 @@ pub struct WorkingSitesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceScheduleType {
+    #[serde(rename = "ContractorId")]
+    pub contractor_id: String20Type,
+    #[serde(rename = "Resources")]
+    pub resources: ResourcesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteType {
     #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
     pub service_buyer_id: Option<String20Type>,
@@ -83,5 +77,11 @@ pub struct WorkingSiteType {
     pub end_date: DateType,
     #[serde(rename = "ForwarderDelay", skip_serializing_if = "Option::is_none")]
     pub forwarder_delay: Option<PositiveInteger2digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourcesType {
+    #[serde(rename = "Resource")]
+    pub resource: Vec<ResourceDataType>,
 }
 

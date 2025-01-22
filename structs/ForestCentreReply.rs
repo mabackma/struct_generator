@@ -4,39 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreMessageReference {
+pub struct ErrorMessages {
     #[serde(flatten)]
-    pub forest_centre_message_reference: CoReferenceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Acceptance {
-    #[serde(flatten)]
-    pub acceptance: CoAcceptanceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KeyInfoAsText {
-    #[serde(flatten)]
-    pub key_info_as_text: CoString2000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AdditionalInfo {
-    #[serde(flatten)]
-    pub additional_info: CoString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReferenceType {
-    #[serde(flatten)]
-    pub reference_type: CoForestCentreMessageReferenceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreReply {
-    #[serde(flatten)]
-    pub forest_centre_reply: ForestCentreReplyType,
+    pub error_messages: ErrorMessagesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,9 +16,9 @@ pub struct RegistrationId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementName {
+pub struct MessageType {
     #[serde(flatten)]
-    pub key_element_name: CoString200Type,
+    pub message_type: CoMessageType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,33 +28,21 @@ pub struct KeyElementNS {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessage {
+pub struct KeyElementName {
     #[serde(flatten)]
-    pub error_message: CoString1000Type,
+    pub key_element_name: CoString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorCode {
+pub struct Acceptance {
     #[serde(flatten)]
-    pub error_code: CoString25Type,
+    pub acceptance: CoAcceptanceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ArrivalDate {
+pub struct ReferenceType {
     #[serde(flatten)]
-    pub arrival_date: CoDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementId {
-    #[serde(flatten)]
-    pub key_element_id: CoIdStringNotEmptyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReplyCode {
-    #[serde(flatten)]
-    pub reply_code: CoReplyCodeType,
+    pub reference_type: CoForestCentreMessageReferenceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -94,21 +52,59 @@ pub struct ErrorMessageData {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MessageType {
+pub struct KeyElementId {
     #[serde(flatten)]
-    pub message_type: CoMessageType,
+    pub key_element_id: CoIdStringNotEmptyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessages {
+pub struct ErrorCode {
     #[serde(flatten)]
-    pub error_messages: ErrorMessagesType,
+    pub error_code: CoString25Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KeyInfoAsText {
+    #[serde(flatten)]
+    pub key_info_as_text: CoString2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ErrorMessage {
+    #[serde(flatten)]
+    pub error_message: CoString1000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ReplyCode {
+    #[serde(flatten)]
+    pub reply_code: CoReplyCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestCentreReply {
+    #[serde(flatten)]
+    pub forest_centre_reply: ForestCentreReplyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct EstateOwnerType {
-    #[serde(rename = "NameAndOrganizationGroup")]
-    pub ci_name_and_organization_group: Vec<CiNameAndOrganizationGroup>,
+pub struct ErrorMessageDataType {
+    #[serde(rename = "ReferenceType", skip_serializing_if = "Option::is_none")]
+    pub reference_type: Option<CoForestCentreMessageReferenceType>,
+    #[serde(rename = "Reference", skip_serializing_if = "Option::is_none")]
+    pub reference: Option<CoReferenceType>,
+    #[serde(rename = "KeyElementNS", skip_serializing_if = "Option::is_none")]
+    pub key_element_n_s: Option<CoString500Type>,
+    #[serde(rename = "KeyElementName", skip_serializing_if = "Option::is_none")]
+    pub key_element_name: Option<CoString200Type>,
+    #[serde(rename = "KeyElementId", skip_serializing_if = "Option::is_none")]
+    pub key_element_id: Option<CoIdStringNotEmptyType>,
+    #[serde(rename = "KeyInfoAsText", skip_serializing_if = "Option::is_none")]
+    pub key_info_as_text: Option<CoString2000Type>,
+    #[serde(rename = "ErrorCode")]
+    pub error_code: CoString25Type,
+    #[serde(rename = "ErrorMessage")]
+    pub error_message: CoString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -146,22 +142,8 @@ pub struct ForestCentreReplyType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessageDataType {
-    #[serde(rename = "ReferenceType", skip_serializing_if = "Option::is_none")]
-    pub reference_type: Option<CoForestCentreMessageReferenceType>,
-    #[serde(rename = "Reference", skip_serializing_if = "Option::is_none")]
-    pub reference: Option<CoReferenceType>,
-    #[serde(rename = "KeyElementNS", skip_serializing_if = "Option::is_none")]
-    pub key_element_n_s: Option<CoString500Type>,
-    #[serde(rename = "KeyElementName", skip_serializing_if = "Option::is_none")]
-    pub key_element_name: Option<CoString200Type>,
-    #[serde(rename = "KeyElementId", skip_serializing_if = "Option::is_none")]
-    pub key_element_id: Option<CoIdStringNotEmptyType>,
-    #[serde(rename = "KeyInfoAsText", skip_serializing_if = "Option::is_none")]
-    pub key_info_as_text: Option<CoString2000Type>,
-    #[serde(rename = "ErrorCode")]
-    pub error_code: CoString25Type,
-    #[serde(rename = "ErrorMessage")]
-    pub error_message: CoString1000Type,
+pub struct EstateOwnerType {
+    #[serde(rename = "NameAndOrganizationGroup")]
+    pub ci_name_and_organization_group: Vec<CiNameAndOrganizationGroup>,
 }
 

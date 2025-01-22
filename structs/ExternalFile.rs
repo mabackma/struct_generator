@@ -4,9 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ExternalFile {
+pub struct FileFormat {
     #[serde(flatten)]
-    pub external_file: ExternalFileType,
+    pub file_format: BdtString5Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,9 +16,9 @@ pub struct Label {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FileFormat {
+pub struct ExternalFile {
     #[serde(flatten)]
-    pub file_format: BdtString5Type,
+    pub external_file: ExternalFileType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

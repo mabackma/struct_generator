@@ -4,21 +4,21 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OperatorId {
+pub struct Orientation {
     #[serde(flatten)]
-    pub operator_id: BdtString20Type,
+    pub orientation: OrientationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ScaledMass {
+    #[serde(flatten)]
+    pub scaled_mass: BdtDecimal1FractionDigitType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Calibration {
     #[serde(flatten)]
     pub calibration: CalibrationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ControlReferenceMass {
-    #[serde(flatten)]
-    pub control_reference_mass: BdtDecimal1FractionDigitType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,12 +34,6 @@ pub struct ScaleData {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Orientation {
-    #[serde(flatten)]
-    pub orientation: OrientationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct CalibrationAdjustment {
     #[serde(flatten)]
     pub calibration_adjustment: BdtPositiveInteger3digitsType,
@@ -52,15 +46,17 @@ pub struct WorkingSiteForwardingQualityControl {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurementDate {
+pub struct ControlReferenceMass {
     #[serde(flatten)]
-    pub measurement_date: BdtTimeStampType,
+    pub control_reference_mass: BdtDecimal1FractionDigitType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ScaledMass {
-    #[serde(flatten)]
-    pub scaled_mass: BdtDecimal1FractionDigitType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CalibrationType {
+    #[serde(rename = "CalibrationDate")]
+    pub calibration_date: TimeStampType,
+    #[serde(rename = "CalibrationAdjustment")]
+    pub calibration_adjustment: PositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -99,14 +95,6 @@ pub struct ScaleDataType {
     pub scaled_mass: Decimal1FractionDigitType,
     #[serde(rename = "Orientation")]
     pub orientation: OrientationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CalibrationType {
-    #[serde(rename = "CalibrationDate")]
-    pub calibration_date: TimeStampType,
-    #[serde(rename = "CalibrationAdjustment")]
-    pub calibration_adjustment: PositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

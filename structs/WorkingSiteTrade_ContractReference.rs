@@ -4,9 +4,21 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ContractWorkingSites {
+    #[serde(flatten)]
+    pub contract_working_sites: ContractWorkingSitesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ContractWorkingSiteDetails {
     #[serde(flatten)]
     pub contract_working_site_details: ContractWorkingSiteDetailsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContractBeginningDate {
+    #[serde(flatten)]
+    pub contract_beginning_date: ContractBeginningDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,9 +28,15 @@ pub struct ContractText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractWorkingSites {
+pub struct ContractId {
     #[serde(flatten)]
-    pub contract_working_sites: ContractWorkingSitesType,
+    pub contract_id: ContractIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Contract {
+    #[serde(flatten)]
+    pub contract: ContractType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -27,10 +45,16 @@ pub struct ContractEndingDate {
     pub contract_ending_date: ContractEndingDateType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractBeginningDate {
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractWorkingSitesType {
+    #[serde(rename = "ContractWorkingSiteDetails")]
+    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractEndingDateType {
     #[serde(flatten)]
-    pub contract_beginning_date: ContractBeginningDateType,
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -61,18 +85,6 @@ pub struct ContractType {
 pub struct ContractBeginningDateType {
     #[serde(flatten)]
     pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractEndingDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractWorkingSitesType {
-    #[serde(rename = "ContractWorkingSiteDetails")]
-    pub contract_working_site_details: Vec<ContractWorkingSiteDetailsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

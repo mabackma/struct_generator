@@ -4,21 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardingEstimate {
-    #[serde(flatten)]
-    pub forwarding_estimate: ForwardingEstimateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Loads {
     #[serde(flatten)]
     pub loads: BdtPositiveInteger3digitsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForwardingEstimate {
+    #[serde(flatten)]
+    pub forwarding_estimate: ForwardingEstimateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -53,5 +47,11 @@ pub struct ForwardingEstimateType {
     pub start_time: TimeStampType,
     #[serde(rename = "Assortments")]
     pub assortments: AssortmentsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 

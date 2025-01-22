@@ -4,12 +4,6 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditBioMassForwarding {
-    #[serde(flatten)]
-    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ForestEnergySuitableText {
     #[serde(flatten)]
     pub forest_energy_suitable_text: BdtString200Type,
@@ -22,18 +16,6 @@ pub struct BioMassQualityText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RemainingBiomassText {
-    #[serde(flatten)]
-    pub remaining_biomass_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BioMassQuality {
-    #[serde(flatten)]
-    pub bio_mass_quality: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct RemainingBiomass {
     #[serde(flatten)]
     pub remaining_biomass: BdtYesNoType,
@@ -43,6 +25,24 @@ pub struct RemainingBiomass {
 pub struct ForestEnergySuitable {
     #[serde(flatten)]
     pub forest_energy_suitable: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RemainingBiomassText {
+    #[serde(flatten)]
+    pub remaining_biomass_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteFinalAuditBioMassForwarding {
+    #[serde(flatten)]
+    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BioMassQuality {
+    #[serde(flatten)]
+    pub bio_mass_quality: BdtYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

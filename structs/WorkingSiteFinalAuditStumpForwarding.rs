@@ -9,6 +9,30 @@ pub struct WorkingSiteFinalAuditStumpForwarding {
     pub working_site_final_audit_stump_forwarding: WorkingSiteFinalAuditStumpForwardingType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpTidinessText {
+    #[serde(flatten)]
+    pub stump_tidiness_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpCuttingAsInstructed {
+    #[serde(flatten)]
+    pub stump_cutting_as_instructed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpTidiness {
+    #[serde(flatten)]
+    pub stump_tidiness: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpCuttingAsInstructedText {
+    #[serde(flatten)]
+    pub stump_cutting_as_instructed_text: BdtString200Type,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AuditionType {
     #[serde(rename = "FinalAuditType", skip_serializing_if = "Option::is_none")]

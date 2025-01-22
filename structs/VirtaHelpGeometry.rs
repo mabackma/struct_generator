@@ -4,21 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LineGeometry {
-    #[serde(flatten)]
-    pub line_geometry: LineGeometryType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct HelpGeometryType {
     #[serde(flatten)]
     pub help_geometry_type: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Id {
+pub struct LineGeometry {
     #[serde(flatten)]
-    pub id: String,
+    pub line_geometry: LineGeometryType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
