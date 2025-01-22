@@ -16,17 +16,15 @@ pub struct Sawinghours {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Hours {
+    #[serde(flatten)]
+    pub hours: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Minutes {
     #[serde(flatten)]
     pub minutes: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SawinghoursDataType {
-    #[serde(rename = "Hours")]
-    pub hours: PositiveInteger2digitsType,
-    #[serde(rename = "Minutes")]
-    pub minutes: PositiveInteger2digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -47,5 +45,13 @@ pub struct WorkingSiteWorkTimeType {
     pub sawinghours: Option<SawinghoursDataType>,
     #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
     pub info_text: Option<String200Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SawinghoursDataType {
+    #[serde(rename = "Hours")]
+    pub hours: PositiveInteger2digitsType,
+    #[serde(rename = "Minutes")]
+    pub minutes: PositiveInteger2digitsType,
 }
 

@@ -4,45 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceType {
+pub struct WorkingSite {
     #[serde(flatten)]
-    pub resource_type: BdtResourceTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Resource {
-    #[serde(flatten)]
-    pub resource: ResourceDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForwarderDelay {
-    #[serde(flatten)]
-    pub forwarder_delay: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteNumber {
-    #[serde(flatten)]
-    pub working_site_number: WctWorkingSiteNumberType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Resources {
-    #[serde(flatten)]
-    pub resources: ResourcesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StanfordResourceId {
-    #[serde(flatten)]
-    pub stanford_resource_id: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerResourceId {
-    #[serde(flatten)]
-    pub service_buyer_resource_id: BdtString20Type,
+    pub working_site: WorkingSiteType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -52,21 +16,27 @@ pub struct WorkingSites {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceSchedule {
-    #[serde(flatten)]
-    pub resource_schedule: ResourceScheduleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct TeamName {
     #[serde(flatten)]
     pub team_name: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSite {
+pub struct ResourceSchedule {
     #[serde(flatten)]
-    pub working_site: WorkingSiteType,
+    pub resource_schedule: ResourceScheduleType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForwarderDelay {
+    #[serde(flatten)]
+    pub forwarder_delay: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourcesType {
+    #[serde(rename = "Resource")]
+    pub resource: Vec<ResourceDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -75,12 +45,6 @@ pub struct ResourceScheduleType {
     pub contractor_id: String20Type,
     #[serde(rename = "Resources")]
     pub resources: ResourcesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourcesType {
-    #[serde(rename = "Resource")]
-    pub resource: Vec<ResourceDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

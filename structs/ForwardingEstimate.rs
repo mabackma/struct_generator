@@ -4,27 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentId {
+pub struct ForwardingEstimate {
     #[serde(flatten)]
-    pub assortment_id: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StartTime {
-    #[serde(flatten)]
-    pub start_time: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StorageId {
-    #[serde(flatten)]
-    pub storage_id: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Day {
-    #[serde(flatten)]
-    pub day: BdtDateType,
+    pub forwarding_estimate: ForwardingEstimateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -33,10 +15,10 @@ pub struct Loads {
     pub loads: BdtPositiveInteger3digitsType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardingEstimate {
-    #[serde(flatten)]
-    pub forwarding_estimate: ForwardingEstimateType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -55,12 +37,6 @@ pub struct AssortmentDataType {
     pub loads: PositiveInteger3digitsType,
     #[serde(rename = "Day")]
     pub day: DateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

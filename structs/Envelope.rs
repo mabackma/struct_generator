@@ -10,6 +10,14 @@ pub struct Envelope {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct EnvelopeType {
+    #[serde(rename = "Header")]
+    pub header: HeaderType,
+    #[serde(rename = "Message")]
+    pub message: PayloadType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PayloadType {
     #[serde(rename = "Acknowledge")]
     pub acknowledge: AcknowledgeType,
@@ -113,13 +121,5 @@ pub struct PayloadType {
     pub working_site_work_load: WorkingSiteWorkLoadType,
     #[serde(rename = "WorkingSiteWorkTime")]
     pub working_site_work_time: WorkingSiteWorkTimeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EnvelopeType {
-    #[serde(rename = "Header")]
-    pub header: HeaderType,
-    #[serde(rename = "Message")]
-    pub message: PayloadType,
 }
 

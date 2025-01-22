@@ -10,9 +10,9 @@ pub struct ParentObjectType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ParentObjectId {
+pub struct ParentObject {
     #[serde(flatten)]
-    pub parent_object_id: CoIdStringNotEmptyType,
+    pub parent_object: ParentObjectType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,9 +28,9 @@ pub struct GeometryObjects {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ParentObject {
+pub struct ForestRealizationData {
     #[serde(flatten)]
-    pub parent_object: ParentObjectType,
+    pub forest_realization_data: ForestRealizationDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,28 +40,9 @@ pub struct GeometryObject {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestRealizationData {
+pub struct ParentObjectId {
     #[serde(flatten)]
-    pub forest_realization_data: ForestRealizationDataType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GeometryObjectsType {
-    #[serde(rename = "GeometryObject")]
-    pub geometry_object: Vec<GeometryObjectType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectType {
-    #[serde(rename = "ParentObjectType")]
-    pub parent_object_type: ObjectTypeType,
-    #[serde(rename = "ParentObjectId")]
     pub parent_object_id: CoIdStringNotEmptyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ObjectTypeType {
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -79,9 +60,11 @@ pub struct ObjectGeometryType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ParentObjectsType {
-    #[serde(rename = "ParentObject")]
-    pub parent_object: Vec<ParentObjectType>,
+pub struct ParentObjectType {
+    #[serde(rename = "ParentObjectType")]
+    pub parent_object_type: ObjectTypeType,
+    #[serde(rename = "ParentObjectId")]
+    pub parent_object_id: CoIdStringNotEmptyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -102,6 +85,23 @@ pub struct GeometryObjectType {
     pub op_operations: Option<OpOperations>,
     #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
     pub st_special_features: Option<StSpecialFeatures>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParentObjectsType {
+    #[serde(rename = "ParentObject")]
+    pub parent_object: Vec<ParentObjectType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ObjectTypeType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GeometryObjectsType {
+    #[serde(rename = "GeometryObject")]
+    pub geometry_object: Vec<GeometryObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

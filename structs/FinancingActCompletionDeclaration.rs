@@ -4,21 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingActProjectCompleted {
-    #[serde(flatten)]
-    pub financing_act_project_completed: CoYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OtherPublicSubstitute {
-    #[serde(flatten)]
-    pub other_public_substitute: CoOtherPublicSubstituteType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PartOfProject {
     #[serde(flatten)]
     pub part_of_project: PartOfProjectType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FinancingActProjectCompleted {
+    #[serde(flatten)]
+    pub financing_act_project_completed: CoYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +28,9 @@ pub struct FinancingActCompletionDeclaration {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CompletionDataAndSubsidy {
+pub struct OtherPublicSubstitute {
     #[serde(flatten)]
-    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
+    pub other_public_substitute: CoOtherPublicSubstituteType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -45,10 +39,10 @@ pub struct PartsOfProject {
     pub parts_of_project: PartsOfProjectType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompletionDataAndSubsidyType {
-    #[serde(rename = "FinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_completion_stands: Option<FacFinancingActCompletionStands>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CompletionDataAndSubsidy {
+    #[serde(flatten)]
+    pub completion_data_and_subsidy: CompletionDataAndSubsidyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -66,9 +60,9 @@ pub struct PartOfProjectType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
+pub struct CompletionDataAndSubsidyType {
+    #[serde(rename = "FinancingActCompletionStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_completion_stands: Option<FacFinancingActCompletionStands>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -119,5 +113,11 @@ pub struct FinancingActCompletionDeclarationType {
     pub parts_of_project: PartsOfProjectType,
     #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
     pub fac_documents: Option<FacDocuments>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
 }
 

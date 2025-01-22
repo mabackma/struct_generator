@@ -4,9 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Service {
+pub struct Services {
     #[serde(flatten)]
-    pub service: OrganizationServiceType,
+    pub services: ServicesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,21 +16,9 @@ pub struct Organization {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Role {
+pub struct Service {
     #[serde(flatten)]
-    pub role: OrganizationRoleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Services {
-    #[serde(flatten)]
-    pub services: ServicesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Organizations {
-    #[serde(flatten)]
-    pub organizations: OrganizationsType,
+    pub service: OrganizationServiceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,10 +27,21 @@ pub struct Roles {
     pub roles: RolesType,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Role {
+    #[serde(flatten)]
+    pub role: OrganizationRoleType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Organizations {
+    #[serde(flatten)]
+    pub organizations: OrganizationsType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RolesType {
-    #[serde(rename = "Role")]
-    pub role: Vec<OrganizationRoleType>,
+pub struct OrganizationServiceType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -66,11 +65,6 @@ pub struct ServicesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OrganizationsType {
     #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
     pub organization: Option<Vec<OrganizationType>>,
@@ -79,5 +73,11 @@ pub struct OrganizationsType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OrganizationRoleType {
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RolesType {
+    #[serde(rename = "Role")]
+    pub role: Vec<OrganizationRoleType>,
 }
 

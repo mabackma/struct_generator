@@ -4,9 +4,51 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct NationalityFreeText {
+pub struct A1 {
     #[serde(flatten)]
-    pub nationality_free_text: BdtString50Type,
+    pub a1: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BirthDate {
+    #[serde(flatten)]
+    pub birth_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TrainingFreeText {
+    #[serde(flatten)]
+    pub training_free_text: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TrainingId {
+    #[serde(flatten)]
+    pub training_id: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Machine {
+    #[serde(flatten)]
+    pub machine: BdtMachineTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Email {
+    #[serde(flatten)]
+    pub email: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct E101 {
+    #[serde(flatten)]
+    pub e101: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Telephone {
+    #[serde(flatten)]
+    pub telephone: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,21 +64,9 @@ pub struct WorkingContract {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Training {
+pub struct OwnerContractorId {
     #[serde(flatten)]
-    pub training: TrainingDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TrainingFreeText {
-    #[serde(flatten)]
-    pub training_free_text: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Machines {
-    #[serde(flatten)]
-    pub machines: MachinesType,
+    pub owner_contractor_id: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,63 +76,9 @@ pub struct TrainingDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AdditionalName {
-    #[serde(flatten)]
-    pub additional_name: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Enddate {
-    #[serde(flatten)]
-    pub enddate: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UserRole {
-    #[serde(flatten)]
-    pub user_role: BdtUserRoleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TrainingId {
-    #[serde(flatten)]
-    pub training_id: BdtPositiveInteger4digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Languages {
-    #[serde(flatten)]
-    pub languages: LanguagesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ICEName {
     #[serde(flatten)]
     pub i_c_e_name: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Trainings {
-    #[serde(flatten)]
-    pub trainings: TrainingsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ICETelephone {
-    #[serde(flatten)]
-    pub i_c_e_telephone: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Active {
-    #[serde(flatten)]
-    pub active: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct A1 {
-    #[serde(flatten)]
-    pub a1: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -112,27 +88,33 @@ pub struct UserName {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Training {
+    #[serde(flatten)]
+    pub training: TrainingDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ICETelephone {
+    #[serde(flatten)]
+    pub i_c_e_telephone: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Machines {
+    #[serde(flatten)]
+    pub machines: MachinesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Active {
+    #[serde(flatten)]
+    pub active: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Startdate {
     #[serde(flatten)]
     pub startdate: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UserRoles {
-    #[serde(flatten)]
-    pub user_roles: UserRolesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct E101 {
-    #[serde(flatten)]
-    pub e101: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UserInformation {
-    #[serde(flatten)]
-    pub user_information: UserInformationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -142,67 +124,57 @@ pub struct NationalityCode {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Machine {
+pub struct Contractors {
     #[serde(flatten)]
-    pub machine: BdtMachineTypeType,
+    pub contractors: WctContractorsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BirthDate {
+pub struct UserRoles {
     #[serde(flatten)]
-    pub birth_date: BdtDateType,
+    pub user_roles: UserRolesType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EmploymentDataType {
-    #[serde(rename = "Startdate")]
-    pub startdate: DateType,
-    #[serde(rename = "Enddate", skip_serializing_if = "Option::is_none")]
-    pub enddate: Option<DateType>,
-    #[serde(rename = "WorkingContract")]
-    pub working_contract: YesNoType,
-    #[serde(rename = "Active")]
-    pub active: YesNoType,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Languages {
+    #[serde(flatten)]
+    pub languages: LanguagesType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
-    pub work_code: Option<Vec<WorkCodeType>>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Trainings {
+    #[serde(flatten)]
+    pub trainings: TrainingsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct UserRolesType {
-    #[serde(rename = "UserRole")]
-    pub user_role: Vec<UserRoleType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Enddate {
+    #[serde(flatten)]
+    pub enddate: BdtDateType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LanguagesType {
-    #[serde(rename = "Language")]
-    pub language: Vec<LanguageCode1Type>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct NationalityFreeText {
+    #[serde(flatten)]
+    pub nationality_free_text: BdtString50Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TrainingDataType {
-    #[serde(rename = "TrainingId")]
-    pub training_id: PositiveInteger4digitsType,
-    #[serde(rename = "TrainingFreeText", skip_serializing_if = "Option::is_none")]
-    pub training_free_text: Option<String50Type>,
-    #[serde(rename = "TrainingDate")]
-    pub training_date: DateType,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AdditionalName {
+    #[serde(flatten)]
+    pub additional_name: BdtString20Type,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeGroupsType {
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: Vec<WorkCodeGroupType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UserRole {
+    #[serde(flatten)]
+    pub user_role: BdtUserRoleType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MachinesType {
-    #[serde(rename = "Machine", skip_serializing_if = "Option::is_none")]
-    pub machine: Option<Vec<MachineTypeType>>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UserInformation {
+    #[serde(flatten)]
+    pub user_information: UserInformationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -264,14 +236,66 @@ pub struct UserInformationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ServiceTypesType {
-    #[serde(rename = "ServiceType")]
-    pub service_type: Vec<ServiceTypeType>,
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode", skip_serializing_if = "Option::is_none")]
+    pub work_code: Option<Vec<WorkCodeType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TrainingDataType {
+    #[serde(rename = "TrainingId")]
+    pub training_id: PositiveInteger4digitsType,
+    #[serde(rename = "TrainingFreeText", skip_serializing_if = "Option::is_none")]
+    pub training_free_text: Option<String50Type>,
+    #[serde(rename = "TrainingDate")]
+    pub training_date: DateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TrainingsType {
     #[serde(rename = "Training", skip_serializing_if = "Option::is_none")]
     pub training: Option<Vec<TrainingDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EmploymentDataType {
+    #[serde(rename = "Startdate")]
+    pub startdate: DateType,
+    #[serde(rename = "Enddate", skip_serializing_if = "Option::is_none")]
+    pub enddate: Option<DateType>,
+    #[serde(rename = "WorkingContract")]
+    pub working_contract: YesNoType,
+    #[serde(rename = "Active")]
+    pub active: YesNoType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeGroupsType {
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: Vec<WorkCodeGroupType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ServiceTypesType {
+    #[serde(rename = "ServiceType")]
+    pub service_type: Vec<ServiceTypeType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MachinesType {
+    #[serde(rename = "Machine", skip_serializing_if = "Option::is_none")]
+    pub machine: Option<Vec<MachineTypeType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LanguagesType {
+    #[serde(rename = "Language")]
+    pub language: Vec<LanguageCode1Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct UserRolesType {
+    #[serde(rename = "UserRole")]
+    pub user_role: Vec<UserRoleType>,
 }
 

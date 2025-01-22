@@ -4,27 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OrderId {
+pub struct Data {
     #[serde(flatten)]
-    pub order_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestingOrder {
-    #[serde(flatten)]
-    pub harvesting_order: HarvestingOrderType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OperationalRegion {
-    #[serde(flatten)]
-    pub operational_region: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Attachments {
-    #[serde(flatten)]
-    pub attachments: AttachmentsType,
+    pub data: Vec<u8>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +16,21 @@ pub struct ServiceBuyerArea {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Data {
+pub struct Code {
     #[serde(flatten)]
-    pub data: Vec<u8>,
+    pub code: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HarvestingOrder {
+    #[serde(flatten)]
+    pub harvesting_order: HarvestingOrderType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Unit {
+    #[serde(flatten)]
+    pub unit: BdtWorkCodeUnitType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -51,10 +45,22 @@ pub struct Attachment {
     pub attachment: AttachmentDataType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CodeGroup {
+    #[serde(flatten)]
+    pub code_group: BdtAssortmentGroupType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentId {
+    #[serde(flatten)]
+    pub assortment_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Attachments {
+    #[serde(flatten)]
+    pub attachments: AttachmentsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -82,6 +88,20 @@ pub struct AssortmentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "Data")]
+    pub data: Vec<u8>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct HarvestingOrderType {
     #[serde(rename = "ServiceBuyerId")]
     pub service_buyer_id: String20Type,
@@ -100,16 +120,8 @@ pub struct HarvestingOrderType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "Data")]
-    pub data: Vec<u8>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
 }
 

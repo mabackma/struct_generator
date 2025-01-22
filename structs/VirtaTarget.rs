@@ -4,9 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TargetAnnouncedAmount {
+pub struct BasePartNumber {
     #[serde(flatten)]
-    pub target_announced_amount: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
+    pub base_part_number: VirtaPartNumberType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,9 +16,9 @@ pub struct TargetId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct EstablishedPartNumber {
+pub struct TargetExtraInfo {
     #[serde(flatten)]
-    pub established_part_number: VirtaPartNumberType,
+    pub target_extra_info: VirtaExtraInfoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,9 +28,9 @@ pub struct TargetParts {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BasePartNumber {
+pub struct HabitatAdvertisement {
     #[serde(flatten)]
-    pub base_part_number: VirtaPartNumberType,
+    pub habitat_advertisement: VirtaHabitatAdvertisementType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,31 +40,27 @@ pub struct TargetNumber {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct HabitatAdvertisement {
-    #[serde(flatten)]
-    pub habitat_advertisement: VirtaHabitatAdvertisementType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Status2 {
     #[serde(flatten)]
     pub status2: CoChangeStateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TargetExtraInfo {
+pub struct EstablishedPartNumber {
     #[serde(flatten)]
-    pub target_extra_info: VirtaExtraInfoType,
+    pub established_part_number: VirtaPartNumberType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TargetAnnouncedAmount {
+    #[serde(flatten)]
+    pub target_announced_amount: CoPositiveDecimalMax4IntegralPartMax2FractionalPartType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaExtraInfoType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaPartNumberType {
-    pub base: String,
+pub struct VirtaHabitatAdvertisementType {
+    #[serde(flatten)]
+    pub base: CoVirtaHabitatAdvertisementType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -74,9 +70,8 @@ pub struct TargetPartsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct VirtaHabitatAdvertisementType {
-    #[serde(flatten)]
-    pub base: CoVirtaHabitatAdvertisementType,
+pub struct VirtaExtraInfoType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -101,5 +96,10 @@ pub struct TargetType {
     pub gml_polygon: Option<GmlPolygon>,
     #[serde(rename = "TargetParts", skip_serializing_if = "Option::is_none")]
     pub target_parts: Option<TargetPartsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct VirtaPartNumberType {
+    pub base: String,
 }
 

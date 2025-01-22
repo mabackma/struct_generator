@@ -43,6 +43,7 @@ pub static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "hexBinary" => "Vec<u8>",
     "anySimpleType" => "String",
     "DateYYYY-MMOrYYYY-MM-DDType" => "chrono::NaiveDate",
+    "contentType" => "String",
 };
 
 // Adds prefixes to the HashMap (e.g. "xs:string" -> "Xs")
