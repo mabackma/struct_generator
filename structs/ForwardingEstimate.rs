@@ -4,21 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DestinationStorage {
+pub struct AssortmentId {
     #[serde(flatten)]
-    pub destination_storage: BdtString20Type,
+    pub assortment_id: WctERPIdType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Code {
+pub struct StartTime {
     #[serde(flatten)]
-    pub code: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Loads {
-    #[serde(flatten)]
-    pub loads: BdtPositiveInteger3digitsType,
+    pub start_time: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,43 +22,21 @@ pub struct StorageId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Unit {
+pub struct Day {
     #[serde(flatten)]
-    pub unit: BdtWorkCodeUnitType,
+    pub day: BdtDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentId {
+pub struct Loads {
     #[serde(flatten)]
-    pub assortment_id: WctERPIdType,
+    pub loads: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ForwardingEstimate {
     #[serde(flatten)]
     pub forwarding_estimate: ForwardingEstimateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForwardingEstimateType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
-    #[serde(rename = "StorageId")]
-    pub storage_id: ERPIdType,
-    #[serde(rename = "StartTime")]
-    pub start_time: TimeStampType,
-    #[serde(rename = "Assortments")]
-    pub assortments: AssortmentsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -83,5 +55,27 @@ pub struct AssortmentDataType {
     pub loads: PositiveInteger3digitsType,
     #[serde(rename = "Day")]
     pub day: DateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForwardingEstimateType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+    #[serde(rename = "StorageId")]
+    pub storage_id: ERPIdType,
+    #[serde(rename = "StartTime")]
+    pub start_time: TimeStampType,
+    #[serde(rename = "Assortments")]
+    pub assortments: AssortmentsType,
 }
 

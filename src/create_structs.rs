@@ -359,10 +359,9 @@ fn add_union(
 
     // If there's a parent struct, add this struct as a field to it
     if let Some(parent_struct) = stack.last_mut() {
-        let mut field_type = "".to_string();
 
         for u_type in union_types {
-            field_type = handle_prefix(&u_type, prefixes);
+            let field_type = handle_prefix(&u_type, prefixes);
 
             // Add the field to the parent struct
             parent_struct.fields.push(XMLField {

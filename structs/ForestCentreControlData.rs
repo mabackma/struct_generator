@@ -10,11 +10,9 @@ pub struct ControlObjectData {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestCentreControlDataType {
-    #[serde(flatten)]
-    pub base: FccForestCentreDataType,
-    #[serde(rename = "ControlObjectData")]
-    pub control_object_data: ControlObjectDataType,
+pub struct ControlObjectsType {
+    #[serde(rename = "Object")]
+    pub object: Vec<ForestCentreControlObjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -28,8 +26,10 @@ pub struct ControlObjectDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ControlObjectsType {
-    #[serde(rename = "Object")]
-    pub object: Vec<ForestCentreControlObjectType>,
+pub struct ForestCentreControlDataType {
+    #[serde(flatten)]
+    pub base: FccForestCentreDataType,
+    #[serde(rename = "ControlObjectData")]
+    pub control_object_data: ControlObjectDataType,
 }
 

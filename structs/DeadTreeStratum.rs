@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MeanDiameter {
+pub struct DeadTreeStratum {
     #[serde(flatten)]
-    pub mean_diameter: MeanDiameterType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeadTreeStrata {
-    #[serde(flatten)]
-    pub dead_tree_strata: DeadTreeStrataType,
+    pub dead_tree_stratum: DeadTreeStratumType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,21 +16,9 @@ pub struct DeadTreeType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DeadTreeStratum {
+pub struct DeadTreeStrata {
     #[serde(flatten)]
-    pub dead_tree_stratum: DeadTreeStratumType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
-    #[serde(flatten)]
-    pub base: CoTreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StemCountType {
-    #[serde(flatten)]
-    pub base: CoStemCountType,
+    pub dead_tree_strata: DeadTreeStrataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,9 +28,9 @@ pub struct DeadTreeTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeStrataType {
-    #[serde(rename = "DeadTreeStratum")]
-    pub dead_tree_stratum: Vec<DeadTreeStratumType>,
+pub struct StemCountType {
+    #[serde(flatten)]
+    pub base: CoStemCountType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -72,14 +54,26 @@ pub struct DeadTreeStratumType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
-    #[serde(flatten)]
-    pub base: CoDiameterType,
+pub struct DeadTreeStrataType {
+    #[serde(rename = "DeadTreeStratum")]
+    pub dead_tree_stratum: Vec<DeadTreeStratumType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct VolumeType {
     #[serde(flatten)]
     pub base: CoVolumeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+    #[serde(flatten)]
+    pub base: CoTreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MeanDiameterType {
+    #[serde(flatten)]
+    pub base: CoDiameterType,
 }
 

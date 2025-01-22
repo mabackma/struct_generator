@@ -4,18 +4,6 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<SfBasicFeature1Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandsType1 {
-    #[serde(rename = "Stand")]
-    pub stand: Vec<StandType1>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct StandType1 {
     #[serde(rename = "@id")]
     pub id: String,
@@ -47,5 +35,17 @@ pub struct StandBasicDataWithGeometryType {
     pub gdt_polygon_geometry: GdtPolygonGeometry,
     #[serde(rename = "MultiPolygonGeometry")]
     pub gdt_multi_polygon_geometry: GdtMultiPolygonGeometry,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<SfBasicFeature1Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandsType1 {
+    #[serde(rename = "Stand")]
+    pub stand: Vec<StandType1>,
 }
 

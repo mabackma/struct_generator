@@ -4,23 +4,6 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MessageTypeType {
-    #[serde(flatten)]
-    pub base: WtcoMessageTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct BusinessAcceptanceIdType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct BusinessAcceptanceActorType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
@@ -29,6 +12,17 @@ pub struct BusinessAcceptanceActorType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AdditionalInformationType {
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceIdType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MessageTypeType {
+    #[serde(flatten)]
+    pub base: WtcoMessageTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -59,5 +53,11 @@ pub struct BusinessAcceptanceType {
 pub struct BusinessMessageTimeStampType {
     #[serde(flatten)]
     pub base: CoTimeStampType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BusinessAcceptanceDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 

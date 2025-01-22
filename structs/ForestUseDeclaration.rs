@@ -4,33 +4,39 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationRegenerationCommitment {
-    #[serde(flatten)]
-    pub declaration_regeneration_commitment: CoRegenerationCommitmentType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationStandTextInformation {
-    #[serde(flatten)]
-    pub declaration_stand_text_information: CoString2000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationRegenerationOperation {
-    #[serde(flatten)]
-    pub declaration_regeneration_operation: CoDeclarationRegenerationOperationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct DeclarationDevelopmentClass {
     #[serde(flatten)]
     pub declaration_development_class: CoDeclarationDevelopmentClassType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestDamageQualifier {
+pub struct CuttingPurpose {
     #[serde(flatten)]
-    pub forest_damage_qualifier: CoForestDamageQualifierType,
+    pub cutting_purpose: CoCuttingPurposeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LocationEstates {
+    #[serde(flatten)]
+    pub location_estates: LocationEstatesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeclarationStand {
+    #[serde(flatten)]
+    pub declaration_stand: DeclarationStandType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OtherHabitatCode {
+    #[serde(flatten)]
+    pub other_habitat_code: CoOtherHabitatCodeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UpdatePreviousDeclaration {
+    #[serde(flatten)]
+    pub update_previous_declaration: CoYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,9 +46,105 @@ pub struct DeclarationSoilPreparationOperation {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct DeclarationMainTreeSpecies {
+    #[serde(flatten)]
+    pub declaration_main_tree_species: CoTreeSpeciesConciseType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingsRightsOwnerRepresentative {
+    #[serde(flatten)]
+    pub cuttings_rights_owner_representative: CiContactInformationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeclarationRegenerationOperation {
+    #[serde(flatten)]
+    pub declaration_regeneration_operation: CoDeclarationRegenerationOperationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeclarationStands {
+    #[serde(flatten)]
+    pub declaration_stands: DeclarationStandsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingRealizationPractice {
+    #[serde(flatten)]
+    pub cutting_realization_practice: CoCuttingRealizationPracticeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeclarationTextInformation {
+    #[serde(flatten)]
+    pub declaration_text_information: CoString2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct CuttingRightsOwner {
     #[serde(flatten)]
     pub cutting_rights_owner: CiContactInformationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeclarationOtherOperation {
+    #[serde(flatten)]
+    pub declaration_other_operation: CoDeclarationOtherOperationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeclarationRealEstates {
+    #[serde(flatten)]
+    pub declaration_real_estates: DeclarationRealEstatesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeclarationStandTextInformation {
+    #[serde(flatten)]
+    pub declaration_stand_text_information: CoString2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestDamageQualifier {
+    #[serde(flatten)]
+    pub forest_damage_qualifier: CoForestDamageQualifierType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProcessingArea {
+    #[serde(flatten)]
+    pub processing_area: ProcessingAreaType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HabitatOperation {
+    #[serde(flatten)]
+    pub habitat_operation: CoHabitatOperationsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProcessingAreaNumber {
+    #[serde(flatten)]
+    pub processing_area_number: ProcessingAreaNumberType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct HabitatOperations {
+    #[serde(flatten)]
+    pub habitat_operations: HabitatOperationsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeclarationOtherOperations {
+    #[serde(flatten)]
+    pub declaration_other_operations: DeclarationOtherOperationsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProcessingAreaReference {
+    #[serde(flatten)]
+    pub processing_area_reference: CoReferenceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,116 +160,45 @@ pub struct DeclarationStandReference {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationRealEstates {
+pub struct DeclarationRegenerationCommitment {
     #[serde(flatten)]
-    pub declaration_real_estates: DeclarationRealEstatesType,
+    pub declaration_regeneration_commitment: CoRegenerationCommitmentType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LocationEstates {
+pub struct ForestUseDeclaration {
     #[serde(flatten)]
-    pub location_estates: LocationEstatesType,
+    pub forest_use_declaration: ForestUseDeclarationType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationOtherOperations {
-    #[serde(flatten)]
-    pub declaration_other_operations: DeclarationOtherOperationsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationMainTreeSpecies {
-    #[serde(flatten)]
-    pub declaration_main_tree_species: CoTreeSpeciesConciseType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UpdatePreviousDeclaration {
-    #[serde(flatten)]
-    pub update_previous_declaration: CoYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HabitatOperations {
-    #[serde(flatten)]
-    pub habitat_operations: HabitatOperationsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct HabitatOperation {
-    #[serde(flatten)]
-    pub habitat_operation: CoHabitatOperationsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationStands {
-    #[serde(flatten)]
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProcessingAreaType {
+    #[serde(rename = "@id")]
+    pub id: IdStringType,
+    #[serde(rename = "ProcessingAreaNumber")]
+    pub processing_area_number: ProcessingAreaNumberType,
+    #[serde(rename = "ProcessingAreaReference")]
+    pub processing_area_reference: CoReferenceType,
+    #[serde(rename = "DeclarationStands")]
     pub declaration_stands: DeclarationStandsType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ProcessingAreaNumber {
-    #[serde(flatten)]
-    pub processing_area_number: ProcessingAreaNumberType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationTextInformation {
-    #[serde(flatten)]
-    pub declaration_text_information: CoString2000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OtherHabitatCode {
-    #[serde(flatten)]
-    pub other_habitat_code: CoOtherHabitatCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingsRightsOwnerRepresentative {
-    #[serde(flatten)]
-    pub cuttings_rights_owner_representative: CiContactInformationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingPurpose {
-    #[serde(flatten)]
-    pub cutting_purpose: CoCuttingPurposeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ProcessingAreaReference {
-    #[serde(flatten)]
-    pub processing_area_reference: CoReferenceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ProcessingArea {
-    #[serde(flatten)]
-    pub processing_area: ProcessingAreaType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationStand {
-    #[serde(flatten)]
-    pub declaration_stand: DeclarationStandType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationOtherOperation {
-    #[serde(flatten)]
-    pub declaration_other_operation: CoDeclarationOtherOperationType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HabitatOperationsType {
+    #[serde(rename = "HabitatOperation")]
+    pub habitat_operation: Vec<CoHabitatOperationsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreaNumberType {
-    pub base: i32,
+pub struct ProcessingAreasType {
+    #[serde(rename = "ProcessingArea")]
+    pub processing_area: Vec<ProcessingAreaType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
-    #[serde(flatten)]
-    pub base: CoDiameterType,
+pub struct DeclarationStandsType {
+    #[serde(rename = "DeclarationStand")]
+    pub declaration_stand: Vec<DeclarationStandType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -227,35 +258,20 @@ pub struct DeclarationStandType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationRealEstatesType {
+pub struct MeanDiameterType {
     #[serde(flatten)]
-    pub base: ReRealEstatesWithOwnersInformationType2,
-    #[serde(rename = "ProcessingAreas")]
-    pub processing_areas: ProcessingAreasType,
+    pub base: CoDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationStandsType {
-    #[serde(rename = "DeclarationStand")]
-    pub declaration_stand: Vec<DeclarationStandType>,
+pub struct LocationEstatesType {
+    #[serde(rename = "LocationEstate")]
+    pub location_estate: Vec<FccLocationEstateType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreasType {
-    #[serde(rename = "ProcessingArea")]
-    pub processing_area: Vec<ProcessingAreaType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProcessingAreaType {
-    #[serde(rename = "@id")]
-    pub id: IdStringType,
-    #[serde(rename = "ProcessingAreaNumber")]
-    pub processing_area_number: ProcessingAreaNumberType,
-    #[serde(rename = "ProcessingAreaReference")]
-    pub processing_area_reference: CoReferenceType,
-    #[serde(rename = "DeclarationStands")]
-    pub declaration_stands: DeclarationStandsType,
+pub struct ProcessingAreaNumberType {
+    pub base: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -267,9 +283,11 @@ pub struct SenderType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct LocationEstatesType {
-    #[serde(rename = "LocationEstate")]
-    pub location_estate: Vec<FccLocationEstateType>,
+pub struct DeclarationRealEstatesType {
+    #[serde(flatten)]
+    pub base: ReRealEstatesWithOwnersInformationType2,
+    #[serde(rename = "ProcessingAreas")]
+    pub processing_areas: ProcessingAreasType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -296,12 +314,6 @@ pub struct ForestUseDeclarationType {
     pub fcc_documents: Option<FccDocuments>,
     #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
     pub special_features: Option<SpecialFeaturesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HabitatOperationsType {
-    #[serde(rename = "HabitatOperation")]
-    pub habitat_operation: Vec<CoHabitatOperationsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

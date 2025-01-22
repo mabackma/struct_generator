@@ -4,6 +4,30 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct StumpTidinessText {
+    #[serde(flatten)]
+    pub stump_tidiness_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpTidiness {
+    #[serde(flatten)]
+    pub stump_tidiness: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpCuttingAsInstructed {
+    #[serde(flatten)]
+    pub stump_cutting_as_instructed: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpCuttingAsInstructedText {
+    #[serde(flatten)]
+    pub stump_cutting_as_instructed_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteFinalAuditStumpForwarding {
     #[serde(flatten)]
     pub working_site_final_audit_stump_forwarding: WorkingSiteFinalAuditStumpForwardingType,

@@ -10,39 +10,21 @@ pub struct FinancingType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingActApplication {
-    #[serde(flatten)]
-    pub financing_act_application: FinancingActApplicationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OtherPublicSubstitute {
-    #[serde(flatten)]
-    pub other_public_substitute: CoOtherPublicSubstituteType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PlanAndSubsidy {
     #[serde(flatten)]
     pub plan_and_subsidy: PlanAndSubsidyType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PartsOfProject {
+pub struct FinancingActApplication {
     #[serde(flatten)]
-    pub parts_of_project: PartsOfProjectType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartOfProject {
-    #[serde(flatten)]
-    pub part_of_project: PartOfProjectType,
+    pub financing_act_application: FinancingActApplicationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
+pub struct PlanAndSubsidyType {
+    #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
+    pub fac_financing_act_application_stands: Option<FacFinancingActApplicationStands>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -96,9 +78,9 @@ pub struct FinancingActApplicationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PlanAndSubsidyType {
-    #[serde(rename = "FinancingActApplicationStands", skip_serializing_if = "Option::is_none")]
-    pub fac_financing_act_application_stands: Option<FacFinancingActApplicationStands>,
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

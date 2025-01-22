@@ -10,15 +10,15 @@ pub struct Label {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FileFormat {
-    #[serde(flatten)]
-    pub file_format: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ExternalFile {
     #[serde(flatten)]
     pub external_file: ExternalFileType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FileFormat {
+    #[serde(flatten)]
+    pub file_format: BdtString5Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

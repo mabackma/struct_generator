@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AreaDecrease {
+pub struct StandNumber {
     #[serde(flatten)]
-    pub area_decrease: AreaDecreaseType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SilvicultureRestrictionEnds {
-    #[serde(flatten)]
-    pub silviculture_restriction_ends: CoDateType,
+    pub stand_number: StandNumberType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +16,9 @@ pub struct StandNumberExtension {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandNumber {
+pub struct StandInfo {
     #[serde(flatten)]
-    pub stand_number: StandNumberType,
+    pub stand_info: StandInfoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,29 +28,15 @@ pub struct StandBasicDataDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandInfo {
+pub struct AreaDecrease {
     #[serde(flatten)]
-    pub stand_info: StandInfoType,
+    pub area_decrease: AreaDecreaseType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberExtensionType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AreaType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SilvicultureRestrictionEnds {
     #[serde(flatten)]
-    pub base: CoAreaType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandInfoType {
-    #[serde(rename = "@infoProviderRole")]
-    pub info_provider_role: InfoProviderRoleType,
-    #[serde(rename = "@infoProviderOrganizationName")]
-    pub info_provider_organization_name: OrganizationNameType,
-    pub base: String,
+    pub silviculture_restriction_ends: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -72,13 +52,33 @@ pub struct IdentifiersType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaDecreaseType {
+pub struct StandInfoType {
+    #[serde(rename = "@infoProviderRole")]
+    pub info_provider_role: InfoProviderRoleType,
+    #[serde(rename = "@infoProviderOrganizationName")]
+    pub info_provider_organization_name: OrganizationNameType,
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaType {
     #[serde(flatten)]
     pub base: CoAreaType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct StandNumberExtensionType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct StandNumberType {
     pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AreaDecreaseType {
+    #[serde(flatten)]
+    pub base: CoAreaType,
 }
 

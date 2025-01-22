@@ -4,21 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PurchaserRepresentativePerson {
+pub struct FellingRightDuration {
     #[serde(flatten)]
-    pub purchaser_representative_person: PurchaserRepresentativePersonType,
+    pub felling_right_duration: FellingRightDurationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct IncludedInOffer {
+pub struct OfferWorkingSiteSilvicultureText {
     #[serde(flatten)]
-    pub included_in_offer: IncludedInOfferType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SilvicultureValidity {
-    #[serde(flatten)]
-    pub silviculture_validity: SilvicultureValidityType,
+    pub offer_working_site_silviculture_text: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,27 +28,9 @@ pub struct OWorkingSite {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OfferWorkingSitePaymentTransactions {
+pub struct PurchaserRepresentativePerson {
     #[serde(flatten)]
-    pub offer_working_site_payment_transactions: WtcoOfferWorkingSitePaymentTransactionsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FellingRightDuration {
-    #[serde(flatten)]
-    pub felling_right_duration: FellingRightDurationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OfferWorkingSiteSilvicultureText {
-    #[serde(flatten)]
-    pub offer_working_site_silviculture_text: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DueDate {
-    #[serde(flatten)]
-    pub due_date: CoDateType,
+    pub purchaser_representative_person: PurchaserRepresentativePersonType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -63,38 +39,34 @@ pub struct OfferWorkingSiteWoodTradeInfo {
     pub offer_working_site_wood_trade_info: OfferWorkingSiteWoodTradeInfoType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FellingRightValidityDateType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Text {
     #[serde(flatten)]
-    pub base: CoDateType,
+    pub text: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PurchaserRepresentativePersonType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferWorkingSitePaymentTransactions {
     #[serde(flatten)]
-    pub base: CiContactInformationType,
+    pub offer_working_site_payment_transactions: WtcoOfferWorkingSitePaymentTransactionsType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SilvicultureValidityType {
-    #[serde(rename = "StartDate")]
-    pub start_date: CoDateYYYYMMOrYYYYMMDDType,
-    #[serde(rename = "EndDate")]
-    pub end_date: CoDateYYYYMMOrYYYYMMDDType,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct IncludedInOffer {
+    #[serde(flatten)]
+    pub included_in_offer: IncludedInOfferType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferWorkingSiteSilvicultureInfoType {
-    #[serde(rename = "DueDate", skip_serializing_if = "Option::is_none")]
-    pub due_date: Option<CoDateType>,
-    #[serde(rename = "SilvicultureValidity", skip_serializing_if = "Option::is_none")]
-    pub silviculture_validity: Option<SilvicultureValidityType>,
-    #[serde(rename = "Products", skip_serializing_if = "Option::is_none")]
-    pub products: Option<PrProductsType>,
-    #[serde(rename = "OfferWorkingSiteSilvicultureText", skip_serializing_if = "Option::is_none")]
-    pub offer_working_site_silviculture_text: Option<String>,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub wtco_documents: Option<WtcoDocuments>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SilvicultureValidity {
+    #[serde(flatten)]
+    pub silviculture_validity: SilvicultureValidityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DueDate {
+    #[serde(flatten)]
+    pub due_date: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -144,17 +116,6 @@ pub struct WorkingSiteType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FellingRightDurationType {
-    #[serde(flatten)]
-    pub base: CoPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteTextType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct IncludedInOfferType {
     #[serde(flatten)]
     pub base: CoYesNoType,
@@ -164,6 +125,18 @@ pub struct IncludedInOfferType {
 pub struct RealEstatesType {
     #[serde(rename = "RealEstate")]
     pub real_estate: Vec<WtcoRealEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FellingRightDurationType {
+    #[serde(flatten)]
+    pub base: CoPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FellingRightValidityDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -178,5 +151,38 @@ pub struct OfferWorkingSiteWoodTradeInfoType {
     pub text: Option<String>,
     #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
     pub documents: Option<WtcoDocumentsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferWorkingSiteSilvicultureInfoType {
+    #[serde(rename = "DueDate", skip_serializing_if = "Option::is_none")]
+    pub due_date: Option<CoDateType>,
+    #[serde(rename = "SilvicultureValidity", skip_serializing_if = "Option::is_none")]
+    pub silviculture_validity: Option<SilvicultureValidityType>,
+    #[serde(rename = "Products", skip_serializing_if = "Option::is_none")]
+    pub products: Option<PrProductsType>,
+    #[serde(rename = "OfferWorkingSiteSilvicultureText", skip_serializing_if = "Option::is_none")]
+    pub offer_working_site_silviculture_text: Option<String>,
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
+    pub wtco_documents: Option<WtcoDocuments>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SilvicultureValidityType {
+    #[serde(rename = "StartDate")]
+    pub start_date: CoDateYYYYMMOrYYYYMMDDType,
+    #[serde(rename = "EndDate")]
+    pub end_date: CoDateYYYYMMOrYYYYMMDDType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PurchaserRepresentativePersonType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteTextType {
+    pub base: String,
 }
 

@@ -4,9 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ControlReferenceMass {
+pub struct ServiceBuyerId {
     #[serde(flatten)]
-    pub control_reference_mass: BdtDecimal1FractionDigitType,
+    pub service_buyer_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: WctERPIdType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +28,27 @@ pub struct WorkingSiteForwardingQualityControl {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ScaledMass {
+pub struct Orientation {
     #[serde(flatten)]
-    pub scaled_mass: BdtDecimal1FractionDigitType,
+    pub orientation: OrientationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestOwner {
+    #[serde(flatten)]
+    pub forest_owner: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasurementDate {
+    #[serde(flatten)]
+    pub measurement_date: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +58,27 @@ pub struct Calibration {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CalibrationAdjustment {
+pub struct ScaleData {
     #[serde(flatten)]
-    pub calibration_adjustment: BdtPositiveInteger3digitsType,
+    pub scale_data: ScaleDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ScaledMass {
+    #[serde(flatten)]
+    pub scaled_mass: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FileName {
+    #[serde(flatten)]
+    pub file_name: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MachineApplicationVersion {
+    #[serde(flatten)]
+    pub machine_application_version: BdtString100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,15 +88,21 @@ pub struct OperatorId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Orientation {
+pub struct Bytes {
     #[serde(flatten)]
-    pub orientation: OrientationType,
+    pub bytes: Vec<u8>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ScaleData {
+pub struct ControlReferenceMass {
     #[serde(flatten)]
-    pub scale_data: ScaleDataType,
+    pub control_reference_mass: BdtDecimal1FractionDigitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CalibrationAdjustment {
+    #[serde(flatten)]
+    pub calibration_adjustment: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -88,11 +136,11 @@ pub struct WorkingSiteForwardingQualityControlType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ScaleDataType {
-    #[serde(rename = "ScaledMass")]
-    pub scaled_mass: Decimal1FractionDigitType,
-    #[serde(rename = "Orientation")]
-    pub orientation: OrientationType,
+pub struct CalibrationType {
+    #[serde(rename = "CalibrationDate")]
+    pub calibration_date: TimeStampType,
+    #[serde(rename = "CalibrationAdjustment")]
+    pub calibration_adjustment: PositiveInteger3digitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -101,10 +149,10 @@ pub struct OrientationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CalibrationType {
-    #[serde(rename = "CalibrationDate")]
-    pub calibration_date: TimeStampType,
-    #[serde(rename = "CalibrationAdjustment")]
-    pub calibration_adjustment: PositiveInteger3digitsType,
+pub struct ScaleDataType {
+    #[serde(rename = "ScaledMass")]
+    pub scaled_mass: Decimal1FractionDigitType,
+    #[serde(rename = "Orientation")]
+    pub orientation: OrientationType,
 }
 

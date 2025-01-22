@@ -4,15 +4,21 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationPolygon {
+pub struct InsuranceNumber {
     #[serde(flatten)]
-    pub declaration_polygon: DeclarationPolygonType,
+    pub insurance_number: CoString100Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PreviousMooseDamages {
+pub struct CompensationByLegislation {
     #[serde(flatten)]
-    pub previous_moose_damages: PreviousMooseDamagesType,
+    pub compensation_by_legislation: CompensationByLegislationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CompensationDescription {
+    #[serde(flatten)]
+    pub compensation_description: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,21 +28,9 @@ pub struct DeclarationPolygons {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PreviousMooseDamageEvaluationDate {
+pub struct MooseDamageDeclarationRealEstates {
     #[serde(flatten)]
-    pub previous_moose_damage_evaluation_date: CoDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MooseDamageDeclarationReference {
-    #[serde(flatten)]
-    pub moose_damage_declaration_reference: CoReferenceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DeclarationPolygonReference {
-    #[serde(flatten)]
-    pub declaration_polygon_reference: CoReferenceType,
+    pub moose_damage_declaration_real_estates: MooseDamageDeclarationRealEstatesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,9 +40,21 @@ pub struct CompensationApplicant {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct PreviousMooseDamageEvaluationMunicipality {
+    #[serde(flatten)]
+    pub previous_moose_damage_evaluation_municipality: CoMunicipalityNameType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct CompensationByInsurance {
     #[serde(flatten)]
     pub compensation_by_insurance: CompensationByInsuranceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PreviousSameAreaMooseDamageCompensationYear {
+    #[serde(flatten)]
+    pub previous_same_area_moose_damage_compensation_year: CoYearType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -64,45 +70,33 @@ pub struct ReceivedCompensation {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CompensationByLegislation {
+pub struct PreviousMooseDamageEvaluationDate {
     #[serde(flatten)]
-    pub compensation_by_legislation: CompensationByLegislationType,
+    pub previous_moose_damage_evaluation_date: CoDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PreviousSameAreaMooseDamageCompensationYear {
+pub struct DeclarationPolygon {
     #[serde(flatten)]
-    pub previous_same_area_moose_damage_compensation_year: CoYearType,
+    pub declaration_polygon: DeclarationPolygonType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MooseDamageDeclarationRealEstates {
+pub struct AdditionalDetails {
     #[serde(flatten)]
-    pub moose_damage_declaration_real_estates: MooseDamageDeclarationRealEstatesType,
+    pub additional_details: CoString2000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct InsuranceNumber {
+pub struct MooseDamageDeclaration {
     #[serde(flatten)]
-    pub insurance_number: CoString100Type,
+    pub moose_damage_declaration: MooseDamageDeclarationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CompensationAmount {
+pub struct DeclarationPolygonReference {
     #[serde(flatten)]
-    pub compensation_amount: CoDecimal7And2PositiveType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PreviousMooseDamageEvaluationMunicipality {
-    #[serde(flatten)]
-    pub previous_moose_damage_evaluation_municipality: CoMunicipalityNameType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CompensationDescription {
-    #[serde(flatten)]
-    pub compensation_description: String,
+    pub declaration_polygon_reference: CoReferenceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -112,15 +106,27 @@ pub struct MooseDamageDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PreviousMooseDamage {
+pub struct MooseDamageDeclarationReference {
     #[serde(flatten)]
-    pub previous_moose_damage: PreviousMooseDamageType,
+    pub moose_damage_declaration_reference: CoReferenceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MooseDamageDeclaration {
+pub struct PreviousMooseDamages {
     #[serde(flatten)]
-    pub moose_damage_declaration: MooseDamageDeclarationType,
+    pub previous_moose_damages: PreviousMooseDamagesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CompensationAmount {
+    #[serde(flatten)]
+    pub compensation_amount: CoDecimal7And2PositiveType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PreviousMooseDamage {
+    #[serde(flatten)]
+    pub previous_moose_damage: PreviousMooseDamageType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -131,6 +137,62 @@ pub struct PreviousMooseDamageType {
     pub previous_moose_damage_evaluation_municipality: Option<CoMunicipalityNameType>,
     #[serde(rename = "PreviousSameAreaMooseDamageCompensationYear", skip_serializing_if = "Option::is_none")]
     pub previous_same_area_moose_damage_compensation_year: Option<CoYearType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompensationByInsuranceType {
+    #[serde(rename = "ReceivedCompensation")]
+    pub received_compensation: CoYesNoType,
+    #[serde(rename = "InsuranceCompany", skip_serializing_if = "Option::is_none")]
+    pub insurance_company: Option<CoString500Type>,
+    #[serde(rename = "InsuranceNumber", skip_serializing_if = "Option::is_none")]
+    pub insurance_number: Option<CoString100Type>,
+    #[serde(rename = "CompensationAmount", skip_serializing_if = "Option::is_none")]
+    pub compensation_amount: Option<CoDecimal7And2PositiveType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LocationEstatesType {
+    #[serde(rename = "LocationEstate")]
+    pub location_estate: Vec<FccLocationEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PreviousMooseDamagesType {
+    #[serde(rename = "PreviousMooseDamage")]
+    pub previous_moose_damage: Vec<PreviousMooseDamageType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MooseDamageDeclarationRealEstatesType {
+    #[serde(flatten)]
+    pub base: ReRealEstatesWithOwnersInformationType2,
+    #[serde(rename = "DeclarationPolygons")]
+    pub declaration_polygons: DeclarationPolygonsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContactInformationBankAccountType {
+    #[serde(flatten)]
+    pub base: CiContactInformationType,
+    #[serde(rename = "BankAccount")]
+    pub co_bank_account: CoBankAccount,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CompensationByLegislationType {
+    #[serde(rename = "ReceivedCompensation")]
+    pub received_compensation: CoYesNoType,
+    #[serde(rename = "CompensationDescription", skip_serializing_if = "Option::is_none")]
+    pub compensation_description: Option<String>,
+    #[serde(rename = "CompensationAmount", skip_serializing_if = "Option::is_none")]
+    pub compensation_amount: Option<CoDecimal7And2PositiveType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DeclarationPolygonsType {
+    #[serde(rename = "DeclarationPolygon")]
+    pub declaration_polygon: Vec<DeclarationPolygonType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -162,42 +224,6 @@ pub struct MooseDamageDeclarationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct PreviousMooseDamagesType {
-    #[serde(rename = "PreviousMooseDamage")]
-    pub previous_moose_damage: Vec<PreviousMooseDamageType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompensationByLegislationType {
-    #[serde(rename = "ReceivedCompensation")]
-    pub received_compensation: CoYesNoType,
-    #[serde(rename = "CompensationDescription", skip_serializing_if = "Option::is_none")]
-    pub compensation_description: Option<String>,
-    #[serde(rename = "CompensationAmount", skip_serializing_if = "Option::is_none")]
-    pub compensation_amount: Option<CoDecimal7And2PositiveType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContactInformationBankAccountType {
-    #[serde(flatten)]
-    pub base: CiContactInformationType,
-    #[serde(rename = "BankAccount")]
-    pub co_bank_account: CoBankAccount,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CompensationByInsuranceType {
-    #[serde(rename = "ReceivedCompensation")]
-    pub received_compensation: CoYesNoType,
-    #[serde(rename = "InsuranceCompany", skip_serializing_if = "Option::is_none")]
-    pub insurance_company: Option<CoString500Type>,
-    #[serde(rename = "InsuranceNumber", skip_serializing_if = "Option::is_none")]
-    pub insurance_number: Option<CoString100Type>,
-    #[serde(rename = "CompensationAmount", skip_serializing_if = "Option::is_none")]
-    pub compensation_amount: Option<CoDecimal7And2PositiveType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct DeclarationPolygonType {
     #[serde(rename = "@id")]
     pub id: IdStringType,
@@ -207,25 +233,5 @@ pub struct DeclarationPolygonType {
     pub gmlpolygon_property: GmlpolygonProperty,
     #[serde(rename = "LocationEstates")]
     pub location_estates: LocationEstatesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MooseDamageDeclarationRealEstatesType {
-    #[serde(flatten)]
-    pub base: ReRealEstatesWithOwnersInformationType2,
-    #[serde(rename = "DeclarationPolygons")]
-    pub declaration_polygons: DeclarationPolygonsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LocationEstatesType {
-    #[serde(rename = "LocationEstate")]
-    pub location_estate: Vec<FccLocationEstateType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationPolygonsType {
-    #[serde(rename = "DeclarationPolygon")]
-    pub declaration_polygon: Vec<DeclarationPolygonType>,
 }
 

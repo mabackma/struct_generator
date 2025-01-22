@@ -4,15 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AcceptanceDate {
+pub struct ForestUseDeclarationReferences {
     #[serde(flatten)]
-    pub acceptance_date: AcceptanceDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SpecialPermission {
-    #[serde(flatten)]
-    pub special_permission: SpecialPermissionType,
+    pub forest_use_declaration_references: ForestUseDeclarationsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +16,9 @@ pub struct AdditionalText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestUseDeclarationReferences {
+pub struct AcceptanceDate {
     #[serde(flatten)]
-    pub forest_use_declaration_references: ForestUseDeclarationsType,
+    pub acceptance_date: AcceptanceDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,14 +34,21 @@ pub struct OriginalXmlFile {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct SpecialPermission {
+    #[serde(flatten)]
+    pub special_permission: SpecialPermissionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ForestUseDeclarationReference {
     #[serde(flatten)]
     pub forest_use_declaration_reference: ForestUseDeclarationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AdditionalTextType {
-    pub base: String,
+pub struct AcceptanceDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -57,14 +58,14 @@ pub struct ForestUseDeclarationsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DeclarationReferenceType {
-    pub base: String,
+pub struct SpecialPermissionType {
+    #[serde(flatten)]
+    pub base: CoYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AcceptanceDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
+pub struct AdditionalTextType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -88,8 +89,7 @@ pub struct ForestUseDeclarationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialPermissionType {
-    #[serde(flatten)]
-    pub base: CoYesNoType,
+pub struct DeclarationReferenceType {
+    pub base: String,
 }
 

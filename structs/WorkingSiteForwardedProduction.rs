@@ -4,51 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Load {
+pub struct LoadVolume {
     #[serde(flatten)]
-    pub load: LoadType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartitialLoadId {
-    #[serde(flatten)]
-    pub partitial_load_id: u32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MachineApplicationVersion {
-    #[serde(flatten)]
-    pub machine_application_version: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartitialLoad {
-    #[serde(flatten)]
-    pub partitial_load: PartitialLoadType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurementDate {
-    #[serde(flatten)]
-    pub measurement_date: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SendDate {
-    #[serde(flatten)]
-    pub send_date: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardingDistance {
-    #[serde(flatten)]
-    pub forwarding_distance: u32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LoadCount {
-    #[serde(flatten)]
-    pub load_count: u32,
+    pub load_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,41 +16,33 @@ pub struct LoadGreenMass {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FileName {
-    #[serde(flatten)]
-    pub file_name: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteForwardedProduction {
     #[serde(flatten)]
     pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LoadVolume {
+pub struct PartitialLoad {
     #[serde(flatten)]
-    pub load_volume: BdtDecimal3FractionDigitsType,
+    pub partitial_load: PartitialLoadType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestOwner {
+pub struct ForwardingDistance {
     #[serde(flatten)]
-    pub forest_owner: BdtString50Type,
+    pub forwarding_distance: u32,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartitialLoadType {
-    #[serde(rename = "PartitialLoadId")]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Load {
+    #[serde(flatten)]
+    pub load: LoadType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PartitialLoadId {
+    #[serde(flatten)]
     pub partitial_load_id: u32,
-    #[serde(rename = "Assortment")]
-    pub assortment: String50Type,
-    #[serde(rename = "StorageId")]
-    pub storage_id: ERPIdType,
-    #[serde(rename = "LoadVolume", skip_serializing_if = "Option::is_none")]
-    pub load_volume: Option<Decimal3FractionDigitsType>,
-    #[serde(rename = "LoadGreenMass")]
-    pub load_green_mass: Decimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -139,5 +89,19 @@ pub struct LoadType {
     pub measurement_date: TimeStampType,
     #[serde(rename = "PartitialLoad")]
     pub partitial_load: Vec<PartitialLoadType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartitialLoadType {
+    #[serde(rename = "PartitialLoadId")]
+    pub partitial_load_id: u32,
+    #[serde(rename = "Assortment")]
+    pub assortment: String50Type,
+    #[serde(rename = "StorageId")]
+    pub storage_id: ERPIdType,
+    #[serde(rename = "LoadVolume", skip_serializing_if = "Option::is_none")]
+    pub load_volume: Option<Decimal3FractionDigitsType>,
+    #[serde(rename = "LoadGreenMass")]
+    pub load_green_mass: Decimal3FractionDigitsType,
 }
 
