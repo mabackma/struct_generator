@@ -4,27 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OperationalRegion {
-    #[serde(flatten)]
-    pub operational_region: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OrderStatus {
-    #[serde(flatten)]
-    pub order_status: BdtOrderStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct OrderConfirmation {
     #[serde(flatten)]
     pub order_confirmation: OrderConfirmationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerArea {
+pub struct OrderStatus {
     #[serde(flatten)]
-    pub service_buyer_area: BdtString20Type,
+    pub order_status: BdtOrderStatusType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -4,45 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OWorkingSite {
-    #[serde(flatten)]
-    pub o_working_site: WorkingSiteType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PurchaserRepresentativePerson {
-    #[serde(flatten)]
-    pub purchaser_representative_person: PurchaserRepresentativePersonType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OfferWorkingSiteSilvicultureInfo {
-    #[serde(flatten)]
-    pub offer_working_site_silviculture_info: OfferWorkingSiteSilvicultureInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct IncludedInOffer {
     #[serde(flatten)]
     pub included_in_offer: IncludedInOfferType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OfferWorkingSiteWoodTradeInfo {
-    #[serde(flatten)]
-    pub offer_working_site_wood_trade_info: OfferWorkingSiteWoodTradeInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OfferWorkingSiteSilvicultureText {
-    #[serde(flatten)]
-    pub offer_working_site_silviculture_text: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FellingRightDuration {
-    #[serde(flatten)]
-    pub felling_right_duration: FellingRightDurationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -52,9 +16,45 @@ pub struct OfferWorkingSitePaymentTransactions {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct FellingRightDuration {
+    #[serde(flatten)]
+    pub felling_right_duration: FellingRightDurationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct DueDate {
     #[serde(flatten)]
     pub due_date: CoDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OWorkingSite {
+    #[serde(flatten)]
+    pub o_working_site: WorkingSiteType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferWorkingSiteSilvicultureText {
+    #[serde(flatten)]
+    pub offer_working_site_silviculture_text: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PurchaserRepresentativePerson {
+    #[serde(flatten)]
+    pub purchaser_representative_person: PurchaserRepresentativePersonType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferWorkingSiteWoodTradeInfo {
+    #[serde(flatten)]
+    pub offer_working_site_wood_trade_info: OfferWorkingSiteWoodTradeInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OfferWorkingSiteSilvicultureInfo {
+    #[serde(flatten)]
+    pub offer_working_site_silviculture_info: OfferWorkingSiteSilvicultureInfoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -63,48 +63,10 @@ pub struct SilvicultureValidity {
     pub silviculture_validity: SilvicultureValidityType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Text {
-    #[serde(flatten)]
-    pub text: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FellingRightDurationType {
-    #[serde(flatten)]
-    pub base: CoPositiveIntegerType,
-}
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PurchaserRepresentativePersonType {
     #[serde(flatten)]
     pub base: CiContactInformationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IncludedInOfferType {
-    #[serde(flatten)]
-    pub base: CoYesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FellingRightValidityDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OfferWorkingSiteWoodTradeInfoType {
-    #[serde(rename = "FellingRightDuration")]
-    pub felling_right_duration: FellingRightDurationType,
-    #[serde(rename = "FellingRightValidityDate")]
-    pub felling_right_validity_date: FellingRightValidityDateType,
-    #[serde(rename = "AssortmentClasses")]
-    pub as_assortment_classes: AsAssortmentClasses,
-    #[serde(rename = "Text", skip_serializing_if = "Option::is_none")]
-    pub text: Option<String>,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub documents: Option<WtcoDocumentsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -122,6 +84,12 @@ pub struct OfferWorkingSiteSilvicultureInfoType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct FellingRightDurationType {
+    #[serde(flatten)]
+    pub base: CoPositiveIntegerType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SilvicultureValidityType {
     #[serde(rename = "StartDate")]
     pub start_date: CoDateYYYYMMOrYYYYMMDDType,
@@ -130,9 +98,40 @@ pub struct SilvicultureValidityType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteTextType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct RealEstatesType {
     #[serde(rename = "RealEstate")]
     pub real_estate: Vec<WtcoRealEstateType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfferWorkingSiteWoodTradeInfoType {
+    #[serde(rename = "FellingRightDuration")]
+    pub felling_right_duration: FellingRightDurationType,
+    #[serde(rename = "FellingRightValidityDate")]
+    pub felling_right_validity_date: FellingRightValidityDateType,
+    #[serde(rename = "AssortmentClasses")]
+    pub as_assortment_classes: AsAssortmentClasses,
+    #[serde(rename = "Text", skip_serializing_if = "Option::is_none")]
+    pub text: Option<String>,
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
+    pub documents: Option<WtcoDocumentsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FellingRightValidityDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct IncludedInOfferType {
+    #[serde(flatten)]
+    pub base: CoYesNoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -179,10 +178,5 @@ pub struct WorkingSiteType {
     pub wsst_stands: Option<WsstStands>,
     #[serde(rename = "WorkingSiteGeometries", skip_serializing_if = "Option::is_none")]
     pub working_site_geometries: Option<WtcoWorkingSiteGeometriesType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteTextType {
-    pub base: String,
 }
 

@@ -10,15 +10,21 @@ pub struct NotificationType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StatusMessage {
+pub struct SmsOperatorStatus {
     #[serde(flatten)]
-    pub status_message: BdtString100Type,
+    pub sms_operator_status: SmsOperatorStatusType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SendTimestamp {
+pub struct RecipientType {
     #[serde(flatten)]
-    pub send_timestamp: BdtTimeStampType,
+    pub recipient_type: RecipientTypeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OriginalMessage {
+    #[serde(flatten)]
+    pub original_message: BdtString1000Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,9 +34,9 @@ pub struct StatusCode {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SmsOperatorStatus {
+pub struct SendTimestamp {
     #[serde(flatten)]
-    pub sms_operator_status: SmsOperatorStatusType,
+    pub send_timestamp: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,24 +52,18 @@ pub struct SenderUserId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct RecipientType {
+pub struct StatusMessage {
     #[serde(flatten)]
-    pub recipient_type: RecipientTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OriginalMessage {
-    #[serde(flatten)]
-    pub original_message: BdtString1000Type,
+    pub status_message: BdtString100Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RecipientTypeType {
+pub struct NotificationTypeType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StatusCodeType {
+pub struct RecipientTypeType {
     pub base: String,
 }
 
@@ -96,7 +96,7 @@ pub struct SmsOperatorStatusType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NotificationTypeType {
+pub struct StatusCodeType {
     pub base: String,
 }
 

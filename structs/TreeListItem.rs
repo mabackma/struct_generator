@@ -4,6 +4,12 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct TreeListItem {
+    #[serde(flatten)]
+    pub tree_list_item: TreeListItemType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Type {
     #[serde(flatten)]
     pub r#type: i32,
@@ -19,12 +25,6 @@ pub struct TreeIdentifier {
 pub struct TreeIdentifiers {
     #[serde(flatten)]
     pub tree_identifiers: TreeIdentifiersType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeListItem {
-    #[serde(flatten)]
-    pub tree_list_item: TreeListItemType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

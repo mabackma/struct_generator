@@ -4,27 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingSuitableText {
+pub struct StumpLiftingSuitable {
     #[serde(flatten)]
-    pub stump_lifting_suitable_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingQuality {
-    #[serde(flatten)]
-    pub stump_lifting_quality: BdtWorkingQualityType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RemainingStumpCountText {
-    #[serde(flatten)]
-    pub remaining_stump_count_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingQualityText {
-    #[serde(flatten)]
-    pub stump_lifting_quality_text: BdtString200Type,
+    pub stump_lifting_suitable: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,15 +16,33 @@ pub struct RemainingStumpCount {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingSuitable {
+pub struct StumpLiftingSuitableText {
     #[serde(flatten)]
-    pub stump_lifting_suitable: BdtYesNoType,
+    pub stump_lifting_suitable_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteFinalAuditStumpLifting {
     #[serde(flatten)]
     pub working_site_final_audit_stump_lifting: WorkingSiteFinalAuditStumpLiftingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RemainingStumpCountText {
+    #[serde(flatten)]
+    pub remaining_stump_count_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpLiftingQuality {
+    #[serde(flatten)]
+    pub stump_lifting_quality: BdtWorkingQualityType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpLiftingQualityText {
+    #[serde(flatten)]
+    pub stump_lifting_quality_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -57,30 +57,6 @@ pub struct AuditionType {
     pub final_audit_date: TimeStampType,
     #[serde(rename = "FinalAuditRequired")]
     pub final_audit_required: YesNoType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditStumpLiftingType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
-    pub resource_id: Option<String20Type>,
-    #[serde(rename = "PurchaseContractId")]
-    pub purchase_contract_id: String20Type,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: WorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<String1000Type>,
-    #[serde(rename = "Images")]
-    pub images: PositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -133,5 +109,29 @@ pub struct AuditsType {
     pub stump_lifting_quality: Option<WorkingQualityType>,
     #[serde(rename = "StumpLiftingQualityText", skip_serializing_if = "Option::is_none")]
     pub stump_lifting_quality_text: Option<String200Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditStumpLiftingType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ResourceId", skip_serializing_if = "Option::is_none")]
+    pub resource_id: Option<String20Type>,
+    #[serde(rename = "PurchaseContractId")]
+    pub purchase_contract_id: String20Type,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: WorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<String1000Type>,
+    #[serde(rename = "Images")]
+    pub images: PositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
 }
 

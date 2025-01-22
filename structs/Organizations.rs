@@ -4,15 +4,15 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Organization {
+pub struct Organizations {
     #[serde(flatten)]
-    pub organization: OrganizationType,
+    pub organizations: OrganizationsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Role {
+pub struct Roles {
     #[serde(flatten)]
-    pub role: OrganizationRoleType,
+    pub roles: RolesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +22,9 @@ pub struct Services {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Organizations {
+pub struct Organization {
     #[serde(flatten)]
-    pub organizations: OrganizationsType,
+    pub organization: OrganizationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +34,20 @@ pub struct Service {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Roles {
+pub struct Role {
     #[serde(flatten)]
-    pub roles: RolesType,
+    pub role: OrganizationRoleType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationServiceType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OrganizationsType {
+    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
+    pub organization: Option<Vec<OrganizationType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,7 +57,7 @@ pub struct RolesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationServiceType {
+pub struct OrganizationRoleType {
     pub base: String,
 }
 
@@ -68,16 +79,5 @@ pub struct OrganizationType {
 pub struct ServicesType {
     #[serde(rename = "Service")]
     pub service: Vec<OrganizationServiceType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationRoleType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OrganizationsType {
-    #[serde(rename = "Organization", skip_serializing_if = "Option::is_none")]
-    pub organization: Option<Vec<OrganizationType>>,
 }
 

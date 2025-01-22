@@ -4,9 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurerName {
+pub struct HopperType {
     #[serde(flatten)]
-    pub measurer_name: BdtString50Type,
+    pub hopper_type: WctHopperTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,15 +16,9 @@ pub struct MeasurerId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Hoppers {
+pub struct FertileType {
     #[serde(flatten)]
-    pub hoppers: HoppersType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AverageVolume {
-    #[serde(flatten)]
-    pub average_volume: BdtDecimal3FractionDigitsType,
+    pub fertile_type: BdtMaterialCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +28,27 @@ pub struct HopperNumber {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct HopperType {
+pub struct MeanVolume {
     #[serde(flatten)]
-    pub hopper_type: WctHopperTypeType,
+    pub mean_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PilotName {
+    #[serde(flatten)]
+    pub pilot_name: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AverageVolume {
+    #[serde(flatten)]
+    pub average_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasurerName {
+    #[serde(flatten)]
+    pub measurer_name: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,15 +58,9 @@ pub struct Hopper {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FertileType {
+pub struct Hoppers {
     #[serde(flatten)]
-    pub fertile_type: BdtMaterialCodeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PilotName {
-    #[serde(flatten)]
-    pub pilot_name: BdtString50Type,
+    pub hoppers: HoppersType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -69,10 +75,10 @@ pub struct HopperLocationFromGPS {
     pub hopper_location_from_g_p_s: BdtYesNoType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeanVolume {
-    #[serde(flatten)]
-    pub mean_volume: BdtDecimal3FractionDigitsType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HoppersType {
+    #[serde(rename = "Hopper", skip_serializing_if = "Option::is_none")]
+    pub hopper: Option<Vec<HopperType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -92,9 +98,11 @@ pub struct HopperType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotsType {
-    #[serde(rename = "SamplePlot")]
-    pub sample_plot: Vec<SamplePlotType>,
+pub struct SamplePlotSummaryType {
+    #[serde(rename = "StandNumber")]
+    pub stand_number: String20Type,
+    #[serde(rename = "SamplePlotMeasurementSummary")]
+    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -109,20 +117,6 @@ pub struct WorkingSiteQualityControlFertilizationType {
     pub sample_plot_summaries: SamplePlotSummariesType,
     #[serde(rename = "SamplePlots")]
     pub sample_plots: SamplePlotsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct HoppersType {
-    #[serde(rename = "Hopper", skip_serializing_if = "Option::is_none")]
-    pub hopper: Option<Vec<HopperType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotMeasurementSummaryType {
-    #[serde(rename = "MeasurerType")]
-    pub measurer_type: MeasurerTypeType,
-    #[serde(rename = "AverageVolume")]
-    pub average_volume: Decimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -172,10 +166,16 @@ pub struct SamplePlotSummariesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummaryType {
-    #[serde(rename = "StandNumber")]
-    pub stand_number: String20Type,
-    #[serde(rename = "SamplePlotMeasurementSummary")]
-    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
+pub struct SamplePlotMeasurementSummaryType {
+    #[serde(rename = "MeasurerType")]
+    pub measurer_type: MeasurerTypeType,
+    #[serde(rename = "AverageVolume")]
+    pub average_volume: Decimal3FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotsType {
+    #[serde(rename = "SamplePlot")]
+    pub sample_plot: Vec<SamplePlotType>,
 }
 

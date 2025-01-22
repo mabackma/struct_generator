@@ -1,4 +1,4 @@
-use struct_generator::create_structs::{create_structs, XMLField, XMLStruct};
+use struct_generator::create_structs::{create_structs, XMLStruct};
 use struct_generator::file_utils::{read_xsd_file, structs_and_definitions_to_file, RUST_TYPES};
 use struct_generator::sorting_algorithm::{create_file_dependencies, sort_files};
 use struct_generator::string_utils::{capitalize_first, handle_prefix, remove_colon_from_string, remove_prefix, XSD_TO_RUST};
@@ -39,9 +39,9 @@ fn main() {
 
     remove_duplicates_from_element_definitions(&mut element_definitions, &structs);
 
-    get_field_types_from_definitions(&mut structs, &element_definitions);
+    get_field_types_from_definitions(&element_definitions, &mut structs);
 
-    remove_prefixes_from_missing_types(&structs, &mut element_definitions, prefixes);
+    remove_prefixes_from_missing_types(&mut element_definitions, &structs, prefixes);
 
     fix_lowercase_types(&mut element_definitions, prefixes);
 
@@ -256,8 +256,8 @@ fn remove_duplicates_from_element_definitions(
 
 // If a type is missing, it might be because it has a prefix that is not in the struct keys
 fn remove_prefixes_from_missing_types(
-    structs: &HashMap<String, XMLStruct>, 
     element_definitions: &mut HashMap<String, String>, 
+    structs: &HashMap<String, XMLStruct>, 
     prefixes: &mut HashMap<String, String>
 ) {
 
@@ -279,8 +279,8 @@ fn remove_prefixes_from_missing_types(
 }
 
 fn get_field_types_from_definitions(
-    structs: &mut HashMap<String, XMLStruct>,
-    element_definitions: &HashMap<String, String>
+    element_definitions: &HashMap<String, String>,
+    structs: &mut HashMap<String, XMLStruct>
 ) {
     let mut new_structs = structs.clone();
 

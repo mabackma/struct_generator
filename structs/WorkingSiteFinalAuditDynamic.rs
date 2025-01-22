@@ -4,27 +4,9 @@ use chrono::*;
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceType {
+pub struct Audition {
     #[serde(flatten)]
-    pub resource_type: BdtResourceTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AttributeValue {
-    #[serde(flatten)]
-    pub attribute_value: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AuditionResource {
-    #[serde(flatten)]
-    pub audition_resource: AuditionResourceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditDynamic {
-    #[serde(flatten)]
-    pub working_site_final_audit_dynamic: WorkingSiteFinalAuditDynamicType,
+    pub audition: AuditionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,33 +16,15 @@ pub struct QuestionAnswerAsText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct QuestionAsText {
+pub struct WorkingSiteFinalAuditDynamic {
     #[serde(flatten)]
-    pub question_as_text: BdtString200Type,
+    pub working_site_final_audit_dynamic: WorkingSiteFinalAuditDynamicType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAuditName {
+pub struct Questions {
     #[serde(flatten)]
-    pub final_audit_name: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct QuestionAnswerText {
-    #[serde(flatten)]
-    pub question_answer_text: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Audition {
-    #[serde(flatten)]
-    pub audition: AuditionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FinalAuditIdentifier {
-    #[serde(flatten)]
-    pub final_audit_identifier: BdtString50Type,
+    pub questions: AuditsListType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -70,9 +34,21 @@ pub struct AttributeName {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Questions {
+pub struct QuestionAsText {
     #[serde(flatten)]
-    pub questions: AuditsListType,
+    pub question_as_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AttributeValue {
+    #[serde(flatten)]
+    pub attribute_value: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct QuestionAnswerText {
+    #[serde(flatten)]
+    pub question_answer_text: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -88,15 +64,15 @@ pub struct FinalAuditIdentifierVersion {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Attribute {
+pub struct FinalAuditIdentifier {
     #[serde(flatten)]
-    pub attribute: AttributeType,
+    pub final_audit_identifier: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AuditionResources {
+pub struct AuditionResource {
     #[serde(flatten)]
-    pub audition_resources: AuditionResourcesType,
+    pub audition_resource: AuditionResourceType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -106,9 +82,15 @@ pub struct FinalAuditSpareTrees {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Attributes {
+pub struct FinalAuditName {
     #[serde(flatten)]
-    pub attributes: AttributesType,
+    pub final_audit_name: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AuditionResources {
+    #[serde(flatten)]
+    pub audition_resources: AuditionResourcesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -117,16 +99,30 @@ pub struct Question {
     pub question: AuditQuestionType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditBaseDynamicType {
-    #[serde(rename = "Attributes")]
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Attributes {
+    #[serde(flatten)]
     pub attributes: AttributesType,
-    #[serde(rename = "Audition")]
-    pub audition: AuditionType,
-    #[serde(rename = "AuditionResources", skip_serializing_if = "Option::is_none")]
-    pub audition_resources: Option<AuditionResourcesType>,
-    #[serde(rename = "Questions")]
-    pub questions: AuditsListType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Attribute {
+    #[serde(flatten)]
+    pub attribute: AttributeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AuditionResourceType {
+    #[serde(rename = "ResourceType")]
+    pub resource_type: ResourceTypeType,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttributesType {
+    #[serde(rename = "Attribute")]
+    pub attribute: AttributeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -166,17 +162,9 @@ pub struct AuditionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuditsListType {
-    #[serde(rename = "Question")]
-    pub question: AuditQuestionType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionResourceType {
-    #[serde(rename = "ResourceType")]
-    pub resource_type: ResourceTypeType,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
+pub struct AuditionResourcesType {
+    #[serde(rename = "AuditionResource", skip_serializing_if = "Option::is_none")]
+    pub audition_resource: Option<AuditionResourceType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -202,14 +190,20 @@ pub struct WorkingSiteFinalAuditDynamicType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AuditionResourcesType {
-    #[serde(rename = "AuditionResource", skip_serializing_if = "Option::is_none")]
-    pub audition_resource: Option<AuditionResourceType>,
+pub struct WorkingSiteFinalAuditBaseDynamicType {
+    #[serde(rename = "Attributes")]
+    pub attributes: AttributesType,
+    #[serde(rename = "Audition")]
+    pub audition: AuditionType,
+    #[serde(rename = "AuditionResources", skip_serializing_if = "Option::is_none")]
+    pub audition_resources: Option<AuditionResourcesType>,
+    #[serde(rename = "Questions")]
+    pub questions: AuditsListType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttributesType {
-    #[serde(rename = "Attribute")]
-    pub attribute: AttributeType,
+pub struct AuditsListType {
+    #[serde(rename = "Question")]
+    pub question: AuditQuestionType,
 }
 

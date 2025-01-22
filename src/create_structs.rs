@@ -182,27 +182,36 @@ fn add_group_definition(
     structs: &mut HashMap<String, XMLStruct>
 ) {
 
-    if let Some(group_slice) = slice_contents(content, "group", &element_name(e).unwrap_or("".to_string())) {
+    // Name of the group
+    let name = element_name(e).unwrap_or("".to_string());
+
+    if let Some(group_slice) = slice_contents(content, "group", &name) {
         let mut group_reader = Reader::from_str(&group_slice);
         let mut group_types = HashMap::new();
+
+        if name == "ProductKeyGroup" {
+            println!("***SLICE: {}", group_slice);
+        }
 
         loop {
             match group_reader.read_event() {
                 Ok(Start(ref ge)) => {
                     if ge.name() == QName(b"xs:element") {
-                        if let Some(r) = element_name(ge) {
-                            let mut field_type = r.clone();
+
+                        if let Some(n) = element_name(ge) {
+                            let mut field_type = n.clone();
 
                             // Check if the field is a vector or optional
                             parse_type(ge, &mut field_type);
 
-                            group_types.insert(r,field_type);
+                            group_types.insert(n,field_type);
                         }
                     }
                 },
                 Ok(Empty(ref ge)) => {
                     if ge.name() == QName(b"xs:element") {
                         if let Some(r) = element_reference(ge) {
+                            
                             let mut field_type = r.clone();
 
                             // Check if the field is a vector or optional
@@ -210,11 +219,18 @@ fn add_group_definition(
 
                             group_types.insert(r,field_type);
                         }
+                        if let Some(n) = element_name(ge) {
+                            let mut field_type = element_type(ge).unwrap_or("String".to_string());
+
+                            // Check if the field is a vector or optional
+                            parse_type(ge, &mut field_type);
+
+                            group_types.insert(n,field_type);
+                        }
                     }
                 },
                 Ok(End(ref ge)) => {
                     if ge.name() == QName(b"xs:group") {
-                        let name = element_name(e).unwrap_or("".to_string());
                         //println!("Creating struct for group: {}", name);
                         // Create a struct for the group type
                         let new_struct = XMLStruct {
@@ -225,6 +241,10 @@ fn add_group_definition(
                             }).collect(),
                         };
                         
+                        if name == "ProductKeyGroup" {
+                            println!("***NEW STRUCT: {:#?}", new_struct);
+                        }
+
                         structs.insert(name.clone(), new_struct.clone());
 
                         break;
