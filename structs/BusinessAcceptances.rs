@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 

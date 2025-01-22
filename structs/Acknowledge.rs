@@ -1,13 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OriginalMessageType {
-    #[serde(flatten)]
-    pub original_message_type: BdtString50Type,
-}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ReplyTo {
@@ -19,6 +13,12 @@ pub struct ReplyTo {
 pub struct StatusMessages {
     #[serde(flatten)]
     pub status_messages: StatusMessageLanguageType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OriginalMessageType {
+    #[serde(flatten)]
+    pub original_message_type: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

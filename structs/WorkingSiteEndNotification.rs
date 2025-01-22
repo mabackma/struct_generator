@@ -1,12 +1,24 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContactorId {
+pub struct VolumeLeft {
     #[serde(flatten)]
-    pub contactor_id: BdtString20Type,
+    pub volume_left: BdtDecimal6TotalDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UnfulfilledArea {
+    #[serde(flatten)]
+    pub unfulfilled_area: GdtPolygonOrMultiPolygon2Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Geometry {
+    #[serde(flatten)]
+    pub geometry: GdtPolygonOrMultiPolygon2Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,9 +28,15 @@ pub struct Interrupted {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct UnfulfilledArea {
+pub struct WorkingSiteEndNotification {
     #[serde(flatten)]
-    pub unfulfilled_area: GdtPolygonOrMultiPolygon2Type,
+    pub working_site_end_notification: WorkingSiteEndNotificationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ContactorId {
+    #[serde(flatten)]
+    pub contactor_id: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,6 +52,12 @@ pub struct FulfilledArea {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct WorkCodes {
+    #[serde(flatten)]
+    pub work_codes: WorkCodesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Supported {
     #[serde(flatten)]
     pub supported: BdtYesNoType,
@@ -46,55 +70,9 @@ pub struct AmountPlanned {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct VolumeLeft {
+pub struct CodeGroup {
     #[serde(flatten)]
-    pub volume_left: BdtDecimal6TotalDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteEndNotification {
-    #[serde(flatten)]
-    pub working_site_end_notification: WorkingSiteEndNotificationType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodeDataType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "AmountPlanned")]
-    pub amount_planned: Decimal3FractionDigitsType,
-    #[serde(rename = "AmountLeft")]
-    pub amount_left: Decimal3FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: WorkCodeUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentDataType {
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: String20Type,
-    #[serde(rename = "Code")]
-    pub code: String50Type,
-    #[serde(rename = "Name")]
-    pub name: String50Type,
-    #[serde(rename = "CodeGroup")]
-    pub code_group: AssortmentGroupType,
-    #[serde(rename = "Volume")]
-    pub volume: Decimal6TotalDigitsType,
-    #[serde(rename = "VolumeLeft")]
-    pub volume_left: Decimal6TotalDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FulfilledAreasType {
-    #[serde(rename = "FulfilledArea")]
-    pub fulfilled_area: Vec<FulfilledAreaType>,
+    pub code_group: BdtAssortmentGroupType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -124,6 +102,12 @@ pub struct WorkingSiteEndNotificationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct FulfilledAreasType {
+    #[serde(rename = "FulfilledArea")]
+    pub fulfilled_area: Vec<FulfilledAreaType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct FulfilledAreaType {
     #[serde(rename = "Geometry")]
     pub geometry: PolygonOrMultiPolygon2Type,
@@ -135,5 +119,39 @@ pub struct FulfilledAreaType {
 pub struct AssortmentsType {
     #[serde(rename = "Assortment")]
     pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentDataType {
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: String20Type,
+    #[serde(rename = "Code")]
+    pub code: String50Type,
+    #[serde(rename = "Name")]
+    pub name: String50Type,
+    #[serde(rename = "CodeGroup")]
+    pub code_group: AssortmentGroupType,
+    #[serde(rename = "Volume")]
+    pub volume: Decimal6TotalDigitsType,
+    #[serde(rename = "VolumeLeft")]
+    pub volume_left: Decimal6TotalDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkCodeDataType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "AmountPlanned")]
+    pub amount_planned: Decimal3FractionDigitsType,
+    #[serde(rename = "AmountLeft")]
+    pub amount_left: Decimal3FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: WorkCodeUnitType,
 }
 

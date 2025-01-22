@@ -1,13 +1,7 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct FileFormat {
-    #[serde(flatten)]
-    pub file_format: BdtString5Type,
-}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Label {
@@ -16,9 +10,9 @@ pub struct Label {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ProductUserId {
+pub struct FileFormat {
     #[serde(flatten)]
-    pub product_user_id: BdtString50Type,
+    pub file_format: BdtString5Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

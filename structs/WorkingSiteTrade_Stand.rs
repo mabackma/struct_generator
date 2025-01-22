@@ -1,7 +1,13 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingAreaPreclearingNeed {
+    #[serde(flatten)]
+    pub cutting_area_preclearing_need: CuttingAreaPreclearingNeedType,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct StandSilvicultureInfo {
@@ -10,9 +16,9 @@ pub struct StandSilvicultureInfo {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PlannedStemCount {
+pub struct StandQuality {
     #[serde(flatten)]
-    pub planned_stem_count: CoStemCountType,
+    pub stand_quality: StandQualityType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,39 +28,21 @@ pub struct ForestHaulageAccessibility {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BearingCapacityClass {
+pub struct SilvicultureRestriction {
     #[serde(flatten)]
-    pub bearing_capacity_class: BearingCapacityClassType,
+    pub silviculture_restriction: CoSilvicultureRestrictionType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestHaulageDistance {
+pub struct DrainageState {
     #[serde(flatten)]
-    pub forest_haulage_distance: ForestHaulageDistanceType,
+    pub drainage_state: DrainageStateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StandLocatedOnIsland {
+pub struct CuttingRestrictionEnds {
     #[serde(flatten)]
-    pub stand_located_on_island: CoYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PlannedBasalArea {
-    #[serde(flatten)]
-    pub planned_basal_area: CoBasalAreaType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StandWoodTradeInfo {
-    #[serde(flatten)]
-    pub stand_wood_trade_info: StandWoodTradeInfoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAreaPreclearingNeed {
-    #[serde(flatten)]
-    pub cutting_area_preclearing_need: CuttingAreaPreclearingNeedType,
+    pub cutting_restriction_ends: CoDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -64,27 +52,57 @@ pub struct LoggingAccessibility {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct StandLocatedOnIsland {
+    #[serde(flatten)]
+    pub stand_located_on_island: CoYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct StoutTimberClassifier {
     #[serde(flatten)]
     pub stout_timber_classifier: StoutTimberClassifierType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MainGroupType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DitchingYear {
     #[serde(flatten)]
-    pub base: CoMainGroupType,
+    pub ditching_year: DitchingYearType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StandWoodTradeInfo {
+    #[serde(flatten)]
+    pub stand_wood_trade_info: StandWoodTradeInfoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PlannedStemCount {
+    #[serde(flatten)]
+    pub planned_stem_count: CoStemCountType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PlannedBasalArea {
+    #[serde(flatten)]
+    pub planned_basal_area: CoBasalAreaType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingRestriction {
+    #[serde(flatten)]
+    pub cutting_restriction: CuttingRestrictionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ThinningYear {
+    #[serde(flatten)]
+    pub thinning_year: CoYearType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MainTreeSpeciesType {
+pub struct StoutTimberClassifierType {
     #[serde(flatten)]
-    pub base: CoTreeSpeciesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SoilTypeType {
-    #[serde(flatten)]
-    pub base: CoSoilTypeType,
+    pub base: CoDecimal2FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -94,75 +112,65 @@ pub struct CuttingAreaPreclearingNeedType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BearingCapacityClassType {
-    #[serde(flatten)]
-    pub base: CoBearingCapacityClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandSilvicultureInfoType {
-    #[serde(rename = "BearingCapacityClass", skip_serializing_if = "Option::is_none")]
-    pub bearing_capacity_class: Option<BearingCapacityClassType>,
-    #[serde(rename = "ForestHaulageDistance", skip_serializing_if = "Option::is_none")]
-    pub forest_haulage_distance: Option<ForestHaulageDistanceType>,
-    #[serde(rename = "ForestHaulageAccessibility", skip_serializing_if = "Option::is_none")]
-    pub forest_haulage_accessibility: Option<CoHarvestingAccessibilityType>,
-    #[serde(rename = "PlannedBasalArea", skip_serializing_if = "Option::is_none")]
-    pub planned_basal_area: Option<CoBasalAreaType>,
-    #[serde(rename = "PlannedStemCount", skip_serializing_if = "Option::is_none")]
-    pub planned_stem_count: Option<CoStemCountType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandNumberType {
-    #[serde(flatten)]
-    pub base: StbStandNumberType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandQualityType {
-    #[serde(flatten)]
-    pub base: CoStandQualityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct FertilityClassType {
     #[serde(flatten)]
     pub base: CoFertilityClassType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageAccessibilityType {
+pub struct AreaType {
+    #[serde(flatten)]
+    pub base: StbAreaType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DitchingYearType {
+    #[serde(flatten)]
+    pub base: CoYearType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BearingCapacityClassType {
+    #[serde(flatten)]
+    pub base: CoBearingCapacityClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SubGroupType {
+    #[serde(flatten)]
+    pub base: CoSubGroupType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccessibilityType {
     #[serde(flatten)]
     pub base: CoAccessibilityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandType {
-    #[serde(rename = "@id")]
-    pub id: String,
-    #[serde(rename = "@realEstateid")]
-    pub real_estateid: String,
-    #[serde(rename = "StandBasicData")]
-    pub stand_basic_data: StandBasicDataType,
-    #[serde(rename = "TreeStandData", skip_serializing_if = "Option::is_none")]
-    pub ts_tree_stand_data: Option<TsTreeStandData>,
-    #[serde(rename = "Operations", skip_serializing_if = "Option::is_none")]
-    pub op_operations: Option<OpOperations>,
-    #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
-    pub special_features: Option<SpecialFeaturesType>,
-    #[serde(rename = "StandWoodTradeInfo", skip_serializing_if = "Option::is_none")]
-    pub stand_wood_trade_info: Option<StandWoodTradeInfoType>,
-    #[serde(rename = "StandSilvicultureInfo", skip_serializing_if = "Option::is_none")]
-    pub stand_silviculture_info: Option<StandSilvicultureInfoType>,
-    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
-    pub wtco_documents: Option<WtcoDocuments>,
+pub struct MainTreeSpeciesType {
+    #[serde(flatten)]
+    pub base: CoTreeSpeciesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SpecialFeaturesType {
-    #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<SfBasicFeature2Type>,
+pub struct StandWoodTradeInfoType {
+    #[serde(rename = "CuttingAreaPreclearingNeed", skip_serializing_if = "Option::is_none")]
+    pub cutting_area_preclearing_need: Option<CuttingAreaPreclearingNeedType>,
+    #[serde(rename = "BearingCapacityClass", skip_serializing_if = "Option::is_none")]
+    pub bearing_capacity_class: Option<BearingCapacityClassType>,
+    #[serde(rename = "ForestHaulageDistance", skip_serializing_if = "Option::is_none")]
+    pub forest_haulage_distance: Option<ForestHaulageDistanceType>,
+    #[serde(rename = "StoutTimberClassifier", skip_serializing_if = "Option::is_none")]
+    pub stout_timber_classifier: Option<StoutTimberClassifierType>,
+    #[serde(rename = "LoggingAccessibility", skip_serializing_if = "Option::is_none")]
+    pub logging_accessibility: Option<CoHarvestingAccessibilityType>,
+    #[serde(rename = "ForestHaulageAccessibility", skip_serializing_if = "Option::is_none")]
+    pub forest_haulage_accessibility: Option<CoHarvestingAccessibilityType>,
+    #[serde(rename = "PlannedBasalArea", skip_serializing_if = "Option::is_none")]
+    pub planned_basal_area: Option<CoBasalAreaType>,
+    #[serde(rename = "PlannedStemCount", skip_serializing_if = "Option::is_none")]
+    pub planned_stem_count: Option<CoStemCountType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -220,9 +228,39 @@ pub struct StandBasicDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StandInfoType {
+pub struct DevelopmentClassType {
     #[serde(flatten)]
-    pub base: StbStandInfoType,
+    pub base: CoDevelopmentClassType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ForestHaulageAccessibilityType {
+    #[serde(flatten)]
+    pub base: CoAccessibilityType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DrainageStateType {
+    #[serde(flatten)]
+    pub base: CoDrainageStateType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandNumberType {
+    #[serde(flatten)]
+    pub base: StbStandNumberType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SoilTypeType {
+    #[serde(flatten)]
+    pub base: CoSoilTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CuttingRestrictionType {
+    #[serde(flatten)]
+    pub base: CoCuttingRestrictionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -232,53 +270,53 @@ pub struct StandNumberExtensionType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct SpecialFeaturesType {
+    #[serde(rename = "SpecialFeature")]
+    pub special_feature: Vec<SfBasicFeature2Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandType {
+    #[serde(rename = "@id")]
+    pub id: String,
+    #[serde(rename = "@realEstateid")]
+    pub real_estateid: String,
+    #[serde(rename = "StandBasicData")]
+    pub stand_basic_data: StandBasicDataType,
+    #[serde(rename = "TreeStandData", skip_serializing_if = "Option::is_none")]
+    pub ts_tree_stand_data: Option<TsTreeStandData>,
+    #[serde(rename = "Operations", skip_serializing_if = "Option::is_none")]
+    pub op_operations: Option<OpOperations>,
+    #[serde(rename = "SpecialFeatures", skip_serializing_if = "Option::is_none")]
+    pub special_features: Option<SpecialFeaturesType>,
+    #[serde(rename = "StandWoodTradeInfo", skip_serializing_if = "Option::is_none")]
+    pub stand_wood_trade_info: Option<StandWoodTradeInfoType>,
+    #[serde(rename = "StandSilvicultureInfo", skip_serializing_if = "Option::is_none")]
+    pub stand_silviculture_info: Option<StandSilvicultureInfoType>,
+    #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
+    pub wtco_documents: Option<WtcoDocuments>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SellerResponsible {
     #[serde(flatten)]
     pub base: CoSellerResponsible,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AreaType {
-    #[serde(flatten)]
-    pub base: StbAreaType,
+pub struct YesNoSellerResponsibleType {
+    #[serde(rename = "YesNoType")]
+    pub co_yes_no_type: CoYesNoType,
+    #[serde(rename = "SellerResponsible")]
+    pub seller_responsible: SellerResponsible,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DitchingYearType {
-    #[serde(flatten)]
-    pub base: CoYearType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DevelopmentClassType {
-    #[serde(flatten)]
-    pub base: CoDevelopmentClassType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ForestHaulageDistanceType {
-    #[serde(flatten)]
-    pub base: CoPositiveIntegerType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AccessibilityType {
-    #[serde(flatten)]
-    pub base: CoAccessibilityType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct StandWoodTradeInfoType {
-    #[serde(rename = "CuttingAreaPreclearingNeed", skip_serializing_if = "Option::is_none")]
-    pub cutting_area_preclearing_need: Option<CuttingAreaPreclearingNeedType>,
+pub struct StandSilvicultureInfoType {
     #[serde(rename = "BearingCapacityClass", skip_serializing_if = "Option::is_none")]
     pub bearing_capacity_class: Option<BearingCapacityClassType>,
     #[serde(rename = "ForestHaulageDistance", skip_serializing_if = "Option::is_none")]
     pub forest_haulage_distance: Option<ForestHaulageDistanceType>,
-    #[serde(rename = "StoutTimberClassifier", skip_serializing_if = "Option::is_none")]
-    pub stout_timber_classifier: Option<StoutTimberClassifierType>,
-    #[serde(rename = "LoggingAccessibility", skip_serializing_if = "Option::is_none")]
-    pub logging_accessibility: Option<CoHarvestingAccessibilityType>,
     #[serde(rename = "ForestHaulageAccessibility", skip_serializing_if = "Option::is_none")]
     pub forest_haulage_accessibility: Option<CoHarvestingAccessibilityType>,
     #[serde(rename = "PlannedBasalArea", skip_serializing_if = "Option::is_none")]
@@ -294,9 +332,15 @@ pub struct AreaDecreaseType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StoutTimberClassifierType {
+pub struct IdentifiersType {
     #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
+    pub base: StbIdentifiersType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StandInfoType {
+    #[serde(flatten)]
+    pub base: StbStandInfoType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -306,29 +350,15 @@ pub struct LoggingAccessibilityType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct YesNoSellerResponsibleType {
-    #[serde(rename = "YesNoType")]
-    pub co_yes_no_type: CoYesNoType,
-    #[serde(rename = "SellerResponsible")]
-    pub seller_responsible: SellerResponsible,
+pub struct MainGroupType {
+    #[serde(flatten)]
+    pub base: CoMainGroupType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SubGroupType {
+pub struct StandQualityType {
     #[serde(flatten)]
-    pub base: CoSubGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct IdentifiersType {
-    #[serde(flatten)]
-    pub base: StbIdentifiersType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DrainageStateType {
-    #[serde(flatten)]
-    pub base: CoDrainageStateType,
+    pub base: CoStandQualityType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -338,9 +368,9 @@ pub struct StandBasicDataDateType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CuttingRestrictionType {
+pub struct ForestHaulageDistanceType {
     #[serde(flatten)]
-    pub base: CoCuttingRestrictionType,
+    pub base: CoPositiveIntegerType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

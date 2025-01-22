@@ -1,12 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpTidinessText {
+pub struct StumpLiftingSuitable {
     #[serde(flatten)]
-    pub stump_tidiness_text: BdtString200Type,
+    pub stump_lifting_suitable: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,33 +16,15 @@ pub struct StumpLiftingQuality {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingSuitableText {
-    #[serde(flatten)]
-    pub stump_lifting_suitable_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct RemainingStumpCountText {
     #[serde(flatten)]
     pub remaining_stump_count_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingQualityText {
+pub struct StumpLiftingSuitableText {
     #[serde(flatten)]
-    pub stump_lifting_quality_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpTidiness {
-    #[serde(flatten)]
-    pub stump_tidiness: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpCuttingAsInstructed {
-    #[serde(flatten)]
-    pub stump_cutting_as_instructed: BdtYesNoType,
+    pub stump_lifting_suitable_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,21 +40,9 @@ pub struct RemainingStumpCount {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PurchaseContractId {
+pub struct StumpLiftingQualityText {
     #[serde(flatten)]
-    pub purchase_contract_id: BdtString20Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpLiftingSuitable {
-    #[serde(flatten)]
-    pub stump_lifting_suitable: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpCuttingAsInstructedText {
-    #[serde(flatten)]
-    pub stump_cutting_as_instructed_text: BdtString200Type,
+    pub stump_lifting_quality_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

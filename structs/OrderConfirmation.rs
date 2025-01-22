@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
@@ -7,12 +7,6 @@ use geo::{Point, Polygon, MultiPolygon, LineString};
 pub struct OrderStatus {
     #[serde(flatten)]
     pub order_status: BdtOrderStatusType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerArea {
-    #[serde(flatten)]
-    pub service_buyer_area: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

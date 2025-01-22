@@ -9,8 +9,8 @@ use std::fs;
 
 pub const RUST_TYPES: &[&str] = &[
     "bool", "f64", "f32", "i32", "u32", "i8", "i16", "i64", 
-    "u8", "u16", "u64", "String", "chrono::NaiveDate", 
-    "chrono::NaiveTime", "chrono::NaiveDateTime", 
+    "u8", "u16", "u64", "String", "NaiveDate", 
+    "NaiveTime", "NaiveDateTime", 
     "std::time::Duration", "Vec<u8>",
 ];
 
@@ -39,7 +39,7 @@ pub fn structs_and_definitions_to_file(
     let mut structs_string = String::new();
 
     structs_string.push_str("use serde::{Serialize, Deserialize};\n");
-    structs_string.push_str("use chrono::*;\n\n");
+    structs_string.push_str("use chrono::{NaiveDate, NaiveTime, NaiveDateTime};\n\n");
     structs_string.push_str("use geo::{Point, Polygon, MultiPolygon, LineString};\n\n");
 
 

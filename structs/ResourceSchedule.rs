@@ -1,18 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceSchedule {
+pub struct WorkingSite {
     #[serde(flatten)]
-    pub resource_schedule: ResourceScheduleType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TeamName {
-    #[serde(flatten)]
-    pub team_name: BdtString50Type,
+    pub working_site: WorkingSiteType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,15 +16,41 @@ pub struct ForwarderDelay {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSite {
+pub struct TeamName {
     #[serde(flatten)]
-    pub working_site: WorkingSiteType,
+    pub team_name: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSites {
     #[serde(flatten)]
     pub working_sites: WorkingSitesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceSchedule {
+    #[serde(flatten)]
+    pub resource_schedule: ResourceScheduleType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResourceDataType {
+    #[serde(rename = "StanfordResourceId", skip_serializing_if = "Option::is_none")]
+    pub stanford_resource_id: Option<String100Type>,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+    #[serde(rename = "ServiceBuyerResourceId", skip_serializing_if = "Option::is_none")]
+    pub service_buyer_resource_id: Option<String20Type>,
+    #[serde(rename = "ResourceType")]
+    pub resource_type: ResourceTypeType,
+    #[serde(rename = "WorkingSites")]
+    pub working_sites: WorkingSitesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSitesType {
+    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
+    pub working_site: Option<Vec<WorkingSiteType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -63,25 +83,5 @@ pub struct ResourceScheduleType {
     pub contractor_id: String20Type,
     #[serde(rename = "Resources")]
     pub resources: ResourcesType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSitesType {
-    #[serde(rename = "WorkingSite", skip_serializing_if = "Option::is_none")]
-    pub working_site: Option<Vec<WorkingSiteType>>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResourceDataType {
-    #[serde(rename = "StanfordResourceId", skip_serializing_if = "Option::is_none")]
-    pub stanford_resource_id: Option<String100Type>,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
-    #[serde(rename = "ServiceBuyerResourceId", skip_serializing_if = "Option::is_none")]
-    pub service_buyer_resource_id: Option<String20Type>,
-    #[serde(rename = "ResourceType")]
-    pub resource_type: ResourceTypeType,
-    #[serde(rename = "WorkingSites")]
-    pub working_sites: WorkingSitesType,
 }
 

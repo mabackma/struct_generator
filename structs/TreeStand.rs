@@ -1,42 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SeedStemCount {
+pub struct AmountOutsideSpot {
     #[serde(flatten)]
-    pub seed_stem_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AverageHeight {
-    #[serde(flatten)]
-    pub average_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AmountUnit {
-    #[serde(flatten)]
-    pub amount_unit: CoAmountUnitType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BirchDecimal {
-    #[serde(flatten)]
-    pub birch_decimal: i32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TotalSawlogVolume {
-    #[serde(flatten)]
-    pub total_sawlog_volume: CoSawLogVolumeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SawlogPercent {
-    #[serde(flatten)]
-    pub sawlog_percent: CoSawLogPercentType,
+    pub amount_outside_spot: CoPositiveInteger6digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,45 +16,9 @@ pub struct SpareTreeGroups {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SeedlingStratum {
+pub struct SawlogPercent {
     #[serde(flatten)]
-    pub seedling_stratum: SeedlingStratumType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PineDecimal {
-    #[serde(flatten)]
-    pub pine_decimal: i32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StumpMeanDiameter {
-    #[serde(flatten)]
-    pub stump_mean_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SpareTreeGroup {
-    #[serde(flatten)]
-    pub spare_tree_group: SpareTreeGroupType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AverageStemVolume {
-    #[serde(flatten)]
-    pub average_stem_volume: CoDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeStandData {
-    #[serde(flatten)]
-    pub tree_stand_data: TreeStandDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AmountOutsideSpot {
-    #[serde(flatten)]
-    pub amount_outside_spot: CoPositiveInteger6digitsType,
+    pub sawlog_percent: CoSawLogPercentType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -94,39 +28,9 @@ pub struct TreeSpeciesSummary {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AmountInSpot {
-    #[serde(flatten)]
-    pub amount_in_spot: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TotalPulpwoodVolume {
-    #[serde(flatten)]
-    pub total_pulpwood_volume: CoPulpWoodVolumeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct AlternativeIdentifier {
-    #[serde(flatten)]
-    pub alternative_identifier: AlternativeIdentifierType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct StumpStemCount {
     #[serde(flatten)]
     pub stump_stem_count: CoPositiveInteger6digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TotalVolume {
-    #[serde(flatten)]
-    pub total_volume: CoVolumeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeStandDataDate {
-    #[serde(flatten)]
-    pub tree_stand_data_date: TreeStandDataDateType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -136,9 +40,63 @@ pub struct SeedlingBeginningCode {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SeedlingData {
+pub struct TotalPulpwoodVolume {
     #[serde(flatten)]
-    pub seedling_data: SeedlingDataType,
+    pub total_pulpwood_volume: CoPulpWoodVolumeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AverageHeight {
+    #[serde(flatten)]
+    pub average_height: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AverageStemVolume {
+    #[serde(flatten)]
+    pub average_stem_volume: CoDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PineDecimal {
+    #[serde(flatten)]
+    pub pine_decimal: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AmountInSpot {
+    #[serde(flatten)]
+    pub amount_in_spot: CoPositiveInteger6digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SpruceDecimal {
+    #[serde(flatten)]
+    pub spruce_decimal: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SeedlingStratum {
+    #[serde(flatten)]
+    pub seedling_stratum: SeedlingStratumType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TotalVolume {
+    #[serde(flatten)]
+    pub total_volume: CoVolumeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeStandData {
+    #[serde(flatten)]
+    pub tree_stand_data: TreeStandDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StumpMeanDiameter {
+    #[serde(flatten)]
+    pub stump_mean_diameter: CoPositiveDecimalMax2IntegralPartMax1FractionalPartType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -148,9 +106,39 @@ pub struct TreeSpeciesData {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Amount {
+pub struct TotalSawlogVolume {
     #[serde(flatten)]
-    pub amount: CoPositiveInteger6digitsType,
+    pub total_sawlog_volume: CoSawLogVolumeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeStandDataDate {
+    #[serde(flatten)]
+    pub tree_stand_data_date: TreeStandDataDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AlternativeIdentifier {
+    #[serde(flatten)]
+    pub alternative_identifier: AlternativeIdentifierType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AmountUnit {
+    #[serde(flatten)]
+    pub amount_unit: CoAmountUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SeedStemCount {
+    #[serde(flatten)]
+    pub seed_stem_count: CoPositiveInteger6digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SpareTreeGroup {
+    #[serde(flatten)]
+    pub spare_tree_group: SpareTreeGroupType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -160,9 +148,15 @@ pub struct OperationTreeReduction {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SpruceDecimal {
+pub struct BirchDecimal {
     #[serde(flatten)]
-    pub spruce_decimal: i32,
+    pub birch_decimal: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SeedlingData {
+    #[serde(flatten)]
+    pub seedling_data: SeedlingDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -220,20 +214,9 @@ pub struct TreeStandDataDate2Type {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeStandDataMomentType {
-    #[serde(flatten)]
-    pub base: CoTreeStandDataMomentType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SpareTreeGroupsType {
-    #[serde(rename = "SpareTreeGroup")]
-    pub spare_tree_group: SpareTreeGroupType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AlternativeIdentifierType {
-    pub base: String,
+pub struct SeedlingDataType {
+    #[serde(rename = "SeedlingStratum")]
+    pub seedling_stratum: Vec<SeedlingStratumType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -251,25 +234,9 @@ pub struct SpareTreeGroupType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OperationTreeReductionType {
-    #[serde(rename = "StumpStemCount", skip_serializing_if = "Option::is_none")]
-    pub stump_stem_count: Option<CoPositiveInteger6digitsType>,
-    #[serde(rename = "StumpMeanDiameter", skip_serializing_if = "Option::is_none")]
-    pub stump_mean_diameter: Option<CoPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SeedlingDataType {
-    #[serde(rename = "SeedlingStratum")]
-    pub seedling_stratum: Vec<SeedlingStratumType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NotEmptyTreeSpeciesType {
-    #[serde(rename = "TreeSpeciesType")]
-    pub co_tree_species_type: CoTreeSpeciesType,
-    #[serde(rename = "ExtraTreeSpeciesType")]
-    pub co_extra_tree_species_type: CoExtraTreeSpeciesType,
+pub struct SpareTreeGroupsType {
+    #[serde(rename = "SpareTreeGroup")]
+    pub spare_tree_group: SpareTreeGroupType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -295,6 +262,39 @@ pub struct TreeStandDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct TreeStandDataMomentType {
+    #[serde(flatten)]
+    pub base: CoTreeStandDataMomentType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct NotEmptyTreeSpeciesType {
+    #[serde(rename = "TreeSpeciesType")]
+    pub co_tree_species_type: CoTreeSpeciesType,
+    #[serde(rename = "ExtraTreeSpeciesType")]
+    pub co_extra_tree_species_type: CoExtraTreeSpeciesType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationTreeReductionType {
+    #[serde(rename = "StumpStemCount", skip_serializing_if = "Option::is_none")]
+    pub stump_stem_count: Option<CoPositiveInteger6digitsType>,
+    #[serde(rename = "StumpMeanDiameter", skip_serializing_if = "Option::is_none")]
+    pub stump_mean_diameter: Option<CoPositiveDecimalMax2IntegralPartMax1FractionalPartType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AlternativeIdentifierType {
+    pub base: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesSummaryType {
+    #[serde(rename = "TreeSpeciesData")]
+    pub tree_species_data: Vec<TreeSpeciesDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TreeSpeciesDataType {
     #[serde(rename = "TreeSpecies")]
     pub tree_species: NotEmptyTreeSpeciesType,
@@ -308,11 +308,5 @@ pub struct TreeSpeciesDataType {
     pub total_pulpwood_volume: Option<CoPulpWoodVolumeType>,
     #[serde(rename = "TotalVolume", skip_serializing_if = "Option::is_none")]
     pub total_volume: Option<CoVolumeType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesSummaryType {
-    #[serde(rename = "TreeSpeciesData")]
-    pub tree_species_data: Vec<TreeSpeciesDataType>,
 }
 

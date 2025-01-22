@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
@@ -16,15 +16,15 @@ pub struct StemDistributionStratum {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct StoreyType {
-    #[serde(flatten)]
-    pub base: CoStoreyType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct AgeType {
     #[serde(flatten)]
     pub base: CoAgeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct StoreyType {
+    #[serde(flatten)]
+    pub base: CoStoreyType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

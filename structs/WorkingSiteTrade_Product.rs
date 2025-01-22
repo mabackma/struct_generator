@@ -1,12 +1,12 @@
 use serde::{Serialize, Deserialize};
-use chrono::*;
+use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Consumption {
+pub struct Product {
     #[serde(flatten)]
-    pub consumption: ConsumptionType,
+    pub product: ProductType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,15 +22,15 @@ pub struct ProductName {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Product {
+pub struct Consumption {
     #[serde(flatten)]
-    pub product: ProductType,
+    pub consumption: ConsumptionType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
+pub struct ConsumptionUnitType {
+    #[serde(flatten)]
+    pub base: CoUnitPerHectareType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -43,14 +43,6 @@ pub struct OperationModeType {
 pub struct ConsumptionType {
     #[serde(flatten)]
     pub base: CoDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: WtcPlannedResourceType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -88,16 +80,24 @@ pub struct ProductType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
-    #[serde(flatten)]
-    pub base: CoUnitPerHectareType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct OperationTypeType {
     #[serde(rename = "CuttingTypeType")]
     pub op_cutting_type_type: OpCuttingTypeType,
     #[serde(rename = "SilvicultureTypeType")]
     pub op_silviculture_type_type: OpSilvicultureTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: WtcPlannedResourceType,
 }
 
