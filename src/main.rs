@@ -179,12 +179,16 @@ fn change_circular_field_types(structs: &mut HashMap<String, XMLStruct>) {
 
         for field in value.fields.iter_mut() {
             if field.field_type == *key {
+                
+                // Change the field type to another xsd defined type
                 if key.ends_with("PlannedResourceType") {
                     field.field_type = "CiContactInformationType".to_string();
                 } else if key.ends_with("AreaDecreaseType") {
                     field.field_type = "f64".to_string();
                 } else if key.contains("Date") {
-                    field.field_type = "chrono::NaiveDate".to_string();
+                    field.field_type = "NaiveDate".to_string();
+                } else if field.field_type == "Xsbase64Binary" || field.field_type == "XshexBinary" {
+                    field.field_type = format!("Vec<u8>");
                 } else {
                     field.field_type = "String".to_string();
                 }

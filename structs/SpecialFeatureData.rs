@@ -12,7 +12,7 @@ pub struct SpecialFeatureData {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SpecialFeaturesType {
     #[serde(rename = "SpecialFeature")]
-    pub special_feature: Vec<SfLocatedSpecialFeature1Type>,
+    pub special_feature: Vec<LocatedSpecialFeature1Type>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -4,12 +4,6 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Message {
-    #[serde(flatten)]
-    pub message: PayloadType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Envelope {
     #[serde(flatten)]
     pub envelope: EnvelopeType,

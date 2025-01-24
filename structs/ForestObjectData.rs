@@ -14,9 +14,9 @@ pub struct ForestObjectDataType {
     #[serde(rename = "@id")]
     pub id: String,
     #[serde(rename = "Description")]
-    pub description: CoString2000Type,
+    pub description: String2000Type,
     #[serde(rename = "Sender")]
-    pub sender: CiContactInformationType,
+    pub sender: ContactInformationType,
     #[serde(rename = "Objects")]
     pub objects: ForestObjectDataObjectsType,
 }
@@ -24,6 +24,6 @@ pub struct ForestObjectDataType {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ForestObjectDataObjectsType {
     #[serde(rename = "Object")]
-    pub object: Vec<CodForestObjectDataObjectType>,
+    pub object: Vec<ForestObjectDataObjectType>,
 }
 

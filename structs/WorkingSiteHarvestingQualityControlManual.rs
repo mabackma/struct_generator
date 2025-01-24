@@ -4,39 +4,15 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SelectionType {
+pub struct LogVolume {
     #[serde(flatten)]
-    pub selection_type: BdtString10Type,
+    pub log_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ControlLogCount {
+pub struct MeasurerType {
     #[serde(flatten)]
-    pub control_log_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteHarvestingQualityControlManual {
-    #[serde(flatten)]
-    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ControlLogVolume {
-    #[serde(flatten)]
-    pub control_log_volume: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Temperature {
-    #[serde(flatten)]
-    pub temperature: i32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct MeasurementId {
-    #[serde(flatten)]
-    pub measurement_id: BdtPositiveIntegerType,
+    pub measurer_type: BdtMeasurerTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -46,9 +22,21 @@ pub struct Measurements {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ControlLogLength {
+pub struct Measurement {
     #[serde(flatten)]
-    pub control_log_length: BdtPositiveInteger5digitsType,
+    pub measurement: MeasurementDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ControlLogCount {
+    #[serde(flatten)]
+    pub control_log_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct InfoText {
+    #[serde(flatten)]
+    pub info_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,9 +46,39 @@ pub struct LogLength {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteHarvestingQualityControlManual {
+    #[serde(flatten)]
+    pub working_site_harvesting_quality_control_manual: WorkingSiteHarvestingQualityControlManualType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct LogCount {
     #[serde(flatten)]
     pub log_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ControlLogLength {
+    #[serde(flatten)]
+    pub control_log_length: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Measurer {
+    #[serde(flatten)]
+    pub measurer: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Temperature {
+    #[serde(flatten)]
+    pub temperature: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MeasurementDate {
+    #[serde(flatten)]
+    pub measurement_date: BdtTimeStampType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -70,15 +88,21 @@ pub struct ProductKey {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LogVolume {
+pub struct MeasurementId {
     #[serde(flatten)]
-    pub log_volume: BdtDecimal3FractionDigitsType,
+    pub measurement_id: BdtPositiveIntegerType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Measurement {
+pub struct SelectionType {
     #[serde(flatten)]
-    pub measurement: MeasurementDataType,
+    pub selection_type: BdtString10Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ControlLogVolume {
+    #[serde(flatten)]
+    pub control_log_volume: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

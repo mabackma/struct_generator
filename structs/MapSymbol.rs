@@ -4,9 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MapSymbol {
+pub struct DitchType {
     #[serde(flatten)]
-    pub map_symbol: MapSymbolType,
+    pub ditch_type: WctDitchTypeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,9 +16,15 @@ pub struct SpareGroupOfTrees {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Width {
+pub struct Length {
     #[serde(flatten)]
-    pub width: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+    pub length: BdtPositiveInteger5digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MapSymbols {
+    #[serde(flatten)]
+    pub map_symbols: MapSymbolsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,33 +34,27 @@ pub struct MapSymbolName {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Geometry {
+    #[serde(flatten)]
+    pub geometry: GdtAlternativeGeometries2Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Width {
+    #[serde(flatten)]
+    pub width: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MapSymbol {
+    #[serde(flatten)]
+    pub map_symbol: MapSymbolType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct MapSymbolId {
     #[serde(flatten)]
     pub map_symbol_id: WctERPIdType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DitchType {
-    #[serde(flatten)]
-    pub ditch_type: WctDitchTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Length {
-    #[serde(flatten)]
-    pub length: BdtPositiveInteger5digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Depth {
-    #[serde(flatten)]
-    pub depth: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Symbol {
-    #[serde(flatten)]
-    pub symbol: MapSymbolDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -76,15 +76,43 @@ pub struct InsertedMapSymbolId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Symbol {
+    #[serde(flatten)]
+    pub symbol: MapSymbolDataType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct MaterialCode {
     #[serde(flatten)]
     pub material_code: BdtMaterialCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MapSymbols {
+pub struct CanModify {
     #[serde(flatten)]
+    pub can_modify: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Depth {
+    #[serde(flatten)]
+    pub depth: BdtPositiveDecimalMax2IntegralPartMax1FractionalPartType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbolType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "MapSymbols")]
     pub map_symbols: MapSymbolsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MapSymbolsType {
+    #[serde(rename = "Symbol")]
+    pub symbol: Vec<MapSymbolDataType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -133,21 +161,5 @@ pub struct MapSymbolDataType {
     pub spare_group_of_trees: Option<SpareTreesByCategoryType>,
     #[serde(rename = "UsingRestrictions", skip_serializing_if = "Option::is_none")]
     pub sf_using_restrictions: Option<SfUsingRestrictions>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "MapSymbols")]
-    pub map_symbols: MapSymbolsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct MapSymbolsType {
-    #[serde(rename = "Symbol")]
-    pub symbol: Vec<MapSymbolDataType>,
 }
 

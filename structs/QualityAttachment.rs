@@ -4,39 +4,15 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ModificationDate {
+pub struct QualityAttachment {
     #[serde(flatten)]
-    pub modification_date: BdtDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Filename {
-    #[serde(flatten)]
-    pub filename: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Infotext {
-    #[serde(flatten)]
-    pub infotext: BdtString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Bytes {
-    #[serde(flatten)]
-    pub bytes: Vec<u8>,
+    pub quality_attachment: QualityAttachmentType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Version {
     #[serde(flatten)]
     pub version: BdtString10Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct QualityAttachment {
-    #[serde(flatten)]
-    pub quality_attachment: QualityAttachmentType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

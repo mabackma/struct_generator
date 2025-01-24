@@ -4,21 +4,69 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Label {
-    #[serde(flatten)]
-    pub label: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct FileFormat {
     #[serde(flatten)]
     pub file_format: BdtString5Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct StandId {
+    #[serde(flatten)]
+    pub stand_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FileName {
+    #[serde(flatten)]
+    pub file_name: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StorageId {
+    #[serde(flatten)]
+    pub storage_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Label {
+    #[serde(flatten)]
+    pub label: BdtString100Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceId {
+    #[serde(flatten)]
+    pub resource_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceBuyerId {
+    #[serde(flatten)]
+    pub service_buyer_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Bytes {
+    #[serde(flatten)]
+    pub bytes: Vec<u8>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ProductUserId {
+    #[serde(flatten)]
+    pub product_user_id: BdtString50Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ExternalFile {
     #[serde(flatten)]
     pub external_file: ExternalFileType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteId {
+    #[serde(flatten)]
+    pub working_site_id: WctERPIdType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

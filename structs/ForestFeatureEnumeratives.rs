@@ -4,12 +4,12 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct OriginalFeatureCodeType {
+pub struct FeatureCodeExtensionsType {
     pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureAdditionalCodeType {
+pub struct OriginalFeatureCodeType {
     pub base: String,
 }
 
@@ -19,7 +19,7 @@ pub struct FeatureTypeType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct FeatureCodeExtensionsType {
+pub struct FeatureAdditionalCodeType {
     pub base: String,
 }
 

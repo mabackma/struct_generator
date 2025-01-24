@@ -4,21 +4,15 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeListItem {
+pub struct TreeNumber {
     #[serde(flatten)]
-    pub tree_list_item: TreeListItemType,
+    pub tree_number: i32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeClass {
+pub struct Value {
     #[serde(flatten)]
-    pub tree_class: CoTreeClassType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TreeIdentifier {
-    #[serde(flatten)]
-    pub tree_identifier: TreeIdentifierType,
+    pub value: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,9 +22,9 @@ pub struct TreeIdentifiers {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct TreeNumber {
+pub struct TreeClass {
     #[serde(flatten)]
-    pub tree_number: i32,
+    pub tree_class: CoTreeClassType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -39,10 +33,16 @@ pub struct Type {
     pub r#type: i32,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TreeIdentifiersType {
-    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
-    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeIdentifier {
+    #[serde(flatten)]
+    pub tree_identifier: TreeIdentifierType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeListItem {
+    #[serde(flatten)]
+    pub tree_list_item: TreeListItemType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -52,29 +52,35 @@ pub struct TreeListItemType {
     #[serde(rename = "TreeNumber", skip_serializing_if = "Option::is_none")]
     pub tree_number: Option<i32>,
     #[serde(rename = "TreeSpecies", skip_serializing_if = "Option::is_none")]
-    pub tree_species: Option<CoTreeSpeciesType>,
+    pub tree_species: Option<TreeSpeciesType>,
     #[serde(rename = "TreeClass", skip_serializing_if = "Option::is_none")]
     pub tree_class: Option<CoTreeClassType>,
     #[serde(rename = "Storey", skip_serializing_if = "Option::is_none")]
-    pub storey: Option<CoStoreyType>,
+    pub storey: Option<StoreyType>,
     #[serde(rename = "Age", skip_serializing_if = "Option::is_none")]
-    pub age: Option<CoAgeType>,
+    pub age: Option<AgeType>,
     #[serde(rename = "StemCount", skip_serializing_if = "Option::is_none")]
-    pub stem_count: Option<CoStemCountType>,
+    pub stem_count: Option<StemCountType>,
     #[serde(rename = "Diameter", skip_serializing_if = "Option::is_none")]
-    pub diameter: Option<CoDiameterType>,
+    pub diameter: Option<DiameterType>,
     #[serde(rename = "Height", skip_serializing_if = "Option::is_none")]
-    pub height: Option<CoMeanHeightType>,
+    pub height: Option<MeanHeightType>,
     #[serde(rename = "Volume", skip_serializing_if = "Option::is_none")]
-    pub volume: Option<CoVolumeType>,
+    pub volume: Option<VolumeType>,
     #[serde(rename = "SawLogPercent", skip_serializing_if = "Option::is_none")]
-    pub saw_log_percent: Option<CoSawLogPercentType>,
+    pub saw_log_percent: Option<SawLogPercentType>,
     #[serde(rename = "SawLogVolume", skip_serializing_if = "Option::is_none")]
-    pub saw_log_volume: Option<CoSawLogVolumeType>,
+    pub saw_log_volume: Option<SawLogVolumeType>,
     #[serde(rename = "PulpWoodVolume", skip_serializing_if = "Option::is_none")]
-    pub pulp_wood_volume: Option<CoPulpWoodVolumeType>,
+    pub pulp_wood_volume: Option<PulpWoodVolumeType>,
     #[serde(rename = "TreeIdentifiers", skip_serializing_if = "Option::is_none")]
     pub tree_identifiers: Option<TreeIdentifiersType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeIdentifiersType {
+    #[serde(rename = "TreeIdentifier", skip_serializing_if = "Option::is_none")]
+    pub tree_identifier: Option<Vec<TreeIdentifierType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

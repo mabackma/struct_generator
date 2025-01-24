@@ -4,15 +4,21 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct OrderConfirmation {
+    #[serde(flatten)]
+    pub order_confirmation: OrderConfirmationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OrderStatus {
     #[serde(flatten)]
     pub order_status: BdtOrderStatusType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OrderConfirmation {
+pub struct ServiceBuyerArea {
     #[serde(flatten)]
-    pub order_confirmation: OrderConfirmationType,
+    pub service_buyer_area: BdtString20Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
