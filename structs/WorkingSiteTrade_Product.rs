@@ -4,6 +4,24 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Unit {
+    #[serde(flatten)]
+    pub unit: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ConsumptionUnit {
+    #[serde(flatten)]
+    pub consumption_unit: ConsumptionUnitType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Code {
+    #[serde(flatten)]
+    pub code: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Product {
     #[serde(flatten)]
     pub product: ProductType,
@@ -16,55 +34,15 @@ pub struct Consumption {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ProductName {
+pub struct Description {
     #[serde(flatten)]
-    pub product_name: CoString500Type,
+    pub description: CoString1500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ConsumptionUnit {
+pub struct ProductName {
     #[serde(flatten)]
-    pub consumption_unit: ConsumptionUnitType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionType {
-    #[serde(flatten)]
-    pub base: CoDecimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ProductsType {
-    #[serde(rename = "Product")]
-    pub product: Vec<ProductType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationModeType {
-    #[serde(flatten)]
-    pub base: CoOperationModeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PlannedResourceType {
-    #[serde(rename = "@Id")]
-    pub id: String,
-    #[serde(rename = "PlannedResource")]
-    pub planned_resource: PlannedResourceType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct OperationTypeType {
-    #[serde(rename = "CuttingTypeType")]
-    pub op_cutting_type_type: OpCuttingTypeType,
-    #[serde(rename = "SilvicultureTypeType")]
-    pub op_silviculture_type_type: OpSilvicultureTypeType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConsumptionUnitType {
-    #[serde(flatten)]
-    pub base: CoUnitPerHectareType,
+    pub product_name: CoString500Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -98,6 +76,46 @@ pub struct ProductType {
     #[serde(rename = "PlannedResource", skip_serializing_if = "Option::is_none")]
     pub planned_resource: Option<PlannedResourceType>,
     #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String1500Type>,
+    pub description: Option<CoString1500Type>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionType {
+    #[serde(flatten)]
+    pub base: CoDecimal2FractionDigitsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ConsumptionUnitType {
+    #[serde(flatten)]
+    pub base: CoUnitPerHectareType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationTypeType {
+    #[serde(rename = "CuttingTypeType")]
+    pub op_cutting_type_type: OpCuttingTypeType,
+    #[serde(rename = "SilvicultureTypeType")]
+    pub op_silviculture_type_type: OpSilvicultureTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PlannedResourceType {
+    #[serde(rename = "@Id")]
+    pub id: String,
+    #[serde(rename = "PlannedResource")]
+    pub planned_resource: PlannedResourceType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OperationModeType {
+    #[serde(flatten)]
+    pub base: CoOperationModeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ProductsType {
+    #[serde(rename = "Product")]
+    pub product: Vec<ProductType>,
 }
 

@@ -4,6 +4,24 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Acknowledge {
+    #[serde(flatten)]
+    pub acknowledge: AcknowledgeType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusMessages {
+    #[serde(flatten)]
+    pub status_messages: StatusMessageLanguageType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct StatusCode {
+    #[serde(flatten)]
+    pub status_code: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OriginalMessageType {
     #[serde(flatten)]
     pub original_message_type: BdtString50Type,
@@ -16,15 +34,9 @@ pub struct ReplyTo {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Acknowledge {
+pub struct StatusMessage {
     #[serde(flatten)]
-    pub acknowledge: AcknowledgeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StatusMessages {
-    #[serde(flatten)]
-    pub status_messages: StatusMessageLanguageType,
+    pub status_message: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

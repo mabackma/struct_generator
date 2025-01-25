@@ -4,21 +4,15 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BioMassQuality {
+pub struct BioMassQualityText {
     #[serde(flatten)]
-    pub bio_mass_quality: BdtYesNoType,
+    pub bio_mass_quality_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestEnergySuitableText {
+pub struct RemainingBiomassText {
     #[serde(flatten)]
-    pub forest_energy_suitable_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RemainingBiomass {
-    #[serde(flatten)]
-    pub remaining_biomass: BdtYesNoType,
+    pub remaining_biomass_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,21 +22,27 @@ pub struct WorkingSiteFinalAuditBioMassForwarding {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BioMassQualityText {
+pub struct RemainingBiomass {
     #[serde(flatten)]
-    pub bio_mass_quality_text: BdtString200Type,
+    pub remaining_biomass: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestEnergySuitableText {
+    #[serde(flatten)]
+    pub forest_energy_suitable_text: BdtString200Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BioMassQuality {
+    #[serde(flatten)]
+    pub bio_mass_quality: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ForestEnergySuitable {
     #[serde(flatten)]
     pub forest_energy_suitable: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RemainingBiomassText {
-    #[serde(flatten)]
-    pub remaining_biomass_text: BdtString200Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

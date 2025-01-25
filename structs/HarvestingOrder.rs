@@ -4,21 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Attachments {
-    #[serde(flatten)]
-    pub attachments: AttachmentsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Data {
     #[serde(flatten)]
     pub data: Vec<u8>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Attachment {
-    #[serde(flatten)]
-    pub attachment: AttachmentDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,15 +16,27 @@ pub struct HarvestingOrder {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Attachments {
+    #[serde(flatten)]
+    pub attachments: AttachmentsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AssortmentId {
+    #[serde(flatten)]
+    pub assortment_id: WctERPIdType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct BeginDate {
     #[serde(flatten)]
     pub begin_date: BdtDateType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Attachment {
+    #[serde(flatten)]
+    pub attachment: AttachmentDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -66,6 +66,12 @@ pub struct AttachmentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentsType {
+    #[serde(rename = "Assortment")]
+    pub assortment: Vec<AssortmentDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AssortmentDataType {
     #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
     pub assortment_id: Option<ERPIdType>,
@@ -90,8 +96,8 @@ pub struct AssortmentDataType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentsType {
-    #[serde(rename = "Assortment")]
-    pub assortment: Vec<AssortmentDataType>,
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 

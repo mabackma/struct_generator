@@ -4,21 +4,15 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PartsOfProject {
-    #[serde(flatten)]
-    pub parts_of_project: PartsOfProjectType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PartOfProject {
     #[serde(flatten)]
     pub part_of_project: PartOfProjectType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OtherPublicSubstitute {
+pub struct FinancingActApplication {
     #[serde(flatten)]
-    pub other_public_substitute: CoOtherPublicSubstituteType,
+    pub financing_act_application: FinancingActApplicationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,9 +28,21 @@ pub struct FinancingType {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FinancingActApplication {
+pub struct PartsOfProject {
     #[serde(flatten)]
-    pub financing_act_application: FinancingActApplicationType,
+    pub parts_of_project: PartsOfProjectType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OtherPublicSubstitute {
+    #[serde(flatten)]
+    pub other_public_substitute: CoOtherPublicSubstituteType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PartsOfProjectType {
+    #[serde(rename = "PartOfProject")]
+    pub part_of_project: Vec<PartOfProjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -87,12 +93,6 @@ pub struct FinancingActApplicationType {
     pub parts_of_project: PartsOfProjectType,
     #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
     pub fac_documents: Option<FacDocuments>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PartsOfProjectType {
-    #[serde(rename = "PartOfProject")]
-    pub part_of_project: Vec<PartOfProjectType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

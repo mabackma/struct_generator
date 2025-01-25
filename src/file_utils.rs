@@ -73,7 +73,7 @@ fn generate_element_definitions(
         definitions_string.push_str("    #[serde(flatten)]\n");
 
         let field_type = handle_prefix(typ, prefixes);
-
+        
         definitions_string.push_str(&format!("    pub {}: {},\n", to_snake_case(name), field_type));
 
         definitions_string.push_str("}\n\n");

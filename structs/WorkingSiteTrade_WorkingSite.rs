@@ -4,15 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OfferWorkingSites {
+pub struct CallForOfferWorkingSites {
     #[serde(flatten)]
-    pub offer_working_sites: OfferWorkingSitesType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferWorkingSiteDetails {
-    #[serde(flatten)]
-    pub call_for_offer_working_site_details: CallForOfferWorkingSiteDetailsType,
+    pub call_for_offer_working_sites: CallForOfferWorkingSitesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,15 +22,21 @@ pub struct WorkingSiteKey {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CallForOfferWorkingSites {
+pub struct OfferWorkingSites {
     #[serde(flatten)]
-    pub call_for_offer_working_sites: CallForOfferWorkingSitesType,
+    pub offer_working_sites: OfferWorkingSitesType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CallForOfferWorkingSiteDetails {
+    #[serde(flatten)]
+    pub call_for_offer_working_site_details: CallForOfferWorkingSiteDetailsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteKeyType {
-    #[serde(rename = "@id")]
-    pub id: String,
+pub struct CallForOfferWorkingSiteDetailsType {
+    #[serde(flatten)]
+    pub base: CfowsWorkingSiteType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,11 +46,9 @@ pub struct OfferWorkingSiteDetailsType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSitesType {
-    #[serde(rename = "WorkingSiteKey")]
-    pub working_site_key: Vec<WorkingSiteKeyType>,
-    #[serde(rename = "CallForOfferWorkingSiteDetails")]
-    pub call_for_offer_working_site_details: Vec<CallForOfferWorkingSiteDetailsType>,
+pub struct WorkingSiteKeyType {
+    #[serde(rename = "@id")]
+    pub id: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -62,8 +60,10 @@ pub struct OfferWorkingSitesType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct CallForOfferWorkingSiteDetailsType {
-    #[serde(flatten)]
-    pub base: CfowsWorkingSiteType,
+pub struct CallForOfferWorkingSitesType {
+    #[serde(rename = "WorkingSiteKey")]
+    pub working_site_key: Vec<WorkingSiteKeyType>,
+    #[serde(rename = "CallForOfferWorkingSiteDetails")]
+    pub call_for_offer_working_site_details: Vec<CallForOfferWorkingSiteDetailsType>,
 }
 

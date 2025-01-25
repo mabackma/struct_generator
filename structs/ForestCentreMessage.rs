@@ -16,15 +16,15 @@ pub struct SenderEmail {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestDataUpdate {
-    #[serde(flatten)]
-    pub forest_data_update: CodForestDataUpdateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ForestCentreMessage {
     #[serde(flatten)]
     pub forest_centre_message: ForestCentreMessageType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestDataUpdate {
+    #[serde(flatten)]
+    pub forest_data_update: CodForestDataUpdateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

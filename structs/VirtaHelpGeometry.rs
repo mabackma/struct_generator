@@ -4,6 +4,12 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct Id {
+    #[serde(flatten)]
+    pub id: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct LineGeometry {
     #[serde(flatten)]
     pub line_geometry: LineGeometryType,
@@ -13,6 +19,18 @@ pub struct LineGeometry {
 pub struct HelpGeometryType {
     #[serde(flatten)]
     pub help_geometry_type: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PointGeometryType {
+    #[serde(rename = "Id")]
+    pub id: String,
+    #[serde(rename = "Status", skip_serializing_if = "Option::is_none")]
+    pub status: Option<ChangeStateType>,
+    #[serde(rename = "HelpGeometryType", skip_serializing_if = "Option::is_none")]
+    pub help_geometry_type: Option<String>,
+    #[serde(rename = "Point")]
+    pub gml_point: GmlPoint,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -37,17 +55,5 @@ pub struct PolygonGeometryType {
     pub help_geometry_type: Option<String>,
     #[serde(rename = "Polygon")]
     pub gml_polygon: GmlPolygon,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PointGeometryType {
-    #[serde(rename = "Id")]
-    pub id: String,
-    #[serde(rename = "Status", skip_serializing_if = "Option::is_none")]
-    pub status: Option<ChangeStateType>,
-    #[serde(rename = "HelpGeometryType", skip_serializing_if = "Option::is_none")]
-    pub help_geometry_type: Option<String>,
-    #[serde(rename = "Point")]
-    pub gml_point: GmlPoint,
 }
 

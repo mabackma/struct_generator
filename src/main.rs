@@ -1,7 +1,7 @@
 use struct_generator::create_structs::{create_structs, XMLStruct};
 use struct_generator::file_utils::{read_xsd_file, structs_and_definitions_to_file, RUST_TYPES};
 use struct_generator::sorting_algorithm::{create_file_dependencies, sort_files};
-use struct_generator::string_utils::{capitalize_first, handle_prefix, remove_colon_from_string, remove_prefix, XSD_TO_RUST};
+use struct_generator::string_utils::{capitalize_first, field_type_to_uppercase, handle_prefix, remove_colon_from_string, remove_prefix, XSD_TO_RUST};
 
 use std::collections::{HashMap, HashSet};
 use quick_xml::Reader;
@@ -43,8 +43,10 @@ fn main() {
 
     remove_prefixes_from_missing_types(&mut element_definitions, &structs, prefixes);
 
-    fix_lowercase_types(&mut element_definitions, prefixes);
+    fix_lowercase_types(&mut element_definitions, &mut structs, prefixes);
 
+    fix_lowercase_keys(&mut element_definitions, &mut structs);
+    
     //structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
     //element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
     structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "src/__structs_and_definitions.rs").unwrap();
@@ -326,27 +328,55 @@ fn replace_field_types_from_definitions(
 
 fn fix_lowercase_types(
     element_definitions: &mut HashMap<String, String>,
+    structs: &mut HashMap<String, XMLStruct>,
     prefixes: &mut HashMap<String, String>
 ) {
-    let mut new_definitions = element_definitions.clone();
 
-    for (el_key, typ) in element_definitions.iter() {
-        let mut el_type = handle_prefix(typ, prefixes);
+    element_definitions.iter_mut().for_each(|(_, typ)| {
+        *typ = handle_prefix(&typ, prefixes);
+        *typ = remove_prefix(&typ, prefixes);
+        *typ = field_type_to_uppercase(&typ);
+    });
 
-        if el_type.chars().next().map_or(false, char::is_lowercase) && !RUST_TYPES.contains(&el_type.as_str()){
+    structs.iter_mut().for_each(|(_, value)| {
+        value.fields.iter_mut().for_each(|field| {
+            field.field_type = field_type_to_uppercase(&field.field_type);
+        });
+    });
+}
 
-            if let Some(rust_type) = XSD_TO_RUST.get(&el_type.as_str()) {
-                el_type = rust_type.to_string();
-            } else {
-                el_type = capitalize_first(&el_type);
-            }
+fn fix_lowercase_keys(
+    element_definitions: &mut HashMap<String, String>,
+    structs: &mut HashMap<String, XMLStruct>
+) {
 
-            new_definitions.remove(el_key);
-            new_definitions.insert(el_key.to_string(), el_type);
+    let mut new_definitions = HashMap::new();
+
+    element_definitions.iter_mut().for_each(|(el_key, typ)| {
+        let mut new_key = el_key.clone();
+
+        if new_key.chars().next().unwrap().is_lowercase() {
+            new_key = capitalize_first(&new_key);
         }
-    }
+
+        new_definitions.insert(new_key.clone(), typ.clone());
+    });
 
     *element_definitions = new_definitions;
+
+    let mut new_structs = HashMap::new();
+
+    structs.iter_mut().for_each(|(s_key, value)| {
+        let mut new_key = s_key.clone();
+
+        if new_key.chars().next().unwrap().is_lowercase() {
+            new_key = capitalize_first(&new_key);
+        }
+
+        new_structs.insert(new_key.clone(), value.clone());
+    });
+
+    *structs = new_structs;
 }
 
 fn print_missing_fields(

@@ -4,69 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ScalpsCount {
-    #[serde(flatten)]
-    pub scalps_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PlantingSiteCount {
-    #[serde(flatten)]
-    pub planting_site_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DitchMoundsCount {
-    #[serde(flatten)]
-    pub ditch_mounds_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RockySoil {
-    #[serde(flatten)]
-    pub rocky_soil: BdtYesNoType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BulgeHeight {
-    #[serde(flatten)]
-    pub bulge_height: BdtFinalAuditAnswerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct MineralSoilLayer {
     #[serde(flatten)]
     pub mineral_soil_layer: BdtFinalAuditAnswerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ScalpedMoundsCount {
-    #[serde(flatten)]
-    pub scalped_mounds_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CultivationScope {
-    #[serde(flatten)]
-    pub cultivation_scope: BdtFinalAuditAnswerType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SoilType {
-    #[serde(flatten)]
-    pub soil_type: BdtCompactSoilTypeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TurnoverMoundsCount {
-    #[serde(flatten)]
-    pub turnover_mounds_count: BdtPositiveInteger2digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct NearestCultivatedSpotLength {
-    #[serde(flatten)]
-    pub nearest_cultivated_spot_length: BdtPositiveInteger3digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -76,27 +16,27 @@ pub struct NearestCultivatedSpotWidth {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Target {
+pub struct PlantingSiteCount {
     #[serde(flatten)]
-    pub target: BdtPositiveIntegerType,
+    pub planting_site_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct SoilConditioningDepth {
+pub struct PlantSiteCountSummary {
     #[serde(flatten)]
-    pub soil_conditioning_depth: BdtFinalAuditAnswerType,
+    pub plant_site_count_summary: BdtPositiveInteger4digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DitchesInAdditionToCultivation {
+pub struct ScalpedMoundsCount {
     #[serde(flatten)]
-    pub ditches_in_addition_to_cultivation: BdtPositiveInteger4digitsType,
+    pub scalped_mounds_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteQualityControlSoilConditioning {
+pub struct ScalpsCount {
     #[serde(flatten)]
-    pub working_site_quality_control_soil_conditioning: WorkingSiteQualityControlSoilConditioningType,
+    pub scalps_count: BdtPositiveInteger2digitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -106,9 +46,89 @@ pub struct NearestCultivatedSpotHeight {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PlantSiteCountSummary {
+pub struct DitchesInAdditionToCultivation {
     #[serde(flatten)]
-    pub plant_site_count_summary: BdtPositiveInteger4digitsType,
+    pub ditches_in_addition_to_cultivation: BdtPositiveInteger4digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CultivationScope {
+    #[serde(flatten)]
+    pub cultivation_scope: BdtFinalAuditAnswerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct NearestCultivatedSpotLength {
+    #[serde(flatten)]
+    pub nearest_cultivated_spot_length: BdtPositiveInteger3digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BulgeHeight {
+    #[serde(flatten)]
+    pub bulge_height: BdtFinalAuditAnswerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DitchMoundsCount {
+    #[serde(flatten)]
+    pub ditch_mounds_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TurnoverMoundsCount {
+    #[serde(flatten)]
+    pub turnover_mounds_count: BdtPositiveInteger2digitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SoilConditioningDepth {
+    #[serde(flatten)]
+    pub soil_conditioning_depth: BdtFinalAuditAnswerType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteQualityControlSoilConditioning {
+    #[serde(flatten)]
+    pub working_site_quality_control_soil_conditioning: WorkingSiteQualityControlSoilConditioningType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteQualityControlSoilConditioningBaseType {
+    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
+    pub service_buyer_id: Option<BdtString20Type>,
+    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
+    pub working_site_id: Option<WctERPIdType>,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
+    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
+    pub sample_plots: Option<SamplePlotsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotMeasurementSummaryType {
+    #[serde(rename = "MeasurerType")]
+    pub measurer_type: MeasurerTypeType,
+    #[serde(rename = "PlantSiteCountSummary", skip_serializing_if = "Option::is_none")]
+    pub plant_site_count_summary: Option<PositiveInteger4digitsType>,
+    #[serde(rename = "DitchesInAdditionToCultivation", skip_serializing_if = "Option::is_none")]
+    pub ditches_in_addition_to_cultivation: Option<PositiveInteger4digitsType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotSummariesType {
+    #[serde(rename = "SamplePlotSummary")]
+    pub sample_plot_summary: Vec<SamplePlotSummaryType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SamplePlotSummaryType {
+    #[serde(rename = "StandNumber")]
+    pub stand_number: String20Type,
+    #[serde(rename = "SamplePlotMeasurementSummary")]
+    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -128,17 +148,15 @@ pub struct WorkingSiteQualityControlSoilConditioningType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummaryType {
-    #[serde(rename = "StandNumber")]
-    pub stand_number: String20Type,
-    #[serde(rename = "SamplePlotMeasurementSummary")]
-    pub sample_plot_measurement_summary: Vec<SamplePlotMeasurementSummaryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotsType {
-    #[serde(rename = "SamplePlot")]
-    pub sample_plot: Vec<SamplePlotType>,
+pub struct SelfMonitoringWorkingSiteQualityControlSoilConditioningType {
+    #[serde(flatten)]
+    pub base: WorkingSiteQualityControlSoilConditioningBaseType,
+    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
+    pub images: Option<BdtPositiveInteger2digitsType>,
+    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
+    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
+    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
+    pub sample_plots: Option<SamplePlotsType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -208,44 +226,8 @@ pub struct SamplePlotType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteQualityControlSoilConditioningBaseType {
-    #[serde(rename = "ServiceBuyerId", skip_serializing_if = "Option::is_none")]
-    pub service_buyer_id: Option<BdtString20Type>,
-    #[serde(rename = "WorkingSiteId", skip_serializing_if = "Option::is_none")]
-    pub working_site_id: Option<WctERPIdType>,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
-    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
-    pub sample_plots: Option<SamplePlotsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SelfMonitoringWorkingSiteQualityControlSoilConditioningType {
-    #[serde(flatten)]
-    pub base: WorkingSiteQualityControlSoilConditioningBaseType,
-    #[serde(rename = "Images", skip_serializing_if = "Option::is_none")]
-    pub images: Option<BdtPositiveInteger2digitsType>,
-    #[serde(rename = "SamplePlotSummaries", skip_serializing_if = "Option::is_none")]
-    pub sample_plot_summaries: Option<SamplePlotSummariesType>,
-    #[serde(rename = "SamplePlots", skip_serializing_if = "Option::is_none")]
-    pub sample_plots: Option<SamplePlotsType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotSummariesType {
-    #[serde(rename = "SamplePlotSummary")]
-    pub sample_plot_summary: Vec<SamplePlotSummaryType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SamplePlotMeasurementSummaryType {
-    #[serde(rename = "MeasurerType")]
-    pub measurer_type: MeasurerTypeType,
-    #[serde(rename = "PlantSiteCountSummary", skip_serializing_if = "Option::is_none")]
-    pub plant_site_count_summary: Option<PositiveInteger4digitsType>,
-    #[serde(rename = "DitchesInAdditionToCultivation", skip_serializing_if = "Option::is_none")]
-    pub ditches_in_addition_to_cultivation: Option<PositiveInteger4digitsType>,
+pub struct SamplePlotsType {
+    #[serde(rename = "SamplePlot")]
+    pub sample_plot: Vec<SamplePlotType>,
 }
 

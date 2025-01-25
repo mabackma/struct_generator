@@ -1,4 +1,5 @@
-use crate::string_utils::{handle_prefix, XSD_TO_RUST};
+use crate::file_utils::RUST_TYPES;
+use crate::string_utils::{capitalize_first, handle_prefix, XSD_TO_RUST};
 
 use std::collections::HashMap;
 use quick_xml::events::BytesStart;
@@ -92,7 +93,7 @@ pub fn parse_type(
     if field_type.contains("-") {
         *field_type = field_type.replace("-", "");
     }
-
+    
     if is_element_vec(e) {
         if is_element_optional(e) {
             *field_type = format!("Option<Vec<{}>>", field_type);

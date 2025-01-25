@@ -4,21 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct MachineApplicationVersion {
-    #[serde(flatten)]
-    pub machine_application_version: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PartitialLoad {
     #[serde(flatten)]
     pub partitial_load: PartitialLoadType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PartitialLoadId {
-    #[serde(flatten)]
-    pub partitial_load_id: u32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,45 +16,33 @@ pub struct WorkingSiteForwardedProduction {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LoadGreenMass {
-    #[serde(flatten)]
-    pub load_green_mass: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct LoadCount {
-    #[serde(flatten)]
-    pub load_count: u32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SendDate {
-    #[serde(flatten)]
-    pub send_date: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Load {
-    #[serde(flatten)]
-    pub load: LoadType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ForwardingDistance {
     #[serde(flatten)]
     pub forwarding_distance: u32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LoadNumber {
-    #[serde(flatten)]
-    pub load_number: u32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct LoadVolume {
     #[serde(flatten)]
     pub load_volume: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadGreenMass {
+    #[serde(flatten)]
+    pub load_green_mass: BdtDecimal3FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PartitialLoadId {
+    #[serde(flatten)]
+    pub partitial_load_id: u32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Load {
+    #[serde(flatten)]
+    pub load: LoadType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

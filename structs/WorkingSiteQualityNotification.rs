@@ -10,45 +10,27 @@ pub struct DisQualificationReason {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReasonText {
-    #[serde(flatten)]
-    pub dis_qualification_reason_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracySign {
-    #[serde(flatten)]
-    pub cutting_accuracy_sign: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReasons {
-    #[serde(flatten)]
-    pub dis_qualification_reasons: DisQualificationReasonsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationSign {
-    #[serde(flatten)]
-    pub dis_qualification_sign: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationPercentageTotal {
-    #[serde(flatten)]
-    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct DisQualificationPercentage {
     #[serde(flatten)]
     pub dis_qualification_percentage: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteQualityNotification {
+pub struct PurchaseContractNumber {
     #[serde(flatten)]
-    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
+    pub purchase_contract_number: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ResourceIdMJ {
+    #[serde(flatten)]
+    pub resource_id_m_j: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasonText {
+    #[serde(flatten)]
+    pub dis_qualification_reason_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,9 +40,33 @@ pub struct CuttingAccuracy {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ResourceIdMJ {
+pub struct CuttingAccuracySign {
     #[serde(flatten)]
-    pub resource_id_m_j: BdtString20Type,
+    pub cutting_accuracy_sign: BdtString5Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteQualityNotification {
+    #[serde(flatten)]
+    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationReasons {
+    #[serde(flatten)]
+    pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationPercentageTotal {
+    #[serde(flatten)]
+    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DisQualificationSign {
+    #[serde(flatten)]
+    pub dis_qualification_sign: BdtString5Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -71,12 +77,6 @@ pub struct DisQualificationReasonDataType {
     pub dis_qualification_reason_text: String200Type,
     #[serde(rename = "DisQualificationPercentage")]
     pub dis_qualification_percentage: Decimal2FractionDigitsType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonsType {
-    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
-    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -117,5 +117,11 @@ pub struct WorkingSiteQualityNotificationType {
     pub image: Option<Vec<u8>>,
     #[serde(rename = "DisQualificationReasons")]
     pub dis_qualification_reasons: DisQualificationReasonsType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DisQualificationReasonsType {
+    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
+    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
 }
 

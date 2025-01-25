@@ -1,6 +1,8 @@
 use std::collections::HashMap;
 use phf::{Map, phf_map};
 
+use crate::file_utils::RUST_TYPES;
+
 pub static XSD_TO_RUST: Map<&'static str, &str> = phf_map! {
     "boolean" => "bool",
     "decimal" => "f64",
@@ -163,4 +165,18 @@ pub fn remove_colon_from_string(s: &str) -> String {
     } else {
         s.replace(":", "")
     }
+}
+
+pub fn field_type_to_uppercase(s: &str) -> String {
+    let field_type = s.to_string().replace("Vec<", "").replace("Option<", "").replace(">", "");
+
+    if RUST_TYPES.contains(&field_type.as_str()) {
+        return s.replace(&field_type, &field_type.to_string());
+    }
+
+    if let Some(rust_type) = XSD_TO_RUST.get(&field_type.as_str()) {
+        return s.replace(&field_type, &rust_type.to_string());
+    }
+
+    s.replace(&field_type, &capitalize_first(&field_type))
 }
