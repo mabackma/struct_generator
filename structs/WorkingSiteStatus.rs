@@ -3,6 +3,12 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteStatus {
+    #[serde(flatten)]
+    pub working_site_status: WorkingSiteStatusType,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct WorkingSiteStatusType {
     #[serde(rename = "ServiceBuyerId")]

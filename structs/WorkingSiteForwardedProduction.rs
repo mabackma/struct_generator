@@ -4,21 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PartitialLoad {
+pub struct LoadGreenMass {
     #[serde(flatten)]
-    pub partitial_load: PartitialLoadType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteForwardedProduction {
-    #[serde(flatten)]
-    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ForwardingDistance {
-    #[serde(flatten)]
-    pub forwarding_distance: u32,
+    pub load_green_mass: BdtDecimal3FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,21 +16,63 @@ pub struct LoadVolume {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct LoadGreenMass {
-    #[serde(flatten)]
-    pub load_green_mass: BdtDecimal3FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct PartitialLoadId {
     #[serde(flatten)]
     pub partitial_load_id: u32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct LoadCount {
+    #[serde(flatten)]
+    pub load_count: u32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct PartitialLoad {
+    #[serde(flatten)]
+    pub partitial_load: PartitialLoadType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SendDate {
+    #[serde(flatten)]
+    pub send_date: BdtTimeStampType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForwardingDistance {
+    #[serde(flatten)]
+    pub forwarding_distance: u32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct WorkingSiteForwardedProduction {
+    #[serde(flatten)]
+    pub working_site_forwarded_production: WorkingSiteForwardedProductionType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct LoadNumber {
+    #[serde(flatten)]
+    pub load_number: u32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Load {
     #[serde(flatten)]
     pub load: LoadType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadType {
+    #[serde(rename = "LoadNumber")]
+    pub load_number: u32,
+    #[serde(rename = "ForwardingDistance")]
+    pub forwarding_distance: u32,
+    #[serde(rename = "MeasurementDate")]
+    pub measurement_date: TimeStampType,
+    #[serde(rename = "PartitialLoad")]
+    pub partitial_load: Vec<PartitialLoadType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -91,17 +121,5 @@ pub struct WorkingSiteForwardedProductionType {
     pub load_count: u32,
     #[serde(rename = "Load")]
     pub load: Vec<LoadType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct LoadType {
-    #[serde(rename = "LoadNumber")]
-    pub load_number: u32,
-    #[serde(rename = "ForwardingDistance")]
-    pub forwarding_distance: u32,
-    #[serde(rename = "MeasurementDate")]
-    pub measurement_date: TimeStampType,
-    #[serde(rename = "PartitialLoad")]
-    pub partitial_load: Vec<PartitialLoadType>,
 }
 

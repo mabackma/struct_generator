@@ -4,15 +4,21 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct BeginDate {
+    #[serde(flatten)]
+    pub begin_date: BdtDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Data {
     #[serde(flatten)]
     pub data: Vec<u8>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct HarvestingOrder {
+pub struct Attachment {
     #[serde(flatten)]
-    pub harvesting_order: HarvestingOrderType,
+    pub attachment: AttachmentDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,21 +28,39 @@ pub struct Attachments {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct AssortmentId {
+pub struct HarvestingOrder {
     #[serde(flatten)]
-    pub assortment_id: WctERPIdType,
+    pub harvesting_order: HarvestingOrderType,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct BeginDate {
-    #[serde(flatten)]
-    pub begin_date: BdtDateType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AssortmentDataType {
+    #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
+    pub assortment_id: Option<ERPIdType>,
+    #[serde(rename = "DestinationStorage")]
+    pub destination_storage: String20Type,
+    #[serde(rename = "Code", skip_serializing_if = "Option::is_none")]
+    pub code: Option<String50Type>,
+    #[serde(rename = "Name", skip_serializing_if = "Option::is_none")]
+    pub name: Option<String50Type>,
+    #[serde(rename = "CodeGroup")]
+    pub code_group: AssortmentGroupType,
+    #[serde(rename = "Volume")]
+    pub volume: Decimal3FractionDigitsType,
+    #[serde(rename = "Unit")]
+    pub unit: WorkCodeUnitType,
+    #[serde(rename = "BeginDate")]
+    pub begin_date: DateType,
+    #[serde(rename = "EndDate")]
+    pub end_date: DateType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<String200Type>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Attachment {
-    #[serde(flatten)]
-    pub attachment: AttachmentDataType,
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AttachmentsType {
+    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
+    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -69,35 +93,5 @@ pub struct AttachmentDataType {
 pub struct AssortmentsType {
     #[serde(rename = "Assortment")]
     pub assortment: Vec<AssortmentDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AssortmentDataType {
-    #[serde(rename = "AssortmentId", skip_serializing_if = "Option::is_none")]
-    pub assortment_id: Option<ERPIdType>,
-    #[serde(rename = "DestinationStorage")]
-    pub destination_storage: String20Type,
-    #[serde(rename = "Code", skip_serializing_if = "Option::is_none")]
-    pub code: Option<String50Type>,
-    #[serde(rename = "Name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String50Type>,
-    #[serde(rename = "CodeGroup")]
-    pub code_group: AssortmentGroupType,
-    #[serde(rename = "Volume")]
-    pub volume: Decimal3FractionDigitsType,
-    #[serde(rename = "Unit")]
-    pub unit: WorkCodeUnitType,
-    #[serde(rename = "BeginDate")]
-    pub begin_date: DateType,
-    #[serde(rename = "EndDate")]
-    pub end_date: DateType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<String200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentsType {
-    #[serde(rename = "Attachment", skip_serializing_if = "Option::is_none")]
-    pub attachment: Option<Vec<AttachmentDataType>>,
 }
 

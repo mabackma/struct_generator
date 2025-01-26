@@ -4,9 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationReason {
+pub struct DisQualificationSign {
     #[serde(flatten)]
-    pub dis_qualification_reason: String10Type,
+    pub dis_qualification_sign: BdtString5Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -16,9 +16,15 @@ pub struct DisQualificationPercentage {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct PurchaseContractNumber {
+pub struct DisQualificationPercentageTotal {
     #[serde(flatten)]
-    pub purchase_contract_number: BdtString20Type,
+    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct CuttingAccuracy {
+    #[serde(flatten)]
+    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -34,21 +40,9 @@ pub struct DisQualificationReasonText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct CuttingAccuracy {
-    #[serde(flatten)]
-    pub cutting_accuracy: BdtDecimal2FractionDigitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct CuttingAccuracySign {
     #[serde(flatten)]
     pub cutting_accuracy_sign: BdtString5Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteQualityNotification {
-    #[serde(flatten)]
-    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,25 +52,21 @@ pub struct DisQualificationReasons {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationPercentageTotal {
+pub struct DisQualificationReason {
     #[serde(flatten)]
-    pub dis_qualification_percentage_total: BdtDecimal2FractionDigitsType,
+    pub dis_qualification_reason: String10Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DisQualificationSign {
+pub struct WorkingSiteQualityNotification {
     #[serde(flatten)]
-    pub dis_qualification_sign: BdtString5Type,
+    pub working_site_quality_notification: WorkingSiteQualityNotificationType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonDataType {
-    #[serde(rename = "DisQualificationReason")]
-    pub dis_qualification_reason: String10Type,
-    #[serde(rename = "DisQualificationReasonText")]
-    pub dis_qualification_reason_text: String200Type,
-    #[serde(rename = "DisQualificationPercentage")]
-    pub dis_qualification_percentage: Decimal2FractionDigitsType,
+pub struct DisQualificationReasonsType {
+    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
+    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -120,8 +110,12 @@ pub struct WorkingSiteQualityNotificationType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct DisQualificationReasonsType {
-    #[serde(rename = "DisQualificationReason", skip_serializing_if = "Option::is_none")]
-    pub dis_qualification_reason: Option<Vec<DisQualificationReasonDataType>>,
+pub struct DisQualificationReasonDataType {
+    #[serde(rename = "DisQualificationReason")]
+    pub dis_qualification_reason: String10Type,
+    #[serde(rename = "DisQualificationReasonText")]
+    pub dis_qualification_reason_text: String200Type,
+    #[serde(rename = "DisQualificationPercentage")]
+    pub dis_qualification_percentage: Decimal2FractionDigitsType,
 }
 

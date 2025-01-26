@@ -23,12 +23,11 @@ fn main() {
     let prefixes = &mut HashMap::new();
 
     for file in sorted_files {
-        //println!("Processing file: {}", file);
         let counts = process_xsd_file(&file, &mut structs, &mut element_definitions, prefixes);
         total_struct_count += counts.0;
         total_element_count += counts.1;
     }
-    
+
     prefixes_to_struct_keys(&mut structs, prefixes);
 
     fix_fields_with_colons(&mut structs);
@@ -46,7 +45,7 @@ fn main() {
     fix_lowercase_types(&mut element_definitions, &mut structs, prefixes);
 
     fix_lowercase_keys(&mut element_definitions, &mut structs);
-    
+
     //structs_to_file(&structs, "structs/__all_structs.rs").unwrap();
     //element_definitions_to_file(&element_definitions, "structs/__all_element_definitions.rs", prefixes).unwrap();
     structs_and_definitions_to_file(&structs, &element_definitions, prefixes, "src/__structs_and_definitions.rs").unwrap();

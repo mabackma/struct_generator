@@ -4,20 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct FileName {
-    #[serde(flatten)]
-    pub file_name: BdtString100Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct StanfordFile {
     #[serde(flatten)]
     pub stanford_file: StanfordFileType,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct FileTypeType {
-    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -34,5 +23,10 @@ pub struct StanfordFileType {
     pub file_type: FileTypeType,
     #[serde(rename = "Bytes")]
     pub bytes: Vec<u8>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FileTypeType {
+    pub base: String,
 }
 

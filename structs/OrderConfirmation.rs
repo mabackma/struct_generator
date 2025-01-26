@@ -10,15 +10,9 @@ pub struct OrderStatus {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct OrderConfirmation {
+pub struct ServiceBuyerArea {
     #[serde(flatten)]
-    pub order_confirmation: OrderConfirmationType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Infotext {
-    #[serde(flatten)]
-    pub infotext: BdtString1000Type,
+    pub service_buyer_area: BdtString20Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,9 +22,27 @@ pub struct OperationalRegion {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ServiceBuyerArea {
+pub struct OrderId {
     #[serde(flatten)]
-    pub service_buyer_area: BdtString20Type,
+    pub order_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct OrderConfirmation {
+    #[serde(flatten)]
+    pub order_confirmation: OrderConfirmationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ServiceBuyerId {
+    #[serde(flatten)]
+    pub service_buyer_id: BdtString20Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Infotext {
+    #[serde(flatten)]
+    pub infotext: BdtString1000Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

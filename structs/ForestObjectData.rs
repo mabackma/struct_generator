@@ -22,7 +22,7 @@ pub struct ForestObjectDataType {
     #[serde(rename = "Description")]
     pub description: String2000Type,
     #[serde(rename = "Sender")]
-    pub sender: CiContactInformationType,
+    pub sender: ContactInformationType,
     #[serde(rename = "Objects")]
     pub objects: ForestObjectDataObjectsType,
 }

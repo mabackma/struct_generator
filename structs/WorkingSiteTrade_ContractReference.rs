@@ -4,15 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractBeginningDate {
+pub struct ContractWorkingSiteDetails {
     #[serde(flatten)]
-    pub contract_beginning_date: ContractBeginningDateType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ContractWorkingSites {
-    #[serde(flatten)]
-    pub contract_working_sites: ContractWorkingSitesType,
+    pub contract_working_site_details: ContractWorkingSiteDetailsType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -22,9 +16,9 @@ pub struct ContractEndingDate {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ContractWorkingSiteDetails {
+pub struct ContractWorkingSites {
     #[serde(flatten)]
-    pub contract_working_site_details: ContractWorkingSiteDetailsType,
+    pub contract_working_sites: ContractWorkingSitesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,9 +34,20 @@ pub struct ContractText {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+pub struct ContractBeginningDate {
+    #[serde(flatten)]
+    pub contract_beginning_date: ContractBeginningDateType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Contract {
     #[serde(flatten)]
     pub contract: ContractType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractIdType {
+    pub base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -63,17 +68,6 @@ pub struct ContractWorkingSiteDetailsType {
     pub working_site_text: Option<String1500Type>,
     #[serde(rename = "AssortmentClasses")]
     pub as_assortment_classes: AsAssortmentClasses,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractIdType {
-    pub base: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ContractBeginningDateType {
-    #[serde(flatten)]
-    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -98,6 +92,12 @@ pub struct ContractType {
     pub contract_working_sites: Option<ContractWorkingSitesType>,
     #[serde(rename = "Documents", skip_serializing_if = "Option::is_none")]
     pub wtco_documents: Option<WtcoDocuments>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContractBeginningDateType {
+    #[serde(flatten)]
+    pub base: CoDateType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

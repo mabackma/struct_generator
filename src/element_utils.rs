@@ -2,7 +2,7 @@ use crate::file_utils::RUST_TYPES;
 use crate::string_utils::{capitalize_first, handle_prefix, XSD_TO_RUST};
 
 use std::collections::HashMap;
-use quick_xml::events::BytesStart;
+use quick_xml::events::{BytesEnd, BytesStart};
 use quick_xml::name::QName;
 
 // Retrieve the element reference
@@ -142,3 +142,125 @@ fn is_element_optional(e: &BytesStart<'_>) -> bool {
 
     false
 }
+
+
+
+
+// The following functions will be used incase we need to generate structs from the gml and stanford2010 folders
+/* pub fn is_complex_or_simple(e: &BytesStart<'_>) -> bool {
+
+    let types = vec![
+        QName(b"xs:simpleType"), 
+        QName(b"xs:complexType"), 
+        QName(b"xsd:simpleType"),
+        QName(b"xsd:complexType"), 
+        QName(b"simpleType"), 
+        QName(b"complexType")
+    ];
+
+    if types.contains(&e.name()) {
+        true
+    } else {
+        false
+    }
+}
+
+pub fn is_complex_or_simple_end(e: &BytesEnd<'_>) -> bool {
+
+    let types = vec![
+        QName(b"xs:simpleType"), 
+        QName(b"xs:complexType"), 
+        QName(b"xsd:simpleType"),
+        QName(b"xsd:complexType"), 
+        QName(b"simpleType"), 
+        QName(b"complexType")
+    ];
+
+    if types.contains(&e.name()) {
+        true
+    } else {
+        false
+    }
+}
+
+pub fn is_extension_or_restriction(e: &BytesStart<'_>) -> bool {
+
+    let types = vec![
+        QName(b"xs:extension"), 
+        QName(b"xs:restriction"), 
+        QName(b"xsd:extension"),
+        QName(b"xsd:restriction"), 
+        QName(b"extension"), 
+        QName(b"restriction")
+    ];
+
+    if types.contains(&e.name()) {
+        true
+    } else {
+        false
+    }
+}
+
+pub fn is_union(e: &BytesStart<'_>) -> bool {
+
+    let types = vec![
+        QName(b"xs:union"), 
+        QName(b"xsd:union"), 
+        QName(b"union")
+    ];
+
+    if types.contains(&e.name()) {
+        true
+    } else {
+        false
+    }
+}
+
+pub fn is_element(e: &BytesStart<'_>) -> bool {
+
+    let types = vec![
+        QName(b"xs:element"), 
+        QName(b"xsd:element"), 
+        QName(b"element")
+    ];
+
+    if types.contains(&e.name()) {
+        true
+    } else {
+        false
+    }
+}
+
+pub fn is_group(e: &BytesStart<'_>) -> bool {
+
+    let types = vec![
+        QName(b"xs:group"), 
+        QName(b"xsd:group"), 
+        QName(b"group")
+    ];
+
+    if types.contains(&e.name()) {
+        true
+    } else {
+        false
+    }
+}
+
+pub fn is_group_or_element_or_attribute(e: &BytesStart<'_>) -> bool {
+    is_group(e) || is_element(e) || is_attribute(e)
+}
+
+pub fn is_attribute(e: &BytesStart<'_>) -> bool {
+
+    let types = vec![
+        QName(b"xs:attribute"), 
+        QName(b"xsd:attribute"), 
+        QName(b"attribute")
+    ];
+
+    if types.contains(&e.name()) {
+        true
+    } else {
+        false
+    }
+} */

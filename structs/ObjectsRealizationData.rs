@@ -4,15 +4,15 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ObjectsRealizationData {
-    #[serde(flatten)]
-    pub objects_realization_data: ObjectsRealizationDataType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ObjectRealization {
     #[serde(flatten)]
     pub object_realization: ObjectRealizationType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ObjectsRealizationData {
+    #[serde(flatten)]
+    pub objects_realization_data: ObjectsRealizationDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

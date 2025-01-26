@@ -1,5 +1,5 @@
 use crate::element_utils::{element_name, element_reference, element_type, extension_type, parse_type, reference_type, union_members};
-use crate::string_utils::{capitalize_first, handle_prefix, slice_contents};
+use crate::string_utils::{handle_prefix, slice_contents};
 
 use std::collections::HashMap;
 use quick_xml::events::BytesStart;

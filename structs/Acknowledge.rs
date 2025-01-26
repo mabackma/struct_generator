@@ -16,27 +16,15 @@ pub struct StatusMessages {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StatusCode {
-    #[serde(flatten)]
-    pub status_code: BdtPositiveInteger3digitsType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OriginalMessageType {
-    #[serde(flatten)]
-    pub original_message_type: BdtString50Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 pub struct ReplyTo {
     #[serde(flatten)]
     pub reply_to: BdtString50Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct StatusMessage {
+pub struct OriginalMessageType {
     #[serde(flatten)]
-    pub status_message: String,
+    pub original_message_type: BdtString50Type,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

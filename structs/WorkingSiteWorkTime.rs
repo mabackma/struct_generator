@@ -10,39 +10,15 @@ pub struct Minutes {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct EndTime {
+pub struct Sawinghours {
     #[serde(flatten)]
-    pub end_time: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct StartTime {
-    #[serde(flatten)]
-    pub start_time: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SavingTime {
-    #[serde(flatten)]
-    pub saving_time: BdtTimeStampType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Hours {
-    #[serde(flatten)]
-    pub hours: BdtPositiveInteger2digitsType,
+    pub sawinghours: SawinghoursDataType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct WorkingSiteWorkTime {
     #[serde(flatten)]
     pub working_site_work_time: WorkingSiteWorkTimeType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Sawinghours {
-    #[serde(flatten)]
-    pub sawinghours: SawinghoursDataType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

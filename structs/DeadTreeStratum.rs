@@ -4,9 +4,15 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct DeadTreeType {
+pub struct MeanDiameter {
     #[serde(flatten)]
-    pub dead_tree_type: DeadTreeTypeType,
+    pub mean_diameter: MeanDiameterType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct TreeSpecies {
+    #[serde(flatten)]
+    pub tree_species: TreeSpeciesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -21,16 +27,16 @@ pub struct DeadTreeStratum {
     pub dead_tree_stratum: DeadTreeStratumType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct DeadTreeTypeType {
+#[derive(Serialize, Deserialize, Debug)]
+pub struct DeadTreeType {
     #[serde(flatten)]
-    pub base: CoDeadTreeTypeType,
+    pub dead_tree_type: DeadTreeTypeType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct TreeSpeciesType {
+pub struct MeanDiameterType {
     #[serde(flatten)]
-    pub base: CoTreeSpeciesType,
+    pub base: CoDiameterType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,9 +52,15 @@ pub struct StemCountType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct MeanDiameterType {
+pub struct DeadTreeTypeType {
     #[serde(flatten)]
-    pub base: CoDiameterType,
+    pub base: CoDeadTreeTypeType,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TreeSpeciesType {
+    #[serde(flatten)]
+    pub base: CoTreeSpeciesType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

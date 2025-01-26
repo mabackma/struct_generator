@@ -4,27 +4,21 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BioMassQualityText {
+pub struct ForestEnergySuitable {
     #[serde(flatten)]
-    pub bio_mass_quality_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct RemainingBiomassText {
-    #[serde(flatten)]
-    pub remaining_biomass_text: BdtString200Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct WorkingSiteFinalAuditBioMassForwarding {
-    #[serde(flatten)]
-    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
+    pub forest_energy_suitable: BdtYesNoType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct RemainingBiomass {
     #[serde(flatten)]
     pub remaining_biomass: BdtYesNoType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BioMassQualityText {
+    #[serde(flatten)]
+    pub bio_mass_quality_text: BdtString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,9 +34,39 @@ pub struct BioMassQuality {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestEnergySuitable {
+pub struct WorkingSiteFinalAuditBioMassForwarding {
     #[serde(flatten)]
-    pub forest_energy_suitable: BdtYesNoType,
+    pub working_site_final_audit_bio_mass_forwarding: WorkingSiteFinalAuditBioMassForwardingType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct RemainingBiomassText {
+    #[serde(flatten)]
+    pub remaining_biomass_text: BdtString200Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WorkingSiteFinalAuditBioMassForwardingType {
+    #[serde(rename = "ServiceBuyerId")]
+    pub service_buyer_id: String20Type,
+    #[serde(rename = "WorkingSiteId")]
+    pub working_site_id: ERPIdType,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String20Type,
+    #[serde(rename = "PurchaseContractId")]
+    pub purchase_contract_id: String20Type,
+    #[serde(rename = "WorkCodeGroup")]
+    pub work_code_group: WorkCodeGroupType,
+    #[serde(rename = "WorkCode")]
+    pub work_code: WorkCodeType,
+    #[serde(rename = "Audit")]
+    pub audit: AuditionType,
+    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
+    pub info_text: Option<String1000Type>,
+    #[serde(rename = "Images")]
+    pub images: PositiveInteger2digitsType,
+    #[serde(rename = "Audits")]
+    pub audits: AuditsType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -117,29 +141,5 @@ pub struct AuditsType {
     pub remaining_biomass: Option<YesNoType>,
     #[serde(rename = "RemainingBiomassText", skip_serializing_if = "Option::is_none")]
     pub remaining_biomass_text: Option<String200Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct WorkingSiteFinalAuditBioMassForwardingType {
-    #[serde(rename = "ServiceBuyerId")]
-    pub service_buyer_id: String20Type,
-    #[serde(rename = "WorkingSiteId")]
-    pub working_site_id: ERPIdType,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String20Type,
-    #[serde(rename = "PurchaseContractId")]
-    pub purchase_contract_id: String20Type,
-    #[serde(rename = "WorkCodeGroup")]
-    pub work_code_group: WorkCodeGroupType,
-    #[serde(rename = "WorkCode")]
-    pub work_code: WorkCodeType,
-    #[serde(rename = "Audit")]
-    pub audit: AuditionType,
-    #[serde(rename = "InfoText", skip_serializing_if = "Option::is_none")]
-    pub info_text: Option<String1000Type>,
-    #[serde(rename = "Images")]
-    pub images: PositiveInteger2digitsType,
-    #[serde(rename = "Audits")]
-    pub audits: AuditsType,
 }
 

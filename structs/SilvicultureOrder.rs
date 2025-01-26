@@ -10,9 +10,11 @@ pub struct SilvicultureOrder {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct WorkCodesType {
-    #[serde(rename = "WorkCode")]
-    pub work_code: Vec<WorkCodeInfoType>,
+pub struct AttachmentDataType {
+    #[serde(rename = "Name")]
+    pub name: String100Type,
+    #[serde(rename = "Data")]
+    pub data: Vec<u8>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -52,11 +54,9 @@ pub struct SilvicultureOrderType {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AttachmentDataType {
-    #[serde(rename = "Name")]
-    pub name: String100Type,
-    #[serde(rename = "Data")]
-    pub data: Vec<u8>,
+pub struct WorkCodesType {
+    #[serde(rename = "WorkCode")]
+    pub work_code: Vec<WorkCodeInfoType>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

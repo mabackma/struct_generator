@@ -4,33 +4,9 @@ use chrono::{NaiveDate, NaiveTime, NaiveDateTime};
 use geo::{Point, Polygon, MultiPolygon, LineString};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementNS {
+pub struct ErrorMessages {
     #[serde(flatten)]
-    pub key_element_n_s: CoString500Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct KeyInfoAsText {
-    #[serde(flatten)]
-    pub key_info_as_text: CoString2000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReferenceType {
-    #[serde(flatten)]
-    pub reference_type: CoForestCentreMessageReferenceType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessage {
-    #[serde(flatten)]
-    pub error_message: CoString1000Type,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ReplyCode {
-    #[serde(flatten)]
-    pub reply_code: CoReplyCodeType,
+    pub error_messages: ErrorMessagesType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -40,15 +16,9 @@ pub struct ErrorMessageData {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ForestCentreReply {
+pub struct ReplyCode {
     #[serde(flatten)]
-    pub forest_centre_reply: ForestCentreReplyType,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorCode {
-    #[serde(flatten)]
-    pub error_code: CoString25Type,
+    pub reply_code: CoReplyCodeType,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -58,15 +28,33 @@ pub struct Acceptance {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementName {
+pub struct KeyElementNS {
     #[serde(flatten)]
-    pub key_element_name: CoString200Type,
+    pub key_element_n_s: CoString500Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct ErrorMessages {
+pub struct KeyElementId {
     #[serde(flatten)]
-    pub error_messages: ErrorMessagesType,
+    pub key_element_id: CoIdStringNotEmptyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ForestCentreReply {
+    #[serde(flatten)]
+    pub forest_centre_reply: ForestCentreReplyType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ReferenceType {
+    #[serde(flatten)]
+    pub reference_type: CoForestCentreMessageReferenceType,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KeyElementName {
+    #[serde(flatten)]
+    pub key_element_name: CoString200Type,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -76,9 +64,33 @@ pub struct RegistrationId {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct KeyElementId {
+pub struct ErrorCode {
     #[serde(flatten)]
-    pub key_element_id: CoIdStringNotEmptyType,
+    pub error_code: CoString25Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct KeyInfoAsText {
+    #[serde(flatten)]
+    pub key_info_as_text: CoString2000Type,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ErrorMessage {
+    #[serde(flatten)]
+    pub error_message: CoString1000Type,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ErrorMessagesType {
+    #[serde(rename = "ErrorMessageData")]
+    pub error_message_data: Vec<ErrorMessageDataType>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EstateOwnerType {
+    #[serde(rename = "NameAndOrganizationGroup")]
+    pub ci_name_and_organization_group: Vec<CiNameAndOrganizationGroup>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -120,24 +132,12 @@ pub struct ForestCentreReplyType {
     #[serde(rename = "ForestCentreMessageReference", skip_serializing_if = "Option::is_none")]
     pub forest_centre_message_reference: Option<CoReferenceType>,
     #[serde(rename = "ArrivalDate", skip_serializing_if = "Option::is_none")]
-    pub arrival_date: Option<CoDateType>,
+    pub arrival_date: Option<DateType>,
     #[serde(rename = "RegistrationId", skip_serializing_if = "Option::is_none")]
     pub registration_id: Option<CoReferenceType>,
     #[serde(rename = "ErrorMessages", skip_serializing_if = "Option::is_none")]
     pub error_messages: Option<ErrorMessagesType>,
     #[serde(rename = "AdditionalInfo", skip_serializing_if = "Option::is_none")]
     pub additional_info: Option<String1000Type>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ErrorMessagesType {
-    #[serde(rename = "ErrorMessageData")]
-    pub error_message_data: Vec<ErrorMessageDataType>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct EstateOwnerType {
-    #[serde(rename = "NameAndOrganizationGroup")]
-    pub ci_name_and_organization_group: Vec<CiNameAndOrganizationGroup>,
 }
 
